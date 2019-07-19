@@ -1,0 +1,252 @@
+<%@ Master Language="C#" AutoEventWireup="true" CodeFile="TSI1.master.cs" Inherits="Master_TSI1" EnableTheming="true" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+   
+<head id="Head1" runat="server">
+    <title>Untitled Page</title>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    <script src="http://ajax.aspnetcdn.com/ajax/jquery.ui/1.8.9/jquery-ui.js" type="text/javascript"></script>
+    <link href="http://ajax.aspnetcdn.com/ajax/jquery.ui/1.8.9/themes/start/jquery-ui.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" language="javascript">
+        function resizeBrowser(tid) {
+            var x = screen.availWidth;
+            var y = screen.availHeight;
+            var mt = document.getElementById(tid);
+            if (document.all) {
+                y = y - 250;
+                mt.style.height = y + "px";
+            }
+            else {
+                y = y - 300;
+                mt.style.height = y + "px";
+            }
+            //window.resizeTo(screen.width,screen.availHeight);
+        }
+    </script>
+    <link rel="shortcut icon" type="image/ico" href="../App_themes/Black/images/Firefox(1).ico" />
+</head>
+
+<body onload="javascript:resizeBrowser('MainTable');history.go(+1);">
+    <form id="form1" runat="server" style="font-family: Helvetica, Calibri; font-size: 13px;">
+        <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+        <div id="Tblmain">
+            <table>
+                <tr>
+                    <td>
+                        <%-- <asp:LinkButton ID="lnkOthers" runat="server" CssClass="Logout" Font-Bold="true"
+                        Font-Size="Large" Text="Break" ForeColor="Red" style="font-family:Helvetica, Calibri;" OnClick="lnkOthers_Click"></asp:LinkButton>--%>
+                    </td>
+                </tr>
+            </table>
+            <div id="logo" style="float: left; width: 230px; height: 80px;">
+            </div>
+            <div align="center" style="padding-left: 300px;padding-top:10px; float: left;">
+                <asp:Image ID="Imgtitle" runat="server" ImageUrl="~/App_themes/Black/images/t1.png" />
+            </div>
+
+            <%-- <div id="templatemo_header" style="float:left;">  --%>
+
+            <%--  <table border="0" style="width:900px;height:90px;">
+                <tr>
+                    <td align="center" valign="top" style="padding-top:20px;">
+                     
+                    </td>
+                </tr>
+            </table>--%>
+
+            <%--</div>    --%>
+            <div style="float: right; padding-top: 20px; padding-right:20px;Helvetica, Calibri;">
+                <table>
+                    <tr>
+                        <td>
+                            <asp:LinkButton ID="LnkLogout" runat="server"  Style="font-family:Helvetica, Calibri;" CssClass="Lnklogout" Text="Logout" OnClick="SignOut_OnClick" ForeColor="White"></asp:LinkButton>
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <td>
+                            <asp:LinkButton ID="lnkOthers" runat="server" CssClass="Lnklogout"
+                                 Text="Break" Style="font-family:Helvetica, Calibri;" OnClick="lnkOthers_Click" ForeColor="White"></asp:LinkButton>
+                        </td>
+                    </tr>
+                </table>
+
+            </div>
+        </div>
+
+        <div id="templatemo_menu_wrapper" style="width: 100%;">
+            <div id="templatemo_menu">
+                <table cellpadding="5px" border="0" style="font-family: Helvetica, Calibri; font-size: 13px">
+                    <tr>
+                        <td style="font-family: Helvetica, Calibri; font-size: 15px; color: White; width: 250px;" valign="bottom">
+                            <asp:Label ID="Lblusername" runat="server" Font-Bold="true"></asp:Label></td>
+                        <td style="width: 85%; font-family: Helvetica, Calibri;">
+                            <asp:Button ID="LnkHome" runat="server" CssClass="MenuFont" Text="Home" Font-Overline="false" OnClick="LnkHome_Click" Width="59px"></asp:Button>
+
+                            <asp:Button ID="LnkUsers" runat="server" CssClass="MenuFont" Text="User Maintenance" Font-Overline="false" OnClick="LnkUsers_Click1" Width="140px"></asp:Button>
+                            <asp:Button ID="Lnkassignjob" runat="server" CssClass="MenuFont" Text="Assign Job" Font-Overline="false" OnClick="Lnkassignjob_Click"></asp:Button>
+                            <asp:Button ID="Lnkorderstatus" runat="server" CssClass="MenuFont" Text="Order Status" Font-Overline="false" OnClick="Lnkorderstatus_Click" Width="102px"></asp:Button>
+                            <asp:Button ID="LnkScrapingstatus" runat="server" CssClass="MenuFont" Text="STARS" Font-Overline="false" OnClick="LnkScrapingstatus_Click" Width="65px"></asp:Button>
+                            <asp:Button ID="LnkReports" runat="server" CssClass="MenuFont" Text="Reports" Font-Overline="false" OnClick="LnkReports_Click" Width="64px"></asp:Button>
+                            <asp:Button ID="Lnkproduction" runat="server" CssClass="MenuFont" Text="Production" Font-Overline="false" OnClick="Lnkproduction_Click" Width="92px"></asp:Button>
+                            <asp:Button ID="Lnkpassword" runat="server" CssClass="MenuFont" Text="Change Password" Font-Overline="false" OnClick="Lnkpassword_Click" Width="130px"></asp:Button>
+                            <asp:Button ID="Lnkbreaktime" runat="server" CssClass="MenuFont" Text="Break Time" Visible="false" Font-Overline="false" OnClick="Lnkbreaktime_Click" Width="103px"></asp:Button>
+                            <asp:Button ID="LnkMIS" runat="server" CssClass="MenuFont" Text="MIS Updation" Font-Overline="false" OnClick="LnkMIS_Click" Width="121px" Visible="False"></asp:Button>
+                        </td>
+                        <td style="font-family: Helvetica, Calibri; font-size: 15px; color: White;" align="right">
+                            <asp:Label ID="Lbltime" runat="server" Text="" Visible="false"></asp:Label></td>
+                    </tr>
+                </table>
+            </div>
+            <!-- end of menu -->
+        </div>
+        <!-- end of menu wrapper -->
+        <div>
+            <%--<table style="width:100%;background-color:#f1f1f1;border-bottom:outset 1px gray;">
+        <tr>
+            <td align="center" valign="top" style="width:90%" >
+                <asp:GridView ID="Gridutilization" runat="server" Width="600px" GridLines="None" CssClass="Gnowrap" Visible="false"></asp:GridView>
+            </td>
+            <td style="width:15%;font-size:18px;font-weight:bold;color:Black;" align="right">
+                <asp:Label ID="lblbreaktotal" runat="server" Text="Break Time " Visible></asp:Label>
+                <asp:Label ID="lblbreak" runat="server" Text=""></asp:Label>
+            </td>
+        </tr>
+    </table>--%>
+        </div>
+        <div id="main">
+
+
+            <asp:ContentPlaceHolder ID="MenuContentPlaceHolder" runat="server">
+            </asp:ContentPlaceHolder>
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder2" runat="server">
+            </asp:ContentPlaceHolder>
+
+            <div class="page_dimmer" id="pagedimmer" runat="server">
+            </div>
+            <div class="msg_box_container" id="Other_breakMsgbx" runat="server" align="center">
+                <table width="600px" style="display: none;">
+                    <tr>
+                        <td colspan="3" class="PagedimmerMsg" align="center" style="height: 36px">
+                            <asp:Label ID="lbltext" runat="server" Font-Names="Georgia" ForeColor="black" Font-Bold="true"
+                                Font-Size="Larger" Text="Break Comments"></asp:Label>
+                        </td>
+                    </tr>
+                </table>
+                <div id="div_brk_start" runat="server">
+                    <table width="600px">
+                        <tr>
+                            <td align="right" style="font-family: Helvetica, Calibri;">
+                                <asp:Label ID="Lblcomments" runat="server" Text="Select Break Type:" CssClass="PagedimmerMsg"
+                                    ForeColor="black"></asp:Label>
+                            </td>
+                            <td align="center" style="font-family: Helvetica, Calibri;">
+                                <asp:DropDownList ID="drp_break" runat="server" Width="150px" ForeColor="Black">
+                                    <asp:ListItem Value="1">Tea/Coffee</asp:ListItem>
+                                    <asp:ListItem Value="2">Lunch/Dinner</asp:ListItem>
+                                    <asp:ListItem Value="3">Short Break</asp:ListItem>
+                                    <asp:ListItem Value="4">Meeting</asp:ListItem>
+                                </asp:DropDownList>
+                            </td>
+                            <td align="left">
+                                <asp:Button ID="btn_brk_start" runat="server" Text="Start" Style="font-family: Helvetica, Calibri;" CssClass="MenuFont" OnClick="btn_brk_start_Click" />
+                                <asp:Button ID="btn_brk_cancel" CssClass="MenuFont" Style="font-family: Helvetica, Calibri;" runat="server" Text="Cancel"
+                                    OnClick="btn_brk_cancel_Click" />
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div id="div_brk_cmd" runat="server">
+                    <table width="600px">
+                        <tr>
+                            <td colspan="2" align="center" style="font-family: Helvetica, Calibri;">
+                                <asp:Label ID="lbl_brk_name" runat="server" ForeColor="#862d2d" Font-Size="19px"></asp:Label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" align="center">
+                                <asp:UpdatePanel ID="up_Timer" runat="server" RenderMode="Inline" UpdateMode="Always">
+                                    <Triggers>
+                                        <asp:AsyncPostBackTrigger ControlID="Timer1" EventName="Tick" />
+                                    </Triggers>
+                                    <ContentTemplate>
+                                        <asp:Timer ID="Timer1" runat="server" Interval="1000" OnTick="Timer1_Tick" />
+                                        <%--  <asp:Literal ID="lit_Timer" runat="server" /><br />--%>
+
+                                        <asp:Label ID="lit_Timer" runat="server" Font-Size="18px"></asp:Label><br />
+                                        <asp:HiddenField ID="hid_Ticker" runat="server" Value="0" />
+                                    </ContentTemplate>
+                                </asp:UpdatePanel>
+                            </td>
+                        </tr>
+                    </table>
+                    <div id="div_brk_countdown" runat="server">
+                        <table width="600px">
+                            <tr>
+                                <%-- <td>
+                        <span id="time"></span>
+                        <input type="button" value="start" onclick="start();"/>
+                        </td>--%>
+                                <td align="center">
+                                    <asp:Button ID="btn_brk_stop" runat="server" Text="Stop" Style="font-family: Helvetica, Calibri;" CssClass="RvButton" OnClick="btn_brk_stop_Click" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="3" align="center">
+                                    <asp:Label ID="lblothererror" runat="server" Style="font-family: Helvetica, Calibri;" ForeColor="#862d2d" Font-Size="19px"></asp:Label>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div id="div_brk_stop" runat="server">
+                        <table width="600px">
+                            <tr>
+                                <td align="center">
+                                    <asp:Label ID="Label2" runat="server" Text="Enter Delay Reson:" Style="font-family: Helvetica, Calibri;" CssClass="PagedimmerMsg"
+                                        ForeColor="black"></asp:Label>
+                                </td>
+                                <td align="left" style="font-family: Helvetica, Calibri">
+                                    <asp:TextBox ID="txt_break_reason" runat="server" TextMode="MultiLine"
+                                        placeholder="Maximum 100 Characters" Height="50px" Width="400px"></asp:TextBox>
+                                    <br />
+                                    <asp:RegularExpressionValidator ID="RegularExpressionValidator3" runat="server" ControlToValidate="txt_break_reason" ForeColor="#862d2d" Font-Size="17px" Style="font-family: Helvetica, Calibri;"
+                                        ErrorMessage=" Please limit to 100 characters or less." ValidationExpression="[\s\S]{1,100}" ValidationGroup="g2"></asp:RegularExpressionValidator>
+
+                                </td>
+                            </tr>
+                            <tr>
+                                <td align="center" colspan="2" style="height: 33px">
+                                    <asp:Button ID="btn_brk_reson" runat="server" Text="Save" CssClass="RvButton" Style="font-family: Helvetica, Calibri;" OnClick="btn_brk_reson_Click" ValidationGroup="g2" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" align="center">
+                                    <asp:Label ID="lbl_brk_cmd_err" runat="server" Style="font-family: Helvetica, Calibri;" CssClass="ErrorLabel"></asp:Label>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div>
+            <table id="MainTable" border="0" width="100%">
+                <tr>
+                    <td style="width: 100%;">
+                        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                        </asp:ContentPlaceHolder>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div id="templatemo_footer_wrapper">
+            <div id="templatemo_footer" style="font-family: Helvetica, Calibri">
+                CopyRight © String 2012. All Rights Reserved.Powered By : SST 
+            </div>
+            <!-- end of footer -->
+        </div>
+    </form>
+</body>
+</html>

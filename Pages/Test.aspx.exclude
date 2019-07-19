@@ -1,0 +1,172 @@
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Test.aspx.cs" Inherits="Pages_Test" %>
+
+<!DOCTYPE html>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<script type="text/javascript" src='https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.3.min.js'></script>
+<script type="text/javascript" src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.3/js/bootstrap.min.js'></script>
+<link rel="stylesheet" href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.3/css/bootstrap.min.css' media="screen" />
+
+<%--<script type="text/javascript">
+    $("[id*=chkHeader]").live("click", function () {
+        var chkHeader = $(this);
+        var grid = $(this).closest("table");
+        $("input[type=checkbox]", grid).each(function () {
+            if (chkHeader.is(":checked")) {
+                $(this).attr("checked", "checked");
+                $("td", $(this).closest("tr")).addClass("selected");
+            } else {
+                $(this).removeAttr("checked");
+                $("td", $(this).closest("tr")).removeClass("selected");
+            }
+        });
+    });
+    $("[id*=chkRow]").live("click", function () {
+        var grid = $(this).closest("table");
+        var chkHeader = $("[id*=chkHeader]", grid);
+        if (!$(this).is(":checked")) {
+            $("td", $(this).closest("tr")).removeClass("selected");
+            chkHeader.removeAttr("checked");
+        } else {
+            $("td", $(this).closest("tr")).addClass("selected");
+            if ($("[id*=chkRow]", grid).length == $("[id*=chkRow]:checked", grid).length) {
+                chkHeader.attr("checked", "checked");
+            }
+        }
+    });
+</script>
+<script>
+    function check() {
+        if (document.getElementById("btn1").checked = true) {
+            $('#btn1').prop('disabled', false);
+
+        } else {
+            $('#btn1').prop('enabled', true);
+        }
+    };
+</script>--%>
+<script type="text/javascript">  
+// for check all checkbox  
+        function CheckAll(Checkbox) {  
+            var GridVwHeaderCheckbox = document.getElementById("<%=grid1.ClientID %>");  
+            for (i = 1; i < GridVwHeaderCheckbox.rows.length; i++) {  
+                GridVwHeaderCheckbox.rows[i].cells[0].getElementsByTagName("INPUT")[0].checked = Checkbox.checked;  
+            }  
+        }  
+    </script> 
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <style type="text/css">
+        .auto-style1 {
+            z-index: 101;
+            left: 301px;
+            position: absolute;
+            top: 142px;
+            width: 729px;
+            right: 256px;
+        }
+    </style>
+</head>
+<body>
+    <h1 style="text-align: center; color: red; font-size: larger">SCRAPING</h1>
+    <form id="form1" runat="server">
+
+        <div>
+            <asp:GridView ID="grid1" runat="server" AutoGenerateColumns="False" ShowFooter="True" Style="text-align: center" CellPadding="4" ForeColor="#333333" GridLines="None" CssClass="auto-style1">
+                <Columns>
+                    <asp:TemplateField>
+                        <HeaderTemplate>
+                            <asp:CheckBox ID="chkAllSelect" runat="server" onclick="CheckAll(this);"/>
+                        </HeaderTemplate>
+                        <ItemTemplate>
+                            <asp:CheckBox ID="chkSelect" runat="server"/>
+                            <%--<div class="modal fade" tabindex="-1" role="dialog" id="example">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                                            <h4 class="modal-title">Scraping</h4>
+                                        </div>
+
+                                        <div class="modal-body">
+                                            <asp:Panel ID="Panel2" runat="server">
+                                                <table cellpadding="0" cellspacing="0" style="background-color: #B2CEE1; border-color: Black" border="1">
+                                                    <tr>
+                                                        <td>StreetNumber
+                                                        </td>
+                                                        <td>
+                                                            <asp:TextBox ID="OrderNo" runat="server" Width="90px"></asp:TextBox>
+                                                        </td>
+                                                        <td>Directions
+                                                        </td>
+                                                        <td>
+                                                            <asp:TextBox ID="StreetNo" runat="server" Width="90px"></asp:TextBox>
+                                                        </td>
+                                                        <td>StreetName
+                                                        </td>
+                                                        <td>
+                                                            <asp:TextBox ID="StreetName" runat="server" Width="120px"></asp:TextBox>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>StreetType
+                                                        </td>
+                                                        <td>
+                                                            <asp:TextBox ID="StreetType" runat="server" Width="90px"></asp:TextBox>
+                                                        </td>
+                                                        <td>UnitNumber
+                                                        </td>
+                                                        <td>
+                                                            <asp:TextBox ID="UnitNumber" runat="server" Width="90px"></asp:TextBox>
+                                                        </td>
+                                                        <td>City
+                                                        </td>
+                                                        <td>
+                                                            <asp:TextBox ID="Address" runat="server" Width="120px"></asp:TextBox>
+
+                                                        </td>
+                                                    </tr>
+
+                                                </table>
+                                            </asp:Panel>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" onclick="myfunction()" class="btn btn-primary" id="btn1">Submit</button>
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>--%>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:BoundField DataField="Id" HeaderText="ID" />
+                    <asp:BoundField DataField="Order_No" HeaderText="ORDER NO" />
+                    <asp:BoundField DataField="State" HeaderText="STATE" />
+                    <asp:BoundField DataField="County" HeaderText="COUNTY" />
+                    <asp:BoundField DataField="Property_Address" HeaderText="PROPERTY ADDRESS" />
+                    <asp:BoundField DataField="Owner_Name" HeaderText="OWNER NAME" />
+                    <asp:BoundField DataField="Parcel_No" HeaderText="PARCEL NO" />
+                </Columns>
+                <EditRowStyle BackColor="#999999" />
+                <FooterStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
+                <RowStyle BackColor="#F7F6F3" ForeColor="#333333" />
+                <SelectedRowStyle BackColor="#E2DED6" ForeColor="#333333" Font-Bold="True" />
+                <PagerStyle BackColor="#284775" ForeColor="White" HorizontalAlign="Center" />
+                <HeaderStyle BackColor="#5D7B9D" BorderStyle="Solid" Font-Bold="True" ForeColor="White" />
+                <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
+                <SortedAscendingCellStyle BackColor="#E9E7E2" />
+                <SortedAscendingHeaderStyle BackColor="#506C8C" />
+                <SortedDescendingCellStyle BackColor="#FFFDF8" />
+                <SortedDescendingHeaderStyle BackColor="#6F8DAE" />            
+            </asp:GridView>        
+            
+            <asp:Button ID="btnGetRecord" Text="Get Selected Records" runat="server"  
+                Font-Bold="true" OnClick="btnGetRecord_Click" /><br /><br />  
+  
+              
+            <asp:Label ID="lblRecord" runat="server" />      
+        </div>  
+        </form>    
+</body>
+</html>

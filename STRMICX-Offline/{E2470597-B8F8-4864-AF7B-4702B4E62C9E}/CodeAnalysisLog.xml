@@ -1,0 +1,1299 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="c:\program files (x86)\microsoft visual studio 14.0\team tools\static analysis tools\fxcop\Xml\CodeAnalysisReport.xsl"?>
+<FxCopReport Version="14.0">
+ <Targets>
+  <Target Name="C:\Users\madeshwaran.s\AppData\Local\Temp\tmpD71.tmp.cadir\bin\App_Code.dll">
+   <Modules>
+    <Module Name="app_code.dll">
+     <Namespaces>
+      <Namespace Name="">
+       <Types>
+        <Type Name="DBConnection" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Messages>
+          <Message TypeName="TypesThatOwnDisposableFieldsShouldBeDisposable" Category="Microsoft.Design" CheckId="CA1001" Status="Active" Created="2018-03-05 15:03:07Z" FixCategory="DependsOnFix">
+           <Issue Name="DependsOnFix" Certainty="95" Level="CriticalError">Implement IDisposable on 'DBConnection' because it creates members of the following IDisposable types: 'MySqlConnection', 'MySqlCommand', 'MySqlDataAdapter'. If 'DBConnection' has previously shipped, adding new members that implement IDisposable to this type is considered a breaking change to existing consumers.</Issue>
+          </Message>
+         </Messages>
+         <Members>
+          <Member Name="#Executedataset(System.String,System.Boolean,MySql.Data.MySqlClient.MySqlParameter[])" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2018-03-05 15:03:07Z" FixCategory="DependsOnFix">
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="d:\Madesh\Projects\Scraping\Integration\TSI Taxes\App_code" File="DBConnection.cs" Line="256">The query string passed to 'MySqlCommand.MySqlCommand(string, MySqlConnection)' in 'DBConnection.Executedataset(string, bool, MySqlParameter[])' could contain the following variables 'Query'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#ExecuteQuery(System.String)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2018-03-05 15:03:07Z" FixCategory="DependsOnFix">
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="d:\Madesh\Projects\Scraping\Integration\TSI Taxes\App_code" File="DBConnection.cs" Line="239">The query string passed to 'MySqlCommand.MySqlCommand(string, MySqlConnection)' in 'DBConnection.ExecuteQuery(string)' could contain the following variables 'Query'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#ExecuteScalar(System.String)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2018-03-05 15:03:07Z" FixCategory="DependsOnFix">
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="d:\Madesh\Projects\Scraping\Integration\TSI Taxes\App_code" File="DBConnection.cs" Line="152">The query string passed to 'MySqlCommand.MySqlCommand(string, MySqlConnection)' in 'DBConnection.ExecuteScalar(string)' could contain the following variables 'Query'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#ExecuteScalar(System.String,System.Boolean,MySql.Data.MySqlClient.MySqlParameter[])" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2018-03-05 15:03:07Z" FixCategory="DependsOnFix">
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="d:\Madesh\Projects\Scraping\Integration\TSI Taxes\App_code" File="DBConnection.cs" Line="109">The query string passed to 'MySqlCommand.MySqlCommand(string, MySqlConnection)' in 'DBConnection.ExecuteScalar(string, bool, MySqlParameter[])' could contain the following variables 'Query'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#ExecuteSPAdapter(System.String,System.Boolean,MySql.Data.MySqlClient.MySqlParameter[])" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2018-03-05 15:03:07Z" FixCategory="DependsOnFix">
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="d:\Madesh\Projects\Scraping\Integration\TSI Taxes\App_code" File="DBConnection.cs" Line="204">The query string passed to 'MySqlCommand.MySqlCommand(string, MySqlConnection)' in 'DBConnection.ExecuteSPAdapter(string, bool, MySqlParameter[])' could contain the following variables 'query'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#ExecuteSPNonQuery(System.String,System.Boolean,MySql.Data.MySqlClient.MySqlParameter[])" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2018-03-05 15:03:07Z" FixCategory="DependsOnFix">
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="d:\Madesh\Projects\Scraping\Integration\TSI Taxes\App_code" File="DBConnection.cs" Line="42">The query string passed to 'MySqlCommand.MySqlCommand(string, MySqlConnection)' in 'DBConnection.ExecuteSPNonQuery(string, bool, MySqlParameter[])' could contain the following variables 'Query'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#ExecuteSPNonQuery1(System.String,System.Boolean,MySql.Data.MySqlClient.MySqlParameter[])" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2018-03-05 15:03:07Z" FixCategory="DependsOnFix">
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="d:\Madesh\Projects\Scraping\Integration\TSI Taxes\App_code" File="DBConnection.cs" Line="75">The query string passed to 'MySqlCommand.MySqlCommand(string, MySqlConnection)' in 'DBConnection.ExecuteSPNonQuery1(string, bool, MySqlParameter[])' could contain the following variables 'Query'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#ExecuteSPReader(System.String,System.Boolean,MySql.Data.MySqlClient.MySqlParameter[])" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2018-03-05 15:03:07Z" FixCategory="DependsOnFix">
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="d:\Madesh\Projects\Scraping\Integration\TSI Taxes\App_code" File="DBConnection.cs" Line="173">The query string passed to 'MySqlCommand.MySqlCommand(string, MySqlConnection)' in 'DBConnection.ExecuteSPReader(string, bool, MySqlParameter[])' could contain the following variables 'query'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#ExecuteTables(System.String[])" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2018-03-05 15:03:07Z" FixCategory="DependsOnFix">
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="d:\Madesh\Projects\Scraping\Integration\TSI Taxes\App_code" File="DBConnection.cs" Line="289">The query string passed to 'MySqlCommand.CommandText.set(string)' in 'DBConnection.ExecuteTables(string[])' could contain the following variables 'Querys[...]'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="GlobalClass" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Messages>
+          <Message TypeName="TypesThatOwnDisposableFieldsShouldBeDisposable" Category="Microsoft.Design" CheckId="CA1001" Status="Active" Created="2018-03-05 15:03:07Z" FixCategory="DependsOnFix">
+           <Issue Name="DependsOnFix" Certainty="95" Level="CriticalError">Implement IDisposable on 'GlobalClass' because it creates members of the following IDisposable types: 'DataView', 'DataSet', 'MySqlConnection'. If 'GlobalClass' has previously shipped, adding new members that implement IDisposable to this type is considered a breaking change to existing consumers.</Issue>
+          </Message>
+         </Messages>
+         <Members>
+          <Member Name="#ConvertUploadtoDataview(System.String,System.String)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="RethrowToPreserveStackDetails" Category="Microsoft.Usage" CheckId="CA2200" Status="Active" Created="2018-03-05 15:03:07Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Error" Path="d:\Madesh\Projects\Scraping\Integration\TSI Taxes\App_code" File="GlobalClass.cs" Line="4585">'GlobalClass.ConvertUploadtoDataview(string, string)' rethrows a caught exception and specifies it explicitly as an argument. Use 'throw' without an argument instead, in order to preserve the stack location where the exception was initially raised.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#CovertCheckListDStoDataview(System.Data.DataSet)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="RethrowToPreserveStackDetails" Category="Microsoft.Usage" CheckId="CA2200" Status="Active" Created="2018-03-05 15:03:07Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Error" Path="d:\Madesh\Projects\Scraping\Integration\TSI Taxes\App_code" File="GlobalClass.cs" Line="3850">'GlobalClass.CovertCheckListDStoDataview(DataSet)' rethrows a caught exception and specifies it explicitly as an argument. Use 'throw' without an argument instead, in order to preserve the stack location where the exception was initially raised.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#CovertChequeDStoDataview(System.Data.DataSet)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="RethrowToPreserveStackDetails" Category="Microsoft.Usage" CheckId="CA2200" Status="Active" Created="2018-03-05 15:03:07Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Error" Path="d:\Madesh\Projects\Scraping\Integration\TSI Taxes\App_code" File="GlobalClass.cs" Line="5302">'GlobalClass.CovertChequeDStoDataview(DataSet)' rethrows a caught exception and specifies it explicitly as an argument. Use 'throw' without an argument instead, in order to preserve the stack location where the exception was initially raised.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#CovertDashBoardDStoDataview(System.Data.DataSet)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="RethrowToPreserveStackDetails" Category="Microsoft.Usage" CheckId="CA2200" Status="Active" Created="2018-03-05 15:03:07Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Error" Path="d:\Madesh\Projects\Scraping\Integration\TSI Taxes\App_code" File="GlobalClass.cs" Line="321">'GlobalClass.CovertDashBoardDStoDataview(DataSet)' rethrows a caught exception and specifies it explicitly as an argument. Use 'throw' without an argument instead, in order to preserve the stack location where the exception was initially raised.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#CovertEODDstoDataview(System.Data.DataSet)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="RethrowToPreserveStackDetails" Category="Microsoft.Usage" CheckId="CA2200" Status="Active" Created="2018-03-05 15:03:07Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Error" Path="d:\Madesh\Projects\Scraping\Integration\TSI Taxes\App_code" File="GlobalClass.cs" Line="2330">'GlobalClass.CovertEODDstoDataview(DataSet)' rethrows a caught exception and specifies it explicitly as an argument. Use 'throw' without an argument instead, in order to preserve the stack location where the exception was initially raised.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#CovertEODDstoDataview1(System.Data.DataSet)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="RethrowToPreserveStackDetails" Category="Microsoft.Usage" CheckId="CA2200" Status="Active" Created="2018-03-05 15:03:07Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Error" Path="d:\Madesh\Projects\Scraping\Integration\TSI Taxes\App_code" File="GlobalClass.cs" Line="2514">'GlobalClass.CovertEODDstoDataview1(DataSet)' rethrows a caught exception and specifies it explicitly as an argument. Use 'throw' without an argument instead, in order to preserve the stack location where the exception was initially raised.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#CovertHourlyCountDStoDataview(System.Data.DataSet)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="RethrowToPreserveStackDetails" Category="Microsoft.Usage" CheckId="CA2200" Status="Active" Created="2018-03-05 15:03:07Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Error" Path="d:\Madesh\Projects\Scraping\Integration\TSI Taxes\App_code" File="GlobalClass.cs" Line="4488">'GlobalClass.CovertHourlyCountDStoDataview(DataSet)' rethrows a caught exception and specifies it explicitly as an argument. Use 'throw' without an argument instead, in order to preserve the stack location where the exception was initially raised.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#CovertInvoiceDStoDataview(System.Data.DataSet,System.String,System.String)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="RethrowToPreserveStackDetails" Category="Microsoft.Usage" CheckId="CA2200" Status="Active" Created="2018-03-05 15:03:07Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Error" Path="d:\Madesh\Projects\Scraping\Integration\TSI Taxes\App_code" File="GlobalClass.cs" Line="3557">'GlobalClass.CovertInvoiceDStoDataview(DataSet, string, string)' rethrows a caught exception and specifies it explicitly as an argument. Use 'throw' without an argument instead, in order to preserve the stack location where the exception was initially raised.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#CovertLoginCheckListDStoDataview(System.Data.DataSet)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="RethrowToPreserveStackDetails" Category="Microsoft.Usage" CheckId="CA2200" Status="Active" Created="2018-03-05 15:03:07Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Error" Path="d:\Madesh\Projects\Scraping\Integration\TSI Taxes\App_code" File="GlobalClass.cs" Line="4219">'GlobalClass.CovertLoginCheckListDStoDataview(DataSet)' rethrows a caught exception and specifies it explicitly as an argument. Use 'throw' without an argument instead, in order to preserve the stack location where the exception was initially raised.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#CovertMailawayDStoDataview(System.Data.DataSet)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="RethrowToPreserveStackDetails" Category="Microsoft.Usage" CheckId="CA2200" Status="Active" Created="2018-03-05 15:03:07Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Error" Path="d:\Madesh\Projects\Scraping\Integration\TSI Taxes\App_code" File="GlobalClass.cs" Line="3040">'GlobalClass.CovertMailawayDStoDataview(DataSet)' rethrows a caught exception and specifies it explicitly as an argument. Use 'throw' without an argument instead, in order to preserve the stack location where the exception was initially raised.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#CovertOverallProcessTimetoDataview(System.Data.DataSet)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="RethrowToPreserveStackDetails" Category="Microsoft.Usage" CheckId="CA2200" Status="Active" Created="2018-03-05 15:03:07Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Error" Path="d:\Madesh\Projects\Scraping\Integration\TSI Taxes\App_code" File="GlobalClass.cs" Line="6368">'GlobalClass.CovertOverallProcessTimetoDataview(DataSet)' rethrows a caught exception and specifies it explicitly as an argument. Use 'throw' without an argument instead, in order to preserve the stack location where the exception was initially raised.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#CovertQualityDStoDataview(System.Data.DataSet,System.String)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="RethrowToPreserveStackDetails" Category="Microsoft.Usage" CheckId="CA2200" Status="Active" Created="2018-03-05 15:03:07Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Error" Path="d:\Madesh\Projects\Scraping\Integration\TSI Taxes\App_code" File="GlobalClass.cs" Line="2719">'GlobalClass.CovertQualityDStoDataview(DataSet, string)' rethrows a caught exception and specifies it explicitly as an argument. Use 'throw' without an argument instead, in order to preserve the stack location where the exception was initially raised.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#CovertQualityDStoDataview1(System.Data.DataSet,System.String,System.String)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="RethrowToPreserveStackDetails" Category="Microsoft.Usage" CheckId="CA2200" Status="Active" Created="2018-03-05 15:03:07Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Error" Path="d:\Madesh\Projects\Scraping\Integration\TSI Taxes\App_code" File="GlobalClass.cs" Line="2832">'GlobalClass.CovertQualityDStoDataview1(DataSet, string, string)' rethrows a caught exception and specifies it explicitly as an argument. Use 'throw' without an argument instead, in order to preserve the stack location where the exception was initially raised.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#CovertRegularDStoDataview(System.Data.DataSet)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="RethrowToPreserveStackDetails" Category="Microsoft.Usage" CheckId="CA2200" Status="Active" Created="2018-03-05 15:03:07Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Error" Path="d:\Madesh\Projects\Scraping\Integration\TSI Taxes\App_code" File="GlobalClass.cs" Line="3167">'GlobalClass.CovertRegularDStoDataview(DataSet)' rethrows a caught exception and specifies it explicitly as an argument. Use 'throw' without an argument instead, in order to preserve the stack location where the exception was initially raised.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#CovertTatDstoDataview(System.Data.DataSet)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="RethrowToPreserveStackDetails" Category="Microsoft.Usage" CheckId="CA2200" Status="Active" Created="2018-03-05 15:03:07Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Error" Path="d:\Madesh\Projects\Scraping\Integration\TSI Taxes\App_code" File="GlobalClass.cs" Line="5466">'GlobalClass.CovertTatDstoDataview(DataSet)' rethrows a caught exception and specifies it explicitly as an argument. Use 'throw' without an argument instead, in order to preserve the stack location where the exception was initially raised.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#CovertTatreportDstoDataview(System.Data.DataSet)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="RethrowToPreserveStackDetails" Category="Microsoft.Usage" CheckId="CA2200" Status="Active" Created="2018-03-05 15:03:07Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Error" Path="d:\Madesh\Projects\Scraping\Integration\TSI Taxes\App_code" File="GlobalClass.cs" Line="5570">'GlobalClass.CovertTatreportDstoDataview(DataSet)' rethrows a caught exception and specifies it explicitly as an argument. Use 'throw' without an argument instead, in order to preserve the stack location where the exception was initially raised.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#CovertUPSDStoDataview(System.Data.DataSet)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="RethrowToPreserveStackDetails" Category="Microsoft.Usage" CheckId="CA2200" Status="Active" Created="2018-03-05 15:03:07Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Error" Path="d:\Madesh\Projects\Scraping\Integration\TSI Taxes\App_code" File="GlobalClass.cs" Line="3318">'GlobalClass.CovertUPSDStoDataview(DataSet)' rethrows a caught exception and specifies it explicitly as an argument. Use 'throw' without an argument instead, in order to preserve the stack location where the exception was initially raised.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#CovertUPSTempDStoDataview(System.Data.DataSet)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="RethrowToPreserveStackDetails" Category="Microsoft.Usage" CheckId="CA2200" Status="Active" Created="2018-03-05 15:03:07Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Error" Path="d:\Madesh\Projects\Scraping\Integration\TSI Taxes\App_code" File="GlobalClass.cs" Line="3381">'GlobalClass.CovertUPSTempDStoDataview(DataSet)' rethrows a caught exception and specifies it explicitly as an argument. Use 'throw' without an argument instead, in order to preserve the stack location where the exception was initially raised.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#get_user_lock(System.String)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="RethrowToPreserveStackDetails" Category="Microsoft.Usage" CheckId="CA2200" Status="Active" Created="2018-03-05 15:03:07Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Error" Path="d:\Madesh\Projects\Scraping\Integration\TSI Taxes\App_code" File="GlobalClass.cs" Line="5711">'GlobalClass.get_user_lock(string)' rethrows a caught exception and specifies it explicitly as an argument. Use 'throw' without an argument instead, in order to preserve the stack location where the exception was initially raised.</Issue>
+            </Message>
+            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2018-03-05 15:03:07Z" FixCategory="DependsOnFix">
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="d:\Madesh\Projects\Scraping\Integration\TSI Taxes\App_code" File="GlobalClass.cs" Line="5696">The query string passed to 'MySqlCommand.MySqlCommand(string, MySqlConnection)' in 'GlobalClass.get_user_lock(string)' could contain the following variables 'userName'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#GetOrderDelete(System.String,System.String)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="RethrowToPreserveStackDetails" Category="Microsoft.Usage" CheckId="CA2200" Status="Active" Created="2018-03-05 15:03:07Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Error" Path="d:\Madesh\Projects\Scraping\Integration\TSI Taxes\App_code" File="GlobalClass.cs" Line="660">'GlobalClass.GetOrderDelete(string, string)' rethrows a caught exception and specifies it explicitly as an argument. Use 'throw' without an argument instead, in order to preserve the stack location where the exception was initially raised.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#GetOrderInprocess(System.String,System.String)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="RethrowToPreserveStackDetails" Category="Microsoft.Usage" CheckId="CA2200" Status="Active" Created="2018-03-05 15:03:07Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Error" Path="d:\Madesh\Projects\Scraping\Integration\TSI Taxes\App_code" File="GlobalClass.cs" Line="730">'GlobalClass.GetOrderInprocess(string, string)' rethrows a caught exception and specifies it explicitly as an argument. Use 'throw' without an argument instead, in order to preserve the stack location where the exception was initially raised.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#GetOrderLock(System.String,System.String)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="RethrowToPreserveStackDetails" Category="Microsoft.Usage" CheckId="CA2200" Status="Active" Created="2018-03-05 15:03:07Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Error" Path="d:\Madesh\Projects\Scraping\Integration\TSI Taxes\App_code" File="GlobalClass.cs" Line="674">'GlobalClass.GetOrderLock(string, string)' rethrows a caught exception and specifies it explicitly as an argument. Use 'throw' without an argument instead, in order to preserve the stack location where the exception was initially raised.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#GetOrderPriority(System.String,System.String)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="RethrowToPreserveStackDetails" Category="Microsoft.Usage" CheckId="CA2200" Status="Active" Created="2018-03-05 15:03:07Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Error" Path="d:\Madesh\Projects\Scraping\Integration\TSI Taxes\App_code" File="GlobalClass.cs" Line="702">'GlobalClass.GetOrderPriority(string, string)' rethrows a caught exception and specifies it explicitly as an argument. Use 'throw' without an argument instead, in order to preserve the stack location where the exception was initially raised.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#GetOrderReject(System.String,System.String)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="RethrowToPreserveStackDetails" Category="Microsoft.Usage" CheckId="CA2200" Status="Active" Created="2018-03-05 15:03:07Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Error" Path="d:\Madesh\Projects\Scraping\Integration\TSI Taxes\App_code" File="GlobalClass.cs" Line="716">'GlobalClass.GetOrderReject(string, string)' rethrows a caught exception and specifies it explicitly as an argument. Use 'throw' without an argument instead, in order to preserve the stack location where the exception was initially raised.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#GetOrders(System.Web.UI.WebControls.ListBox,System.String)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="RethrowToPreserveStackDetails" Category="Microsoft.Usage" CheckId="CA2200" Status="Active" Created="2018-03-05 15:03:07Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Error" Path="d:\Madesh\Projects\Scraping\Integration\TSI Taxes\App_code" File="GlobalClass.cs" Line="646">'GlobalClass.GetOrders(ListBox, string)' rethrows a caught exception and specifies it explicitly as an argument. Use 'throw' without an argument instead, in order to preserve the stack location where the exception was initially raised.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#GetOrdersShow(System.Web.UI.WebControls.ListBox,System.String)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="RethrowToPreserveStackDetails" Category="Microsoft.Usage" CheckId="CA2200" Status="Active" Created="2018-03-05 15:03:07Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Error" Path="d:\Madesh\Projects\Scraping\Integration\TSI Taxes\App_code" File="GlobalClass.cs" Line="762">'GlobalClass.GetOrdersShow(ListBox, string)' rethrows a caught exception and specifies it explicitly as an argument. Use 'throw' without an argument instead, in order to preserve the stack location where the exception was initially raised.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#GetOrderUnlock(System.String,System.String)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="RethrowToPreserveStackDetails" Category="Microsoft.Usage" CheckId="CA2200" Status="Active" Created="2018-03-05 15:03:07Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Error" Path="d:\Madesh\Projects\Scraping\Integration\TSI Taxes\App_code" File="GlobalClass.cs" Line="688">'GlobalClass.GetOrderUnlock(string, string)' rethrows a caught exception and specifies it explicitly as an argument. Use 'throw' without an argument instead, in order to preserve the stack location where the exception was initially raised.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#GetOrderYTS(System.String,System.String)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="RethrowToPreserveStackDetails" Category="Microsoft.Usage" CheckId="CA2200" Status="Active" Created="2018-03-05 15:03:07Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Error" Path="d:\Madesh\Projects\Scraping\Integration\TSI Taxes\App_code" File="GlobalClass.cs" Line="743">'GlobalClass.GetOrderYTS(string, string)' rethrows a caught exception and specifies it explicitly as an argument. Use 'throw' without an argument instead, in order to preserve the stack location where the exception was initially raised.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#GetUpDowndstodataview(System.Data.DataSet)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="RethrowToPreserveStackDetails" Category="Microsoft.Usage" CheckId="CA2200" Status="Active" Created="2018-03-05 15:03:07Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Error" Path="d:\Madesh\Projects\Scraping\Integration\TSI Taxes\App_code" File="GlobalClass.cs" Line="4689">'GlobalClass.GetUpDowndstodataview(DataSet)' rethrows a caught exception and specifies it explicitly as an argument. Use 'throw' without an argument instead, in order to preserve the stack location where the exception was initially raised.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#GetUserRecordsnew()" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="RethrowToPreserveStackDetails" Category="Microsoft.Usage" CheckId="CA2200" Status="Active" Created="2018-03-05 15:03:07Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Error" Path="d:\Madesh\Projects\Scraping\Integration\TSI Taxes\App_code" File="GlobalClass.cs" Line="355">'GlobalClass.GetUserRecordsnew()' rethrows a caught exception and specifies it explicitly as an argument. Use 'throw' without an argument instead, in order to preserve the stack location where the exception was initially raised.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#GetUsers()" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="RethrowToPreserveStackDetails" Category="Microsoft.Usage" CheckId="CA2200" Status="Active" Created="2018-03-05 15:03:07Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Error" Path="d:\Madesh\Projects\Scraping\Integration\TSI Taxes\App_code" File="GlobalClass.cs" Line="342">'GlobalClass.GetUsers()' rethrows a caught exception and specifies it explicitly as an argument. Use 'throw' without an argument instead, in order to preserve the stack location where the exception was initially raised.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#InsertMailaway(System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.Int32,System.String,System.String,System.String)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="RethrowToPreserveStackDetails" Category="Microsoft.Usage" CheckId="CA2200" Status="Active" Created="2018-03-05 15:03:07Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Error" Path="d:\Madesh\Projects\Scraping\Integration\TSI Taxes\App_code" File="GlobalClass.cs" Line="3910">'GlobalClass.InsertMailaway(string, string, string, string, string, string, string, string, string, string, int, string, string, string)' rethrows a caught exception and specifies it explicitly as an argument. Use 'throw' without an argument instead, in order to preserve the stack location where the exception was initially raised.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#reset_break(System.String,System.String,System.String,System.String)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="RethrowToPreserveStackDetails" Category="Microsoft.Usage" CheckId="CA2200" Status="Active" Created="2018-03-05 15:03:07Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Error" Path="d:\Madesh\Projects\Scraping\Integration\TSI Taxes\App_code" File="GlobalClass.cs" Line="5658">'GlobalClass.reset_break(string, string, string, string)' rethrows a caught exception and specifies it explicitly as an argument. Use 'throw' without an argument instead, in order to preserve the stack location where the exception was initially raised.</Issue>
+            </Message>
+            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2018-03-05 15:03:07Z" FixCategory="DependsOnFix">
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="d:\Madesh\Projects\Scraping\Integration\TSI Taxes\App_code" File="GlobalClass.cs" Line="5648">The query string passed to 'MySqlCommand.MySqlCommand(string, MySqlConnection)' in 'GlobalClass.reset_break(string, string, string, string)' could contain the following variables 'UserName', 'pdate', 'reason', 'admin_name'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#sp_lock_user()" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="RethrowToPreserveStackDetails" Category="Microsoft.Usage" CheckId="CA2200" Status="Active" Created="2018-03-05 15:03:07Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Error" Path="d:\Madesh\Projects\Scraping\Integration\TSI Taxes\App_code" File="GlobalClass.cs" Line="5680">'GlobalClass.sp_lock_user()' rethrows a caught exception and specifies it explicitly as an argument. Use 'throw' without an argument instead, in order to preserve the stack location where the exception was initially raised.</Issue>
+            </Message>
+            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2018-03-05 15:03:07Z" FixCategory="DependsOnFix">
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="d:\Madesh\Projects\Scraping\Integration\TSI Taxes\App_code" File="GlobalClass.cs" Line="5670">The query string passed to 'MySqlCommand.MySqlCommand(string, MySqlConnection)' in 'GlobalClass.sp_lock_user()' could contain the following variables 'SessionHandler.UserName'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="GridViewExportUtil" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#Export(System.String,System.Web.UI.WebControls.GridView)" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="Do not dispose objects multiple times" Category="Microsoft.Usage" CheckId="CA2202" Status="Active" Created="2018-03-05 15:03:07Z" FixCategory="DependsOnFix">
+             <Issue Certainty="75" Level="Warning" Path="d:\Madesh\Projects\Scraping\Integration\TSI Taxes\App_code" File="GridViewExportUtil.cs" Line="140">Object 'sw' can be disposed more than once in method 'GridViewExportUtil.Export(string, GridView)'. To avoid generating a System.ObjectDisposedException you should not call Dispose more than one time on an object.: Lines: 140</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#Export1(System.String,System.Web.UI.WebControls.GridView,System.Int16)" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="Do not dispose objects multiple times" Category="Microsoft.Usage" CheckId="CA2202" Status="Active" Created="2018-03-05 15:03:07Z" FixCategory="DependsOnFix">
+             <Issue Certainty="75" Level="Warning" Path="d:\Madesh\Projects\Scraping\Integration\TSI Taxes\App_code" File="GridViewExportUtil.cs" Line="185">Object 'sw' can be disposed more than once in method 'GridViewExportUtil.Export1(string, GridView, short)'. To avoid generating a System.ObjectDisposedException you should not call Dispose more than one time on an object.: Lines: 185</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#getdata(System.String,System.Web.UI.WebControls.GridView)" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="Do not dispose objects multiple times" Category="Microsoft.Usage" CheckId="CA2202" Status="Active" Created="2018-03-05 15:03:07Z" FixCategory="DependsOnFix">
+             <Issue Certainty="75" Level="Warning" Path="d:\Madesh\Projects\Scraping\Integration\TSI Taxes\App_code" File="GridViewExportUtil.cs" Line="55">Object 'sw' can be disposed more than once in method 'GridViewExportUtil.getdata(string, GridView)'. To avoid generating a System.ObjectDisposedException you should not call Dispose more than one time on an object.: Lines: 55</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#getdata1(System.String,System.Web.UI.WebControls.GridView,System.Int16)" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="Do not dispose objects multiple times" Category="Microsoft.Usage" CheckId="CA2202" Status="Active" Created="2018-03-05 15:03:07Z" FixCategory="DependsOnFix">
+             <Issue Certainty="75" Level="Warning" Path="d:\Madesh\Projects\Scraping\Integration\TSI Taxes\App_code" File="GridViewExportUtil.cs" Line="92">Object 'sw' can be disposed more than once in method 'GridViewExportUtil.getdata1(string, GridView, short)'. To avoid generating a System.ObjectDisposedException you should not call Dispose more than one time on an object.: Lines: 92</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="MISReport" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Messages>
+          <Message TypeName="TypesThatOwnDisposableFieldsShouldBeDisposable" Category="Microsoft.Design" CheckId="CA1001" Status="Active" Created="2018-03-05 15:03:07Z" FixCategory="DependsOnFix">
+           <Issue Name="DependsOnFix" Certainty="95" Level="CriticalError">Implement IDisposable on 'MISReport' because it creates members of the following IDisposable types: 'MySqlConnection', 'MySqlCommand', 'MySqlDataAdapter'. If 'MISReport' has previously shipped, adding new members that implement IDisposable to this type is considered a breaking change to existing consumers.</Issue>
+          </Message>
+         </Messages>
+         <Members>
+          <Member Name="#ConvertUploadtoDataview(System.Int32,System.String,System.String)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="RethrowToPreserveStackDetails" Category="Microsoft.Usage" CheckId="CA2200" Status="Active" Created="2018-03-05 15:03:07Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Error" Path="d:\Madesh\Projects\Scraping\Integration\TSI Taxes\App_code" File="MISReport.cs" Line="155">'MISReport.ConvertUploadtoDataview(int, string, string)' rethrows a caught exception and specifies it explicitly as an argument. Use 'throw' without an argument instead, in order to preserve the stack location where the exception was initially raised.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#ExecuteNonQuery(System.String,System.String)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="RethrowToPreserveStackDetails" Category="Microsoft.Usage" CheckId="CA2200" Status="Active" Created="2018-03-05 15:03:07Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Error" Path="d:\Madesh\Projects\Scraping\Integration\TSI Taxes\App_code" File="MISReport.cs" Line="300">'MISReport.ExecuteNonQuery(string, string)' rethrows a caught exception and specifies it explicitly as an argument. Use 'throw' without an argument instead, in order to preserve the stack location where the exception was initially raised.</Issue>
+            </Message>
+            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2018-03-05 15:03:07Z" FixCategory="DependsOnFix">
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="d:\Madesh\Projects\Scraping\Integration\TSI Taxes\App_code" File="MISReport.cs" Line="293">The query string passed to 'MySqlCommand.MySqlCommand(string, MySqlConnection)' in 'MISReport.ExecuteNonQuery(string, string)' could contain the following variables 'Query'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#ExecuteQuery(System.String,System.String)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2018-03-05 15:03:07Z" FixCategory="DependsOnFix">
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="d:\Madesh\Projects\Scraping\Integration\TSI Taxes\App_code" File="MISReport.cs" Line="271">The query string passed to 'MySqlCommand.MySqlCommand(string, MySqlConnection)' in 'MISReport.ExecuteQuery(string, string)' could contain the following variables 'Query'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#ExecuteSPAdapter(System.String,System.Boolean,MySql.Data.MySqlClient.MySqlParameter[],System.String)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2018-03-05 15:03:07Z" FixCategory="DependsOnFix">
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="d:\Madesh\Projects\Scraping\Integration\TSI Taxes\App_code" File="MISReport.cs" Line="317">The query string passed to 'MySqlCommand.MySqlCommand(string, MySqlConnection)' in 'MISReport.ExecuteSPAdapter(string, bool, MySqlParameter[], string)' could contain the following variables 'query'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#GetMISProjectName()" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="RethrowToPreserveStackDetails" Category="Microsoft.Usage" CheckId="CA2200" Status="Active" Created="2018-03-05 15:03:07Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Error" Path="d:\Madesh\Projects\Scraping\Integration\TSI Taxes\App_code" File="MISReport.cs" Line="232">'MISReport.GetMISProjectName()' rethrows a caught exception and specifies it explicitly as an argument. Use 'throw' without an argument instead, in order to preserve the stack location where the exception was initially raised.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#GetReportDate(System.String)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="RethrowToPreserveStackDetails" Category="Microsoft.Usage" CheckId="CA2200" Status="Active" Created="2018-03-05 15:03:07Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Error" Path="d:\Madesh\Projects\Scraping\Integration\TSI Taxes\App_code" File="MISReport.cs" Line="174">'MISReport.GetReportDate(string)' rethrows a caught exception and specifies it explicitly as an argument. Use 'throw' without an argument instead, in order to preserve the stack location where the exception was initially raised.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#GetReportDateWithTime(System.String)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="RethrowToPreserveStackDetails" Category="Microsoft.Usage" CheckId="CA2200" Status="Active" Created="2018-03-05 15:03:07Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Error" Path="d:\Madesh\Projects\Scraping\Integration\TSI Taxes\App_code" File="MISReport.cs" Line="187">'MISReport.GetReportDateWithTime(string)' rethrows a caught exception and specifies it explicitly as an argument. Use 'throw' without an argument instead, in order to preserve the stack location where the exception was initially raised.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#GetReportDateymd(System.String)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="RethrowToPreserveStackDetails" Category="Microsoft.Usage" CheckId="CA2200" Status="Active" Created="2018-03-05 15:03:07Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Error" Path="d:\Madesh\Projects\Scraping\Integration\TSI Taxes\App_code" File="MISReport.cs" Line="199">'MISReport.GetReportDateymd(string)' rethrows a caught exception and specifies it explicitly as an argument. Use 'throw' without an argument instead, in order to preserve the stack location where the exception was initially raised.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#TATReport(System.String)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="RethrowToPreserveStackDetails" Category="Microsoft.Usage" CheckId="CA2200" Status="Active" Created="2018-03-05 15:03:07Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Error" Path="d:\Madesh\Projects\Scraping\Integration\TSI Taxes\App_code" File="MISReport.cs" Line="44">'MISReport.TATReport(string)' rethrows a caught exception and specifies it explicitly as an argument. Use 'throw' without an argument instead, in order to preserve the stack location where the exception was initially raised.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="myConnection" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Messages>
+          <Message TypeName="TypesThatOwnDisposableFieldsShouldBeDisposable" Category="Microsoft.Design" CheckId="CA1001" Status="Active" Created="2018-03-05 15:03:07Z" FixCategory="DependsOnFix">
+           <Issue Name="DependsOnFix" Certainty="95" Level="CriticalError">Implement IDisposable on 'myConnection' because it creates members of the following IDisposable types: 'MySqlConnection', 'MySqlCommand', 'MySqlDataAdapter'. If 'myConnection' has previously shipped, adding new members that implement IDisposable to this type is considered a breaking change to existing consumers.</Issue>
+          </Message>
+         </Messages>
+         <Members>
+          <Member Name="#ExecuteQuery(System.String)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2018-03-05 15:03:07Z" FixCategory="DependsOnFix">
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="d:\Madesh\Projects\Scraping\Integration\TSI Taxes\App_code" File="myConnection.cs" Line="144">The query string passed to 'MySqlCommand.MySqlCommand(string, MySqlConnection)' in 'myConnection.ExecuteQuery(string)' could contain the following variables 'Query'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#ExecuteQuery(System.String,System.Boolean,MySql.Data.MySqlClient.MySqlParameter[])" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2018-03-05 15:03:07Z" FixCategory="DependsOnFix">
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="d:\Madesh\Projects\Scraping\Integration\TSI Taxes\App_code" File="myConnection.cs" Line="106">The query string passed to 'MySqlCommand.MySqlCommand(string, MySqlConnection)' in 'myConnection.ExecuteQuery(string, bool, MySqlParameter[])' could contain the following variables 'query'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#ExecuteQuery1(System.String)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2018-03-05 15:03:07Z" FixCategory="DependsOnFix">
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="d:\Madesh\Projects\Scraping\Integration\TSI Taxes\App_code" File="myConnection.cs" Line="511">The query string passed to 'MySqlCommand.MySqlCommand(string, MySqlConnection)' in 'myConnection.ExecuteQuery1(string)' could contain the following variables 'Query'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#ExecuteScalar(System.String)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2018-03-05 15:03:07Z" FixCategory="DependsOnFix">
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="d:\Madesh\Projects\Scraping\Integration\TSI Taxes\App_code" File="myConnection.cs" Line="410">The query string passed to 'MySqlCommand.MySqlCommand(string, MySqlConnection)' in 'myConnection.ExecuteScalar(string)' could contain the following variables 'Query'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#ExecuteScalar(System.String,System.Boolean,MySql.Data.MySqlClient.MySqlParameter[])" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2018-03-05 15:03:07Z" FixCategory="DependsOnFix">
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="d:\Madesh\Projects\Scraping\Integration\TSI Taxes\App_code" File="myConnection.cs" Line="434">The query string passed to 'MySqlCommand.MySqlCommand(string, MySqlConnection)' in 'myConnection.ExecuteScalar(string, bool, MySqlParameter[])' could contain the following variables 'Query'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#ExecuteScalarst(System.String)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2018-03-05 15:03:07Z" FixCategory="DependsOnFix">
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="d:\Madesh\Projects\Scraping\Integration\TSI Taxes\App_code" File="myConnection.cs" Line="228">The query string passed to 'MySqlCommand.MySqlCommand(string, MySqlConnection)' in 'myConnection.ExecuteScalarst(string)' could contain the following variables 'query'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#ExecuteSPAdapter(System.String)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2018-03-05 15:03:07Z" FixCategory="DependsOnFix">
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="d:\Madesh\Projects\Scraping\Integration\TSI Taxes\App_code" File="myConnection.cs" Line="93">The query string passed to 'MySqlDataAdapter.MySqlDataAdapter(string, string)' in 'myConnection.ExecuteSPAdapter(string)' could contain the following variables 'query'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#ExecuteSPAdapter(System.String,System.Boolean,MySql.Data.MySqlClient.MySqlParameter[])" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2018-03-05 15:03:07Z" FixCategory="DependsOnFix">
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="d:\Madesh\Projects\Scraping\Integration\TSI Taxes\App_code" File="myConnection.cs" Line="59">The query string passed to 'MySqlCommand.MySqlCommand(string, MySqlConnection)' in 'myConnection.ExecuteSPAdapter(string, bool, MySqlParameter[])' could contain the following variables 'query'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#ExecuteSPNonQuery(System.String)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2018-03-05 15:03:07Z" FixCategory="DependsOnFix">
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="d:\Madesh\Projects\Scraping\Integration\TSI Taxes\App_code" File="myConnection.cs" Line="313">The query string passed to 'MySqlCommand.MySqlCommand(string, MySqlConnection)' in 'myConnection.ExecuteSPNonQuery(string)' could contain the following variables 'Query'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#ExecuteSPNonQuery(System.String,System.Boolean,MySql.Data.MySqlClient.MySqlParameter[])" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2018-03-05 15:03:07Z" FixCategory="DependsOnFix">
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="d:\Madesh\Projects\Scraping\Integration\TSI Taxes\App_code" File="myConnection.cs" Line="270">The query string passed to 'MySqlCommand.MySqlCommand(string, MySqlConnection)' in 'myConnection.ExecuteSPNonQuery(string, bool, MySqlParameter[])' could contain the following variables 'Query'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#ExecuteSPReader(System.String)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2018-03-05 15:03:07Z" FixCategory="DependsOnFix">
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="d:\Madesh\Projects\Scraping\Integration\TSI Taxes\App_code" File="myConnection.cs" Line="247">The query string passed to 'MySqlCommand.MySqlCommand(string, MySqlConnection)' in 'myConnection.ExecuteSPReader(string)' could contain the following variables 'query'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#ExecuteSPReader(System.String,System.Boolean,MySql.Data.MySqlClient.MySqlParameter[])" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2018-03-05 15:03:07Z" FixCategory="DependsOnFix">
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="d:\Madesh\Projects\Scraping\Integration\TSI Taxes\App_code" File="myConnection.cs" Line="162">The query string passed to 'MySqlCommand.MySqlCommand(string, MySqlConnection)' in 'myConnection.ExecuteSPReader(string, bool, MySqlParameter[])' could contain the following variables 'query'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#ExecuteSPScalar(System.String)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2018-03-05 15:03:07Z" FixCategory="DependsOnFix">
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="d:\Madesh\Projects\Scraping\Integration\TSI Taxes\App_code" File="myConnection.cs" Line="387">The query string passed to 'MySqlCommand.MySqlCommand(string, MySqlConnection)' in 'myConnection.ExecuteSPScalar(string)' could contain the following variables 'Query'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#ExecuteSPScalar(System.String,System.Boolean,MySql.Data.MySqlClient.MySqlParameter[])" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2018-03-05 15:03:07Z" FixCategory="DependsOnFix">
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="d:\Madesh\Projects\Scraping\Integration\TSI Taxes\App_code" File="myConnection.cs" Line="345">The query string passed to 'MySqlCommand.MySqlCommand(string, MySqlConnection)' in 'myConnection.ExecuteSPScalar(string, bool, MySqlParameter[])' could contain the following variables 'Query'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#ExecuteStoredProcedure(System.String,System.Boolean,MySql.Data.MySqlClient.MySqlParameter[])" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2018-03-05 15:03:07Z" FixCategory="DependsOnFix">
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="d:\Madesh\Projects\Scraping\Integration\TSI Taxes\App_code" File="myConnection.cs" Line="196">The query string passed to 'MySqlCommand.MySqlCommand(string, MySqlConnection)' in 'myConnection.ExecuteStoredProcedure(string, bool, MySqlParameter[])' could contain the following variables 'Query'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#ExecuteTables(System.String[])" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2018-03-05 15:03:07Z" FixCategory="DependsOnFix">
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="d:\Madesh\Projects\Scraping\Integration\TSI Taxes\App_code" File="myConnection.cs" Line="486">The query string passed to 'MySqlCommand.CommandText.set(string)' in 'myConnection.ExecuteTables(string[])' could contain the following variables 'Querys[...]'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="WebDriver_CAKern" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Messages>
+          <Message TypeName="TypesThatOwnDisposableFieldsShouldBeDisposable" Category="Microsoft.Design" CheckId="CA1001" Status="Active" Created="2018-03-05 15:03:07Z" FixCategory="DependsOnFix">
+           <Issue Name="DependsOnFix" Certainty="95" Level="CriticalError">Implement IDisposable on 'WebDriver_CAKern' because it creates members of the following IDisposable types: 'ChromeDriver', 'MySqlConnection'. If 'WebDriver_CAKern' has previously shipped, adding new members that implement IDisposable to this type is considered a breaking change to existing consumers.</Issue>
+          </Message>
+         </Messages>
+         <Members>
+          <Member Name="#FTP_CAKern(System.String,System.String,System.String,System.String,System.String,System.String)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="RethrowToPreserveStackDetails" Category="Microsoft.Usage" CheckId="CA2200" Status="Active" Created="2018-03-05 15:03:07Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Error" Path="d:\Madesh\Projects\Scraping\Integration\TSI Taxes\App_code" File="WebDriver_CAKern.cs" Line="189">'WebDriver_CAKern.FTP_CAKern(string, string, string, string, string, string)' rethrows a caught exception and specifies it explicitly as an argument. Use 'throw' without an argument instead, in order to preserve the stack location where the exception was initially raised.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="WebDriver_CAMecklenburg" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Messages>
+          <Message TypeName="TypesThatOwnDisposableFieldsShouldBeDisposable" Category="Microsoft.Design" CheckId="CA1001" Status="Active" Created="2018-03-05 15:03:07Z" FixCategory="DependsOnFix">
+           <Issue Name="DependsOnFix" Certainty="95" Level="CriticalError">Implement IDisposable on 'WebDriver_CAMecklenburg' because it creates members of the following IDisposable types: 'PhantomJSDriver', 'MySqlConnection'. If 'WebDriver_CAMecklenburg' has previously shipped, adding new members that implement IDisposable to this type is considered a breaking change to existing consumers.</Issue>
+          </Message>
+         </Messages>
+         <Members>
+          <Member Name="#FTP_Mecklenburg(System.String,System.String,System.String,System.String,System.String,System.String)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="RethrowToPreserveStackDetails" Category="Microsoft.Usage" CheckId="CA2200" Status="Active" Created="2018-03-05 15:03:07Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Error" Path="d:\Madesh\Projects\Scraping\Integration\TSI Taxes\App_code" File="WebDriver_CAMecklenburg.cs" Line="122">'WebDriver_CAMecklenburg.FTP_Mecklenburg(string, string, string, string, string, string)' rethrows a caught exception and specifies it explicitly as an argument. Use 'throw' without an argument instead, in order to preserve the stack location where the exception was initially raised.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="WebDriver_DCdistofcolumbia" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Messages>
+          <Message TypeName="TypesThatOwnDisposableFieldsShouldBeDisposable" Category="Microsoft.Design" CheckId="CA1001" Status="Active" Created="2018-03-05 15:03:07Z" FixCategory="DependsOnFix">
+           <Issue Name="DependsOnFix" Certainty="95" Level="CriticalError">Implement IDisposable on 'WebDriver_DCdistofcolumbia' because it creates members of the following IDisposable types: 'PhantomJSDriver', 'MySqlConnection'. If 'WebDriver_DCdistofcolumbia' has previously shipped, adding new members that implement IDisposable to this type is considered a breaking change to existing consumers.</Issue>
+          </Message>
+         </Messages>
+         <Members>
+          <Member Name="#FTP_WADC(System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="RethrowToPreserveStackDetails" Category="Microsoft.Usage" CheckId="CA2200" Status="Active" Created="2018-03-05 15:03:07Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Error" Path="d:\Madesh\Projects\Scraping\Integration\TSI Taxes\App_code" File="WebDriver_DCdistofcolumbia.cs" Line="142">'WebDriver_DCdistofcolumbia.FTP_WADC(string, string, string, string, string, string, string, string)' rethrows a caught exception and specifies it explicitly as an argument. Use 'throw' without an argument instead, in order to preserve the stack location where the exception was initially raised.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#ParcelSearch(System.String,System.String)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="RethrowToPreserveStackDetails" Category="Microsoft.Usage" CheckId="CA2200" Status="Active" Created="2018-03-05 15:03:07Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Error" Path="d:\Madesh\Projects\Scraping\Integration\TSI Taxes\App_code" File="WebDriver_DCdistofcolumbia.cs" Line="462">'WebDriver_DCdistofcolumbia.ParcelSearch(string, string)' rethrows a caught exception and specifies it explicitly as an argument. Use 'throw' without an argument instead, in order to preserve the stack location where the exception was initially raised.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#propertyDetails(System.String,System.String)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="RethrowToPreserveStackDetails" Category="Microsoft.Usage" CheckId="CA2200" Status="Active" Created="2018-03-05 15:03:07Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Error" Path="d:\Madesh\Projects\Scraping\Integration\TSI Taxes\App_code" File="WebDriver_DCdistofcolumbia.cs" Line="289">'WebDriver_DCdistofcolumbia.propertyDetails(string, string)' rethrows a caught exception and specifies it explicitly as an argument. Use 'throw' without an argument instead, in order to preserve the stack location where the exception was initially raised.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="WebDriver_GADekalp" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Messages>
+          <Message TypeName="TypesThatOwnDisposableFieldsShouldBeDisposable" Category="Microsoft.Design" CheckId="CA1001" Status="Active" Created="2018-03-05 15:03:07Z" FixCategory="DependsOnFix">
+           <Issue Name="DependsOnFix" Certainty="95" Level="CriticalError">Implement IDisposable on 'WebDriver_GADekalp' because it creates members of the following IDisposable types: 'PhantomJSDriver', 'MySqlConnection'. If 'WebDriver_GADekalp' has previously shipped, adding new members that implement IDisposable to this type is considered a breaking change to existing consumers.</Issue>
+          </Message>
+         </Messages>
+         <Members>
+          <Member Name="#FTP_Dekalb(System.String,System.String,System.String,System.String,System.String,System.String)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="RethrowToPreserveStackDetails" Category="Microsoft.Usage" CheckId="CA2200" Status="Active" Created="2018-03-05 15:03:07Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Error" Path="d:\Madesh\Projects\Scraping\Integration\TSI Taxes\App_code" File="Webdriver_GADekalb.cs" Line="518">'WebDriver_GADekalp.FTP_Dekalb(string, string, string, string, string, string)' rethrows a caught exception and specifies it explicitly as an argument. Use 'throw' without an argument instead, in order to preserve the stack location where the exception was initially raised.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="WebDriver_GAGwinnet" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Messages>
+          <Message TypeName="TypesThatOwnDisposableFieldsShouldBeDisposable" Category="Microsoft.Design" CheckId="CA1001" Status="Active" Created="2018-03-05 15:03:07Z" FixCategory="DependsOnFix">
+           <Issue Name="DependsOnFix" Certainty="95" Level="CriticalError">Implement IDisposable on 'WebDriver_GAGwinnet' because it creates members of the following IDisposable types: 'PhantomJSDriver', 'MySqlConnection'. If 'WebDriver_GAGwinnet' has previously shipped, adding new members that implement IDisposable to this type is considered a breaking change to existing consumers.</Issue>
+          </Message>
+         </Messages>
+         <Members>
+          <Member Name="#FTP_GAGwinnett(System.String,System.String,System.String,System.String,System.String,System.String)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="RethrowToPreserveStackDetails" Category="Microsoft.Usage" CheckId="CA2200" Status="Active" Created="2018-03-05 15:03:07Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Error" Path="d:\Madesh\Projects\Scraping\Integration\TSI Taxes\App_code" File="WebDriver_GAGwinnet.cs" Line="117">'WebDriver_GAGwinnet.FTP_GAGwinnett(string, string, string, string, string, string)' rethrows a caught exception and specifies it explicitly as an argument. Use 'throw' without an argument instead, in order to preserve the stack location where the exception was initially raised.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#SuwaneCityTaxDetails(System.String,System.String,System.String,OpenQA.Selenium.IWebDriver)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="RethrowToPreserveStackDetails" Category="Microsoft.Usage" CheckId="CA2200" Status="Active" Created="2018-03-05 15:03:07Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Error" Path="d:\Madesh\Projects\Scraping\Integration\TSI Taxes\App_code" File="WebDriver_GAGwinnet.cs" Line="540">'WebDriver_GAGwinnet.SuwaneCityTaxDetails(string, string, string, IWebDriver)' rethrows a caught exception and specifies it explicitly as an argument. Use 'throw' without an argument instead, in order to preserve the stack location where the exception was initially raised.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="WebDriver_NVWashoe" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Messages>
+          <Message TypeName="TypesThatOwnDisposableFieldsShouldBeDisposable" Category="Microsoft.Design" CheckId="CA1001" Status="Active" Created="2018-03-05 15:03:07Z" FixCategory="DependsOnFix">
+           <Issue Name="DependsOnFix" Certainty="95" Level="CriticalError">Implement IDisposable on 'WebDriver_NVWashoe' because it creates members of the following IDisposable types: 'PhantomJSDriver', 'MySqlConnection'. If 'WebDriver_NVWashoe' has previously shipped, adding new members that implement IDisposable to this type is considered a breaking change to existing consumers.</Issue>
+          </Message>
+         </Messages>
+         <Members>
+          <Member Name="#FTP_NVWashoe(System.String,System.String,System.String,System.String,System.String,System.String)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="RethrowToPreserveStackDetails" Category="Microsoft.Usage" CheckId="CA2200" Status="Active" Created="2018-03-05 15:03:07Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Error" Path="d:\Madesh\Projects\Scraping\Integration\TSI Taxes\App_code" File="WebDriver_NVWashoe.cs" Line="568">'WebDriver_NVWashoe.FTP_NVWashoe(string, string, string, string, string, string)' rethrows a caught exception and specifies it explicitly as an argument. Use 'throw' without an argument instead, in order to preserve the stack location where the exception was initially raised.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="WebDriver_ORMultnomah" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Messages>
+          <Message TypeName="TypesThatOwnDisposableFieldsShouldBeDisposable" Category="Microsoft.Design" CheckId="CA1001" Status="Active" Created="2018-03-05 15:03:07Z" FixCategory="DependsOnFix">
+           <Issue Name="DependsOnFix" Certainty="95" Level="CriticalError">Implement IDisposable on 'WebDriver_ORMultnomah' because it creates members of the following IDisposable types: 'PhantomJSDriver', 'MySqlConnection'. If 'WebDriver_ORMultnomah' has previously shipped, adding new members that implement IDisposable to this type is considered a breaking change to existing consumers.</Issue>
+          </Message>
+         </Messages>
+         <Members>
+          <Member Name="#FTP_ORMultnomah(System.String,System.String,System.String,System.String,System.String)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="RethrowToPreserveStackDetails" Category="Microsoft.Usage" CheckId="CA2200" Status="Active" Created="2018-03-05 15:03:07Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Error" Path="d:\Madesh\Projects\Scraping\Integration\TSI Taxes\App_code" File="WebDriver_ORMultnomah.cs" Line="272">'WebDriver_ORMultnomah.FTP_ORMultnomah(string, string, string, string, string)' rethrows a caught exception and specifies it explicitly as an argument. Use 'throw' without an argument instead, in order to preserve the stack location where the exception was initially raised.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="Webdriver_river" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Messages>
+          <Message TypeName="TypesThatOwnDisposableFieldsShouldBeDisposable" Category="Microsoft.Design" CheckId="CA1001" Status="Active" Created="2018-03-05 15:03:07Z" FixCategory="DependsOnFix">
+           <Issue Name="DependsOnFix" Certainty="95" Level="CriticalError">Implement IDisposable on 'Webdriver_river' because it creates members of the following IDisposable types: 'PhantomJSDriver', 'MySqlConnection'. If 'Webdriver_river' has previously shipped, adding new members that implement IDisposable to this type is considered a breaking change to existing consumers.</Issue>
+          </Message>
+         </Messages>
+         <Members>
+          <Member Name="#FTP_river(System.String,System.String,System.String,System.String,System.String,System.String,System.String)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="RethrowToPreserveStackDetails" Category="Microsoft.Usage" CheckId="CA2200" Status="Active" Created="2018-03-05 15:03:07Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Error" Path="d:\Madesh\Projects\Scraping\Integration\TSI Taxes\App_code" File="Webdriver_river.cs" Line="82">'Webdriver_river.FTP_river(string, string, string, string, string, string, string)' rethrows a caught exception and specifies it explicitly as an argument. Use 'throw' without an argument instead, in order to preserve the stack location where the exception was initially raised.</Issue>
+             <Issue Certainty="95" Level="Error" Path="d:\Madesh\Projects\Scraping\Integration\TSI Taxes\App_code" File="Webdriver_river.cs" Line="148">'Webdriver_river.FTP_river(string, string, string, string, string, string, string)' rethrows a caught exception and specifies it explicitly as an argument. Use 'throw' without an argument instead, in order to preserve the stack location where the exception was initially raised.</Issue>
+             <Issue Certainty="95" Level="Error" Path="d:\Madesh\Projects\Scraping\Integration\TSI Taxes\App_code" File="Webdriver_river.cs" Line="155">'Webdriver_river.FTP_river(string, string, string, string, string, string, string)' rethrows a caught exception and specifies it explicitly as an argument. Use 'throw' without an argument instead, in order to preserve the stack location where the exception was initially raised.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="WebDriver_StLouis" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Messages>
+          <Message TypeName="TypesThatOwnDisposableFieldsShouldBeDisposable" Category="Microsoft.Design" CheckId="CA1001" Status="Active" Created="2018-03-05 15:03:07Z" FixCategory="DependsOnFix">
+           <Issue Name="DependsOnFix" Certainty="95" Level="CriticalError">Implement IDisposable on 'WebDriver_StLouis' because it creates members of the following IDisposable types: 'PhantomJSDriver', 'MySqlConnection'. If 'WebDriver_StLouis' has previously shipped, adding new members that implement IDisposable to this type is considered a breaking change to existing consumers.</Issue>
+          </Message>
+         </Messages>
+         <Members>
+          <Member Name="#FTP_STLouis(System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="RethrowToPreserveStackDetails" Category="Microsoft.Usage" CheckId="CA2200" Status="Active" Created="2018-03-05 15:03:07Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Error" Path="d:\Madesh\Projects\Scraping\Integration\TSI Taxes\App_code" File="WebDriver_StLouis.cs" Line="177">'WebDriver_StLouis.FTP_STLouis(string, string, string, string, string, string, string, string)' rethrows a caught exception and specifies it explicitly as an argument. Use 'throw' without an argument instead, in order to preserve the stack location where the exception was initially raised.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="Webdriver_wapierce" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Messages>
+          <Message TypeName="TypesThatOwnDisposableFieldsShouldBeDisposable" Category="Microsoft.Design" CheckId="CA1001" Status="Active" Created="2018-03-05 15:03:07Z" FixCategory="DependsOnFix">
+           <Issue Name="DependsOnFix" Certainty="95" Level="CriticalError">Implement IDisposable on 'Webdriver_wapierce' because it creates members of the following IDisposable types: 'PhantomJSDriver', 'MySqlConnection'. If 'Webdriver_wapierce' has previously shipped, adding new members that implement IDisposable to this type is considered a breaking change to existing consumers.</Issue>
+          </Message>
+         </Messages>
+         <Members>
+          <Member Name="#FTP_pierce(System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="RethrowToPreserveStackDetails" Category="Microsoft.Usage" CheckId="CA2200" Status="Active" Created="2018-03-05 15:03:07Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Error" Path="d:\Madesh\Projects\Scraping\Integration\TSI Taxes\App_code" File="Webdriver_wapierce.cs" Line="317">'Webdriver_wapierce.FTP_pierce(string, string, string, string, string, string, string, string)' rethrows a caught exception and specifies it explicitly as an argument. Use 'throw' without an argument instead, in order to preserve the stack location where the exception was initially raised.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="WebDriverLA" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Messages>
+          <Message TypeName="TypesThatOwnDisposableFieldsShouldBeDisposable" Category="Microsoft.Design" CheckId="CA1001" Status="Active" Created="2018-03-05 15:03:07Z" FixCategory="DependsOnFix">
+           <Issue Name="DependsOnFix" Certainty="95" Level="CriticalError">Implement IDisposable on 'WebDriverLA' because it creates members of the following IDisposable types: 'ChromeDriver', 'MySqlConnection'. If 'WebDriverLA' has previously shipped, adding new members that implement IDisposable to this type is considered a breaking change to existing consumers.</Issue>
+          </Message>
+         </Messages>
+         <Members>
+          <Member Name="#FTP_LA(System.String,System.String,System.String,System.String,System.String,System.String)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="RethrowToPreserveStackDetails" Category="Microsoft.Usage" CheckId="CA2200" Status="Active" Created="2018-03-05 15:03:07Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Error" Path="d:\Madesh\Projects\Scraping\Integration\TSI Taxes\App_code" File="WebDriverLA.cs" Line="169">'WebDriverLA.FTP_LA(string, string, string, string, string, string)' rethrows a caught exception and specifies it explicitly as an argument. Use 'throw' without an argument instead, in order to preserve the stack location where the exception was initially raised.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="WebDriverTest" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Messages>
+          <Message TypeName="TypesThatOwnDisposableFieldsShouldBeDisposable" Category="Microsoft.Design" CheckId="CA1001" Status="Active" Created="2018-03-05 15:03:07Z" FixCategory="DependsOnFix">
+           <Issue Name="DependsOnFix" Certainty="95" Level="CriticalError">Implement IDisposable on 'WebDriverTest' because it creates members of the following IDisposable types: 'PhantomJSDriver', 'MySqlConnection'. If 'WebDriverTest' has previously shipped, adding new members that implement IDisposable to this type is considered a breaking change to existing consumers.</Issue>
+          </Message>
+         </Messages>
+        </Type>
+       </Types>
+      </Namespace>
+     </Namespaces>
+    </Module>
+   </Modules>
+  </Target>
+  <Target Name="C:\Users\madeshwaran.s\AppData\Local\Temp\tmpD71.tmp.cadir\bin\App_Web_0l3yp1rc.dll">
+   <Modules>
+    <Module Name="app_web_0l3yp1rc.dll">
+     <Namespaces>
+      <Namespace Name="">
+       <Types>
+        <Type Name="Pages_ProductionAuditNew" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#btnsendmail_Click(System.Object,System.EventArgs)" Kind="Method" Static="False" Accessibility="Family" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="RethrowToPreserveStackDetails" Category="Microsoft.Usage" CheckId="CA2200" Status="Active" Created="2018-03-05 15:03:07Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Error" Path="d:\Madesh\Projects\Scraping\Integration\TSI Taxes\Pages" File="ProductionAuditNew.aspx.cs" Line="951">'Pages_ProductionAuditNew.btnsendmail_Click(object, EventArgs)' rethrows a caught exception and specifies it explicitly as an argument. Use 'throw' without an argument instead, in order to preserve the stack location where the exception was initially raised.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#btnsendtaxmail_Click(System.Object,System.EventArgs)" Kind="Method" Static="False" Accessibility="Family" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="RethrowToPreserveStackDetails" Category="Microsoft.Usage" CheckId="CA2200" Status="Active" Created="2018-03-05 15:03:07Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Error" Path="d:\Madesh\Projects\Scraping\Integration\TSI Taxes\Pages" File="ProductionAuditNew.aspx.cs" Line="1584">'Pages_ProductionAuditNew.btnsendtaxmail_Click(object, EventArgs)' rethrows a caught exception and specifies it explicitly as an argument. Use 'throw' without an argument instead, in order to preserve the stack location where the exception was initially raised.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#CreateReport(System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="Do not dispose objects multiple times" Category="Microsoft.Usage" CheckId="CA2202" Status="Active" Created="2018-03-05 15:03:07Z" FixCategory="DependsOnFix">
+             <Issue Certainty="75" Level="Warning" Path="d:\Madesh\Projects\Scraping\Integration\TSI Taxes\Pages" File="ProductionAuditNew.aspx.cs" Line="1228">Object 'fs' can be disposed more than once in method 'Pages_ProductionAuditNew.CreateReport(string, string, string, string, string, string, string, string, string, string)'. To avoid generating a System.ObjectDisposedException you should not call Dispose more than one time on an object.: Lines: 1228</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#ddlreferences_SelectedIndexChanged(System.Object,System.EventArgs)" Kind="Method" Static="False" Accessibility="Family" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="RethrowToPreserveStackDetails" Category="Microsoft.Usage" CheckId="CA2200" Status="Active" Created="2018-03-05 15:03:07Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Error" Path="d:\Madesh\Projects\Scraping\Integration\TSI Taxes\Pages" File="ProductionAuditNew.aspx.cs" Line="1401">'Pages_ProductionAuditNew.ddlreferences_SelectedIndexChanged(object, EventArgs)' rethrows a caught exception and specifies it explicitly as an argument. Use 'throw' without an argument instead, in order to preserve the stack location where the exception was initially raised.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+       </Types>
+      </Namespace>
+     </Namespaces>
+    </Module>
+   </Modules>
+  </Target>
+  <Target Name="C:\Users\madeshwaran.s\AppData\Local\Temp\tmpD71.tmp.cadir\bin\App_Web_2j1gduv4.dll">
+   <Modules>
+    <Module Name="app_web_2j1gduv4.dll">
+     <Namespaces>
+      <Namespace Name="">
+       <Types>
+        <Type Name="Pages_MISReport" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#btnShow_Click(System.Object,System.EventArgs)" Kind="Method" Static="False" Accessibility="Family" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="RethrowToPreserveStackDetails" Category="Microsoft.Usage" CheckId="CA2200" Status="Active" Created="2018-03-05 15:03:07Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Error" Path="d:\Madesh\Projects\Scraping\Integration\TSI Taxes\Pages" File="MISReport.aspx.cs" Line="55">'Pages_MISReport.btnShow_Click(object, EventArgs)' rethrows a caught exception and specifies it explicitly as an argument. Use 'throw' without an argument instead, in order to preserve the stack location where the exception was initially raised.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#btnSubmit_Click(System.Object,System.EventArgs)" Kind="Method" Static="False" Accessibility="Family" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="RethrowToPreserveStackDetails" Category="Microsoft.Usage" CheckId="CA2200" Status="Active" Created="2018-03-05 15:03:07Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Error" Path="d:\Madesh\Projects\Scraping\Integration\TSI Taxes\Pages" File="MISReport.aspx.cs" Line="347">'Pages_MISReport.btnSubmit_Click(object, EventArgs)' rethrows a caught exception and specifies it explicitly as an argument. Use 'throw' without an argument instead, in order to preserve the stack location where the exception was initially raised.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#ConvertThepatternToCustomFormat(System.Data.DataTable)" Kind="Method" Static="False" Accessibility="Private" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="RethrowToPreserveStackDetails" Category="Microsoft.Usage" CheckId="CA2200" Status="Active" Created="2018-03-05 15:03:07Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Error" Path="d:\Madesh\Projects\Scraping\Integration\TSI Taxes\Pages" File="MISReport.aspx.cs" Line="316">'Pages_MISReport.ConvertThepatternToCustomFormat(DataTable)' rethrows a caught exception and specifies it explicitly as an argument. Use 'throw' without an argument instead, in order to preserve the stack location where the exception was initially raised.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#isExistDUPToday()" Kind="Method" Static="False" Accessibility="Private" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="RethrowToPreserveStackDetails" Category="Microsoft.Usage" CheckId="CA2200" Status="Active" Created="2018-03-05 15:03:07Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Error" Path="d:\Madesh\Projects\Scraping\Integration\TSI Taxes\Pages" File="MISReport.aspx.cs" Line="269">'Pages_MISReport.isExistDUPToday()' rethrows a caught exception and specifies it explicitly as an argument. Use 'throw' without an argument instead, in order to preserve the stack location where the exception was initially raised.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#isExistTATToday()" Kind="Method" Static="False" Accessibility="Private" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="RethrowToPreserveStackDetails" Category="Microsoft.Usage" CheckId="CA2200" Status="Active" Created="2018-03-05 15:03:07Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Error" Path="d:\Madesh\Projects\Scraping\Integration\TSI Taxes\Pages" File="MISReport.aspx.cs" Line="240">'Pages_MISReport.isExistTATToday()' rethrows a caught exception and specifies it explicitly as an argument. Use 'throw' without an argument instead, in order to preserve the stack location where the exception was initially raised.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#LoadDownloadUploadPatter()" Kind="Method" Static="False" Accessibility="Private" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="RethrowToPreserveStackDetails" Category="Microsoft.Usage" CheckId="CA2200" Status="Active" Created="2018-03-05 15:03:07Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Error" Path="d:\Madesh\Projects\Scraping\Integration\TSI Taxes\Pages" File="MISReport.aspx.cs" Line="72">'Pages_MISReport.LoadDownloadUploadPatter()' rethrows a caught exception and specifies it explicitly as an argument. Use 'throw' without an argument instead, in order to preserve the stack location where the exception was initially raised.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#SubmitDownloadUploadPattern()" Kind="Method" Static="False" Accessibility="Private" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="RethrowToPreserveStackDetails" Category="Microsoft.Usage" CheckId="CA2200" Status="Active" Created="2018-03-05 15:03:07Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Error" Path="d:\Madesh\Projects\Scraping\Integration\TSI Taxes\Pages" File="MISReport.aspx.cs" Line="154">'Pages_MISReport.SubmitDownloadUploadPattern()' rethrows a caught exception and specifies it explicitly as an argument. Use 'throw' without an argument instead, in order to preserve the stack location where the exception was initially raised.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#SubmitTATData()" Kind="Method" Static="False" Accessibility="Private" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="RethrowToPreserveStackDetails" Category="Microsoft.Usage" CheckId="CA2200" Status="Active" Created="2018-03-05 15:03:07Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Error" Path="d:\Madesh\Projects\Scraping\Integration\TSI Taxes\Pages" File="MISReport.aspx.cs" Line="209">'Pages_MISReport.SubmitTATData()' rethrows a caught exception and specifies it explicitly as an argument. Use 'throw' without an argument instead, in order to preserve the stack location where the exception was initially raised.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="Pages_Production" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#btnparcelmail_Click(System.Object,System.EventArgs)" Kind="Method" Static="False" Accessibility="Family" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="RethrowToPreserveStackDetails" Category="Microsoft.Usage" CheckId="CA2200" Status="Active" Created="2018-03-05 15:03:07Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Error" Path="d:\Madesh\Projects\Scraping\Integration\TSI Taxes\Pages" File="Production.aspx.cs" Line="3569">'Pages_Production.btnparcelmail_Click(object, EventArgs)' rethrows a caught exception and specifies it explicitly as an argument. Use 'throw' without an argument instead, in order to preserve the stack location where the exception was initially raised.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#btnsendmail_Click(System.Object,System.EventArgs)" Kind="Method" Static="False" Accessibility="Family" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="RethrowToPreserveStackDetails" Category="Microsoft.Usage" CheckId="CA2200" Status="Active" Created="2018-03-05 15:03:07Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Error" Path="d:\Madesh\Projects\Scraping\Integration\TSI Taxes\Pages" File="Production.aspx.cs" Line="1748">'Pages_Production.btnsendmail_Click(object, EventArgs)' rethrows a caught exception and specifies it explicitly as an argument. Use 'throw' without an argument instead, in order to preserve the stack location where the exception was initially raised.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#btnsendtaxmail_Click(System.Object,System.EventArgs)" Kind="Method" Static="False" Accessibility="Family" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="RethrowToPreserveStackDetails" Category="Microsoft.Usage" CheckId="CA2200" Status="Active" Created="2018-03-05 15:03:07Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Error" Path="d:\Madesh\Projects\Scraping\Integration\TSI Taxes\Pages" File="Production.aspx.cs" Line="2529">'Pages_Production.btnsendtaxmail_Click(object, EventArgs)' rethrows a caught exception and specifies it explicitly as an argument. Use 'throw' without an argument instead, in order to preserve the stack location where the exception was initially raised.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#CreateReport(System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="Do not dispose objects multiple times" Category="Microsoft.Usage" CheckId="CA2202" Status="Active" Created="2018-03-05 15:03:07Z" FixCategory="DependsOnFix">
+             <Issue Certainty="75" Level="Warning" Path="d:\Madesh\Projects\Scraping\Integration\TSI Taxes\Pages" File="Production.aspx.cs" Line="2091">Object 'fs' can be disposed more than once in method 'Pages_Production.CreateReport(string, string, string, string, string, string, string, string, string, string)'. To avoid generating a System.ObjectDisposedException you should not call Dispose more than one time on an object.: Lines: 2091</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#ddlreferences_SelectedIndexChanged(System.Object,System.EventArgs)" Kind="Method" Static="False" Accessibility="Family" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="RethrowToPreserveStackDetails" Category="Microsoft.Usage" CheckId="CA2200" Status="Active" Created="2018-03-05 15:03:07Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Error" Path="d:\Madesh\Projects\Scraping\Integration\TSI Taxes\Pages" File="Production.aspx.cs" Line="2275">'Pages_Production.ddlreferences_SelectedIndexChanged(object, EventArgs)' rethrows a caught exception and specifies it explicitly as an argument. Use 'throw' without an argument instead, in order to preserve the stack location where the exception was initially raised.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+       </Types>
+      </Namespace>
+     </Namespaces>
+    </Module>
+   </Modules>
+  </Target>
+  <Target Name="C:\Users\madeshwaran.s\AppData\Local\Temp\tmpD71.tmp.cadir\bin\App_Web_bduuqwzf.dll">
+   <Modules>
+    <Module Name="app_web_bduuqwzf.dll">
+     <Namespaces>
+      <Namespace Name="">
+       <Types>
+        <Type Name="Pages_AssignJob" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#btneupload_Click(System.Object,System.EventArgs)" Kind="Method" Static="False" Accessibility="Family" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="RethrowToPreserveStackDetails" Category="Microsoft.Usage" CheckId="CA2200" Status="Active" Created="2018-03-05 15:03:07Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Error" Path="d:\Madesh\Projects\Scraping\Integration\TSI Taxes\Pages" File="AssignJob.aspx.cs" Line="752">'Pages_AssignJob.btneupload_Click(object, EventArgs)' rethrows a caught exception and specifies it explicitly as an argument. Use 'throw' without an argument instead, in order to preserve the stack location where the exception was initially raised.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#btnhprioupdate_Click(System.Object,System.EventArgs)" Kind="Method" Static="False" Accessibility="Family" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="RethrowToPreserveStackDetails" Category="Microsoft.Usage" CheckId="CA2200" Status="Active" Created="2018-03-05 15:03:07Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Error" Path="d:\Madesh\Projects\Scraping\Integration\TSI Taxes\Pages" File="AssignJob.aspx.cs" Line="723">'Pages_AssignJob.btnhprioupdate_Click(object, EventArgs)' rethrows a caught exception and specifies it explicitly as an argument. Use 'throw' without an argument instead, in order to preserve the stack location where the exception was initially raised.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#btninproces_Click(System.Object,System.EventArgs)" Kind="Method" Static="False" Accessibility="Family" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="RethrowToPreserveStackDetails" Category="Microsoft.Usage" CheckId="CA2200" Status="Active" Created="2018-03-05 15:03:07Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Error" Path="d:\Madesh\Projects\Scraping\Integration\TSI Taxes\Pages" File="AssignJob.aspx.cs" Line="344">'Pages_AssignJob.btninproces_Click(object, EventArgs)' rethrows a caught exception and specifies it explicitly as an argument. Use 'throw' without an argument instead, in order to preserve the stack location where the exception was initially raised.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#btnpriorityupdate_Click(System.Object,System.EventArgs)" Kind="Method" Static="False" Accessibility="Family" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="RethrowToPreserveStackDetails" Category="Microsoft.Usage" CheckId="CA2200" Status="Active" Created="2018-03-05 15:03:07Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Error" Path="d:\Madesh\Projects\Scraping\Integration\TSI Taxes\Pages" File="AssignJob.aspx.cs" Line="631">'Pages_AssignJob.btnpriorityupdate_Click(object, EventArgs)' rethrows a caught exception and specifies it explicitly as an argument. Use 'throw' without an argument instead, in order to preserve the stack location where the exception was initially raised.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#btnreject_Click(System.Object,System.EventArgs)" Kind="Method" Static="False" Accessibility="Family" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="RethrowToPreserveStackDetails" Category="Microsoft.Usage" CheckId="CA2200" Status="Active" Created="2018-03-05 15:03:07Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Error" Path="d:\Madesh\Projects\Scraping\Integration\TSI Taxes\Pages" File="AssignJob.aspx.cs" Line="332">'Pages_AssignJob.btnreject_Click(object, EventArgs)' rethrows a caught exception and specifies it explicitly as an argument. Use 'throw' without an argument instead, in order to preserve the stack location where the exception was initially raised.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#btntypeupdate_Click(System.Object,System.EventArgs)" Kind="Method" Static="False" Accessibility="Family" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="RethrowToPreserveStackDetails" Category="Microsoft.Usage" CheckId="CA2200" Status="Active" Created="2018-03-05 15:03:07Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Error" Path="d:\Madesh\Projects\Scraping\Integration\TSI Taxes\Pages" File="AssignJob.aspx.cs" Line="1594">'Pages_AssignJob.btntypeupdate_Click(object, EventArgs)' rethrows a caught exception and specifies it explicitly as an argument. Use 'throw' without an argument instead, in order to preserve the stack location where the exception was initially raised.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#Btnupload_Click(System.Object,System.EventArgs)" Kind="Method" Static="False" Accessibility="Family" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="RethrowToPreserveStackDetails" Category="Microsoft.Usage" CheckId="CA2200" Status="Active" Created="2018-03-05 15:03:07Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Error" Path="d:\Madesh\Projects\Scraping\Integration\TSI Taxes\Pages" File="AssignJob.aspx.cs" Line="220">'Pages_AssignJob.Btnupload_Click(object, EventArgs)' rethrows a caught exception and specifies it explicitly as an argument. Use 'throw' without an argument instead, in order to preserve the stack location where the exception was initially raised.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#LnkStatuschange_Click(System.Object,System.EventArgs)" Kind="Method" Static="False" Accessibility="Family" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="RethrowToPreserveStackDetails" Category="Microsoft.Usage" CheckId="CA2200" Status="Active" Created="2018-03-05 15:03:07Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Error" Path="d:\Madesh\Projects\Scraping\Integration\TSI Taxes\Pages" File="AssignJob.aspx.cs" Line="964">'Pages_AssignJob.LnkStatuschange_Click(object, EventArgs)' rethrows a caught exception and specifies it explicitly as an argument. Use 'throw' without an argument instead, in order to preserve the stack location where the exception was initially raised.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="Pages_ProductionNew" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#btnparcelmail_Click(System.Object,System.EventArgs)" Kind="Method" Static="False" Accessibility="Family" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="RethrowToPreserveStackDetails" Category="Microsoft.Usage" CheckId="CA2200" Status="Active" Created="2018-03-05 15:03:07Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Error" Path="d:\Madesh\Projects\Scraping\Integration\TSI Taxes\Pages" File="ProductionNew.aspx.cs" Line="2448">'Pages_ProductionNew.btnparcelmail_Click(object, EventArgs)' rethrows a caught exception and specifies it explicitly as an argument. Use 'throw' without an argument instead, in order to preserve the stack location where the exception was initially raised.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#btnsendmail_Click(System.Object,System.EventArgs)" Kind="Method" Static="False" Accessibility="Family" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="RethrowToPreserveStackDetails" Category="Microsoft.Usage" CheckId="CA2200" Status="Active" Created="2018-03-05 15:03:07Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Error" Path="d:\Madesh\Projects\Scraping\Integration\TSI Taxes\Pages" File="ProductionNew.aspx.cs" Line="1446">'Pages_ProductionNew.btnsendmail_Click(object, EventArgs)' rethrows a caught exception and specifies it explicitly as an argument. Use 'throw' without an argument instead, in order to preserve the stack location where the exception was initially raised.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#btnsendtaxmail_Click(System.Object,System.EventArgs)" Kind="Method" Static="False" Accessibility="Family" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="RethrowToPreserveStackDetails" Category="Microsoft.Usage" CheckId="CA2200" Status="Active" Created="2018-03-05 15:03:07Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Error" Path="d:\Madesh\Projects\Scraping\Integration\TSI Taxes\Pages" File="ProductionNew.aspx.cs" Line="2192">'Pages_ProductionNew.btnsendtaxmail_Click(object, EventArgs)' rethrows a caught exception and specifies it explicitly as an argument. Use 'throw' without an argument instead, in order to preserve the stack location where the exception was initially raised.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#CreateReport(System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="Do not dispose objects multiple times" Category="Microsoft.Usage" CheckId="CA2202" Status="Active" Created="2018-03-05 15:03:07Z" FixCategory="DependsOnFix">
+             <Issue Certainty="75" Level="Warning" Path="d:\Madesh\Projects\Scraping\Integration\TSI Taxes\Pages" File="ProductionNew.aspx.cs" Line="1759">Object 'fs' can be disposed more than once in method 'Pages_ProductionNew.CreateReport(string, string, string, string, string, string, string, string, string, string)'. To avoid generating a System.ObjectDisposedException you should not call Dispose more than one time on an object.: Lines: 1759</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#ddlreferences_SelectedIndexChanged(System.Object,System.EventArgs)" Kind="Method" Static="False" Accessibility="Family" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="RethrowToPreserveStackDetails" Category="Microsoft.Usage" CheckId="CA2200" Status="Active" Created="2018-03-05 15:03:07Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Error" Path="d:\Madesh\Projects\Scraping\Integration\TSI Taxes\Pages" File="ProductionNew.aspx.cs" Line="1937">'Pages_ProductionNew.ddlreferences_SelectedIndexChanged(object, EventArgs)' rethrows a caught exception and specifies it explicitly as an argument. Use 'throw' without an argument instead, in order to preserve the stack location where the exception was initially raised.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+       </Types>
+      </Namespace>
+     </Namespaces>
+    </Module>
+   </Modules>
+  </Target>
+  <Target Name="C:\Users\madeshwaran.s\AppData\Local\Temp\tmpD71.tmp.cadir\bin\App_Web_c4gepjym.dll">
+   <Modules>
+    <Module Name="app_web_c4gepjym.dll">
+     <Namespaces>
+      <Namespace Name="">
+       <Types>
+        <Type Name="Pages_Production" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#btnsendmail_Click(System.Object,System.EventArgs)" Kind="Method" Static="False" Accessibility="Family" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="RethrowToPreserveStackDetails" Category="Microsoft.Usage" CheckId="CA2200" Status="Active" Created="2018-03-05 15:03:07Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Error" Path="d:\Madesh\Projects\Scraping\Integration\TSI Taxes\Pages" File="ProductionAudit.aspx.cs" Line="1263">'Pages_Production.btnsendmail_Click(object, EventArgs)' rethrows a caught exception and specifies it explicitly as an argument. Use 'throw' without an argument instead, in order to preserve the stack location where the exception was initially raised.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#btnsendtaxmail_Click(System.Object,System.EventArgs)" Kind="Method" Static="False" Accessibility="Family" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="RethrowToPreserveStackDetails" Category="Microsoft.Usage" CheckId="CA2200" Status="Active" Created="2018-03-05 15:03:07Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Error" Path="d:\Madesh\Projects\Scraping\Integration\TSI Taxes\Pages" File="ProductionAudit.aspx.cs" Line="1999">'Pages_Production.btnsendtaxmail_Click(object, EventArgs)' rethrows a caught exception and specifies it explicitly as an argument. Use 'throw' without an argument instead, in order to preserve the stack location where the exception was initially raised.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#CreateReport(System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="Do not dispose objects multiple times" Category="Microsoft.Usage" CheckId="CA2202" Status="Active" Created="2018-03-05 15:03:07Z" FixCategory="DependsOnFix">
+             <Issue Certainty="75" Level="Warning" Path="d:\Madesh\Projects\Scraping\Integration\TSI Taxes\Pages" File="ProductionAudit.aspx.cs" Line="1547">Object 'fs' can be disposed more than once in method 'Pages_Production.CreateReport(string, string, string, string, string, string, string, string, string, string)'. To avoid generating a System.ObjectDisposedException you should not call Dispose more than one time on an object.: Lines: 1547</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#ddlreferences_SelectedIndexChanged(System.Object,System.EventArgs)" Kind="Method" Static="False" Accessibility="Family" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="RethrowToPreserveStackDetails" Category="Microsoft.Usage" CheckId="CA2200" Status="Active" Created="2018-03-05 15:03:07Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Error" Path="d:\Madesh\Projects\Scraping\Integration\TSI Taxes\Pages" File="ProductionAudit.aspx.cs" Line="1730">'Pages_Production.ddlreferences_SelectedIndexChanged(object, EventArgs)' rethrows a caught exception and specifies it explicitly as an argument. Use 'throw' without an argument instead, in order to preserve the stack location where the exception was initially raised.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+       </Types>
+      </Namespace>
+     </Namespaces>
+    </Module>
+   </Modules>
+  </Target>
+  <Target Name="C:\Users\madeshwaran.s\AppData\Local\Temp\tmpD71.tmp.cadir\bin\App_Web_vidt2cbw.dll">
+   <Modules>
+    <Module Name="app_web_vidt2cbw.dll">
+     <Namespaces>
+      <Namespace Name="">
+       <Types>
+        <Type Name="Pages_Production" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#btnsendmail_Click(System.Object,System.EventArgs)" Kind="Method" Static="False" Accessibility="Family" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="RethrowToPreserveStackDetails" Category="Microsoft.Usage" CheckId="CA2200" Status="Active" Created="2018-03-05 15:03:07Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Error" Path="d:\Madesh\Projects\Scraping\Integration\TSI Taxes" File="ProductionAudit.aspx.cs" Line="1364">'Pages_Production.btnsendmail_Click(object, EventArgs)' rethrows a caught exception and specifies it explicitly as an argument. Use 'throw' without an argument instead, in order to preserve the stack location where the exception was initially raised.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#btnsendtaxmail_Click(System.Object,System.EventArgs)" Kind="Method" Static="False" Accessibility="Family" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="RethrowToPreserveStackDetails" Category="Microsoft.Usage" CheckId="CA2200" Status="Active" Created="2018-03-05 15:03:07Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Error" Path="d:\Madesh\Projects\Scraping\Integration\TSI Taxes" File="ProductionAudit.aspx.cs" Line="2123">'Pages_Production.btnsendtaxmail_Click(object, EventArgs)' rethrows a caught exception and specifies it explicitly as an argument. Use 'throw' without an argument instead, in order to preserve the stack location where the exception was initially raised.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#CreateReport(System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="Do not dispose objects multiple times" Category="Microsoft.Usage" CheckId="CA2202" Status="Active" Created="2018-03-05 15:03:07Z" FixCategory="DependsOnFix">
+             <Issue Certainty="75" Level="Warning" Path="d:\Madesh\Projects\Scraping\Integration\TSI Taxes" File="ProductionAudit.aspx.cs" Line="1648">Object 'fs' can be disposed more than once in method 'Pages_Production.CreateReport(string, string, string, string, string, string, string, string, string, string)'. To avoid generating a System.ObjectDisposedException you should not call Dispose more than one time on an object.: Lines: 1648</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#ddlreferences_SelectedIndexChanged(System.Object,System.EventArgs)" Kind="Method" Static="False" Accessibility="Family" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="RethrowToPreserveStackDetails" Category="Microsoft.Usage" CheckId="CA2200" Status="Active" Created="2018-03-05 15:03:07Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Error" Path="d:\Madesh\Projects\Scraping\Integration\TSI Taxes" File="ProductionAudit.aspx.cs" Line="1831">'Pages_Production.ddlreferences_SelectedIndexChanged(object, EventArgs)' rethrows a caught exception and specifies it explicitly as an argument. Use 'throw' without an argument instead, in order to preserve the stack location where the exception was initially raised.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+       </Types>
+      </Namespace>
+     </Namespaces>
+    </Module>
+   </Modules>
+  </Target>
+  <Target Name="C:\Users\madeshwaran.s\AppData\Local\Temp\tmpD71.tmp.cadir\bin\App_Web_zjb1s0o4.dll">
+   <Modules>
+    <Module Name="app_web_zjb1s0o4.dll">
+     <Namespaces>
+      <Namespace Name="">
+       <Types>
+        <Type Name="Pages_scrap" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#BindCountyName()" Kind="Method" Static="False" Accessibility="Private" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2018-03-05 15:03:07Z" FixCategory="DependsOnFix">
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="d:\Madesh\Projects\Scraping\Integration\TSI Taxes\Pages" File="scrap.aspx.cs" Line="1040">The query string passed to 'MySqlCommand.MySqlCommand(string, MySqlConnection)' in 'Pages_scrap.BindCountyName()' could contain the following variables 'this.dropState.Text'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#BindMultiParcelList(System.String,System.Int32)" Kind="Method" Static="False" Accessibility="Private" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2018-03-05 15:03:07Z" FixCategory="DependsOnFix">
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="d:\Madesh\Projects\Scraping\Integration\TSI Taxes\Pages" File="scrap.aspx.cs" Line="1023">The query string passed to 'MySqlCommand.MySqlCommand(string, MySqlConnection)' in 'Pages_scrap.BindMultiParcelList(string, int)' could contain the following variables 'orderNum'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#GenerateMultipleParcel(System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String)" Kind="Method" Static="False" Accessibility="Private" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="Do not dispose objects multiple times" Category="Microsoft.Usage" CheckId="CA2202" Status="Active" Created="2018-03-05 15:03:07Z" FixCategory="DependsOnFix">
+             <Issue Certainty="75" Level="Warning" Path="d:\Madesh\Projects\Scraping\Integration\TSI Taxes\Pages" File="scrap.aspx.cs" Line="1310">Object 'reader' can be disposed more than once in method 'Pages_scrap.GenerateMultipleParcel(string, string, string, string, string, string, string, string, string, string, string, string)'. To avoid generating a System.ObjectDisposedException you should not call Dispose more than one time on an object.: Lines: 1310</Issue>
+            </Message>
+            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2018-03-05 15:03:07Z" FixCategory="DependsOnFix">
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="d:\Madesh\Projects\Scraping\Integration\TSI Taxes\Pages" File="scrap.aspx.cs" Line="1312">The query string passed to 'MySqlCommand.CommandText.set(string)' in 'Pages_scrap.GenerateMultipleParcel(string, string, string, string, string, string, string, string, string, string, string, string)' could contain the following variables 'County', 'State'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="d:\Madesh\Projects\Scraping\Integration\TSI Taxes\Pages" File="scrap.aspx.cs" Line="1285">The query string passed to 'MySqlCommand.CommandText.set(string)' in 'Pages_scrap.GenerateMultipleParcel(string, string, string, string, string, string, string, string, string, string, string, string)' could contain the following variables 'StreetType'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="d:\Madesh\Projects\Scraping\Integration\TSI Taxes\Pages" File="scrap.aspx.cs" Line="1293">The query string passed to 'MySqlCommand.CommandText.set(string)' in 'Pages_scrap.GenerateMultipleParcel(string, string, string, string, string, string, string, string, string, string, string, string)' could contain the following variables 'reader.GetString(0)', 'StreetType'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#GetCountyId(System.String,System.String)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="Do not dispose objects multiple times" Category="Microsoft.Usage" CheckId="CA2202" Status="Active" Created="2018-03-05 15:03:07Z" FixCategory="DependsOnFix">
+             <Issue Certainty="75" Level="Warning" Path="d:\Madesh\Projects\Scraping\Integration\TSI Taxes\Pages" File="scrap.aspx.cs" Line="1424">Object 'cnn' can be disposed more than once in method 'Pages_scrap.GetCountyId(string, string)'. To avoid generating a System.ObjectDisposedException you should not call Dispose more than one time on an object.: Lines: 1424</Issue>
+            </Message>
+            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2018-03-05 15:03:07Z" FixCategory="DependsOnFix">
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="d:\Madesh\Projects\Scraping\Integration\TSI Taxes\Pages" File="scrap.aspx.cs" Line="1416">The query string passed to 'MySqlCommand.MySqlCommand(string, MySqlConnection)' in 'Pages_scrap.GetCountyId(string, string)' could contain the following variables 'state', 'county'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#gridData(System.String,System.String)" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2018-03-05 15:03:07Z" FixCategory="DependsOnFix">
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="d:\Madesh\Projects\Scraping\Integration\TSI Taxes\Pages" File="scrap.aspx.cs" Line="1183">The query string passed to 'MySqlCommand.MySqlCommand(string, MySqlConnection)' in 'Pages_scrap.gridData(string, string)' could contain the following variables 'Pages_scrap.County', 'Pages_scrap.Order', '(JToken)OwnerSearch[x]["PropertyAddress"]', '(JToken)OwnerSearch[x]["ParcelID"]', '(JToken)OwnerSearch[x]["OwnerName"]', '(JToken)OwnerSearch[x]["MailingAddress"]'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="d:\Madesh\Projects\Scraping\Integration\TSI Taxes\Pages" File="scrap.aspx.cs" Line="1197">The query string passed to 'MySqlCommand.MySqlCommand(string, MySqlConnection)' in 'Pages_scrap.gridData(string, string)' could contain the following variables 'Pages_scrap.County', 'Pages_scrap.Order', 'Pages_scrap.County', 'Pages_scrap.Order'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#insertData(System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String)" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2018-03-05 15:03:07Z" FixCategory="DependsOnFix">
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="d:\Madesh\Projects\Scraping\Integration\TSI Taxes\Pages" File="scrap.aspx.cs" Line="335">The query string passed to 'MySqlCommand.MySqlCommand(string, MySqlConnection)' in 'Pages_scrap.insertData(string, string, string, string, string, string, string, string, string, string, string, string)' could contain the following variables '(JToken)AddrObj[x]["county_id"]', '(JToken)AddrObj[x]["orderid"]', '(JToken)AddrObj[x]["address"]', '(JToken)AddrObj[x]["parcel_no"]', '(JToken)AddrObj[x]["OwnerInformation"]', '(JToken)AddrObj[x]["PropertyType"]', '(JToken)AddrObj[x]["MailingAddress"]', '(JToken)AddrObj[x]["FolioNumber"]', '(JToken)AddrObj[x]["AccountNumber"]'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="d:\Madesh\Projects\Scraping\Integration\TSI Taxes\Pages" File="scrap.aspx.cs" Line="646">The query string passed to 'MySqlCommand.MySqlCommand(string, MySqlConnection)' in 'Pages_scrap.insertData(string, string, string, string, string, string, string, string, string, string, string, string)' could contain the following variables '(JToken)AmountDueDetailArr[x]["tyear"]', '(JToken)AmountDueDetailArr[x]["chargecat"]', '(JToken)AmountDueDetailArr[x]["district"]', '(JToken)AmountDueDetailArr[x]["charge"]', '(JToken)AmountDueDetailArr[x]["mindue"]', '(JToken)AmountDueDetailArr[x]["baldue"]', '(JToken)AmountDueDetailArr[x]["datedue"]', '(JToken)AmountDueDetailArr[x]["Period"]', '(JToken)AmountDueDetailArr[x]["AmountDue"]', '(JToken)AmountDueDetailArr[x]["DefaultNumber"]'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="d:\Madesh\Projects\Scraping\Integration\TSI Taxes\Pages" File="scrap.aspx.cs" Line="822">The query string passed to 'MySqlCommand.MySqlCommand(string, MySqlConnection)' in 'Pages_scrap.insertData(string, string, string, string, string, string, string, string, string, string, string, string)' could contain the following variables '(JToken)CertificateDetailsArr[x]["TaxYear"]', '(JToken)CertificateDetailsArr[x]["Folio"]', '(JToken)CertificateDetailsArr[x]["CertificateYear"]', '(JToken)CertificateDetailsArr[x]["CertificateNumber"]', '(JToken)CertificateDetailsArr[x]["CertificateHolderName"]', '(JToken)CertificateDetailsArr[x]["TDAnumber"]'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="d:\Madesh\Projects\Scraping\Integration\TSI Taxes\Pages" File="scrap.aspx.cs" Line="424">The query string passed to 'MySqlCommand.MySqlCommand(string, MySqlConnection)' in 'Pages_scrap.insertData(string, string, string, string, string, string, string, string, string, string, string, string)' could contain the following variables '(JToken)DelinArr[x]["amount_paid"]', 'payNo', '(JToken)DelinArr[x]["due_charges"]', '(JToken)DelinArr[x]["payment_posted"]', '(JToken)DelinArr[x]["status"]', '(JToken)DelinArr[x]["installment"]', '(JToken)DelinArr[x]["original_bill_amount"]', '(JToken)DelinArr[x]["Ownername"]', '(JToken)DelinArr[x]["Folio"]', '(JToken)DelinArr[x]["Paid"]', '(JToken)DelinArr[x]["UnPaid"]', '(JToken)DelinArr[x]["DelinquentDate"]'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="d:\Madesh\Projects\Scraping\Integration\TSI Taxes\Pages" File="scrap.aspx.cs" Line="467">The query string passed to 'MySqlCommand.MySqlCommand(string, MySqlConnection)' in 'Pages_scrap.insertData(string, string, string, string, string, string, string, string, string, string, string, string)' could contain the following variables '(JToken)ExemptObj[x]["land"]', '(JToken)ExemptObj[x]["improvements"]', '(JToken)ExemptObj[x]["total_assess_value"]', '(JToken)ExemptObj[x]["net_assess_value"]', '(JToken)ExemptObj[x]["exemp_value_new_contruction"]', 'ConstructionSuppValue', '(JToken)ExemptObj[x]["Type"]', '(JToken)ExemptObj[x]["Building_Value"]', '(JToken)ExemptObj[x]["Year"]', '(JToken)ExemptObj[x]["ExtraFeaturevalue"]', '(JToken)ExemptObj[x]["HouseholdPersonalProperty"]', '(JToken)ExemptObj[x]["BusinessPersonalProperty"]', '(JToken)ExemptObj[x]["OtherExcemption"]', '(JToken)ExemptObj[x]["MarketValue"]'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="d:\Madesh\Projects\Scraping\Integration\TSI Taxes\Pages" File="scrap.aspx.cs" Line="512">The query string passed to 'MySqlCommand.MySqlCommand(string, MySqlConnection)' in 'Pages_scrap.insertData(string, string, string, string, string, string, string, string, string, string, string, string)' could contain the following variables '(JToken)PayObj[x]["current_payments"]', '(JToken)PayObj[x]["last_payment_date"]', '(JToken)PayObj[x]["prior_payments"]', '(JToken)PayObj[x]["fiscal_tax_payments"]', '(JToken)PayObj[x]["last_payment_amt"]', '(JToken)PayObj[x]["tax_before_payment"]', '(JToken)PayObj[x]["bill_type"]', '(JToken)PayObj[x]["ReceiptNumber"]', '(JToken)PayObj[x]["FaceAmount"]', '(JToken)PayObj[x]["Bid"]', '(JToken)PayObj[x]["PaidBy"]', '(JToken)PayObj[x]["EffectiveDate"]', '(JToken)PayObj[x]["Status"]', '(JToken)PayObj[x]["Balance"]', '(JToken)PayObj[x]["BillNumber"]', '(JToken)PayObj[x]["DueDate"]'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="d:\Madesh\Projects\Scraping\Integration\TSI Taxes\Pages" File="scrap.aspx.cs" Line="568">The query string passed to 'MySqlCommand.MySqlCommand(string, MySqlConnection)' in 'Pages_scrap.insertData(string, string, string, string, string, string, string, string, string, string, string, string)' could contain the following variables '(JToken)PropArr[x]["fiscal_value"]', '(JToken)PropArr[x]["improvements"]', '(JToken)PropArr[x]["gross_assessed"]', '(JToken)PropArr[x]["total_ass_value"]', '(JToken)PropArr[x]["exempt"]', '(JToken)PropArr[x]["personal_property"]', '(JToken)PropArr[x]["total_taxable_value"]', '(JToken)PropArr[x]["land"]', '(JToken)PropArr[x]["tax_land_imp"]', '(JToken)PropArr[x]["allocation_assd"]', '(JToken)PropArr[x]["Millage"]', '(JToken)PropArr[x]["TaxingAuthority"]', '(JToken)PropArr[x]["LevyingAuthority"]', '(JToken)PropArr[x]["Rate"]', '(JToken)PropArr[x]["Amount"]', '(JToken)PropArr[x]["Type"]', '(JToken)PropArr[x]["AssessmentDescription"]', '(JToken)PropArr[x]["Units"]', '(JToken)PropArr[x]["Taxes"]', '(JToken)PropArr[x]["AssessmentTotal"]', '(JToken)PropArr[x]["OtherExempt"]', '(JToken)PropArr[x]["Credit"]', '(JToken)PropArr[x]["Savings"]', '(JToken)PropArr[x]["Taxingcode"]', '(JToken)PropArr[x]["Levyingcode"]', '(JToken)PropArr[x]["SpecialAssessment"]'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="d:\Madesh\Projects\Scraping\Integration\TSI Taxes\Pages" File="scrap.aspx.cs" Line="783">The query string passed to 'MySqlCommand.MySqlCommand(string, MySqlConnection)' in 'Pages_scrap.insertData(string, string, string, string, string, string, string, string, string, string, string, string)' could contain the following variables '(JToken)SummaryDetailArr[x]["TaxingDistrict"]', '(JToken)SummaryDetailArr[x]["County"]', '(JToken)SummaryDetailArr[x]["SchoolBoard"]', '(JToken)SummaryDetailArr[x]["Municipal"]', '(JToken)SummaryDetailArr[x]["Others"]', '(JToken)SummaryDetailArr[x]["City"]', '(JToken)SummaryDetailArr[x]["Regional"]'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="d:\Madesh\Projects\Scraping\Integration\TSI Taxes\Pages" File="scrap.aspx.cs" Line="603">The query string passed to 'MySqlCommand.MySqlCommand(string, MySqlConnection)' in 'Pages_scrap.insertData(string, string, string, string, string, string, string, string, string, string, string, string)' could contain the following variables '(JToken)TaxObj[x]["taxes_assess"]', '(JToken)TaxObj[x]["less_cap_reduction"]', '(JToken)TaxObj[x]["net_taxes"]', '(JToken)TaxObj[x]["ExemptionAmount"]', '(JToken)TaxObj[x]["CombinedTaxesAndAssessment"]', '(JToken)TaxObj[x]["CheckPayable"]'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="d:\Madesh\Projects\Scraping\Integration\TSI Taxes\Pages" File="scrap.aspx.cs" Line="375">The query string passed to 'MySqlCommand.MySqlCommand(string, MySqlConnection)' in 'Pages_scrap.insertData(string, string, string, string, string, string, string, string, string, string, string, string)' could contain the following variables '(JToken)otherRealEstate[x]["Ryear"]', '(JToken)otherRealEstate[x]["RfaceValue"]', '(JToken)otherRealEstate[x]["RcertificateValue"]', '(JToken)otherRealEstate[x]["Rstatus"]', '(JToken)otherRealEstate[x]["RamtPaid"]'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="d:\Madesh\Projects\Scraping\Integration\TSI Taxes\Pages" File="scrap.aspx.cs" Line="683">The query string passed to 'MySqlCommand.MySqlCommand(string, MySqlConnection)' in 'Pages_scrap.insertData(string, string, string, string, string, string, string, string, string, string, string, string)' could contain the following variables 'AmgFound', '(JToken)AmgtDetailObj[x]["district_amgid"]', '(JToken)AmgtDetailObj[x]["name"]', '(JToken)AmgtDetailObj[x]["sttus"]', '(JToken)AmgtDetailObj[x]["unbill_prinicipal"]', '(JToken)AmgtDetailObj[x]["legaldescription"]', '(JToken)AmgtDetailObj[x]["original_assesment"]', '(JToken)AmgtDetailObj[x]["payoff"]'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="d:\Madesh\Projects\Scraping\Integration\TSI Taxes\Pages" File="scrap.aspx.cs" Line="743">The query string passed to 'MySqlCommand.MySqlCommand(string, MySqlConnection)' in 'Pages_scrap.insertData(string, string, string, string, string, string, string, string, string, string, string, string)' could contain the following variables 'AmgFound2', '(JToken)DueDetailArr[x]["due_status"]', '(JToken)DueDetailArr[x]["principal"]', '(JToken)DueDetailArr[x]["interest"]', '(JToken)DueDetailArr[x]["penalty"]', '(JToken)DueDetailArr[x]["other"]', '(JToken)DueDetailArr[x]["total_due"]', '(JToken)DueDetailArr[x]["BillYear"]', '(JToken)DueDetailArr[x]["BillType"]', '(JToken)DueDetailArr[x]["BillNumber"]', '(JToken)DueDetailArr[x]["GrossTax"]', '(JToken)DueDetailArr[x]["Discount"]', '(JToken)DueDetailArr[x]["InstallmentAmount"]', '(JToken)DueDetailArr[x]["Installement"]', '(JToken)DueDetailArr[x]["DueDate"]', '(JToken)DueDetailArr[x]["AdValoremTax"]', '(JToken)DueDetailArr[x]["SpecialAssessments"]', '(JToken)DueDetailArr[x]["Account"]', '(JToken)DueDetailArr[x]["Folio"]', '(JToken)DueDetailArr[x]["Taxes"]', '(JToken)DueDetailArr[x]["Fees"]', '(JToken)DueDetailArr[x]["Paid"]', '(JToken)DueDetailArr[x]["Type"]', '(JToken)DueDetailArr[x]["PaidDate"]', '(JToken)DueDetailArr[x]["TaxableValue"]', '(JToken)DueDetailArr[x]["DeedName"]', '(JToken)DueDetailArr[x]["Period"]'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#jsonData(System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String)" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="Do not dispose objects multiple times" Category="Microsoft.Usage" CheckId="CA2202" Status="Active" Created="2018-03-05 15:03:07Z" FixCategory="DependsOnFix">
+             <Issue Certainty="75" Level="Warning" Path="d:\Madesh\Projects\Scraping\Integration\TSI Taxes\Pages" File="scrap.aspx.cs" Line="219">Object 'reader' can be disposed more than once in method 'Pages_scrap.jsonData(string, string, string, string, string, string, string, string, string, string, string, string)'. To avoid generating a System.ObjectDisposedException you should not call Dispose more than one time on an object.: Lines: 219</Issue>
+            </Message>
+            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2018-03-05 15:03:07Z" FixCategory="DependsOnFix">
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="d:\Madesh\Projects\Scraping\Integration\TSI Taxes\Pages" File="scrap.aspx.cs" Line="221">The query string passed to 'MySqlCommand.CommandText.set(string)' in 'Pages_scrap.jsonData(string, string, string, string, string, string, string, string, string, string, string, string)' could contain the following variables 'County', 'State'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="d:\Madesh\Projects\Scraping\Integration\TSI Taxes\Pages" File="scrap.aspx.cs" Line="194">The query string passed to 'MySqlCommand.CommandText.set(string)' in 'Pages_scrap.jsonData(string, string, string, string, string, string, string, string, string, string, string, string)' could contain the following variables 'StreetType'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="d:\Madesh\Projects\Scraping\Integration\TSI Taxes\Pages" File="scrap.aspx.cs" Line="202">The query string passed to 'MySqlCommand.CommandText.set(string)' in 'Pages_scrap.jsonData(string, string, string, string, string, string, string, string, string, string, string, string)' could contain the following variables 'reader.GetString(0)', 'StreetType'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="d:\Madesh\Projects\Scraping\Integration\TSI Taxes\Pages" File="scrap.aspx.cs" Line="129">The query string passed to 'MySqlCommand.MySqlCommand(string, MySqlConnection)' in 'Pages_scrap.jsonData(string, string, string, string, string, string, string, string, string, string, string, string)' could contain the following variables 'ConfigurationManager.AppSettings["DBName"]'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="d:\Madesh\Projects\Scraping\Integration\TSI Taxes\Pages" File="scrap.aspx.cs" Line="131">The query string passed to 'MySqlCommand.MySqlCommand(string, MySqlConnection)' in 'Pages_scrap.jsonData(string, string, string, string, string, string, string, string, string, string, string, string)' could contain the following variables 'ConfigurationManager.AppSettings["DBName"]'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#SelectAddressSearchType()" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2018-03-05 15:03:07Z" FixCategory="DependsOnFix">
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="d:\Madesh\Projects\Scraping\Integration\TSI Taxes\Pages" File="scrap.aspx.cs" Line="1060">The query string passed to 'MySqlCommand.MySqlCommand(string, MySqlConnection)' in 'Pages_scrap.SelectAddressSearchType()' could contain the following variables 'this.dropState.Text'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+       </Types>
+      </Namespace>
+     </Namespaces>
+    </Module>
+   </Modules>
+  </Target>
+ </Targets>
+ <Rules>
+  <Rule TypeName="Do not dispose objects multiple times" Category="Microsoft.Usage" CheckId="CA2202">
+   <Name>Do not dispose objects multiple times</Name>
+   <Description>A correctly implemented Dispose method can be called multiple times without throwing an exception. However, this is not guaranteed and to avoid generating a System.ObjectDisposedException you should not call Dispose more than one time on an object.</Description>
+   <Resolution Name="Default">Object {0} can be disposed more than once in method {1}. To avoid generating a System.ObjectDisposedException you should not call Dispose more than one time on an object.: Lines: 1759</Resolution>
+   <Owner>RuleOwner</Owner>
+   <Url>http://msdn.microsoft.com/library/ms182334.aspx</Url>
+   <Email />
+   <MessageLevel Certainty="75">Warning</MessageLevel>
+   <File Name="dataflowrules.dll" Version="14.0.0.0" />
+  </Rule>
+  <Rule TypeName="RethrowToPreserveStackDetails" Category="Microsoft.Usage" CheckId="CA2200">
+   <Name>Rethrow to preserve stack details</Name>
+   <Description>Use the IL rethrow instruction to preserve original stack details when re-raising a caught exception.</Description>
+   <Resolution Name="Default">{0} rethrows a caught exception and specifies it explicitly as an argument. Use 'throw' without an argument instead, in order to preserve the stack location where the exception was initially raised.</Resolution>
+   <Owner />
+   <Url>http://msdn.microsoft.com/library/ms182363.aspx</Url>
+   <Email>[none]</Email>
+   <MessageLevel Certainty="95">Error</MessageLevel>
+   <File Name="usagerules.dll" Version="14.0.0.0" />
+  </Rule>
+  <Rule TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100">
+   <Name>Review SQL queries for security vulnerabilities</Name>
+   <Description>A SQL command string built from user input is vulnerable to SQL injection attacks. Microsoft SQL Server and other database servers support stored procedures and parameterized SQL queries, which reduce the risk of injection attacks.</Description>
+   <Resolution Name="WithNonLiterals">The query string passed to {0} in {1} could contain the following variables {2}. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Resolution>
+   <Owner>RuleOwner</Owner>
+   <Url>http://msdn.microsoft.com/library/ms182310.aspx</Url>
+   <Email />
+   <MessageLevel Certainty="75">Warning</MessageLevel>
+   <File Name="dataflowrules.dll" Version="14.0.0.0" />
+  </Rule>
+  <Rule TypeName="TypesThatOwnDisposableFieldsShouldBeDisposable" Category="Microsoft.Design" CheckId="CA1001">
+   <Name>Types that own disposable fields should be disposable</Name>
+   <Description>Types that declare disposable members should also implement IDisposable. If the type does not own any unmanaged resources, do not implement a finalizer on it.</Description>
+   <Resolution Name="DependsOnFix">Implement IDisposable on {0} because it creates members of the following IDisposable types: {1}. If {0} has previously shipped, adding new members that implement IDisposable to this type is considered a breaking change to existing consumers.</Resolution>
+   <Owner />
+   <Url>http://msdn.microsoft.com/library/ms182172.aspx</Url>
+   <Email>[none]</Email>
+   <MessageLevel Certainty="95">CriticalError</MessageLevel>
+   <File Name="designrules.dll" Version="14.0.0.0" />
+  </Rule>
+ </Rules>
+ <Localized>
+  <String Key="Category">Category</String>
+  <String Key="Certainty">Certainty</String>
+  <String Key="CollapseAll">Collapse All</String>
+  <String Key="CheckId">Check Id</String>
+  <String Key="Error">Error</String>
+  <String Key="Errors">error(s)</String>
+  <String Key="ExpandAll">Expand All</String>
+  <String Key="Help">Help</String>
+  <String Key="Line">Line</String>
+  <String Key="Messages">message(s)</String>
+  <String Key="LocationNotStoredInPdb">[Location not stored in Pdb]</String>
+  <String Key="Project">Project</String>
+  <String Key="Resolution">Resolution</String>
+  <String Key="Rule">Rule</String>
+  <String Key="RuleFile">Rule File</String>
+  <String Key="RuleDescription">Rule Description</String>
+  <String Key="Source">Source</String>
+  <String Key="Status">Status</String>
+  <String Key="Target">Target</String>
+  <String Key="Warning">Warning</String>
+  <String Key="Warnings">warning(s)</String>
+  <String Key="ReportTitle">Code Analysis Report</String>
+ </Localized>
+</FxCopReport>

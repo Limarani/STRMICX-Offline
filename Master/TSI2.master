@@ -1,0 +1,55 @@
+<%@ Master Language="C#" AutoEventWireup="true" CodeFile="TSI2.master.cs" Inherits="Master_TSI2" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head runat="server">
+    <title>Untitled Page</title>
+</head>
+<body>
+    <form id="form1" runat="server"  style="font-family: Helvetica, Calibri; font-size: 13px;">
+    <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>   
+    <div id="Tblmain">             
+        <div id="logo" style="float:left;width:230px;height:85px;">                    
+        </div>  
+        <div id="templatemo_header" style="float:left;">   
+            <table border="0" style="width:900px;height:90px;"><tr><td align="center" valign="top" style="padding-top:10px;">
+             <asp:Image ID="Imgtitle" runat="server" ImageUrl="~/App_themes/Black/images/t1.png" />
+            </td></tr></table>
+        </div>                   
+        <div style="float:right;padding-top:10px;">            
+           <asp:LinkButton ID="LnkLogout" runat="server" CssClass="Lnklogout" Text="Logout" OnClick="SignOut_OnClick"></asp:LinkButton>
+        </div>         
+    </div> 
+    <div id="templatemo_menu_wrapper">
+    <div id="templatemo_menu">                          
+        <table cellpadding="5px" border="0">
+            <tr>
+                <td style="font-family:Calibri;font-size:15px;color:White;width:250px;" valign="bottom">
+                    <asp:Label ID="Lblusername" runat="server"></asp:Label>
+                </td>                          
+                <td style="font-family:Calibri;font-size:15px;color:White;" align="right">
+                    <asp:Label ID="Lbltime" runat="server" Text="" Visible="false"></asp:Label>
+                </td>                                                                              
+            </tr>
+        </table>                           
+	</div>
+	</div>
+    <div>
+        <table id="MainTable" border="0">
+            <tr>
+                <td>
+                    <asp:contentplaceholder id="ContentPlaceHolder1" runat="server">
+                    </asp:contentplaceholder>
+                </td>
+           </tr>
+        </table>
+    </div>
+     <%--<div id="templatemo_footer_wrapper">
+	    <div id="templatemo_footer"> 
+    	    CopyRight © String 2012. All Rights Reserved.Powered By : SST 
+        </div> <!-- end of footer -->
+    </div>   --%>     
+    </form>
+</body>
+</html>

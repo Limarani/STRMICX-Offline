@@ -1,0 +1,89 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+
+using MySql.Data.MySqlClient;
+using System.Configuration;
+using System.Data;
+using System.Web.UI.HtmlControls;
+
+public partial class Pages_Test : System.Web.UI.Page
+{
+   
+
+    protected void Page_Load(object sender, EventArgs e)
+    {
+        if (!this.IsPostBack)
+        {
+            string constr = ConfigurationManager.ConnectionStrings["MysqlConnection"].ConnectionString;
+            string query = "select Id,Order_No,State,County,Property_Address,Owner_Name,Parcel_No from grid;";
+            
+            using (MySqlConnection con = new MySqlConnection(constr))
+            {
+                using (MySqlCommand cmd = new MySqlCommand(query))
+                {
+                    using (MySqlDataAdapter da = new MySqlDataAdapter())
+                    {
+                        cmd.Connection = con;
+                        con.Open();
+                        da.SelectCommand = cmd;
+                        using (DataTable dt = new DataTable())
+                        {
+                                da.Fill(dt);
+                            grid1.DataSource = dt;
+                            grid1.DataBind();
+                        }
+                    }
+                }
+            }
+        }
+    }
+    //protected void OnCheck_Changed(object sender, EventArgs e)
+    //{
+    //    string str = string.Empty;
+    //    string strname = string.Empty;
+    //    foreach (GridViewRow gvrow in grid1.Rows)
+    //    {
+
+    //        //CheckBox chk = (CheckBox)sender;
+    //        bool isSelected = (gvrow.FindControl("chkRow") as CheckBox).Checked;
+    //        if (isSelected == true)
+    //        {
+    //            str = gvrow.Cells[5].Text;
+
+
+
+    //        }
+    //        else
+    //        {
+    //            return;
+    //        }
+    //    }
+
+    //    ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('" + str + "');", true);
+    //}
+
+
+
+    protected void btnGetRecord_Click(object sender, EventArgs e)
+    {
+        string str = string.Empty;
+        string strname = string.Empty;
+        foreach (GridViewRow gvrow in grid1.Rows)
+        {
+            CheckBox chk = (CheckBox)gvrow.FindControl("chkSelect");
+            if (chk != null & chk.Checked)
+            {
+                str += "<b>Id :- </b>" + gvrow.Cells[1].Text + ", ";
+                str += "<b>Order_No :- </b>" + gvrow.Cells[2].Text + ", ";
+                str += "<b>State :- </b>" + gvrow.Cells[3].Text + ", ";
+                str += "<b>County :- </b>" + gvrow.Cells[4].Text;
+                str += "<br />";
+            }
+        }
+        lblRecord.Text = "<b>Selected EmpDetails: </b>" + str;
+    }
+}

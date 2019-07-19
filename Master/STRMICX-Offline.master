@@ -1,0 +1,642 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="STRMICX-Offline.master.cs" Inherits="Master_STRMICX_Offline" EnableTheming="true" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+   
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="../Editabble Drodown/Styleheader.css" />
+    <link rel="icon" href="../images/favicon.ico" type="image/x-icon" />
+
+    <link href="../MasterScripts/bootstrap-3.2.0-css-bootstrap.min.css" rel="stylesheet" />
+    <script src="../MasterScripts/jquery-1.7.1-jquery.min.js"></script>
+    <script src="../MasterScripts/bootstrap-3.1.1-js-bootstrap.min.js"></script>
+    <script src="../MasterScripts/jquery-1.7.2-jquery.min.js"></script>
+    <script src="../MasterScripts/jquery.ui-1.8.9-jquery-ui.js"></script>
+    <link href="../MasterScripts/start-jquery-ui.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css" />
+    <script src="../MasterScripts/jquery-3.4.0-jquery.min.js"></script>
+    <script src="../MasterScripts/bootstrap-3.4.0-js-bootstrap.min.js"></script>
+    <script src="../MasterScripts/jquery-1.12.0.min.js"></script>
+    <script src="../MasterScripts/bootstrap-3.3.6-js-bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+
+    <script type="text/javascript">
+        function resizeBrowser(tid) {
+            var x = screen.availWidth;
+            var y = screen.availHeight;
+            var mt = document.getElementById(tid);
+            //if (document.all) {
+            //    y = y - 250;
+            //    mt.style.height = y + "px";
+            //}
+            //else {
+            //    y = y - 300;
+            //    mt.style.height = y + "px";
+            //}
+            //window.resizeTo(screen.width,screen.availHeight);
+        }       
+    </script>
+
+    <script type="text/javascript">
+        function ChangeyopenModal() {
+            $('[id*=ModalPasswordChange]').modal('show');
+        }
+
+        function Clear() {
+            document.getElementById("DivError").innerHTML = '';
+        }
+
+        function ValidatePass() {
+            var OldPass = document.getElementById("txtOldPassword").value;           
+            var NewPassWord = document.getElementById("txtNewPassword").value;
+            var ConfirmPassWord = document.getElementById("txtConformPassword").value;
+
+
+            if (OldPass == "") {
+                document.getElementById("DivError").innerHTML = 'Old Password Can Not Be Null!';
+                document.getElementById("txtOldPassword").focus();
+                return false;
+            }
+            if (NewPassWord == "") {
+                document.getElementById("DivError").innerHTML = 'New Password Can Not Be Null!';
+                document.getElementById("txtNewPassword").focus()
+                return false;
+            }
+            if (ConfirmPassWord == "") {
+
+                document.getElementById("DivError").innerHTML = 'Confirm Password Can Not Be Null!';
+
+                document.getElementById("txtConformPassword").focus();
+                return false;
+            }
+
+
+
+            if (NewPassWord != "") {
+
+                if (NewPassWord.length < 8) {
+
+
+                    document.getElementById("DivError").innerHTML = 'New Password must contain more than eight characters!';
+                    document.getElementById("txtNewPassword").focus();
+                    return false;
+                }
+
+                re = /[0-9]/;
+                if (!re.test(NewPassWord)) {
+
+                    document.getElementById("DivError").innerHTML = 'New password must contain at least one number (0-9)!';
+                    document.getElementById("txtNewPassword").focus();
+                    return false;
+                }
+
+            }
+
+            if (NewPassWord != "") {
+
+                var iChars = "!`@#$%^&*()+=-[]\\\';,./{}|\":<>?~_";
+                var flag = false;
+                for (var i = 0; i < NewPassWord.length; i++) {
+                    if (iChars.indexOf(NewPassWord.charAt(i)) != -1) {
+                        flag = true;
+                    }
+
+                }
+
+
+                if (flag == false) {
+
+                    document.getElementById("DivError").innerHTML = 'New Password Must Contains atleast one Special Charector!';
+                    document.getElementById("txtNewPassword").focus();
+                    return false;
+                }
+
+
+            }
+
+            if (NewPassWord != "" && OldPass != "") {
+                if (NewPassWord != ConfirmPassWord) {
+                    document.getElementById("DivError").innerHTML = 'New Password and Confirm Password did not match.,Please enter both as same!';
+                    document.getElementById("txtConformPassword").focus();
+                    return false;
+                }
+                else {
+                    return true;
+                }
+            }
+            return true;
+        }
+    </script>
+
+    <style type="text/css">
+        .glyphicon:hover {
+            color: red;
+        }
+
+        a:hover, a:focus {
+            outline: none;
+            text-decoration: none;
+        }
+
+        .tab .nav-tabs {
+            border: none;
+        }
+
+            .tab .nav-tabs li a {
+                /*padding: 10px 20px;*/
+                margin-right: 5px;
+                /*font-size: 18px;
+    font-weight: 700;*/
+                color: #fff;
+                /*border: 2px solid #cb5245;
+    border-radius: 50px;*/
+                overflow: hidden;
+                z-index: 1;
+                position: relative;
+                transition: all 0.4s ease-in 0s;
+            }
+
+                .tab .nav-tabs li a:hover {
+                    color: #cb5245;
+                    background: #fff;
+                    border: 1px solid #cb5245;
+                }
+
+            .tab .nav-tabs li.active a {
+                color: #092c4f;
+                border: 2px solid #092c4f;
+            }
+
+            .tab .nav-tabs li a:before {
+                content: "";
+                display: block;
+                width: 200px;
+                height: 200px;
+                border-radius: 50%;
+                background: #fff;
+                margin-top: -100px;
+                position: absolute;
+                top: 50%;
+                left: -50%;
+                opacity: 0.3;
+                z-index: -1;
+                transform: scale(0);
+                transition: all 0.4s ease-in 0.1s;
+            }
+
+            .tab .nav-tabs li a:hover:before,
+            .tab .nav-tabs li.active a:before {
+                opacity: 1;
+                transform: scale(2);
+            }
+
+        .tab .tab-content {
+            padding: 15px 20px;
+            background: #cb5245;
+            font-size: 15px;
+            color: #fff;
+            line-height: 30px;
+            letter-spacing: 1px;
+            border: 2px solid #092c4f;
+            border-radius: 25px;
+            outline: 5px solid #092c4f;
+            outline-offset: 3px;
+        }
+
+            .tab .tab-content h3 {
+                font-size: 24px;
+                margin-top: 0;
+            }
+
+        @media only screen and (max-width: 479px) {
+            .tab .nav-tabs li {
+                width: 100%;
+                text-align: center;
+                margin-bottom: 15px;
+            }
+
+                .tab .nav-tabs li a:hover:before,
+                .tab .nav-tabs li.active a:before {
+                    transform: scale(10);
+                }
+        }
+    </style>
+</head>
+
+<body onload="javascript:resizeBrowser('MainTable');history.go(+1);">
+    <form id="form1" runat="server">
+        <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+
+        <asp:ContentPlaceHolder ID="head" runat="server">
+            <table>
+                <tr style="width: 250px;">
+                    <td style="color: red; font-weight: bold; width: 150px;">
+                        <img src="../images/logo.png" style="width: 120px; margin-right: 150px;" />
+                    </td>
+                    <td style="width: 400px;"></td>
+                    <td style="width: 100px;"></td>
+                    <td style="text-align: center; font-weight: bold; font-size: x-large; color: #ff8100d1;">
+                        <img src="../images/settings.jpg" style="width: 36px; margin-left: -255px;" />
+                        &nbsp;&nbsp;&nbsp;&nbsp;<b style="margin-left: -30px; white-space: nowrap; font-family: Calibri">STRMICX</b>
+                    </td>
+                    <td style="width: 200px;"></td>
+                    <td style="color: red; font-weight: bold; width: 150px;"></td>
+                    <td style="width: 200px;">
+                        <div class="header-right" style="margin-left: 75px;">
+
+                            <!--notification menu end -->
+                            <div class="profile_details">
+                                <ul>
+                                    <li class="dropdown profile_details_drop">
+                                        <a href="" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                            <div class="profile_img">
+                                                <!--<span class="prfil-img"><img src="images/a1.png" alt=""> </span>-->
+                                                <div class="user-name">
+                                                    <asp:Label ID="Lblusername" runat="server" Style="color: black"></asp:Label>
+                                                </div>
+                                                <i class="fa fa-angle-down lnr"></i>
+                                                <i class="fa fa-angle-up lnr"></i>
+                                                <div class="clearfix"></div>
+                                            </div>
+                                        </a>
+                                        <ul class="dropdown-menu drp-mnu">
+                                            <li>
+                                                <asp:LinkButton runat="server" ID="changepassword" OnClick="changepassword_Click"><i class="fa fa-key"></i>Change Password</asp:LinkButton></li>
+                                            <%--<li><a href="#" data-toggle="modal" data-target="#confirm-change" runat="server"><i class="fa fa-key"></i>Change Password</a></li>--%>
+                                            <li onclick="return confirm('Are you sure you want to logout this session?');"><a href="../Pages/STRMICXLogin.aspx"><i class="glyphicon glyphicon-log-out nav_icon" style="color: #222629;"></i>Logout</a></li>
+                                        </ul>
+
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+            <div>
+                <div>
+                    <div style="padding-left: 3px; padding-right: 0px;font-family:Roboto,-apple-system,BlinkMacSystemFont,Segoe UI,Oxygen,Ubuntu,Cantarell,Fira San,Droid Sans,Helvetica Neue,sans-serif;">
+
+                        <div class="tab" role="tabpanel">
+                            <ul class="nav nav-tabs" style="background-color: #337ab7;">
+                                <li role="navigation"><a href="../Pages/STRMICXHome.aspx"><i class="glyphicon glyphicon-home nav_icon" style="color: #eaf1f7"></i>&nbsp;Home</a></li>
+                                <li role="navigation"><a href="../Pages/Users.aspx"><i class="glyphicon glyphicon-user nav_icon" style="color: #eaf1f7"></i>&nbsp;User Maintanance</a></li>
+                                <li role="navigation"><a href="../Pages/STRMICXOrderStatus.aspx"><i class="glyphicon glyphicon-tasks nav_icon" style="color: #eaf1f7"></i>&nbsp;Order Tracking</a></li>
+                                <li role="navigation"><a href="" id="productionpage" runat="server" onserverclick="productionpage_ServerClick"><i class="glyphicon glyphicon-film nav_icon" style="color: #eaf1f7"></i>&nbsp;Production</a></li>
+
+                                <%--<li role="navigation"><a href="../Pages/AssignJob.aspx"><i class="glyphicon glyphicon-lock nav_icon" style="color: #eaf1f7"></i>&nbsp;Assign Job</a></li>--%>
+                                <%--<li role="navigation" style="float: right;"><a href="../Pages/STRMICXLogin.aspx"><i class="glyphicon glyphicon-log-out nav_icon" style="color: #eaf1f7; width: 20px;"></i>Logout</a></li>--%>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <asp:Panel ID="PanelChangePassword" class="panel panel-default" runat="server" Visible="false">
+                <div class="modal fade" id="ModalPasswordChange" role="dialog" runat="server">
+                    <div class="modal-dialog modal-lg" style="margin-left: 200px; margin-right: 100px;">
+                        <div class="modal-content" style="width: 100%; margin-left: 0px;">
+                            <div>
+                                <button type="button" class="close" data-dismiss="modal" style="padding-right:10px;height:24px;">&times;</button>
+                                <h4 class="modal-title" style="text-align:center">Change Password</h4>
+                                <div style="border-top: 1px solid #e5e5e5;"></div>
+                            </div>
+                            <div class="modal-body" style="padding-left: 220px; padding-right: 200px;">
+                                <table border="0">
+                                    <tr>
+                                        <td class="Lblall">Old Password</td>
+                                        <td>
+                                            <asp:TextBox ID="txtOldPassword" runat="server" CssClass="form-control" Width="200px" onkeypress="javascript:Clear()" TextMode="Password" Style="margin-left: 10px"></asp:TextBox>
+                                        </td>
+                                        <td>
+                                            <span style="color: Red; margin-left: 5px;">*</span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div>
+                                                <br />
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="Lblall">New Password</td>
+                                        <td>
+                                            <asp:TextBox ID="txtNewPassword" runat="server" CssClass="form-control" Width="200px" onkeypress="javascript:Clear()" TextMode="Password" Style="margin-left: 10px"></asp:TextBox>
+                                        </td>
+                                        <td>
+                                            <span style="color: Red; margin-left: 5px;">*</span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div>
+                                                <br />
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="Lblall">Confirm Password</td>
+                                        <td>
+                                            <asp:TextBox ID="txtConformPassword" runat="server" CssClass="form-control" Width="200px" onkeypress="javascript:Clear()" TextMode="Password" Style="margin-left: 10px"></asp:TextBox>
+                                        </td>
+                                        <td>
+                                            <span style="color: Red; margin-left: 5px;">*</span>
+                                        </td>
+                                    </tr>
+                                     <tr>
+                                        <td>
+                                            <div>
+                                                <br />
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div id="DivError" runat="server" style="color: red">
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div>
+                                                <br />
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="col-xs-12" style="left:158px">
+                                                <asp:Button ID="btnsave" runat="server" Text="Save" class="btn btn-success" OnClientClick="return ValidatePass();" OnClick="btnsave_Click2" />
+                                            <asp:Button ID="BtnCancel" runat="server" Text="Cancel" class="btn btn-default btn-ok" />
+                                            </div>
+                                            
+                                        </td>
+                                    </tr>
+                                   
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </asp:Panel>
+        </asp:ContentPlaceHolder>
+
+        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            <div>
+                <div>
+                    <div class="col-md-6">
+                        <div class="tab" role="tabpanel">
+                            <!-- Nav tabs -->
+                            <ul class="nav nav-tabs" role="tablist" style="width: 1335px; margin-left: -90px;">
+                                <li role="presentation" class="active"><a href="../Pages/STRMICXProduction.aspx">Section 1</a></li>
+                                <li role="presentation"><a href="../Pages/STRMICXLogin.aspx">Section 2</a></li>
+                                <li role="presentation"><a href="../Pages/STRMICXProduction.aspx">Section 3</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </asp:ContentPlaceHolder>
+        <%--<div id="Tblmain" style="visibility:hidden">--%>
+        <%--<table>
+                <tr>
+                    <td>
+                        <%-- <asp:LinkButton ID="lnkOthers" runat="server" CssClass="Logout" Font-Bold="true"
+                        Font-Size="Large" Text="Break" ForeColor="Red" style="font-family:Helvetica, Calibri;" OnClick="lnkOthers_Click"></asp:LinkButton>--%>
+        <%-- </td>
+                </tr>
+            </table>
+            <div id="logo" style="float: left; width: 230px; height: 80px;">
+            </div>
+            <div align="center" style="padding-left: 300px;padding-top:10px; float: left;">
+                <asp:Image ID="Imgtitle" runat="server" ImageUrl="~/App_themes/Black/images/t1.png" />
+            </div>--%>
+        <%-- <div id="templatemo_header" style="float:left;">  --%>
+        <%--  <table border="0" style="width:900px;height:90px;">
+                <tr>
+                    <td align="center" valign="top" style="padding-top:20px;">
+                     
+                    </td>
+                </tr>
+            </table>--%>
+        <%--</div>    --%>
+        <%--<div style="float: right; padding-top: 20px; padding-right:20px;Helvetica, Calibri;">
+                <table>
+                    <tr>
+                        <td>
+                            <asp:LinkButton ID="LnkLogout" runat="server"  Style="font-family:Helvetica, Calibri;" CssClass="Lnklogout" Text="Logout" OnClick="SignOut_OnClick" ForeColor="White"></asp:LinkButton>
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <td>
+                            <asp:LinkButton ID="lnkOthers" runat="server" CssClass="Lnklogout"
+                                 Text="Break" Style="font-family:Helvetica, Calibri;" OnClick="lnkOthers_Click" ForeColor="White"></asp:LinkButton>
+                        </td>
+                    </tr>
+                </table>
+
+            </div>--%>
+        <%-- </div>--%>
+        <%--<div id="templatemo_menu_wrapper" style="width: 100%;">
+            <div id="templatemo_menu">
+                <table cellpadding="5px" border="0" style="font-family: Helvetica, Calibri; font-size: 13px">
+                    <tr>
+                        <td style="font-family: Helvetica, Calibri; font-size: 15px; color: White; width: 250px;" valign="bottom">
+                            <asp:Label ID="Lblusername" runat="server" Font-Bold="true"></asp:Label></td>
+                        <td style="width: 85%; font-family: Helvetica, Calibri;">
+                            <asp:Button ID="LnkHome" runat="server" CssClass="MenuFont" Text="Home" Font-Overline="false" OnClick="LnkHome_Click" Width="59px"></asp:Button>
+
+                            <asp:Button ID="LnkUsers" runat="server" CssClass="MenuFont" Text="User Maintenance" Font-Overline="false" OnClick="LnkUsers_Click1" Width="140px"></asp:Button>
+                            <asp:Button ID="Lnkassignjob" runat="server" CssClass="MenuFont" Text="Assign Job" Font-Overline="false" OnClick="Lnkassignjob_Click"></asp:Button>
+                            <asp:Button ID="Lnkorderstatus" runat="server" CssClass="MenuFont" Text="Order Status" Font-Overline="false" OnClick="Lnkorderstatus_Click" Width="102px"></asp:Button>
+                            <asp:Button ID="LnkScrapingstatus" runat="server" CssClass="MenuFont" Text="STARS" Font-Overline="false" OnClick="LnkScrapingstatus_Click" Width="65px"></asp:Button>
+                            <asp:Button ID="LnkReports" runat="server" CssClass="MenuFont" Text="Reports" Font-Overline="false" OnClick="LnkReports_Click" Width="64px"></asp:Button>
+                            <asp:Button ID="Lnkproduction" runat="server" CssClass="MenuFont" Text="Production" Font-Overline="false" OnClick="Lnkproduction_Click" Width="92px"></asp:Button>
+                            <asp:Button ID="Lnkpassword" runat="server" CssClass="MenuFont" Text="Change Password" Font-Overline="false" OnClick="Lnkpassword_Click" Width="130px"></asp:Button>
+                            <asp:Button ID="Lnkbreaktime" runat="server" CssClass="MenuFont" Text="Break Time" Visible="false" Font-Overline="false" OnClick="Lnkbreaktime_Click" Width="103px"></asp:Button>
+                            <asp:Button ID="LnkMIS" runat="server" CssClass="MenuFont" Text="MIS Updation" Font-Overline="false" OnClick="LnkMIS_Click" Width="121px" Visible="False"></asp:Button>
+                        </td>
+                        <td style="font-family: Helvetica, Calibri; font-size: 15px; color: White;" align="right">
+                            <asp:Label ID="Lbltime" runat="server" Text="" Visible="false"></asp:Label></td>
+                    </tr>
+                </table>
+            </div>
+            <!-- end of menu -->
+        </div>--%>
+        <%--<div>
+            <table style="width:100%;background-color:#f1f1f1;border-bottom:outset 1px gray;">
+        <tr>
+            <td align="center" valign="top" style="width:90%" >
+                <asp:GridView ID="Gridutilization" runat="server" Width="600px" GridLines="None" CssClass="Gnowrap" Visible="false"></asp:GridView>
+            </td>
+            <td style="width:15%;font-size:18px;font-weight:bold;color:Black;" align="right">
+                <asp:Label ID="lblbreaktotal" runat="server" Text="Break Time " Visible></asp:Label>
+                <asp:Label ID="lblbreak" runat="server" Text=""></asp:Label>
+            </td>
+        </tr>
+    </table>
+        </div>--%>
+        <%--<div id="main">
+
+
+            <asp:ContentPlaceHolder ID="MenuContentPlaceHolder" runat="server">
+            </asp:ContentPlaceHolder>
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder2" runat="server">
+            </asp:ContentPlaceHolder>
+
+            <div class="page_dimmer" id="pagedimmer" runat="server">
+            </div>
+            <div class="msg_box_container" id="Other_breakMsgbx" runat="server" align="center">
+                <table width="600px" style="display: none;">
+                    <tr>
+                        <td colspan="3" class="PagedimmerMsg" align="center" style="height: 36px">
+                            <asp:Label ID="lbltext" runat="server" Font-Names="Georgia" ForeColor="black" Font-Bold="true"
+                                Font-Size="Larger" Text="Break Comments"></asp:Label>
+                        </td>
+                    </tr>
+                </table>
+                <div id="div_brk_start" runat="server">
+                    <table width="600px">
+                        <tr>
+                            <td align="right" style="font-family: Helvetica, Calibri;">
+                                <asp:Label ID="Lblcomments" runat="server" Text="Select Break Type:" CssClass="PagedimmerMsg"
+                                    ForeColor="black"></asp:Label>
+                            </td>
+                            <td align="center" style="font-family: Helvetica, Calibri;">
+                                <asp:DropDownList ID="drp_break" runat="server" Width="150px" ForeColor="Black">
+                                    <asp:ListItem Value="1">Tea/Coffee</asp:ListItem>
+                                    <asp:ListItem Value="2">Lunch/Dinner</asp:ListItem>
+                                    <asp:ListItem Value="3">Short Break</asp:ListItem>
+                                    <asp:ListItem Value="4">Meeting</asp:ListItem>
+                                </asp:DropDownList>
+                            </td>
+                            <td align="left">
+                                <asp:Button ID="btn_brk_start" runat="server" Text="Start" Style="font-family: Helvetica, Calibri;" CssClass="MenuFont" OnClick="btn_brk_start_Click" />
+                                <asp:Button ID="btn_brk_cancel" CssClass="MenuFont" Style="font-family: Helvetica, Calibri;" runat="server" Text="Cancel"
+                                    OnClick="btn_brk_cancel_Click" />
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div id="div_brk_cmd" runat="server">
+                    <table width="600px">
+                        <tr>
+                            <td colspan="2" align="center" style="font-family: Helvetica, Calibri;">
+                                <asp:Label ID="lbl_brk_name" runat="server" ForeColor="#862d2d" Font-Size="19px"></asp:Label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" align="center">
+                                <asp:UpdatePanel ID="up_Timer" runat="server" RenderMode="Inline" UpdateMode="Always">
+                                    <Triggers>
+                                        <asp:AsyncPostBackTrigger ControlID="Timer1" EventName="Tick" />
+                                    </Triggers>
+                                    <ContentTemplate>
+                                        <asp:Timer ID="Timer1" runat="server" Interval="1000" OnTick="Timer1_Tick" />
+                                        <%--  <asp:Literal ID="lit_Timer" runat="server" /><br />--%>
+        <%-- <asp:Label ID="lit_Timer" runat="server" Font-Size="18px"></asp:Label><br />
+                                        <asp:HiddenField ID="hid_Ticker" runat="server" Value="0" />
+                                    </ContentTemplate>
+                                </asp:UpdatePanel>
+                            </td>
+                        </tr>
+                    </table>
+                    <div id="div_brk_countdown" runat="server">
+                        <table width="600px">
+                            <tr>
+                                <%-- <td>
+                        <span id="time"></span>
+                        <input type="button" value="start" onclick="start();"/>
+                        </td>--%>
+        <%-- <td align="center">
+                                    <asp:Button ID="btn_brk_stop" runat="server" Text="Stop" Style="font-family: Helvetica, Calibri;" CssClass="RvButton" OnClick="btn_brk_stop_Click" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="3" align="center">
+                                    <asp:Label ID="lblothererror" runat="server" Style="font-family: Helvetica, Calibri;" ForeColor="#862d2d" Font-Size="19px"></asp:Label>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>--%>
+        <%--<div id="div_brk_stop" runat="server">
+                        <table width="600px">
+                            <tr>
+                                <td align="center">
+                                    <asp:Label ID="Label2" runat="server" Text="Enter Delay Reson:" Style="font-family: Helvetica, Calibri;" CssClass="PagedimmerMsg"
+                                        ForeColor="black"></asp:Label>
+                                </td>
+                                <td align="left" style="font-family: Helvetica, Calibri">
+                                    <asp:TextBox ID="txt_break_reason" runat="server" TextMode="MultiLine"
+                                        placeholder="Maximum 100 Characters" Height="50px" Width="400px"></asp:TextBox>
+                                    <br />
+                                    <asp:RegularExpressionValidator ID="RegularExpressionValidator3" runat="server" ControlToValidate="txt_break_reason" ForeColor="#862d2d" Font-Size="17px" Style="font-family: Helvetica, Calibri;"
+                                        ErrorMessage=" Please limit to 100 characters or less." ValidationExpression="[\s\S]{1,100}" ValidationGroup="g2"></asp:RegularExpressionValidator>
+
+                                </td>
+                            </tr>
+                            <tr>
+                                <td align="center" colspan="2" style="height: 33px">
+                                    <asp:Button ID="btn_brk_reson" runat="server" Text="Save" CssClass="RvButton" Style="font-family: Helvetica, Calibri;" OnClick="btn_brk_reson_Click" ValidationGroup="g2" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" align="center">
+                                    <asp:Label ID="lbl_brk_cmd_err" runat="server" Style="font-family: Helvetica, Calibri;" CssClass="ErrorLabel"></asp:Label>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>--%>
+        <%--</div>
+            </div>
+        </div>--%>
+        <%--<div>
+            <table id="MainTable" border="0" width="100%">
+                <tr>
+                    <td style="width: 100%;">
+                        <asp:ContentPlaceHolder ID="ContentPlaceHolder3" runat="server">
+                        </asp:ContentPlaceHolder>
+                    </td>
+                </tr>
+            </table>
+        </div>--%>
+        <%--     <div align="center">
+
+    <asp:Menu ID="Menu1" runat="server" BackColor="#B5C7DE" DynamicHorizontalOffset="2"
+
+        Font-Names="Verdana" Font-Size="0.8em" 
+
+        ForeColor="#284E98" Orientation="Horizontal"
+
+        StaticSubMenuIndent="10px">
+        <StaticMenuItemStyle HorizontalPadding="5px" VerticalPadding="2px" />
+        <DynamicHoverStyle BackColor="#284E98" ForeColor="White" />
+        <DynamicMenuStyle BackColor="#B5C7DE" />
+        <StaticSelectedStyle BackColor="#507CD1" />
+        <DynamicSelectedStyle BackColor="#507CD1" />
+        <DynamicMenuItemStyle HorizontalPadding="5px" VerticalPadding="2px" />
+        <Items>
+            <asp:MenuItem Text="HOME" Value="HOME" NavigateUrl="~/STRMICXHOME.aspx">
+            </asp:MenuItem>
+            <asp:MenuItem Text="ABOUT" Value="ABOUT" NavigateUrl="~/about.aspx">
+            </asp:MenuItem>
+            <asp:MenuItem Text="CONTACT" Value="CONTACT" NavigateUrl="~/contact.aspx">
+            </asp:MenuItem>
+        </Items>
+        <StaticHoverStyle BackColor="#284E98" ForeColor="White" />
+    </asp:Menu>
+
+
+  
+</div>--%>
+    </form>
+</body>
+</html>
