@@ -714,6 +714,10 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
                     txtAnnualTaxAmount.Text = (Instoutput.ToString("#,##0.00"));
                 }
                 txtdeliquent.Text = dtfetchauthority.Rows[0]["IsDelinquent"].ToString().Trim();
+
+
+               
+
                 txtexemption.Text = dtfetchauthority.Rows[0]["IsExemption"].ToString().Trim();
                 SecialAssmnt.Text = dtfetchauthority.Rows[0]["IsSpecial"].ToString().Trim();
 
@@ -727,6 +731,11 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
                 paymentfrequency.Value = dtfetchauthority.Rows[0]["TaxFrequency"].ToString().Trim();
 
                 txtdeliquent.SelectedValue = dtfetchauthority.Rows[0]["IsDelinquent"].ToString().Trim();
+
+                if (txtdeliquent.SelectedValue == "No")
+                {
+                    txtdeliquent.SelectedIndex = 0;
+                }
 
 
                 DataTable dtsdeliquent = new DataTable();
