@@ -11,6 +11,7 @@ using System.Web.UI.HtmlControls;
 
 public partial class Pages_NonAdmin : System.Web.UI.Page
 {
+    //test
     #region Variable Declaration
     myConnection con = new myConnection();
     GlobalClass gl = new GlobalClass();
