@@ -4532,7 +4532,7 @@
                                                     </b>
                                                 </td>
                                                 <td>
-                                                    <asp:TextBox ID="txtTaxYear" runat="server" class="form-control" placeholder="YYYY" type="text" MaxLength="8" onkeypress="return isNumberKey(event)" onblur="checkReqFields(this.value,this,event);" autocomplete='off' Style="width: 95px;" onchange="return TaxparcelFunction()" />
+                                                    <asp:TextBox ID="txtTaxYear" runat="server" class="form-control" placeholder="YYYY" type="text" MaxLength="4" onkeypress="return isNumberKey(event)" onblur="checkReqFields(this.value,this,event);" autocomplete='off' Style="width: 95px;" onchange="return TaxparcelFunction()" />
                                                 </td>
                                                 <td>
                                                     <b style="white-space: nowrap;" class="CheckBold">End Year(If Applicable):</b>

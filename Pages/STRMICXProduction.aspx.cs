@@ -861,7 +861,8 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "txtexeSpecial();", true);
                 btntaxparcels.Enabled = true;
                 gvTaxParcel.EditIndex = -1;
-                loadgridtaxparcel();
+                fetchtaxparcel();
+                fetchtaxparceldetails();
                 txtdrop.Value = "";
                 txtTaxYear.Text = "";
                 txtEndYear.Text = "";
