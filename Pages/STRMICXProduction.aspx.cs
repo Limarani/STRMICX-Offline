@@ -1200,9 +1200,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
         TaxStatus.Visible = true;
         PnlTaxStatus.Visible = true;
         DataTable OUTPUT = new DataTable();
-        int insert = 0;
-        string update = "";
-
+        int insert = 0;       
         string query = "";
 
         query = "select orderno,taxid,taxyear,endyear from tbl_taxparcel where taxid = '" + txtdrop.Value + "' and (status = 'M' or status = 'C')";
@@ -1214,52 +1212,20 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
             {
                 if (chkEst.Checked == true && chkTBD.Checked == false)
                 {
-                    query = "select orderno,taxid,taxyear,endyear from tbl_taxparcel where taxid = '" + txtdrop.Value + "' and status = 'CD'";
-                    DataSet ds1 = gl.ExecuteQuery(query);
-
-                    if (ds1.Tables[0].Rows.Count == 0)
-                    {
-                        insert = gl.insert_taxparcel(lblord.Text, txtdrop.Value, txtTaxYear.Text + "EST", txtEndYear.Text, "M");
-                    }
-                    else
-                    {
-                        update = "update tbl_taxparcel set status = 'C', taxyear = '" + txtTaxYear.Text + "EST" + "', endyear = '" + txtEndYear.Text + "', taxid = '" + txtdrop.Value + "' where Orderno = '" + lblord.Text + "' and taxid = '" + txtdrop.Value + "'";
-                        gl.ExecuteSPNonQuery(update);
-                    }
+                    insert = gl.insert_taxparcel(lblord.Text, txtdrop.Value, txtTaxYear.Text + "EST", txtEndYear.Text, "M");
                 }
                 else if (chkEst.Checked == false && chkTBD.Checked == false)
                 {
-                    query = "select orderno,taxid,taxyear,endyear from tbl_taxparcel where taxid = '" + txtdrop.Value + "' and status = 'CD'";
+                    insert = gl.insert_taxparcel(lblord.Text, txtdrop.Value, txtTaxYear.Text, txtEndYear.Text, "M");
+                }
+                else if (chkTBD.Checked == true && chkEst.Checked == false)
+                {
+                    query = "select orderno,taxid,taxyear,endyear from tbl_taxparcel where orderno = '" + lblord.Text + "' and taxid = 'TBD' and (status = 'M' or status = 'C')";
                     DataSet ds1 = gl.ExecuteQuery(query);
 
                     if (ds1.Tables[0].Rows.Count == 0)
                     {
-                        insert = gl.insert_taxparcel(lblord.Text, txtdrop.Value, txtTaxYear.Text, txtEndYear.Text, "M");
-                    }
-                    else
-                    {
-                        update = "update tbl_taxparcel set status = 'C', taxyear = '" + txtTaxYear.Text + "', endyear = '" + txtEndYear.Text + "' where Orderno = '" + lblord.Text + "' and taxid = '" + txtdrop.Value + "'";
-                        gl.ExecuteSPNonQuery(update);
-                    }
-                }
-                else if (chkTBD.Checked == true && chkEst.Checked == false)
-                {
-                    query = "select orderno,taxid,taxyear,endyear from tbl_taxparcel where taxid = 'TBD' and (status = 'M' or status = 'C')";
-                    DataSet ds1 = gl.ExecuteQuery(query);
-
-                    string query1 = "";
-                    query1 = "select orderno,taxid,taxyear,endyear from tbl_taxparcel where taxid = '" + txtdrop.Value + "' and status = 'CD'";
-                    DataSet ds2 = gl.ExecuteQuery(query);
-
-                    if (ds1.Tables[0].Rows.Count == 0 && ds2.Tables[0].Rows.Count > 0)
-                    {
                         insert = gl.insert_taxparcel(lblord.Text, "TBD", txtTaxYear.Text, txtEndYear.Text, "M");
-                    }
-                    else if (ds1.Tables[0].Rows.Count == 0 && ds2.Tables[0].Rows.Count == 0)
-                    {
-                        update = "update tbl_taxparcel set status = 'C',taxid = 'TBD', taxyear = '" + txtTaxYear.Text + "', endyear = '" + txtEndYear.Text + "' where Orderno = '" + lblord.Text + "' and taxid = '" + txtdrop.Value + "'";
-                        gl.ExecuteSPNonQuery(update);
-                        //insert = gl.insert_taxparcel(lblord.Text, "TBD", txtTaxYear.Text, txtEndYear.Text, "M");
                     }
                     else
                     {
@@ -1269,7 +1235,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
                 }
                 else if (chkTBD.Checked == true && chkEst.Checked == true)
                 {
-                    query = "select orderno,taxid,taxyear,endyear from tbl_taxparcel where taxid = 'TBD' and (status = 'M' or status = 'C')";
+                    query = "select orderno,taxid,taxyear,endyear from tbl_taxparcel where orderno = '" + lblord.Text + "' and taxid = 'TBD' and (status = 'M' or status = 'C')";
                     DataSet ds1 = gl.ExecuteQuery(query);
 
                     if (ds1.Tables[0].Rows.Count == 0)
