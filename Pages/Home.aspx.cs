@@ -21,7 +21,7 @@ public partial class Pages_Home : System.Web.UI.Page
     #region PageLoad
     protected void Page_Load(object sender, EventArgs e)
     {
-        //@time two members
+        //@lima
         if (SessionHandler.UserName == "") Response.Redirect("Loginpage.aspx");
         if (SessionHandler.IsAdmin == false)
         {
