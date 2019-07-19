@@ -102,7 +102,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
             PnlTax1.Visible = false;
             Lblusername.Text = SessionHandler.UserName;
             fetchtaxparceldetails();
-            tdprior.Visible = false;
+            Prior.Visible = false;
         }
     }
 
@@ -297,19 +297,22 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
                             }
                             else
                             {
-                                //ScriptManager.RegisterStartupScript(btnaddauthority, this.GetType(), "alertMessage", "alert('Agency Id Already Exist')", true);                               
-                                Response.Write("<script>alert('Error')</script>");
+                               ScriptManager.RegisterStartupScript(this, this.GetType(), "alertMessage", "alert('Agency Id Already Exist')", true);                                                              
                             }
                         }
                     }
                     else if (ds.Tables[0].Rows.Count == 0)
                     {
                         dsinsert = gl.inserttaxauthorities(lblord.Text.Trim(), taxidnew.Trim(), AgencyId.Trim());
-                        if (dsinsert.Tables[0].Rows.Count == 0)
+                        if (dsinsert.Tables[0].Rows.Count == 0 && taxidnew != "TBD")
                         {
                             int update;
                             dstest = gl.test(lblord.Text.Trim(), AgencyId.Trim(), TaxAgencyType.Trim());
                             update = gl.Updatetaxauthoritiesdetails(lblord.Text.Trim(), taxidnew.Trim(), AgencyId.Trim());
+                        }
+                        else if (taxidnew == "TBD")
+                        {
+                            ScriptManager.RegisterStartupScript(this, this.GetType(), "alertMessage", "alert('Authority Cannot Be Added For TBD')", true);
                         }
                     }
                 }
@@ -716,7 +719,8 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
 
                 if (lblclientName.Text == "ORMS")
                 {
-                    tdprior.Visible = true;
+                    Prior.Visible = true;
+                    pastDeliquent.Visible = true;
                     pastDeliquent.Text = dtfetchauthority.Rows[0]["IsPastDelinquent"].ToString().Trim();
                 }
 

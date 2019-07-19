@@ -3097,7 +3097,7 @@
                 document.getElementById('txtpayoffgood').style.borderColor = "#ff0000";
                 document.getElementById('lblpayoffgood').style.color = "#ff0000";
                 alert("Date should be greater than current date");
-            }                      
+            }
         }
 
         function stopPropagation(event) {
@@ -3238,22 +3238,22 @@
                 document.getElementById('gvDeliquentStatus').style.display = "none";
             }
 
-            var paststatus = document.getElementById("pastDeliquent").value;
-            if (paststatus == "Yes") {
-                document.getElementById("tblPastDeliquent").style.visibility = "visible";
-                document.getElementById("tblPastDeliquent").style.display = "block";
-                document.getElementById('GrdPriordelinquent').style.display = "block";
-            }
-            else if (paststatus == "No") {
-                document.getElementById("tblPastDeliquent").style.visibility = "hidden";
-                document.getElementById("tblPastDeliquent").style.display = "none";
-                document.getElementById('GrdPriordelinquent').style.display = "none";
-            }
-            else {
-                document.getElementById("tblPastDeliquent").style.visibility = "hidden";
-                document.getElementById("tblPastDeliquent").style.display = "none";
-                document.getElementById('GrdPriordelinquent').style.display = "none";
-            }
+            //var paststatus = document.getElementById("pastDeliquent").value;
+            //if (paststatus == "Yes") {
+            //    document.getElementById("tblPastDeliquent").style.visibility = "visible";
+            //    document.getElementById("tblPastDeliquent").style.display = "block";
+            //    document.getElementById('GrdPriordelinquent').style.display = "block";
+            //}
+            //else if (paststatus == "No") {
+            //    document.getElementById("tblPastDeliquent").style.visibility = "hidden";
+            //    document.getElementById("tblPastDeliquent").style.display = "none";
+            //    document.getElementById('GrdPriordelinquent').style.display = "none";
+            //}
+            //else {
+            //    document.getElementById("tblPastDeliquent").style.visibility = "hidden";
+            //    document.getElementById("tblPastDeliquent").style.display = "none";
+            //    document.getElementById('GrdPriordelinquent').style.display = "none";
+            //}
 
             var ddlselect = document.getElementById("txtnotapplicable").value;
             if (ddlselect == "Yes") {
@@ -5774,10 +5774,14 @@
                                             </asp:DropDownList>
                                         </td>
                                     </tr>
-                                    <tr id="tdprior" runat="server">
-                                        <td style="padding-left: 13px;" runat="server"><b class="CheckBold">Have any property taxes been delinquent in the past 24 months?:</b></td>
+                                    <tr>
+                                        <td style="padding-left: 13px;" runat="server">
+                                            <asp:Label runat="server" ID="Prior">
+                                                <b class="CheckBold">Have any property taxes been delinquent in the past 24 months?:</b>
+                                            </asp:Label>
+                                        </td>
                                         <td>
-                                            <asp:DropDownList ID="pastDeliquent" runat="server" AutoPostBack="false" class="form-control" onchange="txtpastDeliquent()">
+                                            <asp:DropDownList ID="pastDeliquent" runat="server" AutoPostBack="false" class="form-control" onchange="txtpastDeliquent()" Visible="false">
                                                 <asp:ListItem>Select</asp:ListItem>
                                                 <asp:ListItem>Yes</asp:ListItem>
                                                 <asp:ListItem>No</asp:ListItem>
@@ -6761,7 +6765,7 @@
                                             <label for="txtdate2"><b class="CheckBold">Followup Date:</b></label>
                                         </td>
                                         <td style="width: 190px">
-                                            <input runat="server" id="date2" name="txtdate2" class="form-control" placeholder="MM/DD/YYYY" maxlength="10" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="return checkDate(this,event)" style="height: 35px; width: 160px; background-color: white;" autocomplete="off"/>
+                                            <input runat="server" id="date2" name="txtdate2" class="form-control" placeholder="MM/DD/YYYY" maxlength="10" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="return checkDate(this,event)" style="height: 35px; width: 160px; background-color: white;" autocomplete="off" />
                                         </td>
                                         <td colspan="4">
                                             <button type="button" id="btneditdates" runat="server" class="btn btn-success" onclick="editfunction()">Edit</button>
