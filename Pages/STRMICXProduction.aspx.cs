@@ -44,12 +44,6 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
 
         if (!IsPostBack)
         {
-            //if (dr.HasRows)
-            //{
-            //gvTaxParcel.DataSource = dr;
-            //gvTaxParcel.DataBind();
-            //GvTaxStatus.DataSource = dr;
-            //GvTaxStatus.DataBind();
             date1.Attributes["disabled"] = "disabled";
             date2.Attributes["disabled"] = "disabled";
 
@@ -72,9 +66,8 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
             tblDeliquentStatus.Visible = true;
             gvDeliquentStatus.Visible = true;
             GrdPriordelinquent.Visible = true;
-            //}
-            //else
-            //{
+
+
             DataTable dt = new DataTable();
             gvTaxParcel.DataSource = dt;
             gvTaxParcel.DataBind();
@@ -94,11 +87,6 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
             tblDeliquentStatus.Visible = true;
             gvDeliquentStatus.Visible = true;
             GrdPriordelinquent.Visible = true;
-            //btncanceldates.Visible = false;
-            //btnsavedates.Visible = false;
-            //btneditdates.Visible = true;
-            //btnTaxOrderStatus.Visible = true;
-            //}
 
             id = Request.QueryString["id"];
             if (id == "12f7tre5") Allotment(sender, e);
@@ -117,7 +105,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
             tdprior.Visible = false;
         }
     }
-    //}
+
 
 
     private void ManualAllotment(string id, object sender, EventArgs e)
@@ -262,7 +250,6 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
     protected void btnaddauthority_Click(object sender, EventArgs e)
     {
         ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "txtexeSpecial();", true);
-
         string agen = "";
         string taxid = "";
         string taxagencytype = "";
@@ -310,7 +297,8 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
                             }
                             else
                             {
-                                ScriptManager.RegisterStartupScript(this, this.GetType(), "alertMessage", "alert('Agency Id Already Exist')", true);
+                                //ScriptManager.RegisterStartupScript(btnaddauthority, this.GetType(), "alertMessage", "alert('Agency Id Already Exist')", true);                               
+                                Response.Write("<script>alert('Error')</script>");
                             }
                         }
                     }
@@ -1200,10 +1188,10 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
         TaxStatus.Visible = true;
         PnlTaxStatus.Visible = true;
         DataTable OUTPUT = new DataTable();
-        int insert = 0;       
+        int insert = 0;
         string query = "";
 
-        query = "select orderno,taxid,taxyear,endyear from tbl_taxparcel where taxid = '" + txtdrop.Value + "' and (status = 'M' or status = 'C')";
+        query = "select orderno,taxid,taxyear,endyear from tbl_taxparcel where taxid = '" + txtdrop.Value + "' and status = 'M' ";
         DataSet ds = gl.ExecuteQuery(query);
 
         if (txtdrop.Value != "" || txtTaxYear.Text != "" || txtEndYear.Text != "")
@@ -1216,7 +1204,15 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
                 }
                 else if (chkEst.Checked == false && chkTBD.Checked == false)
                 {
-                    insert = gl.insert_taxparcel(lblord.Text, txtdrop.Value, txtTaxYear.Text, txtEndYear.Text, "M");
+                    if (txtdrop.Value != "--Select--")
+                    {
+                        insert = gl.insert_taxparcel(lblord.Text, txtdrop.Value, txtTaxYear.Text, txtEndYear.Text, "M");
+                    }
+                    else
+                    {
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "alertMessage", "alert('Enter TaxId Number')", true);
+                        return;
+                    }
                 }
                 else if (chkTBD.Checked == true && chkEst.Checked == false)
                 {
