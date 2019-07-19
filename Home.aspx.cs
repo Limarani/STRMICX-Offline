@@ -11,7 +11,7 @@ using System.Web.UI.HtmlControls;
 
 public partial class Pages_Home : System.Web.UI.Page
 {
-
+    //GlobalClass gl = new GlobalClass();
     GlobalClass gl = new GlobalClass();
     DataSet ds = new DataSet();
     DataSet ds1 = new DataSet();

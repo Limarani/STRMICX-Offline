@@ -21,6 +21,7 @@ public partial class Pages_Home : System.Web.UI.Page
     #region PageLoad
     protected void Page_Load(object sender, EventArgs e)
     {
+        //@lima123
         if (SessionHandler.UserName == "") Response.Redirect("Loginpage.aspx");
         if (SessionHandler.IsAdmin == false)
         {
@@ -52,7 +53,9 @@ public partial class Pages_Home : System.Web.UI.Page
             //New
         }
     }
-
+    //Lima
+    //1
+    //2
     //New
     string strdate = "";
     public void LoadTaxGrid()
