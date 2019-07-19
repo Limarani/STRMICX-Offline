@@ -20,6 +20,7 @@ public partial class Pages_LoginChecklist : System.Web.UI.Page
 
         //}
         Checkuser();
+        //test;
     }
 
     public void Checkuser()
