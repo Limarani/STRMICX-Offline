@@ -17314,17 +17314,19 @@ public class GlobalClass : myConnection
         return ExecuteSPNonQuery("Sp_Insert_Taxauthoritynew", true, mParam);
     }
 
-    public DataTable FetchTaxAuthorityDetails(string orderno, string taxid, string agencyid)
+    public DataTable FetchTaxAuthorityDetails(string orderno, string taxid, string agencyid, string taxtype)
     {
         DataTable dt = new DataTable();
         string query = "Sp_fetchall_installment_details";
-        mParam = new MySqlParameter[3];
+        mParam = new MySqlParameter[4];
         mParam[0] = new MySqlParameter("?$orderno", orderno);
         mParam[0].MySqlDbType = MySqlDbType.VarChar;
         mParam[1] = new MySqlParameter("?$taxid", taxid);
         mParam[1].MySqlDbType = MySqlDbType.VarChar;
         mParam[2] = new MySqlParameter("?$agencyid", agencyid);
         mParam[2].MySqlDbType = MySqlDbType.VarChar;
+        mParam[3] = new MySqlParameter("?$taxtype", taxtype);
+        mParam[3].MySqlDbType = MySqlDbType.VarChar;
 
         mDa = con.ExecuteSPAdapter(query, true, mParam);
         mDa.Fill(dt);

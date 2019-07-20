@@ -297,23 +297,19 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
                             }
                             else
                             {
-                               ScriptManager.RegisterStartupScript(this, this.GetType(), "alertMessage", "alert('Agency Id Already Exist')", true);                                                              
+                                ScriptManager.RegisterStartupScript(this, this.GetType(), "alertMessage", "alert('Agency Id Already Exist')", true);
                             }
                         }
                     }
                     else if (ds.Tables[0].Rows.Count == 0)
                     {
                         dsinsert = gl.inserttaxauthorities(lblord.Text.Trim(), taxidnew.Trim(), AgencyId.Trim());
-                        if (dsinsert.Tables[0].Rows.Count == 0 && taxidnew != "TBD")
+                        if (dsinsert.Tables[0].Rows.Count == 0)
                         {
                             int update;
                             dstest = gl.test(lblord.Text.Trim(), AgencyId.Trim(), TaxAgencyType.Trim());
                             update = gl.Updatetaxauthoritiesdetails(lblord.Text.Trim(), taxidnew.Trim(), AgencyId.Trim());
-                        }
-                        else if (taxidnew == "TBD")
-                        {
-                            ScriptManager.RegisterStartupScript(this, this.GetType(), "alertMessage", "alert('Authority Cannot Be Added For TBD')", true);
-                        }
+                        }                        
                     }
                 }
             }
@@ -346,6 +342,8 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
             LblAgencyId1.Text = lb.Text;
             LblTaxID.Text = Server.HtmlDecode(row.Cells[6].Text.Trim());
 
+            taxagencytype = Server.HtmlDecode(row.Cells[3].Text.Trim());
+
             //txtAuthorityname.Text = Server.HtmlDecode(row.Cells[2].Text.Trim());                                 
 
             GridView gvwnested = (GridView)gvTaxParcel.Rows[0].Cells[1].FindControl("gvOrders");
@@ -369,7 +367,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
 
             LblAgencyID.Text = lb.Text;
             LblTaxId1.Text = Server.HtmlDecode(row.Cells[6].Text.Trim());
-            dtfetchauthority = gl.FetchTaxAuthorityDetails(lblord.Text, LblTaxID.Text, LblAgencyID.Text);
+            dtfetchauthority = gl.FetchTaxAuthorityDetails(lblord.Text, LblTaxID.Text, LblAgencyID.Text, taxagencytype);
             fetchDeliquentStatus();
             fetchexemptionsAll();
             fetchspecialAll();
@@ -716,7 +714,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
                 txtdeliquent.Text = dtfetchauthority.Rows[0]["IsDelinquent"].ToString().Trim();
 
 
-               
+
 
                 txtexemption.Text = dtfetchauthority.Rows[0]["IsExemption"].ToString().Trim();
                 SecialAssmnt.Text = dtfetchauthority.Rows[0]["IsSpecial"].ToString().Trim();
@@ -825,7 +823,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
     {
         ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "txtexeSpecial();", true);
         gvTaxParcel.EditIndex = -1;
-        loadgridtaxparcel();
+        fetchtaxparcel();
         txtdrop.Value = "";
         txtTaxYear.Text = "";
         txtEndYear.Text = "";
@@ -1985,7 +1983,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
         ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "txtexeSpecial();", true);
         PnlTax1.Visible = true;
         DataTable dtfetchauthority = new DataTable();
-        dtfetchauthority = gl.FetchTaxAuthorityDetails(lblord.Text, LblTaxID.Text, LblAgencyID.Text);
+        dtfetchauthority = gl.FetchTaxAuthorityDetails(lblord.Text, LblTaxID.Text, LblAgencyID.Text, taxagencytype);
         fetchDeliquentStatus();
         fetchexemptionsAll();
         fetchspecialAll();
