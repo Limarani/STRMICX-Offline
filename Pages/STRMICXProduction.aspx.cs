@@ -1519,7 +1519,14 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
                 txtspecialassno.Text = "";
                 txtnoinstall.Text = "";
                 txtinstallpaid.Text = "";
+                txtInstallRemain.Text = "";
+                txtduedate.Text = "";
                 txtamountspecial.Text = "";
+                txtsperembal.Text = "";
+                txtspecdate.Text = "";
+                txtspecperdiem.Text = "";
+                txtspecpayee.Text = "";
+                txtspeccomments.Text = "";
                 return;
             }
             else
@@ -1544,7 +1551,14 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
         txtspecialassno.Text = "";
         txtnoinstall.Text = "";
         txtinstallpaid.Text = "";
+        txtInstallRemain.Text = "";
+        txtduedate.Text = "";
         txtamountspecial.Text = "";
+        txtsperembal.Text = "";
+        txtspecdate.Text = "";
+        txtspecperdiem.Text = "";
+        txtspecpayee.Text = "";
+        txtspeccomments.Text = "";
     }
     protected void gvSpecialAssessment_RowEditing(object sender, GridViewEditEventArgs e)
     {
@@ -1584,7 +1598,14 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
                     txtspecialassno.Text = "";
                     txtnoinstall.Text = "";
                     txtinstallpaid.Text = "";
+                    txtInstallRemain.Text = "";
+                    txtduedate.Text = "";
                     txtamountspecial.Text = "";
+                    txtsperembal.Text = "";
+                    txtspecdate.Text = "";
+                    txtspecperdiem.Text = "";
+                    txtspecpayee.Text = "";
+                    txtspeccomments.Text = "";
                     SpecialAdd.Enabled = true;
                     return;
                 }
