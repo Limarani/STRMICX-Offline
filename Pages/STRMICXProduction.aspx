@@ -3125,7 +3125,7 @@
             //   isShift = true;
             if (((keyCode >= 46 && keyCode <= 57) || keyCode == 8 || keyCode == 127 || keyCode == 224 || keyCode == 22 || keyCode == 17 || keyCode == 2 ||
 
-                 keyCode <= 37 || keyCode <= 39 || keyCode == 86 ||
+                 keyCode <= 37 || keyCode <= 39 || keyCode == 86 || keyCode == 67 ||
 
                  (keyCode >= 96 && keyCode <= 105)) && isShift == false) {
 
@@ -4189,6 +4189,7 @@
                 defaultDate: "+1w",
                 changeMonth: true,
                 numberOfMonths: 1,
+                beforeShowDay: $.datepicker.noWeekends,
                 minDate: dateToday
             });
         });
@@ -4198,6 +4199,7 @@
                 defaultDate: "+1w",
                 changeMonth: true,
                 numberOfMonths: 1,
+                beforeShowDay: $.datepicker.noWeekends,
                 minDate: dateToday
             });
         });
