@@ -309,7 +309,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
                             int update;
                             dstest = gl.test(lblord.Text.Trim(), AgencyId.Trim(), TaxAgencyType.Trim());
                             update = gl.Updatetaxauthoritiesdetails(lblord.Text.Trim(), taxidnew.Trim(), AgencyId.Trim());
-                        }                        
+                        }
                     }
                 }
             }
@@ -342,7 +342,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
             LblAgencyId1.Text = lb.Text;
             LblTaxID.Text = Server.HtmlDecode(row.Cells[6].Text.Trim());
 
-           
+
             //txtAuthorityname.Text = Server.HtmlDecode(row.Cells[2].Text.Trim());                                 
 
             GridView gvwnested = (GridView)gvTaxParcel.Rows[0].Cells[1].FindControl("gvOrders");
@@ -358,7 +358,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
             }
 
 
-            LinkButton lnktaxtype = (LinkButton)Childgrid.Rows[0].Cells[3].FindControl("lnkAgnecy");
+            LinkButton lnktaxtype = (LinkButton)Childgrid.Rows[index].Cells[3].FindControl("lnkAgnecy");
             taxagencytype = lnktaxtype.Text;
             txtTaxType.Text = taxagencytype;
 
@@ -850,30 +850,30 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
         {
             TextBox id = gvTaxParcel.Rows[e.RowIndex].FindControl("HdnId") as TextBox;
             HtmlInputHidden Id = gvTaxParcel.Rows[e.RowIndex].FindControl("HdnId") as HtmlInputHidden;
-
+            var taxid = gvTaxParcel.Rows[e.RowIndex].Cells[2].Text.ToString().Trim();
             var strValue = gvTaxParcel.Rows[e.RowIndex].Cells[1].Text.ToString().Trim();
-            int result = gl.update_taxparcel(strValue.ToString(), txtdrop.Value, txtTaxYear.Text, txtEndYear.Text);
-            if (result == 1)
-            {
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "txtexeSpecial();", true);
-                btntaxparcels.Enabled = true;
-                gvTaxParcel.EditIndex = -1;
-                fetchtaxparcel();
-                fetchtaxparceldetails();
-                txtdrop.Value = "";
-                txtTaxYear.Text = "";
-                txtEndYear.Text = "";
-                return;
-            }
-            else
-            {
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "txtexeSpecial();", true);
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "alertMessage", "alert('Data Not Updated')", true);
-                return;
-            }
+
+            gl.update_taxparcel(strValue.ToString(), txtdrop.Value, txtTaxYear.Text, txtEndYear.Text, taxid, lblord.Text);
+
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "txtexeSpecial();", true);
+            btntaxparcels.Enabled = true;
+            gvTaxParcel.EditIndex = -1;
+            fetchtaxparcel();
+            fetchtaxparceldetails();
+            txtdrop.Value = "";
+            txtTaxYear.Text = "";
+            txtEndYear.Text = "";
+            LblAgencyID.Text = "";
+            LblAgencyId1.Text = "";
+            LblTaxID.Text = "";
+            LblTaxId1.Text = "";
+            PnlTax.Visible = false;
         }
         catch (Exception ex)
         {
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "txtexeSpecial();", true);
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "alertMessage", "alert('Data Not Updated')", true);
+            return;
             throw ex;
         }
     }
@@ -2711,7 +2711,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
             exemptrelevy4.Attributes.Add("disabled", "false");
         }
 
-        if (payemntfrequency == "Tri-Annual" || payemntfrequency == "4")
+        if (payemntfrequency == "Quarterly" || payemntfrequency == "4")
         {
             SetTaxBillValue(delinq4.Value);
             instamount4.Attributes.Add("disabled", "false");
@@ -2736,19 +2736,20 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
             DateTime dt1 = DateTime.Now;
             string currentdate = dt1.ToShortDateString();
 
-            if (Convert.ToDateTime(test) == Convert.ToDateTime(currentdate))
+            if (Convert.ToDateTime(test) > Convert.ToDateTime(currentdate))
             {
                 taxbill.SelectedIndex = 1;
-            }
-            else if (Convert.ToDateTime(test) < Convert.ToDateTime(currentdate))
-            {
-                ClientScript.RegisterStartupScript(this.GetType(), "alertMessage", "alert('Delnquent date should not be less than current date')", true);
-                return;
             }
             else
             {
                 taxbill.SelectedIndex = 2;
             }
+            //else if (Convert.ToDateTime(test) > Convert.ToDateTime(currentdate))
+            //{
+            //    ClientScript.RegisterStartupScript(this.GetType(), "alertMessage", "alert('Delnquent date should not be less than current date')", true);
+            //    return;
+            //}
+
             //taxbill.Disabled = true;
         }
     }
