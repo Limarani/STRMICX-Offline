@@ -1337,8 +1337,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
                 gvExemption.Visible = true;
                 //ScriptManager.RegisterStartupScript(this, this.GetType(), "alertMessage", "alert('Data Saved Successfully')", true);
                 tblExestatus.Focus();
-                txtexetype.SelectedIndex = 0;
-                txtexeamount.Text = "";
+                clearexemptionfields();
                 return;
             }
             else
@@ -1366,8 +1365,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
         ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "txtexeSpecial();", true);
         gvExemption.EditIndex = -1;
         fetchexemptionsAll();
-        txtexetype.Text = "";
-        txtexeamount.Text = "";
+        clearexemptionfields();
     }
     protected void gvExemption_RowEditing(object sender, GridViewEditEventArgs e)
     {
@@ -1421,8 +1419,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
                     ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "txtexeSpecial();", true);
                     gvExemption.EditIndex = -1;
                     fetchexemptionsAll();
-                    txtexetype.SelectedIndex = 0;
-                    txtexeamount.Text = "";
+                    clearexemptionfields();
                 }
                 else
                 {
@@ -1514,18 +1511,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
                 fetchspecialAll();
                 tblSpecialstatus.Visible = true;
                 gvSpecial.Visible = true;
-                txtdescription.Text = "";
-                txtspecialassno.Text = "";
-                txtnoinstall.Text = "";
-                txtinstallpaid.Text = "";
-                txtInstallRemain.Text = "";
-                txtduedate.Text = "";
-                txtamountspecial.Text = "";
-                txtsperembal.Text = "";
-                txtspecdate.Text = "";
-                txtspecperdiem.Text = "";
-                txtspecpayee.Text = "";
-                txtspeccomments.Text = "";
+                clearSpecialAssementfields();
                 return;
             }
             else
@@ -1546,18 +1532,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
         ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "txtexeSpecial();", true);
         gvSpecial.EditIndex = -1;
         fetchspecialAll();
-        txtdescription.Text = "";
-        txtspecialassno.Text = "";
-        txtnoinstall.Text = "";
-        txtinstallpaid.Text = "";
-        txtInstallRemain.Text = "";
-        txtduedate.Text = "";
-        txtamountspecial.Text = "";
-        txtsperembal.Text = "";
-        txtspecdate.Text = "";
-        txtspecperdiem.Text = "";
-        txtspecpayee.Text = "";
-        txtspeccomments.Text = "";
+        clearSpecialAssementfields();
     }
     protected void gvSpecialAssessment_RowEditing(object sender, GridViewEditEventArgs e)
     {
@@ -1593,18 +1568,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
                     ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "txtexeSpecial();", true);
                     gvSpecial.EditIndex = -1;
                     fetchspecialAll();
-                    txtdescription.Text = "";
-                    txtspecialassno.Text = "";
-                    txtnoinstall.Text = "";
-                    txtinstallpaid.Text = "";
-                    txtInstallRemain.Text = "";
-                    txtduedate.Text = "";
-                    txtamountspecial.Text = "";
-                    txtsperembal.Text = "";
-                    txtspecdate.Text = "";
-                    txtspecperdiem.Text = "";
-                    txtspecpayee.Text = "";
-                    txtspeccomments.Text = "";
+                    clearSpecialAssementfields();
                     SpecialAdd.Enabled = true;
                     return;
                 }
@@ -1819,6 +1783,37 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
         txtaddpenAmnt.Text = "";
         txtPerdiem.Text = "";
         txtpenamtdue.Text = "";
+    }
+
+    private void clearexemptionfields()
+    {
+        txtexetype.SelectedIndex = 0;
+        txtexeamount.Text = "";
+    }
+
+    private void clearSpecialAssementfields()
+    {
+        txtdescription.Text = "";
+        txtspecialassno.Text = "";
+        txtnoinstall.Text = "";
+        txtinstallpaid.Text = "";
+        txtInstallRemain.Text = "";
+        txtduedate.Text = "";
+        txtamountspecial.Text = "";
+        txtsperembal.Text = "";
+        txtspecdate.Text = "";
+        txtspecperdiem.Text = "";
+        txtspecpayee.Text = "";
+        txtspeccomments.Text = "";
+    }
+
+    private void clearPriorDeliqfields()
+    {
+        txtpriodeli.Text = "";
+        txtpriorigamtdue.Text = "";
+        txtprideliqdate.Text = "";
+        txtpriamtpaid.Text = "";
+        txtprideliqcommts.Text = "";
     }
     protected void gvDeliquentStatus_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
     {
@@ -2353,11 +2348,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
                     fetchAllpriordelinquent();
                     tblSpecialstatus.Visible = true;
                     GrdPriordelinquent.Visible = true;
-                    txtpriodeli.Text = "";
-                    txtpriorigamtdue.Text = "";
-                    txtprideliqdate.Text = "";
-                    txtpriamtpaid.Text = "";
-                    txtprideliqcommts.Text = "";
+                    clearPriorDeliqfields();
                     return;
                 }
                 else
@@ -2417,11 +2408,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
         ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "txtexeSpecial();", true);
         GrdPriordelinquent.EditIndex = -1;
         fetchAllpriordelinquent();
-        txtpriodeli.Text = "";
-        txtpriorigamtdue.Text = "";
-        txtprideliqdate.Text = "";
-        txtpriamtpaid.Text = "";
-        txtprideliqcommts.Text = "";
+        clearPriorDeliqfields();
     }
 
 
@@ -2447,11 +2434,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
                         ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "txtexeSpecial();", true);
                         GrdPriordelinquent.EditIndex = -1;
                         fetchAllpriordelinquent();
-                        txtpriodeli.Text = "";
-                        txtpriorigamtdue.Text = "";
-                        txtprideliqdate.Text = "";
-                        txtpriamtpaid.Text = "";
-                        txtprideliqcommts.Text = "";
+                        clearPriorDeliqfields();
                         btnpriordelinquenttax.Enabled = true;
                         return;
                     }
@@ -2895,7 +2878,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
     {
         DataTable OUTPUT1 = new DataTable();
         int insert1 = 0;
-        insert1 = gl.insert_Addnotes(lblord.Text, txtnotes.InnerText.ToString(), "General Note", DateTime.Now.ToString("MM/dd/yyyy"), SessionHandler.UserName);
+        insert1 = gl.insert_Addnotes(lblord.Text, txtnotes.InnerText.ToString(), "General Note", DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss tt"), SessionHandler.UserName);
 
         if (insert1 == 1)
         {
