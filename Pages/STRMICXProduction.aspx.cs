@@ -342,8 +342,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
             LblAgencyId1.Text = lb.Text;
             LblTaxID.Text = Server.HtmlDecode(row.Cells[6].Text.Trim());
 
-            taxagencytype = Server.HtmlDecode(row.Cells[3].Text.Trim());
-
+           
             //txtAuthorityname.Text = Server.HtmlDecode(row.Cells[2].Text.Trim());                                 
 
             GridView gvwnested = (GridView)gvTaxParcel.Rows[0].Cells[1].FindControl("gvOrders");
