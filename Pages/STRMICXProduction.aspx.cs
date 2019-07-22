@@ -363,7 +363,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
             txtTaxType.Text = taxagencytype;
 
             row.BackColor = System.Drawing.Color.LightGreen;
-
+            
             LblAgencyID.Text = lb.Text;
             LblTaxId1.Text = Server.HtmlDecode(row.Cells[6].Text.Trim());
             dtfetchauthority = gl.FetchTaxAuthorityDetails(lblord.Text, LblTaxID.Text, LblAgencyID.Text, taxagencytype);
