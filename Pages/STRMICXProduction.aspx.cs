@@ -373,6 +373,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
             fetchspecialAll();
             fetchAllpriordelinquent();
             cleardelinquentfields();
+            fetchtaxparceldetails();
             if (dtfetchauthority.Rows.Count > 0)
             {
                 //contact information
@@ -2533,14 +2534,14 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
         query = "select count(AgencyId) as inputcount from tbl_taxauthorities2 where orderno = '" + lblord.Text + "'";
         DataSet inputcou = con.ExecuteQuery(query);
 
-        string icou = inputcou.Tables[0].Rows[0]["inputcount"].ToString();
+        string inpcou = inputcou.Tables[0].Rows[0]["inputcount"].ToString();
 
         query1 = "select count(authoritystatus) as outputcount from tbl_taxauthorities2 where orderno = '" + lblord.Text + "' and authoritystatus = '2' ";
         DataSet outputcou = con.ExecuteQuery(query1);
 
-        string ocou = outputcou.Tables[0].Rows[0]["outputcount"].ToString();
+        string oupcou = outputcou.Tables[0].Rows[0]["outputcount"].ToString();
 
-        if (icou == ocou)
+        if (inpcou == oupcou)
         {
             if (process == "KEY")
             {
@@ -2596,6 +2597,12 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
                 }
             }
         }
+
+        else
+        {
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "alertMessage", "alert('Complete Remaining Tax Details')", true);
+            return;
+        }
     }
 
     private DataSet UpdateProduction(string Procedurename)
@@ -2620,6 +2627,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
                 GridViewRow row = (GridViewRow)(((LinkButton)e.CommandSource).NamingContainer);
                 gl.DeleteGridOrders(row.Cells[0].Text.Trim());
                 fetchtaxparcel();
+                fetchtaxparceldetails();
                 PnlTax.Visible = false;
                 PnlTax1.Visible = false;
             }

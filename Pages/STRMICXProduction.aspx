@@ -312,10 +312,13 @@
         }
 
         function TaxparcelFunction() {
+            debugger;
             var taxparcelerror, taxyearerror, taxdroperror;
             taxparcelerror = document.getElementById("txtdrop").value;
             taxyearerror = document.getElementById("txtTaxYear").value;
             taxdroperror = document.getElementById("txtTaxNo").value;
+
+            var firstLetter = $("#txtTaxYear").val().charAt(0);
 
             if (taxparcelerror == "") {
                 document.getElementById('txtdrop').style.borderColor = "#ff0000";
@@ -324,7 +327,7 @@
             else if (taxparcelerror != "") {
                 document.getElementById('txtdrop').style.borderColor = "green";
                 document.getElementById('lbldrop').style.color = "green";
-            }
+            }           
             else {
                 document.getElementById('txtdrop').style.borderColor = "green";
                 document.getElementById('lbldrop').style.color = "green";
@@ -345,12 +348,12 @@
             }
 
 
-            if (taxyearerror == "") {
+            if (taxyearerror == "" ) {
                 document.getElementById('txtTaxYear').style.borderColor = "#ff0000";
                 document.getElementById("lblTaxYear").style.color = "#ff0000";
 
-            }
-            else if (taxyearerror != "") {
+            }           
+            else if (taxyearerror != "" ) {
                 document.getElementById('txtTaxYear').style.borderColor = "green";
                 document.getElementById('lblTaxYear').style.color = "green";
             }
@@ -375,7 +378,7 @@
 
             if (taxyearerror == "" || taxparcelerror == "" && document.getElementById("chkTBD").checked == false) {
                 return false;
-            }
+            }           
             else if (taxyearerror != "" || taxparcelerror != "") {
                 return true;
             }
@@ -2990,12 +2993,13 @@
         //});
 
         function checkReqFields1(year, element, ev) {
+            debugger;
             var startyear = document.getElementById("txtTaxYear").value;
             var errors = {
                 txtTaxYear: '',
                 txtEndYear: '',
             };
-
+                       
             if (year != "") {
                 if (year < startyear) {
                     alert("End Year should be greater than Start year");
@@ -3004,8 +3008,8 @@
                 }
             }
         }
-        function checkReqFields(year, element, ev) {
-            var startyear = document.getElementById("txtEndYear").value;
+        function checkReqFields(year, element, ev) {           
+            var startyear = document.getElementById("txtEndYear").value;            
             var errors = {
                 txtTaxYear: '',
                 txtEndYear: '',
