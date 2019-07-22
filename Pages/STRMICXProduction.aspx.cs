@@ -779,6 +779,8 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
                 //    instdate4 = instdate4.AddYears(1);
                 //    nextbilldate1.Value = instdate4.ToString("MM/dd/yyyy");
                 //}
+
+                paymentfreq(dtfetchauthority.Rows[0]["TaxFrequency"].ToString());
             }
 
             DataSet dstest = new DataSet();
@@ -801,7 +803,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
             }
         }
 
-        paymentfreq(paymentfrequency.Value);
+       
         ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "txtexeSpecial();", true);
     }
 
@@ -824,6 +826,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
         ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "txtexeSpecial();", true);
         gvTaxParcel.EditIndex = -1;
         fetchtaxparcel();
+        fetchtaxparceldetails();
         txtdrop.Value = "";
         txtTaxYear.Text = "";
         txtEndYear.Text = "";
@@ -991,6 +994,10 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
 
         if (GVCommand == "selectpardelete")
         {
+            txtTaxYear.Text = "";
+            txtEndYear.Text = "";
+            chkTBD.Checked = false;
+            gvTaxParcel.EditIndex = -1;
             ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "txtexeSpecial();", true);
             string Item_ID = (e.CommandArgument).ToString();
             GridViewRow row = (GridViewRow)(((LinkButton)e.CommandSource).NamingContainer);
@@ -1005,6 +1012,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
             fetchtaxparceldetails();
             PnlTax.Visible = false;
             PnlTax1.Visible = false;
+           
             ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "txtexeSpecial();", true);
         }
         if (GVCommand == "selectaddauthor")
@@ -1206,6 +1214,13 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
         query = "select orderno,taxid,taxyear,endyear from tbl_taxparcel where taxid = '" + txtdrop.Value + "' and status = 'M' ";
         DataSet ds = gl.ExecuteQuery(query);
 
+        string countCD = gl.ExecuteScalarst("select count(taxid) from tbl_taxparcel where taxid = '" + txtdrop.Value + "' and orderno='" + lblord.Text + "' and status = 'CD'");
+        if (countCD == "1")
+        {
+            query = "update tbl_taxparcel set status='C'  where taxid = '" + txtdrop.Value + "' and status = 'CD' and orderno='" + lblord.Text + "' ";
+            gl.ExecuteQuery(query);
+        }
+
         if (txtdrop.Value != "" || txtTaxYear.Text != "" || txtEndYear.Text != "")
         {
             if (ds.Tables[0].Rows.Count == 0)
@@ -1216,9 +1231,14 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
                 }
                 else if (chkEst.Checked == false && chkTBD.Checked == false)
                 {
+
                     if (txtdrop.Value != "--Select--")
                     {
-                        insert = gl.insert_taxparcel(lblord.Text, txtdrop.Value, txtTaxYear.Text, txtEndYear.Text, "M");
+                        string countCDD = gl.ExecuteScalarst("select count(taxid) from tbl_taxparcel where taxid = '" + txtdrop.Value + "' and orderno='" + lblord.Text + "' and status = 'C'");
+                        if (countCDD == "0")
+                        {
+                            insert = gl.insert_taxparcel(lblord.Text, txtdrop.Value, txtTaxYear.Text, txtEndYear.Text, "M");
+                        }
                     }
                     else
                     {
@@ -1226,6 +1246,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
                         return;
                     }
                 }
+
                 else if (chkTBD.Checked == true && chkEst.Checked == false)
                 {
                     query = "select orderno,taxid,taxyear,endyear from tbl_taxparcel where orderno = '" + lblord.Text + "' and taxid = 'TBD' and (status = 'M' or status = 'C')";
@@ -1261,6 +1282,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
                 txtdrop.Value = "";
                 txtTaxYear.Text = "";
                 txtEndYear.Text = "";
+                chkTBD.Checked = false;
             }
 
             else
@@ -2608,9 +2630,10 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
         hid_Ticker.Value = TimeSpan.Parse(hid_Ticker.Value).Add(new TimeSpan(0, 0, 1)).ToString();
         lit_Timer.Text = hid_Ticker.Value.ToString();
     }
-    //madesh
+    //madesh1
     protected void btnOrders_RowCommand(object sender, GridViewCommandEventArgs e)
     {
+
         string GVCommand = e.CommandName.ToString();
         if (GVCommand == "DeleteOrders")
         {
@@ -2697,15 +2720,15 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
         if (payemntfrequency == "Quarterly" || payemntfrequency == "4")
         {
             SetTaxBillValue(delinq4.Value);
-            instamount4.Attributes.Add("disabled", "false");
-            instamountpaid4.Attributes.Add("disabled", "false");
-            instpaiddue4.Attributes.Add("disabled", "false");
-            remainingbalance4.Attributes.Add("disabled", "false");
-            instdate4.Attributes.Add("disabled", "false");
-            delinq4.Attributes.Add("disabled", "false");
-            discamt4.Attributes.Add("disabled", "false");
-            discdate4.Attributes.Add("disabled", "false");
-            exemptrelevy4.Attributes.Add("disabled", "false");
+            //instamount4.Attributes.Add("disabled", "false");
+            //instamountpaid4.Attributes.Add("disabled", "false");
+            //instpaiddue4.Attributes.Add("disabled", "false");
+            //remainingbalance4.Attributes.Add("disabled", "false");
+            //instdate4.Attributes.Add("disabled", "false");
+            //delinq4.Attributes.Add("disabled", "false");
+            //discamt4.Attributes.Add("disabled", "false");
+            //discdate4.Attributes.Add("disabled", "false");
+            //exemptrelevy4.Attributes.Add("disabled", "false");
         }
 
 
@@ -2783,6 +2806,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
         }
         txtTaxType.Text = mdftaxtype;
         fetchtaxparcel();
+        fetchtaxparceldetails();
     }
 
     protected void lnkAgnecy_Click(object sender, EventArgs e)
