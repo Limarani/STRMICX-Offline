@@ -16644,7 +16644,7 @@ public class GlobalClass : myConnection
 
 
 
-    public int DeleteGridOrders(string id)
+    public void DeleteGridOrders(string id)
     {
         try
         {
@@ -16653,7 +16653,7 @@ public class GlobalClass : myConnection
             mParam[0] = new MySqlParameter("?$Id", id);
             mParam[0].MySqlDbType = MySqlDbType.VarChar;
 
-            return ExecuteSPNonQuery("sp_delete_orders", true, mParam);
+           ExecuteSPNonQuery("sp_delete_orders", true, mParam);
         }
         catch (Exception ex)
         {
@@ -16661,9 +16661,9 @@ public class GlobalClass : myConnection
         }
     }
 
-    public int insert_Exemptions(string orderno, string taxidnumber, string agencyid, string exetype, string exeamount)
+    public int insert_Exemptions(string orderno, string taxidnumber, string agencyid, string exetype, string exeamount, string taxtype)
     {
-        mParam = new MySqlParameter[5];
+        mParam = new MySqlParameter[6];
 
         mParam[0] = new MySqlParameter("$orderno", orderno);
         mParam[0].MySqlDbType = MySqlDbType.VarChar;
@@ -16675,6 +16675,8 @@ public class GlobalClass : myConnection
         mParam[3].MySqlDbType = MySqlDbType.VarChar;
         mParam[4] = new MySqlParameter("$exemptionamount", exeamount);
         mParam[4].MySqlDbType = MySqlDbType.VarChar;
+        mParam[5] = new MySqlParameter("$taxtype", taxtype);
+        mParam[5].MySqlDbType = MySqlDbType.VarChar;
         return ExecuteSPNonQuery("Sp_insert_exemption_taxauthority", true, mParam);
     }
     public int update_Exemptions(string id, string orderno, string taxidnumber, string agencyid, string exetype, string exeamount)
@@ -16731,9 +16733,9 @@ public class GlobalClass : myConnection
             throw ex;
         }
     }
-    public int insert_SpecialAssessment(string orderno, string taxidnumber, string agencyid, string description, string specialassessmentno, string noofinstallment, string installmentpaid, string installmentremaining, string duedate, string amount, string remainingbalance, string goodthroughdate, string perdiem, string payee, string comments)
+    public int insert_SpecialAssessment(string orderno, string taxidnumber, string agencyid, string description, string specialassessmentno, string noofinstallment, string installmentpaid, string installmentremaining, string duedate, string amount, string remainingbalance, string goodthroughdate, string perdiem, string payee, string comments, string taxtype)
     {
-        mParam = new MySqlParameter[15];
+        mParam = new MySqlParameter[16];
 
         mParam[0] = new MySqlParameter("$orderno", orderno);
         mParam[0].MySqlDbType = MySqlDbType.VarChar;
@@ -16765,6 +16767,8 @@ public class GlobalClass : myConnection
         mParam[13].MySqlDbType = MySqlDbType.VarChar;
         mParam[14] = new MySqlParameter("$Comments", comments);
         mParam[14].MySqlDbType = MySqlDbType.VarChar;
+        mParam[15] = new MySqlParameter("$taxtype", taxtype);
+        mParam[15].MySqlDbType = MySqlDbType.VarChar;
         return ExecuteSPNonQuery("sp_insert_specialassessment_authority", true, mParam);
     }
     public int update_SpecialAssessment(int id, string taxidnumber, string agencyid, string description, string specialassessmentno, string noofinstallment, string installmentpaid, string amount)
@@ -16857,9 +16861,9 @@ public class GlobalClass : myConnection
 
     public int insert_DeliquentStatus(string orderno, string taxidnumber, string agencyid, string payee, string address, string city,
          string state, string zip, string deliquenttaxyear, string payoffamount, string comments, string goodthuruDate, string installmentduedate,
-         string taxsalenotapplicable, string dateofTaxsale, string lastdaytoredeem, string BaseAmountDue, string RollOverDate, string PenaltyAmount, string PenaltyAmountFrequency, string AdditionalPenaltyAmount, string PerDiem, string PenaltyDueDate)
+         string taxsalenotapplicable, string dateofTaxsale, string lastdaytoredeem, string BaseAmountDue, string RollOverDate, string PenaltyAmount, string PenaltyAmountFrequency, string AdditionalPenaltyAmount, string PerDiem, string PenaltyDueDate, string taxtype)
     {
-        mParam = new MySqlParameter[23];
+        mParam = new MySqlParameter[24];
 
         mParam[0] = new MySqlParameter("$orderno", orderno);
         mParam[0].MySqlDbType = MySqlDbType.VarChar;
@@ -16907,6 +16911,8 @@ public class GlobalClass : myConnection
         mParam[21].MySqlDbType = MySqlDbType.VarChar;
         mParam[22] = new MySqlParameter("$PenaltyDueDate", PenaltyDueDate);
         mParam[22].MySqlDbType = MySqlDbType.VarChar;
+        mParam[23] = new MySqlParameter("$taxtype", taxtype);
+        mParam[23].MySqlDbType = MySqlDbType.VarChar;
 
         return ExecuteSPNonQuery("Sp_insert_Delinquent", true, mParam);
     }
@@ -17455,9 +17461,9 @@ public class GlobalClass : myConnection
 
 
 
-    public int insert_priordelinquent(string orderno, string taxidnumber, string agencyid, string delinquenttaxyear, string originalamountdue, string originaldelinquencydate, string amountpaid, string delinquencycomments)
+    public int insert_priordelinquent(string orderno, string taxidnumber, string agencyid, string delinquenttaxyear, string originalamountdue, string originaldelinquencydate, string amountpaid, string delinquencycomments, string taxtype)
     {
-        mParam = new MySqlParameter[8];
+        mParam = new MySqlParameter[9];
 
         mParam[0] = new MySqlParameter("$orderno", orderno);
         mParam[0].MySqlDbType = MySqlDbType.VarChar;
@@ -17475,7 +17481,9 @@ public class GlobalClass : myConnection
         mParam[6].MySqlDbType = MySqlDbType.VarChar;
         mParam[7] = new MySqlParameter("$delinquencycomments", delinquencycomments);
         mParam[7].MySqlDbType = MySqlDbType.VarChar;
-               
+        mParam[8] = new MySqlParameter("$taxtype", taxtype);
+        mParam[8].MySqlDbType = MySqlDbType.VarChar;
+
         return ExecuteSPNonQuery("Sp_insert_pridelinq", true, mParam);
     }
 

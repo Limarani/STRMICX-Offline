@@ -316,6 +316,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
         }
         gvTaxParcel.Focus();
         fetchtaxparcel();
+        fetchtaxparceldetails();
     }
     private void checkagencydetails(string AgencyId)
     {
@@ -1325,7 +1326,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
         }
         else
         {
-            insertexe = gl.insert_Exemptions(lblord.Text, LblTaxId1.Text.ToString(), LblAgencyId1.Text.ToString(), txtexetype.Text, txtexeamount.Text);
+            insertexe = gl.insert_Exemptions(lblord.Text, LblTaxId1.Text.ToString(), LblAgencyId1.Text.ToString(), txtexetype.Text, txtexeamount.Text, txtTaxType.Text);
             if (insertexe == 1)
             {
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "txtexeSpecial();", true);
@@ -1499,7 +1500,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
         }
         else
         {
-            insertspecial = gl.insert_SpecialAssessment(lblord.Text, LblTaxId1.Text.ToString(), LblAgencyId1.Text.ToString(), txtdescription.Text, txtspecialassno.Text, txtnoinstall.Text, txtinstallpaid.Text, txtInstallRemain.Text, txtduedate.Text, txtamountspecial.Text, txtsperembal.Text, txtspecdate.Text, txtspecperdiem.Text, txtspecpayee.Text, txtspeccomments.Text);
+            insertspecial = gl.insert_SpecialAssessment(lblord.Text, LblTaxId1.Text.ToString(), LblAgencyId1.Text.ToString(), txtdescription.Text, txtspecialassno.Text, txtnoinstall.Text, txtinstallpaid.Text, txtInstallRemain.Text, txtduedate.Text, txtamountspecial.Text, txtsperembal.Text, txtspecdate.Text, txtspecperdiem.Text, txtspecpayee.Text, txtspeccomments.Text, txtTaxType.Text);
             if (insertspecial == 1)
             {
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "txtexeSpecial();", true);
@@ -1724,7 +1725,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
             if (txtdeliPayee.Text != "" && txtdelitAddress.Text != "" && txtdelitCity.Text != "" && txtdelitState.Text != "" && txtdelitzip.Text != "" && txtdelitaxyear.Text != "" && txtpayoffamount.Text != "" && txtpayoffgood.Text != "" && txtinitialinstall.Text != "")
             {
                 insertdelinquent = gl.insert_DeliquentStatus(lblord.Text, LblTaxId1.Text.ToString(), LblAgencyId1.Text.ToString(), txtdeliPayee.Text, txtdelitAddress.Text, txtdelitCity.Text,
-                txtdelitState.Text, txtdelitzip.Text, txtdelitaxyear.Text, txtpayoffamount.Text, txtdelitcomment.InnerText, txtpayoffgood.Text, txtinitialinstall.Text, txtnotapplicable.Text, txtdatetaxsale.Text, txtlastdayred.Text, txtbaseamntdue.Text, txtrolloverdate.Text, txtpenlatyamt.Text, txtpencalfre.SelectedValue, txtaddpenAmnt.Text, txtPerdiem.Text, txtpenamtdue.Text);
+                txtdelitState.Text, txtdelitzip.Text, txtdelitaxyear.Text, txtpayoffamount.Text, txtdelitcomment.InnerText, txtpayoffgood.Text, txtinitialinstall.Text, txtnotapplicable.Text, txtdatetaxsale.Text, txtlastdayred.Text, txtbaseamntdue.Text, txtrolloverdate.Text, txtpenlatyamt.Text, txtpencalfre.SelectedValue, txtaddpenAmnt.Text, txtPerdiem.Text, txtpenamtdue.Text, txtTaxType.Text);
                 if (insertdelinquent == 1)
                 {
                     ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "txtexeSpecial();", true);
@@ -2337,7 +2338,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
         {
             if (txtpriodeli.Text != "" && txtpriorigamtdue.Text != "" && txtprideliqdate.Text != "" && txtpriamtpaid.Text != "" && txtprideliqcommts.Text != "")
             {
-                insertprior = gl.insert_priordelinquent(lblord.Text, LblTaxId1.Text.ToString(), LblAgencyId1.Text.ToString(), txtpriodeli.Text, txtpriorigamtdue.Text, txtprideliqdate.Text, txtpriamtpaid.Text, txtprideliqcommts.Text);
+                insertprior = gl.insert_priordelinquent(lblord.Text, LblTaxId1.Text.ToString(), LblAgencyId1.Text.ToString(), txtpriodeli.Text, txtpriorigamtdue.Text, txtprideliqdate.Text, txtpriamtpaid.Text, txtprideliqcommts.Text, txtTaxType.Text);
                 if (insertprior == 1)
                 {
                     ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "txtexeSpecial();", true);
@@ -2607,24 +2608,23 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
         hid_Ticker.Value = TimeSpan.Parse(hid_Ticker.Value).Add(new TimeSpan(0, 0, 1)).ToString();
         lit_Timer.Text = hid_Ticker.Value.ToString();
     }
-
+    //madesh
     protected void btnOrders_RowCommand(object sender, GridViewCommandEventArgs e)
     {
         string GVCommand = e.CommandName.ToString();
         if (GVCommand == "DeleteOrders")
         {
-            string Item_ID = (e.CommandArgument).ToString();
-            GridViewRow row = (GridViewRow)(((LinkButton)e.CommandSource).NamingContainer);
-            int result = gl.DeleteGridOrders(row.Cells[0].Text.Trim());
-            if (result == 1)
+            try
             {
+                string Item_ID = (e.CommandArgument).ToString();
+                GridViewRow row = (GridViewRow)(((LinkButton)e.CommandSource).NamingContainer);
+                gl.DeleteGridOrders(row.Cells[0].Text.Trim());
                 fetchtaxparcel();
                 PnlTax.Visible = false;
                 PnlTax1.Visible = false;
             }
-            else
-            {
-                fetchtaxparcel();
+            catch(Exception ex)
+            {                
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "alertMessage", "alert('Record Not Deleted')", true);
                 return;
             }
