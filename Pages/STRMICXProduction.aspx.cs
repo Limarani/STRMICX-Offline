@@ -1322,9 +1322,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
             {
                 if (chkEst.Checked == true && chkTBD.Checked == false)
                 {
-
-                    insert = gl.insert_taxparcel(lblord.Text, txtdrop.Value, txtTaxYear.Text + "EST", txtEndYear.Text, "M");
-                    
+                    insert = gl.insert_taxparcel(lblord.Text, txtdrop.Value, txtTaxYear.Text + "EST", txtEndYear.Text, "M", "false", "true");                    
                 }
                 else if (chkEst.Checked == false && chkTBD.Checked == false)
                 {
@@ -1334,8 +1332,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
                         string countCDD = gl.ExecuteScalarst("select count(taxid) from tbl_taxparcel where taxid = '" + txtdrop.Value + "' and orderno='" + lblord.Text + "' and status = 'C'");
                         if (countCDD == "0")
                         {
-                            insert = gl.insert_taxparcel(lblord.Text, txtdrop.Value, txtTaxYear.Text, txtEndYear.Text, "M");
-                           
+                            insert = gl.insert_taxparcel(lblord.Text, txtdrop.Value, txtTaxYear.Text, txtEndYear.Text, "M", "false", "false");                           
                         }
                     }
                     else
@@ -1355,7 +1352,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
 
                     if (ds1.Tables[0].Rows.Count == 0)
                     {
-                        insert = gl.insert_taxparcel(lblord.Text, "TBD", txtTaxYear.Text, txtEndYear.Text, "M");
+                        insert = gl.insert_taxparcel(lblord.Text, "TBD", txtTaxYear.Text, txtEndYear.Text, "M", "true", "false");
                         gl.ExecuteQuery("update tbl_taxparcel set comments='CR' where taxid = 'TBD' and orderno='" + lblord.Text + "'");
                     }
                     else
@@ -1374,7 +1371,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
 
                     if (ds1.Tables[0].Rows.Count == 0)
                     {
-                        insert = gl.insert_taxparcel(lblord.Text, "TBD", txtTaxYear.Text + "EST", txtEndYear.Text, "M");
+                        insert = gl.insert_taxparcel(lblord.Text, "TBD", txtTaxYear.Text + "EST", txtEndYear.Text, "M", "true", "true");
                         gl.ExecuteQuery("update tbl_taxparcel set comments='CR' where taxid = 'TBD' and orderno='" + lblord.Text + "'");
                     }
                     else
@@ -2837,7 +2834,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
             exemptrelevy4.Attributes.Add("disabled", "false");
         }
 
-        if (payemntfrequency == "Quarterly" || payemntfrequency == "4")
+        if (payemntfrequency == "Quarterly" || payemntfrequency == "3")
         {
             SetTaxBillValue(delinq4.Value);
             //instamount4.Attributes.Add("disabled", "false");
