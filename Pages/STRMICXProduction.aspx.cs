@@ -916,6 +916,8 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
         txtdrop.Value = "";
         txtTaxYear.Text = "";
         txtEndYear.Text = "";
+        chkTBD.Checked = false;
+        chkEst.Checked = false;
         btntaxparcels.Enabled = true;
     }
 
@@ -944,14 +946,22 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
             var taxid = gvTaxParcel.Rows[e.RowIndex].Cells[2].Text.ToString().Trim();
             var strValue = gvTaxParcel.Rows[e.RowIndex].Cells[1].Text.ToString().Trim();
 
-            if (chkEst.Checked == true)
+            if (chkTBD.Checked == false && chkEst.Checked == true)
             {
-                gl.update_taxparcel(strValue.ToString(), txtdrop.Value, txtTaxYear.Text + "EST", txtEndYear.Text, taxid, lblord.Text);
+                gl.update_taxparcel(strValue.ToString(), txtdrop.Value, txtTaxYear.Text + "EST", txtEndYear.Text, taxid, lblord.Text,"false","true");
             }
-            else if (chkEst.Checked == false)
+            else if (chkTBD.Checked == true && chkEst.Checked == false)
             {
-                gl.update_taxparcel(strValue.ToString(), txtdrop.Value, txtTaxYear.Text, txtEndYear.Text, taxid, lblord.Text);                
-            }                                              
+                gl.update_taxparcel(strValue.ToString(), "TBD", txtTaxYear.Text, txtEndYear.Text, taxid, lblord.Text, "true", "false");
+            }  
+            else if (chkTBD.Checked == true && chkEst.Checked == true)
+            {
+                gl.update_taxparcel(strValue.ToString(), "TBD", txtTaxYear.Text + "EST", txtEndYear.Text, taxid, lblord.Text, "true", "true");
+            }
+            else if (chkTBD.Checked == false && chkEst.Checked == false)
+            {
+                gl.update_taxparcel(strValue.ToString(), txtdrop.Value, txtTaxYear.Text, txtEndYear.Text, taxid, lblord.Text, "false", "false");
+            }
 
             ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "txtexeSpecial();", true);
             btntaxparcels.Enabled = true;
@@ -1067,7 +1077,8 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
     protected void btnTaxParcelModal_RowCommand(object sender, GridViewCommandEventArgs e)
     {
         string GVCommand = e.CommandName.ToLower();
-
+        string tbd = "";
+        string estimate = "";
         if (GVCommand == "edit")
         {
             fetchtaxparceldetails();
@@ -1077,6 +1088,24 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
             txtdrop.Value = Server.HtmlDecode(row.Cells[2].Text.Trim());
             txtTaxYear.Text = Server.HtmlDecode(row.Cells[3].Text.Trim());                        
             txtEndYear.Text = Server.HtmlDecode(row.Cells[4].Text.Trim());
+            tbd = Server.HtmlDecode(row.Cells[5].Text.Trim());
+            if (tbd == "true")
+            {
+                chkTBD.Checked = true;
+            }
+            else if (tbd == "false")
+            {
+                chkTBD.Checked = false;
+            }             
+            estimate = Server.HtmlDecode(row.Cells[6].Text.Trim());
+            if (estimate == "true")
+            {
+                chkEst.Checked = true;
+            }
+            else if (estimate == "false")
+            {
+                chkEst.Checked = false;
+            }
             LinkButton lnkedit = (LinkButton)gvTaxParcel.Rows[rowIndex].FindControl("LnkEdit");
             btntaxparcels.Enabled = false;
             lnkedit.CommandName = "Update";
@@ -1390,6 +1419,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
                 txtTaxYear.Text = "";
                 txtEndYear.Text = "";
                 chkTBD.Checked = false;
+                chkEst.Checked = false;
             }
 
             else

@@ -16553,9 +16553,9 @@ public class GlobalClass : myConnection
         mParam[6].MySqlDbType = MySqlDbType.VarChar;
         return ExecuteSPNonQuery("Sp_insert_taxparcel", true, mParam);
     }
-    public void update_taxparcel(string id, string taxidnumber, string taxyear, string endyear,string taxid_input,string orderno)
+    public void update_taxparcel(string id, string taxidnumber, string taxyear, string endyear,string taxid_input,string orderno, string tbd, string est)
     {
-        mParam = new MySqlParameter[6];
+        mParam = new MySqlParameter[8];
 
         mParam[0] = new MySqlParameter("$Id", id);
         mParam[0].MySqlDbType = MySqlDbType.VarChar;
@@ -16568,8 +16568,11 @@ public class GlobalClass : myConnection
         mParam[4] = new MySqlParameter("$taxid_input", taxid_input);
         mParam[4].MySqlDbType = MySqlDbType.VarChar;
         mParam[5] = new MySqlParameter("$orderno", orderno);
-        mParam[5].MySqlDbType = MySqlDbType.VarChar;
-
+        mParam[5].MySqlDbType = MySqlDbType.VarChar;        
+        mParam[6] = new MySqlParameter("$tbd", tbd);
+        mParam[6].MySqlDbType = MySqlDbType.VarChar;
+        mParam[7] = new MySqlParameter("$est", est);
+        mParam[7].MySqlDbType = MySqlDbType.VarChar;
         ExecuteSPNonQuery("Sp_update_tax_parcel", true, mParam);
     }
 
