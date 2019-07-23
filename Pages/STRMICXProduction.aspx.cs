@@ -247,7 +247,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
     }
 
 
-
+    //balaji
     protected void btnaddauthority_Click(object sender, EventArgs e)
     {
         ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "txtexeSpecial();", true);
@@ -1298,13 +1298,13 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
         int insert = 0;
         string query = "";
 
-        query = "select orderno,taxid,taxyear,endyear from tbl_taxparcel where taxid = '" + txtdrop.Value + "' and status = 'M' and orderno='" + lblord.Text + "' ";
+        query = "select orderno,taxid,taxyear,endyear from tbl_taxparcel where taxid = '" + txtdrop.Value + "' and (status = 'M' or status = 'C') and orderno='" + lblord.Text + "' ";
         DataSet ds = gl.ExecuteQuery(query);
 
         string countCD = gl.ExecuteScalarst("select count(taxid) from tbl_taxparcel where taxid = '" + txtdrop.Value + "' and orderno='" + lblord.Text + "' and status = 'CD'");
         if (countCD == "1")
         {
-            query = "update tbl_taxparcel set status='C'  where taxid = '" + txtdrop.Value + "' and status = 'CD' and orderno='" + lblord.Text + "' ";
+            query = "update tbl_taxparcel set status='C', taxyear = '" + txtTaxYear.Text + "', endyear= '" + txtEndYear.Text + "'  where taxid = '" + txtdrop.Value + "' and status = 'CD' and orderno='" + lblord.Text + "' ";
             gl.ExecuteQuery(query);
         }
 
@@ -1333,6 +1333,8 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
                     else
                     {
                         ScriptManager.RegisterStartupScript(this, this.GetType(), "alertMessage", "alert('Enter TaxId Number')", true);
+                        fetchtaxparcel();
+                        fetchtaxparceldetails();
                         return;
                     }
                 }
@@ -1350,6 +1352,8 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
                     else
                     {
                         ScriptManager.RegisterStartupScript(this, this.GetType(), "alertMessage", "alert('TaxId Number Already Exists')", true);
+                        fetchtaxparcel();
+                        fetchtaxparceldetails();
                         return;
                     }
                 }
@@ -1366,6 +1370,8 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
                     else
                     {
                         ScriptManager.RegisterStartupScript(this, this.GetType(), "alertMessage", "alert('TaxId Number Already Exists')", true);
+                        fetchtaxparcel();
+                        fetchtaxparceldetails();
                         return;
                     }
                 }
@@ -1381,6 +1387,8 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
             else
             {
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "alertMessage", "alert('TaxId Number Already Exists')", true);
+                fetchtaxparcel();
+                fetchtaxparceldetails();
                 return;
             }
         }
