@@ -914,6 +914,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
         txtdrop.Value = "";
         txtTaxYear.Text = "";
         txtEndYear.Text = "";
+        btntaxparcels.Enabled = true;
     }
 
     protected void gvTaxParcel_RowEditing(object sender, GridViewEditEventArgs e)
@@ -1330,6 +1331,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
                     }
                     else
                     {
+                       
                         ScriptManager.RegisterStartupScript(this, this.GetType(), "alertMessage", "alert('Enter TaxId Number')", true);
                         return;
                     }
@@ -1347,6 +1349,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
                     }
                     else
                     {
+                       
                         ScriptManager.RegisterStartupScript(this, this.GetType(), "alertMessage", "alert('TaxId Number Already Exists')", true);
                         return;
                     }
@@ -1363,6 +1366,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
                     }
                     else
                     {
+                       
                         ScriptManager.RegisterStartupScript(this, this.GetType(), "alertMessage", "alert('TaxId Number Already Exists')", true);
                         return;
                     }
@@ -1378,6 +1382,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
 
             else
             {
+                
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "alertMessage", "alert('TaxId Number Already Exists')", true);
                 return;
             }
