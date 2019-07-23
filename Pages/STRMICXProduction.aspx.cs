@@ -941,6 +941,17 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
     {
         try
         {
+            string estEnd = "", estStart = "";
+            if (txtEndYear.Text != "")
+            {
+                if (!txtEndYear.Text.Contains("EST"))
+                    estEnd = "EST";
+            }
+            else
+            {
+                if (!txtTaxYear.Text.Contains("EST"))
+                    estStart = "EST";
+            }
             TextBox id = gvTaxParcel.Rows[e.RowIndex].FindControl("HdnId") as TextBox;
             HtmlInputHidden Id = gvTaxParcel.Rows[e.RowIndex].FindControl("HdnId") as HtmlInputHidden;
             var taxid = gvTaxParcel.Rows[e.RowIndex].Cells[2].Text.ToString().Trim();
@@ -948,7 +959,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
 
             if (chkTBD.Checked == false && chkEst.Checked == true)
             {
-                gl.update_taxparcel(strValue.ToString(), txtdrop.Value, txtTaxYear.Text + "EST", txtEndYear.Text, taxid, lblord.Text,"false","true");
+                gl.update_taxparcel(strValue.ToString(), txtdrop.Value, txtTaxYear.Text + estStart, txtEndYear.Text + estEnd, taxid, lblord.Text, "false", "true");
             }
             else if (chkTBD.Checked == true && chkEst.Checked == false)
             {
@@ -956,7 +967,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
             }  
             else if (chkTBD.Checked == true && chkEst.Checked == true)
             {
-                gl.update_taxparcel(strValue.ToString(), "TBD", txtTaxYear.Text + "EST", txtEndYear.Text, taxid, lblord.Text, "true", "true");
+                gl.update_taxparcel(strValue.ToString(), "TBD", txtTaxYear.Text + estStart, txtEndYear.Text + estEnd, taxid, lblord.Text, "true", "true");
             }
             else if (chkTBD.Checked == false && chkEst.Checked == false)
             {
@@ -976,6 +987,8 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
             LblTaxID.Text = "";
             LblTaxId1.Text = "";
             PnlTax.Visible = false;
+            chkTBD.Checked = false;
+            chkEst.Checked = false;
         }
         catch (Exception ex)
         {
