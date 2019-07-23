@@ -103,6 +103,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
             Lblusername.Text = SessionHandler.UserName;
             fetchtaxparceldetails();
             Prior.Visible = false;
+            deliexemspecial.Visible = false;
         }
     }
 
@@ -373,7 +374,8 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
             fetchspecialAll();
             fetchAllpriordelinquent();
             cleardelinquentfields();
-            fetchtaxparceldetails();            
+            fetchtaxparceldetails();
+            deliexemspecial.Visible = true;
             if (dtfetchauthority.Rows.Count > 0)
             {
                 //contact information
