@@ -17660,6 +17660,83 @@ public class GlobalClass : myConnection
         return dt;
     }
 
+    public DataTable FetchdelinquentNew(string orderno, string taxid, string agencyid, string taxtype)
+    {
+        DataTable dt = new DataTable();
+        string query = "Sp_fetch_delinquent_new";
+        mParam = new MySqlParameter[4];
+        mParam[0] = new MySqlParameter("?$orderno", orderno);
+        mParam[0].MySqlDbType = MySqlDbType.VarChar;
+        mParam[1] = new MySqlParameter("?$taxid", taxid);
+        mParam[1].MySqlDbType = MySqlDbType.VarChar;
+        mParam[2] = new MySqlParameter("?$agencyid", agencyid);
+        mParam[2].MySqlDbType = MySqlDbType.VarChar;
+        mParam[3] = new MySqlParameter("?$taxtype", taxtype);
+        mParam[3].MySqlDbType = MySqlDbType.VarChar;
+
+        mDa = con.ExecuteSPAdapter(query, true, mParam);
+        mDa.Fill(dt);
+        return dt;
+    }
+
+    public DataTable FetchExemptionNew(string orderno, string taxid, string agencyid, string taxtype)
+    {
+        DataTable dt = new DataTable();
+        string query = "Sp_fetch_exemption_new";
+        mParam = new MySqlParameter[4];
+        mParam[0] = new MySqlParameter("?$orderno", orderno);
+        mParam[0].MySqlDbType = MySqlDbType.VarChar;
+        mParam[1] = new MySqlParameter("?$taxid", taxid);
+        mParam[1].MySqlDbType = MySqlDbType.VarChar;
+        mParam[2] = new MySqlParameter("?$agencyid", agencyid);
+        mParam[2].MySqlDbType = MySqlDbType.VarChar;
+        mParam[3] = new MySqlParameter("?$taxtype", taxtype);
+        mParam[3].MySqlDbType = MySqlDbType.VarChar;
+        
+        mDa = con.ExecuteSPAdapter(query, true, mParam);
+        mDa.Fill(dt);
+        return dt;
+    }
+
+
+    public DataTable FetchSpecialAssessmentNew(string orderno, string taxid, string agencyid, string taxtype)
+    {
+        DataTable dt = new DataTable();
+        string query = "Sp_fetch_specialassessment_new";
+        mParam = new MySqlParameter[4];
+        mParam[0] = new MySqlParameter("?$orderno", orderno);
+        mParam[0].MySqlDbType = MySqlDbType.VarChar;
+        mParam[1] = new MySqlParameter("?$taxid", taxid);
+        mParam[1].MySqlDbType = MySqlDbType.VarChar;
+        mParam[2] = new MySqlParameter("?$agencyid", agencyid);
+        mParam[2].MySqlDbType = MySqlDbType.VarChar;
+        mParam[3] = new MySqlParameter("?$taxtype", taxtype);
+        mParam[3].MySqlDbType = MySqlDbType.VarChar;
+
+        mDa = con.ExecuteSPAdapter(query, true, mParam);
+        mDa.Fill(dt);
+        return dt;
+    }
+
+    public DataTable FetchPriorDeliquent(string orderno, string taxid, string agencyid, string taxtype)
+    {
+        DataTable dt = new DataTable();
+        string query = "Sp_fetch_prior_new";
+        mParam = new MySqlParameter[4];
+        mParam[0] = new MySqlParameter("?$orderno", orderno);
+        mParam[0].MySqlDbType = MySqlDbType.VarChar;
+        mParam[1] = new MySqlParameter("?$taxid", taxid);
+        mParam[1].MySqlDbType = MySqlDbType.VarChar;
+        mParam[2] = new MySqlParameter("?$agencyid", agencyid);
+        mParam[2].MySqlDbType = MySqlDbType.VarChar;
+        mParam[3] = new MySqlParameter("?$taxtype", taxtype);
+        mParam[3].MySqlDbType = MySqlDbType.VarChar;
+
+        mDa = con.ExecuteSPAdapter(query, true, mParam);
+        mDa.Fill(dt);
+        return dt;
+    }
+
     public int updatetaxtypedetails(string taxtype, string id)
     {
         mParam = new MySqlParameter[2];
