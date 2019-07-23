@@ -4635,6 +4635,8 @@
                                                 <asp:BoundField ItemStyle-Width="30%" DataField="taxid" HeaderText="Tax ID Number" ReadOnly="true" />
                                                 <asp:BoundField ItemStyle-Width="30%" DataField="taxyear" HeaderText="Tax Year" ReadOnly="true" />
                                                 <asp:BoundField ItemStyle-Width="20%" DataField="endyear" HeaderText="End Year" ReadOnly="true" />
+                                                <asp:BoundField ItemStyle-Width="50%" DataField="tbd" HeaderText="TBD" ReadOnly="true" ItemStyle-CssClass="hiddencol" HeaderStyle-CssClass="hiddencol" />
+                                                <asp:BoundField ItemStyle-Width="50%" DataField="estimate" HeaderText="Estimate" ReadOnly="true" ItemStyle-CssClass="hiddencol" HeaderStyle-CssClass="hiddencol" />
 
                                                 <asp:TemplateField Visible="false">
                                                     <ItemTemplate>
