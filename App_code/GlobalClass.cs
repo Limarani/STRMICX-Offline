@@ -16533,9 +16533,9 @@ public class GlobalClass : myConnection
         }
     }
 
-    public int insert_taxparcel(string orderno, string taxidnumber, string taxyear, string endyear, string status)
+    public int insert_taxparcel(string orderno, string taxidnumber, string taxyear, string endyear,string status, string tbd, string estimate)
     {
-        mParam = new MySqlParameter[5];
+        mParam = new MySqlParameter[7];
 
         mParam[0] = new MySqlParameter("$orderno", orderno);
         mParam[0].MySqlDbType = MySqlDbType.VarChar;
@@ -16547,7 +16547,10 @@ public class GlobalClass : myConnection
         mParam[3].MySqlDbType = MySqlDbType.VarChar;
         mParam[4] = new MySqlParameter("$status", status);
         mParam[4].MySqlDbType = MySqlDbType.VarChar;
-        
+        mParam[5] = new MySqlParameter("$tbd", tbd);
+        mParam[5].MySqlDbType = MySqlDbType.VarChar;
+        mParam[6] = new MySqlParameter("$estimate", estimate);
+        mParam[6].MySqlDbType = MySqlDbType.VarChar;
         return ExecuteSPNonQuery("Sp_insert_taxparcel", true, mParam);
     }
     public void update_taxparcel(string id, string taxidnumber, string taxyear, string endyear,string taxid_input,string orderno)
