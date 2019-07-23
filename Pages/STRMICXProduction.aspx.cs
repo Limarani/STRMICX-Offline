@@ -944,7 +944,14 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
             var taxid = gvTaxParcel.Rows[e.RowIndex].Cells[2].Text.ToString().Trim();
             var strValue = gvTaxParcel.Rows[e.RowIndex].Cells[1].Text.ToString().Trim();
 
-            gl.update_taxparcel(strValue.ToString(), txtdrop.Value, txtTaxYear.Text, txtEndYear.Text, taxid, lblord.Text);
+            if (chkEst.Checked == true)
+            {
+                gl.update_taxparcel(strValue.ToString(), txtdrop.Value, txtTaxYear.Text + "EST", txtEndYear.Text, taxid, lblord.Text);
+            }
+            else if (chkEst.Checked == false)
+            {
+                gl.update_taxparcel(strValue.ToString(), txtdrop.Value, txtTaxYear.Text, txtEndYear.Text, taxid, lblord.Text);
+            }                                              
 
             ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "txtexeSpecial();", true);
             btntaxparcels.Enabled = true;
@@ -2108,6 +2115,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
                 DeliquentStatusAdd.Enabled = true;
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "txtexeSpecial();", true);
                 fetchDeliquentStatus();
+                cleardelinquentfields();
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "alertMessage", "alert('Record Deleted Successfully')", true);
                 return;
             }
