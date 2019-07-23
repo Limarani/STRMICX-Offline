@@ -1199,7 +1199,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
         gvTaxParcel.DataSource = dtfetch;
         gvTaxParcel.DataBind();
     }
-
+    //mades
     protected void btntaxparcel_Click(object sender, EventArgs e)
     {
         gvTax.Visible = true;
