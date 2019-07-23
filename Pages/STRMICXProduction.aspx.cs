@@ -1345,7 +1345,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
                     if (ds1.Tables[0].Rows.Count == 0)
                     {
                         insert = gl.insert_taxparcel(lblord.Text, "TBD", txtTaxYear.Text, txtEndYear.Text, "M");
-                        
+                        gl.ExecuteQuery("update tbl_taxparcel set comments='CR' where taxid = 'TBD' and orderno='" + lblord.Text + "'");
                     }
                     else
                     {
