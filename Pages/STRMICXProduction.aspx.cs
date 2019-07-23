@@ -275,7 +275,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
                     dttaxauthorities.Rows.Add(AgencyId, TaxAuthorityName, TaxAgencyType, TaxAgencyState, Phone, taxyearstartdate);
 
                     string query = "";
-                    query = "select AgencyId,TaxId,TaxAgencyType from tbl_taxauthorities2 where Orderno = '" + lblord.Text + "' and TaxId = '" + taxidnew + "' and AgencyId = '" + AgencyId + "' and TaxAgencyType = '" + TaxAgencyType + "'";
+                    query = "select AgencyId,TaxId,TaxAgencyType from tbl_taxauthorities2 where Orderno = '" + lblord.Text + "' and TaxId = '" + taxidnew + "' and TaxAgencyType = '" + TaxAgencyType + "'";
                     DataSet ds = gl.ExecuteQuery(query);
 
                     if (ds.Tables[0].Rows.Count > 0)
@@ -950,7 +950,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
             }
             else if (chkEst.Checked == false)
             {
-                gl.update_taxparcel(strValue.ToString(), txtdrop.Value, txtTaxYear.Text, txtEndYear.Text, taxid, lblord.Text);
+                gl.update_taxparcel(strValue.ToString(), txtdrop.Value, txtTaxYear.Text, txtEndYear.Text, taxid, lblord.Text);                
             }                                              
 
             ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "txtexeSpecial();", true);
@@ -1075,7 +1075,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
             int rowIndex = Convert.ToInt32(e.CommandArgument);
             GridViewRow row = gvTaxParcel.Rows[rowIndex];
             txtdrop.Value = Server.HtmlDecode(row.Cells[2].Text.Trim());
-            txtTaxYear.Text = Server.HtmlDecode(row.Cells[3].Text.Trim());
+            txtTaxYear.Text = Server.HtmlDecode(row.Cells[3].Text.Trim());                        
             txtEndYear.Text = Server.HtmlDecode(row.Cells[4].Text.Trim());
             LinkButton lnkedit = (LinkButton)gvTaxParcel.Rows[rowIndex].FindControl("LnkEdit");
             btntaxparcels.Enabled = false;
