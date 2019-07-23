@@ -917,8 +917,6 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
         txtTaxYear.Text = "";
         txtEndYear.Text = "";
         btntaxparcels.Enabled = true;
-        chkTBD.Checked = false;
-        chkEst.Checked = false;
     }
 
     protected void gvTaxParcel_RowEditing(object sender, GridViewEditEventArgs e)
@@ -945,29 +943,15 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
             HtmlInputHidden Id = gvTaxParcel.Rows[e.RowIndex].FindControl("HdnId") as HtmlInputHidden;
             var taxid = gvTaxParcel.Rows[e.RowIndex].Cells[2].Text.ToString().Trim();
             var strValue = gvTaxParcel.Rows[e.RowIndex].Cells[1].Text.ToString().Trim();
-            gl.update_taxparcel(strValue.ToString(), txtdrop.Value, txtTaxYear.Text, txtEndYear.Text, taxid, lblord.Text);
-            //if (chkEst.Enabled == true)
-            //{
-            //    txtTaxYear.Text = txtTaxYear.Text + "EST";
-            //}
-            //else if(txtTaxYear.Text.Contains("EST"))
-            //{
-            //    txtTaxYear.Text = txtTaxYear.Text.Remove(5);
-            //}
 
-
-            //if (chkEst.Enabled == true)
-            //{
-            //    txtTaxYear.Text = txtTaxYear.Text + "EST";
-            //    gl.update_taxparcel(strValue.ToString(), txtdrop.Value, txtTaxYear.Text, txtEndYear.Text, taxid, lblord.Text);
-            //}
-            //else if (chkEst.Enabled == false)
-            //{
-            //    txtTaxYear.Text = txtTaxYear.Text;
-            //    gl.update_taxparcel(strValue.ToString(), txtdrop.Value, txtTaxYear.Text, txtEndYear.Text, taxid, lblord.Text);
-            //}
-
-
+            if (chkEst.Checked == true)
+            {
+                gl.update_taxparcel(strValue.ToString(), txtdrop.Value, txtTaxYear.Text + "EST", txtEndYear.Text, taxid, lblord.Text);
+            }
+            else if (chkEst.Checked == false)
+            {
+                gl.update_taxparcel(strValue.ToString(), txtdrop.Value, txtTaxYear.Text, txtEndYear.Text, taxid, lblord.Text);
+            }                                              
 
             ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "txtexeSpecial();", true);
             btntaxparcels.Enabled = true;
@@ -982,8 +966,6 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
             LblTaxID.Text = "";
             LblTaxId1.Text = "";
             PnlTax.Visible = false;
-            chkTBD.Checked = false;
-            chkEst.Checked = false;
         }
         catch (Exception ex)
         {
@@ -1100,18 +1082,6 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
             lnkedit.CommandName = "Update";
             lnkedit.CssClass = "glyphicon glyphicon-ok";
             lnkedit.ToolTip = "Update";
-
-            //if (txtdrop.Value.Contains("TBD"))
-            //{
-            //    chkTBD.Checked = true;
-            //}
-
-            //if(txtTaxYear.Text.Contains("EST"))
-            //{
-            //    chkEst.Checked = true;
-            //}
-
-
             lnkedit.OnClientClick = "javascript : return confirm('Are you sure, want to update this Row?');";
             ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "txtexeSpecial();", true);
         }
@@ -2145,6 +2115,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
                 DeliquentStatusAdd.Enabled = true;
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "txtexeSpecial();", true);
                 fetchDeliquentStatus();
+                cleardelinquentfields();
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "alertMessage", "alert('Record Deleted Successfully')", true);
                 return;
             }
