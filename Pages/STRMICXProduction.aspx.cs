@@ -925,6 +925,14 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
     {
         try
         {
+            if (txtdrop.Value == "TBD")
+            {
+                chkTBD.Enabled = true;
+            }
+            else
+            {
+                chkTBD.Enabled = false;
+            }
             gvTaxParcel.EditIndex = e.NewEditIndex;
             //loadgridtaxparcel();
             fetchtaxparcel();
@@ -1010,6 +1018,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
             PnlTax.Visible = false;
             chkTBD.Checked = false;
             chkEst.Checked = false;
+            chkTBD.Enabled = true;
         }
         catch (Exception ex)
         {
