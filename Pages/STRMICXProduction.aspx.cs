@@ -928,6 +928,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
             if (txtdrop.Value == "TBD")
             {
                 chkTBD.Enabled = true;
+                chkTBD.Checked = true;
             }
             else
             {
