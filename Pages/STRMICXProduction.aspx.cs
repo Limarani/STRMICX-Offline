@@ -968,16 +968,24 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
             }
             else if (chkTBD.Checked == true && chkEst.Checked == false)
             {
-                gl.update_taxparcel(strValue.ToString(), "TBD", txtTaxYear.Text, txtEndYear.Text, taxid, lblord.Text, "true", "false");
-            }  
+                string countCD = gl.ExecuteScalarst("select count(taxid) from tbl_taxparcel where taxid = '" + txtdrop.Value + "' and orderno='" + lblord.Text + "' and (status = 'C' or status='M')");
+                if (countCD == "0")
+                {
+                    gl.update_taxparcel(strValue.ToString(), "TBD", txtTaxYear.Text, txtEndYear.Text, taxid, lblord.Text, "true", "false");
+                }
+                else if(countCD=="1")
+                {
+                    gl.update_taxparcel(strValue.ToString(), txtdrop.Value, txtTaxYear.Text, txtEndYear.Text, taxid, lblord.Text, "true", "false");
+                }
+            }
             else if (chkTBD.Checked == true && chkEst.Checked == true)
             {
-                string countCD = gl.ExecuteScalarst("select count(taxid) from tbl_taxparcel where taxid = '" + txtdrop.Value + "' and orderno='" + lblord.Text + "' and status = 'C'");
+                string countCD = gl.ExecuteScalarst("select count(taxid) from tbl_taxparcel where taxid = '" + txtdrop.Value + "' and orderno='" + lblord.Text + "' and (status = 'C' or status='M')");
                 if (countCD == "0")
                 {
                     gl.update_taxparcel(strValue.ToString(), "TBD", txtTaxYear.Text + estStart, txtEndYear.Text + estEnd, taxid, lblord.Text, "true", "true");
                 }
-                else if(countCD=="1")
+                else if (countCD == "1")
                 {
                     gl.update_taxparcel(strValue.ToString(), txtdrop.Value, txtTaxYear.Text + estStart, txtEndYear.Text + estEnd, taxid, lblord.Text, "true", "true");
                 }
