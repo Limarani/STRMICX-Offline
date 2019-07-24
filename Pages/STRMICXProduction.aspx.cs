@@ -1373,8 +1373,11 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
         }
         if (countCD == "1")
         {
-            query = "update tbl_taxparcel set status='C', taxyear = '" + txtTaxYear.Text + estStart + "', endyear= '" + txtEndYear.Text + estEnd + "'  where taxid = '" + txtdrop.Value + "' and status = 'CD' and orderno='" + lblord.Text + "' ";
-            gl.ExecuteQuery(query);
+            if (chkTBD.Checked == false)
+            {
+                query = "update tbl_taxparcel set status='C', taxyear = '" + txtTaxYear.Text + estStart + "', endyear= '" + txtEndYear.Text + estEnd + "'  where taxid = '" + txtdrop.Value + "' and status = 'CD' and orderno='" + lblord.Text + "' ";
+                gl.ExecuteQuery(query);
+            }
         }
 
         if (txtdrop.Value != "" || txtTaxYear.Text != "" || txtEndYear.Text != "")
@@ -1419,6 +1422,14 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
                     {
                         insert = gl.insert_taxparcel(lblord.Text, "TBD", txtTaxYear.Text, txtEndYear.Text, "M", "true", "false");
                         gl.ExecuteQuery("update tbl_taxparcel set comments='CR' where taxid = 'TBD' and orderno='" + lblord.Text + "'");
+                        fetchtaxparcel();
+                        fetchtaxparceldetails();
+                        txtdrop.Value = "";
+                        txtTaxYear.Text = "";
+                        txtEndYear.Text = "";
+                        chkTBD.Checked = false;
+                        chkEst.Checked = false;
+                        return;
                     }
                     else
                     {
@@ -1447,6 +1458,14 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
                         //}
                         insert = gl.insert_taxparcel(lblord.Text, "TBD", txtTaxYear.Text + estStart, txtEndYear.Text + estEnd, "M", "true", "true");
                         gl.ExecuteQuery("update tbl_taxparcel set comments='CR' where taxid = 'TBD' and orderno='" + lblord.Text + "'");
+                        fetchtaxparcel();
+                        fetchtaxparceldetails();
+                        txtdrop.Value = "";
+                        txtTaxYear.Text = "";
+                        txtEndYear.Text = "";
+                        chkTBD.Checked = false;
+                        chkEst.Checked = false;
+                        return;
                     }
                     else
                     {
