@@ -942,7 +942,8 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
         try
         {
             string estEnd = "", estStart = "";
-          
+            txtEndYear.Text = txtEndYear.Text.Trim();
+            txtTaxYear.Text = txtTaxYear.Text.Trim();
             if (chkEst.Checked == true)
             {
                 if (txtEndYear.Text != "")
@@ -971,7 +972,15 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
             }  
             else if (chkTBD.Checked == true && chkEst.Checked == true)
             {
-                gl.update_taxparcel(strValue.ToString(), "TBD", txtTaxYear.Text + estStart, txtEndYear.Text + estEnd, taxid, lblord.Text, "true", "true");
+                string countCD = gl.ExecuteScalarst("select count(taxid) from tbl_taxparcel where taxid = '" + txtdrop.Value + "' and orderno='" + lblord.Text + "' and status = 'C'");
+                if (countCD == "0")
+                {
+                    gl.update_taxparcel(strValue.ToString(), "TBD", txtTaxYear.Text + estStart, txtEndYear.Text + estEnd, taxid, lblord.Text, "true", "true");
+                }
+                else if(countCD=="1")
+                {
+                    gl.update_taxparcel(strValue.ToString(), txtdrop.Value, txtTaxYear.Text + estStart, txtEndYear.Text + estEnd, taxid, lblord.Text, "true", "true");
+                }
             }
             else if (chkTBD.Checked == false && chkEst.Checked == false)
             {
