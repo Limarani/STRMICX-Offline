@@ -942,15 +942,18 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
         try
         {
             string estEnd = "", estStart = "";
-            if (txtEndYear.Text != "")
+            if (chkEst.Checked == true)
             {
-                if (!txtEndYear.Text.Contains("EST"))
-                    estEnd = "EST";
-            }
-            else
-            {
-                if (!txtTaxYear.Text.Contains("EST"))
-                    estStart = "EST";
+                if (txtEndYear.Text != "")
+                {
+                    if (!txtEndYear.Text.Contains("EST"))
+                        estEnd = "EST";
+                }
+                else
+                {
+                    if (!txtTaxYear.Text.Contains("EST"))
+                        estStart = "EST";
+                }
             }
             TextBox id = gvTaxParcel.Rows[e.RowIndex].FindControl("HdnId") as TextBox;
             HtmlInputHidden Id = gvTaxParcel.Rows[e.RowIndex].FindControl("HdnId") as HtmlInputHidden;
@@ -1356,13 +1359,18 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
         if (countCD == "1")
         {
             string estEnd = "", estStart = "";
-            if (txtEndYear.Text != "")
+            if (chkEst.Checked == true)
             {
-                estEnd = "EST";
-            }
-            else
-            {
-                estStart = "EST";
+                if (txtEndYear.Text != "")
+                {
+                    if (!txtEndYear.Text.Contains("EST"))
+                        estEnd = "EST";
+                }
+                else
+                {
+                    if (!txtTaxYear.Text.Contains("EST"))
+                        estStart = "EST";
+                }
             }
 
             query = "update tbl_taxparcel set status='C', taxyear = '" + txtTaxYear.Text + estStart + "', endyear= '" + txtEndYear.Text + estEnd + "'  where taxid = '" + txtdrop.Value + "' and status = 'CD' and orderno='" + lblord.Text + "' ";
