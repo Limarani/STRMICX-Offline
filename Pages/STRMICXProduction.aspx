@@ -1943,6 +1943,7 @@
         //};
 
         function mytxtamount1() {
+            debugger;
             hello1();
             myFunction1();
             document.getElementById('remainingbalance1').disabled = false;
@@ -1965,10 +1966,10 @@
             if (instAmt44 == "") {
                 instAmt44 = '0.00';
             }
-            var res1 = parseFloat(instAmt11.replace(',', ''));
-            var res2 = parseFloat(instAmt22.replace(',', ''));
-            var res3 = parseFloat(instAmt33.replace(',', ''));
-            var res4 = parseFloat(instAmt44.replace(',', ''));
+            var res1 = parseFloat(instAmt11.replace(/,/g, ''));
+            var res2 = parseFloat(instAmt22.replace(/,/g, ''));
+            var res3 = parseFloat(instAmt33.replace(/,/g, ''));
+            var res4 = parseFloat(instAmt44.replace(/,/g, ''));
             document.getElementById("txtAnnualTaxAmount").innerHTML = parseFloat(res1 + res2 + res3 + res4).toFixed(2);
 
             //document.getElementById('txtstrRemaingBlnce1').removeAttribute('readonly');
@@ -2030,10 +2031,10 @@
             if (instAmt44 == "") {
                 instAmt44 = '0.00';
             }
-            var res1 = parseFloat(instAmt11.replace(',', ''));
-            var res2 = parseFloat(instAmt22.replace(',', ''));
-            var res3 = parseFloat(instAmt33.replace(',', ''));
-            var res4 = parseFloat(instAmt44.replace(',', ''));
+            var res1 = parseFloat(instAmt11.replace(/,/g, ''));
+            var res2 = parseFloat(instAmt22.replace(/,/g, ''));
+            var res3 = parseFloat(instAmt33.replace(/,/g, ''));
+            var res4 = parseFloat(instAmt44.replace(/,/g, ''));
             document.getElementById("txtAnnualTaxAmount").innerHTML = parseFloat(res1 + res2 + res3 + res4).toFixed(2);
 
             var instAmt2 = document.getElementById("instamount2").value;
