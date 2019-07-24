@@ -983,7 +983,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
                 }
                 else if(countCD=="1")
                 {
-                    gl.update_taxparcel(strValue.ToString(), txtdrop.Value, txtTaxYear.Text, txtEndYear.Text, taxid, lblord.Text, "true", "false");
+                    gl.update_taxparcel(strValue.ToString(), txtdrop.Value, txtTaxYear.Text, txtEndYear.Text, taxid, lblord.Text, "false", "false");
                 }
             }
             else if (chkTBD.Checked == true && chkEst.Checked == true)
@@ -995,7 +995,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
                 }
                 else if (countCD == "1")
                 {
-                    gl.update_taxparcel(strValue.ToString(), txtdrop.Value, txtTaxYear.Text + estStart, txtEndYear.Text + estEnd, taxid, lblord.Text, "true", "true");
+                    gl.update_taxparcel(strValue.ToString(), txtdrop.Value, txtTaxYear.Text + estStart, txtEndYear.Text + estEnd, taxid, lblord.Text, "false", "true");
                 }
             }
             else if (chkTBD.Checked == false && chkEst.Checked == false)
@@ -1415,7 +1415,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
 
                     if (countCD != "1")
                     {
-                        insert = gl.insert_taxparcel(lblord.Text, txtdrop.Value, txtTaxYear.Text + estStart, txtEndYear.Text + estEnd, "M", "false", "true");
+                        insert = gl.insert_taxparcel(lblord.Text, txtdrop.Value.Trim(), txtTaxYear.Text.Trim() + estStart, txtEndYear.Text.Trim() + estEnd, "M", "false", "true");
                     }
                 }
                 else if (chkEst.Checked == false && chkTBD.Checked == false)
@@ -1426,7 +1426,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
                         string countCDD = gl.ExecuteScalarst("select count(taxid) from tbl_taxparcel where taxid = '" + txtdrop.Value + "' and orderno='" + lblord.Text + "' and status = 'C'");
                         if (countCDD == "0")
                         {
-                            insert = gl.insert_taxparcel(lblord.Text, txtdrop.Value, txtTaxYear.Text, txtEndYear.Text, "M", "false", "false");
+                            insert = gl.insert_taxparcel(lblord.Text, txtdrop.Value.Trim(), txtTaxYear.Text.Trim(), txtEndYear.Text.Trim(), "M", "false", "false");
                         }
                     }
                     else
@@ -1446,7 +1446,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
 
                     if (ds1.Tables[0].Rows.Count == 0)
                     {
-                        insert = gl.insert_taxparcel(lblord.Text, "TBD", txtTaxYear.Text, txtEndYear.Text, "M", "true", "false");
+                        insert = gl.insert_taxparcel(lblord.Text, "TBD", txtTaxYear.Text.Trim(), txtEndYear.Text.Trim(), "M", "true", "false");
                         gl.ExecuteQuery("update tbl_taxparcel set comments='CR' where taxid = 'TBD' and orderno='" + lblord.Text + "'");
                         fetchtaxparcel();
                         fetchtaxparceldetails();
@@ -1482,7 +1482,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
                         //{
                         //    estStart = "EST";
                         //}
-                        insert = gl.insert_taxparcel(lblord.Text, "TBD", txtTaxYear.Text + estStart, txtEndYear.Text + estEnd, "M", "true", "true");
+                        insert = gl.insert_taxparcel(lblord.Text, "TBD", txtTaxYear.Text.Trim() + estStart, txtEndYear.Text.Trim() + estEnd, "M", "true", "true");
                         gl.ExecuteQuery("update tbl_taxparcel set comments='CR' where taxid = 'TBD' and orderno='" + lblord.Text + "'");
                         fetchtaxparcel();
                         fetchtaxparceldetails();
