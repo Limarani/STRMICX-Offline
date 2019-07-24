@@ -928,6 +928,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
             if (txtdrop.Value == "TBD")
             {
                 chkTBD.Enabled = true;
+                chkTBD.Checked = true;
             }
             else
             {
@@ -936,6 +937,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
             gvTaxParcel.EditIndex = e.NewEditIndex;
             //loadgridtaxparcel();
             fetchtaxparcel();
+            
         }
         catch (Exception ex)
         {
@@ -1129,8 +1131,8 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
             int rowIndex = Convert.ToInt32(e.CommandArgument);
             GridViewRow row = gvTaxParcel.Rows[rowIndex];
             txtdrop.Value = Server.HtmlDecode(row.Cells[2].Text.Trim());
-            txtTaxYear.Text = Server.HtmlDecode(row.Cells[3].Text.Trim());                        
-            txtEndYear.Text = Server.HtmlDecode(row.Cells[4].Text.Trim());
+            txtTaxYear.Text = Server.HtmlDecode(row.Cells[3].Text.Trim());
+            txtEndYear.Text = Server.HtmlDecode(row.Cells[4].Text.Trim()).Trim();
             tbd = Server.HtmlDecode(row.Cells[5].Text.Trim());
             if (tbd == "true")
             {
@@ -1179,7 +1181,9 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
             fetchtaxparceldetails();
             PnlTax.Visible = false;
             PnlTax1.Visible = false;
-
+            chkTBD.Checked = false;
+            chkEst.Checked = false;
+            chkTBD.Enabled = true;
             ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "txtexeSpecial();", true);
         }
         if (GVCommand == "selectaddauthor")
