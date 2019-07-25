@@ -213,6 +213,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
     {
         if (e.Row.RowType == DataControlRowType.DataRow)
         {
+
             string customerId = gvTaxParcel.DataKeys[e.Row.RowIndex].Value.ToString();
             GridView gvOrders = e.Row.FindControl("gvOrders") as GridView;
 
@@ -327,6 +328,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
 
     protected void lnkgvOrders_Click(object sender, EventArgs e)
     {
+       
         LinkButton lb = (LinkButton)sender;
         GridViewRow row = (GridViewRow)lb.NamingContainer;
         int index;
@@ -344,22 +346,25 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
             LblAgencyId1.Text = lb.Text;
             LblTaxID.Text = Server.HtmlDecode(row.Cells[6].Text.Trim());
 
-
-            //txtAuthorityname.Text = Server.HtmlDecode(row.Cells[2].Text.Trim());                                 
-
-            GridView gvwnested = (GridView)gvTaxParcel.Rows[0].Cells[1].FindControl("gvOrders");
-            GridViewRow Gv2Row = (GridViewRow)((LinkButton)sender).NamingContainer;
-            GridView Childgrid = (GridView)(Gv2Row.Parent.Parent);
-
-            foreach (GridViewRow rowcolor in Childgrid.Rows)
+            foreach (GridViewRow Gv2Row11 in gvTaxParcel.Rows)
             {
-                if (rowcolor.BackColor == System.Drawing.Color.LightGreen)
+                GridView gvwnested1 = (GridView)Gv2Row11.Cells[1].FindControl("gvOrders");
+                GridViewRow Gv2Row1 = (GridViewRow)((LinkButton)sender).NamingContainer;
+                foreach (GridViewRow roww in gvwnested1.Rows)
                 {
-                    rowcolor.BackColor = System.Drawing.Color.White;
+                    GridView Childgrid1 = (GridView)(roww.Parent.Parent);
+                    if (roww.BackColor == System.Drawing.Color.LightGreen)
+                    {
+                        roww.BackColor = System.Drawing.Color.White;
+                    }
+                    
                 }
+             
             }
 
-
+            GridView gvwnested = (GridView)gvTaxParcel.Rows[index].Cells[1].FindControl("gvOrders");
+            GridViewRow Gv2Row = (GridViewRow)((LinkButton)sender).NamingContainer;
+            GridView Childgrid = (GridView)(Gv2Row.Parent.Parent);
             LinkButton lnktaxtype = (LinkButton)Childgrid.Rows[index].Cells[3].FindControl("lnkAgnecy");
             taxagencytype = lnktaxtype.Text;
             txtTaxType.Text = taxagencytype;
@@ -918,6 +923,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
         txtEndYear.Text = "";
         chkTBD.Checked = false;
         chkEst.Checked = false;
+        chkTBD.Enabled = true;
         btntaxparcels.Enabled = true;
     }
 
@@ -1119,8 +1125,10 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
             return;
         }
     }
+
     protected void btnTaxParcelModal_RowCommand(object sender, GridViewCommandEventArgs e)
     {
+        
         string GVCommand = e.CommandName.ToLower();
         string tbd = "";
         string estimate = "";
@@ -1184,6 +1192,8 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
             chkTBD.Checked = false;
             chkEst.Checked = false;
             chkTBD.Enabled = true;
+            gvTaxParcel.EditIndex = -1;
+            txtdrop.Value = "--Select--";
             ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "txtexeSpecial();", true);
         }
         if (GVCommand == "selectaddauthor")
@@ -2879,6 +2889,8 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
         {
             try
             {
+                gvTaxParcel.EditIndex = -1;
+                txtdrop.Value = "--Select--";
                 string Item_ID = (e.CommandArgument).ToString();
                 GridViewRow row = (GridViewRow)(((LinkButton)e.CommandSource).NamingContainer);
                 gl.DeleteGridOrders(row.Cells[0].Text.Trim());
@@ -2886,6 +2898,12 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
                 fetchtaxparceldetails();
                 PnlTax.Visible = false;
                 PnlTax1.Visible = false;
+                chkTBD.Enabled = true;
+                chkEst.Checked = false;
+                chkTBD.Checked = false;
+                txtTaxYear.Text = "";
+                txtEndYear.Text = "";
+                btntaxparcels.Enabled = true;
             }
             catch (Exception ex)
             {
@@ -2937,6 +2955,27 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
         if (payemntfrequency == "Semi-Annual" || payemntfrequency == "2")
         {
             SetTaxBillValue(delinq2.Value);
+            instamount1.Attributes.Add("enabled", "true");
+            instamountpaid1.Attributes.Add("enabled", "true");
+            instpaiddue1.Attributes.Add("enabled", "true");
+            remainingbalance1.Attributes.Add("enabled", "true");
+            instdate1.Attributes.Add("enabled", "true");
+            delinq1.Attributes.Add("enabled", "true");
+            discamt1.Attributes.Add("enabled", "true");
+            discdate1.Attributes.Add("enabled", "true");
+            exemptrelevy1.Attributes.Add("enabled", "true");
+
+
+            instamount2.Attributes.Add("enabled", "true");
+            instamountpaid2.Attributes.Add("enabled", "true");
+            instpaiddue2.Attributes.Add("enabled", "true");
+            remainingbalance2.Attributes.Add("enabled", "true");
+            instdate2.Attributes.Add("enabled", "true");
+            delinq2.Attributes.Add("enabled", "true");
+            discamt2.Attributes.Add("enabled", "true");
+            discdate2.Attributes.Add("enabled", "true");
+            exemptrelevy2.Attributes.Add("enabled", "true");
+
             instamount3.Attributes.Add("disabled", "false");
             instamountpaid3.Attributes.Add("disabled", "false");
             instpaiddue3.Attributes.Add("disabled", "false");
@@ -2961,15 +3000,47 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
         if (payemntfrequency == "Quarterly" || payemntfrequency == "3")
         {
             SetTaxBillValue(delinq4.Value);
-            //instamount4.Attributes.Add("disabled", "false");
-            //instamountpaid4.Attributes.Add("disabled", "false");
-            //instpaiddue4.Attributes.Add("disabled", "false");
-            //remainingbalance4.Attributes.Add("disabled", "false");
-            //instdate4.Attributes.Add("disabled", "false");
-            //delinq4.Attributes.Add("disabled", "false");
-            //discamt4.Attributes.Add("disabled", "false");
-            //discdate4.Attributes.Add("disabled", "false");
-            //exemptrelevy4.Attributes.Add("disabled", "false");
+
+            instamount1.Attributes.Add("enabled", "true");
+            instamountpaid1.Attributes.Add("enabled", "true");
+            instpaiddue1.Attributes.Add("enabled", "true");
+            remainingbalance1.Attributes.Add("enabled", "true");
+            instdate1.Attributes.Add("enabled", "true");
+            delinq1.Attributes.Add("enabled", "true");
+            discamt1.Attributes.Add("enabled", "true");
+            discdate1.Attributes.Add("enabled", "true");
+            exemptrelevy1.Attributes.Add("enabled", "true");
+
+
+            instamount2.Attributes.Add("enabled", "true");
+            instamountpaid2.Attributes.Add("enabled", "true");
+            instpaiddue2.Attributes.Add("enabled", "true");
+            remainingbalance2.Attributes.Add("enabled", "true");
+            instdate2.Attributes.Add("enabled", "true");
+            delinq2.Attributes.Add("enabled", "true");
+            discamt2.Attributes.Add("enabled", "true");
+            discdate2.Attributes.Add("enabled", "true");
+            exemptrelevy2.Attributes.Add("enabled", "true");
+
+            instamount3.Attributes.Add("enabled", "true");
+            instamountpaid3.Attributes.Add("enabled", "true");
+            instpaiddue3.Attributes.Add("enabled", "true");
+            remainingbalance3.Attributes.Add("enabled", "true");
+            instdate3.Attributes.Add("enabled", "true");
+            delinq3.Attributes.Add("enabled", "true");
+            discamt3.Attributes.Add("enabled", "true");
+            discdate3.Attributes.Add("enabled", "true");
+            exemptrelevy3.Attributes.Add("enabled", "true");
+
+            instamount4.Attributes.Add("enabled", "true");
+            instamountpaid4.Attributes.Add("enabled", "true");
+            instpaiddue4.Attributes.Add("enabled", "true");
+            remainingbalance4.Attributes.Add("enabled", "true");
+            instdate4.Attributes.Add("enabled", "true");
+            delinq4.Attributes.Add("enabled", "true");
+            discamt4.Attributes.Add("enabled", "true");
+            discdate4.Attributes.Add("enabled", "true");
+            exemptrelevy4.Attributes.Add("enabled", "true");
         }
 
 
