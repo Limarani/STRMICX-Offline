@@ -21,19 +21,21 @@
     <script src="../Script/Jquery-1.8.3-jquery.min.js"></script>
     <script type="text/javascript">
 
-        function functionpayemtfrequency() {
-            var payfre = document.getElementById("paymentfrequency").value;
+        function functionpayemtfrequency(ddlFruits) {
+       // var payfre = document.getElementById("paymentfrequency").value;
+            var payfre = ddlFruits.options[ddlFruits.selectedIndex].innerHTML;
+            //alert(payfre);
             var Ann = "", Semi = "", Tri = "", Qua = "";
-            if (payfre == "1") {
+            if (payfre == "Annual") {
                 Ann = "Annual";
             }
-            if (payfre == "2") {
+            if (payfre == "Semi-Annual") {
                 Semi = "Semi-Annual";
             }
-            if (payfre == "3") {
+            if (payfre == "Quarterly") {
                 Qua = "Quarterly";
             }
-            if (payfre == "4") {
+            if (payfre == "Tri-Annual") {
                 Tri = "Tri-Annual";
             }
             if (Ann == "Annual") {
@@ -79,6 +81,7 @@
             }
 
             if (Semi == "Semi-Annual") {
+              
                 document.getElementById("instamount1").disabled = false;
                 document.getElementById("instamountpaid1").disabled = false;
                 document.getElementById("instpaiddue1").disabled = false;
@@ -5261,12 +5264,18 @@
                                                         <b style="white-space: nowrap;" class="CheckBold">Payment Frequency:</b>
                                                     </td>
                                                     <td>
-                                                        <select class="form-control" id="paymentfrequency" runat="server" style="width: 170px;" onchange="functionpayemtfrequency();" tabindex="39">
+                                                        <select class="form-control" id="paymentfrequency" runat="server" style="width: 170px;" onchange="functionpayemtfrequency(this)" tabindex="39">
                                                             <option value="1">Annual</option>
                                                             <option value="2">Semi-Annual</option>
-                                                            <option value="3">Quarterly</option>
-                                                            <option value="4">Tri-Annual</option>
+                                                            <option value="3">Tri-Annual</option>
+                                                            <option value="4">Quarterly</option>
                                                         </select>
+                                                     <%--   <asp:DropDownList ID="paymentfrequency" runat="server"  style="width: 170px;" TabIndex="39" OnSelectedIndexChanged="paymentfrequency_SelectedIndexChanged" AutoPostBack="true">
+                                                            <asp:ListItem Value="1">Annual</asp:ListItem>
+                                                            <asp:ListItem Value="2">Semi-Annual</asp:ListItem>
+                                                            <asp:ListItem Value="3">Tri-Annual</asp:ListItem>
+                                                            <asp:ListItem Value="4">Quarterly</asp:ListItem>
+                                                        </asp:DropDownList>--%>
                                                     </td>
                                                     <td>
                                                         <b style="white-space: nowrap" class="CheckBold" runat="server" id="lblbillingstartdate">Billing Start Date:</b>
