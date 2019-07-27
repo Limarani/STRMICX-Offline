@@ -16994,7 +16994,7 @@ public class GlobalClass : myConnection
         return ExecuteSPNonQuery("Sp_update_delinquent", true, mParam);
     }
 
-    public DataTable FetchDeliquentStatusAll(string orderno, string agencyid, string taxid)
+    public DataTable FetchDeliquentStatusAll(string orderno, string agencyid)
     {
         DataTable dt = new DataTable();
         string query = "Sp_fetchall_delinquent";

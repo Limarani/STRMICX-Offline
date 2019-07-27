@@ -21,19 +21,104 @@
     <script src="../Script/Jquery-1.8.3-jquery.min.js"></script>
     <script type="text/javascript">
 
-        function functionpayemtfrequency() {
-            var payfre = document.getElementById("paymentfrequency").value;
+
+        function functionTaxBill(txtDate) {
+           
+            var ddlTaxBill = document.getElementById("paymentfrequency");
+            var txBill = ddlTaxBill.options[ddlTaxBill.selectedIndex].innerHTML;
+
+            var today = new Date();
+            var dd = today.getDate();
+
+            var mm = today.getMonth() + 1;
+            var yyyy = today.getFullYear();
+            if (dd < 10) {
+                dd = '0' + dd;
+            }
+
+            if (mm < 10) {
+                mm = '0' + mm;
+            }
+           
+            today = mm + '/' + dd + '/' + yyyy;
+            if(txBill=="Annual")
+            {
+                var dt = document.getElementById("delinq1").value;
+                if (Date.parse(dt) >= Date.parse(today)) {
+                   document.getElementById("taxbill").selectedIndex = 1;
+                    
+                }
+                else if (Date.parse(dt) <= Date.parse(today)) {
+                    document.getElementById("taxbill").selectedIndex = 2;
+                }
+                else
+                {
+                    document.getElementById("taxbill").selectedIndex = 0;
+                }
+            }
+            else if(txBill=="Semi-Annual")
+            {
+                var dt = document.getElementById("delinq2").value;
+                if (Date.parse(dt) >= Date.parse(today)) {
+                    document.getElementById("taxbill").selectedIndex = 1;
+
+                }
+                else if (Date.parse(dt) <= Date.parse(today)) {
+                    document.getElementById("taxbill").selectedIndex = 2;
+                }
+                else {
+                    document.getElementById("taxbill").selectedIndex = 0;
+                }
+
+            }
+            else if (txBill == "Tri-Annual")
+            {
+                var dt = document.getElementById("delinq3").value;
+                if (Date.parse(dt) >= Date.parse(today)) {
+                    document.getElementById("taxbill").selectedIndex = 1;
+
+                }
+                else if (Date.parse(dt) <= Date.parse(today)) {
+                    document.getElementById("taxbill").selectedIndex = 2;
+                }
+                else {
+                    document.getElementById("taxbill").selectedIndex = 0;
+                }
+            }
+            else if (txBill == "Quarterly")
+            {
+                var dt = document.getElementById("delinq4").value;
+                if (Date.parse(dt) >= Date.parse(today)) {
+                    document.getElementById("taxbill").selectedIndex = 1;
+
+                }
+                else if (Date.parse(dt) <= Date.parse(today)) {
+                    document.getElementById("taxbill").selectedIndex = 2;
+                }
+                else {
+                    document.getElementById("taxbill").selectedIndex = 0;
+                }
+            }
+            
+
+        }
+
+
+        function functionpayemtfrequency(ddlPay) {
+       // var payfre = document.getElementById("paymentfrequency").value;
+            var payfre = ddlPay.options[ddlPay.selectedIndex].innerHTML;
+            //alert(payfre);
             var Ann = "", Semi = "", Tri = "", Qua = "";
-            if (payfre == "1") {
+            if (payfre == "Annual") {
                 Ann = "Annual";
             }
-            if (payfre == "2") {
+            if (payfre == "Semi-Annual") {
                 Semi = "Semi-Annual";
             }
-            if (payfre == "3") {
+            if (payfre == "Quarterly") {
                 Qua = "Quarterly";
             }
-            if (payfre == "4") {
+            if (payfre == "Tri-Annual") {
                 Tri = "Tri-Annual";
             }
             if (Ann == "Annual") {
@@ -48,37 +133,65 @@
                 document.getElementById("exemptrelevy1").disabled = false;
 
                 document.getElementById("instamount2").disabled = true;
+                document.getElementById("instamount2").value = "";
                 document.getElementById("instamountpaid2").disabled = true;
+                document.getElementById("instamountpaid2").value = "";
                 document.getElementById("instpaiddue2").disabled = true;
+                document.getElementById("instpaiddue2").selectedIndex = 0;
                 document.getElementById("remainingbalance2").disabled = true;
+                document.getElementById("remainingbalance2").value = "";
                 document.getElementById("instdate2").disabled = true;
+                document.getElementById("instdate2").value = "";
                 document.getElementById("delinq2").disabled = true;
+                document.getElementById("delinq2").value = "";
                 document.getElementById("discamt2").disabled = true;
+                document.getElementById("discamt2").value = "";
                 document.getElementById("discdate2").disabled = true;
+                document.getElementById("discdate2").value = "";
                 document.getElementById("exemptrelevy2").disabled = true;
+                document.getElementById("exemptrelevy2").checked = false;
 
                 document.getElementById("instamount3").disabled = true;
+                document.getElementById("instamount3").value = "";
                 document.getElementById("instamountpaid3").disabled = true;
+                document.getElementById("instamountpaid3").value = "";
                 document.getElementById("instpaiddue3").disabled = true;
+                document.getElementById("instpaiddue3").selectedIndex = 0;
                 document.getElementById("remainingbalance3").disabled = true;
+                document.getElementById("remainingbalance3").value = "";
                 document.getElementById("instdate3").disabled = true;
+                document.getElementById("instdate3").value = "";
                 document.getElementById("delinq3").disabled = true;
+                document.getElementById("delinq3").value = "";
                 document.getElementById("discamt3").disabled = true;
+                document.getElementById("discamt3").value = "";
                 document.getElementById("discdate3").disabled = true;
+                document.getElementById("discdate3").value = "";
                 document.getElementById("exemptrelevy3").disabled = true;
+                document.getElementById("exemptrelevy3").checked = false;
 
                 document.getElementById("instamount4").disabled = true;
+                document.getElementById("instamount4").value = "";
                 document.getElementById("instamountpaid4").disabled = true;
+                document.getElementById("instamountpaid4").value = "";
                 document.getElementById("instpaiddue4").disabled = true;
+                document.getElementById("instpaiddue4").selectedIndex = 0;
                 document.getElementById("remainingbalance4").disabled = true;
+                document.getElementById("remainingbalance4").value = "";
                 document.getElementById("instdate4").disabled = true;
+                document.getElementById("instdate4").value = "";
                 document.getElementById("delinq4").disabled = true;
+                document.getElementById("delinq4").value = "";
                 document.getElementById("discamt4").disabled = true;
+                document.getElementById("discamt4").value = "";
                 document.getElementById("discdate4").disabled = true;
+                document.getElementById("discdate4").value = "";
                 document.getElementById("exemptrelevy4").disabled = true;
+                document.getElementById("exemptrelevy4").checked = false;
             }
 
             if (Semi == "Semi-Annual") {
+              
                 document.getElementById("instamount1").disabled = false;
                 document.getElementById("instamountpaid1").disabled = false;
                 document.getElementById("instpaiddue1").disabled = false;
@@ -100,24 +213,42 @@
                 document.getElementById("exemptrelevy2").disabled = false;
 
                 document.getElementById("instamount3").disabled = true;
+                document.getElementById("instamount3").value = "";
                 document.getElementById("instamountpaid3").disabled = true;
+                document.getElementById("instamountpaid3").value = "";
                 document.getElementById("instpaiddue3").disabled = true;
+                document.getElementById("instpaiddue3").selectedIndex = 0;
                 document.getElementById("remainingbalance3").disabled = true;
+                document.getElementById("remainingbalance3").value = "";
                 document.getElementById("instdate3").disabled = true;
+                document.getElementById("instdate3").value = "";
                 document.getElementById("delinq3").disabled = true;
+                document.getElementById("delinq3").value = "";
                 document.getElementById("discamt3").disabled = true;
+                document.getElementById("discamt3").value = "";
                 document.getElementById("discdate3").disabled = true;
+                document.getElementById("discdate3").value = "";
                 document.getElementById("exemptrelevy3").disabled = true;
+                document.getElementById("exemptrelevy3").checked = false;
 
                 document.getElementById("instamount4").disabled = true;
+                document.getElementById("instamount4").value = "";
                 document.getElementById("instamountpaid4").disabled = true;
+                document.getElementById("instamountpaid4").value = "";
                 document.getElementById("instpaiddue4").disabled = true;
+                document.getElementById("instpaiddue4").selectedIndex = 0;
                 document.getElementById("remainingbalance4").disabled = true;
+                document.getElementById("remainingbalance4").value = "";
                 document.getElementById("instdate4").disabled = true;
+                document.getElementById("instdate4").value = "";
                 document.getElementById("delinq4").disabled = true;
+                document.getElementById("delinq4").value = "";
                 document.getElementById("discamt4").disabled = true;
+                document.getElementById("discamt4").value = "";
                 document.getElementById("discdate4").disabled = true;
+                document.getElementById("discdate4").value = "";
                 document.getElementById("exemptrelevy4").disabled = true;
+                document.getElementById("exemptrelevy4").checked = false;
             }
 
             if (Tri == "Tri-Annual") {
@@ -152,14 +283,23 @@
                 document.getElementById("exemptrelevy3").disabled = false;
 
                 document.getElementById("instamount4").disabled = true;
+                document.getElementById("instamount4").value = "";
                 document.getElementById("instamountpaid4").disabled = true;
+                document.getElementById("instamountpaid4").value = "";
                 document.getElementById("instpaiddue4").disabled = true;
+                document.getElementById("instpaiddue4").selectedIndex = 0;
                 document.getElementById("remainingbalance4").disabled = true;
+                document.getElementById("remainingbalance4").value = "";
                 document.getElementById("instdate4").disabled = true;
+                document.getElementById("instdate4").value = "";
                 document.getElementById("delinq4").disabled = true;
+                document.getElementById("delinq4").value = "";
                 document.getElementById("discamt4").disabled = true;
+                document.getElementById("discamt4").value = "";
                 document.getElementById("discdate4").disabled = true;
+                document.getElementById("discdate4").value = "";
                 document.getElementById("exemptrelevy4").disabled = true;
+                document.getElementById("exemptrelevy4").checked = false;
             }
 
             if (Qua == "Quarterly") {
@@ -3099,9 +3239,12 @@
                 return true;
             }
             else {
+                txtpayoffgood.txt = "";
                 document.getElementById('txtpayoffgood').style.borderColor = "#ff0000";
                 document.getElementById('lblpayoffgood').style.color = "#ff0000";
                 alert("Date should be greater than current date");
+                
+                return true;
             }
         }
 
@@ -3556,7 +3699,7 @@
         //Tax Sale
         function applicable() {
             var ddlselect = document.getElementById("txtnotapplicable").value;
-            if (ddlselect == "Yes") {
+            if (ddlselect == "Yes" || ddlselect=="Select") {
                 document.getElementById("txtdatetaxsale").disabled = true;
                 document.getElementById("txtlastdayred").disabled = true;
                 document.getElementById("txtdatetaxsale").value = "";
@@ -3566,10 +3709,10 @@
                 document.getElementById("txtdatetaxsale").disabled = false;
                 document.getElementById("txtlastdayred").disabled = false;
             }
-            else {
-                document.getElementById("txtdatetaxsale").value = "";
-                document.getElementById("txtlastdayred").value = "";
-            }
+            //else {
+            //    document.getElementById("txtdatetaxsale").value = "";
+            //    document.getElementById("txtlastdayred").value = "";
+            //}
         }
 
         //Special Assessment
@@ -5133,25 +5276,25 @@
                                                     <td>
                                                         <div class="form-group" style="margin-bottom: 0px;">
                                                             <label style="text-align: right; clear: both; float: left; margin-right: 29px;" class="CheckBold">Delinquent Date:</label>
-                                                            <input type="text" id="delinq1" runat="server" class="form-control taxing" style="width: 150px;" placeholder="MM/DD/YYYY" maxlength="10" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="return checkDate(this,event)" autocomplete="off" tabindex="6" />
+                                                            <input type="text" id="delinq1" runat="server" class="form-control taxing" style="width: 150px;" placeholder="MM/DD/YYYY" maxlength="10" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="return checkDate(this,event)" autocomplete="off" tabindex="6" onchange="functionTaxBill(this)" />
                                                         </div>
                                                     </td>
                                                     <td>
                                                         <div class="form-group" style="margin-bottom: 0px;">
                                                             <label style="text-align: right; clear: both; float: left; margin-right: 29px;" class="CheckBold">Delinquent Date:</label>
-                                                            <input type="text" id="delinq2" runat="server" class="form-control taxing" style="width: 150px;" placeholder="MM/DD/YYYY" maxlength="10" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="return checkDate(this,event)" autocomplete="off" tabindex="15" />
+                                                            <input type="text" id="delinq2" runat="server" class="form-control taxing" style="width: 150px;" placeholder="MM/DD/YYYY" maxlength="10" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="return checkDate(this,event)" autocomplete="off" tabindex="15" onchange="functionTaxBill(this)"/>
                                                         </div>
                                                     </td>
                                                     <td>
                                                         <div class="form-group" style="margin-bottom: 0px;">
                                                             <label style="text-align: right; clear: both; float: left; margin-right: 29px;" class="CheckBold">Delinquent Date:</label>
-                                                            <input type="text" id="delinq3" runat="server" class="form-control taxing" style="width: 150px;" placeholder="MM/DD/YYYY" maxlength="10" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="return checkDate(this,event)" autocomplete="off" tabindex="23" />
+                                                            <input type="text" id="delinq3" runat="server" class="form-control taxing" style="width: 150px;" placeholder="MM/DD/YYYY" maxlength="10" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="return checkDate(this,event)" autocomplete="off" tabindex="23" onchange="functionTaxBill(this)"/>
                                                         </div>
                                                     </td>
                                                     <td>
                                                         <div class="form-group" style="margin-bottom: 0px;">
                                                             <label style="text-align: right; clear: both; float: left; margin-right: 29px;" class="CheckBold">Delinquent Date:</label>
-                                                            <input type="text" id="delinq4" runat="server" class="form-control taxing" style="width: 150px;" placeholder="MM/DD/YYYY" maxlength="10" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="return checkDate(this,event)" autocomplete="off" tabindex="32" />
+                                                            <input type="text" id="delinq4" runat="server" class="form-control taxing" style="width: 150px;" placeholder="MM/DD/YYYY" maxlength="10" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="return checkDate(this,event)" autocomplete="off" tabindex="32" onchange="functionTaxBill(this)" />
                                                         </div>
                                                     </td>
                                                 </tr>
@@ -5262,12 +5405,18 @@
                                                         <b style="white-space: nowrap;" class="CheckBold">Payment Frequency:</b>
                                                     </td>
                                                     <td>
-                                                        <select class="form-control" id="paymentfrequency" runat="server" style="width: 170px;" onchange="functionpayemtfrequency();" tabindex="39">
+                                                        <select class="form-control" id="paymentfrequency" runat="server" style="width: 170px;" onchange="functionpayemtfrequency(this)" tabindex="39">
                                                             <option value="1">Annual</option>
                                                             <option value="2">Semi-Annual</option>
-                                                            <option value="3">Quarterly</option>
-                                                            <option value="4">Tri-Annual</option>
+                                                            <option value="3">Tri-Annual</option>
+                                                            <option value="4">Quarterly</option>
                                                         </select>
+                                                     <%--   <asp:DropDownList ID="paymentfrequency" runat="server"  style="width: 170px;" TabIndex="39" OnSelectedIndexChanged="paymentfrequency_SelectedIndexChanged" AutoPostBack="true">
+                                                            <asp:ListItem Value="1">Annual</asp:ListItem>
+                                                            <asp:ListItem Value="2">Semi-Annual</asp:ListItem>
+                                                            <asp:ListItem Value="3">Tri-Annual</asp:ListItem>
+                                                            <asp:ListItem Value="4">Quarterly</asp:ListItem>
+                                                        </asp:DropDownList>--%>
                                                     </td>
                                                     <td>
                                                         <b style="white-space: nowrap" class="CheckBold" runat="server" id="lblbillingstartdate">Billing Start Date:</b>
@@ -5968,8 +6117,9 @@
                                             </b>
                                         </td>
                                         <td>
-                                            <asp:TextBox ID="txtdelitzip" runat="server" Style="margin-bottom: 5px;" class="form-control" placeholder="Zip" autocomplete='nope' onchange="return functionDelinquent()">
-                                            </asp:TextBox>
+                                            <%--<asp:TextBox ID="txtdelitzip" runat="server" Style="margin-bottom: 5px;" class="form-control" placeholder="Zip" autocomplete='nope' onchange="return functionDelinquent()">
+                                            </asp:TextBox>--%>
+                                            <asp:TextBox ID="txtdelitzip" runat="server" class="form-control" placeholder="Zip Code" onkeypress="return isNumberKey(event)" autocomplete='off' MaxLength="5"></asp:TextBox>
                                         </td>
                                         <td style="padding-left: 31px;">
                                             <label class="CheckBold" id="lblbaseamntdue">Base Amount Due:</label>
@@ -6309,7 +6459,9 @@
                                     <tr>
                                         <td><b class="CheckBold">Inst Remaining:</b></td>
                                         <td>
-                                            <asp:TextBox ID="txtInstallRemain" runat="server" class="form-control" placeholder="Inst Remaining" Style="margin-bottom: 5px;" onkeyup="SpeAmount1();" onfocusout="SpemyFunctionAmount1();if (this.value=='0.00') this.value='0.00';if (this.value=='') this.value='0.00';" onfocus="this.value='0.00'" onfocusin="if (this.value=='0.00') this.value='';" onblur="mySpe();" autocomplete='off'></asp:TextBox></td>
+                                           <%-- <asp:TextBox ID="txtInstallRemain" runat="server" class="form-control" placeholder="Inst Remaining" Style="margin-bottom: 5px;" onkeyup="SpeAmount1();" onfocusout="SpemyFunctionAmount1();if (this.value=='0.00') this.value='0.00';if (this.value=='') this.value='0.00';" onfocus="this.value='0.00'" onfocusin="if (this.value=='0.00') this.value='';" onblur="mySpe();" autocomplete='off'></asp:TextBox>--%>
+                                            <asp:TextBox ID="txtInstallRemain" runat="server" class="form-control" placeholder="Inst Remaining" onkeypress="return isNumberKey(event)" autocomplete='off'></asp:TextBox>
+                                        </td>
                                         <td style="padding-left: 31px;"><b class="CheckBold">Due Date:</b></td>
                                         <td>
                                             <asp:TextBox ID="txtduedate" runat="server" class="form-control" placeholder="MM/DD/YYYY" MaxLength="10" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="return checkDate(this,event)" autocomplete='off'></asp:TextBox>
