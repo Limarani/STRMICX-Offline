@@ -21,9 +21,89 @@
     <script src="../Script/Jquery-1.8.3-jquery.min.js"></script>
     <script type="text/javascript">
 
-        function functionpayemtfrequency(ddlFruits) {
+
+        function functionTaxBill(txtDate) {
+           
+            var ddlTaxBill = document.getElementById("paymentfrequency");
+            var txBill = ddlTaxBill.options[ddlTaxBill.selectedIndex].innerHTML;
+
+            var today = new Date();
+            var dd = today.getDate();
+
+            var mm = today.getMonth() + 1;
+            var yyyy = today.getFullYear();
+            if (dd < 10) {
+                dd = '0' + dd;
+            }
+
+            if (mm < 10) {
+                mm = '0' + mm;
+            }
+           
+            today = mm + '/' + dd + '/' + yyyy;
+            if(txBill=="Annual")
+            {
+                
+                if (Date.parse(txtDate.value) >= Date.parse(today)) {
+                   document.getElementById("taxbill").selectedIndex = 1;
+                    
+                }
+                else if (Date.parse(txtDate.value) <= Date.parse(today)) {
+                    document.getElementById("taxbill").selectedIndex = 2;
+                }
+                else
+                {
+                    document.getElementById("taxbill").selectedIndex = 0;
+                }
+            }
+            else if(txBill=="Semi-Annual")
+            {
+                if (Date.parse(txtDate.value) >= Date.parse(today)) {
+                    document.getElementById("taxbill").selectedIndex = 1;
+
+                }
+                else if (Date.parse(txtDate.value) <= Date.parse(today)) {
+                    document.getElementById("taxbill").selectedIndex = 2;
+                }
+                else {
+                    document.getElementById("taxbill").selectedIndex = 0;
+                }
+
+            }
+            else if (txBill == "Tri-Annual")
+            {
+                if (Date.parse(txtDate.value) >= Date.parse(today)) {
+                    document.getElementById("taxbill").selectedIndex = 1;
+
+                }
+                else if (Date.parse(txtDate.value) <= Date.parse(today)) {
+                    document.getElementById("taxbill").selectedIndex = 2;
+                }
+                else {
+                    document.getElementById("taxbill").selectedIndex = 0;
+                }
+            }
+            else if (txBill == "Quarterly")
+            {
+                if (Date.parse(txtDate.value) >= Date.parse(today)) {
+                    document.getElementById("taxbill").selectedIndex = 1;
+
+                }
+                else if (Date.parse(txtDate.value) <= Date.parse(today)) {
+                    document.getElementById("taxbill").selectedIndex = 2;
+                }
+                else {
+                    document.getElementById("taxbill").selectedIndex = 0;
+                }
+            }
+            
+
+        }
+
+
+        function functionpayemtfrequency(ddlPay) {
        // var payfre = document.getElementById("paymentfrequency").value;
-            var payfre = ddlFruits.options[ddlFruits.selectedIndex].innerHTML;
+            var payfre = ddlPay.options[ddlPay.selectedIndex].innerHTML;
             //alert(payfre);
             var Ann = "", Semi = "", Tri = "", Qua = "";
             if (payfre == "Annual") {
@@ -3101,9 +3181,12 @@
                 return true;
             }
             else {
+                txtpayoffgood.txt = "";
                 document.getElementById('txtpayoffgood').style.borderColor = "#ff0000";
                 document.getElementById('lblpayoffgood').style.color = "#ff0000";
                 alert("Date should be greater than current date");
+                
+                return true;
             }
         }
 
@@ -5135,25 +5218,25 @@
                                                     <td>
                                                         <div class="form-group" style="margin-bottom: 0px;">
                                                             <label style="text-align: right; clear: both; float: left; margin-right: 29px;" class="CheckBold">Delinquent Date:</label>
-                                                            <input type="text" id="delinq1" runat="server" class="form-control taxing" style="width: 150px;" placeholder="MM/DD/YYYY" maxlength="10" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="return checkDate(this,event)" autocomplete="off" tabindex="6" />
+                                                            <input type="text" id="delinq1" runat="server" class="form-control taxing" style="width: 150px;" placeholder="MM/DD/YYYY" maxlength="10" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="return checkDate(this,event)" autocomplete="off" tabindex="6" onchange="functionTaxBill(this)" />
                                                         </div>
                                                     </td>
                                                     <td>
                                                         <div class="form-group" style="margin-bottom: 0px;">
                                                             <label style="text-align: right; clear: both; float: left; margin-right: 29px;" class="CheckBold">Delinquent Date:</label>
-                                                            <input type="text" id="delinq2" runat="server" class="form-control taxing" style="width: 150px;" placeholder="MM/DD/YYYY" maxlength="10" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="return checkDate(this,event)" autocomplete="off" tabindex="15" />
+                                                            <input type="text" id="delinq2" runat="server" class="form-control taxing" style="width: 150px;" placeholder="MM/DD/YYYY" maxlength="10" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="return checkDate(this,event)" autocomplete="off" tabindex="15" onchange="functionTaxBill(this)"/>
                                                         </div>
                                                     </td>
                                                     <td>
                                                         <div class="form-group" style="margin-bottom: 0px;">
                                                             <label style="text-align: right; clear: both; float: left; margin-right: 29px;" class="CheckBold">Delinquent Date:</label>
-                                                            <input type="text" id="delinq3" runat="server" class="form-control taxing" style="width: 150px;" placeholder="MM/DD/YYYY" maxlength="10" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="return checkDate(this,event)" autocomplete="off" tabindex="23" />
+                                                            <input type="text" id="delinq3" runat="server" class="form-control taxing" style="width: 150px;" placeholder="MM/DD/YYYY" maxlength="10" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="return checkDate(this,event)" autocomplete="off" tabindex="23" onchange="functionTaxBill(this)"/>
                                                         </div>
                                                     </td>
                                                     <td>
                                                         <div class="form-group" style="margin-bottom: 0px;">
                                                             <label style="text-align: right; clear: both; float: left; margin-right: 29px;" class="CheckBold">Delinquent Date:</label>
-                                                            <input type="text" id="delinq4" runat="server" class="form-control taxing" style="width: 150px;" placeholder="MM/DD/YYYY" maxlength="10" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="return checkDate(this,event)" autocomplete="off" tabindex="32" />
+                                                            <input type="text" id="delinq4" runat="server" class="form-control taxing" style="width: 150px;" placeholder="MM/DD/YYYY" maxlength="10" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="return checkDate(this,event)" autocomplete="off" tabindex="32" onchange="functionTaxBill(this)" />
                                                         </div>
                                                     </td>
                                                 </tr>
@@ -6317,7 +6400,9 @@
                                     <tr>
                                         <td><b class="CheckBold">Inst Remaining:</b></td>
                                         <td>
-                                            <asp:TextBox ID="txtInstallRemain" runat="server" class="form-control" placeholder="Inst Remaining" Style="margin-bottom: 5px;" onkeyup="SpeAmount1();" onfocusout="SpemyFunctionAmount1();if (this.value=='0.00') this.value='0.00';if (this.value=='') this.value='0.00';" onfocus="this.value='0.00'" onfocusin="if (this.value=='0.00') this.value='';" onblur="mySpe();" autocomplete='off'></asp:TextBox></td>
+                                           <%-- <asp:TextBox ID="txtInstallRemain" runat="server" class="form-control" placeholder="Inst Remaining" Style="margin-bottom: 5px;" onkeyup="SpeAmount1();" onfocusout="SpemyFunctionAmount1();if (this.value=='0.00') this.value='0.00';if (this.value=='') this.value='0.00';" onfocus="this.value='0.00'" onfocusin="if (this.value=='0.00') this.value='';" onblur="mySpe();" autocomplete='off'></asp:TextBox>--%>
+                                            <asp:TextBox ID="txtInstallRemain" runat="server" class="form-control" placeholder="Number Of Installments" onkeypress="return isNumberKey(event)" autocomplete='off'></asp:TextBox>
+                                        </td>
                                         <td style="padding-left: 31px;"><b class="CheckBold">Due Date:</b></td>
                                         <td>
                                             <asp:TextBox ID="txtduedate" runat="server" class="form-control" placeholder="MM/DD/YYYY" MaxLength="10" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="return checkDate(this,event)" autocomplete='off'></asp:TextBox>

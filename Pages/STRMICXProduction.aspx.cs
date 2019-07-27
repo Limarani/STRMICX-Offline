@@ -340,8 +340,10 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
         chkTBD.Checked = false;
         txtTaxYear.Text = "";
         txtEndYear.Text = "";
-
-
+        DeliquentStatusAdd.Enabled = true;
+        gvDeliquentStatus_RowCancelingEdit(null, null);
+        gvExemption_RowCancelingEdit(null, null);
+        gvSpecialAssessment_RowCancelingEdit(null, null);
         LinkButton lb = (LinkButton)sender;
         GridViewRow row = (GridViewRow)lb.NamingContainer;
         int index;
@@ -1963,7 +1965,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
     private void fetchDeliquentStatus()
     {
         DataTable dtfetch = new DataTable();
-        dtfetch = gl.FetchDeliquentStatusAll(lblord.Text, LblAgencyId1.Text);
+        dtfetch = gl.FetchDeliquentStatusAll(lblord.Text, LblAgencyId1.Text, LblTaxID.Text);
         gvDeliquentStatus.DataSource = dtfetch;
         gvDeliquentStatus.DataBind();
     }
@@ -3140,7 +3142,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
             DateTime dt1 = DateTime.Now;
             string currentdate = dt1.ToShortDateString();
 
-            if (Convert.ToDateTime(test) > Convert.ToDateTime(currentdate))
+            if (Convert.ToDateTime(test) >= Convert.ToDateTime(currentdate))
             {
                 taxbill.SelectedIndex = 1;
             }

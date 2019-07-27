@@ -16978,16 +16978,19 @@ public class GlobalClass : myConnection
         return ExecuteSPNonQuery("Sp_update_delinquent", true, mParam);
     }
 
-    public DataTable FetchDeliquentStatusAll(string orderno, string agencyid)
+    public DataTable FetchDeliquentStatusAll(string orderno, string agencyid,string taxid)
     {
         DataTable dt = new DataTable();
         string query = "Sp_fetchall_delinquent";
-        mParam = new MySqlParameter[2];
+        mParam = new MySqlParameter[3];
         mParam[0] = new MySqlParameter("?$orderno", orderno);
         mParam[0].MySqlDbType = MySqlDbType.VarChar;              
 
         mParam[1] = new MySqlParameter("?$agencyid", agencyid);
         mParam[1].MySqlDbType = MySqlDbType.VarChar;
+
+        mParam[2] = new MySqlParameter("?$taxid", taxid);
+        mParam[2].MySqlDbType = MySqlDbType.VarChar;
 
         mDa = con.ExecuteSPAdapter(query, true, mParam);
         mDa.Fill(dt);
