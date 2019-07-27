@@ -1965,7 +1965,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
     private void fetchDeliquentStatus()
     {
         DataTable dtfetch = new DataTable();
-        dtfetch = gl.FetchDeliquentStatusAll(lblord.Text, LblAgencyId1.Text);
+        dtfetch = gl.FetchDeliquentStatusAll(lblord.Text, LblAgencyId1.Text, LblTaxID.Text);
         gvDeliquentStatus.DataSource = dtfetch;
         gvDeliquentStatus.DataBind();
     }
