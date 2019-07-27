@@ -6116,8 +6116,9 @@
                                             </b>
                                         </td>
                                         <td>
-                                            <asp:TextBox ID="txtdelitzip" runat="server" Style="margin-bottom: 5px;" class="form-control" placeholder="Zip" autocomplete='nope' onchange="return functionDelinquent()">
-                                            </asp:TextBox>
+                                            <%--<asp:TextBox ID="txtdelitzip" runat="server" Style="margin-bottom: 5px;" class="form-control" placeholder="Zip" autocomplete='nope' onchange="return functionDelinquent()">
+                                            </asp:TextBox>--%>
+                                            <asp:TextBox ID="txtdelitzip" runat="server" class="form-control" placeholder="Zip Code" onkeypress="return isNumberKey(event)" autocomplete='off' MaxLength="5"></asp:TextBox>
                                         </td>
                                         <td style="padding-left: 31px;">
                                             <label class="CheckBold" id="lblbaseamntdue">Base Amount Due:</label>
@@ -6458,7 +6459,7 @@
                                         <td><b class="CheckBold">Inst Remaining:</b></td>
                                         <td>
                                            <%-- <asp:TextBox ID="txtInstallRemain" runat="server" class="form-control" placeholder="Inst Remaining" Style="margin-bottom: 5px;" onkeyup="SpeAmount1();" onfocusout="SpemyFunctionAmount1();if (this.value=='0.00') this.value='0.00';if (this.value=='') this.value='0.00';" onfocus="this.value='0.00'" onfocusin="if (this.value=='0.00') this.value='';" onblur="mySpe();" autocomplete='off'></asp:TextBox>--%>
-                                            <asp:TextBox ID="txtInstallRemain" runat="server" class="form-control" placeholder="Number Of Installments" onkeypress="return isNumberKey(event)" autocomplete='off'></asp:TextBox>
+                                            <asp:TextBox ID="txtInstallRemain" runat="server" class="form-control" placeholder="Inst Remaining" onkeypress="return isNumberKey(event)" autocomplete='off'></asp:TextBox>
                                         </td>
                                         <td style="padding-left: 31px;"><b class="CheckBold">Due Date:</b></td>
                                         <td>
