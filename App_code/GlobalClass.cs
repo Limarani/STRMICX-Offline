@@ -700,6 +700,22 @@ public class GlobalClass : myConnection
         }
     }
 
+    public void GetOrderUnLock(string strorderno, string fdate, string tdate)
+    {
+        string strquery = string.Empty;
+        try
+        {
+            strquery = "Update record_status set Lock1=0 where order_no='" + strorderno + "' and pdate between '" + fdate + "' and '" + tdate + "'";
+            int result = con.ExecuteSPNonQuery(strquery);
+        }
+        catch (Exception ex)
+        {
+            throw ex;
+        }
+    }
+
+
+
     public void GetOrderUnlock(string strorderno, string date)
     {
         string strquery = string.Empty;
@@ -836,7 +852,7 @@ public class GlobalClass : myConnection
         string strquery = string.Empty;
         try
         {
-            strquery = "update record_status set HP=1 where order_no='" + strorderno + "' and pdate between '" + fdate + "' and '" + tdate + "'";
+            strquery = "update record_status set HP=0 where order_no='" + strorderno + "' and pdate between '" + fdate + "' and '" + tdate + "'";
             int result = con.ExecuteSPNonQuery(strquery);
         }
         catch (Exception ex)
@@ -16978,16 +16994,19 @@ public class GlobalClass : myConnection
         return ExecuteSPNonQuery("Sp_update_delinquent", true, mParam);
     }
 
-    public DataTable FetchDeliquentStatusAll(string orderno, string agencyid)
+    public DataTable FetchDeliquentStatusAll(string orderno, string agencyid, string taxid)
     {
         DataTable dt = new DataTable();
         string query = "Sp_fetchall_delinquent";
-        mParam = new MySqlParameter[2];
+        mParam = new MySqlParameter[3];
         mParam[0] = new MySqlParameter("?$orderno", orderno);
         mParam[0].MySqlDbType = MySqlDbType.VarChar;              
 
         mParam[1] = new MySqlParameter("?$agencyid", agencyid);
         mParam[1].MySqlDbType = MySqlDbType.VarChar;
+
+        mParam[2] = new MySqlParameter("?$taxid", taxid);
+        mParam[2].MySqlDbType = MySqlDbType.VarChar;
 
         mDa = con.ExecuteSPAdapter(query, true, mParam);
         mDa.Fill(dt);

@@ -18,7 +18,7 @@
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
     <script src="../Script/Jquery-1.8.3-jquery.min.js"></script>--%>
 
-
+    <link href='/path/to/font-awesome.css' rel='stylesheet'/>
     <%--<script type="text/javascript">
         $(document).ready(function () {
             $('#<%=GridUser.ClientID %>').Scrollable({
@@ -252,9 +252,9 @@
                                         <asp:LinkButton ID="LnkId" runat="server" Text='<%# Container.DataItemIndex + 1 %>' OnClick="LnkId_Click" autopostback="false"></asp:LinkButton>
                                     </ItemTemplate>
                                 </asp:TemplateField>
-                                <asp:TemplateField HeaderText="Order No" HeaderStyle-Width="100px" ItemStyle-Width="30px" HeaderStyle-CssClass="check">
+                                <asp:TemplateField HeaderText="Order No" HeaderStyle-Width="130px" ItemStyle-Width="30px" HeaderStyle-CssClass="check">
                                     <ItemTemplate>
-                                        <%--<asp:Image ID="Imglocked" runat="server" ImageUrl="~/App_themes/Black/images/lockimg.png" />--%>
+                                       <%-- <asp:Image ID="Imglocked" runat="server" ImageUrl="~/App_themes/Black/images/lockimg.png" />--%>
                                         <asp:LinkButton ID="Lnkorder" runat="server" Text='<%# Eval("Order_No") %>' CommandName="Process"></asp:LinkButton>
                                     </ItemTemplate>
                                 </asp:TemplateField>
@@ -270,7 +270,7 @@
                                 <asp:BoundField DataField="County" HeaderText="County" HeaderStyle-CssClass="check" />
                                 <asp:BoundField DataField="OrderType" HeaderText="OrderType" HeaderStyle-CssClass="check" />
                                 <asp:BoundField DataField="orderstatus" HeaderText="Status" HeaderStyle-CssClass="check" />
-                                <asp:BoundField DataField="prior" HeaderText="Priority" HeaderStyle-CssClass="check" />
+                                <asp:BoundField DataField="HP" HeaderText="Priority" HeaderStyle-CssClass="check" />
                                 <asp:BoundField DataField="K1_OP" HeaderText="Key OP" HeaderStyle-CssClass="check" />
                                 <asp:BoundField DataField="QC_OP" HeaderText="QC OP" HeaderStyle-CssClass="check" />
                                 <asp:BoundField DataField="Comments" HeaderText="Comments" HeaderStyle-CssClass="check" />
@@ -312,6 +312,12 @@
                             <span class="glyphicon glyphicon-lock" style="font-size: 20px"></span>
                             <br />
                             Lock
+                        </button>
+                        <button type="button" id="btnunlock" class="btn btn-default" data-toggle="modal" data-target="#exampleModal2" title="UnLock" runat="server" onserverclick="UnLock_Click">
+                            <%--<span class="glyphicon glyphicon-fa-unlock" style="font-size: 20px"></span>--%>
+                             <i class="fa fa-unlock" style="font-size: 25px"></i>
+                            <br />
+                            UnLock
                         </button>
                         <button type="button" class="btn btn-default" data-toggle="modal" data-target="#Accept" title="Priority" runat="server" onserverclick="Priority_Click">
                             <span class="glyphicon glyphicon-exclamation-sign" style="font-size: 20px"></span>
@@ -418,7 +424,7 @@
                                                         <asp:BoundField ItemStyle-Width="30%" DataField="State" HeaderText="State" />
                                                         <asp:BoundField ItemStyle-Width="30%" DataField="County" HeaderText="County" />
                                                         <asp:BoundField ItemStyle-Width="30%" DataField="Status" HeaderText="Status" />
-                                                        <asp:BoundField ItemStyle-Width="30%" DataField="Priority" HeaderText="Priority" />
+                                                        <asp:BoundField ItemStyle-Width="30%" DataField="HP" HeaderText="Priority" />
                                                         <asp:BoundField ItemStyle-Width="30%" DataField="Key OP" HeaderText="K1_OP" ItemStyle-CssClass="hiddencol" HeaderStyle-CssClass="hiddencol" />
                                                         <asp:TemplateField HeaderText="Select Orders">
                                                             <HeaderTemplate>

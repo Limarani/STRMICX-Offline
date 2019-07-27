@@ -217,7 +217,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
             GridView gvOrders = e.Row.FindControl("gvOrders") as GridView;
 
             string query = "";
-            query = "select Id,Orderno, TaxId, AgencyId, TaxAuthorityName, TaxAgencyType, TaxAgencyState, Phone, TaxYearStartDate, PreferredContactMethod, JobTitle, City, County, State, ContactType, Zip, Address1  from tbl_taxauthorities2 where TaxId = '" + customerId + "'";
+            query = "select Id,Orderno, TaxId, AgencyId, TaxAuthorityName, TaxAgencyType, TaxAgencyState, Phone, TaxYearStartDate, PreferredContactMethod, JobTitle, City, County, State, ContactType, Zip, Address1  from tbl_taxauthorities2 where TaxId = '" + customerId + "' and Orderno = '" + lblord.Text + "'";
             DataSet ds = gl.ExecuteQuery(query);
             gvOrders.DataSource = ds.Tables[0];
             gvOrders.DataBind();
@@ -713,9 +713,9 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
                 {
                     Instoutput = Inst1 + Inst2 + Inst3 + Inst4;
                     txtAnnualTaxAmount.Text = (Instoutput.ToString("#,##0.00"));
-                }                                             
-                             
-               
+                }
+
+
                 if (lblclientName.Text == "ORMS")
                 {
                     Prior.Visible = true;
@@ -755,11 +755,11 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
                 {
                     txtexemption.SelectedIndex = 2;
                 }
-              
+
                 spec = dtfetchauthority.Rows[0]["IsSpecial"].ToString().Trim();
                 if (spec == "")
                 {
-                    SecialAssmnt.SelectedIndex = 0;                    
+                    SecialAssmnt.SelectedIndex = 0;
                 }
                 else if (spec == "Yes")
                 {
@@ -769,7 +769,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
                 {
                     SecialAssmnt.SelectedIndex = 2;
                 }
-                
+
 
 
                 DataTable dtsdeliquentinp = new DataTable();
@@ -793,24 +793,24 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
                     gvDeliquentStatus.DataSource = dtsdeliquentoup;
                     gvDeliquentStatus.DataBind();
                 }
-                else 
-                {                    
+                else
+                {
                     gvDeliquentStatus.DataSource = dtsdeliquentoup;
                     gvDeliquentStatus.DataBind();
                 }
 
-                                               
+
                 dtsexemption = gl.FetchExemptionNew(lblord.Text, LblTaxId1.Text, LblAgencyId1.Text, taxagencytype);
                 if (dtsexemption.Rows.Count > 0)
-                {                   
+                {
                     gvExemption.DataSource = dtsexemption;
                     gvExemption.DataBind();
-                } 
+                }
                 else
-                {                    
+                {
                     gvExemption.DataSource = dtsexemption;
                     gvExemption.DataBind();
-                }              
+                }
 
                 dtspecialassessment = gl.FetchSpecialAssessmentNew(lblord.Text, LblTaxId1.Text, LblAgencyId1.Text, taxagencytype);
                 if (dtspecialassessment.Rows.Count > 0)
@@ -937,7 +937,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
             gvTaxParcel.EditIndex = e.NewEditIndex;
             //loadgridtaxparcel();
             fetchtaxparcel();
-            
+
         }
         catch (Exception ex)
         {
@@ -958,7 +958,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
             {
                 if (txtEndYear.Text != "")
                 {
-                    if (!txtEndYear.Text.Contains("EST") && txtEndYear.Text!=" ")
+                    if (!txtEndYear.Text.Contains("EST") && txtEndYear.Text != " ")
                         estEnd = "EST";
                 }
                 else
@@ -983,7 +983,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
                 {
                     gl.update_taxparcel(strValue.ToString(), "TBD", txtTaxYear.Text, txtEndYear.Text, taxid, lblord.Text, "true", "false");
                 }
-                else if(countCD=="1")
+                else if (countCD == "1")
                 {
                     gl.update_taxparcel(strValue.ToString(), txtdrop.Value, txtTaxYear.Text, txtEndYear.Text, taxid, lblord.Text, "false", "false");
                 }
@@ -1141,7 +1141,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
             else if (tbd == "false")
             {
                 chkTBD.Checked = false;
-            }             
+            }
             estimate = Server.HtmlDecode(row.Cells[6].Text.Trim());
             if (estimate == "true")
             {
@@ -1235,6 +1235,10 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
             date1.Value = dtfetch.Rows[0]["expecteddate"].ToString();
             date2.Value = dtfetch.Rows[0]["followupdate"].ToString();
         }
+        else if (dtfetch.Rows.Count == 0)
+        {
+            Response.Redirect("STRMICXHome.aspx");
+        }
 
         if (lbltransactiontype.Text != "Purchase")
         {
@@ -1279,7 +1283,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
             OUTPUT.Columns.Add("Status");
             OUTPUT.Rows.Add("Insertion Failed");
         }
-    }  
+    }
 
     private void cleartaxstatus()
     {
@@ -1382,8 +1386,8 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
         int insert = 0;
         string query = "";
 
-      
-        query = "select orderno,taxid,taxyear,endyear from tbl_taxparcel where taxid = '" + txtdrop.Value + "' and  status = 'M' and orderno='" + lblord.Text + "' ";
+
+        query = "select orderno,taxid,taxyear,endyear from tbl_taxparcel where taxid = '" + txtdrop.Value + "' and  (status = 'M' or status = 'C') and orderno='" + lblord.Text + "' ";
         DataSet ds = gl.ExecuteQuery(query);
 
         string countCD = gl.ExecuteScalarst("select count(taxid) from tbl_taxparcel where taxid = '" + txtdrop.Value + "' and orderno='" + lblord.Text + "' and status = 'CD'");
@@ -1518,7 +1522,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
 
             else
             {
-                
+
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "alertMessage", "alert('TaxId Number Already Exists')", true);
                 fetchtaxparcel();
                 fetchtaxparceldetails();
@@ -1924,7 +1928,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
     private void fetchDeliquentStatus()
     {
         DataTable dtfetch = new DataTable();
-        dtfetch = gl.FetchDeliquentStatusAll(lblord.Text, LblAgencyId1.Text);
+        dtfetch = gl.FetchDeliquentStatusAll(lblord.Text, LblAgencyId1.Text, LblTaxId1.Text);
         gvDeliquentStatus.DataSource = dtfetch;
         gvDeliquentStatus.DataBind();
     }
@@ -2775,31 +2779,28 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
             }
         }
     }
-
     string OStatus, process = "";
-    protected void btnsaverecord_Click(object sender, EventArgs e)
+    protected void btnsaverecordnew_Click(object sender, EventArgs e)
     {
+        string query = "";
+        string query1 = "";
+
         DataSet ds = new DataSet();
         process = processtatus.Text;
         OStatus = ddlstatus.Value;
 
-
-        string query = "";
-        string query1 = "";
-
-        query = "select count(AgencyId) as inputcount from tbl_taxauthorities2 where orderno = '" + lblord.Text + "'";
-        DataSet inputcou = con.ExecuteQuery(query);
-
-        string inpcou = inputcou.Tables[0].Rows[0]["inputcount"].ToString();
-
-        query1 = "select count(authoritystatus) as outputcount from tbl_taxauthorities2 where orderno = '" + lblord.Text + "' and authoritystatus = '2' ";
-        DataSet outputcou = con.ExecuteQuery(query1);
-
-        string oupcou = outputcou.Tables[0].Rows[0]["outputcount"].ToString();
-
-        if (inpcou == oupcou)
+        if (OStatus == "Completed" && process == "KEY")
         {
-            if (process == "KEY")
+            query = "select count(AgencyId) as inputcount from tbl_taxauthorities2 where orderno = '" + lblord.Text + "'";
+            DataSet inputcou = con.ExecuteQuery(query);
+            string inpcou = inputcou.Tables[0].Rows[0]["inputcount"].ToString();
+
+
+            query1 = "select count(authoritystatus) as outputcount from tbl_taxauthorities2 where orderno = '" + lblord.Text + "' and authoritystatus = '2' ";
+            DataSet outputcou = con.ExecuteQuery(query1);
+            string oupcou = outputcou.Tables[0].Rows[0]["outputcount"].ToString();
+
+            if (inpcou == oupcou)
             {
                 UpdateProduction("sp_UpdateKey_User");
 
@@ -2813,20 +2814,25 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
                     Response.Redirect("STRMICXProduction.aspx?id=" + id);
                 }
             }
-            else if (process == "DU")
+            else
             {
-                UpdateProduction("sp_UpdateDU_User");
-
-                if (id == "12f7tre5")
-                {
-                    Response.Redirect("STRMICXProduction.aspx?id=" + id);
-                }
-                else
-                {
-                    Response.Redirect("STRMICXProduction.aspx?id=" + id);
-                }
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "alertMessage", "alert('Cannot Complete Order Details')", true);
+                return;
             }
-            else if (process == "QC" || process == "INPROCESS" || process == "PARCELID" || process == "ONHOLD" || process == "MAILAWAY")
+        }
+
+        else if (OStatus == "Completed" && process == "QC")
+        {
+            query = "select count(AgencyId) as inputcount from tbl_taxauthorities2 where orderno = '" + lblord.Text + "'";
+            DataSet inputcou = con.ExecuteQuery(query);
+            string inpcou = inputcou.Tables[0].Rows[0]["inputcount"].ToString();
+
+
+            query1 = "select count(authoritystatus) as outputcount from tbl_taxauthorities2 where orderno = '" + lblord.Text + "' and authoritystatus = '2' ";
+            DataSet outputcou = con.ExecuteQuery(query1);
+            string oupcou = outputcou.Tables[0].Rows[0]["outputcount"].ToString();
+
+            if (inpcou == oupcou)
             {
                 UpdateProduction("sp_UpdateQC_User");
 
@@ -2836,28 +2842,212 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
                 }
                 else
                 {
+                    id = "12f7tre5";
                     Response.Redirect("STRMICXProduction.aspx?id=" + id);
                 }
             }
-            else if (process == "REVIEW")
+            else
             {
-                UpdateProduction("sp_UpdateReview_New");
-
-                if (id == "12f7tre5")
-                {
-                    Response.Redirect("STRMICXProduction.aspx?id=" + id);
-                }
-                else
-                {
-                    Response.Redirect("STRMICXProduction.aspx?id=" + id);
-                }
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "alertMessage", "alert('Cannot Complete Order Details')", true);
+                return;
             }
         }
 
-        else
+        else if (OStatus == "In Process" && process == "KEY")
         {
-            ScriptManager.RegisterStartupScript(this, this.GetType(), "alertMessage", "alert('Complete Remaining Tax Details')", true);
-            return;
+            UpdateProduction("sp_UpdateKey_User");
+
+            if (id == "12f7tre5")
+            {
+                Response.Redirect("STRMICXProduction.aspx?id=" + id);
+            }
+            else
+            {
+                id = "12f7tre5";
+                Response.Redirect("STRMICXProduction.aspx?id=" + id);
+            }
+        }
+
+        else if (OStatus == "In Process" && process == "QC")
+        {
+            UpdateProduction("sp_UpdateQC_User");
+
+            if (id == "12f7tre5")
+            {
+                Response.Redirect("STRMICXProduction.aspx?id=" + id);
+            }
+            else
+            {
+                id = "12f7tre5";
+                Response.Redirect("STRMICXProduction.aspx?id=" + id);
+            }
+        }
+
+
+        else if (OStatus == "Mail Away" && process == "KEY")
+        {
+            UpdateProduction("sp_UpdateKey_User");
+
+            if (id == "12f7tre5")
+            {
+                Response.Redirect("STRMICXProduction.aspx?id=" + id);
+            }
+            else
+            {
+                id = "12f7tre5";
+                Response.Redirect("STRMICXProduction.aspx?id=" + id);
+            }
+        }
+
+        else if (OStatus == "Mail Away" && process == "QC")
+        {
+            UpdateProduction("sp_UpdateQC_User");
+
+            if (id == "12f7tre5")
+            {
+                Response.Redirect("STRMICXProduction.aspx?id=" + id);
+            }
+            else
+            {
+                id = "12f7tre5";
+                Response.Redirect("STRMICXProduction.aspx?id=" + id);
+            }
+        }
+
+        else if (OStatus == "ParcelID" && process == "KEY")
+        {
+            UpdateProduction("sp_UpdateKey_User");
+
+            if (id == "12f7tre5")
+            {
+                Response.Redirect("STRMICXProduction.aspx?id=" + id);
+            }
+            else
+            {
+                id = "12f7tre5";
+                Response.Redirect("STRMICXProduction.aspx?id=" + id);
+            }
+        }
+
+        else if (OStatus == "ParcelID" && process == "QC")
+        {
+            UpdateProduction("sp_UpdateQC_User");
+
+            if (id == "12f7tre5")
+            {
+                Response.Redirect("STRMICXProduction.aspx?id=" + id);
+            }
+            else
+            {
+                id = "12f7tre5";
+                Response.Redirect("STRMICXProduction.aspx?id=" + id);
+            }
+        }
+
+        else if (OStatus == "On Hold" && process == "KEY")
+        {
+            UpdateProduction("sp_UpdateKey_User");
+
+            if (id == "12f7tre5")
+            {
+                Response.Redirect("STRMICXProduction.aspx?id=" + id);
+            }
+            else
+            {
+                id = "12f7tre5";
+                Response.Redirect("STRMICXProduction.aspx?id=" + id);
+            }
+        }
+
+        else if (OStatus == "On Hold" && process == "QC")
+        {
+            UpdateProduction("sp_UpdateQC_User");
+
+            if (id == "12f7tre5")
+            {
+                Response.Redirect("STRMICXProduction.aspx?id=" + id);
+            }
+            else
+            {
+                id = "12f7tre5";
+                Response.Redirect("STRMICXProduction.aspx?id=" + id);
+            }
+        }
+
+
+        else if (OStatus == "Others" && process == "KEY")
+        {
+            UpdateProduction("sp_UpdateKey_User");
+
+            if (id == "12f7tre5")
+            {
+                Response.Redirect("STRMICXProduction.aspx?id=" + id);
+            }
+            else
+            {
+                id = "12f7tre5";
+                Response.Redirect("STRMICXProduction.aspx?id=" + id);
+            }
+        }
+
+        else if (OStatus == "Others" && process == "QC")
+        {
+            UpdateProduction("sp_UpdateQC_User");
+
+            if (id == "12f7tre5")
+            {
+                Response.Redirect("STRMICXProduction.aspx?id=" + id);
+            }
+            else
+            {
+                id = "12f7tre5";
+                Response.Redirect("STRMICXProduction.aspx?id=" + id);
+            }
+        }
+
+        else if (OStatus == "Rejected" && process == "KEY")
+        {
+            UpdateProduction("sp_UpdateKey_User");
+
+            if (id == "12f7tre5")
+            {
+                Response.Redirect("STRMICXProduction.aspx?id=" + id);
+            }
+            else
+            {
+                id = "12f7tre5";
+                Response.Redirect("STRMICXProduction.aspx?id=" + id);
+            }
+        }
+
+        else if (OStatus == "Rejected" && process == "QC")
+        {
+            UpdateProduction("sp_UpdateQC_User");
+
+            if (id == "12f7tre5")
+            {
+                Response.Redirect("STRMICXProduction.aspx?id=" + id);
+            }
+            else
+            {
+                id = "12f7tre5";
+                Response.Redirect("STRMICXProduction.aspx?id=" + id);
+            }
+        }
+
+        else if (process == "REVIEW")
+        {
+            UpdateProduction("sp_UpdateReview_New");
+
+            if (id == "12f7tre5")
+            {
+                Response.Redirect("STRMICXProduction.aspx?id=" + id);
+            }
+            else
+            {
+                id = "12f7tre5";
+                Response.Redirect("STRMICXProduction.aspx?id=" + id);
+            }
         }
     }
 

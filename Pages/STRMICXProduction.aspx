@@ -327,7 +327,7 @@
             else if (taxparcelerror != "") {
                 document.getElementById('txtdrop').style.borderColor = "green";
                 document.getElementById('lbldrop').style.color = "green";
-            }           
+            }
             else {
                 document.getElementById('txtdrop').style.borderColor = "green";
                 document.getElementById('lbldrop').style.color = "green";
@@ -348,12 +348,12 @@
             }
 
 
-            if (taxyearerror == "" ) {
+            if (taxyearerror == "") {
                 document.getElementById('txtTaxYear').style.borderColor = "#ff0000";
                 document.getElementById("lblTaxYear").style.color = "#ff0000";
 
-            }           
-            else if (taxyearerror != "" ) {
+            }
+            else if (taxyearerror != "") {
                 document.getElementById('txtTaxYear').style.borderColor = "green";
                 document.getElementById('lblTaxYear').style.color = "green";
             }
@@ -378,7 +378,7 @@
 
             if (taxyearerror == "" || taxparcelerror == "" && document.getElementById("chkTBD").checked == false) {
                 return false;
-            }           
+            }
             else if (taxyearerror != "" || taxparcelerror != "") {
                 return true;
             }
@@ -3000,7 +3000,7 @@
                 txtTaxYear: '',
                 txtEndYear: '',
             };
-                       
+
             if (year != "") {
                 if (year < startyear) {
                     alert("End Year should be greater than Start year");
@@ -3009,8 +3009,8 @@
                 }
             }
         }
-        function checkReqFields(year, element, ev) {           
-            var startyear = document.getElementById("txtEndYear").value;            
+        function checkReqFields(year, element, ev) {
+            var startyear = document.getElementById("txtEndYear").value;
             var errors = {
                 txtTaxYear: '',
                 txtEndYear: '',
@@ -6811,6 +6811,7 @@
                     </div>
                 </div>
                 <br />
+
                 <%--Add Notes--%>
                 <div class="panel panel-default" tabindex="51" style="width: 1322px; margin-bottom: 0px;">
                     <div class="panel-heading" data-toggle="collapse" data-target="#collapsenotes">
@@ -6855,6 +6856,7 @@
                     </div>
                 </div>
                 <br />
+                <br />
                 <div style="margin-left: 125px;">
                     <table style="width: 995px;">
                         <tr>
@@ -6882,7 +6884,7 @@
                                 </select>
                             </td>
                             <td>
-                                <asp:Button ID="btnsaverecord" runat="server" Text="Complete" CssClass="btn btn-success" OnClick="btnsaverecord_Click" OnClientClick="return functioncomplete();" TabIndex="53" />
+                                <asp:Button ID="btnsaverecordnew" class="btn btn-success" runat="server" Text="Complete" OnClick="btnsaverecordnew_Click" />
                             </td>
                         </tr>
                     </table>

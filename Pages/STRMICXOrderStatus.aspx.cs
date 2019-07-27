@@ -13,26 +13,26 @@ using System.Text.RegularExpressions;
 
 public partial class Pages_STRMICXOrderStatus : System.Web.UI.Page
 {
-   
-        #region Variable Declaration
-        myConnection con = new myConnection();
-        GlobalClass gblcls = new GlobalClass();
-        MySqlDataReader mdr;
-        DataSet ds = new DataSet();
-        DataSet dset = new DataSet();
-        DateTime dt = new DateTime();
-        DataTable dttest = new DataTable();
 
-        string strfrmdate = string.Empty;
-        string strtodate = string.Empty;
-        string strusername = string.Empty;
-        string strdate = string.Empty;
-        string strcheckday = string.Empty;
-        string id = string.Empty;
-        string ono = string.Empty;
+    #region Variable Declaration
+    myConnection con = new myConnection();
+    GlobalClass gblcls = new GlobalClass();
+    MySqlDataReader mdr;
+    DataSet ds = new DataSet();
+    DataSet dset = new DataSet();
+    DateTime dt = new DateTime();
+    DataTable dttest = new DataTable();
+
+    string strfrmdate = string.Empty;
+    string strtodate = string.Empty;
+    string strusername = string.Empty;
+    string strdate = string.Empty;
+    string strcheckday = string.Empty;
+    string id = string.Empty;
+    string ono = string.Empty;
     #endregion
 
-        #region PageLoad
+    #region PageLoad
     protected void Page_Load(object sender, EventArgs e)
     {
         if (SessionHandler.UserName == "") Response.Redirect("STRMICXLogin.aspx");
@@ -309,7 +309,7 @@ public partial class Pages_STRMICXOrderStatus : System.Web.UI.Page
     {
         try
         {
-           //DataView dataview = gblcls.ConvertDataReaderToDataView(mdr);
+            //DataView dataview = gblcls.ConvertDataReaderToDataView(mdr);
             DataView dataview = gblcls.ConvertDataSetToDataViewSample1(mdr);
             DataTable dt = dataview.ToTable();
 
@@ -759,7 +759,7 @@ public partial class Pages_STRMICXOrderStatus : System.Web.UI.Page
         ClientScript.RegisterStartupScript(this.GetType(), "Pop", "Assign();", true);
         PanelManualInfo.Visible = true;
         DataTable dtassign = new DataTable();
-        dtassign.Columns.AddRange(new DataColumn[6] { new DataColumn("Order_No"), new DataColumn("State"), new DataColumn("County"), new DataColumn("Status"), new DataColumn("Priority"), new DataColumn("Key OP") });
+        dtassign.Columns.AddRange(new DataColumn[6] { new DataColumn("Order_No"), new DataColumn("State"), new DataColumn("County"), new DataColumn("Status"), new DataColumn("HP"), new DataColumn("Key OP") });
         foreach (GridViewRow row in GridUser.Rows)
         {
             if (row.RowType == DataControlRowType.DataRow)
@@ -830,20 +830,29 @@ public partial class Pages_STRMICXOrderStatus : System.Web.UI.Page
                 k_op = row.Cells[5].Text;
                 dttable.Rows.Add(row.Cells[0].Text, row.Cells[1].Text, row.Cells[2].Text, row.Cells[3].Text, row.Cells[4].Text, row.Cells[5].Text);
 
+                DataSet dsfetchuser = new DataSet();
+                string queryfetch = "select User_Name from user_status where User_Name = '" + usr + "' and Keying = '1'";
+                dsfetchuser = con.ExecuteQuery(queryfetch);
                 if (chkRow.Checked)
-                {                   
-                    query = "update record_status set K1_OP='" + usr + "',k1=0,qc=0,status=0 where Order_No='" + orderno + "'";
-                    con.ExecuteSPNonQuery(query);
-                    for (int i = 0; i < dttable.Rows.Count; i++)
+                {
+                    if (status == "YTS" || status == "In-Process" || status == "Mail-Away" || status == "ParcelId")
                     {
-                        DataRow recRow = dttable.Rows[i];
-                        recRow.Delete();
-                        dttable.AcceptChanges();
+                        if (dsfetchuser.Tables[0].Rows.Count > 0)
+                        {
+                            query = "update record_status set K1_OP='" + usr + "',k1=0,qc=0,status=0,Pend='0',Tax='0',Parcel='0' where Order_No='" + orderno + "'";
+                            con.ExecuteSPNonQuery(query);
+                            for (int i = 0; i < dttable.Rows.Count; i++)
+                            {
+                                DataRow recRow = dttable.Rows[i];
+                                recRow.Delete();
+                                dttable.AcceptChanges();
+                            }
+                        }
                     }
                 }
             }
         }
-        
+
         gvorderdetails.DataSource = dttable;
         gvorderdetails.DataBind();
     }
@@ -878,15 +887,24 @@ public partial class Pages_STRMICXOrderStatus : System.Web.UI.Page
                 k_op = row.Cells[5].Text;
                 dttable.Rows.Add(row.Cells[0].Text, row.Cells[1].Text, row.Cells[2].Text, row.Cells[3].Text, row.Cells[4].Text, row.Cells[5].Text);
 
+                DataSet dsfetchuser = new DataSet();
+                string queryfetch = "select User_Name from user_status where User_Name = '" + usr + "' and QC = '1'";
+                dsfetchuser = con.ExecuteQuery(queryfetch);
                 if (chkRow.Checked)
-                {                    
-                    query = "update record_status set QC_OP ='" + usr + "',qc = '1' where Order_No='" + orderno + "' and K1= '2' and status = '2' and qc='0'";
-                    con.ExecuteSPNonQuery(query);
-                    for (int i = 0; i < dttable.Rows.Count; i++)
+                {
+                    if (status == "Key Done" || status == "In-Process" || status == "Mail-Away" || status == "ParcelId")
                     {
-                        DataRow recRow = dttable.Rows[i];
-                        recRow.Delete();
-                        dttable.AcceptChanges();
+                        if (dsfetchuser.Tables[0].Rows.Count > 0)
+                        {
+                            query = "update record_status set QC_OP ='" + usr + "',pend='0',Parcel='0',Tax='0' where Order_No='" + orderno + "' and K1= '2' and status = '2',Pend='0',Tax='0',Parcel='0'";
+                            con.ExecuteSPNonQuery(query);
+                            for (int i = 0; i < dttable.Rows.Count; i++)
+                            {
+                                DataRow recRow = dttable.Rows[i];
+                                recRow.Delete();
+                                dttable.AcceptChanges();
+                            }
+                        }
                     }
                 }
             }
@@ -914,7 +932,7 @@ public partial class Pages_STRMICXOrderStatus : System.Web.UI.Page
                 strtodate = String.Format("{0:MM/dd/yyyy}", dt);
 
                 if (strfrmdate != "" && strtodate != "")
-                {                    
+                {
                     foreach (GridViewRow row in GridUser.Rows)
                     {
                         if (row.RowType == DataControlRowType.DataRow)
@@ -922,14 +940,16 @@ public partial class Pages_STRMICXOrderStatus : System.Web.UI.Page
                             CheckBox chkRow = (row.Cells[0].FindControl("chktrackdetails") as CheckBox);
                             if (chkRow.Checked)
                             {
-                                LinkButton orderno = (row.Cells[2].FindControl("Lnkorder") as LinkButton);                                
-                                gblcls.GetOrderHold(Convert.ToString(orderno), strfrmdate, strtodate);
+                                LinkButton orderno = (row.Cells[2].FindControl("Lnkorder") as LinkButton);
+                                gblcls.GetOrderHold(orderno.Text, strfrmdate, strtodate);
                             }
                         }
                     }
                 }
             }
         }
+        ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Order Status Changed Successfully')", true);
+        btnordershow_Click(sender, e);
     }
 
 
@@ -957,13 +977,15 @@ public partial class Pages_STRMICXOrderStatus : System.Web.UI.Page
                             {
                                 LinkButton orderno = (row.Cells[2].FindControl("Lnkorder") as LinkButton);
 
-                                gblcls.GetOrderUnHold(Convert.ToString(orderno), strfrmdate, strtodate);
+                                gblcls.GetOrderUnHold(orderno.Text, strfrmdate, strtodate);
                             }
                         }
                     }
                 }
             }
         }
+        ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Order Status Changed Successfully')", true);
+        btnordershow_Click(sender, e);
     }
 
     protected void Reject_Click(object sender, EventArgs e)
@@ -990,13 +1012,15 @@ public partial class Pages_STRMICXOrderStatus : System.Web.UI.Page
                             {
                                 LinkButton orderno = (row.Cells[2].FindControl("Lnkorder") as LinkButton);
 
-                                gblcls.GetOrderReject(Convert.ToString(orderno), strfrmdate, strtodate);
+                                gblcls.GetOrderReject(orderno.Text, strfrmdate, strtodate);
                             }
                         }
                     }
                 }
             }
         }
+        ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Order Status Changed Successfully')", true);
+        btnordershow_Click(sender, e);
     }
 
     protected void Delete_Click(object sender, EventArgs e)
@@ -1023,13 +1047,15 @@ public partial class Pages_STRMICXOrderStatus : System.Web.UI.Page
                             {
                                 LinkButton orderno = (row.Cells[2].FindControl("Lnkorder") as LinkButton);
 
-                                gblcls.GetOrderDelete(Convert.ToString(orderno), strfrmdate, strtodate);
+                                gblcls.GetOrderDelete(orderno.Text, strfrmdate, strtodate);
                             }
                         }
                     }
                 }
             }
         }
+        ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Order Status Changed Successfully')", true);
+        btnordershow_Click(sender, e);
     }
 
     protected void Lock_Click(object sender, EventArgs e)
@@ -1056,16 +1082,19 @@ public partial class Pages_STRMICXOrderStatus : System.Web.UI.Page
                             {
                                 LinkButton orderno = (row.Cells[2].FindControl("Lnkorder") as LinkButton);
 
-                                gblcls.GetOrderLock(Convert.ToString(orderno), strfrmdate, strtodate);
+                                gblcls.GetOrderLock(orderno.Text, strfrmdate, strtodate);
                             }
                         }
                     }
                 }
             }
         }
+        ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Order Status Changed Successfully')", true);
+        btnordershow_Click(sender, e);
     }
 
-    protected void Priority_Click(object sender, EventArgs e)
+
+    protected void UnLock_Click(object sender, EventArgs e)
     {
         if (txtfrmdate.Text != "")
         {
@@ -1089,17 +1118,61 @@ public partial class Pages_STRMICXOrderStatus : System.Web.UI.Page
                             {
                                 LinkButton orderno = (row.Cells[2].FindControl("Lnkorder") as LinkButton);
 
-                                gblcls.GetOrderPriority(Convert.ToString(orderno), strfrmdate, strtodate);
+                                gblcls.GetOrderUnLock(orderno.Text, strfrmdate, strtodate);
                             }
                         }
                     }
                 }
             }
         }
+        ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Order Status Changed Successfully')", true);
+        btnordershow_Click(sender, e);
+    }
+
+
+
+    protected void Priority_Click(object sender, EventArgs e)
+    {
+        string status = "";
+        if (txtfrmdate.Text != "")
+        {
+            dt = Convert.ToDateTime(txtfrmdate.Text);
+            strfrmdate = String.Format("{0:MM/dd/yyyy}", dt);
+
+            DataTable dttracking = new DataTable();
+            if (txttodate.Text != "")
+            {
+                dt = Convert.ToDateTime(txttodate.Text);
+                strtodate = String.Format("{0:MM/dd/yyyy}", dt);
+
+                if (strfrmdate != "" && strtodate != "")
+                {
+                    foreach (GridViewRow row in GridUser.Rows)
+                    {
+                        if (row.RowType == DataControlRowType.DataRow)
+                        {
+                            CheckBox chkRow = (row.Cells[0].FindControl("chktrackdetails") as CheckBox);
+                            status = row.Cells[10].Text;
+                            if (chkRow.Checked)
+                            {
+                                if (status != "Key Started" && status != "QC Started")
+                                {
+                                    LinkButton orderno = (row.Cells[2].FindControl("Lnkorder") as LinkButton);
+                                    gblcls.GetOrderPriority(orderno.Text, strfrmdate, strtodate);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Order Status Changed Successfully')", true);
+        btnordershow_Click(sender, e);
     }
 
     protected void DePriority_Click(object sender, EventArgs e)
     {
+        string status = "";
         if (txtfrmdate.Text != "")
         {
             dt = Convert.ToDateTime(txtfrmdate.Text);
@@ -1118,20 +1191,27 @@ public partial class Pages_STRMICXOrderStatus : System.Web.UI.Page
                         if (row.RowType == DataControlRowType.DataRow)
                         {
                             CheckBox chkRow = (row.Cells[0].FindControl("chktrackdetails") as CheckBox);
+                            status = row.Cells[10].Text;
                             if (chkRow.Checked)
                             {
-                                LinkButton orderno = (row.Cells[2].FindControl("Lnkorder") as LinkButton);
-                                gblcls.GetOrderDePriority(Convert.ToString(orderno), strfrmdate, strtodate);
+                                if (status != "Key Started" && status != "QC Started")
+                                {
+                                    LinkButton orderno = (row.Cells[2].FindControl("Lnkorder") as LinkButton);
+                                    gblcls.GetOrderDePriority(orderno.Text, strfrmdate, strtodate);
+                                }                            
                             }
                         }
                     }
                 }
             }
         }
+        ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Order Status Changed Successfully')", true);
+        btnordershow_Click(sender, e);
     }
 
     protected void YTS_Click(object sender, EventArgs e)
     {
+        string status = "";
         if (txtfrmdate.Text != "")
         {
             dt = Convert.ToDateTime(txtfrmdate.Text);
@@ -1150,17 +1230,23 @@ public partial class Pages_STRMICXOrderStatus : System.Web.UI.Page
                         if (row.RowType == DataControlRowType.DataRow)
                         {
                             CheckBox chkRow = (row.Cells[0].FindControl("chktrackdetails") as CheckBox);
+                            status = row.Cells[10].Text;
                             if (chkRow.Checked)
                             {
-                                LinkButton orderno = (row.Cells[2].FindControl("Lnkorder") as LinkButton);
-
-                                gblcls.GetOrderYTS(Convert.ToString(orderno), strfrmdate, strtodate);
+                                if (status != "Key Started" && status != "QC Started")
+                                {
+                                    LinkButton orderno = (row.Cells[2].FindControl("Lnkorder") as LinkButton);
+                                    gblcls.GetOrderYTS(orderno.Text, strfrmdate, strtodate);
+                                }
                             }
                         }
                     }
                 }
             }
         }
+
+        ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Working Status Cannot Be Successfully')", true);
+        btnordershow_Click(sender, e);
     }
     #endregion
     //amrock
@@ -1205,7 +1291,7 @@ public partial class Pages_STRMICXOrderStatus : System.Web.UI.Page
             pagedimmer.Visible = true;
             commentsdetails.Visible = true;
         }
-       
+
     }
     protected void btnlogoutclose_Click(object sender, EventArgs e)
     {
@@ -1230,115 +1316,115 @@ public partial class Pages_STRMICXOrderStatus : System.Web.UI.Page
     {
         if (e.Row.RowType != DataControlRowType.Header && e.Row.RowType != DataControlRowType.Pager)
         {
-            Image imglocked = e.Row.FindControl("Imglocked") as Image;
+            //Image imglocked = e.Row.FindControl("Imglocked") as Image;
 
-            if (e.Row.Cells[13].Text == "Delivered")
+            if (e.Row.Cells[10].Text == "Delivered")
             {
-                e.Row.Cells[13].BackColor = System.Drawing.Color.FromArgb(163, 186, 71);
-                e.Row.Cells[13].ForeColor = System.Drawing.Color.Black;
-                imglocked.Visible = false;
-                e.Row.Cells[1].Enabled = false;
+                //e.Row.Cells[10].BackColor = System.Drawing.Color.FromArgb(163, 186, 71);
+                //e.Row.Cells[10].ForeColor = System.Drawing.Color.Black;
+                //imglocked.Visible = false;
+                //e.Row.Cells[1].Enabled = false;
 
             }
-            if (e.Row.Cells[13].Text == "Rejected")
+            if (e.Row.Cells[10].Text == "Rejected")
             {
-                e.Row.Cells[13].BackColor = System.Drawing.Color.SandyBrown;
-                e.Row.Cells[13].ForeColor = System.Drawing.Color.Black;
-                imglocked.Visible = false;
+                //e.Row.Cells[10].BackColor = System.Drawing.Color.SandyBrown;
+                //e.Row.Cells[10].ForeColor = System.Drawing.Color.Black;
+                //imglocked.Visible = false;
             }
-            if (e.Row.Cells[13].Text == "On Hold")
+            if (e.Row.Cells[10].Text == "On Hold")
             {
-                e.Row.Cells[13].BackColor = System.Drawing.Color.SkyBlue;
-                e.Row.Cells[13].ForeColor = System.Drawing.Color.Black;
-                imglocked.Visible = false;
+                //e.Row.Cells[10].BackColor = System.Drawing.Color.SkyBlue;
+                //e.Row.Cells[10].ForeColor = System.Drawing.Color.Black;
+                //imglocked.Visible = false;
             }
-            if (e.Row.Cells[13].Text == "Mail Away")
+            if (e.Row.Cells[10].Text == "Mail Away")
             {
-                e.Row.Cells[13].BackColor = System.Drawing.Color.FromArgb(170, 255, 212);
-                e.Row.Cells[13].ForeColor = System.Drawing.Color.Black;
-                imglocked.Visible = false;
+                //e.Row.Cells[10].BackColor = System.Drawing.Color.FromArgb(170, 255, 212);
+                //e.Row.Cells[10].ForeColor = System.Drawing.Color.Black;
+                //imglocked.Visible = false;
             }
-            if (e.Row.Cells[13].Text == "ParcelID")
+            if (e.Row.Cells[10].Text == "ParcelID")
             {
-                e.Row.Cells[13].BackColor = System.Drawing.Color.FromArgb(250, 250, 142);
-                e.Row.Cells[13].ForeColor = System.Drawing.Color.Black;
-                imglocked.Visible = false;
+                //e.Row.Cells[10].BackColor = System.Drawing.Color.FromArgb(250, 250, 142);
+                //e.Row.Cells[10].ForeColor = System.Drawing.Color.Black;
+                //imglocked.Visible = false;
             }
-            if (e.Row.Cells[13].Text == "In Process")
+            if (e.Row.Cells[10].Text == "In Process")
             {
-                e.Row.Cells[13].BackColor = System.Drawing.Color.FromArgb(250, 200, 211);
-                e.Row.Cells[13].ForeColor = System.Drawing.Color.Black;
-                imglocked.Visible = false;
+                //e.Row.Cells[10].BackColor = System.Drawing.Color.FromArgb(250, 200, 211);
+                //e.Row.Cells[10].ForeColor = System.Drawing.Color.Black;
+                //imglocked.Visible = false;
             }
-            if (e.Row.Cells[13].Text == "YTS" || e.Row.Cells[13].Text == "Key Completed" || e.Row.Cells[13].Text == "Others" || e.Row.Cells[13].Text == "Order Missing")
+            if (e.Row.Cells[10].Text == "YTS" || e.Row.Cells[10].Text == "Key Done" || e.Row.Cells[10].Text == "Others" || e.Row.Cells[13].Text == "Order Missing")
             {
-                imglocked.Visible = false;
+                //imglocked.Visible = false;
             }
-            if ((e.Row.Cells[13].Text == "Key Started") || (e.Row.Cells[13].Text == "QC Started") || (e.Row.Cells[13].Text == "In Process Started") || (e.Row.Cells[13].Text == "Mail Away Started") || (e.Row.Cells[13].Text == "ParcelID Started"))
+            if ((e.Row.Cells[10].Text == "Key Start") || (e.Row.Cells[10].Text == "QC Started") || (e.Row.Cells[13].Text == "In Process Started") || (e.Row.Cells[13].Text == "Mail Away Started") || (e.Row.Cells[10].Text == "ParcelID Started"))
             {
-                e.Row.Cells[13].BackColor = System.Drawing.Color.FromArgb(96, 219, 207);
-                e.Row.Cells[13].ForeColor = System.Drawing.Color.Black;
-                imglocked.Visible = true;
+                //e.Row.Cells[10].BackColor = System.Drawing.Color.FromArgb(96, 219, 207);
+                //e.Row.Cells[10].ForeColor = System.Drawing.Color.Black;
+                //imglocked.Visible = true;
             }
-            if ((e.Row.Cells[13].Text == "Key Started") || (e.Row.Cells[13].Text == "ParcelID Started") || (e.Row.Cells[13].Text == "Mail Away Started") || (e.Row.Cells[13].Text == "In Process Started"))
+            if ((e.Row.Cells[10].Text == "Key Start") || (e.Row.Cells[10].Text == "ParcelID Started") || (e.Row.Cells[10].Text == "Mail Away Started") || (e.Row.Cells[10].Text == "In Process Started"))
             {
-                string StartTime, EndTime = "";
-                string State, County = "";
-                StartTime = e.Row.Cells[16].Text;
-                EndTime = DateTime.Now.ToString();
-                State = e.Row.Cells[8].Text;
-                County = e.Row.Cells[9].Text;
-                if (StartTime == "&nbsp;") { return; }
-                DateTime startTime = DateTime.Parse(StartTime);
-                DateTime endTime = DateTime.Parse(EndTime);
-                TimeSpan ts = endTime.Subtract(startTime);
-                string time = ts.ToString();
-                time = time.Replace(".", "");
-                int TAT = int.Parse(time.Replace(":", ""));
-                string query = "Select sf_getordertype('" + State + "','" + County + "')";
-                string result = con.ExecuteScalar(query);
-                if (result == "Website" || result == "Phone/ Website")
-                {
-                    if (TAT >= 000000 && TAT <= 000300) e.Row.BackColor = System.Drawing.Color.FromArgb(255, 255, 255);
-                    else if (TAT > 000300 && TAT <= 000500) e.Row.BackColor = System.Drawing.Color.FromArgb(255, 255, 102);
-                    else if (TAT > 000500) e.Row.BackColor = System.Drawing.Color.FromArgb(235, 97, 61);
-                }
-                else if (result == "Phone")
-                {
-                    if (TAT >= 000000 && TAT <= 000500) e.Row.BackColor = System.Drawing.Color.FromArgb(255, 255, 255);
-                    else if (TAT > 000500 && TAT <= 000900) e.Row.BackColor = System.Drawing.Color.FromArgb(255, 255, 102);
-                    else if (TAT > 000900) e.Row.BackColor = System.Drawing.Color.FromArgb(235, 97, 61);
-                }
+                //string StartTime, EndTime = "";
+                //string State, County = "";
+                //StartTime = e.Row.Cells[16].Text;
+                //EndTime = DateTime.Now.ToString();
+                //State = e.Row.Cells[8].Text;
+                //County = e.Row.Cells[9].Text;
+                //if (StartTime == "&nbsp;") { return; }
+                //DateTime startTime = DateTime.Parse(StartTime);
+                //DateTime endTime = DateTime.Parse(EndTime);
+                //TimeSpan ts = endTime.Subtract(startTime);
+                //string time = ts.ToString();
+                //time = time.Replace(".", "");
+                //int TAT = int.Parse(time.Replace(":", ""));
+                //string query = "Select sf_getordertype('" + State + "','" + County + "')";
+                //string result = con.ExecuteScalar(query);
+                //if (result == "Website" || result == "Phone/ Website")
+                //{
+                //    if (TAT >= 000000 && TAT <= 000300) e.Row.BackColor = System.Drawing.Color.FromArgb(255, 255, 255);
+                //    else if (TAT > 000300 && TAT <= 000500) e.Row.BackColor = System.Drawing.Color.FromArgb(255, 255, 102);
+                //    else if (TAT > 000500) e.Row.BackColor = System.Drawing.Color.FromArgb(235, 97, 61);
+                //}
+                //else if (result == "Phone")
+                //{
+                //    if (TAT >= 000000 && TAT <= 000500) e.Row.BackColor = System.Drawing.Color.FromArgb(255, 255, 255);
+                //    else if (TAT > 000500 && TAT <= 000900) e.Row.BackColor = System.Drawing.Color.FromArgb(255, 255, 102);
+                //    else if (TAT > 000900) e.Row.BackColor = System.Drawing.Color.FromArgb(235, 97, 61);
+                //}
             }
-            if (e.Row.Cells[11].Text == "QC Started")
+            if (e.Row.Cells[10].Text == "QC Started")
             {
-                string StartTime, EndTime = "";
-                string State, County = "";
-                StartTime = e.Row.Cells[20].Text;
-                EndTime = DateTime.Now.ToString();
-                State = e.Row.Cells[8].Text;
-                County = e.Row.Cells[9].Text;
-                if (StartTime == "&nbsp;") { return; }
-                DateTime startTime = DateTime.Parse(StartTime);
-                DateTime endTime = DateTime.Parse(EndTime);
-                TimeSpan ts = endTime.Subtract(startTime);
-                string time = ts.ToString();
-                time = time.Replace(".", "");
-                int TAT = int.Parse(time.Replace(":", ""));
-                string query = "Select sf_getordertype('" + State + "','" + County + "')";
-                string result = con.ExecuteScalar(query);
-                if (result == "Website" || result == "Phone/ Website")
-                {
-                    if (TAT >= 000000 && TAT <= 000200) e.Row.BackColor = System.Drawing.Color.FromArgb(255, 255, 255);
-                    else if (TAT > 000200 && TAT <= 000300) e.Row.BackColor = System.Drawing.Color.FromArgb(255, 255, 102);
-                    else if (TAT > 000300) e.Row.BackColor = System.Drawing.Color.FromArgb(235, 97, 61);
-                }
-                else if (result == "Phone")
-                {
-                    if (TAT >= 000000 && TAT <= 000300) e.Row.BackColor = System.Drawing.Color.FromArgb(255, 255, 255);
-                    else if (TAT > 000300 && TAT <= 000500) e.Row.BackColor = System.Drawing.Color.FromArgb(255, 255, 102);
-                    else if (TAT > 000500) e.Row.BackColor = System.Drawing.Color.FromArgb(235, 97, 61);
-                }
+                //string StartTime, EndTime = "";
+                //string State, County = "";
+                //StartTime = e.Row.Cells[20].Text;
+                //EndTime = DateTime.Now.ToString();
+                //State = e.Row.Cells[8].Text;
+                //County = e.Row.Cells[9].Text;
+                //if (StartTime == "&nbsp;") { return; }
+                //DateTime startTime = DateTime.Parse(StartTime);
+                //DateTime endTime = DateTime.Parse(EndTime);
+                //TimeSpan ts = endTime.Subtract(startTime);
+                //string time = ts.ToString();
+                //time = time.Replace(".", "");
+                //int TAT = int.Parse(time.Replace(":", ""));
+                //string query = "Select sf_getordertype('" + State + "','" + County + "')";
+                //string result = con.ExecuteScalar(query);
+                //if (result == "Website" || result == "Phone/ Website")
+                //{
+                //    if (TAT >= 000000 && TAT <= 000200) e.Row.BackColor = System.Drawing.Color.FromArgb(255, 255, 255);
+                //    else if (TAT > 000200 && TAT <= 000300) e.Row.BackColor = System.Drawing.Color.FromArgb(255, 255, 102);
+                //    else if (TAT > 000300) e.Row.BackColor = System.Drawing.Color.FromArgb(235, 97, 61);
+                //}
+                //else if (result == "Phone")
+                //{
+                //    if (TAT >= 000000 && TAT <= 000300) e.Row.BackColor = System.Drawing.Color.FromArgb(255, 255, 255);
+                //    else if (TAT > 000300 && TAT <= 000500) e.Row.BackColor = System.Drawing.Color.FromArgb(255, 255, 102);
+                //    else if (TAT > 000500) e.Row.BackColor = System.Drawing.Color.FromArgb(235, 97, 61);
+                //}
             }
         }
     }
@@ -1437,7 +1523,7 @@ public partial class Pages_STRMICXOrderStatus : System.Web.UI.Page
         btnordershow_Click(sender, e);
     }
     #endregion
-       
+
     private void showoverallcount()
     {
         if (txtfrmdate.Text != "")
