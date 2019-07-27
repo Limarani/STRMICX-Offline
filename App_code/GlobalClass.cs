@@ -16993,7 +16993,7 @@ public class GlobalClass : myConnection
 
         return ExecuteSPNonQuery("Sp_update_delinquent", true, mParam);
     }
-
+    //balaji
     public DataTable FetchDeliquentStatusAll(string orderno, string agencyid)
     {
         DataTable dt = new DataTable();
