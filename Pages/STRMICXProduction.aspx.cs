@@ -43,6 +43,8 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
         //MySqlDataReader dr = cmd.ExecuteReader();
        if (!IsPostBack)
         {
+
+            DisableFieldsTemp();
             date1.Attributes["disabled"] = "disabled";
             date2.Attributes["disabled"] = "disabled";
 
@@ -334,6 +336,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
 
     protected void lnkgvOrders_Click(object sender, EventArgs e)
     {
+        clearfiledsTaxInstallments();
         gvTaxParcel.EditIndex = -1;
         chkTBD.Enabled = true;
         chkEst.Checked = false;
@@ -3336,9 +3339,66 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
         }
     }
 
-    protected void paymentfrequency_SelectedIndexChanged(object sender, EventArgs e)
+   
+
+
+    public void clearfiledsTaxInstallments()
     {
-        paymentfreq(paymentfrequency.Value);
+        instamount1.Value = "";
+        instamountpaid1.Value = "";
+        instpaiddue1.SelectedIndex = 0;
+        remainingbalance1.Value = "";
+        instdate1.Value = "";
+        delinq1.Value = "";
+        discamt1.Value = "";
+        discdate1.Value = "";
+        exemptrelevy1.Checked = false;
+
+        instamount2.Value = "";
+        instamountpaid2.Value = "";
+        instpaiddue2.SelectedIndex = 0;
+        remainingbalance2.Value = "";
+        instdate2.Value = "";
+        delinq2.Value = "";
+        discamt2.Value = "";
+        discdate2.Value = "";
+        exemptrelevy2.Checked = false;
+
+        instamount3.Value = "";
+        instamountpaid3.Value = "";
+        instpaiddue3.SelectedIndex = 0;
+        remainingbalance3.Value = "";
+        instdate3.Value = "";
+        delinq3.Value = "";
+        discamt3.Value = "";
+        discdate3.Value = "";
+        exemptrelevy3.Checked = false;
+
+        instamount4.Value = "";
+        instamountpaid4.Value = "";
+        instpaiddue4.SelectedIndex = 0;
+        remainingbalance4.Value = "";
+        instdate4.Value = "";
+        delinq4.Value = "";
+        discamt4.Value = "";
+        discdate4.Value = "";
+        exemptrelevy4.Checked = false;
+
+        taxbill.SelectedIndex = 0;
+    }
+    public void DisableFieldsTemp()
+    {
+        taxbill.Disabled = true;
+        txtbaseamntdue.Attributes.Add("disabled", "disabled");
+        txtrolloverdate.Attributes.Add("disabled", "disabled");
+        txtpenlatyamt.Attributes.Add("disabled", "disabled");
+        txtpencalfre.Attributes.Add("disabled", "disabled");
+        txtaddpenAmnt.Attributes.Add("disabled", "disabled");
+        txtPerdiem.Attributes.Add("disabled", "disabled");
+        txtpenamtdue.Attributes.Add("disabled", "disabled");
+        txtnotapplicable.SelectedIndex = 0;
+        txtdatetaxsale.Attributes.Add("disabled", "disabled");
+        txtlastdayred.Attributes.Add("disabled", "disabled");
     }
 }
 

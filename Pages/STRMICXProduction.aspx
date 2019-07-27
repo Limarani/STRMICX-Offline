@@ -43,12 +43,12 @@
             today = mm + '/' + dd + '/' + yyyy;
             if(txBill=="Annual")
             {
-                
-                if (Date.parse(txtDate.value) >= Date.parse(today)) {
+                var dt = document.getElementById("delinq1").value;
+                if (Date.parse(dt) >= Date.parse(today)) {
                    document.getElementById("taxbill").selectedIndex = 1;
                     
                 }
-                else if (Date.parse(txtDate.value) <= Date.parse(today)) {
+                else if (Date.parse(dt) <= Date.parse(today)) {
                     document.getElementById("taxbill").selectedIndex = 2;
                 }
                 else
@@ -58,11 +58,12 @@
             }
             else if(txBill=="Semi-Annual")
             {
-                if (Date.parse(txtDate.value) >= Date.parse(today)) {
+                var dt = document.getElementById("delinq2").value;
+                if (Date.parse(dt) >= Date.parse(today)) {
                     document.getElementById("taxbill").selectedIndex = 1;
 
                 }
-                else if (Date.parse(txtDate.value) <= Date.parse(today)) {
+                else if (Date.parse(dt) <= Date.parse(today)) {
                     document.getElementById("taxbill").selectedIndex = 2;
                 }
                 else {
@@ -72,11 +73,12 @@
             }
             else if (txBill == "Tri-Annual")
             {
-                if (Date.parse(txtDate.value) >= Date.parse(today)) {
+                var dt = document.getElementById("delinq3").value;
+                if (Date.parse(dt) >= Date.parse(today)) {
                     document.getElementById("taxbill").selectedIndex = 1;
 
                 }
-                else if (Date.parse(txtDate.value) <= Date.parse(today)) {
+                else if (Date.parse(dt) <= Date.parse(today)) {
                     document.getElementById("taxbill").selectedIndex = 2;
                 }
                 else {
@@ -85,11 +87,12 @@
             }
             else if (txBill == "Quarterly")
             {
-                if (Date.parse(txtDate.value) >= Date.parse(today)) {
+                var dt = document.getElementById("delinq4").value;
+                if (Date.parse(dt) >= Date.parse(today)) {
                     document.getElementById("taxbill").selectedIndex = 1;
 
                 }
-                else if (Date.parse(txtDate.value) <= Date.parse(today)) {
+                else if (Date.parse(dt) <= Date.parse(today)) {
                     document.getElementById("taxbill").selectedIndex = 2;
                 }
                 else {
@@ -130,34 +133,61 @@
                 document.getElementById("exemptrelevy1").disabled = false;
 
                 document.getElementById("instamount2").disabled = true;
+                document.getElementById("instamount2").value = "";
                 document.getElementById("instamountpaid2").disabled = true;
+                document.getElementById("instamountpaid2").value = "";
                 document.getElementById("instpaiddue2").disabled = true;
+                document.getElementById("instpaiddue2").selectedIndex = 0;
                 document.getElementById("remainingbalance2").disabled = true;
+                document.getElementById("remainingbalance2").value = "";
                 document.getElementById("instdate2").disabled = true;
+                document.getElementById("instdate2").value = "";
                 document.getElementById("delinq2").disabled = true;
+                document.getElementById("delinq2").value = "";
                 document.getElementById("discamt2").disabled = true;
+                document.getElementById("discamt2").value = "";
                 document.getElementById("discdate2").disabled = true;
+                document.getElementById("discdate2").value = "";
                 document.getElementById("exemptrelevy2").disabled = true;
+                document.getElementById("exemptrelevy2").checked = false;
 
                 document.getElementById("instamount3").disabled = true;
+                document.getElementById("instamount3").value = "";
                 document.getElementById("instamountpaid3").disabled = true;
+                document.getElementById("instamountpaid3").value = "";
                 document.getElementById("instpaiddue3").disabled = true;
+                document.getElementById("instpaiddue3").selectedIndex = 0;
                 document.getElementById("remainingbalance3").disabled = true;
+                document.getElementById("remainingbalance3").value = "";
                 document.getElementById("instdate3").disabled = true;
+                document.getElementById("instdate3").value = "";
                 document.getElementById("delinq3").disabled = true;
+                document.getElementById("delinq3").value = "";
                 document.getElementById("discamt3").disabled = true;
+                document.getElementById("discamt3").value = "";
                 document.getElementById("discdate3").disabled = true;
+                document.getElementById("discdate3").value = "";
                 document.getElementById("exemptrelevy3").disabled = true;
+                document.getElementById("exemptrelevy3").checked = false;
 
                 document.getElementById("instamount4").disabled = true;
+                document.getElementById("instamount4").value = "";
                 document.getElementById("instamountpaid4").disabled = true;
+                document.getElementById("instamountpaid4").value = "";
                 document.getElementById("instpaiddue4").disabled = true;
+                document.getElementById("instpaiddue4").selectedIndex = 0;
                 document.getElementById("remainingbalance4").disabled = true;
+                document.getElementById("remainingbalance4").value = "";
                 document.getElementById("instdate4").disabled = true;
+                document.getElementById("instdate4").value = "";
                 document.getElementById("delinq4").disabled = true;
+                document.getElementById("delinq4").value = "";
                 document.getElementById("discamt4").disabled = true;
+                document.getElementById("discamt4").value = "";
                 document.getElementById("discdate4").disabled = true;
+                document.getElementById("discdate4").value = "";
                 document.getElementById("exemptrelevy4").disabled = true;
+                document.getElementById("exemptrelevy4").checked = false;
             }
 
             if (Semi == "Semi-Annual") {
@@ -183,24 +213,42 @@
                 document.getElementById("exemptrelevy2").disabled = false;
 
                 document.getElementById("instamount3").disabled = true;
+                document.getElementById("instamount3").value = "";
                 document.getElementById("instamountpaid3").disabled = true;
+                document.getElementById("instamountpaid3").value = "";
                 document.getElementById("instpaiddue3").disabled = true;
+                document.getElementById("instpaiddue3").selectedIndex = 0;
                 document.getElementById("remainingbalance3").disabled = true;
+                document.getElementById("remainingbalance3").value = "";
                 document.getElementById("instdate3").disabled = true;
+                document.getElementById("instdate3").value = "";
                 document.getElementById("delinq3").disabled = true;
+                document.getElementById("delinq3").value = "";
                 document.getElementById("discamt3").disabled = true;
+                document.getElementById("discamt3").value = "";
                 document.getElementById("discdate3").disabled = true;
+                document.getElementById("discdate3").value = "";
                 document.getElementById("exemptrelevy3").disabled = true;
+                document.getElementById("exemptrelevy3").checked = false;
 
                 document.getElementById("instamount4").disabled = true;
+                document.getElementById("instamount4").value = "";
                 document.getElementById("instamountpaid4").disabled = true;
+                document.getElementById("instamountpaid4").value = "";
                 document.getElementById("instpaiddue4").disabled = true;
+                document.getElementById("instpaiddue4").selectedIndex = 0;
                 document.getElementById("remainingbalance4").disabled = true;
+                document.getElementById("remainingbalance4").value = "";
                 document.getElementById("instdate4").disabled = true;
+                document.getElementById("instdate4").value = "";
                 document.getElementById("delinq4").disabled = true;
+                document.getElementById("delinq4").value = "";
                 document.getElementById("discamt4").disabled = true;
+                document.getElementById("discamt4").value = "";
                 document.getElementById("discdate4").disabled = true;
+                document.getElementById("discdate4").value = "";
                 document.getElementById("exemptrelevy4").disabled = true;
+                document.getElementById("exemptrelevy4").checked = false;
             }
 
             if (Tri == "Tri-Annual") {
@@ -235,14 +283,23 @@
                 document.getElementById("exemptrelevy3").disabled = false;
 
                 document.getElementById("instamount4").disabled = true;
+                document.getElementById("instamount4").value = "";
                 document.getElementById("instamountpaid4").disabled = true;
+                document.getElementById("instamountpaid4").value = "";
                 document.getElementById("instpaiddue4").disabled = true;
+                document.getElementById("instpaiddue4").selectedIndex = 0;
                 document.getElementById("remainingbalance4").disabled = true;
+                document.getElementById("remainingbalance4").value = "";
                 document.getElementById("instdate4").disabled = true;
+                document.getElementById("instdate4").value = "";
                 document.getElementById("delinq4").disabled = true;
+                document.getElementById("delinq4").value = "";
                 document.getElementById("discamt4").disabled = true;
+                document.getElementById("discamt4").value = "";
                 document.getElementById("discdate4").disabled = true;
+                document.getElementById("discdate4").value = "";
                 document.getElementById("exemptrelevy4").disabled = true;
+                document.getElementById("exemptrelevy4").checked = false;
             }
 
             if (Qua == "Quarterly") {
@@ -3641,7 +3698,7 @@
         //Tax Sale
         function applicable() {
             var ddlselect = document.getElementById("txtnotapplicable").value;
-            if (ddlselect == "Yes") {
+            if (ddlselect == "Yes" || ddlselect=="Select") {
                 document.getElementById("txtdatetaxsale").disabled = true;
                 document.getElementById("txtlastdayred").disabled = true;
                 document.getElementById("txtdatetaxsale").value = "";
@@ -3651,10 +3708,10 @@
                 document.getElementById("txtdatetaxsale").disabled = false;
                 document.getElementById("txtlastdayred").disabled = false;
             }
-            else {
-                document.getElementById("txtdatetaxsale").value = "";
-                document.getElementById("txtlastdayred").value = "";
-            }
+            //else {
+            //    document.getElementById("txtdatetaxsale").value = "";
+            //    document.getElementById("txtlastdayred").value = "";
+            //}
         }
 
         //Special Assessment
