@@ -288,7 +288,7 @@
                             <br />
                             Assign
                         </button>
-                        <button type="button" class="btn btn-default" id="btnhold1" data-toggle="modal" data-target="HoldModal" title="Hold" runat="server" onserverclick="Hold_Click">
+                        <%--<button type="button" class="btn btn-default" id="btnhold1" data-toggle="modal" data-target="HoldModal" title="Hold" runat="server" onserverclick="Hold_Click">
                             <span class="fa fa-hand-paper-o" style="font-size: 20px;"></span>
                             <br />
                             Hold
@@ -297,7 +297,7 @@
                             <span class="fa fa-hand-lizard-o" style="font-size: 20px;"></span>
                             <br />
                             UnHold
-                        </button>
+                        </button>--%>
                         <button type="button" class="btn btn-default" id="btnhold" data-toggle="modal" data-target="HoldModal" title="Reject" runat="server" onserverclick="Reject_Click">
                             <span class="glyphicon glyphicon-remove" style="font-size: 20px;"></span>
                             <br />
@@ -418,7 +418,7 @@
                                         <div class="col-md-6">
                                             <div class="col-md-12">
                                                 <asp:GridView ID="gvorderdetails" runat="server" ShowHeaderWhenEmpty="true" AutoGenerateColumns="false"
-                                                    Width="125%" GridLines="None" Style="white-space: nowrap;">
+                                                    Width="125%" GridLines="None" Style="white-space: nowrap; overflow: auto;">
                                                     <Columns>
                                                         <asp:BoundField ItemStyle-Width="30%" DataField="Order_No" HeaderText="Order_No" />
                                                         <asp:BoundField ItemStyle-Width="30%" DataField="State" HeaderText="State" />

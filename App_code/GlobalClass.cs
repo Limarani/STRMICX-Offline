@@ -749,7 +749,7 @@ public class GlobalClass : myConnection
         string strquery = string.Empty;
         try
         {
-            strquery = "Update record_status set k1='7',qc='7',status='7',Pend='0',Parcel='0',Tax='0' where Order_No ='" + strorderno + "' and pdate between '" + fdate + "' and '" + tdate + "'";
+            strquery = "Update record_status set k1='7',qc='7',status='7',Pend='0',Parcel='0',Tax='0',Lock1='0' where Order_No ='" + strorderno + "' and pdate between '" + fdate + "' and '" + tdate + "'";
             int result = con.ExecuteSPNonQuery(strquery);
         }
         catch (Exception ex)
@@ -810,7 +810,7 @@ public class GlobalClass : myConnection
         string strquery = string.Empty;
         try
         {
-            strquery = "Update record_status set k1='0',qc='0',status='0',pend='0',Parcel='0',Tax='0' where Order_No ='" + strorderno + "' and pdate between '" + fdate + "' and '" + tdate + "'";
+            strquery = "Update record_status set k1='0',qc='0',status='0',pend='0',Parcel='0',Tax='0',Lock1='0' where Order_No ='" + strorderno + "' and pdate between '" + fdate + "' and '" + tdate + "'";
             int result = con.ExecuteSPNonQuery(strquery);
         }
         catch (Exception ex)
@@ -824,7 +824,7 @@ public class GlobalClass : myConnection
         string strquery = string.Empty;
         try
         {
-            strquery = "Update record_status set k1='7',qc='7',status='7',Pend='0',Parcel='0',Tax='0' where Order_No ='" + strorderno + "' and pdate between '" + fdate + "' and '" + tdate + "'";
+            strquery = "Update record_status set k1='4',qc='4',status='4',Pend='0',Parcel='0',Tax='0' where Order_No ='" + strorderno + "' and pdate between '" + fdate + "' and '" + tdate + "'";
             int result = con.ExecuteSPNonQuery(strquery);
         }
         catch (Exception ex)

@@ -41,7 +41,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
         //MySqlCommand cmd = new MySqlCommand(query, con);
         //con.Open();
         //MySqlDataReader dr = cmd.ExecuteReader();
-       if (!IsPostBack)
+        if (!IsPostBack)
         {
 
             DisableFieldsTemp();
@@ -88,6 +88,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
             tblDeliquentStatus.Visible = true;
             gvDeliquentStatus.Visible = true;
             GrdPriordelinquent.Visible = true;
+            
 
             id = Request.QueryString["id"];
             if (id == "12f7tre5") Allotment(sender, e);
@@ -104,7 +105,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
             Lblusername.Text = SessionHandler.UserName;
             fetchtaxparceldetails();
             Prior.Visible = false;
-            deliexemspecial.Visible = false;
+            deliexemspecial.Visible = false;           
         }
     }
 
@@ -139,7 +140,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
     {
         if (ds.Tables.Count == 0)
         {
-
+            
         }
         else if (ds.Tables.Count == 1)
         {
@@ -375,9 +376,9 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
                     {
                         roww.BackColor = System.Drawing.Color.White;
                     }
-                    
+
                 }
-             
+
             }
 
             GridView gvwnested = (GridView)gvTaxParcel.Rows[0].Cells[1].FindControl("gvOrders");
@@ -1146,7 +1147,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
 
     protected void btnTaxParcelModal_RowCommand(object sender, GridViewCommandEventArgs e)
     {
-        
+
         string GVCommand = e.CommandName.ToLower();
         string tbd = "";
         string estimate = "";
@@ -1167,7 +1168,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
             else if (tbd == "false")
             {
                 chkTBD.Checked = false;
-            }             
+            }
             estimate = Server.HtmlDecode(row.Cells[6].Text.Trim());
             if (estimate == "true")
             {
@@ -1265,6 +1266,8 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
         }
         else if (dtfetch.Rows.Count == 0)
         {
+            //testnew.Visible = false;
+            //ModalNoOrder.Visible = true;
             Response.Redirect("STRMICXHome.aspx");
         }
 
@@ -1414,7 +1417,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
         int insert = 0;
         string query = "";
 
-      
+
         query = "select orderno,taxid,taxyear,endyear from tbl_taxparcel where taxid = '" + txtdrop.Value + "' and (status = 'M' or status = 'C') and orderno='" + lblord.Text + "' ";
         DataSet ds = gl.ExecuteQuery(query);
 
@@ -3316,7 +3319,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
                 exemptrelevy4.Attributes.Remove("disabled");
 
             }
-            
+
         }
     }
 
@@ -3522,7 +3525,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
         }
     }
 
-   
+
 
 
     public void clearfiledsTaxInstallments()
@@ -3582,6 +3585,11 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
         txtnotapplicable.SelectedIndex = 0;
         txtdatetaxsale.Attributes.Add("disabled", "disabled");
         txtlastdayred.Attributes.Add("disabled", "disabled");
+    }
+
+    protected void btnnorderassign_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("STRMICXHome.aspx");
     }
 }
 

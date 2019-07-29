@@ -756,6 +756,7 @@ public partial class Pages_STRMICXOrderStatus : System.Web.UI.Page
     string keyinguser = "";
     protected void Assign_Click(object sender, EventArgs e)
     {
+        lblerror.Text = "";
         ClientScript.RegisterStartupScript(this.GetType(), "Pop", "Assign();", true);
         PanelManualInfo.Visible = true;
         DataTable dtassign = new DataTable();
@@ -803,6 +804,7 @@ public partial class Pages_STRMICXOrderStatus : System.Web.UI.Page
     string username = "";
     protected void btnassign_Click(object sender, EventArgs e)
     {
+        string unassignedorder = string.Empty;
         string orderno = "";
         string state = "";
         string county = "";
@@ -814,7 +816,7 @@ public partial class Pages_STRMICXOrderStatus : System.Web.UI.Page
         PanelManualInfo.Visible = true;
         string query = "";
         DataTable dttable = new DataTable();
-        dttable.Columns.AddRange(new DataColumn[6] { new DataColumn("Order_No"), new DataColumn("State"), new DataColumn("County"), new DataColumn("Status"), new DataColumn("Priority"), new DataColumn("Key OP") });
+        dttable.Columns.AddRange(new DataColumn[6] { new DataColumn("Order_No"), new DataColumn("State"), new DataColumn("County"), new DataColumn("Status"), new DataColumn("HP"), new DataColumn("Key OP") });
         foreach (GridViewRow row in gvorderdetails.Rows)
         {
             if (row.RowType == DataControlRowType.DataRow)
@@ -835,26 +837,43 @@ public partial class Pages_STRMICXOrderStatus : System.Web.UI.Page
                 dsfetchuser = con.ExecuteQuery(queryfetch);
                 if (chkRow.Checked)
                 {
-                    if (status == "YTS" || status == "In-Process" || status == "Mail-Away" || status == "ParcelId")
+                    if (dsfetchuser.Tables[0].Rows.Count > 0)
                     {
-                        if (dsfetchuser.Tables[0].Rows.Count > 0)
+                        if (status != "Key Started")
                         {
                             query = "update record_status set K1_OP='" + usr + "',k1=0,qc=0,status=0,Pend='0',Tax='0',Parcel='0' where Order_No='" + orderno + "'";
                             con.ExecuteSPNonQuery(query);
-                            for (int i = 0; i < dttable.Rows.Count; i++)
+                            for (int i = dttable.Rows.Count - 1; i >= 0; i--)
                             {
-                                DataRow recRow = dttable.Rows[i];
-                                recRow.Delete();
-                                dttable.AcceptChanges();
+                                DataRow dr = dttable.Rows[i];
+                                if (dr["status"].ToString() != "Key Started")
+                                {
+                                    dr.Delete();
+                                }
                             }
+                            dttable.AcceptChanges();
+                            gvorderdetails.DataSource = dttable;
+                            gvorderdetails.DataBind();
+                            lblerror.Visible = true;
+                            lblerror.Text = "Order Assigned Successfully";
                         }
+                        else
+                        {
+                            lblerror.Visible = true;
+                            lblerror.Text = "Order Cannot Be Assigned";
+                            gvorderdetails.DataSource = dttable;
+                            gvorderdetails.DataBind();
+                        }
+                    }
+                    else
+                    {
+                        lblerror.Visible = true;
+                        lblerror.Text = "Invalid User Status";
                     }
                 }
             }
         }
-
-        gvorderdetails.DataSource = dttable;
-        gvorderdetails.DataBind();
+        btnordershow_Click(sender, e);
     }
 
 
@@ -871,7 +890,7 @@ public partial class Pages_STRMICXOrderStatus : System.Web.UI.Page
         PanelManualInfo.Visible = true;
         string query = "";
         DataTable dttable = new DataTable();
-        dttable.Columns.AddRange(new DataColumn[6] { new DataColumn("Order_No"), new DataColumn("State"), new DataColumn("County"), new DataColumn("Status"), new DataColumn("Priority"), new DataColumn("Key OP") });
+        dttable.Columns.AddRange(new DataColumn[6] { new DataColumn("Order_No"), new DataColumn("State"), new DataColumn("County"), new DataColumn("Status"), new DataColumn("HP"), new DataColumn("Key OP") });
         foreach (GridViewRow row in gvorderdetails.Rows)
         {
             if (row.RowType == DataControlRowType.DataRow)
@@ -892,101 +911,119 @@ public partial class Pages_STRMICXOrderStatus : System.Web.UI.Page
                 dsfetchuser = con.ExecuteQuery(queryfetch);
                 if (chkRow.Checked)
                 {
-                    if (status == "Key Done" || status == "In-Process" || status == "Mail-Away" || status == "ParcelId")
+                    if (dsfetchuser.Tables[0].Rows.Count > 0)
                     {
-                        if (dsfetchuser.Tables[0].Rows.Count > 0)
+                        if (status != "QC Started")
                         {
-                            query = "update record_status set QC_OP ='" + usr + "',pend='0',Parcel='0',Tax='0' where Order_No='" + orderno + "' and K1= '2' and status = '2',Pend='0',Tax='0',Parcel='0'";
+                            query = "update record_status set QC_OP ='" + usr + "',pend='0',Parcel='0',Tax='0' where Order_No='" + orderno + "'";
                             con.ExecuteSPNonQuery(query);
-                            for (int i = 0; i < dttable.Rows.Count; i++)
+                            for (int i = dttable.Rows.Count - 1; i >= 0; i--)
                             {
-                                DataRow recRow = dttable.Rows[i];
-                                recRow.Delete();
-                                dttable.AcceptChanges();
+                                DataRow dr = dttable.Rows[i];
+                                if (dr["status"].ToString() != "QC Started")
+                                {
+                                    dr.Delete();
+                                }
                             }
+                            dttable.AcceptChanges();
+                            lblerror.Visible = true;
+                            lblerror.Text = "Order Assigned Successfully";
+                            gvorderdetails.DataSource = dttable;
+                            gvorderdetails.DataBind();
                         }
+                        else
+                        {
+                            lblerror.Visible = true;
+                            lblerror.Text = "Order Cannot Be Assigned";
+                            gvorderdetails.DataSource = dttable;
+                            gvorderdetails.DataBind();
+                        }
+                    }
+                    else
+                    {
+                        lblerror.Visible = true;
+                        lblerror.Text = "Invalid User Status";
                     }
                 }
             }
         }
 
-        gvorderdetails.DataSource = dttable;
-        gvorderdetails.DataBind();
+        btnordershow_Click(sender, e);
     }
     protected void lstuserdetails_SelectedIndexChanged(object sender, EventArgs e)
     {
         username = lstuserdetails.SelectedItem.Text;
     }
 
-    protected void Hold_Click(object sender, EventArgs e)
-    {
-        if (txtfrmdate.Text != "")
-        {
-            dt = Convert.ToDateTime(txtfrmdate.Text);
-            strfrmdate = String.Format("{0:MM/dd/yyyy}", dt);
+    //protected void Hold_Click(object sender, EventArgs e)
+    //{
+    //    if (txtfrmdate.Text != "")
+    //    {
+    //        dt = Convert.ToDateTime(txtfrmdate.Text);
+    //        strfrmdate = String.Format("{0:MM/dd/yyyy}", dt);
 
-            DataTable dttracking = new DataTable();
-            if (txttodate.Text != "")
-            {
-                dt = Convert.ToDateTime(txttodate.Text);
-                strtodate = String.Format("{0:MM/dd/yyyy}", dt);
+    //        DataTable dttracking = new DataTable();
+    //        if (txttodate.Text != "")
+    //        {
+    //            dt = Convert.ToDateTime(txttodate.Text);
+    //            strtodate = String.Format("{0:MM/dd/yyyy}", dt);
 
-                if (strfrmdate != "" && strtodate != "")
-                {
-                    foreach (GridViewRow row in GridUser.Rows)
-                    {
-                        if (row.RowType == DataControlRowType.DataRow)
-                        {
-                            CheckBox chkRow = (row.Cells[0].FindControl("chktrackdetails") as CheckBox);
-                            if (chkRow.Checked)
-                            {
-                                LinkButton orderno = (row.Cells[2].FindControl("Lnkorder") as LinkButton);
-                                gblcls.GetOrderHold(orderno.Text, strfrmdate, strtodate);
-                            }
-                        }
-                    }
-                }
-            }
-        }
-        ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Order Status Changed Successfully')", true);
-        btnordershow_Click(sender, e);
-    }
+    //            if (strfrmdate != "" && strtodate != "")
+    //            {
+    //                foreach (GridViewRow row in GridUser.Rows)
+    //                {
+    //                    if (row.RowType == DataControlRowType.DataRow)
+    //                    {
+    //                        CheckBox chkRow = (row.Cells[0].FindControl("chktrackdetails") as CheckBox);
+    //                        if (chkRow.Checked)
+    //                        {
+    //                            LinkButton orderno = (row.Cells[2].FindControl("Lnkorder") as LinkButton);
+    //                            gblcls.GetOrderHold(orderno.Text, strfrmdate, strtodate);
+    //                        }
+    //                    }
+    //                }
+    //            }
+    //        }
+    //    }
+    //    ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Order Status Changed Successfully')", true);
+    //    btnordershow_Click(sender, e);
+    //}
 
 
-    protected void UnHold_Click(object sender, EventArgs e)
-    {
-        if (txtfrmdate.Text != "")
-        {
-            dt = Convert.ToDateTime(txtfrmdate.Text);
-            strfrmdate = String.Format("{0:MM/dd/yyyy}", dt);
+    //protected void UnHold_Click(object sender, EventArgs e)
+    //{
+    //    if (txtfrmdate.Text != "")
+    //    {
+    //        dt = Convert.ToDateTime(txtfrmdate.Text);
+    //        strfrmdate = String.Format("{0:MM/dd/yyyy}", dt);
 
-            DataTable dttracking = new DataTable();
-            if (txttodate.Text != "")
-            {
-                dt = Convert.ToDateTime(txttodate.Text);
-                strtodate = String.Format("{0:MM/dd/yyyy}", dt);
+    //        DataTable dttracking = new DataTable();
+    //        if (txttodate.Text != "")
+    //        {
+    //            dt = Convert.ToDateTime(txttodate.Text);
+    //            strtodate = String.Format("{0:MM/dd/yyyy}", dt);
 
-                if (strfrmdate != "" && strtodate != "")
-                {
-                    foreach (GridViewRow row in GridUser.Rows)
-                    {
-                        if (row.RowType == DataControlRowType.DataRow)
-                        {
-                            CheckBox chkRow = (row.Cells[0].FindControl("chktrackdetails") as CheckBox);
-                            if (chkRow.Checked)
-                            {
-                                LinkButton orderno = (row.Cells[2].FindControl("Lnkorder") as LinkButton);
+    //            if (strfrmdate != "" && strtodate != "")
+    //            {
+    //                foreach (GridViewRow row in GridUser.Rows)
+    //                {
+    //                    if (row.RowType == DataControlRowType.DataRow)
+    //                    {
+    //                        CheckBox chkRow = (row.Cells[0].FindControl("chktrackdetails") as CheckBox);
+    //                        if (chkRow.Checked)
+    //                        {
+    //                            LinkButton orderno = (row.Cells[2].FindControl("Lnkorder") as LinkButton);
 
-                                gblcls.GetOrderUnHold(orderno.Text, strfrmdate, strtodate);
-                            }
-                        }
-                    }
-                }
-            }
-        }
-        ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Order Status Changed Successfully')", true);
-        btnordershow_Click(sender, e);
-    }
+    //                            gblcls.GetOrderUnHold(orderno.Text, strfrmdate, strtodate);
+    //                        }
+    //                    }
+    //                }
+    //            }
+    //        }
+    //    }
+    //    ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Order Status Changed Successfully')", true);
+    //    btnordershow_Click(sender, e);
+    //}
 
     protected void Reject_Click(object sender, EventArgs e)
     {
@@ -1011,15 +1048,23 @@ public partial class Pages_STRMICXOrderStatus : System.Web.UI.Page
                             if (chkRow.Checked)
                             {
                                 LinkButton orderno = (row.Cells[2].FindControl("Lnkorder") as LinkButton);
+                                string status = row.Cells[10].Text.Trim();
 
-                                gblcls.GetOrderReject(orderno.Text, strfrmdate, strtodate);
+                                if (status != "Key Started" && status != "Qc Started")
+                                {
+                                    gblcls.GetOrderReject(orderno.Text, strfrmdate, strtodate);
+                                    ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Order Status Changed Successfully')", true);
+                                }
+                                else
+                                {
+                                    ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Order Status Cannot Be Changed')", true);
+                                }
                             }
                         }
                     }
                 }
             }
         }
-        ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Order Status Changed Successfully')", true);
         btnordershow_Click(sender, e);
     }
 
@@ -1081,15 +1126,23 @@ public partial class Pages_STRMICXOrderStatus : System.Web.UI.Page
                             if (chkRow.Checked)
                             {
                                 LinkButton orderno = (row.Cells[2].FindControl("Lnkorder") as LinkButton);
+                                string status = row.Cells[10].Text.Trim();
 
-                                gblcls.GetOrderLock(orderno.Text, strfrmdate, strtodate);
+                                if (status != "Key Started" && status != "Qc Started")
+                                {
+                                    gblcls.GetOrderLock(orderno.Text, strfrmdate, strtodate);
+                                    ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Order Status Changed Successfully')", true);
+                                }
+                                else
+                                {
+                                    ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Status Cannot be Changed')", true);
+                                }
                             }
                         }
                     }
                 }
             }
         }
-        ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Order Status Changed Successfully')", true);
         btnordershow_Click(sender, e);
     }
 
@@ -1117,8 +1170,16 @@ public partial class Pages_STRMICXOrderStatus : System.Web.UI.Page
                             if (chkRow.Checked)
                             {
                                 LinkButton orderno = (row.Cells[2].FindControl("Lnkorder") as LinkButton);
-
-                                gblcls.GetOrderUnLock(orderno.Text, strfrmdate, strtodate);
+                                string status = row.Cells[10].Text;
+                                if (status != "Key Started" && status != "QC Started")
+                                {
+                                    gblcls.GetOrderUnLock(orderno.Text, strfrmdate, strtodate);
+                                    ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Order Status Changed Successfully')", true);
+                                }
+                                else
+                                {
+                                    ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Status Cannot Be Changed')", true);
+                                }
                             }
                         }
                     }
@@ -1155,10 +1216,16 @@ public partial class Pages_STRMICXOrderStatus : System.Web.UI.Page
                             status = row.Cells[10].Text;
                             if (chkRow.Checked)
                             {
+
+                                LinkButton orderno = (row.Cells[2].FindControl("Lnkorder") as LinkButton);
+
                                 if (status != "Key Started" && status != "QC Started")
                                 {
-                                    LinkButton orderno = (row.Cells[2].FindControl("Lnkorder") as LinkButton);
                                     gblcls.GetOrderPriority(orderno.Text, strfrmdate, strtodate);
+                                }
+                                else
+                                {
+
                                 }
                             }
                         }
@@ -1198,7 +1265,7 @@ public partial class Pages_STRMICXOrderStatus : System.Web.UI.Page
                                 {
                                     LinkButton orderno = (row.Cells[2].FindControl("Lnkorder") as LinkButton);
                                     gblcls.GetOrderDePriority(orderno.Text, strfrmdate, strtodate);
-                                }                            
+                                }
                             }
                         }
                     }
@@ -1230,13 +1297,18 @@ public partial class Pages_STRMICXOrderStatus : System.Web.UI.Page
                         if (row.RowType == DataControlRowType.DataRow)
                         {
                             CheckBox chkRow = (row.Cells[0].FindControl("chktrackdetails") as CheckBox);
-                            status = row.Cells[10].Text;
                             if (chkRow.Checked)
                             {
+                                LinkButton orderno = (row.Cells[2].FindControl("Lnkorder") as LinkButton);
+                                status = row.Cells[10].Text;
                                 if (status != "Key Started" && status != "QC Started")
                                 {
-                                    LinkButton orderno = (row.Cells[2].FindControl("Lnkorder") as LinkButton);
                                     gblcls.GetOrderYTS(orderno.Text, strfrmdate, strtodate);
+                                    ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Status Changed Successfully')", true);
+                                }
+                                else
+                                {
+                                    ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Status Cannot Be Changed')", true);
                                 }
                             }
                         }
@@ -1244,8 +1316,6 @@ public partial class Pages_STRMICXOrderStatus : System.Web.UI.Page
                 }
             }
         }
-
-        ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Working Status Cannot Be Successfully')", true);
         btnordershow_Click(sender, e);
     }
     #endregion
