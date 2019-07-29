@@ -855,32 +855,32 @@
             if (startDate == "") {
                 if (endDate != "") {
                     alert("Installment Date1 Should not be Empty");
-                    document.getElementById("instdate2").value = "";
+                    //document.getElementById("instdate2").value = "";
                 }
                 if (startDate1 != "") {
                     alert("Installment Date1 Should not be Empty");
-                    document.getElementById("instdate3").value = "";
+                    //document.getElementById("instdate3").value = "";
                 }
                 if (endDate1 != "") {
                     alert("Installment Date1 Should not be Empty");
-                    document.getElementById("instdate4").value = "";
+                    //document.getElementById("instdate4").value = "";
                 }
             }
 
             if (endDate == "") {
                 if (startDate1 != "") {
                     alert("Installment Date2 Should not be Empty");
-                    document.getElementById("instdate3").value = "";
+                    //document.getElementById("instdate3").value = "";
                 }
                 if (endDate1 != "") {
                     alert("Installment Date2 Should not be Empty");
-                    document.getElementById("instdate4").value = "";
+                    //document.getElementById("instdate4").value = "";
                 }
             }
             if (startDate1 == "") {
                 if (endDate1 != "") {
                     alert("Installment Date3 Should not be Empty");
-                    document.getElementById("instdate4").value = "";
+                    //document.getElementById("instdate4").value = "";
                 }
             }
             //if (startDate != "") {
@@ -924,31 +924,31 @@
             if (startDate == "") {
                 if (endDate != "") {
                     alert("Installment Date1 Should not be Empty");
-                    document.getElementById("instdate2").value = "";
+                    //document.getElementById("instdate2").value = "";
                 }
                 if (startDate1 != "") {
                     alert("Installment Date1 Should not be Empty");
-                    document.getElementById("instdate3").value = "";
+                    //document.getElementById("instdate3").value = "";
                 }
                 if (endDate1 != "") {
                     alert("Installment Date1 Should not be Empty");
-                    document.getElementById("instdate4").value = "";
+                    //document.getElementById("instdate4").value = "";
                 }
             }
             if (endDate == "") {
                 if (startDate1 != "") {
                     alert("Installment Date2 Should not be Empty");
-                    document.getElementById("instdate3").value = "";
+                    //document.getElementById("instdate3").value = "";
                 }
                 if (endDate1 != "") {
                     alert("Installment Date2 Should not be Empty");
-                    document.getElementById("instdate4").value = "";
+                    //document.getElementById("instdate4").value = "";
                 }
             }
             if (startDate1 == "") {
                 if (endDate1 != "") {
                     alert("Installment Date3 Should not be Empty");
-                    document.getElementById("instdate4").value = "";
+                    //document.getElementById("instdate4").value = "";
                 }
             }
             //if (startDate != "") {
@@ -992,31 +992,31 @@
             if (startDate == "") {
                 if (endDate != "") {
                     alert("Installment Date1 Should not be Empty");
-                    document.getElementById("instdate2").value = "";
+                    //document.getElementById("instdate2").value = "";
                 }
                 if (startDate1 != "") {
                     alert("Installment Date1 Should not be Empty");
-                    document.getElementById("instdate3").value = "";
+                    //document.getElementById("instdate3").value = "";
                 }
                 if (endDate1 != "") {
                     alert("Installment Date1 Should not be Empty");
-                    document.getElementById("instdate4").value = "";
+                    //document.getElementById("instdate4").value = "";
                 }
             }
             if (endDate == "") {
                 if (startDate1 != "") {
                     alert("Installment Date2 Should not be Empty");
-                    document.getElementById("instdate3").value = "";
+                    //document.getElementById("instdate3").value = "";
                 }
                 if (endDate1 != "") {
                     alert("Installment Date2 Should not be Empty");
-                    document.getElementById("instdate4").value = "";
+                    //document.getElementById("instdate4").value = "";
                 }
             }
             if (startDate1 == "") {
                 if (endDate1 != "") {
                     alert("Installment Date3 Should not be Empty");
-                    document.getElementById("instdate4").value = "";
+                    //document.getElementById("instdate4").value = "";
                 }
             }
             //if (startDate != "") {
@@ -1060,31 +1060,31 @@
             if (startDate == "") {
                 if (endDate != "") {
                     alert("Installment Date1 Should not be Empty");
-                    document.getElementById("instdate2").value = "";
+                    //document.getElementById("instdate2").value = "";
                 }
                 if (startDate1 != "") {
                     alert("Installment Date1 Should not be Empty");
-                    document.getElementById("instdate3").value = "";
+                    //document.getElementById("instdate3").value = "";
                 }
                 if (endDate1 != "") {
                     alert("Installment Date1 Should not be Empty");
-                    document.getElementById("instdate4").value = "";
+                    //document.getElementById("instdate4").value = "";
                 }
             }
             if (endDate == "") {
                 if (startDate1 != "") {
                     alert("Installment Date2 Should not be Empty");
-                    document.getElementById("instdate3").value = "";
+                    //document.getElementById("instdate3").value = "";
                 }
                 if (endDate1 != "") {
                     alert("Installment Date2 Should not be Empty");
-                    document.getElementById("instdate4").value = "";
+                    //document.getElementById("instdate4").value = "";
                 }
             }
             if (startDate1 == "") {
                 if (endDate1 != "") {
                     alert("Installment Date3 Should not be Empty");
-                    document.getElementById("instdate4").value = "";
+                    //document.getElementById("instdate4").value = "";
                 }
             }
             //if (startDate != "") {
