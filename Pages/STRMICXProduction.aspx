@@ -21,6 +21,33 @@
     <script src="../Script/Jquery-1.8.3-jquery.min.js"></script>
     <script type="text/javascript">
 
+        function InstallmentRemaining() {
+            var noIns = document.getElementById('txtnoinstall').value;
+            var InsPaid = document.getElementById('txtinstallpaid').value;
+
+            if (noIns != "" && InsPaid != "") {
+                var blnce = noIns - InsPaid;
+                document.getElementById('txtInstallRemain').value = blnce;
+
+            }
+           
+        }
+        
+        function setTwoNumberDecimal(el) {
+            el.value = parseFloat(el.value).toFixed(2);
+        };
+
+
+        function futureYear(txtDate) {
+          var current=txtDate.value;
+            var today = new Date();   
+            var yyyy = today.getFullYear();
+            if (current > yyyy) {
+                document.getElementById('txtdelitaxyear').value = "";
+                alert("Future year not allowed");
+                return;
+            }
+        }
 
         function functionTaxBill(txtDate) {
            
@@ -1064,11 +1091,11 @@
                 }
                 if (startDate1 != "") {
                     alert("Installment Date1 Should not be Empty");
-                    //document.getElementById("instdate3").value = "";
+                   // document.getElementById("instdate3").value = "";
                 }
                 if (endDate1 != "") {
                     alert("Installment Date1 Should not be Empty");
-                    //document.getElementById("instdate4").value = "";
+                   // document.getElementById("instdate4").value = "";
                 }
             }
             if (endDate == "") {
@@ -3249,18 +3276,39 @@
         }
 
         function dateValidateFutue(txtpayoffgood) {
-            var pickeddate = new Date(txtpayoffgood.value);
-            var todayDate = new Date();
-            if (pickeddate <= todayDate) {
-                document.getElementById('txtpayoffgood').style.borderColor = "green";
-                document.getElementById('lblpayoffgood').style.color = "green";
+           
+           
+            var today = new Date();
+            var dd = today.getDate();
+
+            var mm = today.getMonth() + 1;
+            var yyyy = today.getFullYear();
+            if (dd < 10) {
+                dd = '0' + dd;
+            }
+
+            if (mm < 10) {
+                mm = '0' + mm;
+            }
+
+            today = mm + '/' + dd + '/' + yyyy;
+           
+            if (txtpayoffgood.value == "")
+            {
+                return true;
+            }
+
+            if (Date.parse(txtpayoffgood.value) <= Date.parse(today)) {
+                
+                document.getElementById('txtinitialinstall').style.borderColor = "green";
+                document.getElementById('txtinitialinstall').style.color = "green";
                 return true;
             }
             else {
-                txtpayoffgood.txt = "";
-                document.getElementById('txtpayoffgood').style.borderColor = "#ff0000";
-                document.getElementById('lblpayoffgood').style.color = "#ff0000";
-                alert("Enter Future date..");
+                document.getElementById('txtinitialinstall').value = "";
+                document.getElementById('txtinitialinstall').style.borderColor = "#ff0000";
+                document.getElementById('txtinitialinstall').style.color = "#ff0000";
+                alert("Future date not allowed..");
 
                 return true;
             }
@@ -3469,6 +3517,7 @@
                 document.getElementById("tblDeliquentStatus").style.visibility = "visible";
                 document.getElementById("tblDeliquentStatus").style.display = "block";
                 document.getElementById('tblDeliquentStatus').focus();
+                document.getElementById('txtdeliPayee').focus();
             }
             else if (delistatus == "No") {
                 document.getElementById("tblDeliquentStatus").style.visibility = "hidden";
@@ -3521,6 +3570,7 @@
                 document.getElementById("tblExestatus").style.display = "block";
                 document.getElementById('gvExemption').style.display = "block";
                 document.getElementById('tblExestatus').focus();
+                document.getElementById('txtexetype').focus();
             }
             else if (exestatus == "No") {
                 document.getElementById("tblExestatus").style.visibility = "hidden";
@@ -3760,6 +3810,7 @@
                 document.getElementById("tblSpecialstatus").style.visibility = "visible";
                 document.getElementById("tblSpecialstatus").style.display = "block";
                 document.getElementById('tblSpecialstatus').focus();
+                document.getElementById('txtdescription').focus();
                 //document.getElementById('gvSpecial').style.display = "block";
             }
             else if (specialstatus == "No") {
@@ -4352,17 +4403,18 @@
         var dateToday = new Date();
         $(function () {
             $("#date1").datepicker({
-                defaultDate: "+1w",
+                defaultDate: "-7D",
                 changeMonth: true,
                 numberOfMonths: 1,
                 beforeShowDay: $.datepicker.noWeekends,
-                minDate: dateToday
+                minDate: dateToday,
+                
             });
         });
         var dateToday = new Date();
         $(function () {
             $("#date2").datepicker({
-                defaultDate: "+1w",
+                defaultDate: "-7D",
                 changeMonth: true,
                 numberOfMonths: 1,
                 beforeShowDay: $.datepicker.noWeekends,
@@ -5264,25 +5316,25 @@
                                                         <asp:HiddenField ID="hdntxtbxTaksit4" runat="server" Value=""></asp:HiddenField>
                                                         <div class="form-group" style="margin-bottom: 0px;">
                                                             <label style="text-align: right; clear: both; float: left; margin-right: 12px;" class="CheckBold">Remaining Balance:</label>
-                                                            <input type="text" id="remainingbalance1" class="form-control taxing" runat="server" placeholder="Remaining Balance" style="width: 150px;" onkeypress="return isNumberKey(event)" onkeyup="RemBalance1(event);" autocomplete="off" tabindex="4" />
+                                                            <input type="text" id="remainingbalance1" class="form-control taxing" runat="server" placeholder="Remaining Balance" style="width: 150px;" onkeypress="return isNumberKey(event)"  onkeyup="RemBalance1(event);" autocomplete="off" tabindex="4" onchange="setTwoNumberDecimal(this)" />
                                                         </div>
                                                     </td>
                                                     <td>
                                                         <div class="form-group" style="margin-bottom: 0px;">
                                                             <label style="text-align: right; clear: both; float: left; margin-right: 12px;" class="CheckBold">Remaining Balance:</label>
-                                                            <input type="text" id="remainingbalance2" runat="server" class="form-control taxing" placeholder="Remaining Balance" style="width: 150px;" onkeypress="return isNumberKey(event)" onkeyup="RemBalance2(event);" autocomplete="off" tabindex="13" />
+                                                            <input type="text" id="remainingbalance2" runat="server" class="form-control taxing" placeholder="Remaining Balance" style="width: 150px;" onkeypress="return isNumberKey(event)" onkeyup="RemBalance2(event);" autocomplete="off" tabindex="13" onchange="setTwoNumberDecimal(this)" />
                                                         </div>
                                                     </td>
                                                     <td>
                                                         <div class="form-group" style="margin-bottom: 0px;">
                                                             <label style="text-align: right; clear: both; float: left; margin-right: 12px;" class="CheckBold">Remaining Balance:</label>
-                                                            <input type="text" id="remainingbalance3" class="form-control taxing" runat="server" placeholder="Remaining Balance" style="width: 150px;" onkeypress="return isNumberKey(event)" onkeyup="RemBalance3(event);" autocomplete="off" tabindex="21" />
+                                                            <input type="text" id="remainingbalance3" class="form-control taxing" runat="server" placeholder="Remaining Balance" style="width: 150px;" onkeypress="return isNumberKey(event)" onkeyup="RemBalance3(event);" autocomplete="off" tabindex="21" onchange="setTwoNumberDecimal(this)" />
                                                         </div>
                                                     </td>
                                                     <td>
                                                         <div class="form-group" style="margin-bottom: 0px;">
                                                             <label style="text-align: right; clear: both; float: left; margin-right: 12px;" class="CheckBold">Remaining Balance:</label>
-                                                            <input type="text" id="remainingbalance4" runat="server" class="form-control taxing" placeholder="Remaining Balance" style="width: 150px;" onkeypress="return isNumberKey(event)" onkeyup="RemBalance4(event);" autocomplete="off" tabindex="30" />
+                                                            <input type="text" id="remainingbalance4" runat="server" class="form-control taxing" placeholder="Remaining Balance" style="width: 150px;" onkeypress="return isNumberKey(event)" onkeyup="RemBalance4(event);" autocomplete="off" tabindex="30" onchange="setTwoNumberDecimal(this)" />
                                                         </div>
                                                     </td>
                                                 </tr>
@@ -6173,7 +6225,7 @@
                                             </b>
                                         </td>
                                         <td>
-                                            <asp:TextBox ID="txtdelitaxyear" runat="server" class="form-control" placeholder="YYYY" MaxLength="4" onkeypress="return isNumberKey(event)" onblur="IsValidLengthTax3(this.value,this,event);" autocomplete='off' onchange="return functionDelinquent()">
+                                            <asp:TextBox ID="txtdelitaxyear" runat="server" class="form-control" placeholder="YYYY" MaxLength="4" onkeypress="return isNumberKey(event)" onfocusout="return futureYear(this)" onblur="IsValidLengthTax3(this.value,this,event);" autocomplete='off' onchange="return functionDelinquent();">
                                             </asp:TextBox>
                                         </td>
                                         <td style="padding-left: 31px;">
@@ -6267,7 +6319,7 @@
                                             </b>
                                         </td>
                                         <td>
-                                            <asp:TextBox ID="txtinitialinstall" runat="server" class="form-control" placeholder="MM/DD/YYYY" MaxLength="10" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="return dateValidateFutue(this)" autocomplete='off' onchange="return functionDelinquent()">
+                                            <asp:TextBox ID="txtinitialinstall" runat="server" class="form-control" placeholder="MM/DD/YYYY" MaxLength="10" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)"  onfocusout ="return dateValidateFutue(this)" autocomplete='off' onchange="return functionDelinquent()">
                                             </asp:TextBox>
                                         </td>
 
@@ -6410,7 +6462,7 @@
                                             </asp:DropDownList></td>
                                         <td style="padding-left: 25px;"><b class="CheckBold">Exemption Amount(if Applicable):</b></td>
                                         <td>
-                                            <asp:TextBox ID="txtexeamount" runat="server" class="form-control" placeholder="Exemption Amount" onkeyup="ExemptionAmount1();" onfocusout="myFunctionExemptionAmount1();if (this.value=='0.00') this.value='0.00';if (this.value=='') this.value='0.00';" onfocusin="if (this.value=='0.00') this.value='';" Style="width: 150px;" onblur="myExe();" autocomplete='off' value="0.00"></asp:TextBox>
+                                            <asp:TextBox ID="txtexeamount" runat="server" class="form-control" placeholder="Exemption Amount" onkeyup="ExemptionAmount1();" onfocusout="myFunctionExemptionAmount1();if (this.value=='0.00') this.value='0.00';if (this.value=='') this.value='0.00';" onfocusin="if (this.value=='0.00') this.value='';" Style="width: 150px;" onblur="myExe();" autocomplete='off' value="0.00" onkeypress="return isNumberKey(event)"></asp:TextBox>
                                         </td>
                                         <td>
                                             <asp:Button runat="server" ID="ExemptionAdd" Text="Add" class="btn btn-success" Style="height: 28px; padding-top: 3px;" OnClick="btnExemptionAdd_Click" OnClientClick="return functionExemption();" />
@@ -6487,11 +6539,11 @@
                                         </td>
                                         <td style="padding-left: 31px;"><b class="CheckBold" title="Number Of Installments">No Of Inst:</b></td>
                                         <td>
-                                            <asp:TextBox ID="txtnoinstall" runat="server" class="form-control" placeholder="Number Of Installments" onkeypress="return isNumberKey(event)" autocomplete='off'></asp:TextBox>
+                                            <asp:TextBox ID="txtnoinstall" runat="server" class="form-control" placeholder="Number Of Installments" onkeypress="return isNumberKey(event)" autocomplete='off' onfocusout="InstallmentRemaining();"></asp:TextBox>
                                         </td>
                                         <td style="padding-left: 31px;"><b class="CheckBold" title="Installment Paid">Inst Paid:</b></td>
                                         <td>
-                                            <asp:TextBox ID="txtinstallpaid" runat="server" class="form-control" placeholder="Installment Paid" onkeypress="return isNumberKey(event)" autocomplete='off'></asp:TextBox>
+                                            <asp:TextBox ID="txtinstallpaid" runat="server" class="form-control" placeholder="Installment Paid" onkeypress="return isNumberKey(event)" autocomplete='off' onfocusout="InstallmentRemaining();"></asp:TextBox>
                                         </td>
                                     </tr>
 
