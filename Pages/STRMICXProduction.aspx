@@ -3248,6 +3248,24 @@
             }
         }
 
+        function dateValidateFutue(txtpayoffgood) {
+            var pickeddate = new Date(txtpayoffgood.value);
+            var todayDate = new Date();
+            if (pickeddate <= todayDate) {
+                document.getElementById('txtpayoffgood').style.borderColor = "green";
+                document.getElementById('lblpayoffgood').style.color = "green";
+                return true;
+            }
+            else {
+                txtpayoffgood.txt = "";
+                document.getElementById('txtpayoffgood').style.borderColor = "#ff0000";
+                document.getElementById('lblpayoffgood').style.color = "#ff0000";
+                alert("Enter Future date..");
+
+                return true;
+            }
+        }
+
         function stopPropagation(event) {
 
             if (event.stopPropagation)
@@ -4469,6 +4487,28 @@
             $('[id*=Modaltaxtype]').modal('show');
         }
     </script>
+    <script type="text/javascript">
+        function onlyAlphabets(e, t) {
+            try {
+                if (window.event) {
+                    var charCode = window.event.keyCode;
+                }
+                else if (e) {
+                    var charCode = e.which;
+                }
+                else { return true; }
+                if ((charCode > 64 && charCode < 91) || (charCode > 96 && charCode < 123) || charCode==32)
+                    return true;
+                else
+                    return false;
+            }
+            catch (err) {
+                alert(err.Description);
+            }
+        }
+
+    </script>
+
 </head>
 <body>
     <div class="sign-up-row widget-shadow" style="width: 100%;" align="center">
@@ -6096,7 +6136,7 @@
                                             </b>
                                         </td>
                                         <td>
-                                            <asp:TextBox ID="txtdelitCity" runat="server" class="form-control" placeholder="City" autocomplete='off' onchange="return functionDelinquent()">
+                                            <asp:TextBox ID="txtdelitCity" runat="server" class="form-control" placeholder="City" autocomplete='off' onchange="return functionDelinquent()" onkeypress="return onlyAlphabets(event,this);">
                                             </asp:TextBox>
                                         </td>
                                         <td style="padding-left: 31px;">
@@ -6105,7 +6145,7 @@
                                             </b>
                                         </td>
                                         <td>
-                                            <asp:TextBox ID="txtdelitState" runat="server" class="form-control" placeholder="State" autocomplete='off' onchange="return functionDelinquent()">
+                                            <asp:TextBox ID="txtdelitState" runat="server" class="form-control" placeholder="State" autocomplete='off' onchange="return functionDelinquent()" onkeypress="return onlyAlphabets(event,this);">
                                             </asp:TextBox>
                                         </td>
                                     </tr>
@@ -6227,7 +6267,7 @@
                                             </b>
                                         </td>
                                         <td>
-                                            <asp:TextBox ID="txtinitialinstall" runat="server" class="form-control" placeholder="MM/DD/YYYY" MaxLength="10" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="return checkDate(event)" autocomplete='off' onchange="return functionDelinquent()">
+                                            <asp:TextBox ID="txtinitialinstall" runat="server" class="form-control" placeholder="MM/DD/YYYY" MaxLength="10" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="return dateValidateFutue(this)" autocomplete='off' onchange="return functionDelinquent()">
                                             </asp:TextBox>
                                         </td>
 
