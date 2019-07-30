@@ -1709,12 +1709,12 @@
 
             instAmt4 = instAmt4.replace(',', '');
             instPaid4 = instPaid4.replace(',', '');
-            if (parseFloat(instAmt4) == parseFloat(instPaid4)) {
+            if (parseFloat(Money1) == parseFloat(Money2)) {
                 paidDue4.value = "Paid";
-            } else if (parseFloat(instAmt4) > parseFloat(instPaid4)) {
+            } else if (parseFloat(Money1) > parseFloat(Money2)) {
                 paidDue4.value = "Due";
             }
-            else if (parseFloat(instAmt4) < parseFloat(instPaid4)) {
+            else if (parseFloat(Money1) < parseFloat(Money2)) {
                 paidDue4.value = "Paid";
             }
             var firstChar4 = myHidden4.substr(0, 1);
@@ -2258,10 +2258,10 @@
             if (instAmt44 == "") {
                 instAmt44 = '0.00';
             }
-            var res1 = parseFloat(instAmt11.replace(',', ''));
-            var res2 = parseFloat(instAmt22.replace(',', ''));
-            var res3 = parseFloat(instAmt33.replace(',', ''));
-            var res4 = parseFloat(instAmt44.replace(',', ''));
+            var res1 = parseFloat(instAmt11.replace(/,/g, ''));
+            var res2 = parseFloat(instAmt22.replace(/,/g, ''));
+            var res3 = parseFloat(instAmt33.replace(/,/g, ''));
+            var res4 = parseFloat(instAmt44.replace(/,/g, ''));
             document.getElementById("txtAnnualTaxAmount").innerHTML = parseFloat(res1 + res2 + res3 + res4).toFixed(2);
 
             var instAmt3 = document.getElementById("instamount3").value;
@@ -2369,10 +2369,10 @@
             if (instAmt44 == "") {
                 instAmt44 = '0.00';
             }
-            var res1 = parseFloat(instAmt11.replace(',', ''));
-            var res2 = parseFloat(instAmt22.replace(',', ''));
-            var res3 = parseFloat(instAmt33.replace(',', ''));
-            var res4 = parseFloat(instAmt44.replace(',', ''));
+            var res1 = parseFloat(instAmt11.replace(/,/g, ''));
+            var res2 = parseFloat(instAmt22.replace(/,/g, ''));
+            var res3 = parseFloat(instAmt33.replace(/,/g, ''));
+            var res4 = parseFloat(instAmt44.replace(/,/g, ''));
             document.getElementById("txtAnnualTaxAmount").innerHTML = parseFloat(res1 + res2 + res3 + res4).toFixed(2);
 
             var instAmt4 = document.getElementById("instamount4").value;
