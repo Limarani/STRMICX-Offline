@@ -23,7 +23,7 @@
 
 
         function functionTaxBill(txtDate) {
-
+           
             var ddlTaxBill = document.getElementById("paymentfrequency");
             var txBill = ddlTaxBill.options[ddlTaxBill.selectedIndex].innerHTML;
 
@@ -39,22 +39,25 @@
             if (mm < 10) {
                 mm = '0' + mm;
             }
-
+           
             today = mm + '/' + dd + '/' + yyyy;
-            if (txBill == "Annual") {
+            if(txBill=="Annual")
+            {
                 var dt = document.getElementById("delinq1").value;
                 if (Date.parse(dt) >= Date.parse(today)) {
-                    document.getElementById("taxbill").selectedIndex = 1;
-
+                   document.getElementById("taxbill").selectedIndex = 1;
+                    
                 }
                 else if (Date.parse(dt) <= Date.parse(today)) {
                     document.getElementById("taxbill").selectedIndex = 2;
                 }
-                else {
+                else
+                {
                     document.getElementById("taxbill").selectedIndex = 0;
                 }
             }
-            else if (txBill == "Semi-Annual") {
+            else if(txBill=="Semi-Annual")
+            {
                 var dt = document.getElementById("delinq2").value;
                 if (Date.parse(dt) >= Date.parse(today)) {
                     document.getElementById("taxbill").selectedIndex = 1;
@@ -68,7 +71,8 @@
                 }
 
             }
-            else if (txBill == "Tri-Annual") {
+            else if (txBill == "Tri-Annual")
+            {
                 var dt = document.getElementById("delinq3").value;
                 if (Date.parse(dt) >= Date.parse(today)) {
                     document.getElementById("taxbill").selectedIndex = 1;
@@ -81,7 +85,8 @@
                     document.getElementById("taxbill").selectedIndex = 0;
                 }
             }
-            else if (txBill == "Quarterly") {
+            else if (txBill == "Quarterly")
+            {
                 var dt = document.getElementById("delinq4").value;
                 if (Date.parse(dt) >= Date.parse(today)) {
                     document.getElementById("taxbill").selectedIndex = 1;
@@ -94,13 +99,13 @@
                     document.getElementById("taxbill").selectedIndex = 0;
                 }
             }
-
+            
 
         }
 
 
         function functionpayemtfrequency(ddlPay) {
-            // var payfre = document.getElementById("paymentfrequency").value;
+       // var payfre = document.getElementById("paymentfrequency").value;
             var payfre = ddlPay.options[ddlPay.selectedIndex].innerHTML;
             //alert(payfre);
             var Ann = "", Semi = "", Tri = "", Qua = "";
@@ -186,7 +191,7 @@
             }
 
             if (Semi == "Semi-Annual") {
-
+              
                 document.getElementById("instamount1").disabled = false;
                 document.getElementById("instamountpaid1").disabled = false;
                 document.getElementById("instpaiddue1").disabled = false;
@@ -850,32 +855,32 @@
             if (startDate == "") {
                 if (endDate != "") {
                     alert("Installment Date1 Should not be Empty");
-                    document.getElementById("instdate2").value = "";
+                    //document.getElementById("instdate2").value = "";
                 }
                 if (startDate1 != "") {
                     alert("Installment Date1 Should not be Empty");
-                    document.getElementById("instdate3").value = "";
+                    //document.getElementById("instdate3").value = "";
                 }
                 if (endDate1 != "") {
                     alert("Installment Date1 Should not be Empty");
-                    document.getElementById("instdate4").value = "";
+                    //document.getElementById("instdate4").value = "";
                 }
             }
 
             if (endDate == "") {
                 if (startDate1 != "") {
                     alert("Installment Date2 Should not be Empty");
-                    document.getElementById("instdate3").value = "";
+                    //document.getElementById("instdate3").value = "";
                 }
                 if (endDate1 != "") {
                     alert("Installment Date2 Should not be Empty");
-                    document.getElementById("instdate4").value = "";
+                    //document.getElementById("instdate4").value = "";
                 }
             }
             if (startDate1 == "") {
                 if (endDate1 != "") {
                     alert("Installment Date3 Should not be Empty");
-                    document.getElementById("instdate4").value = "";
+                    //document.getElementById("instdate4").value = "";
                 }
             }
             //if (startDate != "") {
@@ -919,31 +924,31 @@
             if (startDate == "") {
                 if (endDate != "") {
                     alert("Installment Date1 Should not be Empty");
-                    document.getElementById("instdate2").value = "";
+                    //document.getElementById("instdate2").value = "";
                 }
                 if (startDate1 != "") {
                     alert("Installment Date1 Should not be Empty");
-                    document.getElementById("instdate3").value = "";
+                    //document.getElementById("instdate3").value = "";
                 }
                 if (endDate1 != "") {
                     alert("Installment Date1 Should not be Empty");
-                    document.getElementById("instdate4").value = "";
+                    //document.getElementById("instdate4").value = "";
                 }
             }
             if (endDate == "") {
                 if (startDate1 != "") {
                     alert("Installment Date2 Should not be Empty");
-                    document.getElementById("instdate3").value = "";
+                    //document.getElementById("instdate3").value = "";
                 }
                 if (endDate1 != "") {
                     alert("Installment Date2 Should not be Empty");
-                    document.getElementById("instdate4").value = "";
+                    //document.getElementById("instdate4").value = "";
                 }
             }
             if (startDate1 == "") {
                 if (endDate1 != "") {
                     alert("Installment Date3 Should not be Empty");
-                    document.getElementById("instdate4").value = "";
+                    //document.getElementById("instdate4").value = "";
                 }
             }
             //if (startDate != "") {
@@ -987,31 +992,31 @@
             if (startDate == "") {
                 if (endDate != "") {
                     alert("Installment Date1 Should not be Empty");
-                    document.getElementById("instdate2").value = "";
+                    //document.getElementById("instdate2").value = "";
                 }
                 if (startDate1 != "") {
                     alert("Installment Date1 Should not be Empty");
-                    document.getElementById("instdate3").value = "";
+                    //document.getElementById("instdate3").value = "";
                 }
                 if (endDate1 != "") {
                     alert("Installment Date1 Should not be Empty");
-                    document.getElementById("instdate4").value = "";
+                    //document.getElementById("instdate4").value = "";
                 }
             }
             if (endDate == "") {
                 if (startDate1 != "") {
                     alert("Installment Date2 Should not be Empty");
-                    document.getElementById("instdate3").value = "";
+                    //document.getElementById("instdate3").value = "";
                 }
                 if (endDate1 != "") {
                     alert("Installment Date2 Should not be Empty");
-                    document.getElementById("instdate4").value = "";
+                    //document.getElementById("instdate4").value = "";
                 }
             }
             if (startDate1 == "") {
                 if (endDate1 != "") {
                     alert("Installment Date3 Should not be Empty");
-                    document.getElementById("instdate4").value = "";
+                    //document.getElementById("instdate4").value = "";
                 }
             }
             //if (startDate != "") {
@@ -1055,31 +1060,31 @@
             if (startDate == "") {
                 if (endDate != "") {
                     alert("Installment Date1 Should not be Empty");
-                    document.getElementById("instdate2").value = "";
+                    //document.getElementById("instdate2").value = "";
                 }
                 if (startDate1 != "") {
                     alert("Installment Date1 Should not be Empty");
-                    document.getElementById("instdate3").value = "";
+                    //document.getElementById("instdate3").value = "";
                 }
                 if (endDate1 != "") {
                     alert("Installment Date1 Should not be Empty");
-                    document.getElementById("instdate4").value = "";
+                    //document.getElementById("instdate4").value = "";
                 }
             }
             if (endDate == "") {
                 if (startDate1 != "") {
                     alert("Installment Date2 Should not be Empty");
-                    document.getElementById("instdate3").value = "";
+                    //document.getElementById("instdate3").value = "";
                 }
                 if (endDate1 != "") {
                     alert("Installment Date2 Should not be Empty");
-                    document.getElementById("instdate4").value = "";
+                    //document.getElementById("instdate4").value = "";
                 }
             }
             if (startDate1 == "") {
                 if (endDate1 != "") {
                     alert("Installment Date3 Should not be Empty");
-                    document.getElementById("instdate4").value = "";
+                    //document.getElementById("instdate4").value = "";
                 }
             }
             //if (startDate != "") {
@@ -3238,6 +3243,24 @@
                 document.getElementById('txtpayoffgood').style.borderColor = "#ff0000";
                 document.getElementById('lblpayoffgood').style.color = "#ff0000";
                 alert("Date should be greater than current date");
+                
+                return true;
+            }
+        }
+
+        function dateValidateFutue(txtpayoffgood) {
+            var pickeddate = new Date(txtpayoffgood.value);
+            var todayDate = new Date();
+            if (pickeddate <= todayDate) {
+                document.getElementById('txtpayoffgood').style.borderColor = "green";
+                document.getElementById('lblpayoffgood').style.color = "green";
+                return true;
+            }
+            else {
+                txtpayoffgood.txt = "";
+                document.getElementById('txtpayoffgood').style.borderColor = "#ff0000";
+                document.getElementById('lblpayoffgood').style.color = "#ff0000";
+                alert("Enter Future date..");
 
                 return true;
             }
@@ -3694,7 +3717,7 @@
         //Tax Sale
         function applicable() {
             var ddlselect = document.getElementById("txtnotapplicable").value;
-            if (ddlselect == "Yes" || ddlselect == "Select") {
+            if (ddlselect == "Yes" || ddlselect=="Select") {
                 document.getElementById("txtdatetaxsale").disabled = true;
                 document.getElementById("txtlastdayred").disabled = true;
                 document.getElementById("txtdatetaxsale").value = "";
@@ -4464,584 +4487,1041 @@
             $('[id*=Modaltaxtype]').modal('show');
         }
     </script>
+    <script type="text/javascript">
+        function onlyAlphabets(e, t) {
+            try {
+                if (window.event) {
+                    var charCode = window.event.keyCode;
+                }
+                else if (e) {
+                    var charCode = e.which;
+                }
+                else { return true; }
+                if ((charCode > 64 && charCode < 91) || (charCode > 96 && charCode < 123) || charCode==32)
+                    return true;
+                else
+                    return false;
+            }
+            catch (err) {
+                alert(err.Description);
+            }
+        }
+
+    </script>
+
 </head>
 <body>
-
     <div class="sign-up-row widget-shadow" style="width: 100%;" align="center">
-        <!--<h3 class="title2"  style="margin-right:80px">Create Input Fields</h3>-->       
-            <form id="myForm" name="myForm" style="margin-top: 1px;" runat="server">
-                <asp:ScriptManager ID="ScriptManager1" runat="server" />
+        <!--<h3 class="title2"  style="margin-right:80px">Create Input Fields</h3>-->
 
-                <table class="header" style="width: 1320px;">
-                    <tr style="width: 250px;">
-                        <td style="color: red; font-weight: bold; width: 150px;">
-                            <img src="../images/logo.png" style="width: 90px;" /></td>
+        <form id="myForm" name="myForm" style="margin-top: 1px;" runat="server">
+            <asp:ScriptManager ID="ScriptManager1" runat="server" />
 
-                        <td style="width: 460px;"></td>
-                        <td style="width: 100px;"></td>
-                        <td style="text-align: center; font-weight: bold; font-size: x-large; color: #ff8100d1;">
-                            <img src="../images/settings.jpg" style="width: 30px; margin-left: -110px;" />
-                            &nbsp;&nbsp;&nbsp;&nbsp;  <b style="margin-left: -30px; white-space: nowrap;">STRMICX</b></td>
-                        <td style="width: 320px;">
-                            <div style="text-align: end; margin-top: -13px;">
-                                <img src="../images/Prcess image.png" alt="image" style="width: 15px" />
-                                <asp:Label ID="processtatus" runat="server" Style="color: black; font-weight: 500"></asp:Label>
-                            </div>
-                        </td>
+            <table class="header" style="width: 1320px;">
+                <tr style="width: 250px;">
+                    <td style="color: red; font-weight: bold; width: 150px;">
+                        <img src="../images/logo.png" style="width: 90px;" /></td>
 
-
-                        <td class="Lblothers" style="color: black; font-weight: 500; width: 150px; text-align: center">
-                            <div style="margin-top: -10px;">
-                                <img alt="image" src="../images/Timer.png" style="width: 15px; margin-top: -4px;" />
-                                <asp:UpdatePanel ID="up_Timer" runat="server" RenderMode="Inline" UpdateMode="Always">
-                                    <Triggers>
-                                        <asp:AsyncPostBackTrigger ControlID="Timer1" EventName="Tick" />
-                                    </Triggers>
-                                    <ContentTemplate>
-                                        <asp:Timer ID="Timer1" runat="server" Interval="1000" OnTick="Timer1_Tick" />
-                                        <asp:Label ID="lit_Timer" runat="server"></asp:Label><br />
-                                        <asp:HiddenField ID="hid_Ticker" runat="server" Value="0" />
-                                    </ContentTemplate>
-                                </asp:UpdatePanel>
-                            </div>
-                        </td>
-
-                        <td>
-                            <div class="header-right" style="margin-left: 12px; margin-top: -15px;">
-                                <div class="profile_details">
-                                    <ul style="padding-left: 6px;">
-                                        <li class="dropdown profile_details_drop">
-                                            <a href="" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                                                <div class="profile_img">
-                                                    <div class="user-name">
-                                                        <p class="glyphicon glyphicon-user" style="margin-left: -21px;"></p>
-                                                        <asp:Label ID="Lblusername" runat="server" Style="color: black; font-weight: 500"></asp:Label>
-                                                        <p class="glyphicon glyphicon-chevron-down" style="margin-left: 5px;"></p>
-                                                    </div>
-                                                    <i class="fa fa-angle-down lnr"></i>
-                                                    <i class="fa fa-angle-up lnr"></i>
-                                                    <div class="clearfix"></div>
-                                                </div>
-                                            </a>
-                                            <ul class="dropdown-menu drp-mnu" style="width: 77px; left: -116px;">
-                                                <li>
-                                                    <a href="#" data-toggle="modal" data-target="#ModallogoutReason"><i class="glyphicon glyphicon-log-out nav_icon" style="left: -7px;"></i>Logout</a>
-                                                </li>
-                                            </ul>
-
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="clearfix"></div>
-                            </div>
-                        </td>
-                    </tr>
-                </table>
-                <br />
-                <br />
-                <div class="panel-group" id="accordion" style="margin-top: -35px; margin-left: 15px; margin-right: 15px;">
-                    <div class="panel panel-default">
-                        <div class="panel-heading" data-toggle="collapse" data-target="#collapse1">
-                            <h4 class="panel-title">
-                                <strong style="text-decoration: underline; cursor: pointer">Order Details Information</strong><i class="indicator glyphicon glyphicon-chevron-down pull-left"></i>
-                            </h4>
+                    <td style="width: 460px;"></td>
+                    <td style="width: 100px;"></td>
+                    <td style="text-align: center; font-weight: bold; font-size: x-large; color: #ff8100d1;">
+                        <img src="../images/settings.jpg" style="width: 30px; margin-left: -110px;" />
+                        &nbsp;&nbsp;&nbsp;&nbsp;  <b style="margin-left: -30px; white-space: nowrap;">STRMICX</b></td>
+                    <td style="width: 320px;">
+                        <div style="text-align: end; margin-top: -13px;">
+                            <img src="../images/Prcess image.png" alt="image" style="width: 15px" />
+                            <asp:Label ID="processtatus" runat="server" Style="color: black; font-weight: 500"></asp:Label>
                         </div>
-                        <div id="collapse1" class="panel-collapse collapse in">
-                            <div class="panel-body">
+                    </td>
 
-                                <table style="width: 1283px;">
-                                    <tbody>
-                                        <tr>
-                                            <td class="colorbold" style="width: 100px;"><b class="CheckBold">Order Id</b></td>
-                                            <td class="colorbold">:</td>
-                                            <td>
-                                                <asp:Label ID="lblord" runat="server"></asp:Label>
-                                            </td>
-                                            <td class="colorbold" style="width: 115px;"><b class="CheckBold">Transaction Type</b></td>
-                                            <td class="colorbold">:</td>
-                                            <td>
-                                                <asp:Label ID="lbltransactiontype" runat="server"></asp:Label>
-                                            </td>
-                                            <td class="colorbold" style="width: 100px;"><b class="CheckBold">Loan Number</b></td>
-                                            <td class="colorbold">:</td>
-                                            <td>
-                                                <asp:Label ID="lblloannumber" runat="server"></asp:Label>
-                                            </td>
-                                            <td class="colorbold" style="width: 115px;"><b class="CheckBold">Estimated Value</b></td>
-                                            <td class="colorbold">:</td>
-                                            <td>
-                                                <asp:Label ID="lblestimatedvalue" runat="server"></asp:Label>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="colorbold"><b class="CheckBold">Purchase Price</b></td>
-                                            <td class="colorbold">:</td>
-                                            <td>
-                                                <asp:Label ID="lblpurchaseprice" runat="server"></asp:Label>
-                                            </td>
-                                            <td class="colorbold"><b class="CheckBold">Borrower Name</b></td>
-                                            <td class="colorbold">:</td>
-                                            <td>
-                                                <asp:Label ID="lblborrowername" runat="server"></asp:Label>
-                                            </td>
-                                            <td class="colorbold"><b class="CheckBold">Seller Name</b></td>
-                                            <td class="colorbold">:</td>
-                                            <td>
-                                                <asp:Label ID="lblsellername" runat="server"></asp:Label>
-                                            </td>
-                                            <td class="colorbold"><b class="CheckBold">Year Built</b></td>
-                                            <td class="colorbold">:</td>
-                                            <td>
-                                                <asp:Label ID="lblyearbuilt" runat="server"></asp:Label>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="colorbold"><b class="CheckBold">County</b></td>
-                                            <td class="colorbold">:</td>
-                                            <td>
-                                                <asp:Label ID="lblcounty" runat="server"></asp:Label>
-                                            </td>
-                                            <td class="colorbold"><b class="CheckBold">City</b></td>
-                                            <td class="colorbold">:</td>
-                                            <td>
-                                                <asp:Label ID="lblcity" runat="server"></asp:Label>
-                                            </td>
-                                            <td class="colorbold"><b class="CheckBold">State</b></td>
-                                            <td class="colorbold">:</td>
-                                            <td>
-                                                <asp:Label ID="lblstate" runat="server"></asp:Label>
-                                            </td>
-                                            <td class="colorbold"><b class="CheckBold">Zip Code</b></td>
-                                            <td class="colorbold">:</td>
-                                            <td>
-                                                <asp:Label ID="lblzipcode" runat="server"></asp:Label>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="colorbold"><b class="CheckBold">Street Address</b></td>
-                                            <td class="colorbold">:</td>
-                                            <td colspan="4">
-                                                <asp:Label ID="lblstreetaddress1" runat="server"></asp:Label>
-                                            </td>
-                                            <td class="colorbold"><b class="CheckBold">Client Name</b></td>
-                                            <td class="colorbold">:</td>
-                                            <td>
-                                                <asp:Label runat="server" ID="lblclientName"></asp:Label>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="colorbold"><b class="CheckBold">Brief Legal</b></td>
-                                            <td class="colorbold">:</td>
-                                            <td colspan="5">
-                                                <asp:Label ID="lblbrieflegal" runat="server"></asp:Label></td>
-                                        </tr>
-                                    </tbody>
-                                </table>
+                    <td class="Lblothers" style="color: black; font-weight: 500; width: 150px; text-align: center">
+                        <div style="margin-top: -10px;">
+                            <img alt="image" src="../images/Timer.png" style="width: 15px; margin-top: -4px;" />
+                            <asp:UpdatePanel ID="up_Timer" runat="server" RenderMode="Inline" UpdateMode="Always">
+                                <Triggers>
+                                    <asp:AsyncPostBackTrigger ControlID="Timer1" EventName="Tick" />
+                                </Triggers>
+                                <ContentTemplate>
+                                    <asp:Timer ID="Timer1" runat="server" Interval="1000" OnTick="Timer1_Tick" />
+                                    <asp:Label ID="lit_Timer" runat="server"></asp:Label><br />
+                                    <asp:HiddenField ID="hid_Ticker" runat="server" Value="0" />
+                                </ContentTemplate>
+                            </asp:UpdatePanel>
+                        </div>
+                    </td>
+
+                    <td>
+                        <div class="header-right" style="margin-left: 12px; margin-top: -15px;">
+                            <div class="profile_details">
+                                <ul style="padding-left: 6px;">
+                                    <li class="dropdown profile_details_drop">
+                                        <a href="" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                            <div class="profile_img">
+                                                <div class="user-name">
+                                                    <p class="glyphicon glyphicon-user" style="margin-left: -21px;"></p>
+                                                    <asp:Label ID="Lblusername" runat="server" Style="color: black; font-weight: 500"></asp:Label>
+                                                    <p class="glyphicon glyphicon-chevron-down" style="margin-left: 5px;"></p>
+                                                </div>
+                                                <i class="fa fa-angle-down lnr"></i>
+                                                <i class="fa fa-angle-up lnr"></i>
+                                                <div class="clearfix"></div>
+                                            </div>
+                                        </a>
+                                        <ul class="dropdown-menu drp-mnu" style="width: 77px; left: -116px;">
+                                            <li>
+                                                <a href="#" data-toggle="modal" data-target="#ModallogoutReason"><i class="glyphicon glyphicon-log-out nav_icon" style="left: -7px;"></i>Logout</a>
+                                            </li>
+                                        </ul>
+
+                                    </li>
+                                </ul>
                             </div>
+                            <div class="clearfix"></div>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+            <br />
+            <br />
+            <div class="panel-group" id="accordion" style="margin-top: -35px; margin-left: 15px; margin-right: 15px;">
+                <div class="panel panel-default">
+                    <div class="panel-heading" data-toggle="collapse" data-target="#collapse1">
+                        <h4 class="panel-title">
+                            <strong style="text-decoration: underline; cursor: pointer">Order Details Information</strong><i class="indicator glyphicon glyphicon-chevron-down pull-left"></i>
+                        </h4>
+                    </div>
+                    <div id="collapse1" class="panel-collapse collapse in">
+                        <div class="panel-body">
+
+                            <table style="width: 1283px;">
+                                <tbody>
+                                    <tr>
+                                        <td class="colorbold" style="width: 100px;"><b class="CheckBold">Order Id</b></td>
+                                        <td class="colorbold">:</td>
+                                        <td>
+                                            <asp:Label ID="lblord" runat="server"></asp:Label>
+                                        </td>
+                                        <td class="colorbold" style="width: 115px;"><b class="CheckBold">Transaction Type</b></td>
+                                        <td class="colorbold">:</td>
+                                        <td>
+                                            <asp:Label ID="lbltransactiontype" runat="server"></asp:Label>
+                                        </td>
+                                        <td class="colorbold" style="width: 100px;"><b class="CheckBold">Loan Number</b></td>
+                                        <td class="colorbold">:</td>
+                                        <td>
+                                            <asp:Label ID="lblloannumber" runat="server"></asp:Label>
+                                        </td>
+                                        <td class="colorbold" style="width: 115px;"><b class="CheckBold">Estimated Value</b></td>
+                                        <td class="colorbold">:</td>
+                                        <td>
+                                            <asp:Label ID="lblestimatedvalue" runat="server"></asp:Label>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="colorbold"><b class="CheckBold">Purchase Price</b></td>
+                                        <td class="colorbold">:</td>
+                                        <td>
+                                            <asp:Label ID="lblpurchaseprice" runat="server"></asp:Label>
+                                        </td>
+                                        <td class="colorbold"><b class="CheckBold">Borrower Name</b></td>
+                                        <td class="colorbold">:</td>
+                                        <td>
+                                            <asp:Label ID="lblborrowername" runat="server"></asp:Label>
+                                        </td>
+                                        <td class="colorbold"><b class="CheckBold">Seller Name</b></td>
+                                        <td class="colorbold">:</td>
+                                        <td>
+                                            <asp:Label ID="lblsellername" runat="server"></asp:Label>
+                                        </td>
+                                        <td class="colorbold"><b class="CheckBold">Year Built</b></td>
+                                        <td class="colorbold">:</td>
+                                        <td>
+                                            <asp:Label ID="lblyearbuilt" runat="server"></asp:Label>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="colorbold"><b class="CheckBold">County</b></td>
+                                        <td class="colorbold">:</td>
+                                        <td>
+                                            <asp:Label ID="lblcounty" runat="server"></asp:Label>
+                                        </td>
+                                        <td class="colorbold"><b class="CheckBold">City</b></td>
+                                        <td class="colorbold">:</td>
+                                        <td>
+                                            <asp:Label ID="lblcity" runat="server"></asp:Label>
+                                        </td>
+                                        <td class="colorbold"><b class="CheckBold">State</b></td>
+                                        <td class="colorbold">:</td>
+                                        <td>
+                                            <asp:Label ID="lblstate" runat="server"></asp:Label>
+                                        </td>
+                                        <td class="colorbold"><b class="CheckBold">Zip Code</b></td>
+                                        <td class="colorbold">:</td>
+                                        <td>
+                                            <asp:Label ID="lblzipcode" runat="server"></asp:Label>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="colorbold"><b class="CheckBold">Street Address</b></td>
+                                        <td class="colorbold">:</td>
+                                        <td colspan="4">
+                                            <asp:Label ID="lblstreetaddress1" runat="server"></asp:Label>
+                                        </td>
+                                        <td class="colorbold"><b class="CheckBold">Client Name</b></td>
+                                        <td class="colorbold">:</td>
+                                        <td>
+                                            <asp:Label runat="server" ID="lblclientName"></asp:Label>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="colorbold"><b class="CheckBold">Brief Legal</b></td>
+                                        <td class="colorbold">:</td>
+                                        <td colspan="5">
+                                            <asp:Label ID="lblbrieflegal" runat="server"></asp:Label></td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
+                </div>
 
-                    <br />
+                <br />
 
-                    <div class="panel panel-default">
-                        <div class="panel-heading" data-toggle="collapse" data-target="#collapse3">
-                            <h4 class="panel-title">
-                                <strong style="cursor: pointer; text-decoration: underline;">Tax Parcels And Agencies</strong><i class="indicator glyphicon glyphicon-chevron-down pull-left"></i>
-                            </h4>
+                <div class="panel panel-default">
+                    <div class="panel-heading" data-toggle="collapse" data-target="#collapse3">
+                        <h4 class="panel-title">
+                            <strong style="cursor: pointer; text-decoration: underline;">Tax Parcels And Agencies</strong><i class="indicator glyphicon glyphicon-chevron-down pull-left"></i>
+                        </h4>
+                    </div>
+                    <div id="collapse3" class="panel-collapse collapse in">
+                        <div class="panel-body">
+                            <div class="tab-content">
+                                <div class="tab-pane fade in active" id="tab1primary">
+
+                                    <table style="width: 1290px;">
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    <b>
+                                                        <label style="white-space: nowrap;" class="CheckBold" id="lbldrop">Tax ID Number:</label>
+                                                    </b>
+                                                </td>
+                                                <td>
+                                                    <div class="ui-widget">
+                                                        <div class="select-editable">
+                                                            <select runat="server" id="txtTaxNo" onchange="this.nextElementSibling.value=this.value" style="width: 225px; height: 27px; background-color: #d3d3d35c">
+                                                            </select>
+                                                            <input type="text" runat="server" id="txtdrop" name="format" placeholder="Tax ID" value="--Select--" autocomplete="off" onchange="return TaxparcelFunction()" />
+                                                        </div>
+                                                    </div>
+                                                    <%--<cc1:ComboBox ID="txtTaxNo" runat="server" AutoCompleteMode="SuggestAppend"></cc1:ComboBox>--%>
+                                                </td>
+                                                <td>
+                                                    <b>
+                                                        <label id="lblTaxYear" style="white-space: nowrap;" class="CheckBold">Tax Year:</label>
+                                                    </b>
+                                                </td>
+                                                <td>
+                                                    <asp:TextBox ID="txtTaxYear" runat="server" class="form-control" placeholder="YYYY" type="text" MaxLength="4" onkeypress="return isNumberKey(event)" onblur="checkReqFields(this.value,this,event);" autocomplete='off' Style="width: 95px;" onchange="return TaxparcelFunction()" />
+                                                </td>
+                                                <td>
+                                                    <b style="white-space: nowrap;" class="CheckBold">End Year(If Applicable):</b>
+                                                </td>
+                                                <td>
+                                                    <asp:TextBox ID="txtEndYear" runat="server" class="form-control" type="text" placeholder="YYYY" MaxLength="4" onkeypress="return isNumberKey(event);" onblur="checkReqFields1(this.value,this,event);" autocomplete='off' Style="width: 95px;" />
+                                                </td>
+                                                <td></td>
+                                                <td>
+                                                    <b style="white-space: nowrap;" class="CheckBold">TBD:</b>
+                                                </td>
+                                                <td>
+                                                    <asp:CheckBox ID="chkTBD" runat="server" />
+                                                </td>
+                                                <td>
+                                                    <b style="white-space: nowrap;" class="CheckBold">Estimate:</b>
+                                                </td>
+                                                <td>
+                                                    <asp:CheckBox ID="chkEst" runat="server" />
+                                                </td>
+                                                <td>
+                                                    <asp:Button ID="btntaxparcels" class="btn btn-success" runat="server" Text="Add Tax Parcel"
+                                                        AutoPostBack="false" OnClick="btntaxparcel_Click" OnClientClick="return TaxparcelFunction()" Style="margin-left: 10px;" />
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <br />
+                                <div id="taxPar" runat="server" style="height: auto; overflow: auto; margin-top: -15px;">
+                                    <asp:Panel ID="gvTax" runat="server">
+                                        <asp:GridView ID="gvTaxParcel" runat="server" ShowHeaderWhenEmpty="true" AutoGenerateColumns="false" CssClass="Grid"
+                                            DataKeyNames="taxid" Visible="false" Width="100%" OnRowDataBound="OnRowDataBound"
+                                            OnRowEditing="gvTaxParcel_RowEditing" OnRowUpdating="gvTaxParcel_RowUpdating"
+                                            OnRowCommand="btnTaxParcelModal_RowCommand" EmptyDataText="No Data Found" EmptyDataRowStyle-HorizontalAlign="Center"
+                                            OnRowCancelingEdit="gvTaxParcel_RowCancelingEdit">
+                                            <Columns>
+                                                <asp:TemplateField ItemStyle-Width="3%" HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="center">
+                                                    <ItemTemplate>
+                                                        <img style="width: 30px; text-align: center;" id="edit-save" src="../images/STRArrow.png" />
+                                                        <asp:Panel ID="pnlOrders" runat="server" Style="display: none">
+                                                            <asp:GridView ID="gvOrders" runat="server" AutoGenerateColumns="false" CssClass="Grid" Width="90%" GridLines="None"
+                                                                OnRowCommand="btnOrders_RowCommand" DataKeyNames="Id">
+                                                                <Columns>
+                                                                    <asp:BoundField ItemStyle-Width="10%" DataField="Id" HeaderText="Id" ItemStyle-CssClass="hiddencol" HeaderStyle-CssClass="hiddencol" />
+
+                                                                    <asp:TemplateField HeaderText="Agency Id" ItemStyle-Width="30%">
+                                                                        <ItemTemplate>
+                                                                            <asp:LinkButton ID="lnkOrder" runat="server" ForeColor="Blue"
+                                                                                DataField="agencyid" HeaderText="Tax Id" ItemStyle-Width="20%" OnClick="lnkgvOrders_Click"
+                                                                                Text='<%# DataBinder.Eval(Container, "DataItem.agencyid") %>' autopostback="false"></asp:LinkButton>
+                                                                        </ItemTemplate>
+                                                                    </asp:TemplateField>
+
+                                                                    <asp:BoundField ItemStyle-Width="30%" DataField="TaxAuthorityName" HeaderText="Authority Name" />
+                                                                    <%--<asp:BoundField ItemStyle-Width="30%" DataField="TaxAgencyType" HeaderText="Tax Type" />--%>
+
+                                                                    <asp:TemplateField HeaderText="Tax Type" ItemStyle-Width="30%">
+                                                                        <ItemTemplate>
+                                                                            <asp:LinkButton ID="lnkAgnecy" runat="server" ForeColor="Blue"
+                                                                                DataField="TaxAgencyType" HeaderText="Tax Type" ItemStyle-Width="20%" OnClick="lnkAgnecy_Click"
+                                                                                Text='<%# DataBinder.Eval(Container, "DataItem.TaxAgencyType") %>'></asp:LinkButton>
+                                                                        </ItemTemplate>
+                                                                    </asp:TemplateField>
+
+                                                                    <asp:BoundField ItemStyle-Width="10%" DataField="TaxAgencyState" HeaderText="State" ItemStyle-CssClass="hiddencol" HeaderStyle-CssClass="hiddencol" />
+                                                                    <asp:BoundField ItemStyle-Width="10%" DataField="Phone" HeaderText="Phone" ItemStyle-CssClass="hiddencol" HeaderStyle-CssClass="hiddencol" />
+                                                                    <asp:BoundField ItemStyle-Width="10%" DataField="taxid" HeaderText="Tax ID" ItemStyle-CssClass="hiddencol" HeaderStyle-CssClass="hiddencol" />
+                                                                    <asp:BoundField ItemStyle-Width="10%" DataField="Id" HeaderText="ID" ItemStyle-CssClass="hiddencol" HeaderStyle-CssClass="hiddencol" />
+                                                                    <asp:BoundField ItemStyle-Width="10%" DataField="TaxYearStartDate" HeaderText="Tax Year Start Date" ItemStyle-CssClass="hiddencol" HeaderStyle-CssClass="hiddencol" />
+                                                                    <asp:BoundField ItemStyle-Width="10%" DataField="PreferredContactMethod" HeaderText="PreferredContactMethod" ItemStyle-CssClass="hiddencol" HeaderStyle-CssClass="hiddencol" />
+                                                                    <asp:BoundField ItemStyle-Width="10%" DataField="JobTitle" HeaderText="JobTitle" ItemStyle-CssClass="hiddencol" HeaderStyle-CssClass="hiddencol" />
+                                                                    <asp:BoundField ItemStyle-Width="10%" DataField="City" HeaderText="City" ItemStyle-CssClass="hiddencol" HeaderStyle-CssClass="hiddencol" />
+                                                                    <asp:BoundField ItemStyle-Width="10%" DataField="County" HeaderText="County" ItemStyle-CssClass="hiddencol" HeaderStyle-CssClass="hiddencol" />
+                                                                    <asp:BoundField ItemStyle-Width="10%" DataField="State" HeaderText="State" ItemStyle-CssClass="hiddencol" HeaderStyle-CssClass="hiddencol" />
+                                                                    <asp:BoundField ItemStyle-Width="10%" DataField="ContactType" HeaderText="ContactType" ItemStyle-CssClass="hiddencol" HeaderStyle-CssClass="hiddencol" />
+                                                                    <asp:BoundField ItemStyle-Width="10%" DataField="Zip" HeaderText="Zip" ItemStyle-CssClass="hiddencol" HeaderStyle-CssClass="hiddencol" />
+                                                                    <asp:BoundField ItemStyle-Width="10%" DataField="Address1" HeaderText="Address" ItemStyle-CssClass="hiddencol" HeaderStyle-CssClass="hiddencol" />
+
+
+                                                                    <asp:TemplateField HeaderText="Actions">
+                                                                        <ItemTemplate>
+                                                                            <asp:LinkButton runat="server" ID="btnSubDelete" CommandName="DeleteOrders" OnClientClick="javascript : return confirm('Are you sure, want to delete this Row?');" ItemStyle-Width="10%" Style="height: 30px; margin-left: 18px;" ToolTip="Delete" CommandArgument='<%# DataBinder.Eval(Container,"DataItemIndex") %>' class="glyphicon glyphicon-trash" CssClass=""></asp:LinkButton>
+                                                                        </ItemTemplate>
+                                                                    </asp:TemplateField>
+                                                                </Columns>
+                                                                <AlternatingRowStyle BackColor="#f3f2ea" />
+                                                                <HeaderStyle BackColor="#d9241b" ForeColor="white" />
+                                                            </asp:GridView>
+                                                        </asp:Panel>
+                                                    </ItemTemplate>
+                                                </asp:TemplateField>
+                                                <asp:BoundField ItemStyle-Width="50%" DataField="Id" HeaderText="Tax ID" ReadOnly="true" ItemStyle-CssClass="hiddencol" HeaderStyle-CssClass="hiddencol" />
+                                                <asp:BoundField ItemStyle-Width="30%" DataField="taxid" HeaderText="Tax ID Number" ReadOnly="true" />
+                                                <asp:BoundField ItemStyle-Width="30%" DataField="taxyear" HeaderText="Tax Year" ReadOnly="true" />
+                                                <asp:BoundField ItemStyle-Width="20%" DataField="endyear" HeaderText="End Year" ReadOnly="true" />
+                                                <asp:BoundField ItemStyle-Width="50%" DataField="tbd" HeaderText="TBD" ReadOnly="true" ItemStyle-CssClass="hiddencol" HeaderStyle-CssClass="hiddencol" />
+                                                <asp:BoundField ItemStyle-Width="50%" DataField="estimate" HeaderText="Estimate" ReadOnly="true" ItemStyle-CssClass="hiddencol" HeaderStyle-CssClass="hiddencol" />
+
+                                                <asp:TemplateField Visible="false">
+                                                    <ItemTemplate>
+                                                        <asp:HiddenField ID="HdnId" runat="server" Value='<%# Bind("Id") %>' />
+                                                    </ItemTemplate>
+                                                </asp:TemplateField>
+
+                                                <asp:TemplateField HeaderText="Edit" ItemStyle-Width="10%">
+                                                    <ItemTemplate>
+                                                        <asp:LinkButton ID="LnkEdit" runat="server" class="glyphicon glyphicon-edit" CommandName="Edit" Style="height: 30px; margin-left: 5px; margin-bottom: -10px;" ToolTip="Edit" CommandArgument='<%# DataBinder.Eval(Container,"DataItemIndex") %>' CssClass=""></asp:LinkButton>
+                                                    </ItemTemplate>
+                                                    <EditItemTemplate>
+                                                        <asp:LinkButton ID="btn_Update" runat="server" class="glyphicon glyphicon-ok" Style="height: 30px; margin-left: 10px;" ToolTip="Update" CommandName="Update" />
+                                                        <asp:LinkButton ID="btn_Cancel" runat="server" class="glyphicon glyphicon-remove" Style="height: 30px; margin-left: 10px;" ToolTip="Cancel" CommandName="Cancel" />
+                                                    </EditItemTemplate>
+                                                </asp:TemplateField>
+
+
+                                                <asp:TemplateField HeaderText="Delete">
+                                                    <ItemTemplate>
+                                                        <asp:LinkButton ID="btnParDelete" runat="server" class="glyphicon glyphicon-trash" OnClientClick="javascript : return confirm('Are you sure, want to delete this Row?');" CommandName="SelectParDelete" Style="height: 30px; margin-left: 10px; margin-bottom: -10px;" ToolTip="Delete" CommandArgument='<%# DataBinder.Eval(Container,"DataItemIndex") %>' CssClass=""></asp:LinkButton>
+
+                                                    </ItemTemplate>
+                                                </asp:TemplateField>
+
+                                                <asp:TemplateField>
+                                                    <ItemTemplate>
+                                                        <asp:LinkButton ID="btnAddAuthor" runat="server" CommandName="SelectAddAuthor" Style="width: 120px; font-family: Roboto,-apple-system,BlinkMacSystemFont,Segoe UI,Oxygen,Ubuntu,Cantarell,Fira San,Droid Sans,Helvetica Neue,sans-serif; white-space: nowrap; cursor: pointer" CommandArgument='<%# DataBinder.Eval(Container,"DataItemIndex") %>'><i title="Add Authorities"><img src="../images/Blue User.png"/ style="width:15px;margin-top:-5px;"></i>+ Authorities</asp:LinkButton>
+                                                    </ItemTemplate>
+                                                </asp:TemplateField>
+                                            </Columns>
+                                            <HeaderStyle BackColor="#d9241b" ForeColor="white" />
+                                        </asp:GridView>
+                                    </asp:Panel>
+                                </div>
+                            </div>
                         </div>
-                        <div id="collapse3" class="panel-collapse collapse in">
-                            <div class="panel-body">
-                                <div class="tab-content">
-                                    <div class="tab-pane fade in active" id="tab1primary">
 
-                                        <table style="width: 1290px;">
+                    </div>
+                </div>
+                <br />
+
+                <asp:Panel ID="PnlTax" class="panel panel-default" runat="server" Visible="false">
+
+                    <div class="panel-heading" data-toggle="collapse" data-target="#collapse4">
+                        <h4 class="panel-title">
+                            <strong style="cursor: pointer; text-decoration: underline;">Tax Authorities</strong><i class="indicator glyphicon glyphicon-chevron-down pull-left"></i>
+                        </h4>
+                    </div>
+                    <br />
+                    <br />
+                    <div id="collapse4" style="margin-top: -3px;" class="panel-collapse collapse in">
+                        <div style="margin-top: -45px;">
+                            <div class="tab-content">
+                                <div class="tab-pane fade in active" id="tab2primary">
+                                    <br />
+                                    <div class="col-xs-8">
+                                        <div class="table-responsive">
+                                            <table style="width: 845px;">
+                                                <tbody>
+                                                    <tr>
+                                                        <td style="width: 130px;">
+                                                            <b class="CheckBold">Tax Id</b>
+                                                        </td>
+                                                        <td>:</td>
+                                                        <td>
+                                                            <asp:Label ID="LblTaxID" runat="server" Style="font-size: 14px;"></asp:Label>
+                                                        </td>
+                                                        <td style="width: 90px;">
+                                                            <b class="CheckBold">Agencyid</b>
+                                                        </td>
+                                                        <td>:</td>
+                                                        <td style="width: 105px;">
+                                                            <asp:Label ID="LblAgencyID" runat="server" Style="font-size: 14px;"></asp:Label>
+                                                        </td>
+                                                        <td style="width: 110px;">
+                                                            <b class="CheckBold">Authority Name</b>
+                                                        </td>
+                                                        <td>:</td>
+                                                        <td>
+                                                            <asp:Label ID="txtAuthorityname" runat="server" Style="font-size: 14px;"></asp:Label>
+                                                        </td>
+                                                        <td></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <b class="CheckBold" title="Prefered Contact Method">Contact Method</b>
+                                                        </td>
+                                                        <td>:</td>
+                                                        <td>
+                                                            <asp:Label ID="txtprefcontactmethod" runat="server" Style="font-size: 14px;"></asp:Label>
+                                                        </td>
+                                                        <td>
+                                                            <b class="CheckBold">Email</b>
+                                                        </td>
+                                                        <td>:</td>
+                                                        <td>
+                                                            <asp:Label ID="txtemail" runat="server" Style="font-size: 14px;"></asp:Label>
+                                                        </td>
+                                                        <td>
+                                                            <b class="CheckBold">Phone</b>
+                                                        </td>
+                                                        <td>:</td>
+                                                        <td>
+                                                            <asp:Label ID="txtphone" runat="server" Style="font-size: 14px;"></asp:Label>
+                                                        </td>
+
+                                                    </tr>
+                                                    <tr>
+                                                        <td><b class="CheckBold">Job Title</b></td>
+                                                        <td>:</td>
+                                                        <td>
+                                                            <asp:Label ID="Lbljobtitle" runat="server" Style="font-size: 14px;"></asp:Label>
+                                                        </td>
+                                                        <td><b class="CheckBold">City</b></td>
+                                                        <td>:</td>
+                                                        <td>
+                                                            <asp:Label ID="LblCity1" runat="server" Style="font-size: 14px;"></asp:Label>
+                                                        </td>
+                                                        <td><b class="CheckBold">County</b></td>
+                                                        <td>:</td>
+                                                        <td>
+                                                            <asp:Label ID="txtCounty" runat="server" Style="font-size: 14px;"></asp:Label>
+                                                        </td>
+
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <b class="CheckBold">Tax Agency Type</b>
+                                                        </td>
+                                                        <td>:</td>
+                                                        <td style="width: 145px; white-space: nowrap">
+                                                            <asp:Label ID="txtTaxType" runat="server" Style="font-size: 14px;"></asp:Label>
+                                                        </td>
+                                                        <td>
+                                                            <b class="CheckBold">Fax</b>
+                                                        </td>
+                                                        <td>:</td>
+                                                        <td>
+                                                            <asp:Label ID="txtfax" runat="server" Style="font-size: 14px;"></asp:Label>
+                                                        </td>
+                                                        <td>
+                                                            <b class="CheckBold">State</b>
+                                                        </td>
+                                                        <td>:</td>
+                                                        <td>
+                                                            <asp:Label ID="txtState" runat="server" Style="font-size: 14px;"></asp:Label>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <b class="CheckBold">Tax Year Start Date</b>
+                                                        </td>
+                                                        <td>:</td>
+                                                        <td>
+                                                            <asp:Label ID="txtstartyeardate" runat="server" Style="font-size: 14px;"></asp:Label>
+                                                        </td>
+                                                        <td>
+                                                            <b class="CheckBold">ContactType</b>
+                                                        </td>
+                                                        <td>:</td>
+                                                        <td>
+                                                            <asp:Label ID="txtcontactType" runat="server" Style="font-size: 14px;"></asp:Label>
+                                                        </td>
+                                                        <td>
+                                                            <b class="CheckBold">Zip</b>
+                                                        </td>
+                                                        <td>:</td>
+                                                        <td>
+                                                            <asp:Label ID="txtZip" runat="server" Style="font-size: 14px;"></asp:Label>
+                                                        </td>
+                                                    </tr>
+
+                                                    <tr>
+                                                        <td>
+                                                            <b class="CheckBold">Address</b>
+                                                        </td>
+                                                        <td>:</td>
+                                                        <td>
+                                                            <asp:Label ID="Lbladdress" runat="server" Style="font-size: 14px;"></asp:Label>
+                                                        </td>
+                                                        <td>
+                                                            <b class="CheckBold">OperationHours</b> </td>
+                                                        <td>:</td>
+                                                        <td>
+                                                            <asp:Label ID="lblOperation" runat="server" Style="font-size: 14px;"></asp:Label>
+                                                        </td>
+                                                        <td>
+                                                            <b class="CheckBold" style="white-space: nowrap;">No of Phone Calls</b></td>
+                                                        <td>:</td>
+                                                        <td>
+                                                            <asp:Label ID="lblphNos" runat="server" Style="font-size: 14px;"></asp:Label>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-4">
+                                        <div class="table-responsive">
+                                            <asp:Panel ID="Panel1" Height="144px" runat="server">
+                                                <asp:GridView ID="gridwebsite" runat="server" AutoGenerateColumns="false" GridLines="None">
+                                                    <Columns>
+                                                        <asp:TemplateField HeaderText="WebSite" ItemStyle-Width="10%">
+                                                            <ItemTemplate>
+                                                                <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl='<%# Bind("url") %>' onclick="window.open(this.href, 'targetWindow', 'toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes');return false;">
+                                                                    <asp:Label ID="lnkwebsite3" runat="server" Text='<%# Bind("url") %>'></asp:Label>
+                                                                </asp:HyperLink>
+                                                            </ItemTemplate>
+                                                            <ItemStyle Width="10%" />
+                                                        </asp:TemplateField>
+                                                        <asp:BoundField ItemStyle-Width="30%" DataField="Description" HeaderText="Description" ReadOnly="true">
+                                                            <ItemStyle Width="30%" />
+                                                        </asp:BoundField>
+                                                    </Columns>
+                                                    <AlternatingRowStyle BackColor="#f3f2ea" />
+                                                    <HeaderStyle BackColor="#d9241b" ForeColor="white" />
+                                                    <EmptyDataTemplate>
+                                                        <div style="color: red; font-weight: bold;" align="center">No records found.</div>
+                                                    </EmptyDataTemplate>
+                                                </asp:GridView>
+                                            </asp:Panel>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <br />
+                        <div class="panel-body" style="margin-top: 130px;">
+                            <div style="border-top: 1px solid #e5e5e5;"></div>
+                            <h4 class="panel-title" style="margin-top: 0px;">
+                                <strong style="margin-bottom: -30px; text-decoration: underline;">Miscellaneous Info</strong>
+                            </h4>
+
+                            <div style="border-top: 1px solid #e5e5e5; margin-top: 6px;">
+                            </div>
+                            <div class="tab-content">
+                                <div class="tab-pane fade in active">
+                                    <fieldset>
+                                        <div class="col-md-3">
+                                            <div class="col-md-12">
+                                                <div class="col-md-9">
+                                                    <asp:TextBox ID="txtmisc" runat="server" class="form-control" Style="margin-left: -40px; width: 1280px; height: 130px; resize: none; background-color: white; cursor: default" TextMode="MultiLine" ReadOnly />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </fieldset>
+                                </div>
+                            </div>
+                        </div>
+                        <br />
+                        <div class="panel-body" style="margin-top: -55px;">
+                            <%--<div style="border-top: 1px solid #e5e5e5; margin-top: 8px;"></div>--%>
+                            <%-- <h4 class="panel-title" style="margin-top: -27px;">
+                                <strong style="margin-bottom: -30px; text-decoration: underline;">Tax Authority Questions</strong>
+                            </h4>--%>
+
+                            <%-- <div style="border-top: 1px solid #e5e5e5; margin-top: -24px;">
+                                <br />
+
+                            </div>--%>
+                            <div class="tab-content">
+                                <div class="tab-pane fade in active">
+                                    <br />
+                                    <fieldset>
+                                        <div class="col-md-12">
+                                            <div class="col-md-2 Label">
+                                                <b style="margin-left: -67px; color: red; font-size: 18px;" class="CheckBold">Annual Tax Amount: </b>
+
+                                            </div>
+                                            <div class="col-md-2">
+                                                <b style="margin-left: -170px; color: black; font-size: 18px;" class="CheckBold">
+                                                    <asp:Label ID="txtAnnualTaxAmount" runat="server" /></b>
+                                            </div>
+                                        </div>
+                                        <br />
+
+                                        <table class="table table-striped table-hover">
+                                            <thead style="background-color: #d9241b; color: #fff;">
+                                                <tr>
+                                                    <th>Installment 1</th>
+                                                    <th>Installment 2</th>
+                                                    <th>Installment 3</th>
+                                                    <th>Installment 4</th>
+                                                </tr>
+                                            </thead>
                                             <tbody>
                                                 <tr>
                                                     <td>
-                                                        <b>
-                                                            <label style="white-space: nowrap;" class="CheckBold" id="lbldrop">Tax ID Number:</label>
-                                                        </b>
-                                                    </td>
-                                                    <td>
-                                                        <div class="ui-widget">
-                                                            <div class="select-editable">
-                                                                <select runat="server" id="txtTaxNo" onchange="this.nextElementSibling.value=this.value" style="width: 225px; height: 27px; background-color: #d3d3d35c">
-                                                                </select>
-                                                                <input type="text" runat="server" id="txtdrop" name="format" placeholder="Tax ID" value="--Select--" autocomplete="off" onchange="return TaxparcelFunction()" />
-                                                            </div>
+                                                        <div class="form-group" style="margin-bottom: 0px;">
+                                                            <label style="text-align: right; clear: both; float: left; margin-right: 55px;" class="CheckBold">Inst.Amount:</label>
+                                                            <input type="text" id="instamount1" runat="server" class="form-control taxing" placeholder="Tax Amount" style="width: 150px;" onkeyup="hello1();" onfocusout="myFunction1();if (this.value=='0.00') this.value='0.00';if (this.value=='') this.value='0.00';" onfocusin="if (this.value=='0.00') this.value='';" onblur="mytxtamount1()" autocomplete='off' tabindex="1" />
                                                         </div>
-                                                        <%--<cc1:ComboBox ID="txtTaxNo" runat="server" AutoCompleteMode="SuggestAppend"></cc1:ComboBox>--%>
                                                     </td>
                                                     <td>
-                                                        <b>
-                                                            <label id="lblTaxYear" style="white-space: nowrap;" class="CheckBold">Tax Year:</label>
-                                                        </b>
+                                                        <div class="form-group" style="margin-bottom: 0px;">
+                                                            <label style="text-align: right; clear: both; float: left; margin-right: 55px;" class="CheckBold">Inst.Amount:</label>
+                                                            <input type="text" id="instamount2" runat="server" class="form-control taxing" placeholder="Tax Amount" style="width: 150px;" onkeyup="hello2();" onfocusout="myFunction2();if (this.value=='0.00') this.value='0.00';if (this.value=='') this.value='0.00';" onfocusin="if (this.value=='0.00') this.value='';" onblur="mytxtamount2()" autocomplete='off' tabindex="10" />
+                                                        </div>
                                                     </td>
                                                     <td>
-                                                        <asp:TextBox ID="txtTaxYear" runat="server" class="form-control" placeholder="YYYY" type="text" MaxLength="4" onkeypress="return isNumberKey(event)" onblur="checkReqFields(this.value,this,event);" autocomplete='off' Style="width: 95px;" onchange="return TaxparcelFunction()" />
+                                                        <div class="form-group" style="margin-bottom: 0px;">
+                                                            <label style="text-align: right; clear: both; float: left; margin-right: 55px;" class="CheckBold">Inst.Amount:</label>
+                                                            <input type="text" id="instamount3" runat="server" class="form-control taxing" placeholder="Tax Amount" style="width: 150px;" onkeyup="hello3();" onfocusout="myFunction3();if (this.value=='0.00') this.value='0.00';if (this.value=='') this.value='0.00';" onfocusin="if (this.value=='0.00') this.value='';" onblur="mytxtamount3()" autocomplete='off' tabindex="19" />
+                                                        </div>
                                                     </td>
                                                     <td>
-                                                        <b style="white-space: nowrap;" class="CheckBold">End Year(If Applicable):</b>
+                                                        <div class="form-group" style="margin-bottom: 0px;">
+                                                            <label style="text-align: right; clear: both; float: left; margin-right: 55px;" class="CheckBold">Inst.Amount:</label>
+                                                            <input type="text" id="instamount4" runat="server" class="form-control taxing" placeholder="Tax Amount" style="width: 150px;" onkeyup="hello4();" onfocusout="myFunction4();if (this.value=='0.00') this.value='0.00';if (this.value=='') this.value='0.00';" onfocusin="if (this.value=='0.00') this.value='';" onblur="mytxtamount4()" autocomplete='off' tabindex="27" />
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <div class="form-group" style="margin-bottom: 0px;">
+                                                            <label style="text-align: right; clear: both; float: left; margin-right: 23px;" class="CheckBold">Inst.Amount Paid:</label>
+                                                            <input type="text" id="instamountpaid1" runat="server" class="form-control taxing" placeholder="Amount Paid" style="width: 150px;" onkeyup="AmtPaid1();" onfocusout="myFunctionAmtPaid1();if (this.value=='0.00') this.value='0.00';if (this.value=='') this.value='0.00';" onfocusin="if (this.value=='0.00') this.value='';" onblur="mytest1();" autocomplete='off' tabindex="2" />
+                                                        </div>
                                                     </td>
                                                     <td>
-                                                        <asp:TextBox ID="txtEndYear" runat="server" class="form-control" type="text" placeholder="YYYY" MaxLength="4" onkeypress="return isNumberKey(event);" onblur="checkReqFields1(this.value,this,event);" autocomplete='off' Style="width: 95px;" />
-                                                    </td>
-                                                    <td></td>
-                                                    <td>
-                                                        <b style="white-space: nowrap;" class="CheckBold">TBD:</b>
-                                                    </td>
-                                                    <td>
-                                                        <asp:CheckBox ID="chkTBD" runat="server" />
+                                                        <div class="form-group" style="margin-bottom: 0px;">
+                                                            <label style="text-align: right; clear: both; float: left; margin-right: 23px;" class="CheckBold">Inst.Amount Paid:</label>
+                                                            <input type="text" id="instamountpaid2" runat="server" class="form-control taxing" placeholder="Amount Paid" style="width: 150px;" onkeyup="AmtPaid2();" onfocusout="myFunctionAmtPaid2();if (this.value=='0.00') this.value='0.00';if (this.value=='') this.value='0.00';" onfocusin="if (this.value=='0.00') this.value='';" onblur="mytest2();" autocomplete='off' tabindex="11" />
+                                                        </div>
                                                     </td>
                                                     <td>
-                                                        <b style="white-space: nowrap;" class="CheckBold">Estimate:</b>
+                                                        <div class="form-group" style="margin-bottom: 0px;">
+                                                            <label style="text-align: right; clear: both; float: left; margin-right: 23px;" class="CheckBold">Inst.Amount Paid:</label>
+                                                            <input type="text" id="instamountpaid3" runat="server" class="form-control taxing" placeholder="Amount Paid" style="width: 150px;" onkeyup="AmtPaid3();" onfocusout="myFunctionAmtPaid3();if (this.value=='0.00') this.value='0.00';if (this.value=='') this.value='0.00';" onfocusin="if (this.value=='0.00') this.value='';" onblur="mytest3();" autocomplete='off' tabindex="19" />
+                                                        </div>
                                                     </td>
                                                     <td>
-                                                        <asp:CheckBox ID="chkEst" runat="server" />
+                                                        <div class="form-group" style="margin-bottom: 0px;">
+                                                            <label style="text-align: right; clear: both; float: left; margin-right: 23px;" class="CheckBold">Inst.Amount Paid:</label>
+                                                            <input type="text" id="instamountpaid4" runat="server" class="form-control taxing" placeholder="Amount Paid" style="width: 150px;" onkeyup="AmtPaid4();" onfocusout="myFunctionAmtPaid4();if (this.value=='0.00') this.value='0.00';if (this.value=='') this.value='0.00';" onfocusin="if (this.value=='0.00') this.value='';" onblur="mytest4();" autocomplete='off' tabindex="28" />
+                                                        </div>
+                                                    </td>
+                                                    <td hidden>
+                                                        <p id="w"></p>
+                                                    </td>
+                                                    <td hidden>
+                                                        <p id="a"></p>
+                                                    </td>
+                                                    <td hidden>
+                                                        <p id="e"></p>
+                                                    </td>
+                                                    <td hidden>
+                                                        <p id="i"></p>
+                                                    </td>
+
+                                                    <td hidden>
+                                                        <p id="x"></p>
+                                                    </td>
+                                                    <td hidden>
+                                                        <p id="b"></p>
+                                                    </td>
+                                                    <td hidden>
+                                                        <p id="f"></p>
+                                                    </td>
+                                                    <td hidden>
+                                                        <p id="j"></p>
+                                                    </td>
+
+                                                    <td hidden>
+                                                        <p id="c"></p>
+                                                    </td>
+                                                    <td hidden>
+                                                        <p id="y"></p>
+                                                    </td>
+                                                    <td hidden>
+                                                        <p id="g"></p>
+                                                    </td>
+                                                    <td hidden>
+                                                        <p id="k"></p>
+                                                    </td>
+
+                                                    <td hidden>
+                                                        <p id="z"></p>
+                                                    </td>
+                                                    <td hidden>
+                                                        <p id="d"></p>
+                                                    </td>
+                                                    <td hidden>
+                                                        <p id="h"></p>
+                                                    </td>
+                                                    <td hidden>
+                                                        <p id="l"></p>
+                                                    </td>
+                                                    <td hidden>
+                                                        <p id="TA"></p>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <div class="form-group" style="margin-bottom: 0px;">
+                                                            <label style="text-align: right; clear: both; float: left; margin-right: 44px;" class="CheckBold">Inst.Paid/Due?</label>
+                                                            <select id="instpaiddue1" runat="server" class="form-control taxing" style="width: 150px;" tabindex="3">
+                                                                <option>Select</option>
+                                                                <option>Paid</option>
+                                                                <option>Due</option>
+                                                            </select>
+                                                        </div>
                                                     </td>
                                                     <td>
-                                                        <asp:Button ID="btntaxparcels" class="btn btn-success" runat="server" Text="Add Tax Parcel"
-                                                            AutoPostBack="false" OnClick="btntaxparcel_Click" OnClientClick="return TaxparcelFunction()" Style="margin-left: 10px;" />
+                                                        <div class="form-group" style="margin-bottom: 0px;">
+                                                            <label style="text-align: right; clear: both; float: left; margin-right: 44px;" class="CheckBold">Inst.Paid/Due?</label>
+                                                            <select id="instpaiddue2" runat="server" class="form-control taxing" style="width: 150px;" tabindex="12">
+                                                                <option>Select</option>
+                                                                <option>Paid</option>
+                                                                <option>Due</option>
+                                                            </select>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="form-group" style="margin-bottom: 0px;">
+                                                            <label style="text-align: right; clear: both; float: left; margin-right: 44px;" class="CheckBold">Inst.Paid/Due?</label>
+                                                            <select id="instpaiddue3" runat="server" class="form-control taxing" style="width: 150px;" tabindex="20">
+                                                                <option>Select</option>
+                                                                <option>Paid</option>
+                                                                <option>Due</option>
+                                                            </select>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="form-group" style="margin-bottom: 0px;">
+                                                            <label style="text-align: right; clear: both; float: left; margin-right: 44px;" class="CheckBold">Inst.Paid/Due?</label>
+                                                            <select id="instpaiddue4" runat="server" class="form-control taxing" style="width: 150px;" tabindex="29">
+                                                                <option>Select</option>
+                                                                <option>Paid</option>
+                                                                <option>Due</option>
+                                                            </select>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <asp:HiddenField ID="hdntxtbxTaksit1" runat="server" Value=""></asp:HiddenField>
+                                                        <asp:HiddenField ID="hdntxtbxTaksit2" runat="server" Value=""></asp:HiddenField>
+                                                        <asp:HiddenField ID="hdntxtbxTaksit3" runat="server" Value=""></asp:HiddenField>
+                                                        <asp:HiddenField ID="hdntxtbxTaksit4" runat="server" Value=""></asp:HiddenField>
+                                                        <div class="form-group" style="margin-bottom: 0px;">
+                                                            <label style="text-align: right; clear: both; float: left; margin-right: 12px;" class="CheckBold">Remaining Balance:</label>
+                                                            <input type="text" id="remainingbalance1" class="form-control taxing" runat="server" placeholder="Remaining Balance" style="width: 150px;" onkeypress="return isNumberKey(event)" onkeyup="RemBalance1(event);" autocomplete="off" tabindex="4" />
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="form-group" style="margin-bottom: 0px;">
+                                                            <label style="text-align: right; clear: both; float: left; margin-right: 12px;" class="CheckBold">Remaining Balance:</label>
+                                                            <input type="text" id="remainingbalance2" runat="server" class="form-control taxing" placeholder="Remaining Balance" style="width: 150px;" onkeypress="return isNumberKey(event)" onkeyup="RemBalance2(event);" autocomplete="off" tabindex="13" />
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="form-group" style="margin-bottom: 0px;">
+                                                            <label style="text-align: right; clear: both; float: left; margin-right: 12px;" class="CheckBold">Remaining Balance:</label>
+                                                            <input type="text" id="remainingbalance3" class="form-control taxing" runat="server" placeholder="Remaining Balance" style="width: 150px;" onkeypress="return isNumberKey(event)" onkeyup="RemBalance3(event);" autocomplete="off" tabindex="21" />
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="form-group" style="margin-bottom: 0px;">
+                                                            <label style="text-align: right; clear: both; float: left; margin-right: 12px;" class="CheckBold">Remaining Balance:</label>
+                                                            <input type="text" id="remainingbalance4" runat="server" class="form-control taxing" placeholder="Remaining Balance" style="width: 150px;" onkeypress="return isNumberKey(event)" onkeyup="RemBalance4(event);" autocomplete="off" tabindex="30" />
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <div class="form-group" style="margin-bottom: 0px;">
+                                                            <label style="text-align: right; clear: both; float: left; margin-right: 28px;" class="CheckBold">Installment Date:</label>
+                                                            <input type="text" id="instdate1" name="instdate1" class="form-control taxing" runat="server" style="width: 150px;" maxlength="10" onchange="checkinstdate1();" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="return checkDate(this,event)" onkeypress="return isNumberKey1(event)" placeholder="MM/DD/YYYY" autocomplete="off" tabindex="5" />
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="form-group" style="margin-bottom: 0px;">
+                                                            <label style="text-align: right; clear: both; float: left; margin-right: 28px;" class="CheckBold">Installment Date:</label>
+                                                            <input type="text" id="instdate2" runat="server" class="form-control taxing" style="width: 150px;" maxlength="10" onchange="checkinstdate2();" placeholder="MM/DD/YYYY" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="return checkDate(this,event)" autocomplete="off" tabindex="14" />
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="form-group" style="margin-bottom: 0px;">
+                                                            <label style="text-align: right; clear: both; float: left; margin-right: 28px;" class="CheckBold">Installment Date:</label>
+                                                            <input type="text" id="instdate3" runat="server" class="form-control taxing" style="width: 150px;" maxlength="10" onchange="checkinstdate3();" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="return checkDate(this,event)" placeholder="MM/DD/YYYY" autocomplete="off" tabindex="22" />
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="form-group" style="margin-bottom: 0px;">
+                                                            <label style="text-align: right; clear: both; float: left; margin-right: 28px;" class="CheckBold">Installment Date:</label>
+                                                            <input type="text" id="instdate4" runat="server" class="form-control taxing" style="width: 150px;" maxlength="10" onchange="checkinstdate4();" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="return checkDate(this,event)" placeholder="MM/DD/YYYY" autocomplete="off" tabindex="31" />
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <div class="form-group" style="margin-bottom: 0px;">
+                                                            <label style="text-align: right; clear: both; float: left; margin-right: 29px;" class="CheckBold">Delinquent Date:</label>
+                                                            <input type="text" id="delinq1" runat="server" class="form-control taxing" style="width: 150px;" placeholder="MM/DD/YYYY" maxlength="10" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="return checkDate(this,event)" autocomplete="off" tabindex="6" onchange="functionTaxBill(this)" />
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="form-group" style="margin-bottom: 0px;">
+                                                            <label style="text-align: right; clear: both; float: left; margin-right: 29px;" class="CheckBold">Delinquent Date:</label>
+                                                            <input type="text" id="delinq2" runat="server" class="form-control taxing" style="width: 150px;" placeholder="MM/DD/YYYY" maxlength="10" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="return checkDate(this,event)" autocomplete="off" tabindex="15" onchange="functionTaxBill(this)"/>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="form-group" style="margin-bottom: 0px;">
+                                                            <label style="text-align: right; clear: both; float: left; margin-right: 29px;" class="CheckBold">Delinquent Date:</label>
+                                                            <input type="text" id="delinq3" runat="server" class="form-control taxing" style="width: 150px;" placeholder="MM/DD/YYYY" maxlength="10" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="return checkDate(this,event)" autocomplete="off" tabindex="23" onchange="functionTaxBill(this)"/>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="form-group" style="margin-bottom: 0px;">
+                                                            <label style="text-align: right; clear: both; float: left; margin-right: 29px;" class="CheckBold">Delinquent Date:</label>
+                                                            <input type="text" id="delinq4" runat="server" class="form-control taxing" style="width: 150px;" placeholder="MM/DD/YYYY" maxlength="10" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="return checkDate(this,event)" autocomplete="off" tabindex="32" onchange="functionTaxBill(this)" />
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <div class="form-group" style="margin-bottom: 0px;">
+                                                            <label style="text-align: right; clear: both; float: left; margin-right: 21px;" class="CheckBold">Discount Amount:</label>
+                                                            <input type="text" id="discamt1" runat="server" class="form-control taxing" placeholder="Discount Amount" style="width: 150px;" onkeyup="Discount1();" onfocusout="myFunctionDiscount1();if (this.value=='0.00') this.value='0.00';if (this.value=='') this.value='0.00';" onfocusin="if (this.value=='0.00') this.value='';" onblur="mydiscountamount1();" autocomplete="off" tabindex="7" />
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="form-group" style="margin-bottom: 0px;">
+                                                            <label style="text-align: right; clear: both; float: left; margin-right: 21px;" class="CheckBold">Discount Amount:</label>
+                                                            <input type="text" id="discamt2" runat="server" class="form-control taxing" placeholder="Discount Amount" style="width: 150px;" onkeyup="Discount2();" onfocusout="myFunctionDiscount2();if (this.value=='0.00') this.value='0.00';if (this.value=='') this.value='0.00';" onfocusin="if (this.value=='0.00') this.value='';" onblur="mydiscountamount2();" autocomplete="off" tabindex="16" />
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="form-group" style="margin-bottom: 0px;">
+                                                            <label style="text-align: right; clear: both; float: left; margin-right: 21px;" class="CheckBold">Discount Amount:</label>
+                                                            <input type="text" id="discamt3" runat="server" class="form-control taxing" placeholder="Discount Amount" style="width: 150px;" onkeyup="Discount3();" onfocusout="myFunctionDiscount3();if (this.value=='0.00') this.value='0.00';if (this.value=='') this.value='0.00';" onfocusin="if (this.value=='0.00') this.value='';" onblur="mydiscountamount3()" autocomplete="off" tabindex="24" />
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="form-group" style="margin-bottom: 0px;">
+                                                            <label style="text-align: right; clear: both; float: left; margin-right: 21px;" class="CheckBold">Discount Amount:</label>
+                                                            <input type="text" id="discamt4" runat="server" class="form-control taxing" placeholder="Discount Amount" style="width: 150px;" onkeyup="Discount4();" onfocusout="myFunctionDiscount4();if (this.value=='0.00') this.value='0.00';if (this.value=='') this.value='0.00';" onfocusin="if (this.value=='0.00') this.value='';" onblur="mydiscountamount4();" autocomplete="off" tabindex="33" />
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <div class="form-group" style="margin-bottom: 0px;">
+                                                            <label style="text-align: right; clear: both; float: left; margin-right: 44px;" class="CheckBold">Discount Date:</label>
+                                                            <input type="text" id="discdate1" runat="server" class="form-control taxing" style="width: 150px;" placeholder="MM/DD/YYYY" maxlength="10" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="return checkDate(this,event)" autocomplete="off" tabindex="8" />
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="form-group" style="margin-bottom: 0px;">
+                                                            <label style="text-align: right; clear: both; float: left; margin-right: 44px;" class="CheckBold">Discount Date:</label>
+                                                            <input type="text" id="discdate2" runat="server" class="form-control taxing" style="width: 150px;" placeholder="MM/DD/YYYY" maxlength="10" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="return checkDate(this,event)" autocomplete="off" tabindex="17" />
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="form-group" style="margin-bottom: 0px;">
+                                                            <label style="text-align: right; clear: both; float: left; margin-right: 44px;" class="CheckBold">Discount Date:</label>
+                                                            <input type="text" id="discdate3" runat="server" class="form-control taxing" style="width: 150px;" placeholder="MM/DD/YYYY" maxlength="10" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="return checkDate(this,event)" autocomplete="off" tabindex="25" />
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="form-group" style="margin-bottom: 0px;">
+                                                            <label style="text-align: right; clear: both; float: left; margin-right: 44px;" class="CheckBold">Discount Date:</label>
+                                                            <input type="text" id="discdate4" runat="server" class="form-control taxing" style="width: 150px;" placeholder="MM/DD/YYYY" maxlength="10" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="return checkDate(this,event)" autocomplete="off" tabindex="34" />
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <label class="CheckBold">Exempt/Relevy?</label>
+                                                        <input type="checkbox" id="exemptrelevy1" runat="server" style="width: 17px; height: 17px; margin-left: 32px;" tabindex="9" />
+                                                    </td>
+                                                    <td>
+                                                        <label class="CheckBold">Exempt/Relevy?</label>
+                                                        <input type="checkbox" id="exemptrelevy2" runat="server" style="width: 17px; height: 17px; margin-left: 32px;" tabindex="18" />
+                                                    </td>
+                                                    <td>
+                                                        <label class="CheckBold">Exempt/Relevy?</label>
+                                                        <input type="checkbox" id="exemptrelevy3" runat="server" style="width: 17px; height: 17px; margin-left: 32px;" tabindex="26" />
+                                                    </td>
+                                                    <td>
+                                                        <label class="CheckBold">Exempt/Relevy?</label>
+                                                        <input type="checkbox" id="exemptrelevy4" runat="server" style="width: 17px; height: 17px; margin-left: 32px;" tabindex="35" />
                                                     </td>
                                                 </tr>
                                             </tbody>
                                         </table>
-                                    </div>
-                                    <br />
-                                    <div id="taxPar" runat="server" style="height: auto; overflow: auto; margin-top: -15px;">
-                                        <asp:Panel ID="gvTax" runat="server">
-                                            <asp:GridView ID="gvTaxParcel" runat="server" ShowHeaderWhenEmpty="true" AutoGenerateColumns="false" CssClass="Grid"
-                                                DataKeyNames="taxid" Visible="false" Width="100%" OnRowDataBound="OnRowDataBound"
-                                                OnRowEditing="gvTaxParcel_RowEditing" OnRowUpdating="gvTaxParcel_RowUpdating"
-                                                OnRowCommand="btnTaxParcelModal_RowCommand" EmptyDataText="No Data Found" EmptyDataRowStyle-HorizontalAlign="Center"
-                                                OnRowCancelingEdit="gvTaxParcel_RowCancelingEdit">
-                                                <Columns>
-                                                    <asp:TemplateField ItemStyle-Width="3%" HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="center">
-                                                        <ItemTemplate>
-                                                            <img style="width: 30px; text-align: center;" id="edit-save" src="../images/STRArrow.png" />
-                                                            <asp:Panel ID="pnlOrders" runat="server" Style="display: none">
-                                                                <asp:GridView ID="gvOrders" runat="server" AutoGenerateColumns="false" CssClass="Grid" Width="90%" GridLines="None"
-                                                                    OnRowCommand="btnOrders_RowCommand" DataKeyNames="Id">
-                                                                    <Columns>
-                                                                        <asp:BoundField ItemStyle-Width="10%" DataField="Id" HeaderText="Id" ItemStyle-CssClass="hiddencol" HeaderStyle-CssClass="hiddencol" />
-
-                                                                        <asp:TemplateField HeaderText="Agency Id" ItemStyle-Width="30%">
-                                                                            <ItemTemplate>
-                                                                                <asp:LinkButton ID="lnkOrder" runat="server" ForeColor="Blue"
-                                                                                    DataField="agencyid" HeaderText="Tax Id" ItemStyle-Width="20%" OnClick="lnkgvOrders_Click"
-                                                                                    Text='<%# DataBinder.Eval(Container, "DataItem.agencyid") %>' autopostback="false"></asp:LinkButton>
-                                                                            </ItemTemplate>
-                                                                        </asp:TemplateField>
-
-                                                                        <asp:BoundField ItemStyle-Width="30%" DataField="TaxAuthorityName" HeaderText="Authority Name" />
-                                                                        <%--<asp:BoundField ItemStyle-Width="30%" DataField="TaxAgencyType" HeaderText="Tax Type" />--%>
-
-                                                                        <asp:TemplateField HeaderText="Tax Type" ItemStyle-Width="30%">
-                                                                            <ItemTemplate>
-                                                                                <asp:LinkButton ID="lnkAgnecy" runat="server" ForeColor="Blue"
-                                                                                    DataField="TaxAgencyType" HeaderText="Tax Type" ItemStyle-Width="20%" OnClick="lnkAgnecy_Click"
-                                                                                    Text='<%# DataBinder.Eval(Container, "DataItem.TaxAgencyType") %>'></asp:LinkButton>
-                                                                            </ItemTemplate>
-                                                                        </asp:TemplateField>
-
-                                                                        <asp:BoundField ItemStyle-Width="10%" DataField="TaxAgencyState" HeaderText="State" ItemStyle-CssClass="hiddencol" HeaderStyle-CssClass="hiddencol" />
-                                                                        <asp:BoundField ItemStyle-Width="10%" DataField="Phone" HeaderText="Phone" ItemStyle-CssClass="hiddencol" HeaderStyle-CssClass="hiddencol" />
-                                                                        <asp:BoundField ItemStyle-Width="10%" DataField="taxid" HeaderText="Tax ID" ItemStyle-CssClass="hiddencol" HeaderStyle-CssClass="hiddencol" />
-                                                                        <asp:BoundField ItemStyle-Width="10%" DataField="Id" HeaderText="ID" ItemStyle-CssClass="hiddencol" HeaderStyle-CssClass="hiddencol" />
-                                                                        <asp:BoundField ItemStyle-Width="10%" DataField="TaxYearStartDate" HeaderText="Tax Year Start Date" ItemStyle-CssClass="hiddencol" HeaderStyle-CssClass="hiddencol" />
-                                                                        <asp:BoundField ItemStyle-Width="10%" DataField="PreferredContactMethod" HeaderText="PreferredContactMethod" ItemStyle-CssClass="hiddencol" HeaderStyle-CssClass="hiddencol" />
-                                                                        <asp:BoundField ItemStyle-Width="10%" DataField="JobTitle" HeaderText="JobTitle" ItemStyle-CssClass="hiddencol" HeaderStyle-CssClass="hiddencol" />
-                                                                        <asp:BoundField ItemStyle-Width="10%" DataField="City" HeaderText="City" ItemStyle-CssClass="hiddencol" HeaderStyle-CssClass="hiddencol" />
-                                                                        <asp:BoundField ItemStyle-Width="10%" DataField="County" HeaderText="County" ItemStyle-CssClass="hiddencol" HeaderStyle-CssClass="hiddencol" />
-                                                                        <asp:BoundField ItemStyle-Width="10%" DataField="State" HeaderText="State" ItemStyle-CssClass="hiddencol" HeaderStyle-CssClass="hiddencol" />
-                                                                        <asp:BoundField ItemStyle-Width="10%" DataField="ContactType" HeaderText="ContactType" ItemStyle-CssClass="hiddencol" HeaderStyle-CssClass="hiddencol" />
-                                                                        <asp:BoundField ItemStyle-Width="10%" DataField="Zip" HeaderText="Zip" ItemStyle-CssClass="hiddencol" HeaderStyle-CssClass="hiddencol" />
-                                                                        <asp:BoundField ItemStyle-Width="10%" DataField="Address1" HeaderText="Address" ItemStyle-CssClass="hiddencol" HeaderStyle-CssClass="hiddencol" />
+                                        <table style="width: 1283px;">
+                                            <tbody>
+                                                <tr>
+                                                    <td>
+                                                        <b>
+                                                            <label id="lblnextbilldate1" style="white-space: nowrap;" class="CheckBold">Next Bill Date1:</label>
+                                                        </b>
+                                                    </td>
+                                                    <td>
+                                                        <input type="text" id="nextbilldate1" runat="server" class="form-control" style="width: 170px;" placeholder="MM/DD/YYYY" maxlength="10" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="return checkDate(this,event)" autocomplete="off" onchange="return functionInsttax();" tabindex="37" />
+                                                    </td>
+                                                    <td>
+                                                        <b style="white-space: nowrap" class="CheckBold">Next Bill Date2:</b>
+                                                    </td>
+                                                    <td>
+                                                        <input type="text" id="nextbilldate2" runat="server" class="form-control" style="width: 167px; margin-bottom: 10px" placeholder="MM/DD/YYYY" maxlength="10" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="return checkDate(this,event)" autocomplete="off" tabindex="38" />
+                                                    </td>
+                                                    <td>
+                                                        <b style="white-space: nowrap;" id="dd" runat="server" class="CheckBold">Future Tax Calculation:</b>
+                                                    </td>
+                                                    <td>
+                                                        <asp:DropDownList ID="ddlfuturetaxcalc" runat="server" Style="width: 170px;" class="form-control" OnSelectedIndexChanged="ddlfuturetaxcalc_SelectedIndexChanged" AutoPostBack="True">
+                                                            <asp:ListItem>Select</asp:ListItem>
+                                                            <asp:ListItem>Manual</asp:ListItem>
+                                                            <asp:ListItem>Same As Above</asp:ListItem>
+                                                        </asp:DropDownList>
+                                                    </td>
 
 
-                                                                        <asp:TemplateField HeaderText="Actions">
-                                                                            <ItemTemplate>
-                                                                                <asp:LinkButton runat="server" ID="btnSubDelete" CommandName="DeleteOrders" OnClientClick="javascript : return confirm('Are you sure, want to delete this Row?');" ItemStyle-Width="10%" Style="height: 30px; margin-left: 18px;" ToolTip="Delete" CommandArgument='<%# DataBinder.Eval(Container,"DataItemIndex") %>' class="glyphicon glyphicon-trash" CssClass=""></asp:LinkButton>
-                                                                            </ItemTemplate>
-                                                                        </asp:TemplateField>
-                                                                    </Columns>
-                                                                    <AlternatingRowStyle BackColor="#f3f2ea" />
-                                                                    <HeaderStyle BackColor="#d9241b" ForeColor="white" />
-                                                                </asp:GridView>
-                                                            </asp:Panel>
-                                                        </ItemTemplate>
-                                                    </asp:TemplateField>
-                                                    <asp:BoundField ItemStyle-Width="50%" DataField="Id" HeaderText="Tax ID" ReadOnly="true" ItemStyle-CssClass="hiddencol" HeaderStyle-CssClass="hiddencol" />
-                                                    <asp:BoundField ItemStyle-Width="30%" DataField="taxid" HeaderText="Tax ID Number" ReadOnly="true" />
-                                                    <asp:BoundField ItemStyle-Width="30%" DataField="taxyear" HeaderText="Tax Year" ReadOnly="true" />
-                                                    <asp:BoundField ItemStyle-Width="20%" DataField="endyear" HeaderText="End Year" ReadOnly="true" />
-                                                    <asp:BoundField ItemStyle-Width="50%" DataField="tbd" HeaderText="TBD" ReadOnly="true" ItemStyle-CssClass="hiddencol" HeaderStyle-CssClass="hiddencol" />
-                                                    <asp:BoundField ItemStyle-Width="50%" DataField="estimate" HeaderText="Estimate" ReadOnly="true" ItemStyle-CssClass="hiddencol" HeaderStyle-CssClass="hiddencol" />
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <b style="white-space: nowrap;" class="CheckBold">Payment Frequency:</b>
+                                                    </td>
+                                                    <td>
+                                                        <select class="form-control" id="paymentfrequency" runat="server" style="width: 170px;" onchange="functionpayemtfrequency(this)" tabindex="39">
+                                                            <option value="1">Annual</option>
+                                                            <option value="2">Semi-Annual</option>
+                                                            <option value="3">Tri-Annual</option>
+                                                            <option value="4">Quarterly</option>
+                                                        </select>
+                                                     <%--   <asp:DropDownList ID="paymentfrequency" runat="server"  style="width: 170px;" TabIndex="39" OnSelectedIndexChanged="paymentfrequency_SelectedIndexChanged" AutoPostBack="true">
+                                                            <asp:ListItem Value="1">Annual</asp:ListItem>
+                                                            <asp:ListItem Value="2">Semi-Annual</asp:ListItem>
+                                                            <asp:ListItem Value="3">Tri-Annual</asp:ListItem>
+                                                            <asp:ListItem Value="4">Quarterly</asp:ListItem>
+                                                        </asp:DropDownList>--%>
+                                                    </td>
+                                                    <td>
+                                                        <b style="white-space: nowrap" class="CheckBold" runat="server" id="lblbillingstartdate">Billing Start Date:</b>
+                                                    </td>
+                                                    <td>
+                                                        <input type="text" id="txtbillstartdate" runat="server" class="form-control" style="width: 166px; margin-bottom: 10px" placeholder="MM/DD/YYYY" maxlength="10" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="return checkDate(this,event)" autocomplete="off" tabindex="40" />
+                                                    </td>
+                                                    <td>
+                                                        <b style="white-space: nowrap" runat="server" id="lblbillingenddate" class="CheckBold">Billing End Date:</b>
+                                                    </td>
+                                                    <td>
+                                                        <input type="text" id="txtbillenddate" runat="server" class="form-control" style="width: 180px; margin-bottom: 5px" placeholder="MM/DD/YYYY" maxlength="10" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="return checkDate(this,event)" autocomplete="off" tabindex="41" />
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <b style="white-space: nowrap" class="CheckBold">Tax Bill:</b>
+                                                    </td>
+                                                    <td>
+                                                        <select class="form-control" id="taxbill" runat="server" style="width: 170px;" tabindex="42">
+                                                            <option value="0">Select Bill</option>
+                                                            <option value="1">Current</option>
+                                                            <option value="2">Previous</option>
+                                                        </select>
+                                                    </td>
 
-                                                    <asp:TemplateField Visible="false">
-                                                        <ItemTemplate>
-                                                            <asp:HiddenField ID="HdnId" runat="server" Value='<%# Bind("Id") %>' />
-                                                        </ItemTemplate>
-                                                    </asp:TemplateField>
-
-                                                    <asp:TemplateField HeaderText="Edit" ItemStyle-Width="10%">
-                                                        <ItemTemplate>
-                                                            <asp:LinkButton ID="LnkEdit" runat="server" class="glyphicon glyphicon-edit" CommandName="Edit" Style="height: 30px; margin-left: 5px; margin-bottom: -10px;" ToolTip="Edit" CommandArgument='<%# DataBinder.Eval(Container,"DataItemIndex") %>' CssClass=""></asp:LinkButton>
-                                                        </ItemTemplate>
-                                                        <EditItemTemplate>
-                                                            <asp:LinkButton ID="btn_Update" runat="server" class="glyphicon glyphicon-ok" Style="height: 30px; margin-left: 10px;" ToolTip="Update" CommandName="Update" />
-                                                            <asp:LinkButton ID="btn_Cancel" runat="server" class="glyphicon glyphicon-remove" Style="height: 30px; margin-left: 10px;" ToolTip="Cancel" CommandName="Cancel" />
-                                                        </EditItemTemplate>
-                                                    </asp:TemplateField>
-
-
-                                                    <asp:TemplateField HeaderText="Delete">
-                                                        <ItemTemplate>
-                                                            <asp:LinkButton ID="btnParDelete" runat="server" class="glyphicon glyphicon-trash" OnClientClick="javascript : return confirm('Are you sure, want to delete this Row?');" CommandName="SelectParDelete" Style="height: 30px; margin-left: 10px; margin-bottom: -10px;" ToolTip="Delete" CommandArgument='<%# DataBinder.Eval(Container,"DataItemIndex") %>' CssClass=""></asp:LinkButton>
-
-                                                        </ItemTemplate>
-                                                    </asp:TemplateField>
-
-                                                    <asp:TemplateField>
-                                                        <ItemTemplate>
-                                                            <asp:LinkButton ID="btnAddAuthor" runat="server" CommandName="SelectAddAuthor" Style="width: 120px; font-family: Roboto,-apple-system,BlinkMacSystemFont,Segoe UI,Oxygen,Ubuntu,Cantarell,Fira San,Droid Sans,Helvetica Neue,sans-serif; white-space: nowrap; cursor: pointer" CommandArgument='<%# DataBinder.Eval(Container,"DataItemIndex") %>'><i title="Add Authorities"><img src="../images/Blue User.png"/ style="width:15px;margin-top:-5px;"></i>+ Authorities</asp:LinkButton>
-                                                        </ItemTemplate>
-                                                    </asp:TemplateField>
-                                                </Columns>
-                                                <HeaderStyle BackColor="#d9241b" ForeColor="white" />
-                                            </asp:GridView>
-                                        </asp:Panel>
-                                    </div>
+                                                    <td>
+                                                        <b class="CheckBold">Installment Comments:</b>
+                                                    </td>
+                                                    <td colspan="3">
+                                                        <textarea id="instcomm" runat="server" placeholder="Installment Comments" class="form-control" style="resize: none; width: 636px;" autocomplete='off' tabindex="43"></textarea>
+                                                    </td>
+                                                    <td>
+                                                        <asp:Button ID="btnTaxParcelSave" runat="server" Text="Update" CssClass="btn btn-success" Style="margin-left: -90px;" AutoPostBack="true" OnClick="btnTaxParcelSave_Click" OnClientClick="return functionInsttax();" TabIndex="44" />
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <asp:Button ID="btnsavetaxauthorities" runat="server" Text="Save" CssClass="btn btn-success" Style="margin-left: -275px; margin-bottom: -14px;" AutoPostBack="true" OnClick="btnsavetaxauthorities_Click" />
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </fieldset>
                                 </div>
                             </div>
-
                         </div>
                     </div>
-                    <br />
+                </asp:Panel>
+                <br />
+                <asp:Panel ID="PnlTax1" class="panel panel-default" runat="server">
+                    <div id="collapsefut" style="margin-top: -3px;" class="panel-collapse collapse in">
 
-                    <asp:Panel ID="PnlTax" class="panel panel-default" runat="server" Visible="false">
+                        <div class="panel-body" style="margin-top: -20px;">
+                            <div class="tab-content">
+                                <div class="tab-pane fade in active" id="tab2primary1">
+                                    <div style="border-top: 1px solid #e5e5e5; margin-top: 15px;"></div>
+                                    <h4 class="panel-title" style="margin-top: 5px;">
+                                        <strong style="text-decoration: underline">Tax Authority Questions</strong>
+                                    </h4>
+                                    <div style="border-top: 1px solid #e5e5e5; margin-top: 10px;"></div>
 
-                        <div class="panel-heading" data-toggle="collapse" data-target="#collapse4">
-                            <h4 class="panel-title">
-                                <strong style="cursor: pointer; text-decoration: underline;">Tax Authorities</strong><i class="indicator glyphicon glyphicon-chevron-down pull-left"></i>
-                            </h4>
-                        </div>
-                        <br />
-                        <br />
-                        <div id="collapse4" style="margin-top: -3px;" class="panel-collapse collapse in">
-                            <div style="margin-top: -45px;">
-                                <div class="tab-content">
-                                    <div class="tab-pane fade in active" id="tab2primary">
-                                        <br />
-                                        <div class="col-xs-8">
-                                            <div class="table-responsive">
-                                                <table style="width: 845px;">
-                                                    <tbody>
-                                                        <tr>
-                                                            <td style="width: 130px;">
-                                                                <b class="CheckBold">Tax Id</b>
-                                                            </td>
-                                                            <td>:</td>
-                                                            <td>
-                                                                <asp:Label ID="LblTaxID" runat="server" Style="font-size: 14px;"></asp:Label>
-                                                            </td>
-                                                            <td style="width: 90px;">
-                                                                <b class="CheckBold">Agencyid</b>
-                                                            </td>
-                                                            <td>:</td>
-                                                            <td style="width: 105px;">
-                                                                <asp:Label ID="LblAgencyID" runat="server" Style="font-size: 14px;"></asp:Label>
-                                                            </td>
-                                                            <td style="width: 110px;">
-                                                                <b class="CheckBold">Authority Name</b>
-                                                            </td>
-                                                            <td>:</td>
-                                                            <td>
-                                                                <asp:Label ID="txtAuthorityname" runat="server" Style="font-size: 14px;"></asp:Label>
-                                                            </td>
-                                                            <td></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>
-                                                                <b class="CheckBold" title="Prefered Contact Method">Contact Method</b>
-                                                            </td>
-                                                            <td>:</td>
-                                                            <td>
-                                                                <asp:Label ID="txtprefcontactmethod" runat="server" Style="font-size: 14px;"></asp:Label>
-                                                            </td>
-                                                            <td>
-                                                                <b class="CheckBold">Email</b>
-                                                            </td>
-                                                            <td>:</td>
-                                                            <td>
-                                                                <asp:Label ID="txtemail" runat="server" Style="font-size: 14px;"></asp:Label>
-                                                            </td>
-                                                            <td>
-                                                                <b class="CheckBold">Phone</b>
-                                                            </td>
-                                                            <td>:</td>
-                                                            <td>
-                                                                <asp:Label ID="txtphone" runat="server" Style="font-size: 14px;"></asp:Label>
-                                                            </td>
-
-                                                        </tr>
-                                                        <tr>
-                                                            <td><b class="CheckBold">Job Title</b></td>
-                                                            <td>:</td>
-                                                            <td>
-                                                                <asp:Label ID="Lbljobtitle" runat="server" Style="font-size: 14px;"></asp:Label>
-                                                            </td>
-                                                            <td><b class="CheckBold">City</b></td>
-                                                            <td>:</td>
-                                                            <td>
-                                                                <asp:Label ID="LblCity1" runat="server" Style="font-size: 14px;"></asp:Label>
-                                                            </td>
-                                                            <td><b class="CheckBold">County</b></td>
-                                                            <td>:</td>
-                                                            <td>
-                                                                <asp:Label ID="txtCounty" runat="server" Style="font-size: 14px;"></asp:Label>
-                                                            </td>
-
-                                                        </tr>
-                                                        <tr>
-                                                            <td>
-                                                                <b class="CheckBold">Tax Agency Type</b>
-                                                            </td>
-                                                            <td>:</td>
-                                                            <td style="width: 145px; white-space: nowrap">
-                                                                <asp:Label ID="txtTaxType" runat="server" Style="font-size: 14px;"></asp:Label>
-                                                            </td>
-                                                            <td>
-                                                                <b class="CheckBold">Fax</b>
-                                                            </td>
-                                                            <td>:</td>
-                                                            <td>
-                                                                <asp:Label ID="txtfax" runat="server" Style="font-size: 14px;"></asp:Label>
-                                                            </td>
-                                                            <td>
-                                                                <b class="CheckBold">State</b>
-                                                            </td>
-                                                            <td>:</td>
-                                                            <td>
-                                                                <asp:Label ID="txtState" runat="server" Style="font-size: 14px;"></asp:Label>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>
-                                                                <b class="CheckBold">Tax Year Start Date</b>
-                                                            </td>
-                                                            <td>:</td>
-                                                            <td>
-                                                                <asp:Label ID="txtstartyeardate" runat="server" Style="font-size: 14px;"></asp:Label>
-                                                            </td>
-                                                            <td>
-                                                                <b class="CheckBold">ContactType</b>
-                                                            </td>
-                                                            <td>:</td>
-                                                            <td>
-                                                                <asp:Label ID="txtcontactType" runat="server" Style="font-size: 14px;"></asp:Label>
-                                                            </td>
-                                                            <td>
-                                                                <b class="CheckBold">Zip</b>
-                                                            </td>
-                                                            <td>:</td>
-                                                            <td>
-                                                                <asp:Label ID="txtZip" runat="server" Style="font-size: 14px;"></asp:Label>
-                                                            </td>
-                                                        </tr>
-
-                                                        <tr>
-                                                            <td>
-                                                                <b class="CheckBold">Address</b>
-                                                            </td>
-                                                            <td>:</td>
-                                                            <td>
-                                                                <asp:Label ID="Lbladdress" runat="server" Style="font-size: 14px;"></asp:Label>
-                                                            </td>
-                                                            <td>
-                                                                <b class="CheckBold">OperationHours</b> </td>
-                                                            <td>:</td>
-                                                            <td>
-                                                                <asp:Label ID="lblOperation" runat="server" Style="font-size: 14px;"></asp:Label>
-                                                            </td>
-                                                            <td>
-                                                                <b class="CheckBold" style="white-space: nowrap;">No of Phone Calls</b></td>
-                                                            <td>:</td>
-                                                            <td>
-                                                                <asp:Label ID="lblphNos" runat="server" Style="font-size: 14px;"></asp:Label>
-                                                            </td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                        </div>
-                                        <div class="col-xs-4">
-                                            <div class="table-responsive">
-                                                <asp:Panel ID="Panel1" Height="144px" runat="server">
-                                                    <asp:GridView ID="gridwebsite" runat="server" AutoGenerateColumns="false" GridLines="None">
-                                                        <Columns>
-                                                            <asp:TemplateField HeaderText="WebSite" ItemStyle-Width="10%">
-                                                                <ItemTemplate>
-                                                                    <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl='<%# Bind("url") %>' onclick="window.open(this.href, 'targetWindow', 'toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes');return false;">
-                                                                        <asp:Label ID="lnkwebsite3" runat="server" Text='<%# Bind("url") %>'></asp:Label>
-                                                                    </asp:HyperLink>
-                                                                </ItemTemplate>
-                                                                <ItemStyle Width="10%" />
-                                                            </asp:TemplateField>
-                                                            <asp:BoundField ItemStyle-Width="30%" DataField="Description" HeaderText="Description" ReadOnly="true">
-                                                                <ItemStyle Width="30%" />
-                                                            </asp:BoundField>
-                                                        </Columns>
-                                                        <AlternatingRowStyle BackColor="#f3f2ea" />
-                                                        <HeaderStyle BackColor="#d9241b" ForeColor="white" />
-                                                        <EmptyDataTemplate>
-                                                            <div style="color: red; font-weight: bold;" align="center">No records found.</div>
-                                                        </EmptyDataTemplate>
-                                                    </asp:GridView>
-                                                </asp:Panel>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <br />
-                            <div class="panel-body" style="margin-top: 130px;">
-                                <div style="border-top: 1px solid #e5e5e5;"></div>
-                                <h4 class="panel-title" style="margin-top: 0px;">
-                                    <strong style="margin-bottom: -30px; text-decoration: underline;">Miscellaneous Info</strong>
-                                </h4>
-
-                                <div style="border-top: 1px solid #e5e5e5; margin-top: 6px;">
-                                </div>
-                                <div class="tab-content">
-                                    <div class="tab-pane fade in active">
-                                        <fieldset>
-                                            <div class="col-md-3">
-                                                <div class="col-md-12">
-                                                    <div class="col-md-9">
-                                                        <asp:TextBox ID="txtmisc" runat="server" class="form-control" Style="margin-left: -40px; width: 1280px; height: 130px; resize: none; background-color: white; cursor: default" TextMode="MultiLine" ReadOnly />
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </fieldset>
-                                    </div>
-                                </div>
-                            </div>
-                            <br />
-                            <div class="panel-body" style="margin-top: -55px;">
-                                <%--<div style="border-top: 1px solid #e5e5e5; margin-top: 8px;"></div>--%>
-                                <%-- <h4 class="panel-title" style="margin-top: -27px;">
-                                <strong style="margin-bottom: -30px; text-decoration: underline;">Tax Authority Questions</strong>
-                            </h4>--%>
-
-                                <%-- <div style="border-top: 1px solid #e5e5e5; margin-top: -24px;">
-                                <br />
-
-                            </div>--%>
-                                <div class="tab-content">
-                                    <div class="tab-pane fade in active">
-                                        <br />
-                                        <fieldset>
+                                    <br />
+                                    <div class="tab-content">
+                                        <div class="tab-pane fade in active" id="tab3primary1" style="margin-top: -8px;">
                                             <div class="col-md-12">
                                                 <div class="col-md-2 Label">
                                                     <b style="margin-left: -67px; color: red; font-size: 18px;" class="CheckBold">Annual Tax Amount: </b>
@@ -5049,7 +5529,7 @@
                                                 </div>
                                                 <div class="col-md-2">
                                                     <b style="margin-left: -170px; color: black; font-size: 18px;" class="CheckBold">
-                                                        <asp:Label ID="txtAnnualTaxAmount" runat="server" /></b>
+                                                        <asp:Label ID="futuretxtAnnualTaxAmount" runat="server" /></b>
                                                 </div>
                                             </div>
                                             <br />
@@ -5068,25 +5548,25 @@
                                                         <td>
                                                             <div class="form-group" style="margin-bottom: 0px;">
                                                                 <label style="text-align: right; clear: both; float: left; margin-right: 55px;" class="CheckBold">Inst.Amount:</label>
-                                                                <input type="text" id="instamount1" runat="server" class="form-control taxing" placeholder="Tax Amount" style="width: 150px;" onkeyup="hello1();" onfocusout="myFunction1();if (this.value=='0.00') this.value='0.00';if (this.value=='') this.value='0.00';" onfocusin="if (this.value=='0.00') this.value='';" onblur="mytxtamount1()" autocomplete='off' tabindex="1" />
+                                                                <input type="text" id="instmanamount1" runat="server" class="form-control taxing" placeholder="Tax Amount" style="width: 150px;" onkeyup="Futurehello1();" onfocusout="FuturemyFunction1();if (this.value=='0.00') this.value='0.00';if (this.value=='') this.value='0.00';" onfocusin="if (this.value=='0.00') this.value='';" onblur="Futuremytxtamount1()" autocomplete='off' tabindex="50" />
                                                             </div>
                                                         </td>
                                                         <td>
                                                             <div class="form-group" style="margin-bottom: 0px;">
                                                                 <label style="text-align: right; clear: both; float: left; margin-right: 55px;" class="CheckBold">Inst.Amount:</label>
-                                                                <input type="text" id="instamount2" runat="server" class="form-control taxing" placeholder="Tax Amount" style="width: 150px;" onkeyup="hello2();" onfocusout="myFunction2();if (this.value=='0.00') this.value='0.00';if (this.value=='') this.value='0.00';" onfocusin="if (this.value=='0.00') this.value='';" onblur="mytxtamount2()" autocomplete='off' tabindex="10" />
+                                                                <input type="text" id="instmanamount2" class="form-control taxing" runat="server" placeholder="Tax Amount" style="width: 150px;" onkeyup="Futurehello2();" onfocusout="FuturemyFunction2();if (this.value=='0.00') this.value='0.00';if (this.value=='') this.value='0.00';" onfocusin="if (this.value=='0.00') this.value='';" onblur="Futuremytxtamount2()" autocomplete='off' tabindex="59" />
                                                             </div>
                                                         </td>
                                                         <td>
                                                             <div class="form-group" style="margin-bottom: 0px;">
                                                                 <label style="text-align: right; clear: both; float: left; margin-right: 55px;" class="CheckBold">Inst.Amount:</label>
-                                                                <input type="text" id="instamount3" runat="server" class="form-control taxing" placeholder="Tax Amount" style="width: 150px;" onkeyup="hello3();" onfocusout="myFunction3();if (this.value=='0.00') this.value='0.00';if (this.value=='') this.value='0.00';" onfocusin="if (this.value=='0.00') this.value='';" onblur="mytxtamount3()" autocomplete='off' tabindex="19" />
+                                                                <input type="text" id="instmanamount3" class="form-control taxing" runat="server" placeholder="Tax Amount" style="width: 150px;" onkeyup="Futurehello3();" onfocusout="FuturemyFunction3();if (this.value=='0.00') this.value='0.00';if (this.value=='') this.value='0.00';" onfocusin="if (this.value=='0.00') this.value='';" onblur="Futuremytxtamount3()" autocomplete='off' tabindex="68" />
                                                             </div>
                                                         </td>
                                                         <td>
                                                             <div class="form-group" style="margin-bottom: 0px;">
                                                                 <label style="text-align: right; clear: both; float: left; margin-right: 55px;" class="CheckBold">Inst.Amount:</label>
-                                                                <input type="text" id="instamount4" runat="server" class="form-control taxing" placeholder="Tax Amount" style="width: 150px;" onkeyup="hello4();" onfocusout="myFunction4();if (this.value=='0.00') this.value='0.00';if (this.value=='') this.value='0.00';" onfocusin="if (this.value=='0.00') this.value='';" onblur="mytxtamount4()" autocomplete='off' tabindex="27" />
+                                                                <input type="text" id="instmanamount4" class="form-control taxing" runat="server" placeholder="Tax Amount" style="width: 150px;" onkeyup="Futurehello4();" onfocusout="FuturemyFunction4();if (this.value=='0.00') this.value='0.00';if (this.value=='') this.value='0.00';" onfocusin="if (this.value=='0.00') this.value='';" onblur="Futuremytxtamount4()" autocomplete='off' tabindex="77" />
                                                             </div>
                                                         </td>
                                                     </tr>
@@ -5094,87 +5574,82 @@
                                                         <td>
                                                             <div class="form-group" style="margin-bottom: 0px;">
                                                                 <label style="text-align: right; clear: both; float: left; margin-right: 23px;" class="CheckBold">Inst.Amount Paid:</label>
-                                                                <input type="text" id="instamountpaid1" runat="server" class="form-control taxing" placeholder="Amount Paid" style="width: 150px;" onkeyup="AmtPaid1();" onfocusout="myFunctionAmtPaid1();if (this.value=='0.00') this.value='0.00';if (this.value=='') this.value='0.00';" onfocusin="if (this.value=='0.00') this.value='';" onblur="mytest1();" autocomplete='off' tabindex="2" />
+                                                                <input type="text" id="instmanamtpaid1" runat="server" class="form-control taxing" placeholder="Amount Paid" style="width: 150px;" onkeyup="FutureAmtPaid1();" onfocusout="FuturemyFunctionAmtPaid1();if (this.value=='0.00') this.value='0.00';if (this.value=='') this.value='0.00';" onfocusin="if (this.value=='0.00') this.value='';" onblur="Futuremytest1();" autocomplete='off' tabindex="51" />
                                                             </div>
                                                         </td>
                                                         <td>
                                                             <div class="form-group" style="margin-bottom: 0px;">
                                                                 <label style="text-align: right; clear: both; float: left; margin-right: 23px;" class="CheckBold">Inst.Amount Paid:</label>
-                                                                <input type="text" id="instamountpaid2" runat="server" class="form-control taxing" placeholder="Amount Paid" style="width: 150px;" onkeyup="AmtPaid2();" onfocusout="myFunctionAmtPaid2();if (this.value=='0.00') this.value='0.00';if (this.value=='') this.value='0.00';" onfocusin="if (this.value=='0.00') this.value='';" onblur="mytest2();" autocomplete='off' tabindex="11" />
+                                                                <input type="text" id="instmanamtpaid2" runat="server" class="form-control taxing" placeholder="Amount Paid" style="width: 150px;" onkeyup="FutureAmtPaid2();" onfocusout="FuturemyFunctionAmtPaid2();if (this.value=='0.00') this.value='0.00';if (this.value=='') this.value='0.00';" onfocusin="if (this.value=='0.00') this.value='';" onblur="Futuremytest2();" autocomplete='off' tabindex="60" />
                                                             </div>
                                                         </td>
                                                         <td>
                                                             <div class="form-group" style="margin-bottom: 0px;">
                                                                 <label style="text-align: right; clear: both; float: left; margin-right: 23px;" class="CheckBold">Inst.Amount Paid:</label>
-                                                                <input type="text" id="instamountpaid3" runat="server" class="form-control taxing" placeholder="Amount Paid" style="width: 150px;" onkeyup="AmtPaid3();" onfocusout="myFunctionAmtPaid3();if (this.value=='0.00') this.value='0.00';if (this.value=='') this.value='0.00';" onfocusin="if (this.value=='0.00') this.value='';" onblur="mytest3();" autocomplete='off' tabindex="19" />
+                                                                <input type="text" id="instmanamtpaid3" runat="server" class="form-control taxing" placeholder="Amount Paid" style="width: 150px;" onkeyup="FutureAmtPaid3();" onfocusout="FuturemyFunctionAmtPaid3();if (this.value=='0.00') this.value='0.00';if (this.value=='') this.value='0.00';" onfocusin="if (this.value=='0.00') this.value='';" onblur="Futuremytest3();" autocomplete='off' tabindex="69" />
                                                             </div>
                                                         </td>
                                                         <td>
                                                             <div class="form-group" style="margin-bottom: 0px;">
                                                                 <label style="text-align: right; clear: both; float: left; margin-right: 23px;" class="CheckBold">Inst.Amount Paid:</label>
-                                                                <input type="text" id="instamountpaid4" runat="server" class="form-control taxing" placeholder="Amount Paid" style="width: 150px;" onkeyup="AmtPaid4();" onfocusout="myFunctionAmtPaid4();if (this.value=='0.00') this.value='0.00';if (this.value=='') this.value='0.00';" onfocusin="if (this.value=='0.00') this.value='';" onblur="mytest4();" autocomplete='off' tabindex="28" />
+                                                                <input type="text" id="instmanamtpaid4" runat="server" class="form-control taxing" placeholder="Amount Paid" style="width: 150px;" onkeyup="FutureAmtPaid4();" onfocusout="FuturemyFunctionAmtPaid4();if (this.value=='0.00') this.value='0.00';if (this.value=='') this.value='0.00';" onfocusin="if (this.value=='0.00') this.value='';" onblur="Futuremytest4();" autocomplete='off' tabindex="78" />
                                                             </div>
                                                         </td>
                                                         <td hidden>
-                                                            <p id="w"></p>
+                                                            <p id="fw"></p>
                                                         </td>
                                                         <td hidden>
-                                                            <p id="a"></p>
+                                                            <p id="fa"></p>
                                                         </td>
                                                         <td hidden>
-                                                            <p id="e"></p>
+                                                            <p id="fe"></p>
                                                         </td>
                                                         <td hidden>
-                                                            <p id="i"></p>
-                                                        </td>
-
-                                                        <td hidden>
-                                                            <p id="x"></p>
+                                                            <p id="fi"></p>
                                                         </td>
                                                         <td hidden>
-                                                            <p id="b"></p>
+                                                            <p id="fx"></p>
                                                         </td>
                                                         <td hidden>
-                                                            <p id="f"></p>
+                                                            <p id="fb"></p>
                                                         </td>
                                                         <td hidden>
-                                                            <p id="j"></p>
-                                                        </td>
-
-                                                        <td hidden>
-                                                            <p id="c"></p>
+                                                            <p id="ff"></p>
                                                         </td>
                                                         <td hidden>
-                                                            <p id="y"></p>
+                                                            <p id="fj"></p>
                                                         </td>
                                                         <td hidden>
-                                                            <p id="g"></p>
+                                                            <p id="fc"></p>
+                                                        </td>
+                                                        <td hidden>
+                                                            <p id="fy"></p>
+                                                        </td>
+                                                        <td hidden>
+                                                            <p id="fg"></p>
                                                         </td>
                                                         <td hidden>
                                                             <p id="k"></p>
                                                         </td>
+                                                        <td hidden>
+                                                            <p id="fz"></p>
+                                                        </td>
+                                                        <td hidden>
+                                                            <p id="fd"></p>
+                                                        </td>
 
                                                         <td hidden>
-                                                            <p id="z"></p>
+                                                            <p id="fh"></p>
                                                         </td>
                                                         <td hidden>
-                                                            <p id="d"></p>
-                                                        </td>
-                                                        <td hidden>
-                                                            <p id="h"></p>
-                                                        </td>
-                                                        <td hidden>
-                                                            <p id="l"></p>
-                                                        </td>
-                                                        <td hidden>
-                                                            <p id="TA"></p>
+                                                            <p id="fl"></p>
                                                         </td>
                                                     </tr>
                                                     <tr>
                                                         <td>
                                                             <div class="form-group" style="margin-bottom: 0px;">
                                                                 <label style="text-align: right; clear: both; float: left; margin-right: 44px;" class="CheckBold">Inst.Paid/Due?</label>
-                                                                <select id="instpaiddue1" runat="server" class="form-control taxing" style="width: 150px;" tabindex="3">
+                                                                <select id="ddlmaninstpaiddue1" runat="server" class="form-control taxing" style="width: 150px;" tabindex="52">
                                                                     <option>Select</option>
                                                                     <option>Paid</option>
                                                                     <option>Due</option>
@@ -5184,7 +5659,7 @@
                                                         <td>
                                                             <div class="form-group" style="margin-bottom: 0px;">
                                                                 <label style="text-align: right; clear: both; float: left; margin-right: 44px;" class="CheckBold">Inst.Paid/Due?</label>
-                                                                <select id="instpaiddue2" runat="server" class="form-control taxing" style="width: 150px;" tabindex="12">
+                                                                <select id="ddlmaninstpaiddue2" runat="server" class="form-control taxing" style="width: 150px;" tabindex="61">
                                                                     <option>Select</option>
                                                                     <option>Paid</option>
                                                                     <option>Due</option>
@@ -5194,7 +5669,7 @@
                                                         <td>
                                                             <div class="form-group" style="margin-bottom: 0px;">
                                                                 <label style="text-align: right; clear: both; float: left; margin-right: 44px;" class="CheckBold">Inst.Paid/Due?</label>
-                                                                <select id="instpaiddue3" runat="server" class="form-control taxing" style="width: 150px;" tabindex="20">
+                                                                <select id="ddlmaninstpaiddue3" runat="server" class="form-control taxing" style="width: 150px;" tabindex="70">
                                                                     <option>Select</option>
                                                                     <option>Paid</option>
                                                                     <option>Due</option>
@@ -5204,7 +5679,7 @@
                                                         <td>
                                                             <div class="form-group" style="margin-bottom: 0px;">
                                                                 <label style="text-align: right; clear: both; float: left; margin-right: 44px;" class="CheckBold">Inst.Paid/Due?</label>
-                                                                <select id="instpaiddue4" runat="server" class="form-control taxing" style="width: 150px;" tabindex="29">
+                                                                <select id="ddlmaninstpaiddue4" runat="server" class="form-control taxing" style="width: 150px;" tabindex="79">
                                                                     <option>Select</option>
                                                                     <option>Paid</option>
                                                                     <option>Due</option>
@@ -5213,32 +5688,32 @@
                                                         </td>
                                                     </tr>
                                                     <tr>
+                                                        <asp:HiddenField ID="futurehdntxtbxTaksit1" runat="server" Value=""></asp:HiddenField>
+                                                        <asp:HiddenField ID="futurehdntxtbxTaksit2" runat="server" Value=""></asp:HiddenField>
+                                                        <asp:HiddenField ID="futurehdntxtbxTaksit3" runat="server" Value=""></asp:HiddenField>
+                                                        <asp:HiddenField ID="futurehdntxtbxTaksit4" runat="server" Value=""></asp:HiddenField>
                                                         <td>
-                                                            <asp:HiddenField ID="hdntxtbxTaksit1" runat="server" Value=""></asp:HiddenField>
-                                                            <asp:HiddenField ID="hdntxtbxTaksit2" runat="server" Value=""></asp:HiddenField>
-                                                            <asp:HiddenField ID="hdntxtbxTaksit3" runat="server" Value=""></asp:HiddenField>
-                                                            <asp:HiddenField ID="hdntxtbxTaksit4" runat="server" Value=""></asp:HiddenField>
                                                             <div class="form-group" style="margin-bottom: 0px;">
                                                                 <label style="text-align: right; clear: both; float: left; margin-right: 12px;" class="CheckBold">Remaining Balance:</label>
-                                                                <input type="text" id="remainingbalance1" class="form-control taxing" runat="server" placeholder="Remaining Balance" style="width: 150px;" onkeypress="return isNumberKey(event)" onkeyup="RemBalance1(event);" autocomplete="off" tabindex="4" />
+                                                                <input type="text" id="txtmanurembal1" runat="server" class="form-control taxing" placeholder="Remaining Balance" style="width: 150px;" onkeypress="return isNumberKey(event)" onkeyup="futureRemBalance1(event);" autocomplete="off" tabindex="53" />
                                                             </div>
                                                         </td>
                                                         <td>
                                                             <div class="form-group" style="margin-bottom: 0px;">
                                                                 <label style="text-align: right; clear: both; float: left; margin-right: 12px;" class="CheckBold">Remaining Balance:</label>
-                                                                <input type="text" id="remainingbalance2" runat="server" class="form-control taxing" placeholder="Remaining Balance" style="width: 150px;" onkeypress="return isNumberKey(event)" onkeyup="RemBalance2(event);" autocomplete="off" tabindex="13" />
+                                                                <input type="text" id="txtmanurembal2" runat="server" class="form-control taxing" placeholder="Remaining Balance" style="width: 150px;" onkeypress="return isNumberKey(event)" onkeyup="futureRemBalance2(event);" autocomplete="off" tabindex="62" />
                                                             </div>
                                                         </td>
                                                         <td>
                                                             <div class="form-group" style="margin-bottom: 0px;">
                                                                 <label style="text-align: right; clear: both; float: left; margin-right: 12px;" class="CheckBold">Remaining Balance:</label>
-                                                                <input type="text" id="remainingbalance3" class="form-control taxing" runat="server" placeholder="Remaining Balance" style="width: 150px;" onkeypress="return isNumberKey(event)" onkeyup="RemBalance3(event);" autocomplete="off" tabindex="21" />
+                                                                <input type="text" id="txtmanurembal3" runat="server" class="form-control taxing" placeholder="Remaining Balance" style="width: 150px;" onkeypress="return isNumberKey(event)" onkeyup="futureRemBalance3(event);" autocomplete="off" tabindex="71" />
                                                             </div>
                                                         </td>
                                                         <td>
                                                             <div class="form-group" style="margin-bottom: 0px;">
                                                                 <label style="text-align: right; clear: both; float: left; margin-right: 12px;" class="CheckBold">Remaining Balance:</label>
-                                                                <input type="text" id="remainingbalance4" runat="server" class="form-control taxing" placeholder="Remaining Balance" style="width: 150px;" onkeypress="return isNumberKey(event)" onkeyup="RemBalance4(event);" autocomplete="off" tabindex="30" />
+                                                                <input type="text" id="txtmanurembal4" runat="server" class="form-control taxing" placeholder="Remaining Balance" style="width: 150px;" onkeypress="return isNumberKey(event)" onkeyup="futureRemBalance4(event);" autocomplete="off" tabindex="80" />
                                                             </div>
                                                         </td>
                                                     </tr>
@@ -5246,25 +5721,25 @@
                                                         <td>
                                                             <div class="form-group" style="margin-bottom: 0px;">
                                                                 <label style="text-align: right; clear: both; float: left; margin-right: 28px;" class="CheckBold">Installment Date:</label>
-                                                                <input type="text" id="instdate1" name="instdate1" class="form-control taxing" runat="server" style="width: 150px;" maxlength="10" onchange="checkinstdate1();" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="return checkDate(this,event)" onkeypress="return isNumberKey1(event)" placeholder="MM/DD/YYYY" autocomplete="off" tabindex="5" />
+                                                                <input type="text" id="txtmaninstdate1" name="instdate1" runat="server" class="form-control taxing" style="width: 150px;" maxlength="10" onchange="Instcheckinstdate1();" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="return checkDate(this,event)" placeholder="MM/DD/YYYY" autocomplete="off" tabindex="54" />
                                                             </div>
                                                         </td>
                                                         <td>
                                                             <div class="form-group" style="margin-bottom: 0px;">
                                                                 <label style="text-align: right; clear: both; float: left; margin-right: 28px;" class="CheckBold">Installment Date:</label>
-                                                                <input type="text" id="instdate2" runat="server" class="form-control taxing" style="width: 150px;" maxlength="10" onchange="checkinstdate2();" placeholder="MM/DD/YYYY" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="return checkDate(this,event)" autocomplete="off" tabindex="14" />
+                                                                <input type="text" id="txtmaninstdate2" runat="server" class="form-control taxing" style="width: 150px;" maxlength="10" onchange="Instcheckinstdate2();" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="return checkDate(this,event)" placeholder="MM/DD/YYYY" autocomplete="off" tabindex="63" />
                                                             </div>
                                                         </td>
                                                         <td>
                                                             <div class="form-group" style="margin-bottom: 0px;">
                                                                 <label style="text-align: right; clear: both; float: left; margin-right: 28px;" class="CheckBold">Installment Date:</label>
-                                                                <input type="text" id="instdate3" runat="server" class="form-control taxing" style="width: 150px;" maxlength="10" onchange="checkinstdate3();" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="return checkDate(this,event)" placeholder="MM/DD/YYYY" autocomplete="off" tabindex="22" />
+                                                                <input type="text" id="txtmaninstdate3" runat="server" class="form-control taxing" style="width: 150px;" maxlength="10" onchange="Instcheckinstdate3();" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="return checkDate(this,event)" placeholder="MM/DD/YYYY" autocomplete="off" tabindex="72" />
                                                             </div>
                                                         </td>
                                                         <td>
                                                             <div class="form-group" style="margin-bottom: 0px;">
                                                                 <label style="text-align: right; clear: both; float: left; margin-right: 28px;" class="CheckBold">Installment Date:</label>
-                                                                <input type="text" id="instdate4" runat="server" class="form-control taxing" style="width: 150px;" maxlength="10" onchange="checkinstdate4();" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="return checkDate(this,event)" placeholder="MM/DD/YYYY" autocomplete="off" tabindex="31" />
+                                                                <input type="text" id="txtmaninstdate4" runat="server" class="form-control taxing" style="width: 150px;" maxlength="10" onchange="Instcheckinstdate4();" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="return checkDate(this,event)" placeholder="MM/DD/YYYY" autocomplete="off" tabindex="81" />
                                                             </div>
                                                         </td>
                                                     </tr>
@@ -5272,25 +5747,25 @@
                                                         <td>
                                                             <div class="form-group" style="margin-bottom: 0px;">
                                                                 <label style="text-align: right; clear: both; float: left; margin-right: 29px;" class="CheckBold">Delinquent Date:</label>
-                                                                <input type="text" id="delinq1" runat="server" class="form-control taxing" style="width: 150px;" placeholder="MM/DD/YYYY" maxlength="10" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="return checkDate(this,event)" autocomplete="off" tabindex="6" onchange="functionTaxBill(this)" />
+                                                                <input type="text" id="txtmandeliqdate1" runat="server" class="form-control taxing" style="width: 150px;" placeholder="MM/DD/YYYY" maxlength="10" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="return checkDate(this,event)" autocomplete="off" tabindex="55" />
                                                             </div>
                                                         </td>
                                                         <td>
                                                             <div class="form-group" style="margin-bottom: 0px;">
                                                                 <label style="text-align: right; clear: both; float: left; margin-right: 29px;" class="CheckBold">Delinquent Date:</label>
-                                                                <input type="text" id="delinq2" runat="server" class="form-control taxing" style="width: 150px;" placeholder="MM/DD/YYYY" maxlength="10" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="return checkDate(this,event)" autocomplete="off" tabindex="15" onchange="functionTaxBill(this)" />
+                                                                <input type="text" id="txtmandeliqdate2" runat="server" class="form-control taxing" style="width: 150px;" placeholder="MM/DD/YYYY" maxlength="10" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="return checkDate(this,event)" autocomplete="off" tabindex="64" />
                                                             </div>
                                                         </td>
                                                         <td>
                                                             <div class="form-group" style="margin-bottom: 0px;">
                                                                 <label style="text-align: right; clear: both; float: left; margin-right: 29px;" class="CheckBold">Delinquent Date:</label>
-                                                                <input type="text" id="delinq3" runat="server" class="form-control taxing" style="width: 150px;" placeholder="MM/DD/YYYY" maxlength="10" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="return checkDate(this,event)" autocomplete="off" tabindex="23" onchange="functionTaxBill(this)" />
+                                                                <input type="text" id="txtmandeliqdate3" runat="server" class="form-control taxing" style="width: 150px;" placeholder="MM/DD/YYYY" maxlength="10" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="return checkDate(this,event)" autocomplete="off" tabindex="73" />
                                                             </div>
                                                         </td>
                                                         <td>
                                                             <div class="form-group" style="margin-bottom: 0px;">
                                                                 <label style="text-align: right; clear: both; float: left; margin-right: 29px;" class="CheckBold">Delinquent Date:</label>
-                                                                <input type="text" id="delinq4" runat="server" class="form-control taxing" style="width: 150px;" placeholder="MM/DD/YYYY" maxlength="10" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="return checkDate(this,event)" autocomplete="off" tabindex="32" onchange="functionTaxBill(this)" />
+                                                                <input type="text" id="txtmandeliqdate4" runat="server" class="form-control taxing" style="width: 150px;" placeholder="MM/DD/YYYY" maxlength="10" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="return checkDate(this,event)" autocomplete="off" tabindex="82" />
                                                             </div>
                                                         </td>
                                                     </tr>
@@ -5298,25 +5773,25 @@
                                                         <td>
                                                             <div class="form-group" style="margin-bottom: 0px;">
                                                                 <label style="text-align: right; clear: both; float: left; margin-right: 21px;" class="CheckBold">Discount Amount:</label>
-                                                                <input type="text" id="discamt1" runat="server" class="form-control taxing" placeholder="Discount Amount" style="width: 150px;" onkeyup="Discount1();" onfocusout="myFunctionDiscount1();if (this.value=='0.00') this.value='0.00';if (this.value=='') this.value='0.00';" onfocusin="if (this.value=='0.00') this.value='';" onblur="mydiscountamount1();" autocomplete="off" tabindex="7" />
+                                                                <input type="text" id="txtmandisamount1" runat="server" class="form-control taxing" placeholder="Delinquent Amount" style="width: 150px;" onkeyup="futureDiscount1();" onfocusout="futuremyFunctionDiscount1();if (this.value=='0.00') this.value='0.00';if (this.value=='') this.value='0.00';" onfocusin="if (this.value=='0.00') this.value='';" onblur="futuremydiscountamount1();" autocomplete="off" tabindex="56" />
                                                             </div>
                                                         </td>
                                                         <td>
                                                             <div class="form-group" style="margin-bottom: 0px;">
                                                                 <label style="text-align: right; clear: both; float: left; margin-right: 21px;" class="CheckBold">Discount Amount:</label>
-                                                                <input type="text" id="discamt2" runat="server" class="form-control taxing" placeholder="Discount Amount" style="width: 150px;" onkeyup="Discount2();" onfocusout="myFunctionDiscount2();if (this.value=='0.00') this.value='0.00';if (this.value=='') this.value='0.00';" onfocusin="if (this.value=='0.00') this.value='';" onblur="mydiscountamount2();" autocomplete="off" tabindex="16" />
+                                                                <input type="text" id="txtmandisamount2" runat="server" class="form-control taxing" placeholder="Delinquent Amount" style="width: 150px;" onkeyup="futureDiscount2();" onfocusout="futuremyFunctionDiscount2();if (this.value=='0.00') this.value='0.00';if (this.value=='') this.value='0.00';" onfocusin="if (this.value=='0.00') this.value='';" onblur="futuremydiscountamount2();" autocomplete="off" tabindex="65" />
                                                             </div>
                                                         </td>
                                                         <td>
                                                             <div class="form-group" style="margin-bottom: 0px;">
                                                                 <label style="text-align: right; clear: both; float: left; margin-right: 21px;" class="CheckBold">Discount Amount:</label>
-                                                                <input type="text" id="discamt3" runat="server" class="form-control taxing" placeholder="Discount Amount" style="width: 150px;" onkeyup="Discount3();" onfocusout="myFunctionDiscount3();if (this.value=='0.00') this.value='0.00';if (this.value=='') this.value='0.00';" onfocusin="if (this.value=='0.00') this.value='';" onblur="mydiscountamount3()" autocomplete="off" tabindex="24" />
+                                                                <input type="text" id="txtmandisamount3" runat="server" class="form-control taxing" placeholder="Delinquent Amount" style="width: 150px;" onkeyup="futureDiscount3();" onfocusout="futuremyFunctionDiscount3();if (this.value=='0.00') this.value='0.00';if (this.value=='') this.value='0.00';" onfocusin="if (this.value=='0.00') this.value='';" onblur="futuremydiscountamount3()" autocomplete="off" tabindex="74" />
                                                             </div>
                                                         </td>
                                                         <td>
                                                             <div class="form-group" style="margin-bottom: 0px;">
                                                                 <label style="text-align: right; clear: both; float: left; margin-right: 21px;" class="CheckBold">Discount Amount:</label>
-                                                                <input type="text" id="discamt4" runat="server" class="form-control taxing" placeholder="Discount Amount" style="width: 150px;" onkeyup="Discount4();" onfocusout="myFunctionDiscount4();if (this.value=='0.00') this.value='0.00';if (this.value=='') this.value='0.00';" onfocusin="if (this.value=='0.00') this.value='';" onblur="mydiscountamount4();" autocomplete="off" tabindex="33" />
+                                                                <input type="text" id="txtmandisamount4" runat="server" class="form-control taxing" placeholder="Delinquent Amount" style="width: 150px;" onkeyup="futureDiscount4();" onfocusout="futuremyFunctionDiscount4();if (this.value=='0.00') this.value='0.00';if (this.value=='') this.value='0.00';" onfocusin="if (this.value=='0.00') this.value='';" onblur="futuremydiscountamount4();" autocomplete="off" tabindex="83" />
                                                             </div>
                                                         </td>
                                                     </tr>
@@ -5324,44 +5799,44 @@
                                                         <td>
                                                             <div class="form-group" style="margin-bottom: 0px;">
                                                                 <label style="text-align: right; clear: both; float: left; margin-right: 44px;" class="CheckBold">Discount Date:</label>
-                                                                <input type="text" id="discdate1" runat="server" class="form-control taxing" style="width: 150px;" placeholder="MM/DD/YYYY" maxlength="10" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="return checkDate(this,event)" autocomplete="off" tabindex="8" />
+                                                                <input type="text" id="txtmandisdate1" runat="server" class="form-control taxing" style="width: 150px;" placeholder="MM/DD/YYYY" maxlength="10" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="return checkDate(this,event)" autocomplete="off" tabindex="57" />
                                                             </div>
                                                         </td>
                                                         <td>
                                                             <div class="form-group" style="margin-bottom: 0px;">
                                                                 <label style="text-align: right; clear: both; float: left; margin-right: 44px;" class="CheckBold">Discount Date:</label>
-                                                                <input type="text" id="discdate2" runat="server" class="form-control taxing" style="width: 150px;" placeholder="MM/DD/YYYY" maxlength="10" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="return checkDate(this,event)" autocomplete="off" tabindex="17" />
+                                                                <input type="text" id="txtmandisdate2" runat="server" class="form-control taxing" style="width: 150px;" placeholder="MM/DD/YYYY" maxlength="10" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="return checkDate(this,event)" autocomplete="off" tabindex="66" />
                                                             </div>
                                                         </td>
                                                         <td>
                                                             <div class="form-group" style="margin-bottom: 0px;">
                                                                 <label style="text-align: right; clear: both; float: left; margin-right: 44px;" class="CheckBold">Discount Date:</label>
-                                                                <input type="text" id="discdate3" runat="server" class="form-control taxing" style="width: 150px;" placeholder="MM/DD/YYYY" maxlength="10" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="return checkDate(this,event)" autocomplete="off" tabindex="25" />
+                                                                <input type="text" id="txtmandisdate3" runat="server" class="form-control taxing" style="width: 150px;" placeholder="MM/DD/YYYY" maxlength="10" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="return checkDate(this,event)" autocomplete="off" tabindex="75" />
                                                             </div>
                                                         </td>
                                                         <td>
                                                             <div class="form-group" style="margin-bottom: 0px;">
                                                                 <label style="text-align: right; clear: both; float: left; margin-right: 44px;" class="CheckBold">Discount Date:</label>
-                                                                <input type="text" id="discdate4" runat="server" class="form-control taxing" style="width: 150px;" placeholder="MM/DD/YYYY" maxlength="10" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="return checkDate(this,event)" autocomplete="off" tabindex="34" />
+                                                                <input type="text" id="txtmandisdate4" runat="server" class="form-control taxing" style="width: 150px;" placeholder="MM/DD/YYYY" maxlength="10" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="return checkDate(this,event)" autocomplete="off" tabindex="84" />
                                                             </div>
                                                         </td>
                                                     </tr>
                                                     <tr>
                                                         <td>
                                                             <label class="CheckBold">Exempt/Relevy?</label>
-                                                            <input type="checkbox" id="exemptrelevy1" runat="server" style="width: 17px; height: 17px; margin-left: 32px;" tabindex="9" />
+                                                            <input type="checkbox" id="chkexrelmanu1" runat="server" style="width: 17px; height: 17px; margin-left: 32px;" tabindex="58" />
                                                         </td>
                                                         <td>
                                                             <label class="CheckBold">Exempt/Relevy?</label>
-                                                            <input type="checkbox" id="exemptrelevy2" runat="server" style="width: 17px; height: 17px; margin-left: 32px;" tabindex="18" />
+                                                            <input type="checkbox" id="chkexrelmanu2" runat="server" style="width: 17px; height: 17px; margin-left: 32px;" tabindex="67" />
                                                         </td>
                                                         <td>
                                                             <label class="CheckBold">Exempt/Relevy?</label>
-                                                            <input type="checkbox" id="exemptrelevy3" runat="server" style="width: 17px; height: 17px; margin-left: 32px;" tabindex="26" />
+                                                            <input type="checkbox" id="chkexrelmanu3" runat="server" style="width: 17px; height: 17px; margin-left: 32px;" tabindex="76" />
                                                         </td>
                                                         <td>
                                                             <label class="CheckBold">Exempt/Relevy?</label>
-                                                            <input type="checkbox" id="exemptrelevy4" runat="server" style="width: 17px; height: 17px; margin-left: 32px;" tabindex="35" />
+                                                            <input type="checkbox" id="chkexrelmanu4" runat="server" style="width: 17px; height: 17px; margin-left: 32px;" tabindex="85" />
                                                         </td>
                                                     </tr>
                                                 </tbody>
@@ -5370,1265 +5845,726 @@
                                                 <tbody>
                                                     <tr>
                                                         <td>
-                                                            <b>
-                                                                <label id="lblnextbilldate1" style="white-space: nowrap;" class="CheckBold">Next Bill Date1:</label>
-                                                            </b>
+                                                            <b style="white-space: nowrap;" class="CheckBold">Next Bill Date1: </b>
                                                         </td>
                                                         <td>
-                                                            <input type="text" id="nextbilldate1" runat="server" class="form-control" style="width: 170px;" placeholder="MM/DD/YYYY" maxlength="10" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="return checkDate(this,event)" autocomplete="off" onchange="return functionInsttax();" tabindex="37" />
+                                                            <input type="text" id="txtmanunextbilldate1" runat="server" class="form-control" style="width: 170px; margin-bottom: 5px;" placeholder="MM/DD/YYYY" maxlength="10" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="return checkDate(this,event)" autocomplete="off" />
                                                         </td>
                                                         <td>
                                                             <b style="white-space: nowrap" class="CheckBold">Next Bill Date2:</b>
                                                         </td>
                                                         <td>
-                                                            <input type="text" id="nextbilldate2" runat="server" class="form-control" style="width: 167px; margin-bottom: 10px" placeholder="MM/DD/YYYY" maxlength="10" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="return checkDate(this,event)" autocomplete="off" tabindex="38" />
+                                                            <input type="text" id="txtmanunextbilldate2" runat="server" class="form-control" style="width: 167px; margin-bottom: 5px;" placeholder="MM/DD/YYYY" maxlength="10" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="return checkDate(this,event)" autocomplete="off" />
                                                         </td>
                                                         <td>
-                                                            <b style="white-space: nowrap;" id="dd" runat="server" class="CheckBold">Future Tax Calculation:</b>
+                                                            <b style="white-space: nowrap" class="CheckBold">Tax Bill:</b>
                                                         </td>
                                                         <td>
-                                                            <asp:DropDownList ID="ddlfuturetaxcalc" runat="server" Style="width: 170px;" class="form-control" OnSelectedIndexChanged="ddlfuturetaxcalc_SelectedIndexChanged" AutoPostBack="True">
-                                                                <asp:ListItem>Select</asp:ListItem>
-                                                                <asp:ListItem>Manual</asp:ListItem>
-                                                                <asp:ListItem>Same As Above</asp:ListItem>
-                                                            </asp:DropDownList>
+                                                            <select class="form-control" id="ddlmanutaxbill" runat="server" style="width: 180px; margin-bottom: 5px;">
+                                                                <option value="0">Select Bill</option>
+                                                                <option value="1">Current</option>
+                                                                <option value="2">Previous</option>
+                                                            </select>
                                                         </td>
-
-
                                                     </tr>
                                                     <tr>
                                                         <td>
                                                             <b style="white-space: nowrap;" class="CheckBold">Payment Frequency:</b>
                                                         </td>
                                                         <td>
-                                                            <select class="form-control" id="paymentfrequency" runat="server" style="width: 170px;" onchange="functionpayemtfrequency(this)" tabindex="39">
+                                                            <select class="form-control" id="ddlpayfreqmanu" runat="server" style="width: 170px; margin-bottom: 5px;">
                                                                 <option value="1">Annual</option>
                                                                 <option value="2">Semi-Annual</option>
-                                                                <option value="3">Tri-Annual</option>
-                                                                <option value="4">Quarterly</option>
+                                                                <option value="3">Quarterly</option>
+                                                                <option value="4">Tri-Annual</option>
                                                             </select>
-                                                            <%--   <asp:DropDownList ID="paymentfrequency" runat="server"  style="width: 170px;" TabIndex="39" OnSelectedIndexChanged="paymentfrequency_SelectedIndexChanged" AutoPostBack="true">
-                                                            <asp:ListItem Value="1">Annual</asp:ListItem>
-                                                            <asp:ListItem Value="2">Semi-Annual</asp:ListItem>
-                                                            <asp:ListItem Value="3">Tri-Annual</asp:ListItem>
-                                                            <asp:ListItem Value="4">Quarterly</asp:ListItem>
-                                                        </asp:DropDownList>--%>
                                                         </td>
                                                         <td>
-                                                            <b style="white-space: nowrap" class="CheckBold" runat="server" id="lblbillingstartdate">Billing Start Date:</b>
+                                                            <b style="white-space: nowrap" class="CheckBold">Billing Start Date: </b>
                                                         </td>
                                                         <td>
-                                                            <input type="text" id="txtbillstartdate" runat="server" class="form-control" style="width: 166px; margin-bottom: 10px" placeholder="MM/DD/YYYY" maxlength="10" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="return checkDate(this,event)" autocomplete="off" tabindex="40" />
+                                                            <input type="text" id="txtmanubillstartdate" runat="server" class="form-control" style="width: 166px;" placeholder="MM/DD/YYYY" maxlength="10" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="return checkDate(this,event)" autocomplete="off" />
                                                         </td>
                                                         <td>
-                                                            <b style="white-space: nowrap" runat="server" id="lblbillingenddate" class="CheckBold">Billing End Date:</b>
+                                                            <b style="white-space: nowrap" class="CheckBold">Billing End Date:</b>
                                                         </td>
                                                         <td>
-                                                            <input type="text" id="txtbillenddate" runat="server" class="form-control" style="width: 180px; margin-bottom: 5px" placeholder="MM/DD/YYYY" maxlength="10" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="return checkDate(this,event)" autocomplete="off" tabindex="41" />
+                                                            <input type="text" id="txtmanubillenddate" runat="server" class="form-control" style="width: 180px;" placeholder="MM/DD/YYYY" maxlength="10" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="return checkDate(this,event)" autocomplete="off" />
                                                         </td>
                                                     </tr>
                                                     <tr>
-                                                        <td>
-                                                            <b style="white-space: nowrap" class="CheckBold">Tax Bill:</b>
-                                                        </td>
-                                                        <td>
-                                                            <select class="form-control" id="taxbill" runat="server" style="width: 170px;" tabindex="42">
-                                                                <option value="0">Select Bill</option>
-                                                                <option value="1">Current</option>
-                                                                <option value="2">Previous</option>
-                                                            </select>
-                                                        </td>
-
                                                         <td>
                                                             <b class="CheckBold">Installment Comments:</b>
                                                         </td>
                                                         <td colspan="3">
-                                                            <textarea id="instcomm" runat="server" placeholder="Installment Comments" class="form-control" style="resize: none; width: 636px;" autocomplete='off' tabindex="43"></textarea>
+                                                            <textarea id="txtinstcommentsmanual" placeholder="Installment Comments" runat="server" class="form-control" rows="2" style="resize: none;" autocomplete='off'></textarea>
                                                         </td>
                                                         <td>
-                                                            <asp:Button ID="btnTaxParcelSave" runat="server" Text="Update" CssClass="btn btn-success" Style="margin-left: -90px;" AutoPostBack="true" OnClick="btnTaxParcelSave_Click" OnClientClick="return functionInsttax();" TabIndex="44" />
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>
-                                                            <asp:Button ID="btnsavetaxauthorities" runat="server" Text="Save" CssClass="btn btn-success" Style="margin-left: -275px; margin-bottom: -14px;" AutoPostBack="true" OnClick="btnsavetaxauthorities_Click" />
+                                                            <asp:Button ID="btntaxparcelsavemanual" runat="server" Text="Save" CssClass="btn btn-success" Style="margin-left: 25px;" AutoPostBack="true" OnClientClick="return functionfutinst();" />
                                                         </td>
                                                     </tr>
                                                 </tbody>
                                             </table>
-                                        </fieldset>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </asp:Panel>
-                    <br />
-                    <asp:Panel ID="PnlTax1" class="panel panel-default" runat="server">
-                        <div id="collapsefut" style="margin-top: -3px;" class="panel-collapse collapse in">
-
-                            <div class="panel-body" style="margin-top: -20px;">
-                                <div class="tab-content">
-                                    <div class="tab-pane fade in active" id="tab2primary1">
-                                        <div style="border-top: 1px solid #e5e5e5; margin-top: 15px;"></div>
-                                        <h4 class="panel-title" style="margin-top: 5px;">
-                                            <strong style="text-decoration: underline">Tax Authority Questions</strong>
-                                        </h4>
-                                        <div style="border-top: 1px solid #e5e5e5; margin-top: 10px;"></div>
-
-                                        <br />
-                                        <div class="tab-content">
-                                            <div class="tab-pane fade in active" id="tab3primary1" style="margin-top: -8px;">
-                                                <div class="col-md-12">
-                                                    <div class="col-md-2 Label">
-                                                        <b style="margin-left: -67px; color: red; font-size: 18px;" class="CheckBold">Annual Tax Amount: </b>
-
-                                                    </div>
-                                                    <div class="col-md-2">
-                                                        <b style="margin-left: -170px; color: black; font-size: 18px;" class="CheckBold">
-                                                            <asp:Label ID="futuretxtAnnualTaxAmount" runat="server" /></b>
-                                                    </div>
-                                                </div>
-                                                <br />
-
-                                                <table class="table table-striped table-hover">
-                                                    <thead style="background-color: #d9241b; color: #fff;">
-                                                        <tr>
-                                                            <th>Installment 1</th>
-                                                            <th>Installment 2</th>
-                                                            <th>Installment 3</th>
-                                                            <th>Installment 4</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        <tr>
-                                                            <td>
-                                                                <div class="form-group" style="margin-bottom: 0px;">
-                                                                    <label style="text-align: right; clear: both; float: left; margin-right: 55px;" class="CheckBold">Inst.Amount:</label>
-                                                                    <input type="text" id="instmanamount1" runat="server" class="form-control taxing" placeholder="Tax Amount" style="width: 150px;" onkeyup="Futurehello1();" onfocusout="FuturemyFunction1();if (this.value=='0.00') this.value='0.00';if (this.value=='') this.value='0.00';" onfocusin="if (this.value=='0.00') this.value='';" onblur="Futuremytxtamount1()" autocomplete='off' tabindex="50" />
-                                                                </div>
-                                                            </td>
-                                                            <td>
-                                                                <div class="form-group" style="margin-bottom: 0px;">
-                                                                    <label style="text-align: right; clear: both; float: left; margin-right: 55px;" class="CheckBold">Inst.Amount:</label>
-                                                                    <input type="text" id="instmanamount2" class="form-control taxing" runat="server" placeholder="Tax Amount" style="width: 150px;" onkeyup="Futurehello2();" onfocusout="FuturemyFunction2();if (this.value=='0.00') this.value='0.00';if (this.value=='') this.value='0.00';" onfocusin="if (this.value=='0.00') this.value='';" onblur="Futuremytxtamount2()" autocomplete='off' tabindex="59" />
-                                                                </div>
-                                                            </td>
-                                                            <td>
-                                                                <div class="form-group" style="margin-bottom: 0px;">
-                                                                    <label style="text-align: right; clear: both; float: left; margin-right: 55px;" class="CheckBold">Inst.Amount:</label>
-                                                                    <input type="text" id="instmanamount3" class="form-control taxing" runat="server" placeholder="Tax Amount" style="width: 150px;" onkeyup="Futurehello3();" onfocusout="FuturemyFunction3();if (this.value=='0.00') this.value='0.00';if (this.value=='') this.value='0.00';" onfocusin="if (this.value=='0.00') this.value='';" onblur="Futuremytxtamount3()" autocomplete='off' tabindex="68" />
-                                                                </div>
-                                                            </td>
-                                                            <td>
-                                                                <div class="form-group" style="margin-bottom: 0px;">
-                                                                    <label style="text-align: right; clear: both; float: left; margin-right: 55px;" class="CheckBold">Inst.Amount:</label>
-                                                                    <input type="text" id="instmanamount4" class="form-control taxing" runat="server" placeholder="Tax Amount" style="width: 150px;" onkeyup="Futurehello4();" onfocusout="FuturemyFunction4();if (this.value=='0.00') this.value='0.00';if (this.value=='') this.value='0.00';" onfocusin="if (this.value=='0.00') this.value='';" onblur="Futuremytxtamount4()" autocomplete='off' tabindex="77" />
-                                                                </div>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>
-                                                                <div class="form-group" style="margin-bottom: 0px;">
-                                                                    <label style="text-align: right; clear: both; float: left; margin-right: 23px;" class="CheckBold">Inst.Amount Paid:</label>
-                                                                    <input type="text" id="instmanamtpaid1" runat="server" class="form-control taxing" placeholder="Amount Paid" style="width: 150px;" onkeyup="FutureAmtPaid1();" onfocusout="FuturemyFunctionAmtPaid1();if (this.value=='0.00') this.value='0.00';if (this.value=='') this.value='0.00';" onfocusin="if (this.value=='0.00') this.value='';" onblur="Futuremytest1();" autocomplete='off' tabindex="51" />
-                                                                </div>
-                                                            </td>
-                                                            <td>
-                                                                <div class="form-group" style="margin-bottom: 0px;">
-                                                                    <label style="text-align: right; clear: both; float: left; margin-right: 23px;" class="CheckBold">Inst.Amount Paid:</label>
-                                                                    <input type="text" id="instmanamtpaid2" runat="server" class="form-control taxing" placeholder="Amount Paid" style="width: 150px;" onkeyup="FutureAmtPaid2();" onfocusout="FuturemyFunctionAmtPaid2();if (this.value=='0.00') this.value='0.00';if (this.value=='') this.value='0.00';" onfocusin="if (this.value=='0.00') this.value='';" onblur="Futuremytest2();" autocomplete='off' tabindex="60" />
-                                                                </div>
-                                                            </td>
-                                                            <td>
-                                                                <div class="form-group" style="margin-bottom: 0px;">
-                                                                    <label style="text-align: right; clear: both; float: left; margin-right: 23px;" class="CheckBold">Inst.Amount Paid:</label>
-                                                                    <input type="text" id="instmanamtpaid3" runat="server" class="form-control taxing" placeholder="Amount Paid" style="width: 150px;" onkeyup="FutureAmtPaid3();" onfocusout="FuturemyFunctionAmtPaid3();if (this.value=='0.00') this.value='0.00';if (this.value=='') this.value='0.00';" onfocusin="if (this.value=='0.00') this.value='';" onblur="Futuremytest3();" autocomplete='off' tabindex="69" />
-                                                                </div>
-                                                            </td>
-                                                            <td>
-                                                                <div class="form-group" style="margin-bottom: 0px;">
-                                                                    <label style="text-align: right; clear: both; float: left; margin-right: 23px;" class="CheckBold">Inst.Amount Paid:</label>
-                                                                    <input type="text" id="instmanamtpaid4" runat="server" class="form-control taxing" placeholder="Amount Paid" style="width: 150px;" onkeyup="FutureAmtPaid4();" onfocusout="FuturemyFunctionAmtPaid4();if (this.value=='0.00') this.value='0.00';if (this.value=='') this.value='0.00';" onfocusin="if (this.value=='0.00') this.value='';" onblur="Futuremytest4();" autocomplete='off' tabindex="78" />
-                                                                </div>
-                                                            </td>
-                                                            <td hidden>
-                                                                <p id="fw"></p>
-                                                            </td>
-                                                            <td hidden>
-                                                                <p id="fa"></p>
-                                                            </td>
-                                                            <td hidden>
-                                                                <p id="fe"></p>
-                                                            </td>
-                                                            <td hidden>
-                                                                <p id="fi"></p>
-                                                            </td>
-                                                            <td hidden>
-                                                                <p id="fx"></p>
-                                                            </td>
-                                                            <td hidden>
-                                                                <p id="fb"></p>
-                                                            </td>
-                                                            <td hidden>
-                                                                <p id="ff"></p>
-                                                            </td>
-                                                            <td hidden>
-                                                                <p id="fj"></p>
-                                                            </td>
-                                                            <td hidden>
-                                                                <p id="fc"></p>
-                                                            </td>
-                                                            <td hidden>
-                                                                <p id="fy"></p>
-                                                            </td>
-                                                            <td hidden>
-                                                                <p id="fg"></p>
-                                                            </td>
-                                                            <td hidden>
-                                                                <p id="k"></p>
-                                                            </td>
-                                                            <td hidden>
-                                                                <p id="fz"></p>
-                                                            </td>
-                                                            <td hidden>
-                                                                <p id="fd"></p>
-                                                            </td>
-
-                                                            <td hidden>
-                                                                <p id="fh"></p>
-                                                            </td>
-                                                            <td hidden>
-                                                                <p id="fl"></p>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>
-                                                                <div class="form-group" style="margin-bottom: 0px;">
-                                                                    <label style="text-align: right; clear: both; float: left; margin-right: 44px;" class="CheckBold">Inst.Paid/Due?</label>
-                                                                    <select id="ddlmaninstpaiddue1" runat="server" class="form-control taxing" style="width: 150px;" tabindex="52">
-                                                                        <option>Select</option>
-                                                                        <option>Paid</option>
-                                                                        <option>Due</option>
-                                                                    </select>
-                                                                </div>
-                                                            </td>
-                                                            <td>
-                                                                <div class="form-group" style="margin-bottom: 0px;">
-                                                                    <label style="text-align: right; clear: both; float: left; margin-right: 44px;" class="CheckBold">Inst.Paid/Due?</label>
-                                                                    <select id="ddlmaninstpaiddue2" runat="server" class="form-control taxing" style="width: 150px;" tabindex="61">
-                                                                        <option>Select</option>
-                                                                        <option>Paid</option>
-                                                                        <option>Due</option>
-                                                                    </select>
-                                                                </div>
-                                                            </td>
-                                                            <td>
-                                                                <div class="form-group" style="margin-bottom: 0px;">
-                                                                    <label style="text-align: right; clear: both; float: left; margin-right: 44px;" class="CheckBold">Inst.Paid/Due?</label>
-                                                                    <select id="ddlmaninstpaiddue3" runat="server" class="form-control taxing" style="width: 150px;" tabindex="70">
-                                                                        <option>Select</option>
-                                                                        <option>Paid</option>
-                                                                        <option>Due</option>
-                                                                    </select>
-                                                                </div>
-                                                            </td>
-                                                            <td>
-                                                                <div class="form-group" style="margin-bottom: 0px;">
-                                                                    <label style="text-align: right; clear: both; float: left; margin-right: 44px;" class="CheckBold">Inst.Paid/Due?</label>
-                                                                    <select id="ddlmaninstpaiddue4" runat="server" class="form-control taxing" style="width: 150px;" tabindex="79">
-                                                                        <option>Select</option>
-                                                                        <option>Paid</option>
-                                                                        <option>Due</option>
-                                                                    </select>
-                                                                </div>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <asp:HiddenField ID="futurehdntxtbxTaksit1" runat="server" Value=""></asp:HiddenField>
-                                                            <asp:HiddenField ID="futurehdntxtbxTaksit2" runat="server" Value=""></asp:HiddenField>
-                                                            <asp:HiddenField ID="futurehdntxtbxTaksit3" runat="server" Value=""></asp:HiddenField>
-                                                            <asp:HiddenField ID="futurehdntxtbxTaksit4" runat="server" Value=""></asp:HiddenField>
-                                                            <td>
-                                                                <div class="form-group" style="margin-bottom: 0px;">
-                                                                    <label style="text-align: right; clear: both; float: left; margin-right: 12px;" class="CheckBold">Remaining Balance:</label>
-                                                                    <input type="text" id="txtmanurembal1" runat="server" class="form-control taxing" placeholder="Remaining Balance" style="width: 150px;" onkeypress="return isNumberKey(event)" onkeyup="futureRemBalance1(event);" autocomplete="off" tabindex="53" />
-                                                                </div>
-                                                            </td>
-                                                            <td>
-                                                                <div class="form-group" style="margin-bottom: 0px;">
-                                                                    <label style="text-align: right; clear: both; float: left; margin-right: 12px;" class="CheckBold">Remaining Balance:</label>
-                                                                    <input type="text" id="txtmanurembal2" runat="server" class="form-control taxing" placeholder="Remaining Balance" style="width: 150px;" onkeypress="return isNumberKey(event)" onkeyup="futureRemBalance2(event);" autocomplete="off" tabindex="62" />
-                                                                </div>
-                                                            </td>
-                                                            <td>
-                                                                <div class="form-group" style="margin-bottom: 0px;">
-                                                                    <label style="text-align: right; clear: both; float: left; margin-right: 12px;" class="CheckBold">Remaining Balance:</label>
-                                                                    <input type="text" id="txtmanurembal3" runat="server" class="form-control taxing" placeholder="Remaining Balance" style="width: 150px;" onkeypress="return isNumberKey(event)" onkeyup="futureRemBalance3(event);" autocomplete="off" tabindex="71" />
-                                                                </div>
-                                                            </td>
-                                                            <td>
-                                                                <div class="form-group" style="margin-bottom: 0px;">
-                                                                    <label style="text-align: right; clear: both; float: left; margin-right: 12px;" class="CheckBold">Remaining Balance:</label>
-                                                                    <input type="text" id="txtmanurembal4" runat="server" class="form-control taxing" placeholder="Remaining Balance" style="width: 150px;" onkeypress="return isNumberKey(event)" onkeyup="futureRemBalance4(event);" autocomplete="off" tabindex="80" />
-                                                                </div>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>
-                                                                <div class="form-group" style="margin-bottom: 0px;">
-                                                                    <label style="text-align: right; clear: both; float: left; margin-right: 28px;" class="CheckBold">Installment Date:</label>
-                                                                    <input type="text" id="txtmaninstdate1" name="instdate1" runat="server" class="form-control taxing" style="width: 150px;" maxlength="10" onchange="Instcheckinstdate1();" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="return checkDate(this,event)" placeholder="MM/DD/YYYY" autocomplete="off" tabindex="54" />
-                                                                </div>
-                                                            </td>
-                                                            <td>
-                                                                <div class="form-group" style="margin-bottom: 0px;">
-                                                                    <label style="text-align: right; clear: both; float: left; margin-right: 28px;" class="CheckBold">Installment Date:</label>
-                                                                    <input type="text" id="txtmaninstdate2" runat="server" class="form-control taxing" style="width: 150px;" maxlength="10" onchange="Instcheckinstdate2();" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="return checkDate(this,event)" placeholder="MM/DD/YYYY" autocomplete="off" tabindex="63" />
-                                                                </div>
-                                                            </td>
-                                                            <td>
-                                                                <div class="form-group" style="margin-bottom: 0px;">
-                                                                    <label style="text-align: right; clear: both; float: left; margin-right: 28px;" class="CheckBold">Installment Date:</label>
-                                                                    <input type="text" id="txtmaninstdate3" runat="server" class="form-control taxing" style="width: 150px;" maxlength="10" onchange="Instcheckinstdate3();" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="return checkDate(this,event)" placeholder="MM/DD/YYYY" autocomplete="off" tabindex="72" />
-                                                                </div>
-                                                            </td>
-                                                            <td>
-                                                                <div class="form-group" style="margin-bottom: 0px;">
-                                                                    <label style="text-align: right; clear: both; float: left; margin-right: 28px;" class="CheckBold">Installment Date:</label>
-                                                                    <input type="text" id="txtmaninstdate4" runat="server" class="form-control taxing" style="width: 150px;" maxlength="10" onchange="Instcheckinstdate4();" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="return checkDate(this,event)" placeholder="MM/DD/YYYY" autocomplete="off" tabindex="81" />
-                                                                </div>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>
-                                                                <div class="form-group" style="margin-bottom: 0px;">
-                                                                    <label style="text-align: right; clear: both; float: left; margin-right: 29px;" class="CheckBold">Delinquent Date:</label>
-                                                                    <input type="text" id="txtmandeliqdate1" runat="server" class="form-control taxing" style="width: 150px;" placeholder="MM/DD/YYYY" maxlength="10" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="return checkDate(this,event)" autocomplete="off" tabindex="55" />
-                                                                </div>
-                                                            </td>
-                                                            <td>
-                                                                <div class="form-group" style="margin-bottom: 0px;">
-                                                                    <label style="text-align: right; clear: both; float: left; margin-right: 29px;" class="CheckBold">Delinquent Date:</label>
-                                                                    <input type="text" id="txtmandeliqdate2" runat="server" class="form-control taxing" style="width: 150px;" placeholder="MM/DD/YYYY" maxlength="10" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="return checkDate(this,event)" autocomplete="off" tabindex="64" />
-                                                                </div>
-                                                            </td>
-                                                            <td>
-                                                                <div class="form-group" style="margin-bottom: 0px;">
-                                                                    <label style="text-align: right; clear: both; float: left; margin-right: 29px;" class="CheckBold">Delinquent Date:</label>
-                                                                    <input type="text" id="txtmandeliqdate3" runat="server" class="form-control taxing" style="width: 150px;" placeholder="MM/DD/YYYY" maxlength="10" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="return checkDate(this,event)" autocomplete="off" tabindex="73" />
-                                                                </div>
-                                                            </td>
-                                                            <td>
-                                                                <div class="form-group" style="margin-bottom: 0px;">
-                                                                    <label style="text-align: right; clear: both; float: left; margin-right: 29px;" class="CheckBold">Delinquent Date:</label>
-                                                                    <input type="text" id="txtmandeliqdate4" runat="server" class="form-control taxing" style="width: 150px;" placeholder="MM/DD/YYYY" maxlength="10" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="return checkDate(this,event)" autocomplete="off" tabindex="82" />
-                                                                </div>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>
-                                                                <div class="form-group" style="margin-bottom: 0px;">
-                                                                    <label style="text-align: right; clear: both; float: left; margin-right: 21px;" class="CheckBold">Discount Amount:</label>
-                                                                    <input type="text" id="txtmandisamount1" runat="server" class="form-control taxing" placeholder="Delinquent Amount" style="width: 150px;" onkeyup="futureDiscount1();" onfocusout="futuremyFunctionDiscount1();if (this.value=='0.00') this.value='0.00';if (this.value=='') this.value='0.00';" onfocusin="if (this.value=='0.00') this.value='';" onblur="futuremydiscountamount1();" autocomplete="off" tabindex="56" />
-                                                                </div>
-                                                            </td>
-                                                            <td>
-                                                                <div class="form-group" style="margin-bottom: 0px;">
-                                                                    <label style="text-align: right; clear: both; float: left; margin-right: 21px;" class="CheckBold">Discount Amount:</label>
-                                                                    <input type="text" id="txtmandisamount2" runat="server" class="form-control taxing" placeholder="Delinquent Amount" style="width: 150px;" onkeyup="futureDiscount2();" onfocusout="futuremyFunctionDiscount2();if (this.value=='0.00') this.value='0.00';if (this.value=='') this.value='0.00';" onfocusin="if (this.value=='0.00') this.value='';" onblur="futuremydiscountamount2();" autocomplete="off" tabindex="65" />
-                                                                </div>
-                                                            </td>
-                                                            <td>
-                                                                <div class="form-group" style="margin-bottom: 0px;">
-                                                                    <label style="text-align: right; clear: both; float: left; margin-right: 21px;" class="CheckBold">Discount Amount:</label>
-                                                                    <input type="text" id="txtmandisamount3" runat="server" class="form-control taxing" placeholder="Delinquent Amount" style="width: 150px;" onkeyup="futureDiscount3();" onfocusout="futuremyFunctionDiscount3();if (this.value=='0.00') this.value='0.00';if (this.value=='') this.value='0.00';" onfocusin="if (this.value=='0.00') this.value='';" onblur="futuremydiscountamount3()" autocomplete="off" tabindex="74" />
-                                                                </div>
-                                                            </td>
-                                                            <td>
-                                                                <div class="form-group" style="margin-bottom: 0px;">
-                                                                    <label style="text-align: right; clear: both; float: left; margin-right: 21px;" class="CheckBold">Discount Amount:</label>
-                                                                    <input type="text" id="txtmandisamount4" runat="server" class="form-control taxing" placeholder="Delinquent Amount" style="width: 150px;" onkeyup="futureDiscount4();" onfocusout="futuremyFunctionDiscount4();if (this.value=='0.00') this.value='0.00';if (this.value=='') this.value='0.00';" onfocusin="if (this.value=='0.00') this.value='';" onblur="futuremydiscountamount4();" autocomplete="off" tabindex="83" />
-                                                                </div>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>
-                                                                <div class="form-group" style="margin-bottom: 0px;">
-                                                                    <label style="text-align: right; clear: both; float: left; margin-right: 44px;" class="CheckBold">Discount Date:</label>
-                                                                    <input type="text" id="txtmandisdate1" runat="server" class="form-control taxing" style="width: 150px;" placeholder="MM/DD/YYYY" maxlength="10" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="return checkDate(this,event)" autocomplete="off" tabindex="57" />
-                                                                </div>
-                                                            </td>
-                                                            <td>
-                                                                <div class="form-group" style="margin-bottom: 0px;">
-                                                                    <label style="text-align: right; clear: both; float: left; margin-right: 44px;" class="CheckBold">Discount Date:</label>
-                                                                    <input type="text" id="txtmandisdate2" runat="server" class="form-control taxing" style="width: 150px;" placeholder="MM/DD/YYYY" maxlength="10" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="return checkDate(this,event)" autocomplete="off" tabindex="66" />
-                                                                </div>
-                                                            </td>
-                                                            <td>
-                                                                <div class="form-group" style="margin-bottom: 0px;">
-                                                                    <label style="text-align: right; clear: both; float: left; margin-right: 44px;" class="CheckBold">Discount Date:</label>
-                                                                    <input type="text" id="txtmandisdate3" runat="server" class="form-control taxing" style="width: 150px;" placeholder="MM/DD/YYYY" maxlength="10" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="return checkDate(this,event)" autocomplete="off" tabindex="75" />
-                                                                </div>
-                                                            </td>
-                                                            <td>
-                                                                <div class="form-group" style="margin-bottom: 0px;">
-                                                                    <label style="text-align: right; clear: both; float: left; margin-right: 44px;" class="CheckBold">Discount Date:</label>
-                                                                    <input type="text" id="txtmandisdate4" runat="server" class="form-control taxing" style="width: 150px;" placeholder="MM/DD/YYYY" maxlength="10" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="return checkDate(this,event)" autocomplete="off" tabindex="84" />
-                                                                </div>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>
-                                                                <label class="CheckBold">Exempt/Relevy?</label>
-                                                                <input type="checkbox" id="chkexrelmanu1" runat="server" style="width: 17px; height: 17px; margin-left: 32px;" tabindex="58" />
-                                                            </td>
-                                                            <td>
-                                                                <label class="CheckBold">Exempt/Relevy?</label>
-                                                                <input type="checkbox" id="chkexrelmanu2" runat="server" style="width: 17px; height: 17px; margin-left: 32px;" tabindex="67" />
-                                                            </td>
-                                                            <td>
-                                                                <label class="CheckBold">Exempt/Relevy?</label>
-                                                                <input type="checkbox" id="chkexrelmanu3" runat="server" style="width: 17px; height: 17px; margin-left: 32px;" tabindex="76" />
-                                                            </td>
-                                                            <td>
-                                                                <label class="CheckBold">Exempt/Relevy?</label>
-                                                                <input type="checkbox" id="chkexrelmanu4" runat="server" style="width: 17px; height: 17px; margin-left: 32px;" tabindex="85" />
-                                                            </td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-                                                <table style="width: 1283px;">
-                                                    <tbody>
-                                                        <tr>
-                                                            <td>
-                                                                <b style="white-space: nowrap;" class="CheckBold">Next Bill Date1: </b>
-                                                            </td>
-                                                            <td>
-                                                                <input type="text" id="txtmanunextbilldate1" runat="server" class="form-control" style="width: 170px; margin-bottom: 5px;" placeholder="MM/DD/YYYY" maxlength="10" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="return checkDate(this,event)" autocomplete="off" />
-                                                            </td>
-                                                            <td>
-                                                                <b style="white-space: nowrap" class="CheckBold">Next Bill Date2:</b>
-                                                            </td>
-                                                            <td>
-                                                                <input type="text" id="txtmanunextbilldate2" runat="server" class="form-control" style="width: 167px; margin-bottom: 5px;" placeholder="MM/DD/YYYY" maxlength="10" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="return checkDate(this,event)" autocomplete="off" />
-                                                            </td>
-                                                            <td>
-                                                                <b style="white-space: nowrap" class="CheckBold">Tax Bill:</b>
-                                                            </td>
-                                                            <td>
-                                                                <select class="form-control" id="ddlmanutaxbill" runat="server" style="width: 180px; margin-bottom: 5px;">
-                                                                    <option value="0">Select Bill</option>
-                                                                    <option value="1">Current</option>
-                                                                    <option value="2">Previous</option>
-                                                                </select>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>
-                                                                <b style="white-space: nowrap;" class="CheckBold">Payment Frequency:</b>
-                                                            </td>
-                                                            <td>
-                                                                <select class="form-control" id="ddlpayfreqmanu" runat="server" style="width: 170px; margin-bottom: 5px;">
-                                                                    <option value="1">Annual</option>
-                                                                    <option value="2">Semi-Annual</option>
-                                                                    <option value="3">Quarterly</option>
-                                                                    <option value="4">Tri-Annual</option>
-                                                                </select>
-                                                            </td>
-                                                            <td>
-                                                                <b style="white-space: nowrap" class="CheckBold">Billing Start Date: </b>
-                                                            </td>
-                                                            <td>
-                                                                <input type="text" id="txtmanubillstartdate" runat="server" class="form-control" style="width: 166px;" placeholder="MM/DD/YYYY" maxlength="10" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="return checkDate(this,event)" autocomplete="off" />
-                                                            </td>
-                                                            <td>
-                                                                <b style="white-space: nowrap" class="CheckBold">Billing End Date:</b>
-                                                            </td>
-                                                            <td>
-                                                                <input type="text" id="txtmanubillenddate" runat="server" class="form-control" style="width: 180px;" placeholder="MM/DD/YYYY" maxlength="10" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="return checkDate(this,event)" autocomplete="off" />
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>
-                                                                <b class="CheckBold">Installment Comments:</b>
-                                                            </td>
-                                                            <td colspan="3">
-                                                                <textarea id="txtinstcommentsmanual" placeholder="Installment Comments" runat="server" class="form-control" rows="2" style="resize: none;" autocomplete='off'></textarea>
-                                                            </td>
-                                                            <td>
-                                                                <asp:Button ID="btntaxparcelsavemanual" runat="server" Text="Save" CssClass="btn btn-success" Style="margin-left: 25px;" AutoPostBack="true" OnClientClick="return functionfutinst();" />
-                                                            </td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </asp:Panel>
-                    <br />
-                    <br />
-                    <br />
+                    </div>
+                </asp:Panel>
+                <br />
+                <br />
+                <br />
 
-                    <asp:Panel ID="deliexemspecial" TabIndex="45" class="panel panel-default" runat="server" Style="margin-top: -55px;">
-                        <div class="panel-heading" data-toggle="collapse" data-target="#collapse10">
-                            <h4 class="panel-title">
-                                <i class="indicator glyphicon glyphicon-chevron-down pull-left"></i>
-                                <strong style="float: left">
-                                    <label class="colorbold" style="padding-left: 58px;"><b class="CheckBold">Tax Id:</b></label>
-                                    <asp:Label ID="LblTaxId1" runat="server" Style="font-size: 14px; margin-bottom: 10px; font-weight: bold" />
-                                </strong>
-                                <strong style="cursor: pointer; text-decoration: underline;">Delinquency and Exemption Status</strong>
-                                <strong style="float: right">
-                                    <label class="colorbold"><b class="CheckBold">Agency Id:</b></label>
-                                    <asp:Label ID="LblAgencyId1" runat="server" Style="font-size: 14px; font-weight: bold; margin-right: 60px;" />
-                                </strong>
-                            </h4>
-                        </div>
-                        <div id="collapse10" class="panel-collapse collapse in">
-                            <div class="panel-body">
-                                <table style="width: 1200px">
-                                    <tbody>
-                                        <tr>
-                                            <td style="padding-left: 13px;"><b class="CheckBold">Are there any delinquencies?:</b></td>
-                                            <td>
-                                                <asp:DropDownList ID="txtdeliquent" runat="server" Style="margin-bottom: 5px;" class="form-control" onchange="txtdeliquentsta1()">
-                                                    <asp:ListItem>Select</asp:ListItem>
-                                                    <asp:ListItem>Yes</asp:ListItem>
-                                                    <asp:ListItem>No</asp:ListItem>
-                                                </asp:DropDownList>
-                                            </td>
-                                            <td style="padding-left: 31px;"><b class="CheckBold">Is this property taxed as the primary residence? :</b></td>
-                                            <td>
-                                                <asp:DropDownList ID="txtResidence" runat="server" class="form-control" onchange="txtResidence1()" Style="width: 100px;">
-                                                    <asp:ListItem>Select</asp:ListItem>
-                                                    <asp:ListItem>Yes</asp:ListItem>
-                                                    <asp:ListItem>No</asp:ListItem>
-                                                    <asp:ListItem>Not Applicable</asp:ListItem>
-                                                </asp:DropDownList>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td style="padding-left: 13px;"><b class="CheckBold">Are there any additional Exemptions?:</b></td>
-                                            <td>
-                                                <asp:DropDownList ID="txtexemption" runat="server" Style="margin-bottom: 5px;" AutoPostBack="false" class="form-control" onchange="txtexemption1()">
-                                                    <asp:ListItem>Select</asp:ListItem>
-                                                    <asp:ListItem>Yes</asp:ListItem>
-                                                    <asp:ListItem>No</asp:ListItem>
-                                                </asp:DropDownList>
-                                            </td>
-                                            <td style="padding-left: 31px;"><b class="CheckBold">Special Assessment?:</b></td>
-                                            <td>
-                                                <asp:DropDownList ID="SecialAssmnt" runat="server" AutoPostBack="false" class="form-control" onchange="txtSpecial1()" Style="width: 100px;">
-                                                    <asp:ListItem>Select</asp:ListItem>
-                                                    <asp:ListItem>Yes</asp:ListItem>
-                                                    <asp:ListItem>No</asp:ListItem>
-                                                </asp:DropDownList>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td style="padding-left: 13px;" runat="server">
-                                                <asp:Label runat="server" ID="Prior">
+                <asp:Panel ID="deliexemspecial" TabIndex="45" class="panel panel-default" runat="server" Style="margin-top: -55px;">
+                    <div class="panel-heading" data-toggle="collapse" data-target="#collapse10">
+                        <h4 class="panel-title">
+                            <i class="indicator glyphicon glyphicon-chevron-down pull-left"></i>
+                            <strong style="float: left">
+                                <label class="colorbold" style="padding-left: 58px;"><b class="CheckBold">Tax Id:</b></label>
+                                <asp:Label ID="LblTaxId1" runat="server" Style="font-size: 14px; margin-bottom: 10px; font-weight: bold" />
+                            </strong>
+                            <strong style="cursor: pointer; text-decoration: underline;">Delinquency and Exemption Status</strong>
+                            <strong style="float: right">
+                                <label class="colorbold"><b class="CheckBold">Agency Id:</b></label>
+                                <asp:Label ID="LblAgencyId1" runat="server" Style="font-size: 14px; font-weight: bold; margin-right: 60px;" />
+                            </strong>
+                        </h4>
+                    </div>
+                    <div id="collapse10" class="panel-collapse collapse in">
+                        <div class="panel-body">
+                            <table style="width: 1200px">
+                                <tbody>
+                                    <tr>
+                                        <td style="padding-left: 13px;"><b class="CheckBold">Are there any delinquencies?:</b></td>
+                                        <td>
+                                            <asp:DropDownList ID="txtdeliquent" runat="server" Style="margin-bottom: 5px;" class="form-control" onchange="txtdeliquentsta1()">
+                                                <asp:ListItem>Select</asp:ListItem>
+                                                <asp:ListItem>Yes</asp:ListItem>
+                                                <asp:ListItem>No</asp:ListItem>
+                                            </asp:DropDownList>
+                                        </td>
+                                        <td style="padding-left: 31px;"><b class="CheckBold">Is this property taxed as the primary residence? :</b></td>
+                                        <td>
+                                            <asp:DropDownList ID="txtResidence" runat="server" class="form-control" onchange="txtResidence1()" Style="width: 100px;">
+                                                <asp:ListItem>Select</asp:ListItem>
+                                                <asp:ListItem>Yes</asp:ListItem>
+                                                <asp:ListItem>No</asp:ListItem>
+                                                <asp:ListItem>Not Applicable</asp:ListItem>
+                                            </asp:DropDownList>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="padding-left: 13px;"><b class="CheckBold">Are there any additional Exemptions?:</b></td>
+                                        <td>
+                                            <asp:DropDownList ID="txtexemption" runat="server" Style="margin-bottom: 5px;" AutoPostBack="false" class="form-control" onchange="txtexemption1()">
+                                                <asp:ListItem>Select</asp:ListItem>
+                                                <asp:ListItem>Yes</asp:ListItem>
+                                                <asp:ListItem>No</asp:ListItem>
+                                            </asp:DropDownList>
+                                        </td>
+                                        <td style="padding-left: 31px;"><b class="CheckBold">Special Assessment?:</b></td>
+                                        <td>
+                                            <asp:DropDownList ID="SecialAssmnt" runat="server" AutoPostBack="false" class="form-control" onchange="txtSpecial1()" Style="width: 100px;">
+                                                <asp:ListItem>Select</asp:ListItem>
+                                                <asp:ListItem>Yes</asp:ListItem>
+                                                <asp:ListItem>No</asp:ListItem>
+                                            </asp:DropDownList>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="padding-left: 13px;" runat="server">
+                                            <asp:Label runat="server" ID="Prior">
                                                 <b class="CheckBold">Have any property taxes been delinquent in the past 24 months?:</b>
-                                                </asp:Label>
-                                            </td>
-                                            <td>
-                                                <asp:DropDownList ID="pastDeliquent" runat="server" AutoPostBack="false" class="form-control" onchange="txtpastDeliquent()" Visible="false">
-                                                    <asp:ListItem>Select</asp:ListItem>
-                                                    <asp:ListItem>Yes</asp:ListItem>
-                                                    <asp:ListItem>No</asp:ListItem>
-                                                </asp:DropDownList>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </asp:Panel>
-                    <br />
-
-                    <div class="modal fade" id="delinquentstatus" role="dialog">
-                        <div class="modal-dialog">
-                            <div class="modal-content" style="height: auto">
-                                <div class="modal-header">
-                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                    <h4 class="modal-title">Delinquent</h4>
-                                    <div style="border-top: 1px solid #e5e5e5;"></div>
-                                </div>
-                                <div class="modal-body">
-                                    <table>
-                                        <tbody>
-                                            <tr>
-                                                <td>Are You Sure Want To Delete Delinquent Detials?
-                                                </td>
-                                                <td>
-                                                    <div class="col-xs-12">
-                                                        <asp:Button ID="btndelidelinquent" runat="server" Text="OK" class="btn btn-success" Style="height: 28px; padding-top: 3px;" OnClick="btndelidelinquent_Click" />
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
+                                            </asp:Label>
+                                        </td>
+                                        <td>
+                                            <asp:DropDownList ID="pastDeliquent" runat="server" AutoPostBack="false" class="form-control" onchange="txtpastDeliquent()" Visible="false">
+                                                <asp:ListItem>Select</asp:ListItem>
+                                                <asp:ListItem>Yes</asp:ListItem>
+                                                <asp:ListItem>No</asp:ListItem>
+                                            </asp:DropDownList>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
+                </asp:Panel>
+                <br />
 
-                    <div class="modal fade" id="exemptionstatus" role="dialog">
-                        <div class="modal-dialog">
-                            <div class="modal-content" style="height: auto">
-                                <div class="modal-header">
-                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                    <h4 class="modal-title">Exemption</h4>
-                                    <div style="border-top: 1px solid #e5e5e5;"></div>
-                                </div>
-                                <div class="modal-body">
-                                    <table>
-                                        <tbody>
-                                            <tr>
-                                                <td>Are You Sure Want To Delete Exemption Detials?
-                                                </td>
-                                                <td>
-                                                    <div class="col-xs-12">
-                                                        <asp:Button ID="btnexemption" runat="server" Text="OK" class="btn btn-success" Style="height: 28px; padding-top: 3px;" OnClick="btnexemption_Click" />
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
+                <div class="modal fade" id="delinquentstatus" role="dialog">
+                    <div class="modal-dialog">
+                        <div class="modal-content" style="height: auto">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                <h4 class="modal-title">Delinquent</h4>
+                                <div style="border-top: 1px solid #e5e5e5;"></div>
                             </div>
-                        </div>
-                    </div>
-
-                    <div class="modal fade" id="specialstatus" role="dialog">
-                        <div class="modal-dialog">
-                            <div class="modal-content" style="height: auto">
-                                <div class="modal-header">
-                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                    <h4 class="modal-title">Special Assessment</h4>
-                                    <div style="border-top: 1px solid #e5e5e5;"></div>
-                                </div>
-                                <div class="modal-body">
-                                    <table>
-                                        <tbody>
-                                            <tr>
-                                                <td>Are You Sure Want To Delete Special Assessment Detials?
-                                                </td>
-                                                <td>
-                                                    <div class="col-xs-12">
-                                                        <asp:Button ID="btnspecdet" runat="server" Text="OK" class="btn btn-success" Style="height: 28px; padding-top: 3px;" OnClick="btnspecdet_Click" />
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="modal fade" id="priordeliqstatus" role="dialog">
-                        <div class="modal-dialog">
-                            <div class="modal-content" style="height: auto">
-                                <div class="modal-header">
-                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                    <h4 class="modal-title">Prior Delinquent</h4>
-                                    <div style="border-top: 1px solid #e5e5e5;"></div>
-                                </div>
-                                <div class="modal-body">
-                                    <table>
-                                        <tbody>
-                                            <tr>
-                                                <td>Are You Sure Want To Delete Prior Delinquent Detials?
-                                                </td>
-                                                <td>
-                                                    <div class="col-xs-12">
-                                                        <asp:Button ID="btnprideliqstatus" runat="server" Text="OK" class="btn btn-success" Style="height: 28px; padding-top: 3px;" OnClick="btnprideliqstatus_Click" />
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <br />
-                    <%--Delinquent Status--%>
-                    <asp:Panel ID="tblDeliquentStatus" TabIndex="46" class="panel panel-default" runat="server" Style="visibility: hidden; display: none;">
-                        <div class="panel-heading" data-toggle="collapse" data-target="#collapseDeliquent">
-                            <h4 class="panel-title">
-                                <strong style="cursor: pointer; text-decoration: underline;">Delinquent Status</strong><i class="indicator glyphicon glyphicon-chevron-down pull-left"></i>
-                            </h4>
-                        </div>
-                        <div id="collapseDeliquent" class="panel-collapse collapse in">
-                            <div class="panel-body">
-                                <table style="width: 1295px" border="0">
+                            <div class="modal-body">
+                                <table>
                                     <tbody>
                                         <tr>
-                                            <td>
-                                                <b>
-                                                    <label id="lbldeliPayee" class="CheckBold">Payee Name:</label>
-                                                </b>
+                                            <td>Are You Sure Want To Delete Delinquent Detials?
                                             </td>
                                             <td>
-                                                <asp:TextBox ID="txtdeliPayee" runat="server" Style="margin-bottom: 5px;" class="form-control" placeholder="Payee Name" autocomplete='off' onchange="return functionDelinquent()">
-                                                </asp:TextBox>
-                                            </td>
-                                            <td style="padding-left: 31px;">
-                                                <b>
-                                                    <label id="lbldelitAddress" class="CheckBold">Address:</label>
-                                                </b>
-                                            </td>
-                                            <td>
-                                                <asp:TextBox runat="server" class="form-control" ID="txtdelitAddress" autocomplete='off' placeholder="Address" onchange="return functionDelinquent()"></asp:TextBox>
-                                            </td>
-                                            <td style="padding-left: 31px;">
-                                                <b>
-                                                    <label id="lbldelitCity" class="CheckBold">City:</label>
-                                                </b>
-                                            </td>
-                                            <td>
-                                                <asp:TextBox ID="txtdelitCity" runat="server" class="form-control" placeholder="City" autocomplete='off' onchange="return functionDelinquent()">
-                                                </asp:TextBox>
-                                            </td>
-                                            <td style="padding-left: 31px;">
-                                                <b class="CheckBold">
-                                                    <label id="lbldelitState" class="CheckBold">State:</label>
-                                                </b>
-                                            </td>
-                                            <td>
-                                                <asp:TextBox ID="txtdelitState" runat="server" class="form-control" placeholder="State" autocomplete='off' onchange="return functionDelinquent()">
-                                                </asp:TextBox>
-                                            </td>
-                                        </tr>
-
-                                        <tr>
-                                            <td>
-                                                <b>
-                                                    <label class="CheckBold" id="lbldelitzip">Zip:</label>
-                                                </b>
-                                            </td>
-                                            <td>
-                                                <%--<asp:TextBox ID="txtdelitzip" runat="server" Style="margin-bottom: 5px;" class="form-control" placeholder="Zip" autocomplete='nope' onchange="return functionDelinquent()">
-                                            </asp:TextBox>--%>
-                                                <asp:TextBox ID="txtdelitzip" runat="server" class="form-control" placeholder="Zip Code" onkeypress="return isNumberKey(event)" autocomplete='off' MaxLength="5"></asp:TextBox>
-                                            </td>
-                                            <td style="padding-left: 31px;">
-                                                <label class="CheckBold" id="lblbaseamntdue">Base Amount Due:</label>
-                                            </td>
-                                            <td>
-                                                <asp:TextBox runat="server" ID="txtbaseamntdue" class="form-control" placeholder="Base Amount Due" onkeyup="BasedueAmount();" onfocusout="BaseduePayAmount();if (this.value=='0.00') this.value='0.00';if (this.value=='') this.value='0.00';" onfocusin="if (this.value=='0.00') this.value='';" onblur="Baseduepay();" autocomplete='off'></asp:TextBox>
-                                            </td>
-                                            <td style="padding-left: 31px;">
-                                                <b class="CheckBold">
-                                                    <label class="CheckBold" id="lbldelitaxyear">Delinquent Tax Year:</label>
-                                                </b>
-                                            </td>
-                                            <td>
-                                                <asp:TextBox ID="txtdelitaxyear" runat="server" class="form-control" placeholder="YYYY" MaxLength="4" onkeypress="return isNumberKey(event)" onblur="IsValidLengthTax3(this.value,this,event);" autocomplete='off' onchange="return functionDelinquent()">
-                                                </asp:TextBox>
-                                            </td>
-                                            <td style="padding-left: 31px;">
-                                                <b class="CheckBold">
-                                                    <label class="CheckBold" id="lblrolloverdate" style="white-space: nowrap">Roll Over Date:</label>
-                                                </b>
-                                            </td>
-                                            <td>
-                                                <asp:TextBox runat="server" ID="txtrolloverdate" class="form-control" placeholder="MM/DD/YYYY" MaxLength="10" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="return checkDate(event)" autocomplete='off'></asp:TextBox>
-                                            </td>
-                                            <td hidden>
-                                                <p id="BA"></p>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <b>
-                                                    <label class="CheckBold" id="lblpenlatyamt">% of Penalty Amount:</label>
-                                                </b>
-                                            </td>
-                                            <td>
-                                                <asp:TextBox ID="txtpenlatyamt" runat="server" class="form-control" Style="margin-bottom: 5px;" placeholder="% Penalty Amount" onkeyup="PerpenAmount();" onfocusout="PerpePayAmount();if (this.value=='0.00') this.value='0.00';if (this.value=='') this.value='0.00';" onfocusin="if (this.value=='0.00') this.value='';" onblur="Perpenpay();" autocomplete='off'></asp:TextBox>
-                                            </td>
-                                            <td style="padding-left: 31px;">
-                                                <b>
-                                                    <label class="CheckBold" id="lblpencalfre" style="white-space: nowrap" title="Penalty Amount Calc Frequency">Penalty Amt Calc Fre:</label>
-                                                </b>
-                                            </td>
-                                            <td>
-                                                <asp:DropDownList ID="txtpencalfre" runat="server" class="form-control" placeholder="Penalty Amt Calc Fre">
-                                                    <asp:ListItem>--Select--</asp:ListItem>
-                                                    <asp:ListItem>Daily</asp:ListItem>
-                                                    <asp:ListItem>Weekly</asp:ListItem>
-                                                    <asp:ListItem>Monthly</asp:ListItem>
-                                                </asp:DropDownList>
-                                            </td>
-                                            <td style="padding-left: 31px;">
-                                                <b>
-                                                    <label class="CheckBold" id="lbladdpenAmnt" style="white-space: nowrap">Additional Penalty Amount:</label>
-                                                </b>
-                                            </td>
-                                            <td>
-                                                <asp:TextBox ID="txtaddpenAmnt" runat="server" class="form-control" placeholder="Additional Penalty Amount" onkeyup="AddpenAmount();" onfocusout="AddpePayAmount();if (this.value=='0.00') this.value='0.00';if (this.value=='') this.value='0.00';" onfocusin="if (this.value=='0.00') this.value='';" onblur="Addpenpay();" autocomplete='off'></asp:TextBox>
-                                            </td>
-                                            <td style="padding-left: 31px;">
-                                                <b>
-                                                    <label class="CheckBold" id="lblPerdiem">Perdiem:</label>
-                                                </b>
-                                            </td>
-                                            <td>
-                                                <asp:TextBox ID="txtPerdiem" runat="server" class="form-control" placeholder="Perdiem" autocomplete='off'></asp:TextBox>
-                                            </td>
-                                            <td hidden>
-                                                <p id="PP"></p>
-                                            </td>
-                                            <td hidden>
-                                                <p id="AP"></p>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <b>
-                                                    <label class="CheckBold" id="lblpenamtdue" style="white-space: nowrap">Penalties Amt Due Date:</label>
-                                                </b>
-                                            </td>
-                                            <td>
-                                                <asp:TextBox ID="txtpenamtdue" runat="server" class="form-control" placeholder="MM/DD/YYYY" MaxLength="10" Style="margin-bottom: 5px;" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="return checkDate(event)" autocomplete='off'></asp:TextBox>
-                                            </td>
-
-                                            <td style="padding-left: 31px;">
-                                                <b>
-                                                    <label class="CheckBold" id="lblpayoffamount">Payoff Amount:</label>
-                                                </b>
-                                            </td>
-                                            <td>
-                                                <asp:TextBox ID="txtpayoffamount" runat="server" class="form-control" placeholder="Payoff Amount" onkeyup="PayAmount1();" onfocusout="myFunctionPayAmount1();if (this.value=='0.00') this.value='0.00';if (this.value=='') this.value='0.00';" onfocusin="if (this.value=='0.00') this.value='';" onblur="mypay();" autocomplete='off' onchange="return functionDelinquent()"></asp:TextBox>
-                                            </td>
-
-                                            <td style="padding-left: 31px;">
-                                                <b>
-                                                    <label class="CheckBold" id="lblpayoffgood">Payoff Good thru Date:</label>
-                                                </b>
-                                            </td>
-                                            <td>
-                                                <asp:TextBox ID="txtpayoffgood" runat="server" class="form-control" placeholder="MM/DD/YYYY" MaxLength="10" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="return dateValidate(this)" autocomplete='off' onchange="return functionDelinquent()"></asp:TextBox>
-                                            </td>
-
-                                            <td style="padding-left: 31px;">
-                                                <b title="Initial Installment Due Date">
-                                                    <label class="CheckBold" id="lblinitialinstall">Inst Due Date:</label>
-                                                </b>
-                                            </td>
-                                            <td>
-                                                <asp:TextBox ID="txtinitialinstall" runat="server" class="form-control" placeholder="MM/DD/YYYY" MaxLength="10" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="return checkDate(event)" autocomplete='off' onchange="return functionDelinquent()">
-                                                </asp:TextBox>
-                                            </td>
-
-
-                                        </tr>
-
-                                        <tr>
-                                            <td>
-                                                <b title="TaxSale-Not Applicable">
-                                                    <label class="CheckBold" id="lblnotapplicable">Tax Sale Info: N/A:</label>
-                                                </b>
-                                            </td>
-                                            <td>
-                                                <asp:DropDownList ID="txtnotapplicable" runat="server" class="form-control" onchange="applicable();return functionDelinquent()" Style="margin-bottom: 5px;">
-                                                    <asp:ListItem>Select</asp:ListItem>
-                                                    <asp:ListItem>Yes</asp:ListItem>
-                                                    <asp:ListItem>No</asp:ListItem>
-                                                </asp:DropDownList>
-                                            </td>
-                                            <td style="padding-left: 31px;">
-                                                <b title="Date of Tax Sale">
-                                                    <label id="lbldatetaxsale" class="CheckBold">Tax Date:</label>
-                                                </b>
-                                            </td>
-                                            <td>
-                                                <asp:TextBox ID="txtdatetaxsale" runat="server" class="form-control" placeholder="MM/DD/YYYY" MaxLength="10" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="return checkDate(this,event)" autocomplete='off'>
-                                                </asp:TextBox>
-                                            </td>
-                                            <td style="padding-left: 31px;">
-                                                <b>
-                                                    <label id="lbllastdayred" class="CheckBold">Last Day To Redeem:</label>
-                                                </b>
-
-                                            </td>
-                                            <td>
-                                                <asp:TextBox ID="txtlastdayred" runat="server" class="form-control" placeholder="MM/DD/YYYY" MaxLength="10" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="return checkDate(this,event)" autocomplete='off' onchange="return functionDelinquent()">
-                                                </asp:TextBox>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <b class="CheckBold">
-                                                    <label class="CheckBold" id="lbldelitcomment">Comments:</label>
-                                                </b>
-                                            </td>
-                                            <td colspan="5">
-                                                <textarea id="txtdelitcomment" runat="server" rows="2" class="form-control" placeholder="Comments" style="resize: none;" autocomplete='off'></textarea>
-                                            </td>
-                                            <td style="padding-left: 31px;">
-                                                <asp:Button runat="server" ID="DeliquentStatusAdd" Text="Add" class="btn btn-success" Style="height: 30px;" OnClick="btnDeliquentStatusAdd_Click" OnClientClick="return functionDelinquent()" />
-                                            </td>
-                                            <td hidden>
-                                                <p id="o"></p>
+                                                <div class="col-xs-12">
+                                                    <asp:Button ID="btndelidelinquent" runat="server" Text="OK" class="btn btn-success" Style="height: 28px; padding-top: 3px;" OnClick="btndelidelinquent_Click" />
+                                                </div>
                                             </td>
                                         </tr>
                                     </tbody>
                                 </table>
                             </div>
+                        </div>
+                    </div>
+                </div>
 
-                            <asp:GridView ID="gvDeliquentStatus" runat="server" AutoGenerateColumns="false" Width="90%" GridLines="None"
-                                DataKeyNames="Id" OnRowCommand="btnDeliquentStatus_RowCommand" OnRowEditing="gvDeliquentStatus_RowEditing"
-                                OnRowUpdating="gvDeliquentStatus_RowUpdating"
-                                EmptyDataRowStyle-HorizontalAlign="Center"
-                                OnRowCancelingEdit="gvDeliquentStatus_RowCancelingEdit">
+                <div class="modal fade" id="exemptionstatus" role="dialog">
+                    <div class="modal-dialog">
+                        <div class="modal-content" style="height: auto">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                <h4 class="modal-title">Exemption</h4>
+                                <div style="border-top: 1px solid #e5e5e5;"></div>
+                            </div>
+                            <div class="modal-body">
+                                <table>
+                                    <tbody>
+                                        <tr>
+                                            <td>Are You Sure Want To Delete Exemption Detials?
+                                            </td>
+                                            <td>
+                                                <div class="col-xs-12">
+                                                    <asp:Button ID="btnexemption" runat="server" Text="OK" class="btn btn-success" Style="height: 28px; padding-top: 3px;" OnClick="btnexemption_Click" />
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal fade" id="specialstatus" role="dialog">
+                    <div class="modal-dialog">
+                        <div class="modal-content" style="height: auto">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                <h4 class="modal-title">Special Assessment</h4>
+                                <div style="border-top: 1px solid #e5e5e5;"></div>
+                            </div>
+                            <div class="modal-body">
+                                <table>
+                                    <tbody>
+                                        <tr>
+                                            <td>Are You Sure Want To Delete Special Assessment Detials?
+                                            </td>
+                                            <td>
+                                                <div class="col-xs-12">
+                                                    <asp:Button ID="btnspecdet" runat="server" Text="OK" class="btn btn-success" Style="height: 28px; padding-top: 3px;" OnClick="btnspecdet_Click" />
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal fade" id="priordeliqstatus" role="dialog">
+                    <div class="modal-dialog">
+                        <div class="modal-content" style="height: auto">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                <h4 class="modal-title">Prior Delinquent</h4>
+                                <div style="border-top: 1px solid #e5e5e5;"></div>
+                            </div>
+                            <div class="modal-body">
+                                <table>
+                                    <tbody>
+                                        <tr>
+                                            <td>Are You Sure Want To Delete Prior Delinquent Detials?
+                                            </td>
+                                            <td>
+                                                <div class="col-xs-12">
+                                                    <asp:Button ID="btnprideliqstatus" runat="server" Text="OK" class="btn btn-success" Style="height: 28px; padding-top: 3px;" OnClick="btnprideliqstatus_Click" />
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br />
+                <%--Delinquent Status--%>
+                <asp:Panel ID="tblDeliquentStatus" TabIndex="46" class="panel panel-default" runat="server" Style="visibility: hidden; display: none;">
+                    <div class="panel-heading" data-toggle="collapse" data-target="#collapseDeliquent">
+                        <h4 class="panel-title">
+                            <strong style="cursor: pointer; text-decoration: underline;">Delinquent Status</strong><i class="indicator glyphicon glyphicon-chevron-down pull-left"></i>
+                        </h4>
+                    </div>
+                    <div id="collapseDeliquent" class="panel-collapse collapse in">
+                        <div class="panel-body">
+                            <table style="width: 1295px" border="0">
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <b>
+                                                <label id="lbldeliPayee" class="CheckBold">Payee Name:</label>
+                                            </b>
+                                        </td>
+                                        <td>
+                                            <asp:TextBox ID="txtdeliPayee" runat="server" Style="margin-bottom: 5px;" class="form-control" placeholder="Payee Name" autocomplete='off' onchange="return functionDelinquent()">
+                                            </asp:TextBox>
+                                        </td>
+                                        <td style="padding-left: 31px;">
+                                            <b>
+                                                <label id="lbldelitAddress" class="CheckBold">Address:</label>
+                                            </b>
+                                        </td>
+                                        <td>
+                                            <asp:TextBox runat="server" class="form-control" ID="txtdelitAddress" autocomplete='off' placeholder="Address" onchange="return functionDelinquent()"></asp:TextBox>
+                                        </td>
+                                        <td style="padding-left: 31px;">
+                                            <b>
+                                                <label id="lbldelitCity" class="CheckBold">City:</label>
+                                            </b>
+                                        </td>
+                                        <td>
+                                            <asp:TextBox ID="txtdelitCity" runat="server" class="form-control" placeholder="City" autocomplete='off' onchange="return functionDelinquent()" onkeypress="return onlyAlphabets(event,this);">
+                                            </asp:TextBox>
+                                        </td>
+                                        <td style="padding-left: 31px;">
+                                            <b class="CheckBold">
+                                                <label id="lbldelitState" class="CheckBold">State:</label>
+                                            </b>
+                                        </td>
+                                        <td>
+                                            <asp:TextBox ID="txtdelitState" runat="server" class="form-control" placeholder="State" autocomplete='off' onchange="return functionDelinquent()" onkeypress="return onlyAlphabets(event,this);">
+                                            </asp:TextBox>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+                                            <b>
+                                                <label class="CheckBold" id="lbldelitzip">Zip:</label>
+                                            </b>
+                                        </td>
+                                        <td>
+                                            <%--<asp:TextBox ID="txtdelitzip" runat="server" Style="margin-bottom: 5px;" class="form-control" placeholder="Zip" autocomplete='nope' onchange="return functionDelinquent()">
+                                            </asp:TextBox>--%>
+                                            <asp:TextBox ID="txtdelitzip" runat="server" class="form-control" placeholder="Zip Code" onkeypress="return isNumberKey(event)" autocomplete='off' MaxLength="5"></asp:TextBox>
+                                        </td>
+                                        <td style="padding-left: 31px;">
+                                            <label class="CheckBold" id="lblbaseamntdue">Base Amount Due:</label>
+                                        </td>
+                                        <td>
+                                            <asp:TextBox runat="server" ID="txtbaseamntdue" class="form-control" placeholder="Base Amount Due" onkeyup="BasedueAmount();" onfocusout="BaseduePayAmount();if (this.value=='0.00') this.value='0.00';if (this.value=='') this.value='0.00';" onfocusin="if (this.value=='0.00') this.value='';" onblur="Baseduepay();" autocomplete='off'></asp:TextBox>
+                                        </td>
+                                        <td style="padding-left: 31px;">
+                                            <b class="CheckBold">
+                                                <label class="CheckBold" id="lbldelitaxyear">Delinquent Tax Year:</label>
+                                            </b>
+                                        </td>
+                                        <td>
+                                            <asp:TextBox ID="txtdelitaxyear" runat="server" class="form-control" placeholder="YYYY" MaxLength="4" onkeypress="return isNumberKey(event)" onblur="IsValidLengthTax3(this.value,this,event);" autocomplete='off' onchange="return functionDelinquent()">
+                                            </asp:TextBox>
+                                        </td>
+                                        <td style="padding-left: 31px;">
+                                            <b class="CheckBold">
+                                                <label class="CheckBold" id="lblrolloverdate" style="white-space: nowrap">Roll Over Date:</label>
+                                            </b>
+                                        </td>
+                                        <td>
+                                            <asp:TextBox runat="server" ID="txtrolloverdate" class="form-control" placeholder="MM/DD/YYYY" MaxLength="10" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="return checkDate(event)" autocomplete='off'></asp:TextBox>
+                                        </td>
+                                        <td hidden>
+                                            <p id="BA"></p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <b>
+                                                <label class="CheckBold" id="lblpenlatyamt">% of Penalty Amount:</label>
+                                            </b>
+                                        </td>
+                                        <td>
+                                            <asp:TextBox ID="txtpenlatyamt" runat="server" class="form-control" Style="margin-bottom: 5px;" placeholder="% Penalty Amount" onkeyup="PerpenAmount();" onfocusout="PerpePayAmount();if (this.value=='0.00') this.value='0.00';if (this.value=='') this.value='0.00';" onfocusin="if (this.value=='0.00') this.value='';" onblur="Perpenpay();" autocomplete='off'></asp:TextBox>
+                                        </td>
+                                        <td style="padding-left: 31px;">
+                                            <b>
+                                                <label class="CheckBold" id="lblpencalfre" style="white-space: nowrap" title="Penalty Amount Calc Frequency">Penalty Amt Calc Fre:</label>
+                                            </b>
+                                        </td>
+                                        <td>
+                                            <asp:DropDownList ID="txtpencalfre" runat="server" class="form-control" placeholder="Penalty Amt Calc Fre">
+                                                <asp:ListItem>--Select--</asp:ListItem>
+                                                <asp:ListItem>Daily</asp:ListItem>
+                                                <asp:ListItem>Weekly</asp:ListItem>
+                                                <asp:ListItem>Monthly</asp:ListItem>
+                                            </asp:DropDownList>
+                                        </td>
+                                        <td style="padding-left: 31px;">
+                                            <b>
+                                                <label class="CheckBold" id="lbladdpenAmnt" style="white-space: nowrap">Additional Penalty Amount:</label>
+                                            </b>
+                                        </td>
+                                        <td>
+                                            <asp:TextBox ID="txtaddpenAmnt" runat="server" class="form-control" placeholder="Additional Penalty Amount" onkeyup="AddpenAmount();" onfocusout="AddpePayAmount();if (this.value=='0.00') this.value='0.00';if (this.value=='') this.value='0.00';" onfocusin="if (this.value=='0.00') this.value='';" onblur="Addpenpay();" autocomplete='off'></asp:TextBox>
+                                        </td>
+                                        <td style="padding-left: 31px;">
+                                            <b>
+                                                <label class="CheckBold" id="lblPerdiem">Perdiem:</label>
+                                            </b>
+                                        </td>
+                                        <td>
+                                            <asp:TextBox ID="txtPerdiem" runat="server" class="form-control" placeholder="Perdiem" autocomplete='off'></asp:TextBox>
+                                        </td>
+                                        <td hidden>
+                                            <p id="PP"></p>
+                                        </td>
+                                        <td hidden>
+                                            <p id="AP"></p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <b>
+                                                <label class="CheckBold" id="lblpenamtdue" style="white-space: nowrap">Penalties Amt Due Date:</label>
+                                            </b>
+                                        </td>
+                                        <td>
+                                            <asp:TextBox ID="txtpenamtdue" runat="server" class="form-control" placeholder="MM/DD/YYYY" MaxLength="10" Style="margin-bottom: 5px;" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="return checkDate(event)" autocomplete='off'></asp:TextBox>
+                                        </td>
+
+                                        <td style="padding-left: 31px;">
+                                            <b>
+                                                <label class="CheckBold" id="lblpayoffamount">Payoff Amount:</label>
+                                            </b>
+                                        </td>
+                                        <td>
+                                            <asp:TextBox ID="txtpayoffamount" runat="server" class="form-control" placeholder="Payoff Amount" onkeyup="PayAmount1();" onfocusout="myFunctionPayAmount1();if (this.value=='0.00') this.value='0.00';if (this.value=='') this.value='0.00';" onfocusin="if (this.value=='0.00') this.value='';" onblur="mypay();" autocomplete='off' onchange="return functionDelinquent()"></asp:TextBox>
+                                        </td>
+
+                                        <td style="padding-left: 31px;">
+                                            <b>
+                                                <label class="CheckBold" id="lblpayoffgood">Payoff Good thru Date:</label>
+                                            </b>
+                                        </td>
+                                        <td>
+                                            <asp:TextBox ID="txtpayoffgood" runat="server" class="form-control" placeholder="MM/DD/YYYY" MaxLength="10" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="return dateValidate(this)" autocomplete='off' onchange="return functionDelinquent()"></asp:TextBox>
+                                        </td>
+
+                                        <td style="padding-left: 31px;">
+                                            <b title="Initial Installment Due Date">
+                                                <label class="CheckBold" id="lblinitialinstall">Inst Due Date:</label>
+                                            </b>
+                                        </td>
+                                        <td>
+                                            <asp:TextBox ID="txtinitialinstall" runat="server" class="form-control" placeholder="MM/DD/YYYY" MaxLength="10" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="return dateValidateFutue(this)" autocomplete='off' onchange="return functionDelinquent()">
+                                            </asp:TextBox>
+                                        </td>
+
+
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+                                            <b title="TaxSale-Not Applicable">
+                                                <label class="CheckBold" id="lblnotapplicable">Tax Sale Info: N/A:</label>
+                                            </b>
+                                        </td>
+                                        <td>
+                                            <asp:DropDownList ID="txtnotapplicable" runat="server" class="form-control" onchange="applicable();return functionDelinquent()" Style="margin-bottom: 5px;">
+                                                <asp:ListItem>Select</asp:ListItem>
+                                                <asp:ListItem>Yes</asp:ListItem>
+                                                <asp:ListItem>No</asp:ListItem>
+                                            </asp:DropDownList>
+                                        </td>
+                                        <td style="padding-left: 31px;">
+                                            <b title="Date of Tax Sale">
+                                                <label id="lbldatetaxsale" class="CheckBold">Tax Date:</label>
+                                            </b>
+                                        </td>
+                                        <td>
+                                            <asp:TextBox ID="txtdatetaxsale" runat="server" class="form-control" placeholder="MM/DD/YYYY" MaxLength="10" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="return checkDate(this,event)" autocomplete='off'>
+                                            </asp:TextBox>
+                                        </td>
+                                        <td style="padding-left: 31px;">
+                                            <b>
+                                                <label id="lbllastdayred" class="CheckBold">Last Day To Redeem:</label>
+                                            </b>
+
+                                        </td>
+                                        <td>
+                                            <asp:TextBox ID="txtlastdayred" runat="server" class="form-control" placeholder="MM/DD/YYYY" MaxLength="10" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="return checkDate(this,event)" autocomplete='off' onchange="return functionDelinquent()">
+                                            </asp:TextBox>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <b class="CheckBold">
+                                                <label class="CheckBold" id="lbldelitcomment">Comments:</label>
+                                            </b>
+                                        </td>
+                                        <td colspan="5">
+                                            <textarea id="txtdelitcomment" runat="server" rows="2" class="form-control" placeholder="Comments" style="resize: none;" autocomplete='off'></textarea>
+                                        </td>
+                                        <td style="padding-left: 31px;">
+                                            <asp:Button runat="server" ID="DeliquentStatusAdd" Text="Add" class="btn btn-success" Style="height: 30px;" OnClick="btnDeliquentStatusAdd_Click" OnClientClick="return functionDelinquent()" />
+                                        </td>
+                                        <td hidden>
+                                            <p id="o"></p>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <asp:GridView ID="gvDeliquentStatus" runat="server" AutoGenerateColumns="false" Width="90%" GridLines="None"
+                            DataKeyNames="Id" OnRowCommand="btnDeliquentStatus_RowCommand" OnRowEditing="gvDeliquentStatus_RowEditing"
+                            OnRowUpdating="gvDeliquentStatus_RowUpdating"
+                            EmptyDataRowStyle-HorizontalAlign="Center"
+                            OnRowCancelingEdit="gvDeliquentStatus_RowCancelingEdit">
+                            <Columns>
+                                <asp:BoundField ItemStyle-Width="50%" DataField="Id" HeaderText="Tax ID" ReadOnly="true" ItemStyle-CssClass="hiddencol" HeaderStyle-CssClass="hiddencol" />
+                                <asp:BoundField ItemStyle-Width="30%" DataField="payee" HeaderText="Payee Name" ReadOnly="true" />
+                                <asp:BoundField ItemStyle-Width="30%" DataField="address" HeaderText="Address" ReadOnly="true" />
+                                <asp:BoundField ItemStyle-Width="20%" DataField="city" HeaderText="City" ReadOnly="true" />
+                                <asp:BoundField ItemStyle-Width="40%" DataField="state" HeaderText="State" ReadOnly="true" ItemStyle-CssClass="hiddencol" HeaderStyle-CssClass="hiddencol" />
+                                <asp:BoundField ItemStyle-Width="40%" DataField="zip" HeaderText="Zip Code" ReadOnly="true" ItemStyle-CssClass="hiddencol" HeaderStyle-CssClass="hiddencol" />
+                                <asp:BoundField ItemStyle-Width="40%" DataField="deliquenttaxyear" HeaderText="Tax Year" ReadOnly="true" ItemStyle-CssClass="hiddencol" HeaderStyle-CssClass="hiddencol" />
+                                <asp:BoundField ItemStyle-Width="40%" DataField="payoffamount" HeaderText="PayOff Amount" ReadOnly="true" ItemStyle-CssClass="hiddencol" HeaderStyle-CssClass="hiddencol" />
+                                <asp:BoundField ItemStyle-Width="40%" DataField="comments" HeaderText="Comments" ReadOnly="true" ItemStyle-CssClass="hiddencol" HeaderStyle-CssClass="hiddencol" />
+                                <asp:BoundField ItemStyle-Width="40%" DataField="goodthuruDate" HeaderText="Good Throughdate" ReadOnly="true" ItemStyle-CssClass="hiddencol" HeaderStyle-CssClass="hiddencol" />
+                                <asp:BoundField ItemStyle-Width="40%" DataField="installmentduedate" HeaderText="Inst.Duedate" ReadOnly="true" ItemStyle-CssClass="hiddencol" HeaderStyle-CssClass="hiddencol" />
+                                <asp:BoundField ItemStyle-Width="40%" DataField="taxsalenotapplicable" HeaderText="TaxSale.NotApp" ReadOnly="true" ItemStyle-CssClass="hiddencol" HeaderStyle-CssClass="hiddencol" />
+                                <asp:BoundField ItemStyle-Width="40%" DataField="dateofTaxsale" HeaderText="DtOfTaxsale" ReadOnly="true" ItemStyle-CssClass="hiddencol" HeaderStyle-CssClass="hiddencol" />
+                                <asp:BoundField ItemStyle-Width="40%" DataField="lastdaytoredeem" HeaderText="LastDayRedeem" ReadOnly="true" ItemStyle-CssClass="hiddencol" HeaderStyle-CssClass="hiddencol" />
+                                <asp:TemplateField>
+                                    <ItemTemplate>
+                                        <asp:HiddenField ID="HdnSpecialId" runat="server" Value='<%# Bind("Id") %>' />
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+
+                                <asp:TemplateField HeaderText="Edit" ItemStyle-Width="10%">
+                                    <ItemTemplate>
+                                        <asp:LinkButton ID="LnkEdit" runat="server" class="glyphicon glyphicon-edit" autopostback="false" CommandName="Edit" Style="height: 30px; margin-left: 8px; margin-bottom: -10px;" ToolTip="Edit" CommandArgument='<%# DataBinder.Eval(Container,"DataItemIndex") %>' CssClass=""></asp:LinkButton>
+                                    </ItemTemplate>
+                                    <EditItemTemplate>
+                                        <asp:LinkButton ID="LnkUpdate" runat="server" class="glyphicon glyphicon-ok" Style="height: 30px; margin-left: 8px;" autopostback="false" ToolTip="Update" CommandName="Update" OnClientClick="return functionDelinquent()" />
+                                        <asp:LinkButton ID="Cancel" runat="server" class="glyphicon glyphicon-remove" autopostback="false" Style="height: 30px; margin-left: 10px;" ToolTip="Cancel" CommandName="Cancel" />
+                                    </EditItemTemplate>
+                                </asp:TemplateField>
+                                <asp:TemplateField HeaderText="Delete" ItemStyle-Width="35%">
+                                    <ItemTemplate>
+                                        <asp:LinkButton ID="btn_DeleteSpecial" runat="server" Style="margin-left: 12px;" autopostback="false" class="glyphicon glyphicon-trash" OnClientClick="javascript : return confirm('Are you sure, want to delete this Row?');" CommandName="DeleteDelinquent" ToolTip="Delete" CommandArgument='<%# DataBinder.Eval(Container,"DataItemIndex") %>' CssClass=""></asp:LinkButton>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                            </Columns>
+                            <AlternatingRowStyle BackColor="#f3f2ea" />
+                            <HeaderStyle BackColor="#d9241b" ForeColor="white" />
+                            <EmptyDataTemplate>
+                                <div id="delirecord" style="color: red; font-weight: bold;" align="center">No records found.</div>
+                            </EmptyDataTemplate>
+                        </asp:GridView>
+                        <br />
+                    </div>
+                </asp:Panel>
+                <br />
+                <%--Excemption Status--%>
+                <asp:Panel ID="tblExestatus" TabIndex="47" class="panel panel-default" runat="server" Style="visibility: hidden; display: none;">
+                    <div id="exefocus" class="panel-heading" data-toggle="collapse" data-target="#collapseExemption">
+                        <h4 class="panel-title">
+                            <strong style="cursor: pointer; text-decoration: underline;">Exemption Status</strong><i class="indicator glyphicon glyphicon-chevron-down pull-left"></i>
+                        </h4>
+                    </div>
+                    <div id="collapseExemption" class="panel-collapse collapse in">
+                        <div class="panel-body">
+                            <table style="width: 1000px" border="0">
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <b>
+                                                <label class="CheckBold" id="lblexetype">Exemption Type:</label>
+                                            </b>
+                                        </td>
+                                        <td>
+                                            <asp:DropDownList ID="txtexetype" runat="server" class="form-control" Style="width: auto" onchange="return functionExemption()">
+                                                <asp:ListItem>Select</asp:ListItem>
+                                                <asp:ListItem>Veteran</asp:ListItem>
+                                                <asp:ListItem>Disability</asp:ListItem>
+                                                <asp:ListItem>Senior</asp:ListItem>
+                                                <asp:ListItem>Agricultural</asp:ListItem>
+                                                <asp:ListItem>Widowed</asp:ListItem>
+                                                <asp:ListItem>Income Based</asp:ListItem>
+                                                <asp:ListItem>Homestead Cap</asp:ListItem>
+                                                <asp:ListItem>Abatement</asp:ListItem>
+                                                <asp:ListItem>Other</asp:ListItem>
+                                            </asp:DropDownList></td>
+                                        <td style="padding-left: 25px;"><b class="CheckBold">Exemption Amount(if Applicable):</b></td>
+                                        <td>
+                                            <asp:TextBox ID="txtexeamount" runat="server" class="form-control" placeholder="Exemption Amount" onkeyup="ExemptionAmount1();" onfocusout="myFunctionExemptionAmount1();if (this.value=='0.00') this.value='0.00';if (this.value=='') this.value='0.00';" onfocusin="if (this.value=='0.00') this.value='';" Style="width: 150px;" onblur="myExe();" autocomplete='off' value="0.00"></asp:TextBox>
+                                        </td>
+                                        <td>
+                                            <asp:Button runat="server" ID="ExemptionAdd" Text="Add" class="btn btn-success" Style="height: 28px; padding-top: 3px;" OnClick="btnExemptionAdd_Click" OnClientClick="return functionExemption();" />
+                                        </td>
+                                        <td hidden>
+                                            <p id="ee"></p>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <br />
+                            <asp:GridView ID="gvExemption" runat="server" AutoGenerateColumns="false" Width="70%" GridLines="None"
+                                DataKeyNames="Id" OnRowEditing="gvExemption_RowEditing" OnRowUpdating="gvExemption_RowUpdating"
+                                OnRowCommand="btngvExemption_RowCommand" EmptyDataRowStyle-HorizontalAlign="Center"
+                                OnRowCancelingEdit="gvExemption_RowCancelingEdit">
                                 <Columns>
                                     <asp:BoundField ItemStyle-Width="50%" DataField="Id" HeaderText="Tax ID" ReadOnly="true" ItemStyle-CssClass="hiddencol" HeaderStyle-CssClass="hiddencol" />
-                                    <asp:BoundField ItemStyle-Width="30%" DataField="payee" HeaderText="Payee Name" ReadOnly="true" />
-                                    <asp:BoundField ItemStyle-Width="30%" DataField="address" HeaderText="Address" ReadOnly="true" />
-                                    <asp:BoundField ItemStyle-Width="20%" DataField="city" HeaderText="City" ReadOnly="true" />
-                                    <asp:BoundField ItemStyle-Width="40%" DataField="state" HeaderText="State" ReadOnly="true" ItemStyle-CssClass="hiddencol" HeaderStyle-CssClass="hiddencol" />
-                                    <asp:BoundField ItemStyle-Width="40%" DataField="zip" HeaderText="Zip Code" ReadOnly="true" ItemStyle-CssClass="hiddencol" HeaderStyle-CssClass="hiddencol" />
-                                    <asp:BoundField ItemStyle-Width="40%" DataField="deliquenttaxyear" HeaderText="Tax Year" ReadOnly="true" ItemStyle-CssClass="hiddencol" HeaderStyle-CssClass="hiddencol" />
-                                    <asp:BoundField ItemStyle-Width="40%" DataField="payoffamount" HeaderText="PayOff Amount" ReadOnly="true" ItemStyle-CssClass="hiddencol" HeaderStyle-CssClass="hiddencol" />
-                                    <asp:BoundField ItemStyle-Width="40%" DataField="comments" HeaderText="Comments" ReadOnly="true" ItemStyle-CssClass="hiddencol" HeaderStyle-CssClass="hiddencol" />
-                                    <asp:BoundField ItemStyle-Width="40%" DataField="goodthuruDate" HeaderText="Good Throughdate" ReadOnly="true" ItemStyle-CssClass="hiddencol" HeaderStyle-CssClass="hiddencol" />
-                                    <asp:BoundField ItemStyle-Width="40%" DataField="installmentduedate" HeaderText="Inst.Duedate" ReadOnly="true" ItemStyle-CssClass="hiddencol" HeaderStyle-CssClass="hiddencol" />
-                                    <asp:BoundField ItemStyle-Width="40%" DataField="taxsalenotapplicable" HeaderText="TaxSale.NotApp" ReadOnly="true" ItemStyle-CssClass="hiddencol" HeaderStyle-CssClass="hiddencol" />
-                                    <asp:BoundField ItemStyle-Width="40%" DataField="dateofTaxsale" HeaderText="DtOfTaxsale" ReadOnly="true" ItemStyle-CssClass="hiddencol" HeaderStyle-CssClass="hiddencol" />
-                                    <asp:BoundField ItemStyle-Width="40%" DataField="lastdaytoredeem" HeaderText="LastDayRedeem" ReadOnly="true" ItemStyle-CssClass="hiddencol" HeaderStyle-CssClass="hiddencol" />
+                                    <asp:BoundField ItemStyle-Width="50%" DataField="exemptiontype" HeaderText="Exemption Type" ReadOnly="true" />
+                                    <asp:BoundField ItemStyle-Width="40%" DataField="exemptionamount" HeaderText="Exemption Amount" ReadOnly="true" />
                                     <asp:TemplateField>
                                         <ItemTemplate>
-                                            <asp:HiddenField ID="HdnSpecialId" runat="server" Value='<%# Bind("Id") %>' />
+                                            <asp:HiddenField ID="HdnExemptionId" runat="server" Value='<%# Bind("Id") %>' />
                                         </ItemTemplate>
                                     </asp:TemplateField>
 
                                     <asp:TemplateField HeaderText="Edit" ItemStyle-Width="10%">
                                         <ItemTemplate>
-                                            <asp:LinkButton ID="LnkEdit" runat="server" class="glyphicon glyphicon-edit" autopostback="false" CommandName="Edit" Style="height: 30px; margin-left: 8px; margin-bottom: -10px;" ToolTip="Edit" CommandArgument='<%# DataBinder.Eval(Container,"DataItemIndex") %>' CssClass=""></asp:LinkButton>
+                                            <asp:LinkButton ID="LnkEdit" runat="server" class="glyphicon glyphicon-edit" CommandName="Edit" autopostback="false" Style="height: 30px; margin-left: 5px; margin-bottom: -10px;" ToolTip="Edit" CommandArgument='<%# DataBinder.Eval(Container,"DataItemIndex") %>' CssClass=""></asp:LinkButton>
                                         </ItemTemplate>
                                         <EditItemTemplate>
-                                            <asp:LinkButton ID="LnkUpdate" runat="server" class="glyphicon glyphicon-ok" Style="height: 30px; margin-left: 8px;" autopostback="false" ToolTip="Update" CommandName="Update" OnClientClick="return functionDelinquent()" />
+                                            <asp:LinkButton ID="LnkUpdate" runat="server" class="glyphicon glyphicon-ok" autopostback="false" Style="height: 30px; margin-left: 5px;" ToolTip="Update" CommandName="Update" OnClientClick="return functionExemption();" />
                                             <asp:LinkButton ID="Cancel" runat="server" class="glyphicon glyphicon-remove" autopostback="false" Style="height: 30px; margin-left: 10px;" ToolTip="Cancel" CommandName="Cancel" />
                                         </EditItemTemplate>
                                     </asp:TemplateField>
-                                    <asp:TemplateField HeaderText="Delete" ItemStyle-Width="35%">
+                                    <asp:TemplateField HeaderText="Delete">
                                         <ItemTemplate>
-                                            <asp:LinkButton ID="btn_DeleteSpecial" runat="server" Style="margin-left: 12px;" autopostback="false" class="glyphicon glyphicon-trash" OnClientClick="javascript : return confirm('Are you sure, want to delete this Row?');" CommandName="DeleteDelinquent" ToolTip="Delete" CommandArgument='<%# DataBinder.Eval(Container,"DataItemIndex") %>' CssClass=""></asp:LinkButton>
+                                            <asp:LinkButton ID="btn_DeleteExemption" runat="server" class="glyphicon glyphicon-trash" autopostback="false" OnClientClick="javascript : return confirm('Are you sure, want to delete this Row?');" CommandName="DeleteExemption" Style="height: 30px;" ToolTip="Delete" CommandArgument='<%# DataBinder.Eval(Container,"DataItemIndex") %>' CssClass=""></asp:LinkButton>
                                         </ItemTemplate>
                                     </asp:TemplateField>
                                 </Columns>
                                 <AlternatingRowStyle BackColor="#f3f2ea" />
                                 <HeaderStyle BackColor="#d9241b" ForeColor="white" />
                                 <EmptyDataTemplate>
-                                    <div id="delirecord" style="color: red; font-weight: bold;" align="center">No records found.</div>
+                                    <div style="margin-left: 392px; color: red; font-weight: bold;" align="center">No records found.</div>
                                 </EmptyDataTemplate>
                             </asp:GridView>
-                            <br />
                         </div>
-                    </asp:Panel>
-                    <br />
-                    <%--Excemption Status--%>
-                    <asp:Panel ID="tblExestatus" TabIndex="47" class="panel panel-default" runat="server" Style="visibility: hidden; display: none;">
-                        <div id="exefocus" class="panel-heading" data-toggle="collapse" data-target="#collapseExemption">
-                            <h4 class="panel-title">
-                                <strong style="cursor: pointer; text-decoration: underline;">Exemption Status</strong><i class="indicator glyphicon glyphicon-chevron-down pull-left"></i>
-                            </h4>
-                        </div>
-                        <div id="collapseExemption" class="panel-collapse collapse in">
-                            <div class="panel-body">
-                                <table style="width: 1000px" border="0">
-                                    <tbody>
-                                        <tr>
-                                            <td>
-                                                <b>
-                                                    <label class="CheckBold" id="lblexetype">Exemption Type:</label>
-                                                </b>
-                                            </td>
-                                            <td>
-                                                <asp:DropDownList ID="txtexetype" runat="server" class="form-control" Style="width: auto" onchange="return functionExemption()">
-                                                    <asp:ListItem>Select</asp:ListItem>
-                                                    <asp:ListItem>Veteran</asp:ListItem>
-                                                    <asp:ListItem>Disability</asp:ListItem>
-                                                    <asp:ListItem>Senior</asp:ListItem>
-                                                    <asp:ListItem>Agricultural</asp:ListItem>
-                                                    <asp:ListItem>Widowed</asp:ListItem>
-                                                    <asp:ListItem>Income Based</asp:ListItem>
-                                                    <asp:ListItem>Homestead Cap</asp:ListItem>
-                                                    <asp:ListItem>Abatement</asp:ListItem>
-                                                    <asp:ListItem>Other</asp:ListItem>
-                                                </asp:DropDownList></td>
-                                            <td style="padding-left: 25px;"><b class="CheckBold">Exemption Amount(if Applicable):</b></td>
-                                            <td>
-                                                <asp:TextBox ID="txtexeamount" runat="server" class="form-control" placeholder="Exemption Amount" onkeyup="ExemptionAmount1();" onfocusout="myFunctionExemptionAmount1();if (this.value=='0.00') this.value='0.00';if (this.value=='') this.value='0.00';" onfocusin="if (this.value=='0.00') this.value='';" Style="width: 150px;" onblur="myExe();" autocomplete='off' value="0.00"></asp:TextBox>
-                                            </td>
-                                            <td>
-                                                <asp:Button runat="server" ID="ExemptionAdd" Text="Add" class="btn btn-success" Style="height: 28px; padding-top: 3px;" OnClick="btnExemptionAdd_Click" OnClientClick="return functionExemption();" />
-                                            </td>
-                                            <td hidden>
-                                                <p id="ee"></p>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                                <br />
-                                <asp:GridView ID="gvExemption" runat="server" AutoGenerateColumns="false" Width="70%" GridLines="None"
-                                    DataKeyNames="Id" OnRowEditing="gvExemption_RowEditing" OnRowUpdating="gvExemption_RowUpdating"
-                                    OnRowCommand="btngvExemption_RowCommand" EmptyDataRowStyle-HorizontalAlign="Center"
-                                    OnRowCancelingEdit="gvExemption_RowCancelingEdit">
-                                    <Columns>
-                                        <asp:BoundField ItemStyle-Width="50%" DataField="Id" HeaderText="Tax ID" ReadOnly="true" ItemStyle-CssClass="hiddencol" HeaderStyle-CssClass="hiddencol" />
-                                        <asp:BoundField ItemStyle-Width="50%" DataField="exemptiontype" HeaderText="Exemption Type" ReadOnly="true" />
-                                        <asp:BoundField ItemStyle-Width="40%" DataField="exemptionamount" HeaderText="Exemption Amount" ReadOnly="true" />
-                                        <asp:TemplateField>
-                                            <ItemTemplate>
-                                                <asp:HiddenField ID="HdnExemptionId" runat="server" Value='<%# Bind("Id") %>' />
-                                            </ItemTemplate>
-                                        </asp:TemplateField>
-
-                                        <asp:TemplateField HeaderText="Edit" ItemStyle-Width="10%">
-                                            <ItemTemplate>
-                                                <asp:LinkButton ID="LnkEdit" runat="server" class="glyphicon glyphicon-edit" CommandName="Edit" autopostback="false" Style="height: 30px; margin-left: 5px; margin-bottom: -10px;" ToolTip="Edit" CommandArgument='<%# DataBinder.Eval(Container,"DataItemIndex") %>' CssClass=""></asp:LinkButton>
-                                            </ItemTemplate>
-                                            <EditItemTemplate>
-                                                <asp:LinkButton ID="LnkUpdate" runat="server" class="glyphicon glyphicon-ok" autopostback="false" Style="height: 30px; margin-left: 5px;" ToolTip="Update" CommandName="Update" OnClientClick="return functionExemption();" />
-                                                <asp:LinkButton ID="Cancel" runat="server" class="glyphicon glyphicon-remove" autopostback="false" Style="height: 30px; margin-left: 10px;" ToolTip="Cancel" CommandName="Cancel" />
-                                            </EditItemTemplate>
-                                        </asp:TemplateField>
-                                        <asp:TemplateField HeaderText="Delete">
-                                            <ItemTemplate>
-                                                <asp:LinkButton ID="btn_DeleteExemption" runat="server" class="glyphicon glyphicon-trash" autopostback="false" OnClientClick="javascript : return confirm('Are you sure, want to delete this Row?');" CommandName="DeleteExemption" Style="height: 30px;" ToolTip="Delete" CommandArgument='<%# DataBinder.Eval(Container,"DataItemIndex") %>' CssClass=""></asp:LinkButton>
-                                            </ItemTemplate>
-                                        </asp:TemplateField>
-                                    </Columns>
-                                    <AlternatingRowStyle BackColor="#f3f2ea" />
-                                    <HeaderStyle BackColor="#d9241b" ForeColor="white" />
-                                    <EmptyDataTemplate>
-                                        <div style="margin-left: 392px; color: red; font-weight: bold;" align="center">No records found.</div>
-                                    </EmptyDataTemplate>
-                                </asp:GridView>
-                            </div>
-                        </div>
-                    </asp:Panel>
-                    <br />
-                    <%--Special Assessment Status--%>
-                    <asp:Panel ID="tblSpecialstatus" TabIndex="48" class="panel panel-default" runat="server" Style="visibility: hidden; display: none;">
-                        <div class="panel-heading" data-toggle="collapse" data-target="#collapseSpecial">
-                            <h4 class="panel-title">
-                                <strong style="cursor: pointer; text-decoration: underline;">Special Assessment</strong><i class="indicator glyphicon glyphicon-chevron-down pull-left"></i>
-                            </h4>
-                        </div>
-                        <div id="collapseSpecial" class="panel-collapse collapse in">
-                            <div class="panel-body">
-                                <table style="width: 1300px;">
-                                    <tbody>
-                                        <tr>
-                                            <td>
-                                                <b>
-                                                    <label class="CheckBold" id="lbldescription">Description:</label>
-                                                </b>
-                                            </td>
-                                            <td>
-                                                <asp:TextBox ID="txtdescription" runat="server" class="form-control" Style="margin-bottom: 5px;" placeholder="Description" onkeyup="CheckFirstChar(event.keyCode, this);" onkeydown="return CheckFirstChar(event.keyCode, this);" autocomplete='off' onchange="return functionSpecial()"></asp:TextBox>
-                                            </td>
-                                            <td style="padding-left: 31px;"><b class="CheckBold" title="Special Assessment No">AssessNo:</b></td>
-                                            <td>
-                                                <asp:TextBox ID="txtspecialassno" runat="server" class="form-control" placeholder="Special Assessment No" onkeyup="CheckFirstChar(event.keyCode, this);" onkeydown="return CheckFirstChar(event.keyCode, this);" autocomplete='off'></asp:TextBox>
-                                            </td>
-                                            <td style="padding-left: 31px;"><b class="CheckBold" title="Number Of Installments">No Of Inst:</b></td>
-                                            <td>
-                                                <asp:TextBox ID="txtnoinstall" runat="server" class="form-control" placeholder="Number Of Installments" onkeypress="return isNumberKey(event)" autocomplete='off'></asp:TextBox>
-                                            </td>
-                                            <td style="padding-left: 31px;"><b class="CheckBold" title="Installment Paid">Inst Paid:</b></td>
-                                            <td>
-                                                <asp:TextBox ID="txtinstallpaid" runat="server" class="form-control" placeholder="Installment Paid" onkeypress="return isNumberKey(event)" autocomplete='off'></asp:TextBox>
-                                            </td>
-                                        </tr>
+                    </div>
+                </asp:Panel>
+                <br />
+                <%--Special Assessment Status--%>
+                <asp:Panel ID="tblSpecialstatus" TabIndex="48" class="panel panel-default" runat="server" Style="visibility: hidden; display: none;">
+                    <div class="panel-heading" data-toggle="collapse" data-target="#collapseSpecial">
+                        <h4 class="panel-title">
+                            <strong style="cursor: pointer; text-decoration: underline;">Special Assessment</strong><i class="indicator glyphicon glyphicon-chevron-down pull-left"></i>
+                        </h4>
+                    </div>
+                    <div id="collapseSpecial" class="panel-collapse collapse in">
+                        <div class="panel-body">
+                            <table style="width: 1300px;">
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <b>
+                                                <label class="CheckBold" id="lbldescription">Description:</label>
+                                            </b>
+                                        </td>
+                                        <td>
+                                            <asp:TextBox ID="txtdescription" runat="server" class="form-control" Style="margin-bottom: 5px;" placeholder="Description" onkeyup="CheckFirstChar(event.keyCode, this);" onkeydown="return CheckFirstChar(event.keyCode, this);" autocomplete='off' onchange="return functionSpecial()"></asp:TextBox>
+                                        </td>
+                                        <td style="padding-left: 31px;"><b class="CheckBold" title="Special Assessment No">AssessNo:</b></td>
+                                        <td>
+                                            <asp:TextBox ID="txtspecialassno" runat="server" class="form-control" placeholder="Special Assessment No" onkeyup="CheckFirstChar(event.keyCode, this);" onkeydown="return CheckFirstChar(event.keyCode, this);" autocomplete='off'></asp:TextBox>
+                                        </td>
+                                        <td style="padding-left: 31px;"><b class="CheckBold" title="Number Of Installments">No Of Inst:</b></td>
+                                        <td>
+                                            <asp:TextBox ID="txtnoinstall" runat="server" class="form-control" placeholder="Number Of Installments" onkeypress="return isNumberKey(event)" autocomplete='off'></asp:TextBox>
+                                        </td>
+                                        <td style="padding-left: 31px;"><b class="CheckBold" title="Installment Paid">Inst Paid:</b></td>
+                                        <td>
+                                            <asp:TextBox ID="txtinstallpaid" runat="server" class="form-control" placeholder="Installment Paid" onkeypress="return isNumberKey(event)" autocomplete='off'></asp:TextBox>
+                                        </td>
+                                    </tr>
 
 
-                                        <tr>
-                                            <td><b class="CheckBold">Inst Remaining:</b></td>
-                                            <td>
-                                                <%-- <asp:TextBox ID="txtInstallRemain" runat="server" class="form-control" placeholder="Inst Remaining" Style="margin-bottom: 5px;" onkeyup="SpeAmount1();" onfocusout="SpemyFunctionAmount1();if (this.value=='0.00') this.value='0.00';if (this.value=='') this.value='0.00';" onfocus="this.value='0.00'" onfocusin="if (this.value=='0.00') this.value='';" onblur="mySpe();" autocomplete='off'></asp:TextBox>--%>
-                                                <asp:TextBox ID="txtInstallRemain" runat="server" class="form-control" placeholder="Inst Remaining" onkeypress="return isNumberKey(event)" autocomplete='off'></asp:TextBox>
-                                            </td>
-                                            <td style="padding-left: 31px;"><b class="CheckBold">Due Date:</b></td>
-                                            <td>
-                                                <asp:TextBox ID="txtduedate" runat="server" class="form-control" placeholder="MM/DD/YYYY" MaxLength="10" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="return checkDate(this,event)" autocomplete='off'></asp:TextBox>
-                                            </td>
-                                            <td style="padding-left: 31px;"><b class="CheckBold">Amount:</b></td>
-                                            <td>
-                                                <asp:TextBox ID="txtamountspecial" runat="server" class="form-control" placeholder="Amount" onkeyup="SpeRemian1();" onfocusout="SpemyFunctionRemian1();if (this.value=='0.00') this.value='0.00';if (this.value=='') this.value='0.00';" onfocusin="if (this.value=='0.00') this.value='';" onblur="myRemian();" autocomplete='off' value="0.00"></asp:TextBox>
-                                            </td>
-                                            <td style="padding-left: 31px;"><b class="CheckBold">Remaining Balance:</b></td>
-                                            <td>
-                                                <asp:TextBox ID="txtsperembal" runat="server" class="form-control" onkeyup="SpeRemianBal1();" placeholder="Remaining Balance" onfocusout="SpemyFunctionRemianBal1();if (this.value=='0.00') this.value='0.00';if (this.value=='') this.value='0.00';" onfocusin="if (this.value=='0.00') this.value='';" onblur="myRemianBal();" autocomplete='off' value="0.00"></asp:TextBox>
-                                            </td>
-                                            <td hidden>
-                                                <p id="s"></p>
-                                            </td>
-                                            <td hidden>
-                                                <p id="sr"></p>
-                                            </td>
-                                            <td hidden>
-                                                <p id="rr"></p>
-                                            </td>
-                                        </tr>
+                                    <tr>
+                                        <td><b class="CheckBold">Inst Remaining:</b></td>
+                                        <td>
+                                           <%-- <asp:TextBox ID="txtInstallRemain" runat="server" class="form-control" placeholder="Inst Remaining" Style="margin-bottom: 5px;" onkeyup="SpeAmount1();" onfocusout="SpemyFunctionAmount1();if (this.value=='0.00') this.value='0.00';if (this.value=='') this.value='0.00';" onfocus="this.value='0.00'" onfocusin="if (this.value=='0.00') this.value='';" onblur="mySpe();" autocomplete='off'></asp:TextBox>--%>
+                                            <asp:TextBox ID="txtInstallRemain" runat="server" class="form-control" placeholder="Inst Remaining" onkeypress="return isNumberKey(event)" autocomplete='off'></asp:TextBox>
+                                        </td>
+                                        <td style="padding-left: 31px;"><b class="CheckBold">Due Date:</b></td>
+                                        <td>
+                                            <asp:TextBox ID="txtduedate" runat="server" class="form-control" placeholder="MM/DD/YYYY" MaxLength="10" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="return checkDate(this,event)" autocomplete='off'></asp:TextBox>
+                                        </td>
+                                        <td style="padding-left: 31px;"><b class="CheckBold">Amount:</b></td>
+                                        <td>
+                                            <asp:TextBox ID="txtamountspecial" runat="server" class="form-control" placeholder="Amount" onkeyup="SpeRemian1();" onfocusout="SpemyFunctionRemian1();if (this.value=='0.00') this.value='0.00';if (this.value=='') this.value='0.00';" onfocusin="if (this.value=='0.00') this.value='';" onblur="myRemian();" autocomplete='off' value="0.00"></asp:TextBox>
+                                        </td>
+                                        <td style="padding-left: 31px;"><b class="CheckBold">Remaining Balance:</b></td>
+                                        <td>
+                                            <asp:TextBox ID="txtsperembal" runat="server" class="form-control" onkeyup="SpeRemianBal1();" placeholder="Remaining Balance" onfocusout="SpemyFunctionRemianBal1();if (this.value=='0.00') this.value='0.00';if (this.value=='') this.value='0.00';" onfocusin="if (this.value=='0.00') this.value='';" onblur="myRemianBal();" autocomplete='off' value="0.00"></asp:TextBox>
+                                        </td>
+                                        <td hidden>
+                                            <p id="s"></p>
+                                        </td>
+                                        <td hidden>
+                                            <p id="sr"></p>
+                                        </td>
+                                        <td hidden>
+                                            <p id="rr"></p>
+                                        </td>
+                                    </tr>
 
-                                        <tr>
-                                            <td><b class="CheckBold">Date:</b></td>
-                                            <td>
-                                                <asp:TextBox ID="txtspecdate" runat="server" class="form-control" placeholder="MM/DD/YYYY" Style="margin-bottom: 5px;" MaxLength="10" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="return checkDate(this,event)" autocomplete='off'></asp:TextBox>
-                                            </td>
-                                            <td style="padding-left: 31px;"><b class="CheckBold">Per Diem:</b></td>
-                                            <td>
-                                                <asp:TextBox ID="txtspecperdiem" runat="server" class="form-control" placeholder="Per Diem" onkeyup="CheckFirstChar(event.keyCode, this);" onkeydown="return CheckFirstChar(event.keyCode, this);" autocomplete='off'></asp:TextBox>
-                                            </td>
-                                            <td style="padding-left: 31px;"><b class="CheckBold">Payee:</b></td>
-                                            <td>
-                                                <asp:TextBox ID="txtspecpayee" runat="server" placeholder="Payee" class="form-control" autocomplete='off'></asp:TextBox>
-                                            </td>
+                                    <tr>
+                                        <td><b class="CheckBold">Date:</b></td>
+                                        <td>
+                                            <asp:TextBox ID="txtspecdate" runat="server" class="form-control" placeholder="MM/DD/YYYY" Style="margin-bottom: 5px;" MaxLength="10" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="return checkDate(this,event)" autocomplete='off'></asp:TextBox>
+                                        </td>
+                                        <td style="padding-left: 31px;"><b class="CheckBold">Per Diem:</b></td>
+                                        <td>
+                                            <asp:TextBox ID="txtspecperdiem" runat="server" class="form-control" placeholder="Per Diem" onkeyup="CheckFirstChar(event.keyCode, this);" onkeydown="return CheckFirstChar(event.keyCode, this);" autocomplete='off'></asp:TextBox>
+                                        </td>
+                                        <td style="padding-left: 31px;"><b class="CheckBold">Payee:</b></td>
+                                        <td>
+                                            <asp:TextBox ID="txtspecpayee" runat="server" placeholder="Payee" class="form-control" autocomplete='off'></asp:TextBox>
+                                        </td>
 
-                                        </tr>
-                                        <tr>
-                                            <td><b class="CheckBold">Comments:</b></td>
-                                            <td colspan="5">
-                                                <asp:TextBox ID="txtspeccomments" runat="server" class="form-control" placeholder="Comments" autocomplete='off'></asp:TextBox>
-                                            </td>
-                                            <td style="padding-left: 31px;">
-                                                <asp:Button ID="SpecialAdd" runat="server" Text="Add" class="btn btn-success" Style="height: 32px; padding-top: 3px;" OnClick="btnSpecialAdd_Click" OnClientClick="return functionSpecial()" />
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                            <asp:GridView ID="gvSpecial" runat="server" AutoGenerateColumns="false" Width="90%" GridLines="None"
-                                DataKeyNames="Id" OnRowCommand="btnSpecialAssessment_RowCommand" OnRowEditing="gvSpecialAssessment_RowEditing"
-                                OnRowUpdating="gvSpecialAssessment_RowUpdating"
-                                EmptyDataText="No Data Found" EmptyDataRowStyle-HorizontalAlign="Center"
-                                OnRowCancelingEdit="gvSpecialAssessment_RowCancelingEdit">
-                                <Columns>
-
-                                    <asp:BoundField ItemStyle-Width="50%" ItemStyle-ForeColor="Black" ItemStyle-Font-Bold="false" DataField="Id" HeaderText="Tax ID" ReadOnly="true" ItemStyle-CssClass="hiddencol" HeaderStyle-CssClass="hiddencol" />
-                                    <asp:BoundField ItemStyle-Width="30%" ItemStyle-ForeColor="Black" ItemStyle-Font-Bold="false" DataField="description" HeaderText="Description" ReadOnly="true" />
-                                    <asp:BoundField ItemStyle-Width="30%" ItemStyle-ForeColor="Black" ItemStyle-Font-Bold="false" DataField="specialassessmentno" HeaderText="Special Assessment No" ReadOnly="true" />
-                                    <asp:BoundField ItemStyle-Width="20%" ItemStyle-ForeColor="Black" ItemStyle-Font-Bold="false" DataField="noofinstallment" HeaderText="No.Of.Installments" ReadOnly="true" />
-                                    <asp:BoundField ItemStyle-Width="40%" ItemStyle-ForeColor="Black" ItemStyle-Font-Bold="false" DataField="installmentpaid" HeaderText="Installments Paid" ReadOnly="true" ItemStyle-CssClass="hiddencol" HeaderStyle-CssClass="hiddencol" />
-                                    <asp:BoundField ItemStyle-Width="40%" ItemStyle-ForeColor="Black" ItemStyle-Font-Bold="false" DataField="amount" HeaderText="Amount" ReadOnly="true" ItemStyle-CssClass="hiddencol" HeaderStyle-CssClass="hiddencol" />
-                                    <asp:TemplateField>
-                                        <ItemTemplate>
-                                            <asp:HiddenField ID="HdnSpecialId" runat="server" Value='<%# Bind("Id") %>' />
-                                        </ItemTemplate>
-                                    </asp:TemplateField>
-                                    <asp:TemplateField HeaderText="Edit" ItemStyle-Width="10%">
-                                        <ItemTemplate>
-                                            <asp:LinkButton ID="LnkEdit" runat="server" class="glyphicon glyphicon-edit" autopostback="false" CommandName="Edit" Style="height: 30px; margin-left: 8px; margin-bottom: -10px;" ToolTip="Edit" CommandArgument='<%# DataBinder.Eval(Container,"DataItemIndex") %>' CssClass=""></asp:LinkButton>
-                                        </ItemTemplate>
-                                        <EditItemTemplate>
-                                            <asp:LinkButton ID="LnkUpdate" runat="server" class="glyphicon glyphicon-ok" autopostback="false" Style="height: 30px; margin-left: 8px;" ToolTip="Update" CommandName="Update" OnClientClick="return functionSpecial()" />
-                                            <asp:LinkButton ID="Cancel" runat="server" class="glyphicon glyphicon-remove" autopostback="false" Style="height: 30px; margin-left: 10px;" ToolTip="Cancel" CommandName="Cancel" />
-                                        </EditItemTemplate>
-                                    </asp:TemplateField>
-                                    <asp:TemplateField HeaderText="Delete" ItemStyle-Width="35%">
-                                        <ItemTemplate>
-                                            <asp:LinkButton ID="btn_DeleteSpecial" runat="server" Style="margin-left: 12px;" autopostback="false" class="glyphicon glyphicon-trash" OnClientClick="javascript : return confirm('Are you sure, want to delete this Row?');" CommandName="DeleteSpecial" ToolTip="Delete" CommandArgument='<%# DataBinder.Eval(Container,"DataItemIndex") %>' CssClass=""></asp:LinkButton>
-                                        </ItemTemplate>
-                                    </asp:TemplateField>
-                                </Columns>
-                                <AlternatingRowStyle BackColor="#f3f2ea" />
-                                <HeaderStyle BackColor="#d9241b" ForeColor="white" />
-                                <EmptyDataTemplate>
-                                    <div style="color: red; font-weight: bold;" align="center">No records found.</div>
-                                </EmptyDataTemplate>
-                            </asp:GridView>
-                            <br />
+                                    </tr>
+                                    <tr>
+                                        <td><b class="CheckBold">Comments:</b></td>
+                                        <td colspan="5">
+                                            <asp:TextBox ID="txtspeccomments" runat="server" class="form-control" placeholder="Comments" autocomplete='off'></asp:TextBox>
+                                        </td>
+                                        <td style="padding-left: 31px;">
+                                            <asp:Button ID="SpecialAdd" runat="server" Text="Add" class="btn btn-success" Style="height: 32px; padding-top: 3px;" OnClick="btnSpecialAdd_Click" OnClientClick="return functionSpecial()" />
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
-                    </asp:Panel>
-                    <br />
-                    <asp:Panel ID="tblPastDeliquent" TabIndex="49" class="panel panel-default" runat="server" Style="visibility: hidden; display: none;">
-                        <div class="panel-heading" data-toggle="collapse" data-target="#collapsePast">
-                            <h4 class="panel-title">
-                                <strong style="cursor: pointer; text-decoration: underline;">Prior Delinquent Tax</strong><i class="indicator glyphicon glyphicon-chevron-down pull-left"></i>
-                            </h4>
-                        </div>
-                        <div id="collapsePast" class="panel-collapse collapse in">
-                            <div class="panel-body">
-                                <table style="width: 1300px;">
-                                    <tbody>
-                                        <tr style="height: 50px;">
-                                            <td>
-                                                <b>
-                                                    <label class="CheckBold" id="lblpriodeli">Delinquent Tax Year:</label>
-                                                </b>
-                                            </td>
-                                            <td>
-                                                <asp:TextBox ID="txtpriodeli" runat="server" class="form-control" placeholder="YYYY" MaxLength="4" Style="margin-bottom: 5px;" onkeypress="return isNumberKey(event)" onblur="IsValidLengthTaxPrior(this.value,this,event);" onchange="return functionPrior()" autocomplete='off'></asp:TextBox>
-                                            </td>
-                                            <td style="padding-left: 31px;">
-                                                <b>
-                                                    <label class="CheckBold" id="lblpriorigamtdue">Original Amount Due:</label>
-                                                </b>
-                                            </td>
-                                            <td>
-                                                <asp:TextBox ID="txtpriorigamtdue" placeholder="Original Amount Due" runat="server" class="form-control" onkeyup="OriginalAmountDue();" onfocusout="OriginFunctionDue();if (this.value=='0.00') this.value='0.00';if (this.value=='') this.value='0.00';" onfocusin="if (this.value=='0.00') this.value='';" onblur="OriDue();" onchange="return functionPrior()" autocomplete='off'></asp:TextBox>
-                                            </td>
-                                            <td style="padding-left: 31px;">
-                                                <b>
-                                                    <label class="CheckBold" id="lblprideliqdate">Originally Delinquency Date:</label>
-                                                </b>
-                                            </td>
-                                            <td>
-                                                <asp:TextBox ID="txtprideliqdate" runat="server" placeholder="MM/DD/YYYY" class="form-control" MaxLength="10" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="return checkDate(this,event)" autocomplete='off' onchange="return functionPrior()"></asp:TextBox>
-                                            </td>
-                                            <td hidden>
-                                                <p id="OD"></p>
-                                            </td>
-                                            <td hidden>
-                                                <p id="OA"></p>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <b>
-                                                    <label class="CheckBold" id="lblpriamtpaid">Amount Paid:</label>
-                                                </b>
-                                            </td>
-                                            <td>
-                                                <asp:TextBox ID="txtpriamtpaid" runat="server" placeholder="Amount Paid" class="form-control" onkeyup="Priamountpaid();" onfocusout="PriFunctionpaid();if (this.value=='0.00') this.value='0.00';if (this.value=='') this.value='0.00';" onfocusin="if (this.value=='0.00') this.value='';" onblur="mypriamtpaid();" autocomplete='off' onchange="return functionPrior()"></asp:TextBox>
-                                            </td>
-                                            <td style="padding-left: 31px;">
-                                                <b class="CheckBold">Delinquency Comments:</b>
-                                            </td>
-                                            <td colspan="3">
-                                                <asp:TextBox ID="txtprideliqcommts" runat="server" placeholder="Delinquency Comments" Rows="2" cols="20" class="form-control" Style="resize: none"></asp:TextBox>
-                                            </td>
-                                            <td style="padding-left: 31px;">
-                                                <asp:Button ID="btnpriordelinquenttax" runat="server" Text="Add" class="btn btn-success" Style="height: 32px; padding-top: 3px;" OnClick="btnpriordelinquenttax_Click" OnClientClick="return functionPrior()" />
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-
-                        <asp:GridView ID="GrdPriordelinquent" runat="server" AutoGenerateColumns="false" Width="90%" GridLines="None"
-                            DataKeyNames="Id" OnRowCommand="GrdPriordelinquent_RowCommand" OnRowEditing="GrdPriordelinquent_RowEditing"
-                            OnRowUpdating="GrdPriordelinquent_RowUpdating"
+                        <asp:GridView ID="gvSpecial" runat="server" AutoGenerateColumns="false" Width="90%" GridLines="None"
+                            DataKeyNames="Id" OnRowCommand="btnSpecialAssessment_RowCommand" OnRowEditing="gvSpecialAssessment_RowEditing"
+                            OnRowUpdating="gvSpecialAssessment_RowUpdating"
                             EmptyDataText="No Data Found" EmptyDataRowStyle-HorizontalAlign="Center"
-                            OnRowCancelingEdit="GrdPriordelinquent_RowCancelingEdit">
+                            OnRowCancelingEdit="gvSpecialAssessment_RowCancelingEdit">
                             <Columns>
+
                                 <asp:BoundField ItemStyle-Width="50%" ItemStyle-ForeColor="Black" ItemStyle-Font-Bold="false" DataField="Id" HeaderText="Tax ID" ReadOnly="true" ItemStyle-CssClass="hiddencol" HeaderStyle-CssClass="hiddencol" />
-                                <asp:BoundField ItemStyle-Width="30%" ItemStyle-ForeColor="Black" ItemStyle-Font-Bold="false" DataField="delinquenttaxyear" HeaderText="delinquenttaxyear" ReadOnly="true" />
-                                <asp:BoundField ItemStyle-Width="30%" ItemStyle-ForeColor="Black" ItemStyle-Font-Bold="false" DataField="originalamountdue" HeaderText="originalamountdue" ReadOnly="true" />
-                                <asp:BoundField ItemStyle-Width="20%" ItemStyle-ForeColor="Black" ItemStyle-Font-Bold="false" DataField="originaldelinquencydate" HeaderText="originaldelinquencydate" ReadOnly="true" />
-                                <asp:BoundField ItemStyle-Width="40%" ItemStyle-ForeColor="Black" ItemStyle-Font-Bold="false" DataField="amountpaid" HeaderText="amountpaid" ReadOnly="true" ItemStyle-CssClass="hiddencol" HeaderStyle-CssClass="hiddencol" />
-                                <asp:BoundField ItemStyle-Width="40%" ItemStyle-ForeColor="Black" ItemStyle-Font-Bold="false" DataField="delinquencycomments" HeaderText="delinquencycomments" ReadOnly="true" ItemStyle-CssClass="hiddencol" HeaderStyle-CssClass="hiddencol" />
+                                <asp:BoundField ItemStyle-Width="30%" ItemStyle-ForeColor="Black" ItemStyle-Font-Bold="false" DataField="description" HeaderText="Description" ReadOnly="true" />
+                                <asp:BoundField ItemStyle-Width="30%" ItemStyle-ForeColor="Black" ItemStyle-Font-Bold="false" DataField="specialassessmentno" HeaderText="Special Assessment No" ReadOnly="true" />
+                                <asp:BoundField ItemStyle-Width="20%" ItemStyle-ForeColor="Black" ItemStyle-Font-Bold="false" DataField="noofinstallment" HeaderText="No.Of.Installments" ReadOnly="true" />
+                                <asp:BoundField ItemStyle-Width="40%" ItemStyle-ForeColor="Black" ItemStyle-Font-Bold="false" DataField="installmentpaid" HeaderText="Installments Paid" ReadOnly="true" ItemStyle-CssClass="hiddencol" HeaderStyle-CssClass="hiddencol" />
+                                <asp:BoundField ItemStyle-Width="40%" ItemStyle-ForeColor="Black" ItemStyle-Font-Bold="false" DataField="amount" HeaderText="Amount" ReadOnly="true" ItemStyle-CssClass="hiddencol" HeaderStyle-CssClass="hiddencol" />
                                 <asp:TemplateField>
                                     <ItemTemplate>
                                         <asp:HiddenField ID="HdnSpecialId" runat="server" Value='<%# Bind("Id") %>' />
@@ -6639,7 +6575,7 @@
                                         <asp:LinkButton ID="LnkEdit" runat="server" class="glyphicon glyphicon-edit" autopostback="false" CommandName="Edit" Style="height: 30px; margin-left: 8px; margin-bottom: -10px;" ToolTip="Edit" CommandArgument='<%# DataBinder.Eval(Container,"DataItemIndex") %>' CssClass=""></asp:LinkButton>
                                     </ItemTemplate>
                                     <EditItemTemplate>
-                                        <asp:LinkButton ID="LnkUpdate" runat="server" class="glyphicon glyphicon-ok" autopostback="false" Style="height: 30px; margin-left: 8px;" ToolTip="Update" CommandName="Update" OnClientClick="return functionPrior()" />
+                                        <asp:LinkButton ID="LnkUpdate" runat="server" class="glyphicon glyphicon-ok" autopostback="false" Style="height: 30px; margin-left: 8px;" ToolTip="Update" CommandName="Update" OnClientClick="return functionSpecial()" />
                                         <asp:LinkButton ID="Cancel" runat="server" class="glyphicon glyphicon-remove" autopostback="false" Style="height: 30px; margin-left: 10px;" ToolTip="Cancel" CommandName="Cancel" />
                                     </EditItemTemplate>
                                 </asp:TemplateField>
@@ -6655,157 +6591,262 @@
                                 <div style="color: red; font-weight: bold;" align="center">No records found.</div>
                             </EmptyDataTemplate>
                         </asp:GridView>
-                    </asp:Panel>
+                        <br />
+                    </div>
+                </asp:Panel>
+                <br />
+                <asp:Panel ID="tblPastDeliquent" TabIndex="49" class="panel panel-default" runat="server" Style="visibility: hidden; display: none;">
+                    <div class="panel-heading" data-toggle="collapse" data-target="#collapsePast">
+                        <h4 class="panel-title">
+                            <strong style="cursor: pointer; text-decoration: underline;">Prior Delinquent Tax</strong><i class="indicator glyphicon glyphicon-chevron-down pull-left"></i>
+                        </h4>
+                    </div>
+                    <div id="collapsePast" class="panel-collapse collapse in">
+                        <div class="panel-body">
+                            <table style="width: 1300px;">
+                                <tbody>
+                                    <tr style="height: 50px;">
+                                        <td>
+                                            <b>
+                                                <label class="CheckBold" id="lblpriodeli">Delinquent Tax Year:</label>
+                                            </b>
+                                        </td>
+                                        <td>
+                                            <asp:TextBox ID="txtpriodeli" runat="server" class="form-control" placeholder="YYYY" MaxLength="4" Style="margin-bottom: 5px;" onkeypress="return isNumberKey(event)" onblur="IsValidLengthTaxPrior(this.value,this,event);" onchange="return functionPrior()" autocomplete='off'></asp:TextBox>
+                                        </td>
+                                        <td style="padding-left: 31px;">
+                                            <b>
+                                                <label class="CheckBold" id="lblpriorigamtdue">Original Amount Due:</label>
+                                            </b>
+                                        </td>
+                                        <td>
+                                            <asp:TextBox ID="txtpriorigamtdue" placeholder="Original Amount Due" runat="server" class="form-control" onkeyup="OriginalAmountDue();" onfocusout="OriginFunctionDue();if (this.value=='0.00') this.value='0.00';if (this.value=='') this.value='0.00';" onfocusin="if (this.value=='0.00') this.value='';" onblur="OriDue();" onchange="return functionPrior()" autocomplete='off'></asp:TextBox>
+                                        </td>
+                                        <td style="padding-left: 31px;">
+                                            <b>
+                                                <label class="CheckBold" id="lblprideliqdate">Originally Delinquency Date:</label>
+                                            </b>
+                                        </td>
+                                        <td>
+                                            <asp:TextBox ID="txtprideliqdate" runat="server" placeholder="MM/DD/YYYY" class="form-control" MaxLength="10" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="return checkDate(this,event)" autocomplete='off' onchange="return functionPrior()"></asp:TextBox>
+                                        </td>
+                                        <td hidden>
+                                            <p id="OD"></p>
+                                        </td>
+                                        <td hidden>
+                                            <p id="OA"></p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <b>
+                                                <label class="CheckBold" id="lblpriamtpaid">Amount Paid:</label>
+                                            </b>
+                                        </td>
+                                        <td>
+                                            <asp:TextBox ID="txtpriamtpaid" runat="server" placeholder="Amount Paid" class="form-control" onkeyup="Priamountpaid();" onfocusout="PriFunctionpaid();if (this.value=='0.00') this.value='0.00';if (this.value=='') this.value='0.00';" onfocusin="if (this.value=='0.00') this.value='';" onblur="mypriamtpaid();" autocomplete='off' onchange="return functionPrior()"></asp:TextBox>
+                                        </td>
+                                        <td style="padding-left: 31px;">
+                                            <b class="CheckBold">Delinquency Comments:</b>
+                                        </td>
+                                        <td colspan="3">
+                                            <asp:TextBox ID="txtprideliqcommts" runat="server" placeholder="Delinquency Comments" Rows="2" cols="20" class="form-control" Style="resize: none"></asp:TextBox>
+                                        </td>
+                                        <td style="padding-left: 31px;">
+                                            <asp:Button ID="btnpriordelinquenttax" runat="server" Text="Add" class="btn btn-success" Style="height: 32px; padding-top: 3px;" OnClick="btnpriordelinquenttax_Click" OnClientClick="return functionPrior()" />
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
 
-                    <%--Tax Cert Info Modal--%>
-                    <div class="modal fade" id="AddTaxStatus" role="dialog">
-                        <div class="modal-dialog" style="width: 765px;">
-                            <div class="modal-content" style="height: 200px;">
+                    <asp:GridView ID="GrdPriordelinquent" runat="server" AutoGenerateColumns="false" Width="90%" GridLines="None"
+                        DataKeyNames="Id" OnRowCommand="GrdPriordelinquent_RowCommand" OnRowEditing="GrdPriordelinquent_RowEditing"
+                        OnRowUpdating="GrdPriordelinquent_RowUpdating"
+                        EmptyDataText="No Data Found" EmptyDataRowStyle-HorizontalAlign="Center"
+                        OnRowCancelingEdit="GrdPriordelinquent_RowCancelingEdit">
+                        <Columns>
+                            <asp:BoundField ItemStyle-Width="50%" ItemStyle-ForeColor="Black" ItemStyle-Font-Bold="false" DataField="Id" HeaderText="Tax ID" ReadOnly="true" ItemStyle-CssClass="hiddencol" HeaderStyle-CssClass="hiddencol" />
+                            <asp:BoundField ItemStyle-Width="30%" ItemStyle-ForeColor="Black" ItemStyle-Font-Bold="false" DataField="delinquenttaxyear" HeaderText="delinquenttaxyear" ReadOnly="true" />
+                            <asp:BoundField ItemStyle-Width="30%" ItemStyle-ForeColor="Black" ItemStyle-Font-Bold="false" DataField="originalamountdue" HeaderText="originalamountdue" ReadOnly="true" />
+                            <asp:BoundField ItemStyle-Width="20%" ItemStyle-ForeColor="Black" ItemStyle-Font-Bold="false" DataField="originaldelinquencydate" HeaderText="originaldelinquencydate" ReadOnly="true" />
+                            <asp:BoundField ItemStyle-Width="40%" ItemStyle-ForeColor="Black" ItemStyle-Font-Bold="false" DataField="amountpaid" HeaderText="amountpaid" ReadOnly="true" ItemStyle-CssClass="hiddencol" HeaderStyle-CssClass="hiddencol" />
+                            <asp:BoundField ItemStyle-Width="40%" ItemStyle-ForeColor="Black" ItemStyle-Font-Bold="false" DataField="delinquencycomments" HeaderText="delinquencycomments" ReadOnly="true" ItemStyle-CssClass="hiddencol" HeaderStyle-CssClass="hiddencol" />
+                            <asp:TemplateField>
+                                <ItemTemplate>
+                                    <asp:HiddenField ID="HdnSpecialId" runat="server" Value='<%# Bind("Id") %>' />
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                            <asp:TemplateField HeaderText="Edit" ItemStyle-Width="10%">
+                                <ItemTemplate>
+                                    <asp:LinkButton ID="LnkEdit" runat="server" class="glyphicon glyphicon-edit" autopostback="false" CommandName="Edit" Style="height: 30px; margin-left: 8px; margin-bottom: -10px;" ToolTip="Edit" CommandArgument='<%# DataBinder.Eval(Container,"DataItemIndex") %>' CssClass=""></asp:LinkButton>
+                                </ItemTemplate>
+                                <EditItemTemplate>
+                                    <asp:LinkButton ID="LnkUpdate" runat="server" class="glyphicon glyphicon-ok" autopostback="false" Style="height: 30px; margin-left: 8px;" ToolTip="Update" CommandName="Update" OnClientClick="return functionPrior()" />
+                                    <asp:LinkButton ID="Cancel" runat="server" class="glyphicon glyphicon-remove" autopostback="false" Style="height: 30px; margin-left: 10px;" ToolTip="Cancel" CommandName="Cancel" />
+                                </EditItemTemplate>
+                            </asp:TemplateField>
+                            <asp:TemplateField HeaderText="Delete" ItemStyle-Width="35%">
+                                <ItemTemplate>
+                                    <asp:LinkButton ID="btn_DeleteSpecial" runat="server" Style="margin-left: 12px;" autopostback="false" class="glyphicon glyphicon-trash" OnClientClick="javascript : return confirm('Are you sure, want to delete this Row?');" CommandName="DeleteSpecial" ToolTip="Delete" CommandArgument='<%# DataBinder.Eval(Container,"DataItemIndex") %>' CssClass=""></asp:LinkButton>
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                        </Columns>
+                        <AlternatingRowStyle BackColor="#f3f2ea" />
+                        <HeaderStyle BackColor="#d9241b" ForeColor="white" />
+                        <EmptyDataTemplate>
+                            <div style="color: red; font-weight: bold;" align="center">No records found.</div>
+                        </EmptyDataTemplate>
+                    </asp:GridView>
+                </asp:Panel>
+
+                <%--Tax Cert Info Modal--%>
+                <div class="modal fade" id="AddTaxStatus" role="dialog">
+                    <div class="modal-dialog" style="width: 765px;">
+                        <div class="modal-content" style="height: 200px;">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                <h4 class="modal-title">Order Status</h4>
+                                <div style="border-top: 1px solid #e5e5e5;"></div>
+                            </div>
+                            <div class="modal-body">
+                                <table style="width: 700px;">
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <b style="white-space: nowrap;" class="CheckBold">Order Status: </b>
+                                            </td>
+                                            <td>
+                                                <asp:DropDownList ID="ddlordstatus" runat="server" class="form-control" Style="width: 180px;">
+                                                    <asp:ListItem>--Select Status--</asp:ListItem>
+                                                    <asp:ListItem>Ordered</asp:ListItem>
+                                                    <asp:ListItem>Attempted</asp:ListItem>
+                                                </asp:DropDownList>
+                                            </td>
+                                            <td>
+                                                <b style="white-space: nowrap;" class="CheckBold">Comments: </b>
+                                            </td>
+                                            <td>
+                                                <asp:TextBox ID="txtComments" runat="server" class="form-control" Style="width: 300px;" autocomplete="off" />
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <td colspan="4">
+                                                <div class="col-xs-12" style="left: 250px; padding-top: 10px">
+                                                    <asp:Label ID="lbltaxcerterror" runat="server" Class="CheckBold" Style="color: red; white-space: nowrap" />
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <br />
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>
+                                                <div class="col-xs-12" style="left: 300px">
+
+                                                    <asp:Button ID="btnModalSave" runat="server" Text="Save" class="btn btn-success" Style="height: 28px; padding-top: 3px;" OnClick="MdlOrderStatus_Click" OnClientClick="return userValid();" />
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="modal fade" role="dialog" id="AddNotes">
+                    <div class="modal-dialog">
+                        <div class="modal-content" style="height: 280px;">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                <h4 class="modal-title">Add Note</h4>
+                                <div style="border-top: 1px solid #e5e5e5;"></div>
+                            </div>
+                            <div class="modal-body" style="padding-top: 0px;">
+                                <table>
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <label class="CheckBold">Note Text:</label>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <textarea id="txtnotes" runat="server" rows="5" style="resize: none; width: 550px;"></textarea>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <div>
+                                    <asp:Label runat="server" Class="CheckBold" Style="color: red; white-space: nowrap" ID="lbladdnoteserror" />
+                                </div>
+                                <br />
+                                <div>
+                                    <div class="col-xs-12">
+                                        <asp:Button ID="btnaddnotes" runat="server" Text="Submit" class="btn btn-success" Style="height: 28px; padding-top: 3px;" OnClick="btnaddnotes_Click" OnClientClick="return functionaddnoteerror();" />
+                                        <button type="button" class="btn btn-info" data-dismiss="modal" style="height: 28px; padding-top: 3px;">Cancel</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <asp:Panel ID="PanelAuthorityInfo" class="panel panel-default" runat="server" Visible="false">
+                    <div class="modal fade" id="ModalAuthorityStatus" role="dialog" runat="server">
+                        <div class="modal-dialog modal-lg">
+                            <div class="modal-content" style="width: 100%; height: 400px; margin-left: 0px;">
                                 <div class="modal-header">
-                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                    <h4 class="modal-title">Order Status</h4>
+                                    <button type="button" id="test" class="close" data-dismiss="modal">&times;</button>
+                                    <h4 class="modal-title">Tax Authority</h4>
                                     <div style="border-top: 1px solid #e5e5e5;"></div>
                                 </div>
                                 <div class="modal-body">
-                                    <table style="width: 700px;">
-                                        <tbody>
-                                            <tr>
-                                                <td>
-                                                    <b style="white-space: nowrap;" class="CheckBold">Order Status: </b>
-                                                </td>
-                                                <td>
-                                                    <asp:DropDownList ID="ddlordstatus" runat="server" class="form-control" Style="width: 180px;">
-                                                        <asp:ListItem>--Select Status--</asp:ListItem>
-                                                        <asp:ListItem>Ordered</asp:ListItem>
-                                                        <asp:ListItem>Attempted</asp:ListItem>
-                                                    </asp:DropDownList>
-                                                </td>
-                                                <td>
-                                                    <b style="white-space: nowrap;" class="CheckBold">Comments: </b>
-                                                </td>
-                                                <td>
-                                                    <asp:TextBox ID="txtComments" runat="server" class="form-control" Style="width: 300px;" autocomplete="off" />
-                                                </td>
-                                            </tr>
 
-                                            <tr>
-                                                <td colspan="4">
-                                                    <div class="col-xs-12" style="left: 250px; padding-top: 10px">
-                                                        <asp:Label ID="lbltaxcerterror" runat="server" Class="CheckBold" Style="color: red; white-space: nowrap" />
+                                    <div class="panel-body" style="margin-top: 18px;">
+                                        <div class="tab-content">
+                                            <div class="tab-pane fade in active" id="tab1primary151">
+                                                <div class="col-md-12">
+                                                    <div class="col-md-6">
+                                                        <div class="col-md-12">
+                                                            <asp:GridView ID="gvtaxauthorities" runat="server" ShowHeaderWhenEmpty="true" AutoGenerateColumns="false"
+                                                                Width="225%" GridLines="None" Style="white-space: nowrap;">
+                                                                <Columns>
+                                                                    <asp:BoundField ItemStyle-Width="30%" DataField="AgencyId" HeaderText="Agency Id" />
+                                                                    <asp:BoundField ItemStyle-Width="30%" DataField="TaxAuthorityName" HeaderText="Tax Authority Name" />
+                                                                    <asp:BoundField ItemStyle-Width="30%" DataField="TaxAgencyType" HeaderText="Tax Type" />
+                                                                    <asp:BoundField ItemStyle-Width="30%" DataField="TaxAgencyState" HeaderText="State" />
+                                                                    <asp:BoundField ItemStyle-Width="30%" DataField="Phone" HeaderText="Phone" />
+                                                                    <asp:BoundField ItemStyle-Width="10%" DataField="TaxYearStartDate" HeaderText="Tax Year Start Date" ItemStyle-CssClass="hiddencol" HeaderStyle-CssClass="hiddencol" />
+                                                                    <asp:TemplateField HeaderText="Select Authority">
+                                                                        <EditItemTemplate>
+                                                                            <asp:CheckBox ID="chkauthority" runat="server" Style="margin-left: 55px;" />
+                                                                        </EditItemTemplate>
+                                                                        <ItemTemplate>
+                                                                            <asp:CheckBox ID="chkauthority" runat="server" Style="margin-left: 55px;" />
+                                                                        </ItemTemplate>
+                                                                    </asp:TemplateField>
+                                                                </Columns>
+                                                                <AlternatingRowStyle BackColor="#f3f2ea" />
+                                                                <HeaderStyle BackColor="#d9241b" ForeColor="white" />
+                                                            </asp:GridView>
+                                                        </div>
                                                     </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
                                                     <br />
-                                                </td>
-                                            </tr>
-
-                                            <tr>
-                                                <td>
-                                                    <div class="col-xs-12" style="left: 300px">
-
-                                                        <asp:Button ID="btnModalSave" runat="server" Text="Save" class="btn btn-success" Style="height: 28px; padding-top: 3px;" OnClick="MdlOrderStatus_Click" OnClientClick="return userValid();" />
+                                                    <br />
+                                                    <div style="margin-top: 85px">
+                                                        <asp:Label runat="server" ID="lblagency" CssClass="CheckBold" ForeColor="Red"></asp:Label>
                                                     </div>
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-
-                    <div class="modal fade" role="dialog" id="AddNotes">
-                        <div class="modal-dialog">
-                            <div class="modal-content" style="height: 280px;">
-                                <div class="modal-header">
-                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                    <h4 class="modal-title">Add Note</h4>
-                                    <div style="border-top: 1px solid #e5e5e5;"></div>
-                                </div>
-                                <div class="modal-body" style="padding-top: 0px;">
-                                    <table>
-                                        <tbody>
-                                            <tr>
-                                                <td>
-                                                    <label class="CheckBold">Note Text:</label>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <textarea id="txtnotes" runat="server" rows="5" style="resize: none; width: 550px;"></textarea>
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                    <div>
-                                        <asp:Label runat="server" Class="CheckBold" Style="color: red; white-space: nowrap" ID="lbladdnoteserror" />
-                                    </div>
-                                    <br />
-                                    <div>
-                                        <div class="col-xs-12">
-                                            <asp:Button ID="btnaddnotes" runat="server" Text="Submit" class="btn btn-success" Style="height: 28px; padding-top: 3px;" OnClick="btnaddnotes_Click" OnClientClick="return functionaddnoteerror();" />
-                                            <button type="button" class="btn btn-info" data-dismiss="modal" style="height: 28px; padding-top: 3px;">Cancel</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <br />
-
-                    <asp:Panel ID="PanelAuthorityInfo" class="panel panel-default" runat="server" Visible="false">
-                        <div class="modal fade" id="ModalAuthorityStatus" role="dialog" runat="server">
-                            <div class="modal-dialog modal-lg">
-                                <div class="modal-content" style="width: 100%; height: 400px; margin-left: 0px;">
-                                    <div class="modal-header">
-                                        <button type="button" id="test" class="close" data-dismiss="modal">&times;</button>
-                                        <h4 class="modal-title">Tax Authority</h4>
-                                        <div style="border-top: 1px solid #e5e5e5;"></div>
-                                    </div>
-                                    <div class="modal-body">
-
-                                        <div class="panel-body" style="margin-top: 18px;">
-                                            <div class="tab-content">
-                                                <div class="tab-pane fade in active" id="tab1primary151">
-                                                    <div class="col-md-12">
-                                                        <div class="col-md-6">
-                                                            <div class="col-md-12">
-                                                                <asp:GridView ID="gvtaxauthorities" runat="server" ShowHeaderWhenEmpty="true" AutoGenerateColumns="false"
-                                                                    Width="225%" GridLines="None" Style="white-space: nowrap;">
-                                                                    <Columns>
-                                                                        <asp:BoundField ItemStyle-Width="30%" DataField="AgencyId" HeaderText="Agency Id" />
-                                                                        <asp:BoundField ItemStyle-Width="30%" DataField="TaxAuthorityName" HeaderText="Tax Authority Name" />
-                                                                        <asp:BoundField ItemStyle-Width="30%" DataField="TaxAgencyType" HeaderText="Tax Type" />
-                                                                        <asp:BoundField ItemStyle-Width="30%" DataField="TaxAgencyState" HeaderText="State" />
-                                                                        <asp:BoundField ItemStyle-Width="30%" DataField="Phone" HeaderText="Phone" />
-                                                                        <asp:BoundField ItemStyle-Width="10%" DataField="TaxYearStartDate" HeaderText="Tax Year Start Date" ItemStyle-CssClass="hiddencol" HeaderStyle-CssClass="hiddencol" />
-                                                                        <asp:TemplateField HeaderText="Select Authority">
-                                                                            <EditItemTemplate>
-                                                                                <asp:CheckBox ID="chkauthority" runat="server" Style="margin-left: 55px;" />
-                                                                            </EditItemTemplate>
-                                                                            <ItemTemplate>
-                                                                                <asp:CheckBox ID="chkauthority" runat="server" Style="margin-left: 55px;" />
-                                                                            </ItemTemplate>
-                                                                        </asp:TemplateField>
-                                                                    </Columns>
-                                                                    <AlternatingRowStyle BackColor="#f3f2ea" />
-                                                                    <HeaderStyle BackColor="#d9241b" ForeColor="white" />
-                                                                </asp:GridView>
-                                                            </div>
-                                                        </div>
-                                                        <br />
-                                                        <br />
-                                                        <div style="margin-top: 85px">
-                                                            <asp:Label runat="server" ID="lblagency" CssClass="CheckBold" ForeColor="Red"></asp:Label>
-                                                        </div>
-                                                        <div class="col-md-8">
-                                                            <asp:Button ID="btnaddauthority" runat="server" Text="Add" OnClick="btnaddauthority_Click" class="btn btn-success" Style="height: 28px; padding-top: 3px; margin-right: -295px; margin-top: 25px;" OnClientClick="return validateCheckBoxes()" />
-                                                        </div>
+                                                    <div class="col-md-8">
+                                                        <asp:Button ID="btnaddauthority" runat="server" Text="Add" OnClick="btnaddauthority_Click" class="btn btn-success" Style="height: 28px; padding-top: 3px; margin-right: -295px; margin-top: 25px;" OnClientClick="return validateCheckBoxes()" />
                                                     </div>
                                                 </div>
                                             </div>
@@ -6814,87 +6855,86 @@
                                 </div>
                             </div>
                         </div>
-                    </asp:Panel>
+                    </div>
+                </asp:Panel>
 
-                    <asp:Panel ID="PanelTaxtype" class="panel panel-default" runat="server" Visible="false">
-                        <div class="modal fade" id="Modaltaxtype" role="dialog">
-                            <div class="modal-dialog modal-lg">
-                                <div class="modal-content" style="width: 490px;">
-                                    <div class="modal-header">
-                                        <button type="button" id="test1" class="close" data-dismiss="modal">&times;</button>
-                                        <h4 class="modal-title">Tax Type</h4>
-                                        <div style="border-top: 1px solid #e5e5e5;"></div>
-                                    </div>
-                                    <div class="modal-body">
-                                        <div class="panel-body">
-                                            <div class="tab-content">
-                                                <div class="tab-pane fade in active" id="tabtaxtype">
-                                                    <asp:DropDownList ID="drotxttype" runat="server" CssClass="form-control" Style="width: 300px;">
-                                                        <asp:ListItem>County</asp:ListItem>
-                                                        <asp:ListItem>City</asp:ListItem>
-                                                        <asp:ListItem>Town</asp:ListItem>
-                                                        <asp:ListItem>Township/County</asp:ListItem>
-                                                        <asp:ListItem>Incorp Village</asp:ListItem>
-                                                        <asp:ListItem>CityAndSchool</asp:ListItem>
-                                                        <asp:ListItem>School District</asp:ListItem>
-                                                        <asp:ListItem>JuniorColleges</asp:ListItem>
-                                                        <asp:ListItem>Irrigation District</asp:ListItem>
-                                                        <asp:ListItem>Utility District</asp:ListItem>
-                                                        <asp:ListItem>CapitalImprovementDistrict</asp:ListItem>
-                                                        <asp:ListItem>Waste Fee District</asp:ListItem>
-                                                        <asp:ListItem>Water/Sewer Rental</asp:ListItem>
-                                                        <asp:ListItem>Subdivision Maint. Escrowed</asp:ListItem>
-                                                        <asp:ListItem>Subdivision Maint. Non-Escrowed</asp:ListItem>
-                                                        <asp:ListItem>BondAuthority</asp:ListItem>
-                                                        <asp:ListItem>Misc. Charges District</asp:ListItem>
-                                                        <asp:ListItem>Borough</asp:ListItem>
-                                                        <asp:ListItem>AssessmentDistrict</asp:ListItem>
-                                                        <asp:ListItem>CentralAppraisalTaxingAuthority</asp:ListItem>
-                                                        <asp:ListItem>CentralCollectionTaxingAuthority</asp:ListItem>
-                                                        <asp:ListItem>Unsecured County Taxes</asp:ListItem>
-                                                        <asp:ListItem>MobileHomeAuthority</asp:ListItem>
-                                                        <asp:ListItem>CountyCollectedByOtherTaxingAuthority</asp:ListItem>
-                                                        <asp:ListItem>OtherTaxes</asp:ListItem>
-                                                    </asp:DropDownList>
-                                                </div>
-                                                <div>
-                                                    <asp:Button ID="btntaxtypeupdate" OnClick="btntaxtypeupdate_Click" runat="server" Text="Update" class="btn btn-success" Style="height: 28px; padding-top: 3px; margin-top: 25px;" />
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </asp:Panel>
-                    <br />
-                    <%--Logout Reason Modal--%>
-                    <div class="modal fade" id="ModallogoutReason" role="dialog">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
+                <asp:Panel ID="PanelTaxtype" class="panel panel-default" runat="server" Visible="false">
+                    <div class="modal fade" id="Modaltaxtype" role="dialog">
+                        <div class="modal-dialog modal-lg">
+                            <div class="modal-content" style="width: 490px;">
                                 <div class="modal-header">
-                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                    <h4 class="modal-title">Logout Reason</h4>
+                                    <button type="button" id="test1" class="close" data-dismiss="modal">&times;</button>
+                                    <h4 class="modal-title">Tax Type</h4>
                                     <div style="border-top: 1px solid #e5e5e5;"></div>
                                 </div>
                                 <div class="modal-body">
                                     <div class="panel-body">
                                         <div class="tab-content">
-                                            <div class="tab-pane fade in active" id="tab1primary153">
-                                                <div class="col-md-12">
-                                                    <div class="col-md-6">
-                                                        <asp:TextBox runat="server" TextMode="MultiLine" ID="txtreason" Style="resize: none; width: 480px;" CssClass="form-control"></asp:TextBox>
-                                                    </div>
-                                                    <br />
-                                                    <br />
-                                                    <br />
-                                                    <div>
-                                                        <asp:Label runat="server" Class="CheckBold" Style="color: red; white-space: nowrap" ID="lbllogouterror" />
-                                                    </div>
-                                                    <div class="col-md-12" style="margin-top: 5px;">
-                                                        <asp:Button ID="logoutreason" runat="server" Text="Logout" class="btn btn-success" OnClick="logoutreason_Click" OnClientClick="return functionlogouterror();" />
-                                                        <button type="button" class="btn btn-default btn-ok" data-dismiss="modal">Cancel</button>
-                                                    </div>
+                                            <div class="tab-pane fade in active" id="tabtaxtype">
+                                                <asp:DropDownList ID="drotxttype" runat="server" CssClass="form-control" Style="width: 300px;">
+                                                    <asp:ListItem>County</asp:ListItem>
+                                                    <asp:ListItem>City</asp:ListItem>
+                                                    <asp:ListItem>Town</asp:ListItem>
+                                                    <asp:ListItem>Township/County</asp:ListItem>
+                                                    <asp:ListItem>Incorp Village</asp:ListItem>
+                                                    <asp:ListItem>CityAndSchool</asp:ListItem>
+                                                    <asp:ListItem>School District</asp:ListItem>
+                                                    <asp:ListItem>JuniorColleges</asp:ListItem>
+                                                    <asp:ListItem>Irrigation District</asp:ListItem>
+                                                    <asp:ListItem>Utility District</asp:ListItem>
+                                                    <asp:ListItem>CapitalImprovementDistrict</asp:ListItem>
+                                                    <asp:ListItem>Waste Fee District</asp:ListItem>
+                                                    <asp:ListItem>Water/Sewer Rental</asp:ListItem>
+                                                    <asp:ListItem>Subdivision Maint. Escrowed</asp:ListItem>
+                                                    <asp:ListItem>Subdivision Maint. Non-Escrowed</asp:ListItem>
+                                                    <asp:ListItem>BondAuthority</asp:ListItem>
+                                                    <asp:ListItem>Misc. Charges District</asp:ListItem>
+                                                    <asp:ListItem>Borough</asp:ListItem>
+                                                    <asp:ListItem>AssessmentDistrict</asp:ListItem>
+                                                    <asp:ListItem>CentralAppraisalTaxingAuthority</asp:ListItem>
+                                                    <asp:ListItem>CentralCollectionTaxingAuthority</asp:ListItem>
+                                                    <asp:ListItem>Unsecured County Taxes</asp:ListItem>
+                                                    <asp:ListItem>MobileHomeAuthority</asp:ListItem>
+                                                    <asp:ListItem>CountyCollectedByOtherTaxingAuthority</asp:ListItem>
+                                                    <asp:ListItem>OtherTaxes</asp:ListItem>
+                                                </asp:DropDownList>
+                                            </div>
+                                            <div>
+                                                <asp:Button ID="btntaxtypeupdate" OnClick="btntaxtypeupdate_Click" runat="server" Text="Update" class="btn btn-success" Style="height: 28px; padding-top: 3px; margin-top: 25px;" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </asp:Panel>
+                <%--Logout Reason Modal--%>
+                <div class="modal fade" id="ModallogoutReason" role="dialog">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                <h4 class="modal-title">Logout Reason</h4>
+                                <div style="border-top: 1px solid #e5e5e5;"></div>
+                            </div>
+                            <div class="modal-body">
+                                <div class="panel-body">
+                                    <div class="tab-content">
+                                        <div class="tab-pane fade in active" id="tab1primary153">
+                                            <div class="col-md-12">
+                                                <div class="col-md-6">
+                                                    <asp:TextBox runat="server" TextMode="MultiLine" ID="txtreason" Style="resize: none; width: 480px;" CssClass="form-control"></asp:TextBox>
+                                                </div>
+                                                <br />
+                                                <br />
+                                                <br />
+                                                <div>
+                                                    <asp:Label runat="server" Class="CheckBold" Style="color: red; white-space: nowrap" ID="lbllogouterror" />
+                                                </div>
+                                                <div class="col-md-12" style="margin-top: 5px;">
+                                                    <asp:Button ID="logoutreason" runat="server" Text="Logout" class="btn btn-success" OnClick="logoutreason_Click" OnClientClick="return functionlogouterror();" />
+                                                    <button type="button" class="btn btn-default btn-ok" data-dismiss="modal">Cancel</button>
                                                 </div>
                                             </div>
                                         </div>
@@ -6903,150 +6943,149 @@
                             </div>
                         </div>
                     </div>
-                    <br />
-                    <div class="panel panel-default" tabindex="50">
-                        <div class="panel-heading" data-toggle="collapse" data-target="#collapse2">
-                            <h4 class="panel-title">
-                                <strong style="cursor: pointer; text-decoration: underline;">Tax Cert Info</strong><i class="indicator glyphicon glyphicon-chevron-down pull-left"></i>
-                            </h4>
-                        </div>
-                        <div id="collapse2" class="panel-collapse collapse in">
-                            <div class="panel-body">
-                                <table style="width: 1083px;">
-                                    <tbody>
-                                        <tr>
-                                            <td class="colorbold">
-                                                <label for="txtdate1"><b class="CheckBold">Expected Date:</b></label>
-                                            </td>
-                                            <td style="width: 215px">
-                                                <input type="text" id="date1" name="txtdate1" runat="server" class="form-control" placeholder="MM/DD/YYYY" maxlength="10" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="return checkDate(this,event)" style="height: 35px; width: 160px; background-color: white;" autocomplete="off" />
-                                            </td>
-                                            <td class="colorbold">
-                                                <label for="txtdate2"><b class="CheckBold">Followup Date:</b></label>
-                                            </td>
-                                            <td style="width: 190px">
-                                                <input runat="server" id="date2" name="txtdate2" class="form-control" placeholder="MM/DD/YYYY" maxlength="10" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="return checkDate(this,event)" style="height: 35px; width: 160px; background-color: white;" autocomplete="off" />
-                                            </td>
-                                            <td colspan="4">
-                                                <button type="button" id="btneditdates" runat="server" class="btn btn-success" onclick="editfunction()">Edit</button>
-                                                <button type="button" id="btnTaxOrderStatus" runat="server" class="btn btn-success" data-toggle="modal" data-target="#AddTaxStatus">Add Tax Status</button>
-                                                <button type="button" id="btnsavedates" runat="server" class="btn btn-success" style="visibility: hidden; display: none" onserverclick="btnEditDatesSave_Click">Save</button>
-                                                <button type="button" id="btncanceldates" runat="server" style="visibility: hidden; display: none" class="btn btn-success" onclick="Cancelfunction()">Cancel</button>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-
-                                <div id="TaxStatus" runat="server" style="height: auto; width: 100%; overflow: auto; margin-top: -15px;">
-                                    <asp:Panel ID="PnlTaxStatus" runat="server">
-                                        <table class="table table-striped table-hover">
-                                            <thead style="background-color: #d9241b; color: #fff;">
-                                                <tr>
-                                                    <asp:GridView ID="GvTaxStatus" runat="server" ShowHeaderWhenEmpty="true" AutoGenerateColumns="false"
-                                                        Width="100%" GridLines="None">
-                                                        <Columns>
-                                                            <asp:BoundField ItemStyle-Width="30%" DataField="orderstatus" HeaderText="Order Status" />
-                                                            <asp:BoundField ItemStyle-Width="30%" DataField="createddate" HeaderText="Created Date" />
-                                                            <asp:BoundField ItemStyle-Width="30%" DataField="comments" HeaderText="Comments" />
-                                                            <asp:BoundField ItemStyle-Width="30%" DataField="enteredby" HeaderText="Entered By" />
-                                                        </Columns>
-                                                        <AlternatingRowStyle BackColor="#f3f2ea" />
-                                                        <HeaderStyle BackColor="#d9241b" ForeColor="white" />
-                                                    </asp:GridView>
-                                                </tr>
-                                            </thead>
-                                        </table>
-                                    </asp:Panel>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <br />
-
-                    <%--Add Notes--%>
-                    <div class="panel panel-default" tabindex="51" style="width: 1322px; margin-bottom: 0px;">
-                        <div class="panel-heading" data-toggle="collapse" data-target="#collapsenotes">
-                            <h4 class="panel-title">
-                                <strong style="cursor: pointer; text-decoration: underline;">Notes</strong><i class="indicator glyphicon glyphicon-chevron-down pull-left"></i>
-                            </h4>
-                        </div>
-                        <div id="collapsenotes" class="panel-collapse collapse in">
-                            <div class="panel-body">
-                                <table>
-                                    <tbody>
-                                        <tr>
-                                            <td>
-                                                <i class="glyphicon glyphicon-file" style="color: #337ab7"></i>
-                                                <a data-toggle="modal" href="#AddNotes" style="font-weight: 800;">Add Notes</a>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                        <div id="Addnotesdiv" runat="server" style="height: auto; width: 100%; overflow: auto; margin-top: -15px;">
-                            <asp:Panel ID="Panel2" runat="server">
-                                <table class="table table-striped table-hover">
-                                    <thead style="background-color: #d9241b; color: #fff;">
-                                        <tr>
-                                            <asp:GridView ID="GvAddNotes" runat="server" ShowHeaderWhenEmpty="true" AutoGenerateColumns="false"
-                                                Width="98%" GridLines="None">
-                                                <Columns>
-                                                    <asp:BoundField ItemStyle-Width="30%" DataField="note" HeaderText="Note" />
-                                                    <asp:BoundField ItemStyle-Width="30%" DataField="note_type" HeaderText="Note Type" />
-                                                    <asp:BoundField ItemStyle-Width="30%" DataField="added" HeaderText="Added" />
-                                                    <asp:BoundField ItemStyle-Width="30%" DataField="enterby" HeaderText="Entered By" />
-                                                </Columns>
-                                                <AlternatingRowStyle BackColor="#f3f2ea" />
-                                                <HeaderStyle BackColor="#d9241b" ForeColor="white" />
-                                            </asp:GridView>
-                                        </tr>
-                                    </thead>
-                                </table>
-                            </asp:Panel>
-                        </div>
-                    </div>
-                    <br />
-                    <br />
-                    <div style="margin-left: 125px;">
-                        <table style="width: 995px;">
-                            <tr>
-                                <td>
-                                    <b class="CheckBold">Order Comments:</b>
-                                </td>
-                                <td>
-                                    <textarea runat="server" rows="2" id="txttotalcomments" class="form-control" style="resize: none" tabindex="51"></textarea>
-                                </td>
-                                <td></td>
-                                <td>&nbsp;</td>
-                                <td>
-                                    <b class="CheckBold">Status:</b>
-                                </td>
-                                <td>
-                                    <select class="form-control" id="ddlstatus" runat="server" style="width: 180px;" tabindex="52">
-                                        <option>--Select--</option>
-                                        <option>Completed</option>
-                                        <option>In Process</option>
-                                        <option>Mail Away</option>
-                                        <option>On Hold</option>
-                                        <option>Others</option>
-                                        <option>ParcelID</option>
-                                        <option>Rejected</option>
-                                    </select>
-                                </td>
-                                <td>
-                                    <asp:Button ID="btnsaverecordnew" runat="server" Text="Complete" OnClick="btnsaverecordnew_Click" />
-                                </td>
-                            </tr>
-                        </table>
-                    </div>
-                    <br />
                 </div>
-            </form>
-        </div>
-    
+                <br />
+                <div class="panel panel-default" tabindex="50">
+                    <div class="panel-heading" data-toggle="collapse" data-target="#collapse2">
+                        <h4 class="panel-title">
+                            <strong style="cursor: pointer; text-decoration: underline;">Tax Cert Info</strong><i class="indicator glyphicon glyphicon-chevron-down pull-left"></i>
+                        </h4>
+                    </div>
+                    <div id="collapse2" class="panel-collapse collapse in">
+                        <div class="panel-body">
+                            <table style="width: 1083px;">
+                                <tbody>
+                                    <tr>
+                                        <td class="colorbold">
+                                            <label for="txtdate1"><b class="CheckBold">Expected Date:</b></label>
+                                        </td>
+                                        <td style="width: 215px">
+                                            <input type="text" id="date1" name="txtdate1" runat="server" class="form-control" placeholder="MM/DD/YYYY" maxlength="10" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="return checkDate(this,event)" style="height: 35px; width: 160px; background-color: white;" autocomplete="off" />
+                                        </td>
+                                        <td class="colorbold">
+                                            <label for="txtdate2"><b class="CheckBold">Followup Date:</b></label>
+                                        </td>
+                                        <td style="width: 190px">
+                                            <input runat="server" id="date2" name="txtdate2" class="form-control" placeholder="MM/DD/YYYY" maxlength="10" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="return checkDate(this,event)" style="height: 35px; width: 160px; background-color: white;" autocomplete="off" />
+                                        </td>
+                                        <td colspan="4">
+                                            <button type="button" id="btneditdates" runat="server" class="btn btn-success" onclick="editfunction()">Edit</button>
+                                            <button type="button" id="btnTaxOrderStatus" runat="server" class="btn btn-success" data-toggle="modal" data-target="#AddTaxStatus">Add Tax Status</button>
+                                            <button type="button" id="btnsavedates" runat="server" class="btn btn-success" style="visibility: hidden; display: none" onserverclick="btnEditDatesSave_Click">Save</button>
+                                            <button type="button" id="btncanceldates" runat="server" style="visibility: hidden; display: none" class="btn btn-success" onclick="Cancelfunction()">Cancel</button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
 
-    <footer id="footer">        
+                            <div id="TaxStatus" runat="server" style="height: auto; width: 100%; overflow: auto; margin-top: -15px;">
+                                <asp:Panel ID="PnlTaxStatus" runat="server">
+                                    <table class="table table-striped table-hover">
+                                        <thead style="background-color: #d9241b; color: #fff;">
+                                            <tr>
+                                                <asp:GridView ID="GvTaxStatus" runat="server" ShowHeaderWhenEmpty="true" AutoGenerateColumns="false"
+                                                    Width="100%" GridLines="None">
+                                                    <Columns>
+                                                        <asp:BoundField ItemStyle-Width="30%" DataField="orderstatus" HeaderText="Order Status" />
+                                                        <asp:BoundField ItemStyle-Width="30%" DataField="createddate" HeaderText="Created Date" />
+                                                        <asp:BoundField ItemStyle-Width="30%" DataField="comments" HeaderText="Comments" />
+                                                        <asp:BoundField ItemStyle-Width="30%" DataField="enteredby" HeaderText="Entered By" />
+                                                    </Columns>
+                                                    <AlternatingRowStyle BackColor="#f3f2ea" />
+                                                    <HeaderStyle BackColor="#d9241b" ForeColor="white" />
+                                                </asp:GridView>
+                                            </tr>
+                                        </thead>
+                                    </table>
+                                </asp:Panel>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br />
+
+                <%--Add Notes--%>
+                <div class="panel panel-default" tabindex="51" style="width: 1322px; margin-bottom: 0px;">
+                    <div class="panel-heading" data-toggle="collapse" data-target="#collapsenotes">
+                        <h4 class="panel-title">
+                            <strong style="cursor: pointer; text-decoration: underline;">Notes</strong><i class="indicator glyphicon glyphicon-chevron-down pull-left"></i>
+                        </h4>
+                    </div>
+                    <div id="collapsenotes" class="panel-collapse collapse in">
+                        <div class="panel-body">
+                            <table>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <i class="glyphicon glyphicon-file" style="color: #337ab7"></i>
+                                            <a data-toggle="modal" href="#AddNotes" style="font-weight: 800;">Add Notes</a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div id="Addnotesdiv" runat="server" style="height: auto; width: 100%; overflow: auto; margin-top: -15px;">
+                        <asp:Panel ID="Panel2" runat="server">
+                            <table class="table table-striped table-hover">
+                                <thead style="background-color: #d9241b; color: #fff;">
+                                    <tr>
+                                        <asp:GridView ID="GvAddNotes" runat="server" ShowHeaderWhenEmpty="true" AutoGenerateColumns="false"
+                                            Width="98%" GridLines="None">
+                                            <Columns>
+                                                <asp:BoundField ItemStyle-Width="30%" DataField="note" HeaderText="Note" />
+                                                <asp:BoundField ItemStyle-Width="30%" DataField="note_type" HeaderText="Note Type" />
+                                                <asp:BoundField ItemStyle-Width="30%" DataField="added" HeaderText="Added" />
+                                                <asp:BoundField ItemStyle-Width="30%" DataField="enterby" HeaderText="Entered By" />
+                                            </Columns>
+                                            <AlternatingRowStyle BackColor="#f3f2ea" />
+                                            <HeaderStyle BackColor="#d9241b" ForeColor="white" />
+                                        </asp:GridView>
+                                    </tr>
+                                </thead>
+                            </table>
+                        </asp:Panel>
+                    </div>
+                </div>
+                <br />
+                <br />
+                <div style="margin-left: 125px;">
+                    <table style="width: 995px;">
+                        <tr>
+                            <td>
+                                <b class="CheckBold">Order Comments:</b>
+                            </td>
+                            <td>
+                                <textarea runat="server" rows="2" id="txttotalcomments" class="form-control" style="resize: none" tabindex="51"></textarea>
+                            </td>
+                            <td></td>
+                            <td>&nbsp;</td>
+                            <td>
+                                <b class="CheckBold">Status:</b>
+                            </td>
+                            <td>
+                                <select class="form-control" id="ddlstatus" runat="server" style="width: 180px;" tabindex="52">
+                                    <option>--Select--</option>
+                                    <option>Completed</option>
+                                    <option>In Process</option>
+                                    <option>Mail Away</option>
+                                    <option>On Hold</option>
+                                    <option>Others</option>
+                                    <option>ParcelID</option>
+                                    <option>Rejected</option>
+                                </select>
+                            </td>
+                            <td>
+                                <asp:Button ID="btnsaverecordnew" class="btn btn-success" runat="server" Text="Complete" OnClick="btnsaverecordnew_Click" />
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <br />
+            </div>
+        </form>
+    </div>
+    <footer id="footer">
         <div class="innertube" style="margin-bottom: 0px">
             <p style="margin-bottom: 0px; font-family: Roboto,-apple-system,BlinkMacSystemFont,Segoe UI,Oxygen,Ubuntu,Cantarell,Fira San,Droid Sans,Helvetica Neue,sans-serif;">
                 2019. All rights reserved | Designed & Developed by<a href="http://stringinfo.com" target="_blank" style="color: red; clear: both;"> String Information Services</a>

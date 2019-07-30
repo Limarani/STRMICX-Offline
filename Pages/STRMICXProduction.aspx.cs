@@ -3339,13 +3339,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
             {
                 taxbill.SelectedIndex = 2;
             }
-            //else if (Convert.ToDateTime(test) > Convert.ToDateTime(currentdate))
-            //{
-            //    ClientScript.RegisterStartupScript(this.GetType(), "alertMessage", "alert('Delnquent date should not be less than current date')", true);
-            //    return;
-            //}
-
-            //taxbill.Disabled = true;
+         
         }
     }
 
