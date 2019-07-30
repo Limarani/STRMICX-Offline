@@ -802,6 +802,12 @@ public partial class Pages_STRMICXOrderStatus : System.Web.UI.Page
     }
 
     string username = "";
+    protected void lstuserdetails_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        username = lstuserdetails.SelectedItem.Text;
+    }
+
+    //Balaji
     protected void btnassign_Click(object sender, EventArgs e)
     {
         string unassignedorder = string.Empty;
@@ -828,7 +834,7 @@ public partial class Pages_STRMICXOrderStatus : System.Web.UI.Page
                 county = row.Cells[2].Text;
                 status = row.Cells[3].Text;
                 priority = row.Cells[4].Text;
-                usr = username;
+                usr = lstuserdetails.SelectedItem.Text; 
                 k_op = row.Cells[5].Text;
                 dttable.Rows.Add(row.Cells[0].Text, row.Cells[1].Text, row.Cells[2].Text, row.Cells[3].Text, row.Cells[4].Text, row.Cells[5].Text);
 
@@ -839,7 +845,7 @@ public partial class Pages_STRMICXOrderStatus : System.Web.UI.Page
                 {
                     if (dsfetchuser.Tables[0].Rows.Count > 0)
                     {
-                        if (status != "Key Started")
+                        if (status != "Key Started" && status != "Qc Started" && status != "Key Done")
                         {
                             query = "update record_status set K1_OP='" + usr + "',k1=0,qc=0,status=0,Pend='0',Tax='0',Parcel='0' where Order_No='" + orderno + "'";
                             con.ExecuteSPNonQuery(query);
@@ -902,7 +908,7 @@ public partial class Pages_STRMICXOrderStatus : System.Web.UI.Page
                 county = row.Cells[2].Text;
                 status = row.Cells[3].Text;
                 priority = row.Cells[4].Text;
-                usr = username;
+                usr = lstuserdetails.SelectedItem.Text; 
                 k_op = row.Cells[5].Text;
                 dttable.Rows.Add(row.Cells[0].Text, row.Cells[1].Text, row.Cells[2].Text, row.Cells[3].Text, row.Cells[4].Text, row.Cells[5].Text);
 
@@ -913,14 +919,14 @@ public partial class Pages_STRMICXOrderStatus : System.Web.UI.Page
                 {
                     if (dsfetchuser.Tables[0].Rows.Count > 0)
                     {
-                        if (status != "QC Started")
+                        if (status != "Qc Started")
                         {
                             query = "update record_status set QC_OP ='" + usr + "',pend='0',Parcel='0',Tax='0' where Order_No='" + orderno + "'";
                             con.ExecuteSPNonQuery(query);
                             for (int i = dttable.Rows.Count - 1; i >= 0; i--)
                             {
                                 DataRow dr = dttable.Rows[i];
-                                if (dr["status"].ToString() != "QC Started")
+                                if (dr["status"].ToString() != "Qc Started")
                                 {
                                     dr.Delete();
                                 }
@@ -950,10 +956,7 @@ public partial class Pages_STRMICXOrderStatus : System.Web.UI.Page
 
         btnordershow_Click(sender, e);
     }
-    protected void lstuserdetails_SelectedIndexChanged(object sender, EventArgs e)
-    {
-        username = lstuserdetails.SelectedItem.Text;
-    }
+   
 
     //protected void Hold_Click(object sender, EventArgs e)
     //{
@@ -1146,7 +1149,7 @@ public partial class Pages_STRMICXOrderStatus : System.Web.UI.Page
         btnordershow_Click(sender, e);
     }
 
-    //balaji
+ 
     protected void UnLock_Click(object sender, EventArgs e)
     {
         if (txtfrmdate.Text != "")
