@@ -900,7 +900,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
             {
                 dstest = gl.fetchwebsite(lblord.Text, AgencyId);
                 update = gl.fetchwebsiteupdated(lblord.Text, AgencyId, LblTaxID.Text);
-                dtfetchauthority1 = gl.FetchTaxAuthoritywebsiteDetails(lblord.Text, LblTaxID.Text, LblAgencyID.Text);
+                dtfetchauthority1 = gl.FetchTaxAuthoritywebsiteDetails(lblord.Text, LblTaxID.Text, LblAgencyID.Text);                                
                 gridwebsite.DataSource = dtfetchauthority1;
                 gridwebsite.DataBind();
             }
@@ -908,6 +908,20 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
             DataTable dtwebsite = new DataTable();
             if (dtfetchauthority1.Rows.Count > 0)
             {
+                for (int i = dtfetchauthority1.Rows.Count - 1; i >= 0; i--)
+                {
+                    DataRow dr = dtfetchauthority1.Rows[i];
+                    string url = dr["url"].ToString();
+
+                    if (!url.Contains("http://"))
+                    {
+                        string test = "http://" + url.Trim();
+                        string updateweb = "";
+                        updateweb = "update tbl_website set url = '" + test + "' where orderno = '" + lblord.Text + "' and tax_id = '" + LblTaxID.Text + "' and agency_id = '" + LblAgencyID.Text + "'";
+                        gl.ExecuteSPNonQuery(updateweb);
+                    }                    
+                }
+
                 gridwebsite.DataSource = dtfetchauthority1;
                 gridwebsite.DataBind();
             }

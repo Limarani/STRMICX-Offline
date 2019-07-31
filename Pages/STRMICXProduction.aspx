@@ -30,17 +30,17 @@
                 document.getElementById('txtInstallRemain').value = blnce;
 
             }
-           
+
         }
-        
+
         function setTwoNumberDecimal(el) {
             el.value = parseFloat(el.value).toFixed(2);
         };
 
 
         function futureYear(txtDate) {
-          var current=txtDate.value;
-            var today = new Date();   
+            var current = txtDate.value;
+            var today = new Date();
             var yyyy = today.getFullYear();
             if (current > yyyy) {
                 document.getElementById('txtdelitaxyear').value = "";
@@ -50,7 +50,7 @@
         }
 
         function functionTaxBill(txtDate) {
-           
+
             var ddlTaxBill = document.getElementById("paymentfrequency");
             var txBill = ddlTaxBill.options[ddlTaxBill.selectedIndex].innerHTML;
 
@@ -66,25 +66,22 @@
             if (mm < 10) {
                 mm = '0' + mm;
             }
-           
+
             today = mm + '/' + dd + '/' + yyyy;
-            if(txBill=="Annual")
-            {
+            if (txBill == "Annual") {
                 var dt = document.getElementById("delinq1").value;
                 if (Date.parse(dt) >= Date.parse(today)) {
-                   document.getElementById("taxbill").selectedIndex = 1;
-                    
+                    document.getElementById("taxbill").selectedIndex = 1;
+
                 }
                 else if (Date.parse(dt) <= Date.parse(today)) {
                     document.getElementById("taxbill").selectedIndex = 2;
                 }
-                else
-                {
+                else {
                     document.getElementById("taxbill").selectedIndex = 0;
                 }
             }
-            else if(txBill=="Semi-Annual")
-            {
+            else if (txBill == "Semi-Annual") {
                 var dt = document.getElementById("delinq2").value;
                 if (Date.parse(dt) >= Date.parse(today)) {
                     document.getElementById("taxbill").selectedIndex = 1;
@@ -98,8 +95,7 @@
                 }
 
             }
-            else if (txBill == "Tri-Annual")
-            {
+            else if (txBill == "Tri-Annual") {
                 var dt = document.getElementById("delinq3").value;
                 if (Date.parse(dt) >= Date.parse(today)) {
                     document.getElementById("taxbill").selectedIndex = 1;
@@ -112,8 +108,7 @@
                     document.getElementById("taxbill").selectedIndex = 0;
                 }
             }
-            else if (txBill == "Quarterly")
-            {
+            else if (txBill == "Quarterly") {
                 var dt = document.getElementById("delinq4").value;
                 if (Date.parse(dt) >= Date.parse(today)) {
                     document.getElementById("taxbill").selectedIndex = 1;
@@ -126,13 +121,13 @@
                     document.getElementById("taxbill").selectedIndex = 0;
                 }
             }
-            
+
 
         }
 
 
         function functionpayemtfrequency(ddlPay) {
-       // var payfre = document.getElementById("paymentfrequency").value;
+            // var payfre = document.getElementById("paymentfrequency").value;
             var payfre = ddlPay.options[ddlPay.selectedIndex].innerHTML;
             //alert(payfre);
             var Ann = "", Semi = "", Tri = "", Qua = "";
@@ -218,7 +213,7 @@
             }
 
             if (Semi == "Semi-Annual") {
-              
+
                 document.getElementById("instamount1").disabled = false;
                 document.getElementById("instamountpaid1").disabled = false;
                 document.getElementById("instpaiddue1").disabled = false;
@@ -1091,11 +1086,11 @@
                 }
                 if (startDate1 != "") {
                     alert("Installment Date1 Should not be Empty");
-                   // document.getElementById("instdate3").value = "";
+                    // document.getElementById("instdate3").value = "";
                 }
                 if (endDate1 != "") {
                     alert("Installment Date1 Should not be Empty");
-                   // document.getElementById("instdate4").value = "";
+                    // document.getElementById("instdate4").value = "";
                 }
             }
             if (endDate == "") {
@@ -3270,14 +3265,14 @@
                 document.getElementById('txtpayoffgood').style.borderColor = "#ff0000";
                 document.getElementById('lblpayoffgood').style.color = "#ff0000";
                 alert("Date should be greater than current date");
-                
+
                 return true;
             }
         }
 
         function dateValidateFutue(txtpayoffgood) {
-           
-           
+
+
             var today = new Date();
             var dd = today.getDate();
 
@@ -3292,14 +3287,13 @@
             }
 
             today = mm + '/' + dd + '/' + yyyy;
-           
-            if (txtpayoffgood.value == "")
-            {
+
+            if (txtpayoffgood.value == "") {
                 return true;
             }
 
             if (Date.parse(txtpayoffgood.value) <= Date.parse(today)) {
-                
+
                 document.getElementById('txtinitialinstall').style.borderColor = "green";
                 document.getElementById('txtinitialinstall').style.color = "green";
                 return true;
@@ -3767,7 +3761,7 @@
         //Tax Sale
         function applicable() {
             var ddlselect = document.getElementById("txtnotapplicable").value;
-            if (ddlselect == "Yes" || ddlselect=="Select") {
+            if (ddlselect == "Yes" || ddlselect == "Select") {
                 document.getElementById("txtdatetaxsale").disabled = true;
                 document.getElementById("txtlastdayred").disabled = true;
                 document.getElementById("txtdatetaxsale").value = "";
@@ -4408,7 +4402,7 @@
                 numberOfMonths: 1,
                 beforeShowDay: $.datepicker.noWeekends,
                 minDate: dateToday,
-                
+
             });
         });
         var dateToday = new Date();
@@ -4549,7 +4543,7 @@
                     var charCode = e.which;
                 }
                 else { return true; }
-                if ((charCode > 64 && charCode < 91) || (charCode > 96 && charCode < 123) || charCode==32)
+                if ((charCode > 64 && charCode < 91) || (charCode > 96 && charCode < 123) || charCode == 32)
                     return true;
                 else
                     return false;
@@ -4559,6 +4553,30 @@
             }
         }
 
+    </script>
+
+    <script>
+        function openWindow(url) {
+            debugger;
+            var tet = url;
+            var a = "";
+            var aindex = 0;
+            var bindex = 29;
+            if (tet.includes("Pages")) {
+
+                tet = tet.replace(tet.substring(aindex, bindex), "");
+                a = tet;
+                a = a.match(/^https?:/) ? a : '//' + a;
+                window.open(a, '_blank');
+                return;
+            }
+            else {
+
+                url = url.match(/^https?:/) ? url : '//' + url;
+                window.open(url, '_blank');
+                return;
+            }
+        }
     </script>
 
 </head>
@@ -5078,7 +5096,9 @@
                                                     <Columns>
                                                         <asp:TemplateField HeaderText="WebSite" ItemStyle-Width="10%">
                                                             <ItemTemplate>
-                                                                <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl='<%# Bind("url") %>' onclick="window.open(this.href, 'targetWindow', 'toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes');return false;">
+                                                               <%-- <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl='<%# Bind("url") %>' onclick ="openWindow(this.href); return false;">--%>
+                                                                     <%--<asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl='<%# Bind("url", "javascript:openWindow(&#039;{0}&#039;);") %>'>--%>
+                                                                <asp:HyperLink ID="HyperLink1" runat="server" Target="_blank" NavigateUrl='<%# Bind("url") %>'>
                                                                     <asp:Label ID="lnkwebsite3" runat="server" Text='<%# Bind("url") %>'></asp:Label>
                                                                 </asp:HyperLink>
                                                             </ItemTemplate>
@@ -5316,7 +5336,7 @@
                                                         <asp:HiddenField ID="hdntxtbxTaksit4" runat="server" Value=""></asp:HiddenField>
                                                         <div class="form-group" style="margin-bottom: 0px;">
                                                             <label style="text-align: right; clear: both; float: left; margin-right: 12px;" class="CheckBold">Remaining Balance:</label>
-                                                            <input type="text" id="remainingbalance1" class="form-control taxing" runat="server" placeholder="Remaining Balance" style="width: 150px;" onkeypress="return isNumberKey(event)"  onkeyup="RemBalance1(event);" autocomplete="off" tabindex="4" onchange="setTwoNumberDecimal(this)" />
+                                                            <input type="text" id="remainingbalance1" class="form-control taxing" runat="server" placeholder="Remaining Balance" style="width: 150px;" onkeypress="return isNumberKey(event)" onkeyup="RemBalance1(event);" autocomplete="off" tabindex="4" onchange="setTwoNumberDecimal(this)" />
                                                         </div>
                                                     </td>
                                                     <td>
@@ -5374,13 +5394,13 @@
                                                     <td>
                                                         <div class="form-group" style="margin-bottom: 0px;">
                                                             <label style="text-align: right; clear: both; float: left; margin-right: 29px;" class="CheckBold">Delinquent Date:</label>
-                                                            <input type="text" id="delinq2" runat="server" class="form-control taxing" style="width: 150px;" placeholder="MM/DD/YYYY" maxlength="10" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="return checkDate(this,event)" autocomplete="off" tabindex="15" onchange="functionTaxBill(this)"/>
+                                                            <input type="text" id="delinq2" runat="server" class="form-control taxing" style="width: 150px;" placeholder="MM/DD/YYYY" maxlength="10" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="return checkDate(this,event)" autocomplete="off" tabindex="15" onchange="functionTaxBill(this)" />
                                                         </div>
                                                     </td>
                                                     <td>
                                                         <div class="form-group" style="margin-bottom: 0px;">
                                                             <label style="text-align: right; clear: both; float: left; margin-right: 29px;" class="CheckBold">Delinquent Date:</label>
-                                                            <input type="text" id="delinq3" runat="server" class="form-control taxing" style="width: 150px;" placeholder="MM/DD/YYYY" maxlength="10" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="return checkDate(this,event)" autocomplete="off" tabindex="23" onchange="functionTaxBill(this)"/>
+                                                            <input type="text" id="delinq3" runat="server" class="form-control taxing" style="width: 150px;" placeholder="MM/DD/YYYY" maxlength="10" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="return checkDate(this,event)" autocomplete="off" tabindex="23" onchange="functionTaxBill(this)" />
                                                         </div>
                                                     </td>
                                                     <td>
@@ -5503,7 +5523,7 @@
                                                             <option value="3">Tri-Annual</option>
                                                             <option value="4">Quarterly</option>
                                                         </select>
-                                                     <%--   <asp:DropDownList ID="paymentfrequency" runat="server"  style="width: 170px;" TabIndex="39" OnSelectedIndexChanged="paymentfrequency_SelectedIndexChanged" AutoPostBack="true">
+                                                        <%--   <asp:DropDownList ID="paymentfrequency" runat="server"  style="width: 170px;" TabIndex="39" OnSelectedIndexChanged="paymentfrequency_SelectedIndexChanged" AutoPostBack="true">
                                                             <asp:ListItem Value="1">Annual</asp:ListItem>
                                                             <asp:ListItem Value="2">Semi-Annual</asp:ListItem>
                                                             <asp:ListItem Value="3">Tri-Annual</asp:ListItem>
@@ -6319,7 +6339,7 @@
                                             </b>
                                         </td>
                                         <td>
-                                            <asp:TextBox ID="txtinitialinstall" runat="server" class="form-control" placeholder="MM/DD/YYYY" MaxLength="10" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)"  onfocusout ="return dateValidateFutue(this)" autocomplete='off' onchange="return functionDelinquent()">
+                                            <asp:TextBox ID="txtinitialinstall" runat="server" class="form-control" placeholder="MM/DD/YYYY" MaxLength="10" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onfocusout="return dateValidateFutue(this)" autocomplete='off' onchange="return functionDelinquent()">
                                             </asp:TextBox>
                                         </td>
 
@@ -6551,7 +6571,7 @@
                                     <tr>
                                         <td><b class="CheckBold">Inst Remaining:</b></td>
                                         <td>
-                                           <%-- <asp:TextBox ID="txtInstallRemain" runat="server" class="form-control" placeholder="Inst Remaining" Style="margin-bottom: 5px;" onkeyup="SpeAmount1();" onfocusout="SpemyFunctionAmount1();if (this.value=='0.00') this.value='0.00';if (this.value=='') this.value='0.00';" onfocus="this.value='0.00'" onfocusin="if (this.value=='0.00') this.value='';" onblur="mySpe();" autocomplete='off'></asp:TextBox>--%>
+                                            <%-- <asp:TextBox ID="txtInstallRemain" runat="server" class="form-control" placeholder="Inst Remaining" Style="margin-bottom: 5px;" onkeyup="SpeAmount1();" onfocusout="SpemyFunctionAmount1();if (this.value=='0.00') this.value='0.00';if (this.value=='') this.value='0.00';" onfocus="this.value='0.00'" onfocusin="if (this.value=='0.00') this.value='';" onblur="mySpe();" autocomplete='off'></asp:TextBox>--%>
                                             <asp:TextBox ID="txtInstallRemain" runat="server" class="form-control" placeholder="Inst Remaining" onkeypress="return isNumberKey(event)" autocomplete='off'></asp:TextBox>
                                         </td>
                                         <td style="padding-left: 31px;"><b class="CheckBold">Due Date:</b></td>
@@ -7098,43 +7118,42 @@
                             </table>
                         </asp:Panel>
                     </div>
+                    <br />
+                    <br />
+                    <div style="margin-left: 125px;">
+                        <table style="width: 995px;">
+                            <tr>
+                                <td>
+                                    <b class="CheckBold">Order Comments:</b>
+                                </td>
+                                <td>
+                                    <textarea runat="server" rows="2" id="txttotalcomments" class="form-control" style="resize: none" tabindex="51"></textarea>
+                                </td>
+                                <td></td>
+                                <td>&nbsp;</td>
+                                <td>
+                                    <b class="CheckBold">Status:</b>
+                                </td>
+                                <td>
+                                    <select class="form-control" id="ddlstatus" runat="server" style="width: 180px;" tabindex="52">
+                                        <option>--Select--</option>
+                                        <option>Completed</option>
+                                        <option>In Process</option>
+                                        <option>Mail Away</option>
+                                        <option>On Hold</option>
+                                        <option>Others</option>
+                                        <option>ParcelID</option>
+                                        <option>Rejected</option>
+                                    </select>
+                                </td>
+                                <td>
+                                    <asp:Button ID="btnsaverecordnew" class="btn btn-success" runat="server" Text="Complete" OnClick="btnsaverecordnew_Click" />
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <br />
                 </div>
-                <br />
-                <br />
-                <div style="margin-left: 125px;">
-                    <table style="width: 995px;">
-                        <tr>
-                            <td>
-                                <b class="CheckBold">Order Comments:</b>
-                            </td>
-                            <td>
-                                <textarea runat="server" rows="2" id="txttotalcomments" class="form-control" style="resize: none" tabindex="51"></textarea>
-                            </td>
-                            <td></td>
-                            <td>&nbsp;</td>
-                            <td>
-                                <b class="CheckBold">Status:</b>
-                            </td>
-                            <td>
-                                <select class="form-control" id="ddlstatus" runat="server" style="width: 180px;" tabindex="52">
-                                    <option>--Select--</option>
-                                    <option>Completed</option>
-                                    <option>In Process</option>
-                                    <option>Mail Away</option>
-                                    <option>On Hold</option>
-                                    <option>Others</option>
-                                    <option>ParcelID</option>
-                                    <option>Rejected</option>
-                                </select>
-                            </td>
-                            <td>
-                                <asp:Button ID="btnsaverecordnew" class="btn btn-success" runat="server" Text="Complete" OnClick="btnsaverecordnew_Click" />
-                            </td>
-                        </tr>
-                    </table>
-                </div>
-                <br />
-            </div>
         </form>
     </div>
     <footer id="footer">

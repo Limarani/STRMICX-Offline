@@ -308,16 +308,16 @@
                             <br />
                             Delete
                         </button>
-                        <button type="button" id="btnreject" class="btn btn-default" data-toggle="modal" data-target="#exampleModal2" title="Lock" runat="server" onserverclick="Lock_Click">
+                        <button type="button" id="btnreject" class="btn btn-default" data-toggle="modal" data-target="#exampleModal2" title="Hold" runat="server" onserverclick="Hold_Click">
                             <span class="glyphicon glyphicon-lock" style="font-size: 20px"></span>
                             <br />
-                            Lock
+                            Hold
                         </button>
-                        <button type="button" id="btnunlock" class="btn btn-default" data-toggle="modal" data-target="#exampleModal2" title="UnLock" runat="server" onserverclick="UnLock_Click">
+                        <button type="button" id="btnunlock" class="btn btn-default" data-toggle="modal" data-target="#exampleModal2" title="UnHold" runat="server" onserverclick="UnHold_Click">
                             <%--<span class="glyphicon glyphicon-fa-unlock" style="font-size: 20px"></span>--%>
                              <i class="fa fa-unlock" style="font-size: 25px"></i>
                             <br />
-                            UnLock
+                            UnHold
                         </button>
                         <button type="button" class="btn btn-default" data-toggle="modal" data-target="#Accept" title="Priority" runat="server" onserverclick="Priority_Click">
                             <span class="glyphicon glyphicon-exclamation-sign" style="font-size: 20px"></span>
@@ -417,8 +417,9 @@
                                     <div class="col-md-12">
                                         <div class="col-md-6">
                                             <div class="col-md-12">
+                                                <div style="width: 150%; height: 250px; overflow: scroll">
                                                 <asp:GridView ID="gvorderdetails" runat="server" ShowHeaderWhenEmpty="true" AutoGenerateColumns="false"
-                                                    Width="125%" GridLines="None" Style="white-space: nowrap; overflow: auto;">
+                                                    Width="100%" GridLines="None" Style="white-space: nowrap; overflow: auto;">
                                                     <Columns>
                                                         <asp:BoundField ItemStyle-Width="30%" DataField="Order_No" HeaderText="Order_No" />
                                                         <asp:BoundField ItemStyle-Width="30%" DataField="State" HeaderText="State" />
@@ -438,6 +439,7 @@
                                                     <AlternatingRowStyle BackColor="#f3f2ea" />
                                                     <HeaderStyle BackColor="#d9241b" ForeColor="white" BorderColor="#fff000" />
                                                 </asp:GridView>
+                                                    </div>
                                             </div>
                                         </div>
                                         <table>
@@ -451,8 +453,8 @@
                                         <br />
                                         <br />
 
-                                        <asp:Button ID="btnassign" runat="server" OnClick="btnassign_Click" autopostback="true" Text="Key-Assign" Stype="margin-left: 412px" class="btn btn-success" />
-                                        <asp:Button ID="btnqcassign" runat="server" OnClick="btnqcassign_Click" autopostback="true" Text="QC-Assign" Stype="margin-left: 412px" class="btn btn-success" />
+                                        <asp:Button ID="btnassign" runat="server" OnClick="btnassign_Click" autopostback="true" Text="Key-Assign" Style="margin-left: 30px" class="btn btn-success" />
+                                        <asp:Button ID="btnqcassign" runat="server" OnClick="btnqcassign_Click" autopostback="true" Text="QC-Assign"  class="btn btn-success" />
                                         <asp:Label ID="lblerror" runat="server"></asp:Label>
                                         <br />
                                     </div>
