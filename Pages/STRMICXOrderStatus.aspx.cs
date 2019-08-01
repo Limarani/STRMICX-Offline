@@ -818,11 +818,12 @@ public partial class Pages_STRMICXOrderStatus : System.Web.UI.Page
         string priority = "";
         string usr = "";
         string k_op = "";
+        string check = "";
         ClientScript.RegisterStartupScript(this.GetType(), "Pop", "Assign();", true);
         PanelManualInfo.Visible = true;
         string query = "";
         DataTable dttable = new DataTable();
-        dttable.Columns.AddRange(new DataColumn[6] { new DataColumn("Order_No"), new DataColumn("State"), new DataColumn("County"), new DataColumn("Status"), new DataColumn("HP"), new DataColumn("Key OP") });
+        dttable.Columns.AddRange(new DataColumn[7] { new DataColumn("Order_No"), new DataColumn("State"), new DataColumn("County"), new DataColumn("Status"), new DataColumn("HP"), new DataColumn("Key OP"), new DataColumn("Check") });
         foreach (GridViewRow row in gvorderdetails.Rows)
         {
             if (row.RowType == DataControlRowType.DataRow)
@@ -845,7 +846,17 @@ public partial class Pages_STRMICXOrderStatus : System.Web.UI.Page
                     return;
                 }
                 k_op = row.Cells[5].Text;
-                dttable.Rows.Add(row.Cells[0].Text, row.Cells[1].Text, row.Cells[2].Text, row.Cells[3].Text, row.Cells[4].Text, row.Cells[5].Text);
+
+                if (chkRow.Checked == true)
+                {
+                    check = "true";
+                }
+                else
+                {
+                    check = "false";
+                }
+
+                dttable.Rows.Add(row.Cells[0].Text, row.Cells[1].Text, row.Cells[2].Text, row.Cells[3].Text, row.Cells[4].Text, row.Cells[5].Text, check);
 
                 DataSet dsfetchuser = new DataSet();
                 string queryfetch = "select User_Name from user_status where User_Name = '" + usr + "' and Keying = '1'";
@@ -854,14 +865,16 @@ public partial class Pages_STRMICXOrderStatus : System.Web.UI.Page
                 {
                     if (dsfetchuser.Tables[0].Rows.Count > 0)
                     {
-                        if (status != "Key Started" && status != "Qc Started" && status != "Key Done" && status!= "On-Hold" && status != "Completed")
+                        if (status != "Key Started" && status != "Qc Started" && status != "Key Done" && status != "On-Hold" && status != "Completed")
                         {
                             query = "update record_status set K1_OP='" + usr + "',k1=0,qc=0,status=0,Pend='0',Tax='0',Parcel='0' where Order_No='" + orderno + "'";
                             con.ExecuteSPNonQuery(query);
+
                             for (int i = dttable.Rows.Count - 1; i >= 0; i--)
                             {
                                 DataRow dr = dttable.Rows[i];
-                                if (dr["status"].ToString() != "Key Started")
+                                string chkrows = dr["Check"].ToString();
+                                if (dr["status"].ToString() != "Key Started" && dr["status"].ToString() != "Qc Started" && dr["status"].ToString() != "Key Done" && dr["status"].ToString() != "On-Hold" && dr["status"].ToString() != "Completed" && chkrows == "true")
                                 {
                                     dr.Delete();
                                 }
@@ -886,10 +899,18 @@ public partial class Pages_STRMICXOrderStatus : System.Web.UI.Page
                         lblerror.Text = "Invalid User Status";
                     }
                 }
+                else
+                {
+                    gvorderdetails.DataSource = dttable;
+                    gvorderdetails.DataBind();
+                }
             }
         }
+
         btnordershow_Click(sender, e);
     }
+
+
 
 
     protected void btnqcassign_Click(object sender, EventArgs e)
@@ -901,11 +922,12 @@ public partial class Pages_STRMICXOrderStatus : System.Web.UI.Page
         string priority = "";
         string usr = "";
         string k_op = "";
+        string check = "";
         ClientScript.RegisterStartupScript(this.GetType(), "Pop", "Assign();", true);
         PanelManualInfo.Visible = true;
         string query = "";
         DataTable dttable = new DataTable();
-        dttable.Columns.AddRange(new DataColumn[6] { new DataColumn("Order_No"), new DataColumn("State"), new DataColumn("County"), new DataColumn("Status"), new DataColumn("HP"), new DataColumn("Key OP") });
+        dttable.Columns.AddRange(new DataColumn[7] { new DataColumn("Order_No"), new DataColumn("State"), new DataColumn("County"), new DataColumn("Status"), new DataColumn("HP"), new DataColumn("Key OP"), new DataColumn("Check") });
         foreach (GridViewRow row in gvorderdetails.Rows)
         {
             if (row.RowType == DataControlRowType.DataRow)
@@ -927,7 +949,16 @@ public partial class Pages_STRMICXOrderStatus : System.Web.UI.Page
                     return;
                 }
                 k_op = row.Cells[5].Text;
-                dttable.Rows.Add(row.Cells[0].Text, row.Cells[1].Text, row.Cells[2].Text, row.Cells[3].Text, row.Cells[4].Text, row.Cells[5].Text);
+                if (chkRow.Checked == true)
+                {
+                    check = "true";
+                }
+                else
+                {
+                    check = "false";
+                }
+
+                dttable.Rows.Add(row.Cells[0].Text, row.Cells[1].Text, row.Cells[2].Text, row.Cells[3].Text, row.Cells[4].Text, row.Cells[5].Text, check);
 
                 DataSet dsfetchuser = new DataSet();
                 string queryfetch = "select User_Name from user_status where User_Name = '" + usr + "' and QC = '1'";
@@ -936,14 +967,15 @@ public partial class Pages_STRMICXOrderStatus : System.Web.UI.Page
                 {
                     if (dsfetchuser.Tables[0].Rows.Count > 0)
                     {
-                        if (status != "Qc Started" && status!= "Completed" && status != "On-Hold")
+                        if (status != "Qc Started" && status != "Completed" && status != "On-Hold")
                         {
                             query = "update record_status set QC_OP ='" + usr + "',pend='0',Parcel='0',Tax='0' where Order_No='" + orderno + "'";
                             con.ExecuteSPNonQuery(query);
                             for (int i = dttable.Rows.Count - 1; i >= 0; i--)
                             {
                                 DataRow dr = dttable.Rows[i];
-                                if (dr["status"].ToString() != "Qc Started")
+                                string chkrows = dr["Check"].ToString();
+                                if (dr["status"].ToString() != "Qc Started" && status != "Completed" && status != "On-Hold" && chkrows == "true")
                                 {
                                     dr.Delete();
                                 }
@@ -968,12 +1000,17 @@ public partial class Pages_STRMICXOrderStatus : System.Web.UI.Page
                         lblerror.Text = "Invalid User Status";
                     }
                 }
+                else
+                {
+                    gvorderdetails.DataSource = dttable;
+                    gvorderdetails.DataBind();
+                }
             }
         }
 
         btnordershow_Click(sender, e);
     }
-   
+
 
     protected void Reject_Click(object sender, EventArgs e)
     {
@@ -1096,7 +1133,7 @@ public partial class Pages_STRMICXOrderStatus : System.Web.UI.Page
         btnordershow_Click(sender, e);
     }
 
- 
+
     protected void UnHold_Click(object sender, EventArgs e)
     {
         if (txtfrmdate.Text != "")
@@ -1135,7 +1172,7 @@ public partial class Pages_STRMICXOrderStatus : System.Web.UI.Page
                     }
                 }
             }
-        }       
+        }
         btnordershow_Click(sender, e);
     }
 
