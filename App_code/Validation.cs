@@ -22,18 +22,23 @@ public class Validation
     {
         string result = "";
         DataSet ds = dbconn.ExecuteQuery("select taxid from tbl_taxparcel where orderno='" + orderno + "'");
-
-        for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
+        if (ds.Tables[0].Rows.Count > 0)
         {
-            int count = dbconn.ExecuteSPNonQuery("select count(agnecyid) from tbl_taxauthorities2 where orderno='" + orderno + "' and taxid='" + ds.Tables[0].Rows[i]["taxid"] + "'");
-            if (count == 0)
+            for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
             {
-                result = "ParcelNumber: " + ds.Tables[0].Rows[i]["taxid"] + "";
+                int count = dbconn.ExecuteSPNonQuery("select count(agnecyid) from tbl_taxauthorities2 where orderno='" + orderno + "' and taxid='" + ds.Tables[0].Rows[i]["taxid"] + "'");
+                if (count == 0)
+                {
+                    result = "ParcelNumber: " + ds.Tables[0].Rows[i]["taxid"] + " must have one Agency";
+                    return result;
+                }
             }
         }
-
+        else
+        {
+            return "OrderNumber must have one Taxid";
+        }
         return result;
-
     }
 
 }

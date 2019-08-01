@@ -7097,8 +7097,7 @@
                                 </thead>
                             </table>
                         </asp:Panel>
-                    </div>
-                </div>
+                    </div>                
                 <br />
                 <br />
                 <div style="margin-left: 125px;">

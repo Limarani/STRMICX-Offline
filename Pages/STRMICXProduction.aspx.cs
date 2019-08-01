@@ -2829,6 +2829,12 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
         process = processtatus.Text;
         OStatus = ddlstatus.Value;
 
+        Validation validate = new Validation();
+        //ordernumber & parcelnumber validate
+        string message = validate.checkParcel(lblord.Text);
+
+
+
         if (OStatus == "Completed" && process == "KEY")
         {
             query = "select count(AgencyId) as inputcount from tbl_taxauthorities2 where orderno = '" + lblord.Text + "'";
