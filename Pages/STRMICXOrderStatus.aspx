@@ -18,7 +18,7 @@
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
     <script src="../Script/Jquery-1.8.3-jquery.min.js"></script>--%>
 
-    <link href='/path/to/font-awesome.css' rel='stylesheet'/>
+    <link href='/path/to/font-awesome.css' rel='stylesheet' />
     <%--<script type="text/javascript">
         $(document).ready(function () {
             $('#<%=GridUser.ClientID %>').Scrollable({
@@ -77,7 +77,7 @@
             text-align: center;
         }
     </style>
-
+        
     <div class="sign-up-row widget-shadow" style="width: 100%;" align="center">
 
         <div class="panel panel-default" style="margin-bottom: 0px;">
@@ -254,7 +254,7 @@
                                 </asp:TemplateField>
                                 <asp:TemplateField HeaderText="Order No" HeaderStyle-Width="130px" ItemStyle-Width="30px" HeaderStyle-CssClass="check">
                                     <ItemTemplate>
-                                       <%-- <asp:Image ID="Imglocked" runat="server" ImageUrl="~/App_themes/Black/images/lockimg.png" />--%>
+                                        <%-- <asp:Image ID="Imglocked" runat="server" ImageUrl="~/App_themes/Black/images/lockimg.png" />--%>
                                         <asp:LinkButton ID="Lnkorder" runat="server" Text='<%# Eval("Order_No") %>' CommandName="Process"></asp:LinkButton>
                                     </ItemTemplate>
                                 </asp:TemplateField>
@@ -315,7 +315,7 @@
                         </button>
                         <button type="button" id="btnunlock" class="btn btn-default" data-toggle="modal" data-target="#exampleModal2" title="UnHold" runat="server" onserverclick="UnHold_Click">
                             <%--<span class="glyphicon glyphicon-fa-unlock" style="font-size: 20px"></span>--%>
-                             <i class="fa fa-unlock" style="font-size: 25px"></i>
+                            <i class="fa fa-unlock" style="font-size: 25px"></i>
                             <br />
                             UnHold
                         </button>
@@ -418,28 +418,28 @@
                                         <div class="col-md-6">
                                             <div class="col-md-12">
                                                 <div style="width: 150%; height: 250px; overflow: scroll">
-                                                <asp:GridView ID="gvorderdetails" runat="server" ShowHeaderWhenEmpty="true" AutoGenerateColumns="false"
-                                                    Width="100%" GridLines="None" Style="white-space: nowrap; overflow: auto;">
-                                                    <Columns>
-                                                        <asp:BoundField ItemStyle-Width="30%" DataField="Order_No" HeaderText="Order_No" />
-                                                        <asp:BoundField ItemStyle-Width="30%" DataField="State" HeaderText="State" />
-                                                        <asp:BoundField ItemStyle-Width="30%" DataField="County" HeaderText="County" />
-                                                        <asp:BoundField ItemStyle-Width="30%" DataField="Status" HeaderText="Status" />
-                                                        <asp:BoundField ItemStyle-Width="30%" DataField="HP" HeaderText="Priority" />
-                                                        <asp:BoundField ItemStyle-Width="30%" DataField="Key OP" HeaderText="K1_OP" ItemStyle-CssClass="hiddencol" HeaderStyle-CssClass="hiddencol" />
-                                                        <asp:TemplateField HeaderText="Select Orders">
-                                                            <HeaderTemplate>
-                                                                <asp:CheckBox ID="checkAll" runat="server" onclick="checkAll(this);" />
-                                                            </HeaderTemplate>
-                                                            <ItemTemplate>
-                                                                <asp:CheckBox ID="chkorders" runat="server" />
-                                                            </ItemTemplate>
-                                                        </asp:TemplateField>
-                                                    </Columns>
-                                                    <AlternatingRowStyle BackColor="#f3f2ea" />
-                                                    <HeaderStyle BackColor="#d9241b" ForeColor="white" BorderColor="#fff000" />
-                                                </asp:GridView>
-                                                    </div>
+                                                    <asp:GridView ID="gvorderdetails" runat="server" ShowHeaderWhenEmpty="true" AutoGenerateColumns="false"
+                                                        Width="100%" GridLines="None" Style="white-space: nowrap; overflow: auto;">
+                                                        <Columns>
+                                                            <asp:BoundField ItemStyle-Width="30%" DataField="Order_No" HeaderText="Order_No" />
+                                                            <asp:BoundField ItemStyle-Width="30%" DataField="State" HeaderText="State" />
+                                                            <asp:BoundField ItemStyle-Width="30%" DataField="County" HeaderText="County" />
+                                                            <asp:BoundField ItemStyle-Width="30%" DataField="Status" HeaderText="Status" />
+                                                            <asp:BoundField ItemStyle-Width="30%" DataField="HP" HeaderText="Priority" />
+                                                            <asp:BoundField ItemStyle-Width="30%" DataField="Key OP" HeaderText="K1_OP" ItemStyle-CssClass="hiddencol" HeaderStyle-CssClass="hiddencol" />
+                                                            <asp:TemplateField HeaderText="Select Orders">
+                                                                <HeaderTemplate>
+                                                                    <asp:CheckBox ID="checkAll" runat="server" onclick="checkAll(this);" />
+                                                                </HeaderTemplate>
+                                                                <ItemTemplate>
+                                                                    <asp:CheckBox ID="chkorders" runat="server" />
+                                                                </ItemTemplate>
+                                                            </asp:TemplateField>
+                                                        </Columns>
+                                                        <AlternatingRowStyle BackColor="#f3f2ea" />
+                                                        <HeaderStyle BackColor="#d9241b" ForeColor="white" BorderColor="#fff000" />
+                                                    </asp:GridView>
+                                                </div>
                                             </div>
                                         </div>
                                         <table>
@@ -454,7 +454,7 @@
                                         <br />
 
                                         <asp:Button ID="btnassign" runat="server" OnClick="btnassign_Click" autopostback="true" Text="Key-Assign" Style="margin-left: 30px" class="btn btn-success" />
-                                        <asp:Button ID="btnqcassign" runat="server" OnClick="btnqcassign_Click" autopostback="true" Text="QC-Assign"  class="btn btn-success" />
+                                        <asp:Button ID="btnqcassign" runat="server" OnClick="btnqcassign_Click" autopostback="true" Text="QC-Assign" class="btn btn-success" />
                                         <asp:Label ID="lblerror" runat="server"></asp:Label>
                                         <br />
                                     </div>

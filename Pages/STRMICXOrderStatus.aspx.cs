@@ -834,7 +834,16 @@ public partial class Pages_STRMICXOrderStatus : System.Web.UI.Page
                 county = row.Cells[2].Text;
                 status = row.Cells[3].Text;
                 priority = row.Cells[4].Text;
-                usr = lstuserdetails.SelectedItem.Text; 
+
+                if (lstuserdetails.SelectedValue != "")
+                {
+                    usr = lstuserdetails.SelectedItem.Text;
+                }
+                else
+                {
+                    lblerror.Text = "Please Select User";
+                    return;
+                }
                 k_op = row.Cells[5].Text;
                 dttable.Rows.Add(row.Cells[0].Text, row.Cells[1].Text, row.Cells[2].Text, row.Cells[3].Text, row.Cells[4].Text, row.Cells[5].Text);
 
@@ -845,7 +854,7 @@ public partial class Pages_STRMICXOrderStatus : System.Web.UI.Page
                 {
                     if (dsfetchuser.Tables[0].Rows.Count > 0)
                     {
-                        if (status != "Key Started" && status != "Qc Started" && status != "Key Done" && status!= "On-Hold")
+                        if (status != "Key Started" && status != "Qc Started" && status != "Key Done" && status!= "On-Hold" && status != "Completed")
                         {
                             query = "update record_status set K1_OP='" + usr + "',k1=0,qc=0,status=0,Pend='0',Tax='0',Parcel='0' where Order_No='" + orderno + "'";
                             con.ExecuteSPNonQuery(query);
@@ -908,7 +917,15 @@ public partial class Pages_STRMICXOrderStatus : System.Web.UI.Page
                 county = row.Cells[2].Text;
                 status = row.Cells[3].Text;
                 priority = row.Cells[4].Text;
-                usr = lstuserdetails.SelectedItem.Text; 
+                if (lstuserdetails.SelectedValue != "")
+                {
+                    usr = lstuserdetails.SelectedItem.Text;
+                }
+                else
+                {
+                    lblerror.Text = "Please Select User";
+                    return;
+                }
                 k_op = row.Cells[5].Text;
                 dttable.Rows.Add(row.Cells[0].Text, row.Cells[1].Text, row.Cells[2].Text, row.Cells[3].Text, row.Cells[4].Text, row.Cells[5].Text);
 
@@ -1104,7 +1121,7 @@ public partial class Pages_STRMICXOrderStatus : System.Web.UI.Page
                             {
                                 LinkButton orderno = (row.Cells[2].FindControl("Lnkorder") as LinkButton);
                                 string status = row.Cells[10].Text;
-                                if (status != "Completed" && status != "Rejected")
+                                if (status == "On-Hold")
                                 {
                                     gblcls.GetOrderUnLock(orderno.Text, strfrmdate, strtodate);
                                     ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Order Status Changed Successfully')", true);
@@ -1118,8 +1135,7 @@ public partial class Pages_STRMICXOrderStatus : System.Web.UI.Page
                     }
                 }
             }
-        }
-        ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Order Status Changed Successfully')", true);
+        }       
         btnordershow_Click(sender, e);
     }
 

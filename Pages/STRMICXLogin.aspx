@@ -205,7 +205,7 @@
             </div>
         </div>--%>
     </form>
-    <div class="footer" style="margin-left:26%;font-family:"Roboto", -apple-system, BlinkMacSystemFont, "Segoe UI", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;">
+    <div class="footer" style="font-family:"Roboto", -apple-system, BlinkMacSystemFont, "Segoe UI", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;">
         <p>
             &copy; 2019. All rights reserved | Designed & Developed by String Information Services
         </p>

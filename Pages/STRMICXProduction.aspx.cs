@@ -913,11 +913,11 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
                     DataRow dr = dtfetchauthority1.Rows[i];
                     string url = dr["url"].ToString();
 
-                    if (!url.Contains("http://"))
+                    if (!url.Contains("http://") && !url.Contains("https://"))
                     {
                         string test = "http://" + url.Trim();
                         string updateweb = "";
-                        updateweb = "update tbl_website set url = '" + test + "' where orderno = '" + lblord.Text + "' and tax_id = '" + LblTaxID.Text + "' and agency_id = '" + LblAgencyID.Text + "'";
+                        updateweb = "update tbl_website set url = '" + test + "' where orderno = '" + lblord.Text + "' and tax_id = '" + LblTaxID.Text + "' and agency_id = '" + LblAgencyID.Text + "' and tax_type = '" + taxagencytype + "'";
                         gl.ExecuteSPNonQuery(updateweb);
                     }                    
                 }
@@ -1144,7 +1144,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
     {
         btnsavetaxauthorities.Enabled = true;
         int insert = 0;
-        insert = gl.Insert_tax_authorities_paymentdetails(lblord.Text, LblTaxID.Text.ToString(), LblAgencyID.Text, txtTaxType.Text, instmanamount1.Value, instmanamount2.Value, instmanamount3.Value, instmanamount4.Value, instmanamtpaid1.Value, instmanamtpaid2.Value, instmanamtpaid3.Value, instmanamtpaid4.Value, ddlmaninstpaiddue1.Value, ddlmaninstpaiddue2.Value, ddlmaninstpaiddue3.Value, ddlmaninstpaiddue4.Value, txtmanurembal1.Value, txtmanurembal2.Value, txtmanurembal3.Value, txtmanurembal4.Value, txtmaninstdate1.Value, txtmaninstdate2.Value, txtmaninstdate3.Value, txtmaninstdate4.Value, txtmandeliqdate1.Value, txtmandeliqdate2.Value, txtmandeliqdate3.Value, txtmandeliqdate4.Value, txtmandisamount1.Value, txtmandisamount2.Value, txtmandisamount3.Value, txtmandisamount4.Value, txtmandisdate1.Value, txtmandisdate2.Value, txtmandisdate3.Value, txtmandisdate4.Value, chkexrelmanu1.Value, chkexrelmanu2.Value, chkexrelmanu3.Value, chkexrelmanu4.Value, txtmanunextbilldate1.Value, txtmanunextbilldate2.Value, ddlmanutaxbill.Value, ddlpayfreqmanu.Value, txtmanubillstartdate.Value, txtmanubillenddate.Value, txtinstcommentsmanual.Value);
+        insert = gl.Insert_tax_authorities_paymentdetails(lblord.Text, LblTaxID.Text.ToString(), LblAgencyID.Text, txtTaxType.Text, instmanamount1.Value, instmanamount2.Value, instmanamount3.Value, instmanamount4.Value, instmanamtpaid1.Value, instmanamtpaid2.Value, instmanamtpaid3.Value, instmanamtpaid4.Value, ddlmaninstpaiddue1.Value, ddlmaninstpaiddue2.Value, ddlmaninstpaiddue3.Value, ddlmaninstpaiddue4.Value, txtmanurembal1.Value, txtmanurembal2.Value, txtmanurembal3.Value, txtmanurembal4.Value, txtmaninstdate1.Value, txtmaninstdate2.Value, txtmaninstdate3.Value, txtmaninstdate4.Value, txtmandeliqdate1.Value, txtmandeliqdate2.Value, txtmandeliqdate3.Value, txtmandeliqdate4.Value, txtmandisamount1.Value, txtmandisamount2.Value, txtmandisamount3.Value, txtmandisamount4.Value, txtmandisdate1.Value, txtmandisdate2.Value, txtmandisdate3.Value, txtmandisdate4.Value, chkexrelmanu1.Value, chkexrelmanu2.Value, chkexrelmanu3.Value, chkexrelmanu4.Value, "", "", ddlmanutaxbill.Value, ddlpayfreqmanu.Value, txtmanubillstartdate.Value, txtmanubillenddate.Value, txtinstcommentsmanual.Value);
         if (insert == 1)
         {
             ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "txtexeSpecial();", true);
@@ -2314,17 +2314,18 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
         ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "txtexeSpecial();", true);
         PnlTax1.Visible = true;
         DataTable dtfetchauthority = new DataTable();
-        dtfetchauthority = gl.FetchTaxAuthorityDetails(lblord.Text, LblTaxID.Text, LblAgencyID.Text, taxagencytype);
+        dtfetchauthority = gl.FetchTaxAuthorityDetails(lblord.Text, LblTaxID.Text, LblAgencyID.Text, txtTaxType.Text);
         fetchDeliquentStatus();
         fetchexemptionsAll();
         fetchspecialAll();
-        PnlTax1.Focus();
+        PnlTax1.Focus();        
         if (ddlfuturetaxcalc.SelectedItem.Text == "Manual")
         {
             btnsavetaxauthorities.Visible = true;
             if (dtfetchauthority.Rows.Count > 0)
             {
-                txtmaninstdate1.Value = dtfetchauthority.Rows[0]["Installmentdate1"].ToString();
+                //Installment date
+                txtmaninstdate1.Value = dtfetchauthority.Rows[0]["duedate1"].ToString();
                 if (txtmaninstdate1.Value != "")
                 {
                     string inputData = txtmaninstdate1.Value;
@@ -2333,7 +2334,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
                     txtmaninstdate1.Value = maninstdate1.ToString("MM/dd/yyyy");
                 }
 
-                txtmaninstdate2.Value = dtfetchauthority.Rows[0]["Installmentdate2"].ToString();
+                txtmaninstdate2.Value = dtfetchauthority.Rows[0]["duedate2"].ToString();
                 if (txtmaninstdate2.Value != "")
                 {
                     string inputData = txtmaninstdate2.Value;
@@ -2342,7 +2343,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
                     txtmaninstdate2.Value = maninstdate2.ToString("MM/dd/yyyy");
                 }
 
-                txtmaninstdate3.Value = dtfetchauthority.Rows[0]["Installmentdate3"].ToString();
+                txtmaninstdate3.Value = dtfetchauthority.Rows[0]["duedate3"].ToString();
                 if (txtmaninstdate3.Value != "")
                 {
                     string inputData = txtmaninstdate3.Value;
@@ -2352,7 +2353,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
                 }
 
 
-                txtmaninstdate4.Value = dtfetchauthority.Rows[0]["Installmentdate4"].ToString();
+                txtmaninstdate4.Value = dtfetchauthority.Rows[0]["duedate4"].ToString();
                 if (txtmaninstdate4.Value != "")
                 {
                     string inputData = txtmaninstdate4.Value;
@@ -2362,7 +2363,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
                 }
 
 
-
+                //Delinquent Date
                 txtmandeliqdate1.Value = dtfetchauthority.Rows[0]["DelinquentDate1"].ToString();
                 if (txtmandeliqdate1.Value != "")
                 {
@@ -2402,6 +2403,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
                     txtmandeliqdate4.Value = mandeliqdate4.ToString("MM/dd/yyyy");
                 }
 
+                //Discount Date
                 txtmandisdate1.Value = dtfetchauthority.Rows[0]["DiscountDate1"].ToString();
                 if (txtmandisdate1.Value != "")
                 {
@@ -2436,6 +2438,103 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
                     DateTime mandisdate4 = DateTime.ParseExact(inputData, "MM/dd/yyyy", null);
                     mandisdate4 = mandisdate4.AddYears(1);
                     txtmandisdate4.Value = mandisdate4.ToString("MM/dd/yyyy");
+                }
+
+                //ExemptRelevy
+                chkexrelmanu1.Value = dtfetchauthority.Rows[0]["ExemptRelevy1"].ToString().Trim();
+                if (chkexrelmanu1.Value == "yes")
+                {
+                    this.chkexrelmanu1.Checked = true;
+                }
+                else
+                {
+                    this.chkexrelmanu1.Checked = false;
+                }
+
+                chkexrelmanu2.Value = dtfetchauthority.Rows[0]["ExemptRelevy2"].ToString();
+
+                if (chkexrelmanu2.Value == "yes")
+                {
+                    this.chkexrelmanu2.Checked = true;
+                }
+                else
+                {
+                    this.chkexrelmanu2.Checked = false;
+                }
+
+                chkexrelmanu3.Value = dtfetchauthority.Rows[0]["ExemptRelevy3"].ToString();
+
+                if (chkexrelmanu3.Value == "yes")
+                {
+                    this.chkexrelmanu3.Checked = true;
+                }
+                else
+                {
+                    this.chkexrelmanu3.Checked = false;
+                }
+
+                chkexrelmanu4.Value = dtfetchauthority.Rows[0]["ExemptRelevy4"].ToString();
+
+                if (chkexrelmanu4.Value == "yes")
+                {
+                    this.chkexrelmanu4.Checked = true;
+                }
+                else
+                {
+                    this.chkexrelmanu4.Checked = false;
+                }
+
+                //paymentfrequency
+                ddlpayfreqmanu.Value = dtfetchauthority.Rows[0]["TaxFrequency"].ToString().Trim();
+                paymentfreq1(ddlpayfreqmanu.Value);
+
+                //BillingPeriodStartDate
+                if (dtfetchauthority.Rows[0]["BillingPeriodStartDate"].ToString().Trim() != "")
+                {
+                    string startdate = dtfetchauthority.Rows[0]["BillingPeriodStartDate"].ToString().Trim();
+
+                    if (startdate.Contains("T"))
+                    {
+                        txtmanubillstartdate.Value = Convert.ToDateTime(dtfetchauthority.Rows[0]["BillingPeriodStartDate"].ToString().Trim().Remove(10)).ToString("MM/dd/yyyy");
+
+                        string inputData = txtmanubillstartdate.Value;
+                        DateTime manbillstartdate = DateTime.ParseExact(inputData, "MM/dd/yyyy", null);
+                        manbillstartdate = manbillstartdate.AddYears(1);
+                        txtmanubillstartdate.Value = manbillstartdate.ToString("MM/dd/yyyy");
+                    }
+                    else
+                    {
+                        txtmanubillstartdate.Value = dtfetchauthority.Rows[0]["BillingPeriodStartDate"].ToString().Trim();
+                        string inputData = txtmanubillstartdate.Value;
+                        DateTime manbillstartdate = DateTime.ParseExact(inputData, "MM/dd/yyyy", null);
+                        manbillstartdate = manbillstartdate.AddYears(1);
+                        txtmanubillstartdate.Value = manbillstartdate.ToString("MM/dd/yyyy");
+                    }
+                }
+
+                //BillingPeriodEndDate
+                if (dtfetchauthority.Rows[0]["BillingPeriodEndDate"].ToString().Trim() != "")
+                {
+                    string enddate = dtfetchauthority.Rows[0]["BillingPeriodEndDate"].ToString().Trim();
+
+                    if (enddate.Contains("T"))
+                    {
+                        txtmanubillenddate.Value = Convert.ToDateTime(dtfetchauthority.Rows[0]["BillingPeriodEndDate"].ToString().Trim().Remove(10)).ToString("MM/dd/yyyy");
+
+                        string inputData = txtmanubillenddate.Value;
+                        DateTime manbillenddate = DateTime.ParseExact(inputData, "MM/dd/yyyy", null);
+                        manbillenddate = manbillenddate.AddYears(1);
+                        txtmanubillenddate.Value = manbillenddate.ToString("MM/dd/yyyy");
+                    }
+                    else
+                    {
+                        txtmanubillenddate.Value = dtfetchauthority.Rows[0]["BillingPeriodEndDate"].ToString().Trim();
+
+                        string inputData = txtmanubillenddate.Value;
+                        DateTime manbillenddate = DateTime.ParseExact(inputData, "MM/dd/yyyy", null);
+                        manbillenddate = manbillenddate.AddYears(1);
+                        txtmanubillenddate.Value = manbillenddate.ToString("MM/dd/yyyy");
+                    }
                 }
             }
         }
@@ -2474,8 +2573,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
                 chkexrelmanu2.Value = dtfetchauthority.Rows[0]["ExemptRelevy2"].ToString();
                 chkexrelmanu3.Value = dtfetchauthority.Rows[0]["ExemptRelevy3"].ToString();
                 chkexrelmanu4.Value = dtfetchauthority.Rows[0]["ExemptRelevy4"].ToString();
-
-                txtmanunextbilldate1.Value = dtfetchauthority.Rows[0]["nextbilldate1"].ToString();
+                               
                 ddlmanutaxbill.Value = dtfetchauthority.Rows[0]["taxbill"].ToString();
                 ddlpayfreqmanu.Value = dtfetchauthority.Rows[0]["paymentfrequency"].ToString();
 
@@ -2606,6 +2704,236 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
             }
         }
     }
+
+
+    protected void paymentfreq1(string payemntfrequency)
+    {
+        if (payemntfrequency != "")
+        {
+            if (payemntfrequency == "Annual" || payemntfrequency == "1")
+            {
+                SetTaxBillValue1(txtmandeliqdate1.Value);
+
+                instmanamount1.Attributes.Remove("disabled");
+                instmanamtpaid1.Attributes.Remove("disabled");
+                ddlmaninstpaiddue1.Attributes.Remove("disabled");
+                txtmanurembal1.Attributes.Remove("disabled");
+                txtmaninstdate1.Attributes.Remove("disabled");
+                txtmandeliqdate1.Attributes.Remove("disabled");
+                txtmandisamount1.Attributes.Remove("disabled");
+                txtmandisdate1.Attributes.Remove("disabled");
+                chkexrelmanu1.Attributes.Remove("disabled");
+
+                instmanamount2.Attributes.Add("disabled", "disabled");
+                instmanamtpaid2.Attributes.Add("disabled", "disabled");
+                ddlmaninstpaiddue2.Attributes.Add("disabled", "disabled");
+                txtmanurembal2.Attributes.Add("disabled", "disabled");
+                txtmaninstdate2.Attributes.Add("disabled", "disabled");
+                txtmandeliqdate2.Attributes.Add("disabled", "disabled");
+                txtmandisamount2.Attributes.Add("disabled", "disabled");
+                txtmandisdate2.Attributes.Add("disabled", "disabled");
+                chkexrelmanu2.Attributes.Add("disabled", "disabled");
+
+                instmanamount3.Attributes.Add("disabled", "disabled");
+                instmanamtpaid3.Attributes.Add("disabled", "disabled");
+                ddlmaninstpaiddue3.Attributes.Add("disabled", "disabled");
+                txtmanurembal3.Attributes.Add("disabled", "disabled");
+                txtmaninstdate3.Attributes.Add("disabled", "disabled");
+                txtmandeliqdate3.Attributes.Add("disabled", "disabled");
+                txtmandisamount3.Attributes.Add("disabled", "disabled");
+                txtmandisdate3.Attributes.Add("disabled", "disabled");
+                chkexrelmanu3.Attributes.Add("disabled", "disabled");
+
+                instmanamount4.Attributes.Add("disabled", "disabled");
+                instmanamtpaid4.Attributes.Add("disabled", "disabled");
+                ddlmaninstpaiddue4.Attributes.Add("disabled", "disabled");
+                txtmanurembal4.Attributes.Add("disabled", "disabled");
+                txtmaninstdate4.Attributes.Add("disabled", "disabled");
+                txtmandeliqdate4.Attributes.Add("disabled", "disabled");
+                txtmandisamount4.Attributes.Add("disabled", "disabled");
+                txtmandisdate4.Attributes.Add("disabled", "disabled");
+                chkexrelmanu4.Attributes.Add("disabled", "disabled");
+
+                //instpaiddue
+                ddlmaninstpaiddue1.Value = "Due";             
+            }
+
+            if (payemntfrequency == "Semi-Annual" || payemntfrequency == "2")
+            {
+                SetTaxBillValue1(txtmandeliqdate2.Value);
+
+
+                instmanamount1.Attributes.Remove("disabled");
+                instmanamtpaid1.Attributes.Remove("disabled");
+                ddlmaninstpaiddue1.Attributes.Remove("disabled");
+                txtmanurembal1.Attributes.Remove("disabled");
+                txtmaninstdate1.Attributes.Remove("disabled");
+                txtmandeliqdate1.Attributes.Remove("disabled");
+                txtmandisamount1.Attributes.Remove("disabled");
+                txtmandisdate1.Attributes.Remove("disabled");
+                chkexrelmanu1.Attributes.Remove("disabled");
+
+                instmanamount2.Attributes.Remove("disabled");
+                instmanamtpaid2.Attributes.Remove("disabled");
+                ddlmaninstpaiddue2.Attributes.Remove("disabled");
+                txtmanurembal2.Attributes.Remove("disabled");
+                txtmaninstdate2.Attributes.Remove("disabled");
+                txtmandeliqdate2.Attributes.Remove("disabled");
+                txtmandisamount2.Attributes.Remove("disabled");
+                txtmandisdate2.Attributes.Remove("disabled");
+                chkexrelmanu2.Attributes.Remove("disabled");
+
+                instmanamount3.Attributes.Add("disabled", "disabled");
+                instmanamtpaid3.Attributes.Add("disabled", "disabled");
+                ddlmaninstpaiddue3.Attributes.Add("disabled", "disabled");
+                txtmanurembal3.Attributes.Add("disabled", "disabled");
+                txtmaninstdate3.Attributes.Add("disabled", "disabled");
+                txtmandeliqdate3.Attributes.Add("disabled", "disabled");
+                txtmandisamount3.Attributes.Add("disabled", "disabled");
+                txtmandisdate3.Attributes.Add("disabled", "disabled");
+                chkexrelmanu3.Attributes.Add("disabled", "disabled");
+
+                instmanamount4.Attributes.Add("disabled", "disabled");
+                instmanamtpaid4.Attributes.Add("disabled", "disabled");
+                ddlmaninstpaiddue4.Attributes.Add("disabled", "disabled");
+                txtmanurembal4.Attributes.Add("disabled", "disabled");
+                txtmaninstdate4.Attributes.Add("disabled", "disabled");
+                txtmandeliqdate4.Attributes.Add("disabled", "disabled");
+                txtmandisamount4.Attributes.Add("disabled", "disabled");
+                txtmandisdate4.Attributes.Add("disabled", "disabled");
+                chkexrelmanu4.Attributes.Add("disabled", "disabled");
+
+                //instpaiddue
+                ddlmaninstpaiddue1.Value = "Due";
+                ddlmaninstpaiddue2.Value = "Due"; 
+            }
+
+            if (payemntfrequency == "Tri-Annual" || payemntfrequency == "3")
+            {
+
+                instmanamount1.Attributes.Remove("disabled");
+                instmanamtpaid1.Attributes.Remove("disabled");
+                ddlmaninstpaiddue1.Attributes.Remove("disabled");
+                txtmanurembal1.Attributes.Remove("disabled");
+                txtmaninstdate1.Attributes.Remove("disabled");
+                txtmandeliqdate1.Attributes.Remove("disabled");
+                txtmandisamount1.Attributes.Remove("disabled");
+                txtmandisdate1.Attributes.Remove("disabled");
+                chkexrelmanu1.Attributes.Remove("disabled");
+
+                instmanamount2.Attributes.Remove("disabled");
+                instmanamtpaid2.Attributes.Remove("disabled");
+                ddlmaninstpaiddue2.Attributes.Remove("disabled");
+                txtmanurembal2.Attributes.Remove("disabled");
+                txtmaninstdate2.Attributes.Remove("disabled");
+                txtmandeliqdate2.Attributes.Remove("disabled");
+                txtmandisamount2.Attributes.Remove("disabled");
+                txtmandisdate2.Attributes.Remove("disabled");
+                chkexrelmanu2.Attributes.Remove("disabled");
+
+                instmanamount3.Attributes.Remove("disabled");
+                instmanamtpaid3.Attributes.Remove("disabled");
+                ddlmaninstpaiddue3.Attributes.Remove("disabled");
+                txtmanurembal3.Attributes.Remove("disabled");
+                txtmaninstdate3.Attributes.Remove("disabled");
+                txtmandeliqdate3.Attributes.Remove("disabled");
+                txtmandisamount3.Attributes.Remove("disabled");
+                txtmandisdate3.Attributes.Remove("disabled");
+                chkexrelmanu3.Attributes.Remove("disabled");
+
+                instmanamount4.Attributes.Add("disabled", "disabled");
+                instmanamtpaid4.Attributes.Add("disabled", "disabled");
+                ddlmaninstpaiddue4.Attributes.Add("disabled", "disabled");
+                txtmanurembal4.Attributes.Add("disabled", "disabled");
+                txtmaninstdate4.Attributes.Add("disabled", "disabled");
+                txtmandeliqdate4.Attributes.Add("disabled", "disabled");
+                txtmandisamount4.Attributes.Add("disabled", "disabled");
+                txtmandisdate4.Attributes.Add("disabled", "disabled");
+                chkexrelmanu4.Attributes.Add("disabled", "disabled");
+
+                //instpaiddue
+                ddlmaninstpaiddue1.Value = "Due";
+                ddlmaninstpaiddue2.Value = "Due";
+                ddlmaninstpaiddue3.Value = "Due";              
+            }
+
+
+            if (payemntfrequency == "Quarterly" || payemntfrequency == "4")
+            {
+                SetTaxBillValue1(txtmandeliqdate4.Value);
+
+                instmanamount1.Attributes.Remove("disabled");
+                instmanamtpaid1.Attributes.Remove("disabled");
+                ddlmaninstpaiddue1.Attributes.Remove("disabled");
+                txtmanurembal1.Attributes.Remove("disabled");
+                txtmaninstdate1.Attributes.Remove("disabled");
+                txtmandeliqdate1.Attributes.Remove("disabled");
+                txtmandisamount1.Attributes.Remove("disabled");
+                txtmandisdate1.Attributes.Remove("disabled");
+                chkexrelmanu1.Attributes.Remove("disabled");
+
+                instmanamount2.Attributes.Remove("disabled");
+                instmanamtpaid2.Attributes.Remove("disabled");
+                ddlmaninstpaiddue2.Attributes.Remove("disabled");
+                txtmanurembal2.Attributes.Remove("disabled");
+                txtmaninstdate2.Attributes.Remove("disabled");
+                txtmandeliqdate2.Attributes.Remove("disabled");
+                txtmandisamount2.Attributes.Remove("disabled");
+                txtmandisdate2.Attributes.Remove("disabled");
+                chkexrelmanu2.Attributes.Remove("disabled");
+
+                instmanamount3.Attributes.Remove("disabled");
+                instmanamtpaid3.Attributes.Remove("disabled");
+                ddlmaninstpaiddue3.Attributes.Remove("disabled");
+                txtmanurembal3.Attributes.Remove("disabled");
+                txtmaninstdate3.Attributes.Remove("disabled");
+                txtmandeliqdate3.Attributes.Remove("disabled");
+                txtmandisamount3.Attributes.Remove("disabled");
+                txtmandisdate3.Attributes.Remove("disabled");
+                chkexrelmanu3.Attributes.Remove("disabled");
+
+                instmanamount4.Attributes.Remove("disabled");
+                instmanamtpaid4.Attributes.Remove("disabled");
+                ddlmaninstpaiddue4.Attributes.Remove("disabled");
+                txtmanurembal4.Attributes.Remove("disabled");
+                txtmaninstdate4.Attributes.Remove("disabled");
+                txtmandeliqdate4.Attributes.Remove("disabled");
+                txtmandisamount4.Attributes.Remove("disabled");
+                txtmandisdate4.Attributes.Remove("disabled");
+                chkexrelmanu4.Attributes.Remove("disabled");
+
+                //instpaiddue
+                ddlmaninstpaiddue1.Value = "Due";
+                ddlmaninstpaiddue2.Value = "Due";
+                ddlmaninstpaiddue3.Value = "Due";
+                ddlmaninstpaiddue4.Value = "Due";
+            }
+        }
+    }
+
+    protected void SetTaxBillValue1(string delinquentDate)
+    {
+        if (delinquentDate != "")
+        {
+            string test = delinquentDate;
+            DateTime dt1 = DateTime.Now;
+            string currentdate = dt1.ToShortDateString();
+
+            if (Convert.ToDateTime(test) >= Convert.ToDateTime(currentdate))
+            {
+                ddlmanutaxbill.Value = "FUTURE";
+            }
+            else
+            {
+                ddlmanutaxbill.Value = "FUTURE";
+            }
+        }
+    }
+
+
+
+
+
 
     protected void lnkviewwebsite_Click(object sender, EventArgs e)
     {
