@@ -3481,7 +3481,7 @@
             }
             return "";
         }
-        function checkDate(val, event) {
+        function checkDate(val, event) {            
             //alert(val.value);
             var node = getTarget(event);
 
@@ -3493,8 +3493,139 @@
                 } // endif 
             } // endif 
 
+         
             return stopPropagation(event);
         }
+
+
+
+        function checkDate1() {                    
+
+            var errormsg = "Delinquent Date Must Be Less Than Installment Date."
+            var inst1 = document.getElementById("txtmaninstdate1").value;
+            var delinq1 = document.getElementById("txtmandeliqdate1").value;
+           
+            var a = new Date(inst1);
+            var b = new Date(delinq1);
+
+            var months = (b.getFullYear() - a.getFullYear()) * 12;                        
+            months += b.getMonth() - a.getMonth();
+
+            if (months >= 11)
+            {                
+                alert(errormsg);
+            }            
+        }
+
+        function checkDate2() {
+            var errormsg = "Delinquent Date Must Be Less Than Installment Date."
+            var inst2 = document.getElementById("txtmaninstdate2").value;
+            var delinq2 = document.getElementById("txtmandeliqdate2").value;
+
+            var a = new Date(inst2);
+            var b = new Date(delinq2);
+
+            var months = (b.getFullYear() - a.getFullYear()) * 12;
+            months += b.getMonth() - a.getMonth();
+
+            if (months >= 11) {
+
+                alert(errormsg);
+               
+            }
+
+            return stopPropagation(event);
+        }
+
+        function checkDate3() {
+            var errormsg = "Delinquent Date Must Be Less Than Installment Date."
+            var inst3 = document.getElementById("txtmaninstdate3").value;
+            var delinq3 = document.getElementById("txtmandeliqdate3").value;
+
+            var a = new Date(inst3);
+            var b = new Date(delinq3);
+
+            var months = (b.getFullYear() - a.getFullYear()) * 12;
+            months += b.getMonth() - a.getMonth();
+
+            if (months >= 11) {
+                alert(errormsg);                
+            }            
+        }
+
+        function checkDate4() {
+            var errormsg = "Delinquent Date Must Be Less Than Installment Date."
+            var inst4 = document.getElementById("txtmaninstdate4").value;
+            var delinq4 = document.getElementById("txtmandeliqdate4").value;
+
+            var a = new Date(inst3);
+            var b = new Date(delinq3);
+
+            var months = (b.getFullYear() - a.getFullYear()) * 12;
+            months += b.getMonth() - a.getMonth();
+
+            if (months >= 11) {
+                alert(errormsg);
+            }            
+        }
+
+
+        function checkmanualinstdate2() {
+            var errormsg = "Installment Date Must Be Within 12 Months."
+            var inst1 = document.getElementById("txtmaninstdate1").value;
+            var inst2 = document.getElementById("txtmaninstdate2").value;
+
+            var a = new Date(inst1);
+            var b = new Date(inst2);
+
+            var months = (b.getFullYear() - a.getFullYear()) * 12;
+            months += b.getMonth() - a.getMonth();
+
+            if (months >= 12) {
+                alert(errormsg);
+            }
+        }
+
+
+        function checkmanualinstdate3() {
+            var errormsg = "Installment Date Must Be Within 12 Months."
+            var inst1 = document.getElementById("txtmaninstdate1").value;
+            var inst2 = document.getElementById("txtmaninstdate2").value;
+            var inst3 = document.getElementById("txtmaninstdate3").value;
+
+            var a = new Date(inst1);
+            var b = new Date(inst2);
+            var c = new Date(inst3);
+
+            var months = (c.getFullYear() - b.getFullYear() - a.getFullYear()) * 12;
+            months += c.getMonth() - b.getMonth() - a.getMonth();
+
+            if (months >= 12) {
+                alert(errormsg);
+            }
+        }
+
+        function checkmanualinstdate4() {
+            var errormsg = "Installment Date Must Be Within 12 Months."
+            var inst1 = document.getElementById("txtmaninstdate1").value;
+            var inst2 = document.getElementById("txtmaninstdate2").value;
+            var inst3 = document.getElementById("txtmaninstdate3").value;
+            var inst4 = document.getElementById("txtmaninstdate4").value;
+
+            var a = new Date(inst1);
+            var b = new Date(inst2);
+            var c = new Date(inst3);
+            var d = new Date(inst4);
+
+            var months = (d.getFullYear() - c.getFullYear() - b.getFullYear() - a.getFullYear()) * 12;
+            months += d.getMonth() - c.getMonth() - b.getMonth() - a.getMonth();
+
+            if (months >= 12) {
+                alert(errormsg);
+            }
+        }
+
+
 
         function dateValidate(txtpayoffgood) {
             var pickeddate = new Date(txtpayoffgood.value);
@@ -6043,19 +6174,19 @@
                                                         <td>
                                                             <div class="form-group" style="margin-bottom: 0px;">
                                                                 <label style="text-align: right; clear: both; float: left; margin-right: 28px;" class="CheckBold">Installment Date:</label>
-                                                                <input type="text" id="txtmaninstdate2" runat="server" class="form-control taxing" style="width: 150px;" maxlength="10" onchange="Instcheckinstdate2();" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="return checkDate(this,event)" placeholder="MM/DD/YYYY" autocomplete="off" tabindex="66" />
+                                                                <input type="text" id="txtmaninstdate2" runat="server" class="form-control taxing" style="width: 150px;" maxlength="10" onchange="Instcheckinstdate2();" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="checkmanualinstdate2(); return checkDate(this,event)" placeholder="MM/DD/YYYY" autocomplete="off" tabindex="66" />
                                                             </div>
                                                         </td>
                                                         <td>
                                                             <div class="form-group" style="margin-bottom: 0px;">
                                                                 <label style="text-align: right; clear: both; float: left; margin-right: 28px;" class="CheckBold">Installment Date:</label>
-                                                                <input type="text" id="txtmaninstdate3" runat="server" class="form-control taxing" style="width: 150px;" maxlength="10" onchange="Instcheckinstdate3();" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="return checkDate(this,event)" placeholder="MM/DD/YYYY" autocomplete="off" tabindex="75" />
+                                                                <input type="text" id="txtmaninstdate3" runat="server" class="form-control taxing" style="width: 150px;" maxlength="10" onchange="Instcheckinstdate3();" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="checkmanualinstdate3(); return checkDate(this,event)" placeholder="MM/DD/YYYY" autocomplete="off" tabindex="75" />
                                                             </div>
                                                         </td>
                                                         <td>
                                                             <div class="form-group" style="margin-bottom: 0px;">
                                                                 <label style="text-align: right; clear: both; float: left; margin-right: 28px;" class="CheckBold">Installment Date:</label>
-                                                                <input type="text" id="txtmaninstdate4" runat="server" class="form-control taxing" style="width: 150px;" maxlength="10" onchange="Instcheckinstdate4();" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="return checkDate(this,event)" placeholder="MM/DD/YYYY" autocomplete="off" tabindex="84" />
+                                                                <input type="text" id="txtmaninstdate4" runat="server" class="form-control taxing" style="width: 150px;" maxlength="10" onchange="Instcheckinstdate4();" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="checkmanualinstdate4(); return checkDate(this,event)" placeholder="MM/DD/YYYY" autocomplete="off" tabindex="84" />
                                                             </div>
                                                         </td>
                                                     </tr>
@@ -6063,25 +6194,25 @@
                                                         <td>
                                                             <div class="form-group" style="margin-bottom: 0px;">
                                                                 <label style="text-align: right; clear: both; float: left; margin-right: 29px;" class="CheckBold">Delinquent Date:</label>
-                                                                <input type="text" id="txtmandeliqdate1" runat="server" class="form-control taxing" style="width: 150px;" placeholder="MM/DD/YYYY" maxlength="10" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="return checkDate(this,event)" autocomplete="off" tabindex="58"/>
+                                                                <input type="text" id="txtmandeliqdate1" runat="server" class="form-control taxing" style="width: 150px;" placeholder="MM/DD/YYYY" maxlength="10" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="checkDate1(); return checkDate(this,event);" autocomplete="off" tabindex="58"/>
                                                             </div>
                                                         </td>
                                                         <td>
                                                             <div class="form-group" style="margin-bottom: 0px;">
                                                                 <label style="text-align: right; clear: both; float: left; margin-right: 29px;" class="CheckBold">Delinquent Date:</label>
-                                                                <input type="text" id="txtmandeliqdate2" runat="server" class="form-control taxing" style="width: 150px;" placeholder="MM/DD/YYYY" maxlength="10" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="return checkDate(this,event)" autocomplete="off" tabindex="67" />
+                                                                <input type="text" id="txtmandeliqdate2" runat="server" class="form-control taxing" style="width: 150px;" placeholder="MM/DD/YYYY" maxlength="10" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="checkDate2(); return checkDate(this,event)" autocomplete="off" tabindex="67" />
                                                             </div>
                                                         </td>
                                                         <td>
                                                             <div class="form-group" style="margin-bottom: 0px;">
                                                                 <label style="text-align: right; clear: both; float: left; margin-right: 29px;" class="CheckBold">Delinquent Date:</label>
-                                                                <input type="text" id="txtmandeliqdate3" runat="server" class="form-control taxing" style="width: 150px;" placeholder="MM/DD/YYYY" maxlength="10" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="return checkDate(this,event)" autocomplete="off" tabindex="76" />
+                                                                <input type="text" id="txtmandeliqdate3" runat="server" class="form-control taxing" style="width: 150px;" placeholder="MM/DD/YYYY" maxlength="10" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="checkDate3(); return checkDate(this,event)" autocomplete="off" tabindex="76" />
                                                             </div>
                                                         </td>
                                                         <td>
                                                             <div class="form-group" style="margin-bottom: 0px;">
                                                                 <label style="text-align: right; clear: both; float: left; margin-right: 29px;" class="CheckBold">Delinquent Date:</label>
-                                                                <input type="text" id="txtmandeliqdate4" runat="server" class="form-control taxing" style="width: 150px;" placeholder="MM/DD/YYYY" maxlength="10" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="return checkDate(this,event)" autocomplete="off" tabindex="85" />
+                                                                <input type="text" id="txtmandeliqdate4" runat="server" class="form-control taxing" style="width: 150px;" placeholder="MM/DD/YYYY" maxlength="10" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="checkDate4(); return checkDate(this,event)" autocomplete="off" tabindex="85" />
                                                             </div>
                                                         </td>
                                                     </tr>
