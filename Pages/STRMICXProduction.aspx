@@ -30,17 +30,17 @@
                 document.getElementById('txtInstallRemain').value = blnce;
 
             }
-           
+
         }
-        
+
         function setTwoNumberDecimal(el) {
             el.value = parseFloat(el.value).toFixed(2);
         };
 
 
         function futureYear(txtDate) {
-          var current=txtDate.value;
-            var today = new Date();   
+            var current = txtDate.value;
+            var today = new Date();
             var yyyy = today.getFullYear();
             if (current > yyyy) {
                 document.getElementById('txtdelitaxyear').value = "";
@@ -50,7 +50,7 @@
         }
 
         function functionTaxBill(txtDate) {
-           
+
             var ddlTaxBill = document.getElementById("paymentfrequency");
             var txBill = ddlTaxBill.options[ddlTaxBill.selectedIndex].innerHTML;
 
@@ -66,25 +66,22 @@
             if (mm < 10) {
                 mm = '0' + mm;
             }
-           
+
             today = mm + '/' + dd + '/' + yyyy;
-            if(txBill=="Annual")
-            {
+            if (txBill == "Annual") {
                 var dt = document.getElementById("delinq1").value;
                 if (Date.parse(dt) >= Date.parse(today)) {
-                   document.getElementById("taxbill").selectedIndex = 1;
-                    
+                    document.getElementById("taxbill").selectedIndex = 1;
+
                 }
                 else if (Date.parse(dt) <= Date.parse(today)) {
                     document.getElementById("taxbill").selectedIndex = 2;
                 }
-                else
-                {
+                else {
                     document.getElementById("taxbill").selectedIndex = 0;
                 }
             }
-            else if(txBill=="Semi-Annual")
-            {
+            else if (txBill == "Semi-Annual") {
                 var dt = document.getElementById("delinq2").value;
                 if (Date.parse(dt) >= Date.parse(today)) {
                     document.getElementById("taxbill").selectedIndex = 1;
@@ -98,8 +95,7 @@
                 }
 
             }
-            else if (txBill == "Tri-Annual")
-            {
+            else if (txBill == "Tri-Annual") {
                 var dt = document.getElementById("delinq3").value;
                 if (Date.parse(dt) >= Date.parse(today)) {
                     document.getElementById("taxbill").selectedIndex = 1;
@@ -112,8 +108,7 @@
                     document.getElementById("taxbill").selectedIndex = 0;
                 }
             }
-            else if (txBill == "Quarterly")
-            {
+            else if (txBill == "Quarterly") {
                 var dt = document.getElementById("delinq4").value;
                 if (Date.parse(dt) >= Date.parse(today)) {
                     document.getElementById("taxbill").selectedIndex = 1;
@@ -126,13 +121,13 @@
                     document.getElementById("taxbill").selectedIndex = 0;
                 }
             }
-            
+
 
         }
 
 
         function functionpayemtfrequency(ddlPay) {
-       // var payfre = document.getElementById("paymentfrequency").value;
+            // var payfre = document.getElementById("paymentfrequency").value;
             var payfre = ddlPay.options[ddlPay.selectedIndex].innerHTML;
             //alert(payfre);
             var Ann = "", Semi = "", Tri = "", Qua = "";
@@ -218,7 +213,7 @@
             }
 
             if (Semi == "Semi-Annual") {
-              
+
                 document.getElementById("instamount1").disabled = false;
                 document.getElementById("instamountpaid1").disabled = false;
                 document.getElementById("instpaiddue1").disabled = false;
@@ -371,6 +366,250 @@
                 document.getElementById("exemptrelevy4").disabled = false;
             }
         }
+
+
+        //paymentfrequency futuretax
+        function functionpayemtfrequency1(ddlPay1) {
+            // var payfre = document.getElementById("paymentfrequency").value;
+            var payfre = ddlPay1.options[ddlPay1.selectedIndex].innerHTML;
+            //alert(payfre);
+            var Ann = "", Semi = "", Tri = "", Qua = "";
+            if (payfre == "Annual") {
+                Ann = "Annual";
+            }
+            if (payfre == "Semi-Annual") {
+                Semi = "Semi-Annual";
+            }
+            if (payfre == "Quarterly") {
+                Qua = "Quarterly";
+            }
+            if (payfre == "Tri-Annual") {
+                Tri = "Tri-Annual";
+            }
+            if (Ann == "Annual") {
+                document.getElementById("instmanamount1").disabled = false;
+                document.getElementById("instmanamtpaid1").disabled = false;
+                document.getElementById("ddlmaninstpaiddue1").disabled = false;
+                document.getElementById("txtmanurembal1").disabled = false;
+                document.getElementById("txtmaninstdate1").disabled = false;
+                document.getElementById("txtmandeliqdate1").disabled = false;
+                document.getElementById("txtmandisamount1").disabled = false;
+                document.getElementById("txtmandisdate1").disabled = false;
+                document.getElementById("chkexrelmanu1").disabled = false;
+
+                document.getElementById("instmanamount2").disabled = true;
+                document.getElementById("instmanamount2").value = "";
+                document.getElementById("instmanamtpaid2").disabled = true;
+                document.getElementById("instmanamtpaid2").value = "";
+                document.getElementById("ddlmaninstpaiddue2").disabled = true;
+                document.getElementById("ddlmaninstpaiddue2").selectedIndex = 0;
+                document.getElementById("txtmanurembal2").disabled = true;
+                document.getElementById("txtmanurembal2").value = "";
+                document.getElementById("txtmaninstdate2").disabled = true;
+                document.getElementById("txtmaninstdate2").value = "";
+                document.getElementById("txtmandeliqdate2").disabled = true;
+                document.getElementById("txtmandeliqdate2").value = "";
+                document.getElementById("txtmandisamount2").disabled = true;
+                document.getElementById("txtmandisamount2").value = "";
+                document.getElementById("txtmandisdate2").disabled = true;
+                document.getElementById("txtmandisdate2").value = "";
+                document.getElementById("chkexrelmanu2").disabled = true;
+                document.getElementById("chkexrelmanu2").checked = false;
+
+                document.getElementById("instmanamount3").disabled = true;
+                document.getElementById("instmanamount3").value = "";
+                document.getElementById("instmanamtpaid3").disabled = true;
+                document.getElementById("instmanamtpaid3").value = "";
+                document.getElementById("ddlmaninstpaiddue3").disabled = true;
+                document.getElementById("ddlmaninstpaiddue3").selectedIndex = 0;
+                document.getElementById("txtmanurembal3").disabled = true;
+                document.getElementById("txtmanurembal3").value = "";
+                document.getElementById("txtmaninstdate3").disabled = true;
+                document.getElementById("txtmaninstdate3").value = "";
+                document.getElementById("txtmandeliqdate3").disabled = true;
+                document.getElementById("txtmandeliqdate3").value = "";
+                document.getElementById("txtmandisamount3").disabled = true;
+                document.getElementById("txtmandisamount3").value = "";
+                document.getElementById("txtmandisdate3").disabled = true;
+                document.getElementById("txtmandisdate3").value = "";
+                document.getElementById("chkexrelmanu3").disabled = true;
+                document.getElementById("chkexrelmanu3").checked = false;
+
+                document.getElementById("instmanamount4").disabled = true;
+                document.getElementById("instmanamount4").value = "";
+                document.getElementById("instmanamtpaid4").disabled = true;
+                document.getElementById("instmanamtpaid4").value = "";
+                document.getElementById("ddlmaninstpaiddue4").disabled = true;
+                document.getElementById("ddlmaninstpaiddue4").selectedIndex = 0;
+                document.getElementById("txtmanurembal4").disabled = true;
+                document.getElementById("txtmanurembal4").value = "";
+                document.getElementById("txtmaninstdate4").disabled = true;
+                document.getElementById("txtmaninstdate4").value = "";
+                document.getElementById("txtmandeliqdate4").disabled = true;
+                document.getElementById("txtmandeliqdate4").value = "";
+                document.getElementById("txtmandisamount4").disabled = true;
+                document.getElementById("txtmandisamount4").value = "";
+                document.getElementById("txtmandisdate4").disabled = true;
+                document.getElementById("txtmandisdate4").value = "";
+                document.getElementById("chkexrelmanu4").disabled = true;
+                document.getElementById("chkexrelmanu4").checked = false;
+            }
+
+            if (Semi == "Semi-Annual") {
+
+                document.getElementById("instmanamount1").disabled = false;
+                document.getElementById("instmanamtpaid1").disabled = false;
+                document.getElementById("ddlmaninstpaiddue1").disabled = false;
+                document.getElementById("txtmanurembal1").disabled = false;
+                document.getElementById("txtmaninstdate1").disabled = false;
+                document.getElementById("txtmandeliqdate1").disabled = false;
+                document.getElementById("txtmandisamount1").disabled = false;
+                document.getElementById("txtmandisdate1").disabled = false;
+                document.getElementById("chkexrelmanu1").disabled = false;
+
+                document.getElementById("instmanamount2").disabled = false;
+                document.getElementById("instmanamtpaid2").disabled = false;
+                document.getElementById("ddlmaninstpaiddue2").disabled = false;
+                document.getElementById("txtmanurembal2").disabled = false;
+                document.getElementById("txtmaninstdate2").disabled = false;
+                document.getElementById("txtmandeliqdate2").disabled = false;
+                document.getElementById("txtmandisamount2").disabled = false;
+                document.getElementById("txtmandisdate2").disabled = false;
+                document.getElementById("chkexrelmanu2").disabled = false;
+
+                document.getElementById("instmanamount3").disabled = true;
+                document.getElementById("instmanamount3").value = "";
+                document.getElementById("instmanamtpaid3").disabled = true;
+                document.getElementById("instmanamtpaid3").value = "";
+                document.getElementById("ddlmaninstpaiddue3").disabled = true;
+                document.getElementById("ddlmaninstpaiddue3").selectedIndex = 0;
+                document.getElementById("txtmanurembal3").disabled = true;
+                document.getElementById("txtmanurembal3").value = "";
+                document.getElementById("txtmaninstdate3").disabled = true;
+                document.getElementById("txtmaninstdate3").value = "";
+                document.getElementById("txtmandeliqdate3").disabled = true;
+                document.getElementById("txtmandeliqdate3").value = "";
+                document.getElementById("txtmandisamount3").disabled = true;
+                document.getElementById("txtmandisamount3").value = "";
+                document.getElementById("txtmandisdate3").disabled = true;
+                document.getElementById("txtmandisdate3").value = "";
+                document.getElementById("chkexrelmanu3").disabled = true;
+                document.getElementById("chkexrelmanu3").checked = false;
+
+                document.getElementById("instmanamount4").disabled = true;
+                document.getElementById("instmanamount4").value = "";
+                document.getElementById("instmanamtpaid4").disabled = true;
+                document.getElementById("instmanamtpaid4").value = "";
+                document.getElementById("ddlmaninstpaiddue4").disabled = true;
+                document.getElementById("ddlmaninstpaiddue4").selectedIndex = 0;
+                document.getElementById("txtmanurembal4").disabled = true;
+                document.getElementById("txtmanurembal4").value = "";
+                document.getElementById("txtmaninstdate4").disabled = true;
+                document.getElementById("txtmaninstdate4").value = "";
+                document.getElementById("txtmandeliqdate4").disabled = true;
+                document.getElementById("txtmandeliqdate4").value = "";
+                document.getElementById("txtmandisamount4").disabled = true;
+                document.getElementById("txtmandisamount4").value = "";
+                document.getElementById("txtmandisdate4").disabled = true;
+                document.getElementById("txtmandisdate4").value = "";
+                document.getElementById("chkexrelmanu4").disabled = true;
+                document.getElementById("chkexrelmanu4").checked = false;
+            }
+
+            if (Tri == "Tri-Annual") {
+                document.getElementById("instmanamount1").disabled = false;
+                document.getElementById("instmanamtpaid1").disabled = false;
+                document.getElementById("ddlmaninstpaiddue1").disabled = false;
+                document.getElementById("txtmanurembal1").disabled = false;
+                document.getElementById("txtmaninstdate1").disabled = false;
+                document.getElementById("txtmandeliqdate1").disabled = false;
+                document.getElementById("txtmandisamount1").disabled = false;
+                document.getElementById("txtmandisdate1").disabled = false;
+                document.getElementById("chkexrelmanu1").disabled = false;
+
+                document.getElementById("instmanamount2").disabled = false;
+                document.getElementById("instmanamtpaid2").disabled = false;
+                document.getElementById("ddlmaninstpaiddue2").disabled = false;
+                document.getElementById("txtmanurembal2").disabled = false;
+                document.getElementById("txtmaninstdate2").disabled = false;
+                document.getElementById("txtmandeliqdate2").disabled = false;
+                document.getElementById("txtmandisamount2").disabled = false;
+                document.getElementById("txtmandisdate2").disabled = false;
+                document.getElementById("chkexrelmanu2").disabled = false;
+
+                document.getElementById("instmanamount3").disabled = false;
+                document.getElementById("instmanamtpaid3").disabled = false;
+                document.getElementById("ddlmaninstpaiddue3").disabled = false;
+                document.getElementById("txtmanurembal3").disabled = false;
+                document.getElementById("txtmaninstdate3").disabled = false;
+                document.getElementById("txtmandeliqdate3").disabled = false;
+                document.getElementById("txtmandisamount3").disabled = false;
+                document.getElementById("txtmandisdate3").disabled = false;
+                document.getElementById("chkexrelmanu3").disabled = false;
+
+                document.getElementById("instmanamount4").disabled = true;
+                document.getElementById("instmanamount4").value = "";
+                document.getElementById("instmanamtpaid4").disabled = true;
+                document.getElementById("instmanamtpaid4").value = "";
+                document.getElementById("ddlmaninstpaiddue4").disabled = true;
+                document.getElementById("ddlmaninstpaiddue4").selectedIndex = 0;
+                document.getElementById("txtmanurembal4").disabled = true;
+                document.getElementById("txtmanurembal4").value = "";
+                document.getElementById("txtmaninstdate4").disabled = true;
+                document.getElementById("txtmaninstdate4").value = "";
+                document.getElementById("txtmandeliqdate4").disabled = true;
+                document.getElementById("txtmandeliqdate4").value = "";
+                document.getElementById("txtmandisamount4").disabled = true;
+                document.getElementById("txtmandisamount4").value = "";
+                document.getElementById("txtmandisdate4").disabled = true;
+                document.getElementById("txtmandisdate4").value = "";
+                document.getElementById("chkexrelmanu4").disabled = true;
+                document.getElementById("chkexrelmanu4").checked = false;
+            }
+
+            if (Qua == "Quarterly") {
+                document.getElementById("instmanamount1").disabled = false;
+                document.getElementById("instmanamtpaid1").disabled = false;
+                document.getElementById("ddlmaninstpaiddue1").disabled = false;
+                document.getElementById("txtmanurembal1").disabled = false;
+                document.getElementById("txtmaninstdate1").disabled = false;
+                document.getElementById("txtmandeliqdate1").disabled = false;
+                document.getElementById("txtmandisamount1").disabled = false;
+                document.getElementById("txtmandisdate1").disabled = false;
+                document.getElementById("chkexrelmanu1").disabled = false;
+
+                document.getElementById("instmanamount2").disabled = false;
+                document.getElementById("instmanamtpaid2").disabled = false;
+                document.getElementById("ddlmaninstpaiddue2").disabled = false;
+                document.getElementById("txtmanurembal2").disabled = false;
+                document.getElementById("txtmaninstdate2").disabled = false;
+                document.getElementById("txtmandeliqdate2").disabled = false;
+                document.getElementById("txtmandisamount2").disabled = false;
+                document.getElementById("txtmandisdate2").disabled = false;
+                document.getElementById("chkexrelmanu2").disabled = false;
+
+                document.getElementById("instmanamount3").disabled = false;
+                document.getElementById("instmanamtpaid3").disabled = false;
+                document.getElementById("ddlmaninstpaiddue3").disabled = false;
+                document.getElementById("txtmanurembal3").disabled = false;
+                document.getElementById("txtmaninstdate3").disabled = false;
+                document.getElementById("txtmandeliqdate3").disabled = false;
+                document.getElementById("txtmandisamount3").disabled = false;
+                document.getElementById("txtmandisdate3").disabled = false;
+                document.getElementById("chkexrelmanu3").disabled = false;
+
+                document.getElementById("instmanamount4").disabled = false;
+                document.getElementById("instmanamtpaid4").disabled = false;
+                document.getElementById("ddlmaninstpaiddue4").disabled = false;
+                document.getElementById("txtmanurembal4").disabled = false;
+                document.getElementById("txtmaninstdate4").disabled = false;
+                document.getElementById("txtmandeliqdate4").disabled = false;
+                document.getElementById("txtmandisamount4").disabled = false;
+                document.getElementById("txtmandisdate4").disabled = false;
+                document.getElementById("chkexrelmanu4").disabled = false;
+            }
+        }
+        
 
         function validateCheckBoxes() {
             var isValid = false;
@@ -1091,11 +1330,11 @@
                 }
                 if (startDate1 != "") {
                     alert("Installment Date1 Should not be Empty");
-                   // document.getElementById("instdate3").value = "";
+                    // document.getElementById("instdate3").value = "";
                 }
                 if (endDate1 != "") {
                     alert("Installment Date1 Should not be Empty");
-                   // document.getElementById("instdate4").value = "";
+                    // document.getElementById("instdate4").value = "";
                 }
             }
             if (endDate == "") {
@@ -2482,10 +2721,10 @@
             if (instAmt44 == "") {
                 instAmt44 = '0.00';
             }
-            var res1 = parseFloat(instAmt11.replace(',', ''));
-            var res2 = parseFloat(instAmt22.replace(',', ''));
-            var res3 = parseFloat(instAmt33.replace(',', ''));
-            var res4 = parseFloat(instAmt44.replace(',', ''));
+            var res1 = parseFloat(instAmt11.replace(/,/g, ''));
+            var res2 = parseFloat(instAmt22.replace(/,/g, ''));
+            var res3 = parseFloat(instAmt33.replace(/,/g, ''));
+            var res4 = parseFloat(instAmt44.replace(/,/g, ''));
             document.getElementById("futuretxtAnnualTaxAmount").innerHTML = parseFloat(res1 + res2 + res3 + res4).toFixed(2);
 
             //document.getElementById('txtstrRemaingBlnce1').removeAttribute('readonly');
@@ -2543,10 +2782,10 @@
             if (instAmt44 == "") {
                 instAmt44 = '0.00';
             }
-            var res1 = parseFloat(instAmt11.replace(',', ''));
-            var res2 = parseFloat(instAmt22.replace(',', ''));
-            var res3 = parseFloat(instAmt33.replace(',', ''));
-            var res4 = parseFloat(instAmt44.replace(',', ''));
+            var res1 = parseFloat(instAmt11.replace(/,/g, ''));
+            var res2 = parseFloat(instAmt22.replace(/,/g, ''));
+            var res3 = parseFloat(instAmt33.replace(/,/g, ''));
+            var res4 = parseFloat(instAmt44.replace(/,/g, ''));
             document.getElementById("futuretxtAnnualTaxAmount").innerHTML = parseFloat(res1 + res2 + res3 + res4).toFixed(2);
 
             var instAmt2 = document.getElementById("instmanamount2").value;
@@ -2601,10 +2840,10 @@
             if (instAmt44 == "") {
                 instAmt44 = '0.00';
             }
-            var res1 = parseFloat(instAmt11.replace(',', ''));
-            var res2 = parseFloat(instAmt22.replace(',', ''));
-            var res3 = parseFloat(instAmt33.replace(',', ''));
-            var res4 = parseFloat(instAmt44.replace(',', ''));
+            var res1 = parseFloat(instAmt11.replace(/,/g, ''));
+            var res2 = parseFloat(instAmt22.replace(/,/g, ''));
+            var res3 = parseFloat(instAmt33.replace(/,/g, ''));
+            var res4 = parseFloat(instAmt44.replace(/,/g, ''));
             document.getElementById("futuretxtAnnualTaxAmount").innerHTML = parseFloat(res1 + res2 + res3 + res4).toFixed(2);
 
             var instAmt3 = document.getElementById("instmanamount3").value;
@@ -2712,10 +2951,10 @@
             if (instAmt44 == "") {
                 instAmt44 = '0.00';
             }
-            var res1 = parseFloat(instAmt11.replace(',', ''));
-            var res2 = parseFloat(instAmt22.replace(',', ''));
-            var res3 = parseFloat(instAmt33.replace(',', ''));
-            var res4 = parseFloat(instAmt44.replace(',', ''));
+            var res1 = parseFloat(instAmt11.replace(/,/g, ''));
+            var res2 = parseFloat(instAmt22.replace(/,/g, ''));
+            var res3 = parseFloat(instAmt33.replace(/,/g, ''));
+            var res4 = parseFloat(instAmt44.replace(/,/g, ''));
             document.getElementById("futuretxtAnnualTaxAmount").innerHTML = parseFloat(res1 + res2 + res3 + res4).toFixed(2);
 
             var instAmt4 = document.getElementById("instmanamount4").value;
@@ -3270,14 +3509,14 @@
                 document.getElementById('txtpayoffgood').style.borderColor = "#ff0000";
                 document.getElementById('lblpayoffgood').style.color = "#ff0000";
                 alert("Date should be greater than current date");
-                
+
                 return true;
             }
         }
 
         function dateValidateFutue(txtpayoffgood) {
-           
-           
+
+
             var today = new Date();
             var dd = today.getDate();
 
@@ -3292,14 +3531,13 @@
             }
 
             today = mm + '/' + dd + '/' + yyyy;
-           
-            if (txtpayoffgood.value == "")
-            {
+
+            if (txtpayoffgood.value == "") {
                 return true;
             }
 
             if (Date.parse(txtpayoffgood.value) <= Date.parse(today)) {
-                
+
                 document.getElementById('txtinitialinstall').style.borderColor = "green";
                 document.getElementById('txtinitialinstall').style.color = "green";
                 return true;
@@ -3767,7 +4005,7 @@
         //Tax Sale
         function applicable() {
             var ddlselect = document.getElementById("txtnotapplicable").value;
-            if (ddlselect == "Yes" || ddlselect=="Select") {
+            if (ddlselect == "Yes" || ddlselect == "Select") {
                 document.getElementById("txtdatetaxsale").disabled = true;
                 document.getElementById("txtlastdayred").disabled = true;
                 document.getElementById("txtdatetaxsale").value = "";
@@ -4408,7 +4646,7 @@
                 numberOfMonths: 1,
                 beforeShowDay: $.datepicker.noWeekends,
                 minDate: dateToday,
-                
+
             });
         });
         var dateToday = new Date();
@@ -4549,7 +4787,7 @@
                     var charCode = e.which;
                 }
                 else { return true; }
-                if ((charCode > 64 && charCode < 91) || (charCode > 96 && charCode < 123) || charCode==32)
+                if ((charCode > 64 && charCode < 91) || (charCode > 96 && charCode < 123) || charCode == 32)
                     return true;
                 else
                     return false;
@@ -4559,6 +4797,30 @@
             }
         }
 
+    </script>
+
+    <script>
+        function openWindow(url) {
+            debugger;
+            var tet = url;
+            var a = "";
+            var aindex = 0;
+            var bindex = 29;
+            if (tet.includes("Pages")) {
+
+                tet = tet.replace(tet.substring(aindex, bindex), "");
+                a = tet;
+                a = a.match(/^https?:/) ? a : '//' + a;
+                window.open(a, '_blank');
+                return;
+            }
+            else {
+
+                url = url.match(/^https?:/) ? url : '//' + url;
+                window.open(url, '_blank');
+                return;
+            }
+        }
     </script>
 
 </head>
@@ -5078,7 +5340,9 @@
                                                     <Columns>
                                                         <asp:TemplateField HeaderText="WebSite" ItemStyle-Width="10%">
                                                             <ItemTemplate>
-                                                                <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl='<%# Bind("url") %>' onclick="window.open(this.href, 'targetWindow', 'toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes');return false;">
+                                                               <%-- <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl='<%# Bind("url") %>' onclick ="openWindow(this.href); return false;">--%>
+                                                                     <%--<asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl='<%# Bind("url", "javascript:openWindow(&#039;{0}&#039;);") %>'>--%>
+                                                                <asp:HyperLink ID="HyperLink1" runat="server" Target="_blank" NavigateUrl='<%# Bind("url") %>'>
                                                                     <asp:Label ID="lnkwebsite3" runat="server" Text='<%# Bind("url") %>'></asp:Label>
                                                                 </asp:HyperLink>
                                                             </ItemTemplate>
@@ -5316,7 +5580,7 @@
                                                         <asp:HiddenField ID="hdntxtbxTaksit4" runat="server" Value=""></asp:HiddenField>
                                                         <div class="form-group" style="margin-bottom: 0px;">
                                                             <label style="text-align: right; clear: both; float: left; margin-right: 12px;" class="CheckBold">Remaining Balance:</label>
-                                                            <input type="text" id="remainingbalance1" class="form-control taxing" runat="server" placeholder="Remaining Balance" style="width: 150px;" onkeypress="return isNumberKey(event)"  onkeyup="RemBalance1(event);" autocomplete="off" tabindex="4" onchange="setTwoNumberDecimal(this)" />
+                                                            <input type="text" id="remainingbalance1" class="form-control taxing" runat="server" placeholder="Remaining Balance" style="width: 150px;" onkeypress="return isNumberKey(event)" onkeyup="RemBalance1(event);" autocomplete="off" tabindex="4" onchange="setTwoNumberDecimal(this)" />
                                                         </div>
                                                     </td>
                                                     <td>
@@ -5374,13 +5638,13 @@
                                                     <td>
                                                         <div class="form-group" style="margin-bottom: 0px;">
                                                             <label style="text-align: right; clear: both; float: left; margin-right: 29px;" class="CheckBold">Delinquent Date:</label>
-                                                            <input type="text" id="delinq2" runat="server" class="form-control taxing" style="width: 150px;" placeholder="MM/DD/YYYY" maxlength="10" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="return checkDate(this,event)" autocomplete="off" tabindex="15" onchange="functionTaxBill(this)"/>
+                                                            <input type="text" id="delinq2" runat="server" class="form-control taxing" style="width: 150px;" placeholder="MM/DD/YYYY" maxlength="10" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="return checkDate(this,event)" autocomplete="off" tabindex="15" onchange="functionTaxBill(this)" />
                                                         </div>
                                                     </td>
                                                     <td>
                                                         <div class="form-group" style="margin-bottom: 0px;">
                                                             <label style="text-align: right; clear: both; float: left; margin-right: 29px;" class="CheckBold">Delinquent Date:</label>
-                                                            <input type="text" id="delinq3" runat="server" class="form-control taxing" style="width: 150px;" placeholder="MM/DD/YYYY" maxlength="10" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="return checkDate(this,event)" autocomplete="off" tabindex="23" onchange="functionTaxBill(this)"/>
+                                                            <input type="text" id="delinq3" runat="server" class="form-control taxing" style="width: 150px;" placeholder="MM/DD/YYYY" maxlength="10" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="return checkDate(this,event)" autocomplete="off" tabindex="23" onchange="functionTaxBill(this)" />
                                                         </div>
                                                     </td>
                                                     <td>
@@ -5503,7 +5767,7 @@
                                                             <option value="3">Tri-Annual</option>
                                                             <option value="4">Quarterly</option>
                                                         </select>
-                                                     <%--   <asp:DropDownList ID="paymentfrequency" runat="server"  style="width: 170px;" TabIndex="39" OnSelectedIndexChanged="paymentfrequency_SelectedIndexChanged" AutoPostBack="true">
+                                                        <%--   <asp:DropDownList ID="paymentfrequency" runat="server"  style="width: 170px;" TabIndex="39" OnSelectedIndexChanged="paymentfrequency_SelectedIndexChanged" AutoPostBack="true">
                                                             <asp:ListItem Value="1">Annual</asp:ListItem>
                                                             <asp:ListItem Value="2">Semi-Annual</asp:ListItem>
                                                             <asp:ListItem Value="3">Tri-Annual</asp:ListItem>
@@ -5600,25 +5864,25 @@
                                                         <td>
                                                             <div class="form-group" style="margin-bottom: 0px;">
                                                                 <label style="text-align: right; clear: both; float: left; margin-right: 55px;" class="CheckBold">Inst.Amount:</label>
-                                                                <input type="text" id="instmanamount1" runat="server" class="form-control taxing" placeholder="Tax Amount" style="width: 150px;" onkeyup="Futurehello1();" onfocusout="FuturemyFunction1();if (this.value=='0.00') this.value='0.00';if (this.value=='') this.value='0.00';" onfocusin="if (this.value=='0.00') this.value='';" onblur="Futuremytxtamount1()" autocomplete='off' tabindex="50" />
+                                                                <input type="text" id="instmanamount1" runat="server" class="form-control taxing" placeholder="Tax Amount" style="width: 150px;" onkeyup="Futurehello1();" onfocusout="FuturemyFunction1();if (this.value=='0.00') this.value='0.00';if (this.value=='') this.value='0.00';" onfocusin="if (this.value=='0.00') this.value='';" onblur="Futuremytxtamount1()" autocomplete='off' tabindex="53" />
                                                             </div>
                                                         </td>
                                                         <td>
                                                             <div class="form-group" style="margin-bottom: 0px;">
                                                                 <label style="text-align: right; clear: both; float: left; margin-right: 55px;" class="CheckBold">Inst.Amount:</label>
-                                                                <input type="text" id="instmanamount2" class="form-control taxing" runat="server" placeholder="Tax Amount" style="width: 150px;" onkeyup="Futurehello2();" onfocusout="FuturemyFunction2();if (this.value=='0.00') this.value='0.00';if (this.value=='') this.value='0.00';" onfocusin="if (this.value=='0.00') this.value='';" onblur="Futuremytxtamount2()" autocomplete='off' tabindex="59" />
+                                                                <input type="text" id="instmanamount2" class="form-control taxing" runat="server" placeholder="Tax Amount" style="width: 150px;" onkeyup="Futurehello2();" onfocusout="FuturemyFunction2();if (this.value=='0.00') this.value='0.00';if (this.value=='') this.value='0.00';" onfocusin="if (this.value=='0.00') this.value='';" onblur="Futuremytxtamount2()" autocomplete='off' tabindex="62"/>
                                                             </div>
                                                         </td>
                                                         <td>
                                                             <div class="form-group" style="margin-bottom: 0px;">
                                                                 <label style="text-align: right; clear: both; float: left; margin-right: 55px;" class="CheckBold">Inst.Amount:</label>
-                                                                <input type="text" id="instmanamount3" class="form-control taxing" runat="server" placeholder="Tax Amount" style="width: 150px;" onkeyup="Futurehello3();" onfocusout="FuturemyFunction3();if (this.value=='0.00') this.value='0.00';if (this.value=='') this.value='0.00';" onfocusin="if (this.value=='0.00') this.value='';" onblur="Futuremytxtamount3()" autocomplete='off' tabindex="68" />
+                                                                <input type="text" id="instmanamount3" class="form-control taxing" runat="server" placeholder="Tax Amount" style="width: 150px;" onkeyup="Futurehello3();" onfocusout="FuturemyFunction3();if (this.value=='0.00') this.value='0.00';if (this.value=='') this.value='0.00';" onfocusin="if (this.value=='0.00') this.value='';" onblur="Futuremytxtamount3()" autocomplete='off' tabindex="71"/>
                                                             </div>
                                                         </td>
                                                         <td>
                                                             <div class="form-group" style="margin-bottom: 0px;">
                                                                 <label style="text-align: right; clear: both; float: left; margin-right: 55px;" class="CheckBold">Inst.Amount:</label>
-                                                                <input type="text" id="instmanamount4" class="form-control taxing" runat="server" placeholder="Tax Amount" style="width: 150px;" onkeyup="Futurehello4();" onfocusout="FuturemyFunction4();if (this.value=='0.00') this.value='0.00';if (this.value=='') this.value='0.00';" onfocusin="if (this.value=='0.00') this.value='';" onblur="Futuremytxtamount4()" autocomplete='off' tabindex="77" />
+                                                                <input type="text" id="instmanamount4" class="form-control taxing" runat="server" placeholder="Tax Amount" style="width: 150px;" onkeyup="Futurehello4();" onfocusout="FuturemyFunction4();if (this.value=='0.00') this.value='0.00';if (this.value=='') this.value='0.00';" onfocusin="if (this.value=='0.00') this.value='';" onblur="Futuremytxtamount4()" autocomplete='off' tabindex="80"/>
                                                             </div>
                                                         </td>
                                                     </tr>
@@ -5626,25 +5890,25 @@
                                                         <td>
                                                             <div class="form-group" style="margin-bottom: 0px;">
                                                                 <label style="text-align: right; clear: both; float: left; margin-right: 23px;" class="CheckBold">Inst.Amount Paid:</label>
-                                                                <input type="text" id="instmanamtpaid1" runat="server" class="form-control taxing" placeholder="Amount Paid" style="width: 150px;" onkeyup="FutureAmtPaid1();" onfocusout="FuturemyFunctionAmtPaid1();if (this.value=='0.00') this.value='0.00';if (this.value=='') this.value='0.00';" onfocusin="if (this.value=='0.00') this.value='';" onblur="Futuremytest1();" autocomplete='off' tabindex="51" />
+                                                                <input type="text" id="instmanamtpaid1" runat="server" class="form-control taxing" placeholder="Amount Paid" style="width: 150px;" onkeyup="FutureAmtPaid1();" onfocusout="FuturemyFunctionAmtPaid1();if (this.value=='0.00') this.value='0.00';if (this.value=='') this.value='0.00';" onfocusin="if (this.value=='0.00') this.value='';" onblur="Futuremytest1();" autocomplete='off' tabindex="54"/>
                                                             </div>
                                                         </td>
                                                         <td>
                                                             <div class="form-group" style="margin-bottom: 0px;">
                                                                 <label style="text-align: right; clear: both; float: left; margin-right: 23px;" class="CheckBold">Inst.Amount Paid:</label>
-                                                                <input type="text" id="instmanamtpaid2" runat="server" class="form-control taxing" placeholder="Amount Paid" style="width: 150px;" onkeyup="FutureAmtPaid2();" onfocusout="FuturemyFunctionAmtPaid2();if (this.value=='0.00') this.value='0.00';if (this.value=='') this.value='0.00';" onfocusin="if (this.value=='0.00') this.value='';" onblur="Futuremytest2();" autocomplete='off' tabindex="60" />
+                                                                <input type="text" id="instmanamtpaid2" runat="server" class="form-control taxing" placeholder="Amount Paid" style="width: 150px;" onkeyup="FutureAmtPaid2();" onfocusout="FuturemyFunctionAmtPaid2();if (this.value=='0.00') this.value='0.00';if (this.value=='') this.value='0.00';" onfocusin="if (this.value=='0.00') this.value='';" onblur="Futuremytest2();" autocomplete='off' tabindex="63"/>
                                                             </div>
                                                         </td>
                                                         <td>
                                                             <div class="form-group" style="margin-bottom: 0px;">
                                                                 <label style="text-align: right; clear: both; float: left; margin-right: 23px;" class="CheckBold">Inst.Amount Paid:</label>
-                                                                <input type="text" id="instmanamtpaid3" runat="server" class="form-control taxing" placeholder="Amount Paid" style="width: 150px;" onkeyup="FutureAmtPaid3();" onfocusout="FuturemyFunctionAmtPaid3();if (this.value=='0.00') this.value='0.00';if (this.value=='') this.value='0.00';" onfocusin="if (this.value=='0.00') this.value='';" onblur="Futuremytest3();" autocomplete='off' tabindex="69" />
+                                                                <input type="text" id="instmanamtpaid3" runat="server" class="form-control taxing" placeholder="Amount Paid" style="width: 150px;" onkeyup="FutureAmtPaid3();" onfocusout="FuturemyFunctionAmtPaid3();if (this.value=='0.00') this.value='0.00';if (this.value=='') this.value='0.00';" onfocusin="if (this.value=='0.00') this.value='';" onblur="Futuremytest3();" autocomplete='off' tabindex="72"/>
                                                             </div>
                                                         </td>
                                                         <td>
                                                             <div class="form-group" style="margin-bottom: 0px;">
                                                                 <label style="text-align: right; clear: both; float: left; margin-right: 23px;" class="CheckBold">Inst.Amount Paid:</label>
-                                                                <input type="text" id="instmanamtpaid4" runat="server" class="form-control taxing" placeholder="Amount Paid" style="width: 150px;" onkeyup="FutureAmtPaid4();" onfocusout="FuturemyFunctionAmtPaid4();if (this.value=='0.00') this.value='0.00';if (this.value=='') this.value='0.00';" onfocusin="if (this.value=='0.00') this.value='';" onblur="Futuremytest4();" autocomplete='off' tabindex="78" />
+                                                                <input type="text" id="instmanamtpaid4" runat="server" class="form-control taxing" placeholder="Amount Paid" style="width: 150px;" onkeyup="FutureAmtPaid4();" onfocusout="FuturemyFunctionAmtPaid4();if (this.value=='0.00') this.value='0.00';if (this.value=='') this.value='0.00';" onfocusin="if (this.value=='0.00') this.value='';" onblur="Futuremytest4();" autocomplete='off' tabindex="81"/>
                                                             </div>
                                                         </td>
                                                         <td hidden>
@@ -5701,7 +5965,7 @@
                                                         <td>
                                                             <div class="form-group" style="margin-bottom: 0px;">
                                                                 <label style="text-align: right; clear: both; float: left; margin-right: 44px;" class="CheckBold">Inst.Paid/Due?</label>
-                                                                <select id="ddlmaninstpaiddue1" runat="server" class="form-control taxing" style="width: 150px;" tabindex="52">
+                                                                <select id="ddlmaninstpaiddue1" runat="server" class="form-control taxing" style="width: 150px;" tabindex="55">
                                                                     <option>Select</option>
                                                                     <option>Paid</option>
                                                                     <option>Due</option>
@@ -5711,7 +5975,7 @@
                                                         <td>
                                                             <div class="form-group" style="margin-bottom: 0px;">
                                                                 <label style="text-align: right; clear: both; float: left; margin-right: 44px;" class="CheckBold">Inst.Paid/Due?</label>
-                                                                <select id="ddlmaninstpaiddue2" runat="server" class="form-control taxing" style="width: 150px;" tabindex="61">
+                                                                <select id="ddlmaninstpaiddue2" runat="server" class="form-control taxing" style="width: 150px;" tabindex="64">
                                                                     <option>Select</option>
                                                                     <option>Paid</option>
                                                                     <option>Due</option>
@@ -5721,7 +5985,7 @@
                                                         <td>
                                                             <div class="form-group" style="margin-bottom: 0px;">
                                                                 <label style="text-align: right; clear: both; float: left; margin-right: 44px;" class="CheckBold">Inst.Paid/Due?</label>
-                                                                <select id="ddlmaninstpaiddue3" runat="server" class="form-control taxing" style="width: 150px;" tabindex="70">
+                                                                <select id="ddlmaninstpaiddue3" runat="server" class="form-control taxing" style="width: 150px;" tabindex="73">
                                                                     <option>Select</option>
                                                                     <option>Paid</option>
                                                                     <option>Due</option>
@@ -5731,7 +5995,7 @@
                                                         <td>
                                                             <div class="form-group" style="margin-bottom: 0px;">
                                                                 <label style="text-align: right; clear: both; float: left; margin-right: 44px;" class="CheckBold">Inst.Paid/Due?</label>
-                                                                <select id="ddlmaninstpaiddue4" runat="server" class="form-control taxing" style="width: 150px;" tabindex="79">
+                                                                <select id="ddlmaninstpaiddue4" runat="server" class="form-control taxing" style="width: 150px;" tabindex="82">
                                                                     <option>Select</option>
                                                                     <option>Paid</option>
                                                                     <option>Due</option>
@@ -5747,25 +6011,25 @@
                                                         <td>
                                                             <div class="form-group" style="margin-bottom: 0px;">
                                                                 <label style="text-align: right; clear: both; float: left; margin-right: 12px;" class="CheckBold">Remaining Balance:</label>
-                                                                <input type="text" id="txtmanurembal1" runat="server" class="form-control taxing" placeholder="Remaining Balance" style="width: 150px;" onkeypress="return isNumberKey(event)" onkeyup="futureRemBalance1(event);" autocomplete="off" tabindex="53" />
+                                                                <input type="text" id="txtmanurembal1" runat="server" class="form-control taxing" placeholder="Remaining Balance" style="width: 150px;" onkeypress="return isNumberKey(event)" onkeyup="futureRemBalance1(event);" autocomplete="off"  tabindex="56"/>
                                                             </div>
                                                         </td>
                                                         <td>
                                                             <div class="form-group" style="margin-bottom: 0px;">
                                                                 <label style="text-align: right; clear: both; float: left; margin-right: 12px;" class="CheckBold">Remaining Balance:</label>
-                                                                <input type="text" id="txtmanurembal2" runat="server" class="form-control taxing" placeholder="Remaining Balance" style="width: 150px;" onkeypress="return isNumberKey(event)" onkeyup="futureRemBalance2(event);" autocomplete="off" tabindex="62" />
+                                                                <input type="text" id="txtmanurembal2" runat="server" class="form-control taxing" placeholder="Remaining Balance" style="width: 150px;" onkeypress="return isNumberKey(event)" onkeyup="futureRemBalance2(event);" autocomplete="off" tabindex="65" />
                                                             </div>
                                                         </td>
                                                         <td>
                                                             <div class="form-group" style="margin-bottom: 0px;">
                                                                 <label style="text-align: right; clear: both; float: left; margin-right: 12px;" class="CheckBold">Remaining Balance:</label>
-                                                                <input type="text" id="txtmanurembal3" runat="server" class="form-control taxing" placeholder="Remaining Balance" style="width: 150px;" onkeypress="return isNumberKey(event)" onkeyup="futureRemBalance3(event);" autocomplete="off" tabindex="71" />
+                                                                <input type="text" id="txtmanurembal3" runat="server" class="form-control taxing" placeholder="Remaining Balance" style="width: 150px;" onkeypress="return isNumberKey(event)" onkeyup="futureRemBalance3(event);" autocomplete="off" tabindex="74" />
                                                             </div>
                                                         </td>
                                                         <td>
                                                             <div class="form-group" style="margin-bottom: 0px;">
                                                                 <label style="text-align: right; clear: both; float: left; margin-right: 12px;" class="CheckBold">Remaining Balance:</label>
-                                                                <input type="text" id="txtmanurembal4" runat="server" class="form-control taxing" placeholder="Remaining Balance" style="width: 150px;" onkeypress="return isNumberKey(event)" onkeyup="futureRemBalance4(event);" autocomplete="off" tabindex="80" />
+                                                                <input type="text" id="txtmanurembal4" runat="server" class="form-control taxing" placeholder="Remaining Balance" style="width: 150px;" onkeypress="return isNumberKey(event)" onkeyup="futureRemBalance4(event);" autocomplete="off" tabindex="83" />
                                                             </div>
                                                         </td>
                                                     </tr>
@@ -5773,25 +6037,25 @@
                                                         <td>
                                                             <div class="form-group" style="margin-bottom: 0px;">
                                                                 <label style="text-align: right; clear: both; float: left; margin-right: 28px;" class="CheckBold">Installment Date:</label>
-                                                                <input type="text" id="txtmaninstdate1" name="instdate1" runat="server" class="form-control taxing" style="width: 150px;" maxlength="10" onchange="Instcheckinstdate1();" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="return checkDate(this,event)" placeholder="MM/DD/YYYY" autocomplete="off" tabindex="54" />
+                                                                <input type="text" id="txtmaninstdate1" name="instdate1" runat="server" class="form-control taxing" style="width: 150px;" maxlength="10" onchange="Instcheckinstdate1();" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="return checkDate(this,event)" placeholder="MM/DD/YYYY" autocomplete="off" tabindex="57" />
                                                             </div>
                                                         </td>
                                                         <td>
                                                             <div class="form-group" style="margin-bottom: 0px;">
                                                                 <label style="text-align: right; clear: both; float: left; margin-right: 28px;" class="CheckBold">Installment Date:</label>
-                                                                <input type="text" id="txtmaninstdate2" runat="server" class="form-control taxing" style="width: 150px;" maxlength="10" onchange="Instcheckinstdate2();" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="return checkDate(this,event)" placeholder="MM/DD/YYYY" autocomplete="off" tabindex="63" />
+                                                                <input type="text" id="txtmaninstdate2" runat="server" class="form-control taxing" style="width: 150px;" maxlength="10" onchange="Instcheckinstdate2();" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="return checkDate(this,event)" placeholder="MM/DD/YYYY" autocomplete="off" tabindex="66" />
                                                             </div>
                                                         </td>
                                                         <td>
                                                             <div class="form-group" style="margin-bottom: 0px;">
                                                                 <label style="text-align: right; clear: both; float: left; margin-right: 28px;" class="CheckBold">Installment Date:</label>
-                                                                <input type="text" id="txtmaninstdate3" runat="server" class="form-control taxing" style="width: 150px;" maxlength="10" onchange="Instcheckinstdate3();" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="return checkDate(this,event)" placeholder="MM/DD/YYYY" autocomplete="off" tabindex="72" />
+                                                                <input type="text" id="txtmaninstdate3" runat="server" class="form-control taxing" style="width: 150px;" maxlength="10" onchange="Instcheckinstdate3();" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="return checkDate(this,event)" placeholder="MM/DD/YYYY" autocomplete="off" tabindex="75" />
                                                             </div>
                                                         </td>
                                                         <td>
                                                             <div class="form-group" style="margin-bottom: 0px;">
                                                                 <label style="text-align: right; clear: both; float: left; margin-right: 28px;" class="CheckBold">Installment Date:</label>
-                                                                <input type="text" id="txtmaninstdate4" runat="server" class="form-control taxing" style="width: 150px;" maxlength="10" onchange="Instcheckinstdate4();" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="return checkDate(this,event)" placeholder="MM/DD/YYYY" autocomplete="off" tabindex="81" />
+                                                                <input type="text" id="txtmaninstdate4" runat="server" class="form-control taxing" style="width: 150px;" maxlength="10" onchange="Instcheckinstdate4();" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="return checkDate(this,event)" placeholder="MM/DD/YYYY" autocomplete="off" tabindex="84" />
                                                             </div>
                                                         </td>
                                                     </tr>
@@ -5799,25 +6063,25 @@
                                                         <td>
                                                             <div class="form-group" style="margin-bottom: 0px;">
                                                                 <label style="text-align: right; clear: both; float: left; margin-right: 29px;" class="CheckBold">Delinquent Date:</label>
-                                                                <input type="text" id="txtmandeliqdate1" runat="server" class="form-control taxing" style="width: 150px;" placeholder="MM/DD/YYYY" maxlength="10" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="return checkDate(this,event)" autocomplete="off" tabindex="55" />
+                                                                <input type="text" id="txtmandeliqdate1" runat="server" class="form-control taxing" style="width: 150px;" placeholder="MM/DD/YYYY" maxlength="10" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="return checkDate(this,event)" autocomplete="off" tabindex="58"/>
                                                             </div>
                                                         </td>
                                                         <td>
                                                             <div class="form-group" style="margin-bottom: 0px;">
                                                                 <label style="text-align: right; clear: both; float: left; margin-right: 29px;" class="CheckBold">Delinquent Date:</label>
-                                                                <input type="text" id="txtmandeliqdate2" runat="server" class="form-control taxing" style="width: 150px;" placeholder="MM/DD/YYYY" maxlength="10" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="return checkDate(this,event)" autocomplete="off" tabindex="64" />
+                                                                <input type="text" id="txtmandeliqdate2" runat="server" class="form-control taxing" style="width: 150px;" placeholder="MM/DD/YYYY" maxlength="10" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="return checkDate(this,event)" autocomplete="off" tabindex="67" />
                                                             </div>
                                                         </td>
                                                         <td>
                                                             <div class="form-group" style="margin-bottom: 0px;">
                                                                 <label style="text-align: right; clear: both; float: left; margin-right: 29px;" class="CheckBold">Delinquent Date:</label>
-                                                                <input type="text" id="txtmandeliqdate3" runat="server" class="form-control taxing" style="width: 150px;" placeholder="MM/DD/YYYY" maxlength="10" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="return checkDate(this,event)" autocomplete="off" tabindex="73" />
+                                                                <input type="text" id="txtmandeliqdate3" runat="server" class="form-control taxing" style="width: 150px;" placeholder="MM/DD/YYYY" maxlength="10" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="return checkDate(this,event)" autocomplete="off" tabindex="76" />
                                                             </div>
                                                         </td>
                                                         <td>
                                                             <div class="form-group" style="margin-bottom: 0px;">
                                                                 <label style="text-align: right; clear: both; float: left; margin-right: 29px;" class="CheckBold">Delinquent Date:</label>
-                                                                <input type="text" id="txtmandeliqdate4" runat="server" class="form-control taxing" style="width: 150px;" placeholder="MM/DD/YYYY" maxlength="10" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="return checkDate(this,event)" autocomplete="off" tabindex="82" />
+                                                                <input type="text" id="txtmandeliqdate4" runat="server" class="form-control taxing" style="width: 150px;" placeholder="MM/DD/YYYY" maxlength="10" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="return checkDate(this,event)" autocomplete="off" tabindex="85" />
                                                             </div>
                                                         </td>
                                                     </tr>
@@ -5825,25 +6089,25 @@
                                                         <td>
                                                             <div class="form-group" style="margin-bottom: 0px;">
                                                                 <label style="text-align: right; clear: both; float: left; margin-right: 21px;" class="CheckBold">Discount Amount:</label>
-                                                                <input type="text" id="txtmandisamount1" runat="server" class="form-control taxing" placeholder="Delinquent Amount" style="width: 150px;" onkeyup="futureDiscount1();" onfocusout="futuremyFunctionDiscount1();if (this.value=='0.00') this.value='0.00';if (this.value=='') this.value='0.00';" onfocusin="if (this.value=='0.00') this.value='';" onblur="futuremydiscountamount1();" autocomplete="off" tabindex="56" />
+                                                                <input type="text" id="txtmandisamount1" runat="server" class="form-control taxing" placeholder="Delinquent Amount" style="width: 150px;" onkeyup="futureDiscount1();" onfocusout="futuremyFunctionDiscount1();if (this.value=='0.00') this.value='0.00';if (this.value=='') this.value='0.00';" onfocusin="if (this.value=='0.00') this.value='';" onblur="futuremydiscountamount1();" autocomplete="off" tabindex="59" />
                                                             </div>
                                                         </td>
                                                         <td>
                                                             <div class="form-group" style="margin-bottom: 0px;">
                                                                 <label style="text-align: right; clear: both; float: left; margin-right: 21px;" class="CheckBold">Discount Amount:</label>
-                                                                <input type="text" id="txtmandisamount2" runat="server" class="form-control taxing" placeholder="Delinquent Amount" style="width: 150px;" onkeyup="futureDiscount2();" onfocusout="futuremyFunctionDiscount2();if (this.value=='0.00') this.value='0.00';if (this.value=='') this.value='0.00';" onfocusin="if (this.value=='0.00') this.value='';" onblur="futuremydiscountamount2();" autocomplete="off" tabindex="65" />
+                                                                <input type="text" id="txtmandisamount2" runat="server" class="form-control taxing" placeholder="Delinquent Amount" style="width: 150px;" onkeyup="futureDiscount2();" onfocusout="futuremyFunctionDiscount2();if (this.value=='0.00') this.value='0.00';if (this.value=='') this.value='0.00';" onfocusin="if (this.value=='0.00') this.value='';" onblur="futuremydiscountamount2();" autocomplete="off" tabindex="68" />
                                                             </div>
                                                         </td>
                                                         <td>
                                                             <div class="form-group" style="margin-bottom: 0px;">
                                                                 <label style="text-align: right; clear: both; float: left; margin-right: 21px;" class="CheckBold">Discount Amount:</label>
-                                                                <input type="text" id="txtmandisamount3" runat="server" class="form-control taxing" placeholder="Delinquent Amount" style="width: 150px;" onkeyup="futureDiscount3();" onfocusout="futuremyFunctionDiscount3();if (this.value=='0.00') this.value='0.00';if (this.value=='') this.value='0.00';" onfocusin="if (this.value=='0.00') this.value='';" onblur="futuremydiscountamount3()" autocomplete="off" tabindex="74" />
+                                                                <input type="text" id="txtmandisamount3" runat="server" class="form-control taxing" placeholder="Delinquent Amount" style="width: 150px;" onkeyup="futureDiscount3();" onfocusout="futuremyFunctionDiscount3();if (this.value=='0.00') this.value='0.00';if (this.value=='') this.value='0.00';" onfocusin="if (this.value=='0.00') this.value='';" onblur="futuremydiscountamount3()" autocomplete="off" tabindex="77" />
                                                             </div>
                                                         </td>
                                                         <td>
                                                             <div class="form-group" style="margin-bottom: 0px;">
                                                                 <label style="text-align: right; clear: both; float: left; margin-right: 21px;" class="CheckBold">Discount Amount:</label>
-                                                                <input type="text" id="txtmandisamount4" runat="server" class="form-control taxing" placeholder="Delinquent Amount" style="width: 150px;" onkeyup="futureDiscount4();" onfocusout="futuremyFunctionDiscount4();if (this.value=='0.00') this.value='0.00';if (this.value=='') this.value='0.00';" onfocusin="if (this.value=='0.00') this.value='';" onblur="futuremydiscountamount4();" autocomplete="off" tabindex="83" />
+                                                                <input type="text" id="txtmandisamount4" runat="server" class="form-control taxing" placeholder="Delinquent Amount" style="width: 150px;" onkeyup="futureDiscount4();" onfocusout="futuremyFunctionDiscount4();if (this.value=='0.00') this.value='0.00';if (this.value=='') this.value='0.00';" onfocusin="if (this.value=='0.00') this.value='';" onblur="futuremydiscountamount4();" autocomplete="off" tabindex="86" />
                                                             </div>
                                                         </td>
                                                     </tr>
@@ -5851,80 +6115,69 @@
                                                         <td>
                                                             <div class="form-group" style="margin-bottom: 0px;">
                                                                 <label style="text-align: right; clear: both; float: left; margin-right: 44px;" class="CheckBold">Discount Date:</label>
-                                                                <input type="text" id="txtmandisdate1" runat="server" class="form-control taxing" style="width: 150px;" placeholder="MM/DD/YYYY" maxlength="10" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="return checkDate(this,event)" autocomplete="off" tabindex="57" />
+                                                                <input type="text" id="txtmandisdate1" runat="server" class="form-control taxing" style="width: 150px;" placeholder="MM/DD/YYYY" maxlength="10" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="return checkDate(this,event)" autocomplete="off" tabindex="60" />
                                                             </div>
                                                         </td>
                                                         <td>
                                                             <div class="form-group" style="margin-bottom: 0px;">
                                                                 <label style="text-align: right; clear: both; float: left; margin-right: 44px;" class="CheckBold">Discount Date:</label>
-                                                                <input type="text" id="txtmandisdate2" runat="server" class="form-control taxing" style="width: 150px;" placeholder="MM/DD/YYYY" maxlength="10" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="return checkDate(this,event)" autocomplete="off" tabindex="66" />
+                                                                <input type="text" id="txtmandisdate2" runat="server" class="form-control taxing" style="width: 150px;" placeholder="MM/DD/YYYY" maxlength="10" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="return checkDate(this,event)" autocomplete="off" tabindex="69" />
                                                             </div>
                                                         </td>
                                                         <td>
                                                             <div class="form-group" style="margin-bottom: 0px;">
                                                                 <label style="text-align: right; clear: both; float: left; margin-right: 44px;" class="CheckBold">Discount Date:</label>
-                                                                <input type="text" id="txtmandisdate3" runat="server" class="form-control taxing" style="width: 150px;" placeholder="MM/DD/YYYY" maxlength="10" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="return checkDate(this,event)" autocomplete="off" tabindex="75" />
+                                                                <input type="text" id="txtmandisdate3" runat="server" class="form-control taxing" style="width: 150px;" placeholder="MM/DD/YYYY" maxlength="10" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="return checkDate(this,event)" autocomplete="off" tabindex="78" />
                                                             </div>
                                                         </td>
                                                         <td>
                                                             <div class="form-group" style="margin-bottom: 0px;">
                                                                 <label style="text-align: right; clear: both; float: left; margin-right: 44px;" class="CheckBold">Discount Date:</label>
-                                                                <input type="text" id="txtmandisdate4" runat="server" class="form-control taxing" style="width: 150px;" placeholder="MM/DD/YYYY" maxlength="10" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="return checkDate(this,event)" autocomplete="off" tabindex="84" />
+                                                                <input type="text" id="txtmandisdate4" runat="server" class="form-control taxing" style="width: 150px;" placeholder="MM/DD/YYYY" maxlength="10" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="return checkDate(this,event)" autocomplete="off" tabindex="87" />
                                                             </div>
                                                         </td>
                                                     </tr>
                                                     <tr>
                                                         <td>
                                                             <label class="CheckBold">Exempt/Relevy?</label>
-                                                            <input type="checkbox" id="chkexrelmanu1" runat="server" style="width: 17px; height: 17px; margin-left: 32px;" tabindex="58" />
+                                                            <input type="checkbox" id="chkexrelmanu1" runat="server" style="width: 17px; height: 17px; margin-left: 32px;" tabindex="61" />
                                                         </td>
                                                         <td>
                                                             <label class="CheckBold">Exempt/Relevy?</label>
-                                                            <input type="checkbox" id="chkexrelmanu2" runat="server" style="width: 17px; height: 17px; margin-left: 32px;" tabindex="67" />
+                                                            <input type="checkbox" id="chkexrelmanu2" runat="server" style="width: 17px; height: 17px; margin-left: 32px;" tabindex="70" />
                                                         </td>
                                                         <td>
                                                             <label class="CheckBold">Exempt/Relevy?</label>
-                                                            <input type="checkbox" id="chkexrelmanu3" runat="server" style="width: 17px; height: 17px; margin-left: 32px;" tabindex="76" />
+                                                            <input type="checkbox" id="chkexrelmanu3" runat="server" style="width: 17px; height: 17px; margin-left: 32px;" tabindex="79" />
                                                         </td>
                                                         <td>
                                                             <label class="CheckBold">Exempt/Relevy?</label>
-                                                            <input type="checkbox" id="chkexrelmanu4" runat="server" style="width: 17px; height: 17px; margin-left: 32px;" tabindex="85" />
+                                                            <input type="checkbox" id="chkexrelmanu4" runat="server" style="width: 17px; height: 17px; margin-left: 32px;" tabindex="88" />
                                                         </td>
                                                     </tr>
                                                 </tbody>
                                             </table>
                                             <table style="width: 1283px;">
                                                 <tbody>
-                                                    <tr>
-                                                        <td>
-                                                            <b style="white-space: nowrap;" class="CheckBold">Next Bill Date1: </b>
-                                                        </td>
-                                                        <td>
-                                                            <input type="text" id="txtmanunextbilldate1" runat="server" class="form-control" style="width: 170px; margin-bottom: 5px;" placeholder="MM/DD/YYYY" maxlength="10" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="return checkDate(this,event)" autocomplete="off" />
-                                                        </td>
-                                                        <td>
-                                                            <b style="white-space: nowrap" class="CheckBold">Next Bill Date2:</b>
-                                                        </td>
-                                                        <td>
-                                                            <input type="text" id="txtmanunextbilldate2" runat="server" class="form-control" style="width: 167px; margin-bottom: 5px;" placeholder="MM/DD/YYYY" maxlength="10" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="return checkDate(this,event)" autocomplete="off" />
-                                                        </td>
+                                                    <tr>                                                        
                                                         <td>
                                                             <b style="white-space: nowrap" class="CheckBold">Tax Bill:</b>
                                                         </td>
                                                         <td>
-                                                            <select class="form-control" id="ddlmanutaxbill" runat="server" style="width: 180px; margin-bottom: 5px;">
+                                                            <input type="text" id="ddlmanutaxbill" runat="server" class="form-control" style="width: 166px;"  autocomplete="off" tabindex="89" />
+                                                          <%--  <select class="form-control" id="ddlmanutaxbill" runat="server" style="width: 170px; margin-bottom: 5px;" tabindex="89">
                                                                 <option value="0">Select Bill</option>
                                                                 <option value="1">Current</option>
                                                                 <option value="2">Previous</option>
-                                                            </select>
+                                                            </select>--%>
                                                         </td>
                                                     </tr>
                                                     <tr>
                                                         <td>
                                                             <b style="white-space: nowrap;" class="CheckBold">Payment Frequency:</b>
                                                         </td>
-                                                        <td>
-                                                            <select class="form-control" id="ddlpayfreqmanu" runat="server" style="width: 170px; margin-bottom: 5px;">
+                                                        <td>                                                                                                                       
+                                                            <select class="form-control" id="ddlpayfreqmanu" runat="server" onchange="functionpayemtfrequency1(this)" style="width: 170px; margin-bottom: 5px;" tabindex="90">
                                                                 <option value="1">Annual</option>
                                                                 <option value="2">Semi-Annual</option>
                                                                 <option value="3">Quarterly</option>
@@ -5935,13 +6188,13 @@
                                                             <b style="white-space: nowrap" class="CheckBold">Billing Start Date: </b>
                                                         </td>
                                                         <td>
-                                                            <input type="text" id="txtmanubillstartdate" runat="server" class="form-control" style="width: 166px;" placeholder="MM/DD/YYYY" maxlength="10" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="return checkDate(this,event)" autocomplete="off" />
+                                                            <input type="text" id="txtmanubillstartdate" runat="server" class="form-control" style="width: 166px;" placeholder="MM/DD/YYYY" maxlength="10" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="return checkDate(this,event)" autocomplete="off" tabindex="91" />
                                                         </td>
                                                         <td>
                                                             <b style="white-space: nowrap" class="CheckBold">Billing End Date:</b>
                                                         </td>
                                                         <td>
-                                                            <input type="text" id="txtmanubillenddate" runat="server" class="form-control" style="width: 180px;" placeholder="MM/DD/YYYY" maxlength="10" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="return checkDate(this,event)" autocomplete="off" />
+                                                            <input type="text" id="txtmanubillenddate" runat="server" class="form-control" style="width: 180px;" placeholder="MM/DD/YYYY" maxlength="10" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="return checkDate(this,event)" autocomplete="off" tabindex="92" />
                                                         </td>
                                                     </tr>
                                                     <tr>
@@ -5949,7 +6202,7 @@
                                                             <b class="CheckBold">Installment Comments:</b>
                                                         </td>
                                                         <td colspan="3">
-                                                            <textarea id="txtinstcommentsmanual" placeholder="Installment Comments" runat="server" class="form-control" rows="2" style="resize: none;" autocomplete='off'></textarea>
+                                                            <textarea id="txtinstcommentsmanual" placeholder="Installment Comments" runat="server" class="form-control" rows="2" style="resize: none;" autocomplete='off' tabindex="93"></textarea>
                                                         </td>
                                                         <td>
                                                             <asp:Button ID="btntaxparcelsavemanual" runat="server" Text="Save" CssClass="btn btn-success" Style="margin-left: 25px;" AutoPostBack="true" OnClientClick="return functionfutinst();" />
@@ -6319,7 +6572,7 @@
                                             </b>
                                         </td>
                                         <td>
-                                            <asp:TextBox ID="txtinitialinstall" runat="server" class="form-control" placeholder="MM/DD/YYYY" MaxLength="10" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)"  onfocusout ="return dateValidateFutue(this)" autocomplete='off' onchange="return functionDelinquent()">
+                                            <asp:TextBox ID="txtinitialinstall" runat="server" class="form-control" placeholder="MM/DD/YYYY" MaxLength="10" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onfocusout="return dateValidateFutue(this)" autocomplete='off' onchange="return functionDelinquent()">
                                             </asp:TextBox>
                                         </td>
 
@@ -6551,7 +6804,7 @@
                                     <tr>
                                         <td><b class="CheckBold">Inst Remaining:</b></td>
                                         <td>
-                                           <%-- <asp:TextBox ID="txtInstallRemain" runat="server" class="form-control" placeholder="Inst Remaining" Style="margin-bottom: 5px;" onkeyup="SpeAmount1();" onfocusout="SpemyFunctionAmount1();if (this.value=='0.00') this.value='0.00';if (this.value=='') this.value='0.00';" onfocus="this.value='0.00'" onfocusin="if (this.value=='0.00') this.value='';" onblur="mySpe();" autocomplete='off'></asp:TextBox>--%>
+                                            <%-- <asp:TextBox ID="txtInstallRemain" runat="server" class="form-control" placeholder="Inst Remaining" Style="margin-bottom: 5px;" onkeyup="SpeAmount1();" onfocusout="SpemyFunctionAmount1();if (this.value=='0.00') this.value='0.00';if (this.value=='') this.value='0.00';" onfocus="this.value='0.00'" onfocusin="if (this.value=='0.00') this.value='';" onblur="mySpe();" autocomplete='off'></asp:TextBox>--%>
                                             <asp:TextBox ID="txtInstallRemain" runat="server" class="form-control" placeholder="Inst Remaining" onkeypress="return isNumberKey(event)" autocomplete='off'></asp:TextBox>
                                         </td>
                                         <td style="padding-left: 31px;"><b class="CheckBold">Due Date:</b></td>
@@ -7097,43 +7350,43 @@
                                 </thead>
                             </table>
                         </asp:Panel>
-                    </div>                
-                <br />
-                <br />
-                <div style="margin-left: 125px;">
-                    <table style="width: 995px;">
-                        <tr>
-                            <td>
-                                <b class="CheckBold">Order Comments:</b>
-                            </td>
-                            <td>
-                                <textarea runat="server" rows="2" id="txttotalcomments" class="form-control" style="resize: none" tabindex="51"></textarea>
-                            </td>
-                            <td></td>
-                            <td>&nbsp;</td>
-                            <td>
-                                <b class="CheckBold">Status:</b>
-                            </td>
-                            <td>
-                                <select class="form-control" id="ddlstatus" runat="server" style="width: 180px;" tabindex="52">
-                                    <option>--Select--</option>
-                                    <option>Completed</option>
-                                    <option>In Process</option>
-                                    <option>Mail Away</option>
-                                    <option>On Hold</option>
-                                    <option>Others</option>
-                                    <option>ParcelID</option>
-                                    <option>Rejected</option>
-                                </select>
-                            </td>
-                            <td>
-                                <asp:Button ID="btnsaverecordnew" class="btn btn-success" runat="server" Text="Complete" OnClick="btnsaverecordnew_Click" />
-                            </td>
-                        </tr>
-                    </table>
+                    </div>
+                    <br />
+                    <br />
+                    <div style="margin-left: 125px;">
+                        <table style="width: 995px;">
+                            <tr>
+                                <td>
+                                    <b class="CheckBold">Order Comments:</b>
+                                </td>
+                                <td>
+                                    <textarea runat="server" rows="2" id="txttotalcomments" class="form-control" style="resize: none" tabindex="51"></textarea>
+                                </td>
+                                <td></td>
+                                <td>&nbsp;</td>
+                                <td>
+                                    <b class="CheckBold">Status:</b>
+                                </td>
+                                <td>
+                                    <select class="form-control" id="ddlstatus" runat="server" style="width: 180px;" tabindex="52">
+                                        <option>--Select--</option>
+                                        <option>Completed</option>
+                                        <option>In Process</option>
+                                        <option>Mail Away</option>
+                                        <option>On Hold</option>
+                                        <option>Others</option>
+                                        <option>ParcelID</option>
+                                        <option>Rejected</option>
+                                    </select>
+                                </td>
+                                <td>
+                                    <asp:Button ID="btnsaverecordnew" class="btn btn-success" runat="server" Text="Complete" OnClick="btnsaverecordnew_Click" />
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <br />
                 </div>
-                <br />
-            </div>
         </form>
     </div>
     <footer id="footer">
