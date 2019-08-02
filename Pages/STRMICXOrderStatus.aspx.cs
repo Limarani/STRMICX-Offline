@@ -1051,7 +1051,7 @@ public partial class Pages_STRMICXOrderStatus : System.Web.UI.Page
                                 LinkButton orderno = (row.Cells[2].FindControl("Lnkorder") as LinkButton);
                                 string status = row.Cells[10].Text.Trim();
 
-                                if (status != "Completed" && status != "Key Started" && status != "QC Started" && status != "Rejected")
+                                if (status != "Completed" && status != "Key Started" && status != "Qc Started" && status != "Rejected")
                                 {
                                     gblcls.GetOrderReject(orderno.Text, strfrmdate, strtodate);
                                     ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Order Status Changed Successfully')", true);
@@ -1093,7 +1093,7 @@ public partial class Pages_STRMICXOrderStatus : System.Web.UI.Page
                             {
                                 LinkButton orderno = (row.Cells[2].FindControl("Lnkorder") as LinkButton);
                                 string status = row.Cells[10].Text.Trim();
-                                if (status != "Completed" && status != "Key Started" && status != "QC Started")
+                                if (status != "Completed" && status != "Key Started" && status != "Qc Started")
                                 {
                                     gblcls.GetOrderDelete(orderno.Text, strfrmdate, strtodate);
                                     ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Order Deleted Successfully')", true);
@@ -1243,7 +1243,7 @@ public partial class Pages_STRMICXOrderStatus : System.Web.UI.Page
 
                                 LinkButton orderno = (row.Cells[2].FindControl("Lnkorder") as LinkButton);
 
-                                if (status != "Key Started" && status != "QC Started")
+                                if (status != "Key Started" && status != "Qc Started")
                                 {
                                     gblcls.GetOrderPriority(orderno.Text, strfrmdate, strtodate);
                                 }
@@ -1285,7 +1285,7 @@ public partial class Pages_STRMICXOrderStatus : System.Web.UI.Page
                             status = row.Cells[10].Text;
                             if (chkRow.Checked)
                             {
-                                if (status != "Key Started" && status != "QC Started")
+                                if (status != "Key Started" && status != "Qc Started")
                                 {
                                     LinkButton orderno = (row.Cells[2].FindControl("Lnkorder") as LinkButton);
                                     gblcls.GetOrderDePriority(orderno.Text, strfrmdate, strtodate);
@@ -1325,7 +1325,7 @@ public partial class Pages_STRMICXOrderStatus : System.Web.UI.Page
                             {
                                 LinkButton orderno = (row.Cells[2].FindControl("Lnkorder") as LinkButton);
                                 status = row.Cells[10].Text;
-                                if (status != "Key Started" && status != "QC Started" && status != "On-Hold")
+                                if (status != "Key Started" && status != "Qc Started" && status != "On-Hold")
                                 {
                                     gblcls.GetOrderYTS(orderno.Text, strfrmdate, strtodate);
                                     ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Status Changed Successfully')", true);
