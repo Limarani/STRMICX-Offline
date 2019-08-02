@@ -609,7 +609,7 @@
                 document.getElementById("chkexrelmanu4").disabled = false;
             }
         }
-        
+
 
         function validateCheckBoxes() {
             var isValid = false;
@@ -2107,7 +2107,7 @@
 
             if (discountamnt1 > instamunt1) {
                 alert(diserrormsg1);
-            }            
+            }
         }
         function mydiscountamount2() {
             Discount2();
@@ -3542,7 +3542,7 @@
             }
             return "";
         }
-        function checkDate(val, event) {            
+        function checkDate(val, event) {
             //alert(val.value);
             var node = getTarget(event);
 
@@ -3554,13 +3554,13 @@
                 } // endif 
             } // endif 
 
-         
+
             return stopPropagation(event);
         }
 
 
         //installmentdetails
-        function checkINSTDEDate1() {            
+        function checkINSTDEDate1() {
             var errormsg = "Delinquent Date Must Be Less Than Installment Date."
             var inst1 = document.getElementById("instdate1").value;
             var delinq1 = document.getElementById("delinq1").value;
@@ -3571,8 +3571,15 @@
             var months = (b.getFullYear() - a.getFullYear()) * 12;
             months += b.getMonth() - a.getMonth();
 
-            if (months >= 11) {
-                alert(errormsg);
+
+            if (b > a) {
+
+                if (months >= 11) {
+                    alert(errormsg);
+                }
+            }
+            else if (b < a) {
+                alert('test');
             }
         }
 
@@ -3588,8 +3595,14 @@
             var months = (b.getFullYear() - a.getFullYear()) * 12;
             months += b.getMonth() - a.getMonth();
 
-            if (months >= 11) {
-                alert(errormsg);
+            if (b > a) {
+
+                if (months >= 11) {
+                    alert(errormsg);
+                }
+            }
+            else if (b < a) {
+                alert('test');
             }
         }
 
@@ -3605,8 +3618,14 @@
             var months = (b.getFullYear() - a.getFullYear()) * 12;
             months += b.getMonth() - a.getMonth();
 
-            if (months >= 11) {
-                alert(errormsg);
+            if (b > a) {
+
+                if (months >= 11) {
+                    alert(errormsg);
+                }
+            }
+            else if (b < a) {
+                alert('test');
             }
         }
 
@@ -3622,8 +3641,14 @@
             var months = (b.getFullYear() - a.getFullYear()) * 12;
             months += b.getMonth() - a.getMonth();
 
-            if (months >= 11) {
-                alert(errormsg);
+            if (b > a) {
+
+                if (months >= 11) {
+                    alert(errormsg);
+                }
+            }
+            else if (b < a) {
+                alert('test');
             }
         }
 
@@ -3633,10 +3658,10 @@
             var errormsg = "Installment Date Must Be Within 12 Months."
             var inst1 = document.getElementById("instdate1").value;
             var inst2 = document.getElementById("instdate2").value;
-            
+
             var a = new Date(inst1);
             var b = new Date(inst2);
-            
+
 
             var months = (b.getFullYear() - a.getFullYear()) * 12;
             months += b.getMonth() - a.getMonth();
@@ -3688,22 +3713,30 @@
 
 
         //future tax
-        function checkDate1() {                    
-
+        function checkDate1() {
+            debugger;
             var errormsg = "Delinquent Date Must Be Less Than Installment Date."
             var inst1 = document.getElementById("txtmaninstdate1").value;
             var delinq1 = document.getElementById("txtmandeliqdate1").value;
-           
+
             var a = new Date(inst1);
             var b = new Date(delinq1);
 
-            var months = (b.getFullYear() - a.getFullYear()) * 12;                        
+            var months = (b.getFullYear() - a.getFullYear()) * 12;
             months += b.getMonth() - a.getMonth();
 
-            if (months >= 11)
-            {                
-                alert(errormsg);
-            }            
+
+
+            if (b > a) {
+
+                if (months >= 11) {
+                    alert(errormsg);
+                }
+            }
+            else if (b < a) {
+                alert('test');
+            }
+
         }
 
         function checkDate2() {
@@ -3717,13 +3750,15 @@
             var months = (b.getFullYear() - a.getFullYear()) * 12;
             months += b.getMonth() - a.getMonth();
 
-            if (months >= 11) {
+            if (b > a) {
 
-                alert(errormsg);
-               
+                if (months >= 11) {
+                    alert(errormsg);
+                }
             }
-
-            return stopPropagation(event);
+            else if (b < a) {
+                alert('test');
+            }
         }
 
         function checkDate3() {
@@ -3737,9 +3772,15 @@
             var months = (b.getFullYear() - a.getFullYear()) * 12;
             months += b.getMonth() - a.getMonth();
 
-            if (months >= 11) {
-                alert(errormsg);                
-            }            
+            if (b > a) {
+
+                if (months >= 11) {
+                    alert(errormsg);
+                }
+            }
+            else if (b < a) {
+                alert('test');
+            }
         }
 
         function checkDate4() {
@@ -3753,9 +3794,15 @@
             var months = (b.getFullYear() - a.getFullYear()) * 12;
             months += b.getMonth() - a.getMonth();
 
-            if (months >= 11) {
-                alert(errormsg);
-            }            
+            if (b > a) {
+
+                if (months >= 11) {
+                    alert(errormsg);
+                }
+            }
+            else if (b < a) {
+                alert('test');
+            }
         }
 
 
@@ -5184,7 +5231,7 @@
                     </td>
 
                     <td>
-                        <div class="header-right" style="margin-left:12px; margin-top: 5px;">
+                        <div class="header-right" style="margin-left: 12px; margin-top: 5px;">
                             <div class="profile_details">
                                 <ul style="padding-left: 6px;">
                                     <li class="dropdown profile_details_drop">
@@ -5659,8 +5706,8 @@
                                                     <Columns>
                                                         <asp:TemplateField HeaderText="WebSite" ItemStyle-Width="10%">
                                                             <ItemTemplate>
-                                                               <%-- <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl='<%# Bind("url") %>' onclick ="openWindow(this.href); return false;">--%>
-                                                                     <%--<asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl='<%# Bind("url", "javascript:openWindow(&#039;{0}&#039;);") %>'>--%>
+                                                                <%-- <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl='<%# Bind("url") %>' onclick ="openWindow(this.href); return false;">--%>
+                                                                <%--<asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl='<%# Bind("url", "javascript:openWindow(&#039;{0}&#039;);") %>'>--%>
                                                                 <asp:HyperLink ID="HyperLink1" runat="server" Target="_blank" NavigateUrl='<%# Bind("url") %>'>
                                                                     <asp:Label ID="lnkwebsite3" runat="server" Text='<%# Bind("url") %>'></asp:Label>
                                                                 </asp:HyperLink>
@@ -6189,19 +6236,19 @@
                                                         <td>
                                                             <div class="form-group" style="margin-bottom: 0px;">
                                                                 <label style="text-align: right; clear: both; float: left; margin-right: 55px;" class="CheckBold">Inst.Amount:</label>
-                                                                <input type="text" id="instmanamount2" class="form-control taxing" runat="server" placeholder="Tax Amount" style="width: 150px;" onkeyup="Futurehello2();" onfocusout="FuturemyFunction2();if (this.value=='0.00') this.value='0.00';if (this.value=='') this.value='0.00';" onfocusin="if (this.value=='0.00') this.value='';" onblur="Futuremytxtamount2()" autocomplete='off' tabindex="62"/>
+                                                                <input type="text" id="instmanamount2" class="form-control taxing" runat="server" placeholder="Tax Amount" style="width: 150px;" onkeyup="Futurehello2();" onfocusout="FuturemyFunction2();if (this.value=='0.00') this.value='0.00';if (this.value=='') this.value='0.00';" onfocusin="if (this.value=='0.00') this.value='';" onblur="Futuremytxtamount2()" autocomplete='off' tabindex="62" />
                                                             </div>
                                                         </td>
                                                         <td>
                                                             <div class="form-group" style="margin-bottom: 0px;">
                                                                 <label style="text-align: right; clear: both; float: left; margin-right: 55px;" class="CheckBold">Inst.Amount:</label>
-                                                                <input type="text" id="instmanamount3" class="form-control taxing" runat="server" placeholder="Tax Amount" style="width: 150px;" onkeyup="Futurehello3();" onfocusout="FuturemyFunction3();if (this.value=='0.00') this.value='0.00';if (this.value=='') this.value='0.00';" onfocusin="if (this.value=='0.00') this.value='';" onblur="Futuremytxtamount3()" autocomplete='off' tabindex="71"/>
+                                                                <input type="text" id="instmanamount3" class="form-control taxing" runat="server" placeholder="Tax Amount" style="width: 150px;" onkeyup="Futurehello3();" onfocusout="FuturemyFunction3();if (this.value=='0.00') this.value='0.00';if (this.value=='') this.value='0.00';" onfocusin="if (this.value=='0.00') this.value='';" onblur="Futuremytxtamount3()" autocomplete='off' tabindex="71" />
                                                             </div>
                                                         </td>
                                                         <td>
                                                             <div class="form-group" style="margin-bottom: 0px;">
                                                                 <label style="text-align: right; clear: both; float: left; margin-right: 55px;" class="CheckBold">Inst.Amount:</label>
-                                                                <input type="text" id="instmanamount4" class="form-control taxing" runat="server" placeholder="Tax Amount" style="width: 150px;" onkeyup="Futurehello4();" onfocusout="FuturemyFunction4();if (this.value=='0.00') this.value='0.00';if (this.value=='') this.value='0.00';" onfocusin="if (this.value=='0.00') this.value='';" onblur="Futuremytxtamount4()" autocomplete='off' tabindex="80"/>
+                                                                <input type="text" id="instmanamount4" class="form-control taxing" runat="server" placeholder="Tax Amount" style="width: 150px;" onkeyup="Futurehello4();" onfocusout="FuturemyFunction4();if (this.value=='0.00') this.value='0.00';if (this.value=='') this.value='0.00';" onfocusin="if (this.value=='0.00') this.value='';" onblur="Futuremytxtamount4()" autocomplete='off' tabindex="80" />
                                                             </div>
                                                         </td>
                                                     </tr>
@@ -6209,25 +6256,25 @@
                                                         <td>
                                                             <div class="form-group" style="margin-bottom: 0px;">
                                                                 <label style="text-align: right; clear: both; float: left; margin-right: 23px;" class="CheckBold">Inst.Amount Paid:</label>
-                                                                <input type="text" id="instmanamtpaid1" runat="server" class="form-control taxing" placeholder="Amount Paid" style="width: 150px;" onkeyup="FutureAmtPaid1();" onfocusout="FuturemyFunctionAmtPaid1();if (this.value=='0.00') this.value='0.00';if (this.value=='') this.value='0.00';" onfocusin="if (this.value=='0.00') this.value='';" onblur="Futuremytest1();" autocomplete='off' tabindex="54"/>
+                                                                <input type="text" id="instmanamtpaid1" runat="server" class="form-control taxing" placeholder="Amount Paid" style="width: 150px;" onkeyup="FutureAmtPaid1();" onfocusout="FuturemyFunctionAmtPaid1();if (this.value=='0.00') this.value='0.00';if (this.value=='') this.value='0.00';" onfocusin="if (this.value=='0.00') this.value='';" onblur="Futuremytest1();" autocomplete='off' tabindex="54" />
                                                             </div>
                                                         </td>
                                                         <td>
                                                             <div class="form-group" style="margin-bottom: 0px;">
                                                                 <label style="text-align: right; clear: both; float: left; margin-right: 23px;" class="CheckBold">Inst.Amount Paid:</label>
-                                                                <input type="text" id="instmanamtpaid2" runat="server" class="form-control taxing" placeholder="Amount Paid" style="width: 150px;" onkeyup="FutureAmtPaid2();" onfocusout="FuturemyFunctionAmtPaid2();if (this.value=='0.00') this.value='0.00';if (this.value=='') this.value='0.00';" onfocusin="if (this.value=='0.00') this.value='';" onblur="Futuremytest2();" autocomplete='off' tabindex="63"/>
+                                                                <input type="text" id="instmanamtpaid2" runat="server" class="form-control taxing" placeholder="Amount Paid" style="width: 150px;" onkeyup="FutureAmtPaid2();" onfocusout="FuturemyFunctionAmtPaid2();if (this.value=='0.00') this.value='0.00';if (this.value=='') this.value='0.00';" onfocusin="if (this.value=='0.00') this.value='';" onblur="Futuremytest2();" autocomplete='off' tabindex="63" />
                                                             </div>
                                                         </td>
                                                         <td>
                                                             <div class="form-group" style="margin-bottom: 0px;">
                                                                 <label style="text-align: right; clear: both; float: left; margin-right: 23px;" class="CheckBold">Inst.Amount Paid:</label>
-                                                                <input type="text" id="instmanamtpaid3" runat="server" class="form-control taxing" placeholder="Amount Paid" style="width: 150px;" onkeyup="FutureAmtPaid3();" onfocusout="FuturemyFunctionAmtPaid3();if (this.value=='0.00') this.value='0.00';if (this.value=='') this.value='0.00';" onfocusin="if (this.value=='0.00') this.value='';" onblur="Futuremytest3();" autocomplete='off' tabindex="72"/>
+                                                                <input type="text" id="instmanamtpaid3" runat="server" class="form-control taxing" placeholder="Amount Paid" style="width: 150px;" onkeyup="FutureAmtPaid3();" onfocusout="FuturemyFunctionAmtPaid3();if (this.value=='0.00') this.value='0.00';if (this.value=='') this.value='0.00';" onfocusin="if (this.value=='0.00') this.value='';" onblur="Futuremytest3();" autocomplete='off' tabindex="72" />
                                                             </div>
                                                         </td>
                                                         <td>
                                                             <div class="form-group" style="margin-bottom: 0px;">
                                                                 <label style="text-align: right; clear: both; float: left; margin-right: 23px;" class="CheckBold">Inst.Amount Paid:</label>
-                                                                <input type="text" id="instmanamtpaid4" runat="server" class="form-control taxing" placeholder="Amount Paid" style="width: 150px;" onkeyup="FutureAmtPaid4();" onfocusout="FuturemyFunctionAmtPaid4();if (this.value=='0.00') this.value='0.00';if (this.value=='') this.value='0.00';" onfocusin="if (this.value=='0.00') this.value='';" onblur="Futuremytest4();" autocomplete='off' tabindex="81"/>
+                                                                <input type="text" id="instmanamtpaid4" runat="server" class="form-control taxing" placeholder="Amount Paid" style="width: 150px;" onkeyup="FutureAmtPaid4();" onfocusout="FuturemyFunctionAmtPaid4();if (this.value=='0.00') this.value='0.00';if (this.value=='') this.value='0.00';" onfocusin="if (this.value=='0.00') this.value='';" onblur="Futuremytest4();" autocomplete='off' tabindex="81" />
                                                             </div>
                                                         </td>
                                                         <td hidden>
@@ -6330,7 +6377,7 @@
                                                         <td>
                                                             <div class="form-group" style="margin-bottom: 0px;">
                                                                 <label style="text-align: right; clear: both; float: left; margin-right: 12px;" class="CheckBold">Remaining Balance:</label>
-                                                                <input type="text" id="txtmanurembal1" runat="server" class="form-control taxing" placeholder="Remaining Balance" style="width: 150px;" onkeypress="return isNumberKey(event)" onkeyup="futureRemBalance1(event);" autocomplete="off"  tabindex="56"/>
+                                                                <input type="text" id="txtmanurembal1" runat="server" class="form-control taxing" placeholder="Remaining Balance" style="width: 150px;" onkeypress="return isNumberKey(event)" onkeyup="futureRemBalance1(event);" autocomplete="off" tabindex="56" />
                                                             </div>
                                                         </td>
                                                         <td>
@@ -6382,7 +6429,7 @@
                                                         <td>
                                                             <div class="form-group" style="margin-bottom: 0px;">
                                                                 <label style="text-align: right; clear: both; float: left; margin-right: 29px;" class="CheckBold">Delinquent Date:</label>
-                                                                <input type="text" id="txtmandeliqdate1" runat="server" class="form-control taxing" style="width: 150px;" placeholder="MM/DD/YYYY" maxlength="10" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="checkDate1(); return checkDate(this,event);" autocomplete="off" tabindex="58"/>
+                                                                <input type="text" id="txtmandeliqdate1" runat="server" class="form-control taxing" style="width: 150px;" placeholder="MM/DD/YYYY" maxlength="10" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="checkDate1(); return checkDate(this,event);" autocomplete="off" tabindex="58" />
                                                             </div>
                                                         </td>
                                                         <td>
@@ -6478,13 +6525,13 @@
                                             </table>
                                             <table style="width: 1283px;">
                                                 <tbody>
-                                                    <tr>                                                        
+                                                    <tr>
                                                         <td>
                                                             <b style="white-space: nowrap" class="CheckBold">Tax Bill:</b>
                                                         </td>
                                                         <td>
-                                                            <input type="text" id="ddlmanutaxbill" runat="server" class="form-control" style="width: 166px;"  autocomplete="off" tabindex="89" />
-                                                          <%--  <select class="form-control" id="ddlmanutaxbill" runat="server" style="width: 170px; margin-bottom: 5px;" tabindex="89">
+                                                            <input type="text" id="ddlmanutaxbill" runat="server" class="form-control" style="width: 166px;" autocomplete="off" tabindex="89" />
+                                                            <%--  <select class="form-control" id="ddlmanutaxbill" runat="server" style="width: 170px; margin-bottom: 5px;" tabindex="89">
                                                                 <option value="0">Select Bill</option>
                                                                 <option value="1">Current</option>
                                                                 <option value="2">Previous</option>
@@ -6495,7 +6542,7 @@
                                                         <td>
                                                             <b style="white-space: nowrap;" class="CheckBold">Payment Frequency:</b>
                                                         </td>
-                                                        <td>                                                                                                                       
+                                                        <td>
                                                             <select class="form-control" id="ddlpayfreqmanu" runat="server" onchange="functionpayemtfrequency1(this)" style="width: 170px; margin-bottom: 5px;" tabindex="90">
                                                                 <option value="1">Annual</option>
                                                                 <option value="2">Semi-Annual</option>
@@ -7470,14 +7517,14 @@
                                                     </div>
                                                     <br />
                                                     <br />
-                                                    
+
                                                     <div class="col-md-8">
                                                         <asp:Button ID="btnaddauthority" runat="server" Text="Add" OnClick="btnaddauthority_Click" class="btn btn-success" Style="height: 28px; padding-top: 3px; margin-right: -295px; margin-top: 18px;" OnClientClick="return validateCheckBoxes()" />
                                                     </div>
                                                 </div>
                                                 <div>
-                                                        <asp:Label runat="server" ID="lblagency" CssClass="CheckBold" ForeColor="Red"></asp:Label>
-                                                    </div>
+                                                    <asp:Label runat="server" ID="lblagency" CssClass="CheckBold" ForeColor="Red"></asp:Label>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -7711,7 +7758,7 @@
                     </div>
                     <br />
                 </div>
-                </div>
+            </div>
         </form>
     </div>
     <footer id="footer">
