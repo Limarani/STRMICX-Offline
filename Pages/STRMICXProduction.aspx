@@ -1013,19 +1013,19 @@
 
         function functionSpecial() {
             var Specialerror;
-            Specialerror = document.getElementById("txtdescription").value;
+            Specialerror = document.getElementById("txtInstallRemain").value;
 
             if (Specialerror == "") {
-                document.getElementById('txtdescription').style.borderColor = "#ff0000";
-                document.getElementById("lbldescription").style.color = "#ff0000";
+                document.getElementById('txtInstallRemain').style.borderColor = "#ff0000";
+                document.getElementById("lblinstremaining").style.color = "#ff0000";
             }
             else if (Specialerror != "") {
-                document.getElementById('txtdescription').style.borderColor = "green";
-                document.getElementById('lbldescription').style.color = "green";
+                document.getElementById('txtInstallRemain').style.borderColor = "green";
+                document.getElementById('lblinstremaining').style.color = "green";
             }
             else {
-                document.getElementById('txtdescription').style.borderColor = "green";
-                document.getElementById('lbldescription').style.color = "green";
+                document.getElementById('txtInstallRemain').style.borderColor = "green";
+                document.getElementById('lblinstremaining').style.color = "green";
             }
 
             if (Specialerror == '') {
@@ -2101,18 +2101,50 @@
         function mydiscountamount1() {
             Discount1();
             myFunctionDiscount1();
+
+            var diserrormsg1 = "Discount amount cannot be greater than the installment amount"
+            var instamunt1 = document.getElementById("instamount1").value;
+            var discountamnt1 = document.getElementById("discamt1").value;
+
+            if (discountamnt1 > instamunt1) {
+                alert(diserrormsg1);
+            }            
         }
         function mydiscountamount2() {
             Discount2();
             myFunctionDiscount2();
+
+            var diserrormsg2 = "Discount amount cannot be greater than the installment amount"
+            var instamunt2 = document.getElementById("instamount2").value;
+            var discountamnt2 = document.getElementById("discamt2").value;
+
+            if (discountamnt2 > instamunt2) {
+                alert(diserrormsg2);
+            }
         }
         function mydiscountamount3() {
             Discount3();
             myFunctionDiscount3();
+
+            var diserrormsg3 = "Discount amount cannot be greater than the installment amount"
+            var instamunt3 = document.getElementById("instamount3").value;
+            var discountamnt3 = document.getElementById("discamt3").value;
+
+            if (discountamnt3 > instamunt3) {
+                alert(diserrormsg3);
+            }
         }
         function mydiscountamount4() {
             Discount4();
             myFunctionDiscount4();
+
+            var diserrormsg4 = "Discount amount cannot be greater than the installment amount"
+            var instamunt4 = document.getElementById("instamount4").value;
+            var discountamnt4 = document.getElementById("discamt4").value;
+
+            if (discountamnt4 > instamunt4) {
+                alert(diserrormsg4);
+            }
         }
 
         function formatMoneyDiscount1(n, c, discamt1, t) {
@@ -2198,18 +2230,50 @@
         function futuremydiscountamount1() {
             futureDiscount1();
             futuremyFunctionDiscount1();
+
+            var futdiserrormsg1 = "Discount amount cannot be greater than the installment amount"
+            var futinstamunt1 = document.getElementById("instmanamount1").value;
+            var futdiscountamnt1 = document.getElementById("txtmandisamount1").value;
+
+            if (futdiscountamnt1 > futinstamunt1) {
+                alert(futdiserrormsg1);
+            }
         }
         function futuremydiscountamount2() {
             futureDiscount2();
             futuremyFunctionDiscount2();
+
+            var futdiserrormsg2 = "Discount amount cannot be greater than the installment amount"
+            var futinstamunt2 = document.getElementById("instmanamount2").value;
+            var futdiscountamnt2 = document.getElementById("txtmandisamount2").value;
+
+            if (futdiscountamnt2 > futinstamunt2) {
+                alert(futdiserrormsg2);
+            }
         }
         function futuremydiscountamount3() {
             futureDiscount3();
             futuremyFunctionDiscount3();
+
+            var futdiserrormsg3 = "Discount amount cannot be greater than the installment amount"
+            var futinstamunt3 = document.getElementById("instmanamount3").value;
+            var futdiscountamnt3 = document.getElementById("txtmandisamount3").value;
+
+            if (futdiscountamnt3 > futinstamunt3) {
+                alert(futdiserrormsg3);
+            }
         }
         function futuremydiscountamount4() {
             futureDiscount4();
             futuremyFunctionDiscount4();
+
+            var futdiserrormsg4 = "Discount amount cannot be greater than the installment amount"
+            var futinstamunt4 = document.getElementById("instmanamount4").value;
+            var futdiscountamnt4 = document.getElementById("txtmandisamount4").value;
+
+            if (futdiscountamnt4 > futinstamunt4) {
+                alert(futdiserrormsg4);
+            }
         }
 
         function futureformatMoneyDiscount1(n, c, txtmandisamount1, t) {
@@ -5090,7 +5154,7 @@
         <form id="myForm" name="myForm" style="margin-top: 1px;" runat="server">
             <asp:ScriptManager ID="ScriptManager1" runat="server" />
 
-            <table class="header" style="width: 1320px;">
+            <table class="header" style="width: 1550px;">
                 <tr style="width: 250px;">
                     <td style="color: red; font-weight: bold; width: 150px;">
                         <img src="../images/logo.png" style="width: 90px;" /></td>
@@ -5100,7 +5164,7 @@
                     <td style="text-align: center; font-weight: bold; font-size: x-large; color: #ff8100d1;">
                         <img src="../images/settings.jpg" style="width: 30px; margin-left: -110px;" />
                         &nbsp;&nbsp;&nbsp;&nbsp;  <b style="margin-left: -30px; white-space: nowrap;">STRMICX</b></td>
-                    <td style="width: 320px;">
+                    <td style="width: 495px;">
                         <div style="text-align: end; margin-top: -13px;">
                             <img src="../images/Prcess image.png" alt="image" style="width: 15px" />
                             <asp:Label ID="processtatus" runat="server" Style="color: black; font-weight: 500"></asp:Label>
@@ -5124,7 +5188,7 @@
                     </td>
 
                     <td>
-                        <div class="header-right" style="margin-left: 12px; margin-top: -15px;">
+                        <div class="header-right" style="margin-left:12px; margin-top: 5px;">
                             <div class="profile_details">
                                 <ul style="padding-left: 6px;">
                                     <li class="dropdown profile_details_drop">
@@ -7061,7 +7125,11 @@
 
 
                                     <tr>
-                                        <td><b class="CheckBold">Inst Remaining:</b></td>
+                                        <td>
+                                            <b>
+                                                <label class="CheckBold" id="lblinstremaining">Remaining:</label>
+                                            </b>
+                                        </td>
                                         <td>
                                             <%-- <asp:TextBox ID="txtInstallRemain" runat="server" class="form-control" placeholder="Inst Remaining" Style="margin-bottom: 5px;" onkeyup="SpeAmount1();" onfocusout="SpemyFunctionAmount1();if (this.value=='0.00') this.value='0.00';if (this.value=='') this.value='0.00';" onfocus="this.value='0.00'" onfocusin="if (this.value=='0.00') this.value='';" onblur="mySpe();" autocomplete='off'></asp:TextBox>--%>
                                             <asp:TextBox ID="txtInstallRemain" runat="server" class="form-control" placeholder="Inst Remaining" onkeypress="return isNumberKey(event)" autocomplete='off'></asp:TextBox>
@@ -7375,7 +7443,7 @@
                                 </div>
                                 <div class="modal-body">
 
-                                    <div class="panel-body" style="margin-top: 18px;">
+                                    <div class="panel-body">
                                         <div class="tab-content">
                                             <div class="tab-pane fade in active" id="tab1primary151">
                                                 <div class="col-md-12">
@@ -7406,13 +7474,14 @@
                                                     </div>
                                                     <br />
                                                     <br />
-                                                    <div style="margin-top: 85px">
-                                                        <asp:Label runat="server" ID="lblagency" CssClass="CheckBold" ForeColor="Red"></asp:Label>
-                                                    </div>
+                                                    
                                                     <div class="col-md-8">
-                                                        <asp:Button ID="btnaddauthority" runat="server" Text="Add" OnClick="btnaddauthority_Click" class="btn btn-success" Style="height: 28px; padding-top: 3px; margin-right: -295px; margin-top: 25px;" OnClientClick="return validateCheckBoxes()" />
+                                                        <asp:Button ID="btnaddauthority" runat="server" Text="Add" OnClick="btnaddauthority_Click" class="btn btn-success" Style="height: 28px; padding-top: 3px; margin-right: -295px; margin-top: 18px;" OnClientClick="return validateCheckBoxes()" />
                                                     </div>
                                                 </div>
+                                                <div>
+                                                        <asp:Label runat="server" ID="lblagency" CssClass="CheckBold" ForeColor="Red"></asp:Label>
+                                                    </div>
                                             </div>
                                         </div>
                                     </div>
@@ -7645,6 +7714,7 @@
                         </table>
                     </div>
                     <br />
+                </div>
                 </div>
         </form>
     </div>
