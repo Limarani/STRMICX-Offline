@@ -700,6 +700,7 @@ public class GlobalClass : myConnection
         }
     }
 
+
     public void GetOrderUnLock(string strorderno, string fdate, string tdate)
     {
         string strquery = string.Empty;
@@ -713,6 +714,39 @@ public class GlobalClass : myConnection
             throw ex;
         }
     }
+
+    public void GetOrderUnLockKey(string strorderno, string fdate, string tdate)
+    {
+        string strquery = string.Empty;
+        try
+        {
+            strquery = "Update record_status set Lock1=0,K1='0',QC='0',Status='0' where order_no='" + strorderno + "' and pdate between '" + fdate + "' and '" + tdate + "'";
+            int result = con.ExecuteSPNonQuery(strquery);
+        }
+        catch (Exception ex)
+        {
+            throw ex;
+        }
+    }
+
+    public void GetOrderUnLockQC(string strorderno, string fdate, string tdate)
+    {
+        string strquery = string.Empty;
+        try
+        {
+            strquery = "Update record_status set Lock1=0,K1='2',QC='0',Status='2' where order_no='" + strorderno + "' and pdate between '" + fdate + "' and '" + tdate + "'";
+            int result = con.ExecuteSPNonQuery(strquery);
+        }
+        catch (Exception ex)
+        {
+            throw ex;
+        }
+    }
+
+    
+
+
+
 
 
 
