@@ -3499,8 +3499,7 @@
 
 
         //installmentdetails
-        function checkINSTDEDate1() {
-
+        function checkINSTDEDate1() {            
             var errormsg = "Delinquent Date Must Be Less Than Installment Date."
             var inst1 = document.getElementById("instdate1").value;
             var delinq1 = document.getElementById("delinq1").value;
