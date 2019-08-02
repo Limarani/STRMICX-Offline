@@ -3551,19 +3551,27 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
             DataSet outputcou = con.ExecuteQuery(query1);
             string oupcou = outputcou.Tables[0].Rows[0]["outputcount"].ToString();
 
-            if (inpcou == oupcou)
+            if (gvTaxParcel.Rows.Count > 0)
             {
-                UpdateProduction("sp_UpdateKey_User");
+                if (inpcou == oupcou)
+                {
+                    UpdateProduction("sp_UpdateKey_User");
 
-                if (id == "12f7tre5")
-                {
-                    Response.Redirect("STRMICXProduction.aspx?id=" + id);
+                    if (id == "12f7tre5")
+                    {
+                        Response.Redirect("STRMICXProduction.aspx?id=" + id);
+                    }
+                    else
+                    {
+                        id = "12f7tre5";
+                        Response.Redirect("STRMICXProduction.aspx?id=" + id);
+                    }
                 }
-                else
-                {
-                    id = "12f7tre5";
-                    Response.Redirect("STRMICXProduction.aspx?id=" + id);
-                }
+            }
+            else if (gvTaxParcel.Rows.Count == 0)
+            {
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "alertMessage", "alert('Atleast One Tax Parcel And AgencyId is Required')", true);
+                return;
             }
             else
             {
