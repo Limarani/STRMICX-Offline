@@ -903,16 +903,14 @@ public partial class Pages_STRMICXOrderStatus : System.Web.UI.Page
                 {
                     gvorderdetails.DataSource = dttable;
                     gvorderdetails.DataBind();
-                }
+                }                
             }
         }
 
         btnordershow_Click(sender, e);
     }
 
-
-
-    //balaji
+           
     protected void btnqcassign_Click(object sender, EventArgs e)
     {
         string orderno = "";
