@@ -718,7 +718,6 @@
         }
 
         function TaxparcelFunction() {
-            debugger;
             var taxparcelerror, taxyearerror, taxdroperror;
             taxparcelerror = document.getElementById("txtdrop").value;
             taxyearerror = document.getElementById("txtTaxYear").value;
@@ -2413,7 +2412,6 @@
         //};
 
         function mytxtamount1() {
-            debugger;
             hello1();
             myFunction1();
             document.getElementById('remainingbalance1').disabled = false;
@@ -3464,7 +3462,6 @@
         //});
 
         function checkReqFields1(year, element, ev) {
-            debugger;
             var startyear = document.getElementById("txtTaxYear").value;
             var errors = {
                 txtTaxYear: '',
@@ -5124,7 +5121,6 @@
 
     <script>
         function openWindow(url) {
-            debugger;
             var tet = url;
             var a = "";
             var aindex = 0;
