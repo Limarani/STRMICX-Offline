@@ -673,7 +673,7 @@
                 return false;
             }
         }
-
+      
         function editfunction() {
             document.getElementById("date1").disabled = false;
             document.getElementById("date2").disabled = false;
@@ -3470,7 +3470,7 @@
 
             if (year != "") {
                 if (year < startyear) {
-                    alert("End Year should be greater than Start year");
+                    alert("End Year should be greater than Tax year");
                     document.getElementById(element.id).value = '';
                     return;
                 }
@@ -3485,7 +3485,7 @@
 
             if (startyear != "") {
                 if (year > startyear) {
-                    alert("End Year should be greater than Start year");
+                    alert("End Year should be greater than Tax year");
                     document.getElementById(element.id).value = '';
                     document.getElementById("txtEndYear").value = '';
                     return;
@@ -7704,7 +7704,7 @@
                                     </select>
                                 </td>
                                 <td>
-                                    <asp:Button ID="btnsaverecordnew" class="btn btn-success" runat="server" Text="Complete" OnClick="btnsaverecordnew_Click" />
+                                    <asp:Button ID="btnsaverecordnew" class="btn btn-success" runat="server" Text="Complete" OnClick="btnsaverecordnew_Click"/>
                                 </td>
                             </tr>
                         </table>
