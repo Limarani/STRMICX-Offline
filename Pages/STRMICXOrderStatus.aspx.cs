@@ -44,6 +44,7 @@ public partial class Pages_STRMICXOrderStatus : System.Web.UI.Page
             LoadStateCount();
             fetchallusername();
             fetchallstatename();
+            fetchallordertype();
             //Sidepanel.Visible = false;
             PanelReset.Visible = false;
             Counts.Visible = false;
@@ -78,6 +79,21 @@ public partial class Pages_STRMICXOrderStatus : System.Web.UI.Page
         Statelist.DataBind();
         Statelist.Items.Insert(0, new ListItem("--Select--", "NA"));
     }
+
+
+    private void fetchallordertype()
+    {
+        string query = "";
+        query = "select Distinct TransactionType from tbl_order_details order by TransactionType";
+
+        DataSet ds = gblcls.ExecuteQuery(query);
+        Ordertypelist.DataSource = ds.Tables[0];
+        Ordertypelist.DataTextField = "TransactionType";
+        Ordertypelist.DataValueField = "TransactionType";
+        Ordertypelist.DataBind();
+        Ordertypelist.Items.Insert(0, new ListItem("--Select--", "NA"));
+    }
+
     private void CheckPostAudit(object sender, EventArgs e)
     {
         if (txtfrmdate.Text != "" && txttodate.Text != "")
@@ -1084,7 +1100,7 @@ public partial class Pages_STRMICXOrderStatus : System.Web.UI.Page
                 }
             }
         }
-        ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Order Status Changed Successfully')", true);
+        ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Order Deleted Successfully')", true);
         btnordershow_Click(sender, e);
     }
 

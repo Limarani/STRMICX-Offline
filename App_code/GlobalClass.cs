@@ -677,7 +677,7 @@ public class GlobalClass : myConnection
         string strquery = string.Empty;
         try
         {
-            strquery = "Delete from record_status where order_no='" + strorderno + "' and pdate between '" + fdate + "' and '" + tdate + "' and k1='0' and qc='0' and status='0'";
+            strquery = "Delete from record_status where order_no='" + strorderno + "' and pdate between '" + fdate + "' and '" + tdate + "'";
             int result = con.ExecuteSPNonQuery(strquery);
         }
         catch (Exception ex)
