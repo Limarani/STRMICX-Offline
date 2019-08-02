@@ -72,6 +72,30 @@
         }
     </script>
 
+    <script type="text/javascript">
+        function Search_Gridview(strKey, strGV) {
+            var message = "No Records were found...";
+            var strData = strKey.value.toLowerCase().split(" ");
+            var strGV = '<%= GridUser.ClientID %>';
+            var tblData = document.getElementById(strGV);
+            var rowData;
+            for (var i = 1; i < tblData.rows.length; i++) {
+                rowData = tblData.rows[i].innerHTML;
+                var styleDisplay = 'none';
+                for (var j = 0; j < strData.length; j++) {
+                    if (rowData.toLowerCase().indexOf(strData[j]) >= 0) {
+                        styleDisplay = '';
+                    }
+                    else {
+                        styleDisplay = 'none';
+                        break;
+                    }
+                }
+                tblData.rows[i].style.display = styleDisplay;
+            }
+        }
+    </script>
+
     <style type="text/css">
         .check {
             text-align: center;
@@ -89,11 +113,11 @@
                             <table class="Table1" border="0" width="100%" style="height: 100%;">
                                 <tr>
                                     <td align="center" style="height: 100%; width: 100%;">
-                                        <asp:Panel ID="PanelOrderList" runat="server" align="center" Width="100%">
+                                        <asp:Panel ID="PanelOrderList" runat="server" align="center" Width="100%" style="font-family: Roboto,-apple-system,BlinkMacSystemFont,Segoe UI,Oxygen,Ubuntu,Cantarell,Fira San,Droid Sans,Helvetica Neue,sans-serif;">
                                             <table cellspacing="5" cellpadding="5" width="100%">
                                                 <tr>
                                                     <td>
-                                                        <asp:CheckBox ID="Chkrefresh" Style="font-family: Calibri;" runat="server" CssClass="Autorefresh" OnCheckedChanged="Chkrefresh_CheckedChanged" AutoPostBack="true" Text="Auto Refresh" Visible="false" />
+                                                        <asp:CheckBox ID="Chkrefresh" Style="font-family: Roboto,-apple-system,BlinkMacSystemFont,Segoe UI,Oxygen,Ubuntu,Cantarell,Fira San,Droid Sans,Helvetica Neue,sans-serif;;" runat="server" CssClass="Autorefresh" OnCheckedChanged="Chkrefresh_CheckedChanged" AutoPostBack="true" Text="Auto Refresh" Visible="false" />
                                                         <asp:Timer ID="Refresh" runat="server" Interval="120000" Enabled="false" OnTick="Refresh_Tick"></asp:Timer>
                                                     </td>
                                                     <%--<td>
@@ -178,10 +202,10 @@
 
 
         <br />
-        <table border="0" width="100%" style="background-color: white; font-family: Calibri;">
+        <table border="0" width="100%" style="background-color: white; font-family: Roboto,-apple-system,BlinkMacSystemFont,Segoe UI,Oxygen,Ubuntu,Cantarell,Fira San,Droid Sans,Helvetica Neue,sans-serif;;">
             <tr>
                 <td style="height: 321px;" align="center" valign="top">
-                    <asp:Panel runat="server" ID="Counts" Style="margin-top: -10px;">
+                    <asp:Panel runat="server" ID="Counts" Style="margin-top: -10px;font-family: Roboto,-apple-system,BlinkMacSystemFont,Segoe UI,Oxygen,Ubuntu,Cantarell,Fira San,Droid Sans,Helvetica Neue,sans-serif;">
                         <div class="panel panel-default" style="width: 1294px;">
                             <div id="collapse3" class="panel-collapse collapse in">
                                 <div class="panel-body" style="background-color: #e6dddd2b; height: 30px; padding-top: 4px; padding-bottom: 30px; padding-left: 0px; padding-right: 0px;">
@@ -193,7 +217,7 @@
                                                     <tr>
                                                         <td class="Lblall" style="font-weight: bold; width: 59px; white-space: nowrap;">Quick Search:</td>
                                                         <td style="width: 176px;">
-                                                            <asp:TextBox runat="server" ID="quicksearch" Style="height: 28px; width: 151px; margin-left: 8px;" CssClass="form-control"></asp:TextBox>
+                                                            <asp:TextBox runat="server" ID="quicksearch" Style="height: 28px; width: 151px; margin-left: 8px;" CssClass="form-control" onkeyup="Search_Gridview(this, 'GridUser')" autocomplete="off"></asp:TextBox>
                                                         </td>
                                                         <td class="Lblall" style="font-weight: bold; width: 60px; white-space: nowrap;">WIP:</td>
                                                         <td style="width: 14px;">
@@ -233,7 +257,7 @@
                             </div>
                         </div>
                     </asp:Panel>
-                    <asp:Panel ID="PanelGrid" runat="server" Height="453px" ScrollBars="auto" align="center" Style="margin-top: -19px; overflow: auto">
+                    <asp:Panel ID="PanelGrid" runat="server" Height="453px" ScrollBars="auto" align="center" Style="margin-top: -19px; overflow: auto;font-family: Roboto,-apple-system,BlinkMacSystemFont,Segoe UI,Oxygen,Ubuntu,Cantarell,Fira San,Droid Sans,Helvetica Neue,sans-serif;">
 
                         <asp:GridView ID="GridUser" ShowHeaderWhenEmpty="true" CssClass="Grid" runat="server" AutoGenerateColumns="false" DataKeyNames="Id"
                             Width="1293" HeaderStyle-BorderStyle="Solid" HeaderStyle-BorderWidth="1px" HeaderStyle-BorderColor="White"
@@ -282,7 +306,7 @@
                         </asp:GridView>
                     </asp:Panel>
                     <br />
-                    <asp:Panel ID="PanelReset" runat="server" align="center" Style="margin-bottom: 10px;">
+                    <asp:Panel ID="PanelReset" runat="server" align="center" Style="margin-bottom: 10px;font-family: Roboto,-apple-system,BlinkMacSystemFont,Segoe UI,Oxygen,Ubuntu,Cantarell,Fira San,Droid Sans,Helvetica Neue,sans-serif;">
                         <button type="button" class="btn btn-default ng-pristine ng-untouched ng-valid ng-empty" data-toggle="modal" data-target="#Assign" title="Assign" id="Assign" runat="server" onserverclick="Assign_Click">
                             <span class="glyphicon glyphicon-user" style="font-size: 20px;"></span>
                             <br />
@@ -378,7 +402,7 @@
                 </tr>
             </table>
         </div>
-        <div class="Logout_msgbx1" id="commentsdetails" runat="server" align="center" style="font-family: Calibri;">
+        <div class="Logout_msgbx1" id="commentsdetails" runat="server" align="center" style="font-family: Roboto,-apple-system,BlinkMacSystemFont,Segoe UI,Oxygen,Ubuntu,Cantarell,Fira San,Droid Sans,Helvetica Neue,sans-serif;;">
             <table border="0" width="800px">
                 <tr>
                     <td align="center">

@@ -44,6 +44,7 @@ public partial class Pages_STRMICXOrderStatus : System.Web.UI.Page
             LoadStateCount();
             fetchallusername();
             fetchallstatename();
+            fetchallordertype();
             //Sidepanel.Visible = false;
             PanelReset.Visible = false;
             Counts.Visible = false;
@@ -78,6 +79,21 @@ public partial class Pages_STRMICXOrderStatus : System.Web.UI.Page
         Statelist.DataBind();
         Statelist.Items.Insert(0, new ListItem("--Select--", "NA"));
     }
+
+
+    private void fetchallordertype()
+    {
+        string query = "";
+        query = "select Distinct TransactionType from tbl_order_details order by TransactionType";
+
+        DataSet ds = gblcls.ExecuteQuery(query);
+        Ordertypelist.DataSource = ds.Tables[0];
+        Ordertypelist.DataTextField = "TransactionType";
+        Ordertypelist.DataValueField = "TransactionType";
+        Ordertypelist.DataBind();
+        Ordertypelist.Items.Insert(0, new ListItem("--Select--", "NA"));
+    }
+
     private void CheckPostAudit(object sender, EventArgs e)
     {
         if (txtfrmdate.Text != "" && txttodate.Text != "")
@@ -903,16 +919,14 @@ public partial class Pages_STRMICXOrderStatus : System.Web.UI.Page
                 {
                     gvorderdetails.DataSource = dttable;
                     gvorderdetails.DataBind();
-                }
+                }                
             }
         }
 
         btnordershow_Click(sender, e);
     }
 
-
-
-
+           
     protected void btnqcassign_Click(object sender, EventArgs e)
     {
         string orderno = "";
@@ -1037,7 +1051,7 @@ public partial class Pages_STRMICXOrderStatus : System.Web.UI.Page
                                 LinkButton orderno = (row.Cells[2].FindControl("Lnkorder") as LinkButton);
                                 string status = row.Cells[10].Text.Trim();
 
-                                if (status != "Completed")
+                                if (status != "Completed" && status != "Key Started" && status != "QC Started" && status != "Rejected")
                                 {
                                     gblcls.GetOrderReject(orderno.Text, strfrmdate, strtodate);
                                     ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Order Status Changed Successfully')", true);
@@ -1078,15 +1092,22 @@ public partial class Pages_STRMICXOrderStatus : System.Web.UI.Page
                             if (chkRow.Checked)
                             {
                                 LinkButton orderno = (row.Cells[2].FindControl("Lnkorder") as LinkButton);
-
-                                gblcls.GetOrderDelete(orderno.Text, strfrmdate, strtodate);
+                                string status = row.Cells[10].Text.Trim();
+                                if (status != "Completed" && status != "Key Started" && status != "QC Started")
+                                {
+                                    gblcls.GetOrderDelete(orderno.Text, strfrmdate, strtodate);
+                                    ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Order Deleted Successfully')", true);
+                                }
+                                else
+                                {
+                                    ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Order Cannot Be Deleted')", true);
+                                }
                             }
                         }
                     }
                 }
             }
-        }
-        ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Order Status Changed Successfully')", true);
+        }        
         btnordershow_Click(sender, e);
     }
 
@@ -1160,7 +1181,24 @@ public partial class Pages_STRMICXOrderStatus : System.Web.UI.Page
                                 string status = row.Cells[10].Text;
                                 if (status == "On-Hold")
                                 {
-                                    gblcls.GetOrderUnLock(orderno.Text, strfrmdate, strtodate);
+                                    string query = "";
+                                    query = "select concat(K1,QC,Status,Pend,Tax,Parcel,Lock1) as sts from record_status where Order_No = '" + orderno.Text + "'";
+                                    DataSet ds = con.ExecuteQuery(query);
+
+                                    string concatsts = ds.Tables[0].Rows[0]["sts"].ToString();
+                                    if (concatsts == "1010001")
+                                    {
+                                        gblcls.GetOrderUnLockKey(orderno.Text, strfrmdate, strtodate);
+                                    }
+                                    else if (concatsts == "2110001")
+                                    {
+                                        gblcls.GetOrderUnLockQC(orderno.Text, strfrmdate, strtodate);
+                                    }                                    
+                                    else
+                                    {
+                                        gblcls.GetOrderUnLock(orderno.Text, strfrmdate, strtodate);                                        
+                                    }
+
                                     ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Order Status Changed Successfully')", true);
                                 }
                                 else
