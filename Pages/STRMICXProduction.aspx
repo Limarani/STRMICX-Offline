@@ -210,6 +210,10 @@
                 document.getElementById("discdate4").value = "";
                 document.getElementById("exemptrelevy4").disabled = true;
                 document.getElementById("exemptrelevy4").checked = false;
+
+                document.getElementById("instamount1").value = "0.00";
+                document.getElementById("instamountpaid1").value = "0.00";
+                document.getElementById("remainingbalance1").value = "0.00";
             }
 
             if (Semi == "Semi-Annual") {
@@ -271,6 +275,13 @@
                 document.getElementById("discdate4").value = "";
                 document.getElementById("exemptrelevy4").disabled = true;
                 document.getElementById("exemptrelevy4").checked = false;
+
+                document.getElementById("instamount1").value = "0.00";
+                document.getElementById("instamountpaid1").value = "0.00";
+                document.getElementById("remainingbalance1").value = "0.00";
+                document.getElementById("instamount2").value = "0.00";
+                document.getElementById("instamountpaid2").value = "0.00";
+                document.getElementById("remainingbalance2").value = "0.00";
             }
 
             if (Tri == "Tri-Annual") {
@@ -322,6 +333,16 @@
                 document.getElementById("discdate4").value = "";
                 document.getElementById("exemptrelevy4").disabled = true;
                 document.getElementById("exemptrelevy4").checked = false;
+
+                document.getElementById("instamount1").value = "0.00";
+                document.getElementById("instamountpaid1").value = "0.00";
+                document.getElementById("remainingbalance1").value = "0.00";
+                document.getElementById("instamount2").value = "0.00";
+                document.getElementById("instamountpaid2").value = "0.00";
+                document.getElementById("remainingbalance2").value = "0.00";
+                document.getElementById("instamount3").value = "0.00";
+                document.getElementById("instamountpaid3").value = "0.00";
+                document.getElementById("remainingbalance3").value = "0.00";
             }
 
             if (Qua == "Quarterly") {
@@ -364,6 +385,19 @@
                 document.getElementById("discamt4").disabled = false;
                 document.getElementById("discdate4").disabled = false;
                 document.getElementById("exemptrelevy4").disabled = false;
+
+                document.getElementById("instamount1").value = "0.00";
+                document.getElementById("instamountpaid1").value = "0.00";
+                document.getElementById("remainingbalance1").value = "0.00";
+                document.getElementById("instamount2").value = "0.00";
+                document.getElementById("instamountpaid2").value = "0.00";
+                document.getElementById("remainingbalance2").value = "0.00";
+                document.getElementById("instamount3").value = "0.00";
+                document.getElementById("instamountpaid3").value = "0.00";
+                document.getElementById("remainingbalance3").value = "0.00";
+                document.getElementById("instamount4").value = "0.00";
+                document.getElementById("instamountpaid4").value = "0.00";
+                document.getElementById("remainingbalance4").value = "0.00";
             }
         }
 
@@ -5197,7 +5231,7 @@
         <form id="myForm" name="myForm" style="margin-top: 1px;" runat="server">
             <asp:ScriptManager ID="ScriptManager1" runat="server" />
 
-            <table class="header" style="width: 1550px;">
+            <table class="header" style="width: 1350px;">
                 <tr style="width: 250px;">
                     <td style="color: red; font-weight: bold; width: 150px;">
                         <img src="../images/logo.png" style="width: 90px;" /></td>
@@ -5207,7 +5241,7 @@
                     <td style="text-align: center; font-weight: bold; font-size: x-large; color: #ff8100d1;">
                         <img src="../images/settings.jpg" style="width: 30px; margin-left: -110px;" />
                         &nbsp;&nbsp;&nbsp;&nbsp;  <b style="margin-left: -30px; white-space: nowrap;">STRMICX</b></td>
-                    <td style="width: 495px;">
+                    <td style="width: 320px;">
                         <div style="text-align: end; margin-top: -13px;">
                             <img src="../images/Prcess image.png" alt="image" style="width: 15px" />
                             <asp:Label ID="processtatus" runat="server" Style="color: black; font-weight: 500"></asp:Label>
@@ -5402,13 +5436,13 @@
                                                     </b>
                                                 </td>
                                                 <td>
-                                                    <asp:TextBox ID="txtTaxYear" runat="server" class="form-control" placeholder="YYYY" type="text" MaxLength="4" onkeypress="return isNumberKey(event)" onblur="checkReqFields(this.value,this,event);" autocomplete='off' Style="width: 95px;" onchange="return TaxparcelFunction()" />
+                                                    <asp:TextBox ID="txtTaxYear" runat="server" class="form-control" placeholder="YYYY" type="text" pattern="\d{4}" title="Please enter exactly 4 digits" MaxLength="4" onkeypress="return isNumberKey(event)" onblur="checkReqFields(this.value,this,event);" autocomplete='off' Style="width: 95px;" onchange="return TaxparcelFunction()"/>
                                                 </td>
                                                 <td>
                                                     <b style="white-space: nowrap;" class="CheckBold">End Year(If Applicable):</b>
                                                 </td>
                                                 <td>
-                                                    <asp:TextBox ID="txtEndYear" runat="server" class="form-control" type="text" placeholder="YYYY" MaxLength="4" onkeypress="return isNumberKey(event);" onblur="checkReqFields1(this.value,this,event);" autocomplete='off' Style="width: 95px;" />
+                                                    <asp:TextBox ID="txtEndYear" runat="server" class="form-control" type="text" placeholder="YYYY" MaxLength="4" onkeypress="return isNumberKey(event);" pattern="\d{4}" title="Please enter exactly 4 digits" onblur="checkReqFields1(this.value,this,event);" autocomplete='off' Style="width: 95px;" />
                                                 </td>
                                                 <td></td>
                                                 <td>
@@ -6844,7 +6878,7 @@
                                             </b>
                                         </td>
                                         <td>
-                                            <asp:TextBox ID="txtdelitaxyear" runat="server" class="form-control" placeholder="YYYY" MaxLength="4" onkeypress="return isNumberKey(event)" onfocusout="return futureYear(this)" onblur="IsValidLengthTax3(this.value,this,event);" autocomplete='off' onchange="return functionDelinquent();">
+                                            <asp:TextBox ID="txtdelitaxyear" runat="server" class="form-control" placeholder="YYYY" MaxLength="4" pattern="\d{4}" title="Please enter exactly 4 digits" onkeypress="return isNumberKey(event)" onfocusout="return futureYear(this)" onblur="IsValidLengthTax3(this.value,this,event);" autocomplete='off' onchange="return functionDelinquent();">
                                             </asp:TextBox>
                                         </td>
                                         <td style="padding-left: 31px;">
@@ -7287,7 +7321,7 @@
                                             </b>
                                         </td>
                                         <td>
-                                            <asp:TextBox ID="txtpriodeli" runat="server" class="form-control" placeholder="YYYY" MaxLength="4" Style="margin-bottom: 5px;" onkeypress="return isNumberKey(event)" onblur="IsValidLengthTaxPrior(this.value,this,event);" onchange="return functionPrior()" autocomplete='off'></asp:TextBox>
+                                            <asp:TextBox ID="txtpriodeli" runat="server" class="form-control" placeholder="YYYY" MaxLength="4" Style="margin-bottom: 5px;" onkeypress="return isNumberKey(event)" onblur="IsValidLengthTaxPrior(this.value,this,event);" onchange="return functionPrior()" autocomplete='off' pattern="\d{4}" title="Please enter exactly 4 digits"></asp:TextBox>
                                         </td>
                                         <td style="padding-left: 31px;">
                                             <b>
