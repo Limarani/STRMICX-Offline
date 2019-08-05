@@ -1165,6 +1165,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
         string GVCommand = e.CommandName.ToLower();
         string tbd = "";
         string estimate = "";
+
         if (GVCommand == "edit")
         {
             fetchtaxparceldetails();
@@ -3573,6 +3574,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "alertMessage", "alert('Atleast One Tax Parcel And AgencyId is Required')", true);
                 return;
             }
+     
             else
             {
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "alertMessage", "alert('Cannot Complete Order Details')", true);
@@ -3604,6 +3606,11 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
                     id = "12f7tre5";
                     Response.Redirect("STRMICXProduction.aspx?id=" + id);
                 }
+            }
+            else if (gvTaxParcel.Rows.Count == 0)
+            {
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "alertMessage", "alert('Atleast One Tax Parcel And AgencyId is Required')", true);
+                return;
             }
             else
             {
@@ -3903,9 +3910,9 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
                 discdate4.Attributes.Add("disabled", "disabled");
                 exemptrelevy4.Attributes.Add("disabled", "disabled");
 
-                instamount1.Value = "0.00";
-                instamountpaid1.Value = "0.00";
-                remainingbalance1.Value = "0.00";
+                //instamount1.Value = "0.00";
+                //instamountpaid1.Value = "0.00";
+                //remainingbalance1.Value = "0.00";
             }
 
             if (payemntfrequency == "Semi-Annual" || payemntfrequency == "2")
@@ -3951,12 +3958,12 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
                 discdate4.Attributes.Add("disabled", "disabled");
                 exemptrelevy4.Attributes.Add("disabled", "disabled");
 
-                instamount1.Value = "0.00";
-                instamountpaid1.Value = "0.00";
-                remainingbalance1.Value = "0.00";
-                instamount2.Value = "0.00";
-                instamountpaid2.Value = "0.00";
-                remainingbalance2.Value = "0.00";
+                //instamount1.Value = "0.00";
+                //instamountpaid1.Value = "0.00";
+                //remainingbalance1.Value = "0.00";
+                //instamount2.Value = "0.00";
+                //instamountpaid2.Value = "0.00";
+                //remainingbalance2.Value = "0.00";
             }
 
             if (payemntfrequency == "Tri-Annual" || payemntfrequency == "3")
@@ -4002,16 +4009,16 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
                 discdate4.Attributes.Add("disabled", "disabled");
                 exemptrelevy4.Attributes.Add("disabled", "disabled");
 
-                instamount1.Value = "0.00";
-                instamountpaid1.Value = "0.00";
-                remainingbalance1.Value = "0.00";
-                instamount2.Value = "0.00";
-                instamountpaid2.Value = "0.00";
-                remainingbalance2.Value = "0.00";
-                instamount3.Value = "0.00";
-                instamountpaid3.Value = "0.00";
-                instpaiddue3.Value = "0.00";
-                remainingbalance3.Value = "0.00";
+                //instamount1.Value = "0.00";
+                //instamountpaid1.Value = "0.00";
+                //remainingbalance1.Value = "0.00";
+                //instamount2.Value = "0.00";
+                //instamountpaid2.Value = "0.00";
+                //remainingbalance2.Value = "0.00";
+                //instamount3.Value = "0.00";
+                //instamountpaid3.Value = "0.00";
+                //instpaiddue3.Value = "0.00";
+                //remainingbalance3.Value = "0.00";
             }
 
 
@@ -4059,18 +4066,18 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
                 discdate4.Attributes.Remove("disabled");
                 exemptrelevy4.Attributes.Remove("disabled");
 
-                instamount1.Value = "0.00";
-                instamountpaid1.Value = "0.00";
-                remainingbalance1.Value = "0.00";
-                instamount2.Value = "0.00";
-                instamountpaid2.Value = "0.00";
-                remainingbalance2.Value = "0.00";
-                instamount3.Value = "0.00";
-                instamountpaid3.Value = "0.00";
-                remainingbalance3.Value = "0.00";
-                instamount4.Value = "0.00";
-                instamountpaid4.Value = "0.00";
-                remainingbalance4.Value = "0.00";
+                //instamount1.Value = "0.00";
+                //instamountpaid1.Value = "0.00";
+                //remainingbalance1.Value = "0.00";
+                //instamount2.Value = "0.00";
+                //instamountpaid2.Value = "0.00";
+                //remainingbalance2.Value = "0.00";
+                //instamount3.Value = "0.00";
+                //instamountpaid3.Value = "0.00";
+                //remainingbalance3.Value = "0.00";
+                //instamount4.Value = "0.00";
+                //instamountpaid4.Value = "0.00";
+                //remainingbalance4.Value = "0.00";
             }
 
         }
