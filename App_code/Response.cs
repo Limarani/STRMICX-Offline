@@ -11,7 +11,13 @@ using System.Web;
 public class Response
 {
     DBConnection dbconn = new DBConnection();
-
+    int? value = null;
+    decimal? decimalnull = null;
+    DateTime? NullDate = null;
+    bool? boolnull = null;
+    string stringnull = null;
+    string blankDate = "1900-01-01";
+    string blankDateTime = "1900-01-01T00:00:00Z";
 
     public string GetJsonData(string orderno)
     {
@@ -20,8 +26,8 @@ public class Response
         JsonOutput.Response.OrderDetail = GetOrderDetailTagData(orderno);
         JsonOutput.Response.OrderDetail.TaxDetail = GetTaxDetailTagData(orderno);
 
-        JsonOutput.Response.OrderDetail.TaxDetail.TaxParcel = GetTaxParcelTagData(orderno);
-        JsonOutput.Response.OrderDetail.TaxVendor = GetTaxVendorTagData(orderno);
+        JsonOutput.Response.OrderDetail.TaxDetail.TaxParcels = GetTaxParcelTagData(orderno);
+        //JsonOutput.Response.OrderDetail.TaxVendor = GetTaxVendorTagData(orderno);
         string JsonResult = JsonConvert.SerializeObject(JsonOutput);
         return JsonResult;
     }
@@ -34,7 +40,7 @@ public class Response
         //read data from dataset 
         for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
         {
-            Response.MessageTypeCode = ds.Tables[0].Rows[i]["message_type_code"].ToString();
+            Response.MessageTypeCode = ds.Tables[0].Rows[i]["message_type_code"] != DBNull.Value ? ds.Tables[0].Rows[i]["message_type_code"].ToString() : null;
         }
 
         return Response;
@@ -48,8 +54,8 @@ public class Response
         //read data from dataset 
         for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
         {
-            orderDetail.OrderDetailId = ds.Tables[0].Rows[i]["OrderDetailId"].ToString();
-            orderDetail.NoteText = "";
+            orderDetail.OrderDetailId = Convert.ToInt64(ds.Tables[0].Rows[i]["OrderDetailId"]);
+            orderDetail.NoteText = null;
         }
         return orderDetail;
     }
@@ -62,11 +68,11 @@ public class Response
 
         for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
         {
-            taxDetailTag.ExpectedDate = ds.Tables[0].Rows[i]["expecteddate"].ToString();
-            taxDetailTag.FollowUpDate = ds.Tables[0].Rows[i]["followupdate"].ToString();
-            taxDetailTag.StatusCode = "";
-            taxDetailTag.WasAssessedAsLand = "";
-            taxDetailTag.WasAssessedAsHomestead = "";
+            taxDetailTag.ExpectedDate = ds.Tables[0].Rows[i]["expecteddate"] != DBNull.Value ? Convert.ToDateTime(ds.Tables[0].Rows[i]["expecteddate"]).ToString() : blankDate.ToString();
+            taxDetailTag.FollowUpDate = ds.Tables[0].Rows[i]["followupdate"] != DBNull.Value ? Convert.ToDateTime(ds.Tables[0].Rows[i]["followupdate"]).ToString() : blankDateTime.ToString();
+            taxDetailTag.StatusCode = null;
+            taxDetailTag.WasAssessedAsLand = false;
+            taxDetailTag.WasAssessedAsHomestead = false;
         }
         return taxDetailTag;
     }
@@ -81,11 +87,11 @@ public class Response
 
         for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
         {
-            TaxParcel.TaxYear = ds.Tables[0].Rows[i]["taxyear"].ToString();
-            TaxParcel.EndYear = ds.Tables[0].Rows[i]["endyear"].ToString();
-            TaxParcel.TaxId = ds.Tables[0].Rows[i]["taxid"].ToString();
-            TaxParcel.IsToBeDetermined = "";
-            TaxParcel.IsEstimate = "";
+            TaxParcel.TaxYear = ds.Tables[0].Rows[i]["taxyear"] != DBNull.Value ? ds.Tables[0].Rows[i]["taxyear"].ToString() : null;
+            TaxParcel.EndYear = ds.Tables[0].Rows[i]["endyear"] != DBNull.Value ? Convert.ToInt32(ds.Tables[0].Rows[i]["endyear"]) : value;
+            TaxParcel.TaxId = ds.Tables[0].Rows[i]["taxid"] != DBNull.Value ? ds.Tables[0].Rows[i]["taxid"].ToString() : null;
+            TaxParcel.IsToBeDetermined = Convert.ToBoolean(ds.Tables[0].Rows[i]["tbd"]);
+            TaxParcel.IsEstimate = Convert.ToBoolean(ds.Tables[0].Rows[i]["estimate"]);
             TaxParcel.TaxAgencyDetails = GetTaxAgencyDetailsTagData(orderno);
             TaxParcel.SpecialAssessments = GetSpecialAssessmentsList(orderno);
             TaxParcelList.Add(TaxParcel);
@@ -105,57 +111,102 @@ public class Response
         {
             TaxAgency.AgencyId = ds.Tables[0].Rows[i]["AgencyId"].ToString();
             TaxAgency.TaxAgencyType = ds.Tables[0].Rows[i]["TaxAgencyType"].ToString();
-            TaxAgency.IsDelinquent = ds.Tables[0].Rows[i]["IsDelinquent"].ToString();
+            if (ds.Tables[0].Rows[i]["IsDelinquent"].ToString() == "Yes")
+            {
+                TaxAgency.IsDelinquent = true;
+            }
+            else
+            {
+                TaxAgency.IsDelinquent = false;
+            }
+            //TaxAgency.IsDelinquent = Convert.ToBoolean(ds.Tables[0].Rows[i]["IsDelinquent"]);
             TaxAgency.DelinquentAgencyId = ds.Tables[0].Rows[i]["DelinquencyAgencyId"].ToString();
             TaxAgency.BillingFrequency = ds.Tables[0].Rows[i]["paymentfrequency"].ToString();
-            TaxAgency.NextBillDate1 = ds.Tables[0].Rows[i]["BillingDate1"].ToString();
-            TaxAgency.NextBillDate2 = ds.Tables[0].Rows[i]["BillingDate2"].ToString();
-            TaxAgency.DelinquentDate1 = ds.Tables[0].Rows[i]["DelinquencyDate1"].ToString();
-            TaxAgency.DelinquentDate2 = ds.Tables[0].Rows[i]["DelinquencyDate2"].ToString();
-            TaxAgency.DelinquentDate3 = ds.Tables[0].Rows[i]["DelinquencyDate3"].ToString();
-            TaxAgency.DelinquentDate4 = ds.Tables[0].Rows[i]["DelinquencyDate4"].ToString();
-            TaxAgency.DiscountAmount1 = ds.Tables[0].Rows[i]["Discountamount1"].ToString();
-            TaxAgency.DiscountAmount2 = ds.Tables[0].Rows[i]["Discountamount2"].ToString();
-            TaxAgency.DiscountAmount3 = ds.Tables[0].Rows[i]["Discountamount3"].ToString();
-            TaxAgency.DiscountAmount4 = ds.Tables[0].Rows[i]["Discountamount4"].ToString();
-            TaxAgency.DiscountDate1 = ds.Tables[0].Rows[i]["DiscountDate1"].ToString();
-            TaxAgency.DiscountDate2 = ds.Tables[0].Rows[i]["DiscountDate2"].ToString();
-            TaxAgency.DiscountDate3 = ds.Tables[0].Rows[i]["DiscountDate3"].ToString();
-            TaxAgency.DiscountDate4 = ds.Tables[0].Rows[i]["DiscountDate4"].ToString();
-            TaxAgency.InstallmentDate1 = ds.Tables[0].Rows[i]["Installmentdate1"].ToString();
-            TaxAgency.InstallmentDate2 = ds.Tables[0].Rows[i]["Installmentdate2"].ToString();
-            TaxAgency.InstallmentDate3 = ds.Tables[0].Rows[i]["Installmentdate3"].ToString();
-            TaxAgency.InstallmentDate4 = ds.Tables[0].Rows[i]["Installmentdate4"].ToString();
-            TaxAgency.InstallmentAmount1 = ds.Tables[0].Rows[i]["Instamount1"].ToString();
-            TaxAgency.InstallmentAmount2 = ds.Tables[0].Rows[i]["Instamount2"].ToString();
-            TaxAgency.InstallmentAmount3 = ds.Tables[0].Rows[i]["Instamount3"].ToString();
-            TaxAgency.InstallmentAmount4 = ds.Tables[0].Rows[i]["Instamount4"].ToString();
-            TaxAgency.InstallmentAmountPaid1 = ds.Tables[0].Rows[i]["Instamountpaid1"].ToString();
-            TaxAgency.InstallmentAmountPaid2 = ds.Tables[0].Rows[i]["Instamountpaid2"].ToString();
-            TaxAgency.InstallmentAmountPaid3 = ds.Tables[0].Rows[i]["Instamountpaid3"].ToString();
-            TaxAgency.InstallmentAmountPaid4 = ds.Tables[0].Rows[i]["Instamountpaid4"].ToString();
-            TaxAgency.Installment1PaidOrDue = ds.Tables[0].Rows[i]["InstPaidDue1"].ToString();
-            TaxAgency.Installment2PaidOrDue = ds.Tables[0].Rows[i]["InstPaidDue2"].ToString();
-            TaxAgency.Installment3PaidOrDue = ds.Tables[0].Rows[i]["InstPaidDue3"].ToString();
-            TaxAgency.Installment4PaidOrDue = ds.Tables[0].Rows[i]["InstPaidDue4"].ToString();
-            TaxAgency.RemainingBalance1 = ds.Tables[0].Rows[i]["Remainingbalance1"].ToString();
-            TaxAgency.RemainingBalance2 = ds.Tables[0].Rows[i]["Remainingbalance2"].ToString();
-            TaxAgency.RemainingBalance3 = ds.Tables[0].Rows[i]["Remainingbalance3"].ToString();
-            TaxAgency.RemainingBalance4 = ds.Tables[0].Rows[i]["Remainingbalance4"].ToString();
-            TaxAgency.TaxBill = ds.Tables[0].Rows[i]["taxbill"].ToString();
-            TaxAgency.TaxRate = "";
-            TaxAgency.TaxableValue = "";
-            TaxAgency.Comments = ds.Tables[0].Rows[i]["installmentcomments"].ToString();
-            TaxAgency.IsInstallmentExempt1 = ds.Tables[0].Rows[i]["ExemptRelevy1"].ToString();
-            TaxAgency.IsInstallmentExempt2 = ds.Tables[0].Rows[i]["ExemptRelevy2"].ToString();
-            TaxAgency.IsInstallmentExempt3 = ds.Tables[0].Rows[i]["ExemptRelevy3"].ToString();
-            TaxAgency.IsInstallmentExempt4 = ds.Tables[0].Rows[i]["ExemptRelevy4"].ToString();
-            TaxAgency.IsHomesteadExempt = "";
-            TaxAgency.BillingPeriodStartDate = ds.Tables[0].Rows[i]["BillingStartDate"].ToString();
-            TaxAgency.BillingPeriodEndDate = ds.Tables[0].Rows[i]["BillingEndDate"].ToString();
-            TaxAgency.FutureTaxOption = ds.Tables[0].Rows[i]["FutureTaxOption"].ToString();
-            TaxAgency.WasFullyAssessedLastYear = "";
-            TaxAgency.AssessedValue = "";
+            TaxAgency.NextBillDate1 = ds.Tables[0].Rows[i]["BillingDate1"] != DBNull.Value ? Convert.ToString(ds.Tables[0].Rows[i]["BillingDate1"]) : null;
+            TaxAgency.NextBillDate2 = ds.Tables[0].Rows[i]["BillingDate2"] != DBNull.Value ? Convert.ToString(ds.Tables[0].Rows[i]["BillingDate2"]) : null;
+            TaxAgency.DelinquentDate1 = ds.Tables[0].Rows[i]["DelinquencyDate1"] != DBNull.Value ? Convert.ToString(ds.Tables[0].Rows[i]["DelinquencyDate1"]) : null;
+            TaxAgency.DelinquentDate2 = ds.Tables[0].Rows[i]["DelinquencyDate2"] != DBNull.Value ? Convert.ToString(ds.Tables[0].Rows[i]["DelinquencyDate2"]) : null;
+            TaxAgency.DelinquentDate3 = ds.Tables[0].Rows[i]["DelinquencyDate3"] != DBNull.Value ? Convert.ToString(ds.Tables[0].Rows[i]["DelinquencyDate3"]) : null;
+            TaxAgency.DelinquentDate4 = ds.Tables[0].Rows[i]["DelinquencyDate4"] != DBNull.Value ? Convert.ToString(ds.Tables[0].Rows[i]["DelinquencyDate4"]) : null;
+            TaxAgency.DiscountAmount1 = ds.Tables[0].Rows[i]["Discountamount1"] != DBNull.Value ? Convert.ToDecimal(ds.Tables[0].Rows[i]["Discountamount1"]) : decimalnull;
+            TaxAgency.DiscountAmount2 = ds.Tables[0].Rows[i]["Discountamount2"] != DBNull.Value ? Convert.ToDecimal(ds.Tables[0].Rows[i]["Discountamount2"]) : decimalnull;
+            TaxAgency.DiscountAmount3 = ds.Tables[0].Rows[i]["Discountamount3"] != DBNull.Value ? Convert.ToDecimal(ds.Tables[0].Rows[i]["Discountamount3"]) : decimalnull;
+            TaxAgency.DiscountAmount4 = ds.Tables[0].Rows[i]["Discountamount4"] != DBNull.Value ? Convert.ToDecimal(ds.Tables[0].Rows[i]["Discountamount4"]) : decimalnull;
+            TaxAgency.DiscountDate1 = ds.Tables[0].Rows[i]["DiscountDate1"] != DBNull.Value ? Convert.ToString(ds.Tables[0].Rows[i]["DiscountDate1"]) : null;
+            TaxAgency.DiscountDate2 = ds.Tables[0].Rows[i]["DiscountDate2"] != DBNull.Value ? Convert.ToString(ds.Tables[0].Rows[i]["DiscountDate2"]) : null;
+            TaxAgency.DiscountDate3 = ds.Tables[0].Rows[i]["DiscountDate3"] != DBNull.Value ? Convert.ToString(ds.Tables[0].Rows[i]["DiscountDate3"]) : null;
+            TaxAgency.DiscountDate4 = ds.Tables[0].Rows[i]["DiscountDate4"] != DBNull.Value ? Convert.ToString(ds.Tables[0].Rows[i]["DiscountDate2"]) : null;
+            TaxAgency.InstallmentDate1 = ds.Tables[0].Rows[i]["Installmentdate1"] != DBNull.Value ? Convert.ToString(ds.Tables[0].Rows[i]["Installmentdate1"]) : null;
+            TaxAgency.InstallmentDate2 = ds.Tables[0].Rows[i]["Installmentdate2"] != DBNull.Value ? Convert.ToString(ds.Tables[0].Rows[i]["Installmentdate2"]) : null;
+            TaxAgency.InstallmentDate3 = ds.Tables[0].Rows[i]["Installmentdate3"] != DBNull.Value ? Convert.ToString(ds.Tables[0].Rows[i]["Installmentdate3"]) : null;
+            TaxAgency.InstallmentDate4 = ds.Tables[0].Rows[i]["Installmentdate4"] != DBNull.Value ? Convert.ToString(ds.Tables[0].Rows[i]["Installmentdate4"]) : null;
+            TaxAgency.InstallmentAmount1 = Convert.ToDecimal(ds.Tables[0].Rows[i]["Instamount1"]);
+            TaxAgency.InstallmentAmount2 = ds.Tables[0].Rows[i]["Instamount2"] != DBNull.Value ? Convert.ToDecimal(ds.Tables[0].Rows[i]["Instamount2"]) : decimalnull;
+            TaxAgency.InstallmentAmount3 = ds.Tables[0].Rows[i]["Instamount3"] != DBNull.Value ? Convert.ToDecimal(ds.Tables[0].Rows[i]["Instamount3"]) : decimalnull;
+            TaxAgency.InstallmentAmount4 = ds.Tables[0].Rows[i]["Instamount4"] != DBNull.Value ? Convert.ToDecimal(ds.Tables[0].Rows[i]["Instamount4"]) : decimalnull;
+            TaxAgency.InstallmentAmountPaid1 = Convert.ToDecimal(ds.Tables[0].Rows[i]["Instamountpaid1"]);
+            TaxAgency.InstallmentAmountPaid2 = ds.Tables[0].Rows[i]["Instamountpaid2"] != DBNull.Value ? Convert.ToDecimal(ds.Tables[0].Rows[i]["Instamountpaid2"]) : decimalnull;
+            TaxAgency.InstallmentAmountPaid3 = ds.Tables[0].Rows[i]["Instamountpaid2"] != DBNull.Value ? Convert.ToDecimal(ds.Tables[0].Rows[i]["Instamountpaid3"]) : decimalnull;
+            TaxAgency.InstallmentAmountPaid4 = ds.Tables[0].Rows[i]["Instamountpaid2"] != DBNull.Value ? Convert.ToDecimal(ds.Tables[0].Rows[i]["Instamountpaid4"]) : decimalnull;
+            TaxAgency.Installment1PaidOrDue = ds.Tables[0].Rows[i]["InstPaidDue1"] != DBNull.Value ? Convert.ToString(ds.Tables[0].Rows[i]["InstPaidDue1"]) : null;
+            TaxAgency.Installment2PaidOrDue = ds.Tables[0].Rows[i]["InstPaidDue2"] != DBNull.Value ? Convert.ToString(ds.Tables[0].Rows[i]["InstPaidDue2"]) : null;
+            TaxAgency.Installment3PaidOrDue = ds.Tables[0].Rows[i]["InstPaidDue3"] != DBNull.Value ? Convert.ToString(ds.Tables[0].Rows[i]["InstPaidDue3"]) : null;
+            TaxAgency.Installment4PaidOrDue = ds.Tables[0].Rows[i]["InstPaidDue4"] != DBNull.Value ? Convert.ToString(ds.Tables[0].Rows[i]["InstPaidDue4"]) : null;
+            TaxAgency.RemainingBalance1 = ds.Tables[0].Rows[i]["Remainingbalance1"] != DBNull.Value ? Convert.ToDecimal(ds.Tables[0].Rows[i]["Remainingbalance1"]) : decimalnull;
+            TaxAgency.RemainingBalance2 = ds.Tables[0].Rows[i]["Remainingbalance1"] != DBNull.Value ? Convert.ToDecimal(ds.Tables[0].Rows[i]["Remainingbalance2"]) : decimalnull;
+            TaxAgency.RemainingBalance3 = ds.Tables[0].Rows[i]["Remainingbalance1"] != DBNull.Value ? Convert.ToDecimal(ds.Tables[0].Rows[i]["Remainingbalance3"]) : decimalnull;
+            TaxAgency.RemainingBalance4 = ds.Tables[0].Rows[i]["Remainingbalance1"] != DBNull.Value ? Convert.ToDecimal(ds.Tables[0].Rows[i]["Remainingbalance4"]) : decimalnull;
+            TaxAgency.TaxBill = ds.Tables[0].Rows[i]["taxbill"] != DBNull.Value ? Convert.ToString(ds.Tables[0].Rows[i]["taxbill"]) : null;
+            TaxAgency.TaxRate = null;
+            TaxAgency.TaxableValue = null;
+            TaxAgency.Comments = ds.Tables[0].Rows[i]["installmentcomments"] != DBNull.Value ? Convert.ToString(ds.Tables[0].Rows[i]["installmentcomments"]) : null;
+
+            if (ds.Tables[0].Rows[i]["ExemptRelevy1"].ToString() == "Yes")
+            {
+                TaxAgency.IsInstallmentExempt1 = true;
+            }
+            else
+            {
+                TaxAgency.IsInstallmentExempt1 = false;
+            }
+
+            if (ds.Tables[0].Rows[i]["ExemptRelevy2"].ToString() == "Yes")
+            {
+                TaxAgency.IsInstallmentExempt2 = true;
+            }
+            else
+            {
+                TaxAgency.IsInstallmentExempt2 = false;
+            }
+
+            if (ds.Tables[0].Rows[i]["ExemptRelevy3"].ToString() == "Yes")
+            {
+                TaxAgency.IsInstallmentExempt3 = true;
+            }
+            else
+            {
+                TaxAgency.IsInstallmentExempt3 = false;
+            }
+
+            if (ds.Tables[0].Rows[i]["ExemptRelevy4"].ToString() == "Yes")
+            {
+                TaxAgency.IsInstallmentExempt4 = true;
+            }
+            else
+            {
+                TaxAgency.IsInstallmentExempt4 = false;
+            }
+
+            //TaxAgency.IsInstallmentExempt1 = ds.Tables[0].Rows[i]["ExemptRelevy1"] != DBNull.Value ? Convert.ToBoolean(ds.Tables[0].Rows[i]["ExemptRelevy1"]) : boolnull;
+            //TaxAgency.IsInstallmentExempt2 = ds.Tables[0].Rows[i]["ExemptRelevy2"] != DBNull.Value ? Convert.ToBoolean(ds.Tables[0].Rows[i]["ExemptRelevy2"]) : boolnull;
+            //TaxAgency.IsInstallmentExempt3 = ds.Tables[0].Rows[i]["ExemptRelevy3"] != DBNull.Value ? Convert.ToBoolean(ds.Tables[0].Rows[i]["ExemptRelevy3"]) : boolnull;
+            //TaxAgency.IsInstallmentExempt4 = ds.Tables[0].Rows[i]["ExemptRelevy4"] != DBNull.Value ? Convert.ToBoolean(ds.Tables[0].Rows[i]["ExemptRelevy4"]) : boolnull;
+            TaxAgency.IsHomesteadExempt = null;
+            TaxAgency.BillingPeriodStartDate = ds.Tables[0].Rows[i]["BillingStartDate"] != DBNull.Value ? Convert.ToString(ds.Tables[0].Rows[i]["BillingStartDate"]) : null;
+            TaxAgency.BillingPeriodEndDate = ds.Tables[0].Rows[i]["BillingEndDate"] != DBNull.Value ? Convert.ToString(ds.Tables[0].Rows[i]["BillingEndDate"]) : null;
+            TaxAgency.FutureTaxOption = ds.Tables[0].Rows[i]["FutureTaxOption"] != DBNull.Value ? Convert.ToString(ds.Tables[0].Rows[i]["FutureTaxOption"]) : null;
+            TaxAgency.WasFullyAssessedLastYear = null;
+            TaxAgency.AssessedValue = null;
             TaxAgency.TaxExemptions = GetTaxExemptionList(orderno);
             TaxAgency.DelinquentTaxes = GetDelinquentTaxesList(orderno);
             TaxAgencyDetails.Add(TaxAgency);
@@ -170,45 +221,90 @@ public class Response
         TaxExemptionsTag TaxExemptions = new TaxExemptionsTag();
         List<TaxExemptionsTag> TaxExemptionList = new List<TaxExemptionsTag> { };
         DataSet ds = dbconn.ExecuteQuery("select * from tbl_exemption_taxauthority where orderno='" + orderno + "'");
-        for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
+        if (ds.Tables[0].Rows.Count > 0)
         {
-            TaxExemptions.ExemptionTypeCode = ds.Tables[0].Rows[i]["exemptiontype"].ToString();
-            TaxExemptions.ExemptionAmount = ds.Tables[0].Rows[i]["exemptionamount"].ToString();
+            for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
+            {
+                TaxExemptions.ExemptionTypeCode = ds.Tables[0].Rows[i]["exemptiontype"] != DBNull.Value ? Convert.ToString(ds.Tables[0].Rows[i]["exemptiontype"]) : null;
+                TaxExemptions.ExemptionAmount = ds.Tables[0].Rows[i]["exemptionamount"] != DBNull.Value ? Convert.ToDecimal(ds.Tables[0].Rows[i]["exemptionamount"]) : 0;
+                TaxExemptionList.Add(TaxExemptions);
+            }
+        }
+        else
+        {
+            TaxExemptions.ExemptionTypeCode = null; //non empty string???
+            TaxExemptions.ExemptionAmount = 0;
             TaxExemptionList.Add(TaxExemptions);
         }
         return TaxExemptionList;
     }
-
     public List<DelinquentTaxesTag> GetDelinquentTaxesList(string orderno)
     {
         DelinquentTaxesTag DelinquentTaxes = new DelinquentTaxesTag();
         List<DelinquentTaxesTag> DelinquentTaxesList = new List<DelinquentTaxesTag> { };
         DataSet ds = dbconn.ExecuteQuery("select * from tbl_deliquent where orderno='" + orderno + "'");
-        for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
+        if (ds.Tables[0].Rows.Count > 0)
         {
-            DelinquentTaxes.IsCurrentDelinquency = ds.Tables[0].Rows[i]["IsCurrentDelinquency"].ToString();
-            DelinquentTaxes.IsFullyPaidOff = ds.Tables[0].Rows[i]["IsFullyPaidOff"].ToString();
-            DelinquentTaxes.AdditionalPenaltyAmount = ds.Tables[0].Rows[i]["AdditionalPenaltyAmount"].ToString();
-            DelinquentTaxes.AmountGoodThruDate = ds.Tables[0].Rows[i]["goodthuruDate"].ToString();
-            DelinquentTaxes.InitialInstallmentDueDate = ds.Tables[0].Rows[i]["InstallmentDueDate"].ToString();
-            DelinquentTaxes.BaseAmountDue = ds.Tables[0].Rows[i]["BaseAmountDue"].ToString();
-            DelinquentTaxes.PayOffAmount = ds.Tables[0].Rows[i]["PayOffAmount"].ToString();
-            DelinquentTaxes.PenaltyAmount = ds.Tables[0].Rows[i]["PenaltyAmount"].ToString();
-            DelinquentTaxes.PenaltyAmountFrequency = ds.Tables[0].Rows[i]["PenaltyAmountFrequency"].ToString();
-            DelinquentTaxes.PenaltyDueDate = ds.Tables[0].Rows[i]["PenaltyDueDate"].ToString();
-            DelinquentTaxes.PercentOfPenaltyAmount = ds.Tables[0].Rows[i]["PercentofPenaltyAmount"].ToString();
-            DelinquentTaxes.RollOverDate = ds.Tables[0].Rows[i]["RollOverDate"].ToString();
-            DelinquentTaxes.PerDiem = ds.Tables[0].Rows[i]["PerDiem"].ToString();
-            DelinquentTaxes.TaxYear = ds.Tables[0].Rows[i]["deliquenttaxyear"].ToString();
-            DelinquentTaxes.Comments = ds.Tables[0].Rows[i]["Comments"].ToString();
-            DelinquentTaxes.PayeeName = ds.Tables[0].Rows[i]["Payee"].ToString();
-            DelinquentTaxes.AmountPaid = ds.Tables[0].Rows[i]["AmountPaid"].ToString();
-            DelinquentTaxes.LatestPaymentDateTime = ds.Tables[0].Rows[i]["LatestPaymentDateTime"].ToString();
-            DelinquentTaxes.TaxSaleDate = ds.Tables[0].Rows[i]["DateofTaxSale"].ToString();
-            DelinquentTaxes.LastDayToRedeemDate = ds.Tables[0].Rows[i]["LastdaytoRedeem"].ToString();
-            DelinquentTaxes.TaxSalePending = ds.Tables[0].Rows[i]["TaxSaleNotApplicable"].ToString();
+            for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
+            {
+                DelinquentTaxes.IsCurrentDelinquency = ds.Tables[0].Rows[i]["IsCurrentDelinquency"] != DBNull.Value ? Convert.ToBoolean(ds.Tables[0].Rows[i]["IsCurrentDelinquency"]) : boolnull;
+                DelinquentTaxes.IsFullyPaidOff = ds.Tables[0].Rows[i]["IsFullyPaidOff"] != DBNull.Value ? Convert.ToBoolean(ds.Tables[0].Rows[i]["IsFullyPaidOff"]) : boolnull;
+                DelinquentTaxes.AdditionalPenaltyAmount = ds.Tables[0].Rows[i]["AdditionalPenaltyAmount"] != DBNull.Value ? Convert.ToDecimal(ds.Tables[0].Rows[i]["AdditionalPenaltyAmount"]) : decimalnull;
+                DelinquentTaxes.AmountGoodThruDate = ds.Tables[0].Rows[i]["goodthuruDate"] != DBNull.Value ? Convert.ToString(ds.Tables[0].Rows[i]["goodthuruDate"]) : null;
+                DelinquentTaxes.InitialInstallmentDueDate = ds.Tables[0].Rows[i]["InstallmentDueDate"] != DBNull.Value ? Convert.ToString(ds.Tables[0].Rows[i]["InstallmentDueDate"]) : null;
+                DelinquentTaxes.BaseAmountDue = ds.Tables[0].Rows[i]["BaseAmountDue"] != DBNull.Value ? Convert.ToDecimal(ds.Tables[0].Rows[i]["BaseAmountDue"]) : decimalnull;
+                DelinquentTaxes.PayOffAmount = ds.Tables[0].Rows[i]["PayOffAmount"] != DBNull.Value ? Convert.ToDecimal(ds.Tables[0].Rows[i]["PayOffAmount"]) : decimalnull;
+                DelinquentTaxes.PenaltyAmount = ds.Tables[0].Rows[i]["PenaltyAmount"] != DBNull.Value ? Convert.ToDecimal(ds.Tables[0].Rows[i]["PenaltyAmount"]) : decimalnull;
+                DelinquentTaxes.PenaltyAmountFrequency = ds.Tables[0].Rows[i]["PenaltyAmountFrequency"] != DBNull.Value ? Convert.ToString(ds.Tables[0].Rows[i]["PenaltyAmountFrequency"]) : null;
+                DelinquentTaxes.PenaltyDueDate = ds.Tables[0].Rows[i]["PenaltyDueDate"] != DBNull.Value ? Convert.ToString(ds.Tables[0].Rows[i]["PenaltyDueDate"]) : null;
+                DelinquentTaxes.PercentOfPenaltyAmount = ds.Tables[0].Rows[i]["PercentofPenaltyAmount"] != DBNull.Value ? Convert.ToDecimal(ds.Tables[0].Rows[i]["PercentofPenaltyAmount"]) : decimalnull;
+                DelinquentTaxes.RollOverDate = ds.Tables[0].Rows[i]["RollOverDate"] != DBNull.Value ? Convert.ToString(ds.Tables[0].Rows[i]["RollOverDate"]) : null;
+                DelinquentTaxes.PerDiem = ds.Tables[0].Rows[i]["PerDiem"] != DBNull.Value ? Convert.ToDecimal(ds.Tables[0].Rows[i]["PerDiem"]) : decimalnull;
+                DelinquentTaxes.TaxYear = ds.Tables[0].Rows[i]["deliquenttaxyear"] != DBNull.Value ? Convert.ToString(ds.Tables[0].Rows[i]["deliquenttaxyear"]) : null;
+                DelinquentTaxes.Comments = ds.Tables[0].Rows[i]["Comments"] != DBNull.Value ? Convert.ToString(ds.Tables[0].Rows[i]["Comments"]) : null;
+                DelinquentTaxes.PayeeName = ds.Tables[0].Rows[i]["Payee"] != DBNull.Value ? Convert.ToString(ds.Tables[0].Rows[i]["Payee"]) : null;
+                DelinquentTaxes.AmountPaid = ds.Tables[0].Rows[i]["AmountPaid"] != DBNull.Value ? Convert.ToDecimal(ds.Tables[0].Rows[i]["AmountPaid"]) : decimalnull;
+                DelinquentTaxes.LatestPaymentDateTime = ds.Tables[0].Rows[i]["LatestPaymentDateTime"] != DBNull.Value ? Convert.ToString(ds.Tables[0].Rows[i]["LatestPaymentDateTime"]) : null;
+                DelinquentTaxes.TaxSaleDate = ds.Tables[0].Rows[i]["DateofTaxSale"] != DBNull.Value ? Convert.ToString(ds.Tables[0].Rows[i]["DateofTaxSale"]) : null;
+                DelinquentTaxes.LastDayToRedeemDate = ds.Tables[0].Rows[i]["LastdaytoRedeem"] != DBNull.Value ? Convert.ToString(ds.Tables[0].Rows[i]["LastdaytoRedeem"]) : null;
+
+                if (ds.Tables[0].Rows[i]["TaxSaleNotApplicable"].ToString() == "Yes")
+                {
+                    DelinquentTaxes.TaxSalePending = true;
+                }
+                else
+                {
+                    DelinquentTaxes.TaxSalePending = false;
+                }
+                //DelinquentTaxes.TaxSalePending = ds.Tables[0].Rows[i]["TaxSaleNotApplicable"] != DBNull.Value ? Convert.ToBoolean(ds.Tables[0].Rows[i]["TaxSaleNotApplicable"]) : boolnull;
+                DelinquentTaxesList.Add(DelinquentTaxes);
+            }
+        }
+        else
+        {
+            DelinquentTaxes.IsCurrentDelinquency = false;
+            DelinquentTaxes.IsFullyPaidOff = false;
+            DelinquentTaxes.AdditionalPenaltyAmount = 0;
+            DelinquentTaxes.AmountGoodThruDate = null;
+            DelinquentTaxes.InitialInstallmentDueDate = null;
+            DelinquentTaxes.BaseAmountDue = 0;
+            DelinquentTaxes.PayOffAmount = 0;
+            DelinquentTaxes.PenaltyAmount = 0;
+            DelinquentTaxes.PenaltyAmountFrequency = "";
+            DelinquentTaxes.PenaltyDueDate = null;
+            DelinquentTaxes.PercentOfPenaltyAmount = 0;
+            DelinquentTaxes.RollOverDate = null;
+            DelinquentTaxes.PerDiem = 0;
+            DelinquentTaxes.TaxYear = "";
+            DelinquentTaxes.Comments = "";
+            DelinquentTaxes.PayeeName = "";
+            DelinquentTaxes.AmountPaid = null;
+            DelinquentTaxes.LatestPaymentDateTime = null;
+            DelinquentTaxes.TaxSaleDate = null;
+            DelinquentTaxes.LastDayToRedeemDate = null;
             DelinquentTaxesList.Add(DelinquentTaxes);
         }
+
         return DelinquentTaxesList;
     }
 
@@ -217,21 +313,39 @@ public class Response
         List<SpecialAssessmentsTag> SpecialAssessmentsList = new List<SpecialAssessmentsTag>() { };
         SpecialAssessmentsTag SpecialAssessments = new SpecialAssessmentsTag();
         DataSet ds = dbconn.ExecuteQuery("select * from tbl_specialassessment_authority where orderno='" + orderno + "'");
-
-        for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
+        if (ds.Tables[0].Rows.Count > 0)
         {
-            SpecialAssessments.Number = ds.Tables[0].Rows[i]["Number"].ToString();
-            SpecialAssessments.DueDate = ds.Tables[0].Rows[i]["DueDate"].ToString();
-            SpecialAssessments.Description = ds.Tables[0].Rows[i]["description"].ToString();
-            SpecialAssessments.Amount = ds.Tables[0].Rows[i]["amount"].ToString();
-            SpecialAssessments.NumberOfInstallments = ds.Tables[0].Rows[i]["noofinstallment"].ToString();
-            SpecialAssessments.InstallmentsPaid = ds.Tables[0].Rows[i]["installmentpaid"].ToString();
-            SpecialAssessments.InstallmentsRemaining = ds.Tables[0].Rows[i]["InstallmentsRemaining"].ToString();
-            SpecialAssessments.RemainingBalance = ds.Tables[0].Rows[i]["RemainingBalance"].ToString();
-            SpecialAssessments.PerDiem = ds.Tables[0].Rows[i]["PerDiem"].ToString();
-            SpecialAssessments.Payee = ds.Tables[0].Rows[i]["Payee"].ToString();
-            SpecialAssessments.GoodThroughDate = ds.Tables[0].Rows[i]["GoodThroughDate"].ToString();
-            SpecialAssessments.Comments = ds.Tables[0].Rows[i]["Comments"].ToString();
+            for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
+            {
+                SpecialAssessments.Number = ds.Tables[0].Rows[i]["specialassessmentno"] != DBNull.Value ? Convert.ToString(ds.Tables[0].Rows[i]["specialassessmentno"]) : null;
+                SpecialAssessments.DueDate = ds.Tables[0].Rows[i]["DueDate"] != DBNull.Value ? Convert.ToString(ds.Tables[0].Rows[i]["DueDate"]) : null;
+                SpecialAssessments.Description = ds.Tables[0].Rows[i]["description"] != DBNull.Value ? Convert.ToString(ds.Tables[0].Rows[i]["description"]) : null;
+                SpecialAssessments.Amount = ds.Tables[0].Rows[i]["amount"] != DBNull.Value ? Convert.ToDecimal(ds.Tables[0].Rows[i]["amount"]) : decimalnull;
+                SpecialAssessments.NumberOfInstallments = ds.Tables[0].Rows[i]["noofinstallment"] != DBNull.Value ? Convert.ToInt32(ds.Tables[0].Rows[i]["noofinstallment"]) : value;
+                SpecialAssessments.InstallmentsPaid = ds.Tables[0].Rows[i]["installmentpaid"] != DBNull.Value ? Convert.ToInt32(ds.Tables[0].Rows[i]["installmentpaid"]) : value;
+                SpecialAssessments.InstallmentsRemaining = ds.Tables[0].Rows[i]["InstallmentsRemaining"] != DBNull.Value ? Convert.ToInt32(ds.Tables[0].Rows[i]["InstallmentsRemaining"]) : value;
+                SpecialAssessments.RemainingBalance = ds.Tables[0].Rows[i]["RemainingBalance"] != DBNull.Value ? Convert.ToDecimal(ds.Tables[0].Rows[i]["RemainingBalance"]) : decimalnull;
+                SpecialAssessments.PerDiem = ds.Tables[0].Rows[i]["PerDiem"] != DBNull.Value ? Convert.ToDecimal(ds.Tables[0].Rows[i]["PerDiem"]) : decimalnull;
+                SpecialAssessments.Payee = ds.Tables[0].Rows[i]["Payee"] != DBNull.Value ? Convert.ToString(ds.Tables[0].Rows[i]["Payee"]) : null;
+                SpecialAssessments.GoodThroughDate = ds.Tables[0].Rows[i]["GoodThroughDate"] != DBNull.Value ? Convert.ToString(ds.Tables[0].Rows[i]["GoodThroughDate"]) : null;
+                SpecialAssessments.Comments = ds.Tables[0].Rows[i]["Comments"] != DBNull.Value ? Convert.ToString(ds.Tables[0].Rows[i]["Comments"]) : null;
+                SpecialAssessmentsList.Add(SpecialAssessments);
+            }
+        }
+        else
+        {
+            SpecialAssessments.Number = "";
+            SpecialAssessments.DueDate = null;
+            SpecialAssessments.Description = "";
+            SpecialAssessments.Amount = null;
+            SpecialAssessments.NumberOfInstallments = null;
+            SpecialAssessments.InstallmentsPaid = null;
+            SpecialAssessments.InstallmentsRemaining = null;
+            SpecialAssessments.RemainingBalance = null;
+            SpecialAssessments.PerDiem = null;
+            SpecialAssessments.Payee = "";
+            SpecialAssessments.GoodThroughDate = null;
+            SpecialAssessments.Comments = "";
             SpecialAssessmentsList.Add(SpecialAssessments);
         }
         return SpecialAssessmentsList;
@@ -244,12 +358,12 @@ public class Response
         for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
         {
             Taxvendor.VendorNumber = "88998152";
-            Taxvendor.VendorResponse = ds.Tables[0].Rows[i]["vendor_response"].ToString();
+            Taxvendor.VendorResponse = ds.Tables[0].Rows[i]["vendor_response"] != DBNull.Value ? Convert.ToString(ds.Tables[0].Rows[i]["vendor_response"]) : null;
 
-            Taxvendor.TaxVendorService.TaxVendorServiceId = ds.Tables[0].Rows[i]["service_id"].ToString();
-            Taxvendor.TaxVendorService.ServiceCode = ds.Tables[0].Rows[i]["service_code"].ToString();
-            Taxvendor.TaxVendorService.ActualCost = ds.Tables[0].Rows[i]["projected_cost"].ToString();
-            Taxvendor.TaxVendorService.StatusCode = ""; //Completed
+            Taxvendor.TaxVendorService.TaxVendorServiceId = ds.Tables[0].Rows[i]["service_id"] != DBNull.Value ? Convert.ToString(ds.Tables[0].Rows[i]["service_id"]) : null;
+            Taxvendor.TaxVendorService.ServiceCode = ds.Tables[0].Rows[i]["service_code"] != DBNull.Value ? Convert.ToString(ds.Tables[0].Rows[i]["service_code"]) : null;
+            Taxvendor.TaxVendorService.ActualCost = ds.Tables[0].Rows[i]["projected_cost"] != DBNull.Value ? Convert.ToDecimal(ds.Tables[0].Rows[i]["projected_cost"]) : 0;
+            Taxvendor.TaxVendorService.StatusCode = null; //Completed
         }
         return Taxvendor;
 
@@ -270,7 +384,7 @@ public class ResponseTag
 }
 public class OrderDetailTag
 {
-    public string OrderDetailId;
+    public Int64 OrderDetailId;
     public string NoteText;
     public TaxDetailTag TaxDetail;
     public TaxVendorTag TaxVendor;
@@ -281,18 +395,18 @@ public class TaxDetailTag
     public string ExpectedDate;
     public string FollowUpDate;
     public string StatusCode;
-    public string WasAssessedAsLand;
-    public string WasAssessedAsHomestead;
-    public List<TaxParcelTag> TaxParcel;
+    public bool WasAssessedAsLand;
+    public bool WasAssessedAsHomestead;
+    public List<TaxParcelTag> TaxParcels;
 }
 
 public class TaxParcelTag
 {
     public string TaxYear;
-    public string EndYear;
+    public int? EndYear;
     public string TaxId;
-    public string IsToBeDetermined;
-    public string IsEstimate;
+    public bool IsToBeDetermined;
+    public bool IsEstimate;
 
     public List<TaxAgencyDetailsTag> TaxAgencyDetails;
     public List<SpecialAssessmentsTag> SpecialAssessments;
@@ -302,7 +416,7 @@ public class TaxAgencyDetailsTag
 {
     public string AgencyId;
     public string TaxAgencyType;
-    public string IsDelinquent;
+    public bool IsDelinquent;
     public string DelinquentAgencyId;
     public string BillingFrequency;
     public string NextBillDate1;
@@ -311,10 +425,10 @@ public class TaxAgencyDetailsTag
     public string DelinquentDate2;
     public string DelinquentDate3;
     public string DelinquentDate4;
-    public string DiscountAmount1;
-    public string DiscountAmount2;
-    public string DiscountAmount3;
-    public string DiscountAmount4;
+    public Decimal? DiscountAmount1;
+    public Decimal? DiscountAmount2;
+    public Decimal? DiscountAmount3;
+    public Decimal? DiscountAmount4;
     public string DiscountDate1;
     public string DiscountDate2;
     public string DiscountDate3;
@@ -323,36 +437,36 @@ public class TaxAgencyDetailsTag
     public string InstallmentDate2;
     public string InstallmentDate3;
     public string InstallmentDate4;
-    public string InstallmentAmount1;
-    public string InstallmentAmount2;
-    public string InstallmentAmount3;
-    public string InstallmentAmount4;
-    public string InstallmentAmountPaid1;
-    public string InstallmentAmountPaid2;
-    public string InstallmentAmountPaid3;
-    public string InstallmentAmountPaid4;
+    public Decimal InstallmentAmount1;
+    public Decimal? InstallmentAmount2;
+    public Decimal? InstallmentAmount3;
+    public Decimal? InstallmentAmount4;
+    public Decimal InstallmentAmountPaid1;
+    public Decimal? InstallmentAmountPaid2;
+    public Decimal? InstallmentAmountPaid3;
+    public Decimal? InstallmentAmountPaid4;
     public string Installment1PaidOrDue;
     public string Installment2PaidOrDue;
     public string Installment3PaidOrDue;
     public string Installment4PaidOrDue;
-    public string RemainingBalance1;
-    public string RemainingBalance2;
-    public string RemainingBalance3;
-    public string RemainingBalance4;
+    public Decimal? RemainingBalance1;
+    public Decimal? RemainingBalance2;
+    public Decimal? RemainingBalance3;
+    public Decimal? RemainingBalance4;
     public string TaxBill;
     public string TaxRate;
-    public string TaxableValue;
+    public Decimal? TaxableValue;
     public string Comments;
-    public string IsInstallmentExempt1;
-    public string IsInstallmentExempt2;
-    public string IsInstallmentExempt3;
-    public string IsInstallmentExempt4;
-    public string IsHomesteadExempt;
+    public bool? IsInstallmentExempt1;
+    public bool? IsInstallmentExempt2;
+    public bool? IsInstallmentExempt3;
+    public bool? IsInstallmentExempt4;
+    public bool? IsHomesteadExempt;
     public string BillingPeriodStartDate;
     public string BillingPeriodEndDate;
     public string FutureTaxOption;
-    public string WasFullyAssessedLastYear;
-    public string AssessedValue;
+    public bool? WasFullyAssessedLastYear;
+    public bool? AssessedValue;
 
     public List<TaxExemptionsTag> TaxExemptions;
     public List<DelinquentTaxesTag> DelinquentTaxes;
@@ -363,32 +477,32 @@ public class TaxAgencyDetailsTag
 public class TaxExemptionsTag
 {
     public string ExemptionTypeCode;
-    public string ExemptionAmount;
+    public decimal ExemptionAmount;
 }
 
 public class DelinquentTaxesTag
 {
-    public string IsCurrentDelinquency;
-    public string IsFullyPaidOff;
-    public string AdditionalPenaltyAmount;
+    public bool? IsCurrentDelinquency;
+    public bool? IsFullyPaidOff;
+    public Decimal? AdditionalPenaltyAmount;
     public string AmountGoodThruDate;
     public string InitialInstallmentDueDate;
-    public string BaseAmountDue;
-    public string PayOffAmount;
-    public string PenaltyAmount;
+    public Decimal? BaseAmountDue;
+    public Decimal? PayOffAmount;
+    public Decimal? PenaltyAmount;
     public string PenaltyAmountFrequency;
     public string PenaltyDueDate;
-    public string PercentOfPenaltyAmount;
+    public Decimal? PercentOfPenaltyAmount;
     public string RollOverDate;
-    public string PerDiem;
+    public Decimal? PerDiem;
     public string TaxYear;
     public string Comments;
     public string PayeeName;
-    public string AmountPaid;
+    public Decimal? AmountPaid;
     public string LatestPaymentDateTime;
     public string TaxSaleDate;
     public string LastDayToRedeemDate;
-    public string TaxSalePending;
+    public bool? TaxSalePending;
 }
 
 public class SpecialAssessmentsTag
@@ -396,12 +510,12 @@ public class SpecialAssessmentsTag
     public string Number;
     public string DueDate;
     public string Description;
-    public string Amount;
-    public string NumberOfInstallments;
-    public string InstallmentsPaid;
-    public string InstallmentsRemaining;
-    public string RemainingBalance;
-    public string PerDiem;
+    public Decimal? Amount;
+    public int? NumberOfInstallments;
+    public int? InstallmentsPaid;
+    public int? InstallmentsRemaining;
+    public Decimal? RemainingBalance;
+    public Decimal? PerDiem;
     public string Payee;
     public string GoodThroughDate;
     public string Comments;
@@ -417,7 +531,7 @@ public class TaxVendorServiceTag
 {
     public string TaxVendorServiceId;
     public string ServiceCode;
-    public string ActualCost;
+    public decimal ActualCost;
     public string StatusCode;
 
 }
