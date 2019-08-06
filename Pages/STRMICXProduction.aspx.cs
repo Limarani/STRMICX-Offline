@@ -31,7 +31,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
     string taxagencytype = "";
     decimal Inst1, Inst2, Inst3, Inst4, Instoutput;
     public bool chk = false;
-
+    Response taxResponse = new Response();
     protected void Page_Load(object sender, EventArgs e)
     {
         //string connect = ConfigurationManager.ConnectionStrings["MysqlConnection"].ConnectionString;
@@ -3545,7 +3545,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
         //ordernumber & parcelnumber validate....
         string message = validate.checkParcel(lblord.Text);
 
-
+   
 
         if (OStatus == "Completed" && process == "KEY")
         {
@@ -3623,6 +3623,8 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "alertMessage", "alert('Cannot Complete Order Details')", true);
                 return;
             }
+
+
         }
 
         else if (OStatus == "In Process" && process == "KEY")
