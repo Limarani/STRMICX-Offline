@@ -33,6 +33,9 @@
 
         function setTwoNumberDecimal(el) {
             el.value = parseFloat(el.value).toFixed(2);
+            if (el.value == "NaN") {
+                el.value = "0.00";
+            }
         };
 
 
@@ -906,6 +909,38 @@
             var comerror;
             comerror = document.getElementById("ddlstatus").value;
 
+            var delistatus = document.getElementById("txtdeliquent").value;
+            var specialstatus = document.getElementById("SecialAssmnt").value;
+            var exestatus = document.getElementById("txtexemption").value;
+
+            var delpayee = document.getElementById("txtdeliPayee").value;
+            var speinstrem = document.getElementById("txtInstallRemain").value;
+            var exetype = document.getElementById("txtexetype").value;
+
+            if (delistatus == "Yes") {
+                if (delpayee == "") {
+                    document.getElementById('txtdeliPayee').focus();
+                    alert("Deliquent Status is required");
+                    return false;
+                }                
+            }
+                        
+            if (specialstatus == "Yes") {
+                if (speinstrem == "") {
+                    document.getElementById('txtInstallRemain').focus();
+                    alert("Special Assessment is required");
+                    return false;
+                }
+            }
+
+            if (exestatus == "Yes") {
+                if (exetype == "Select") {
+                    document.getElementById('txtexetype').focus();
+                    alert("Exemption Status is required");
+                    return false;
+                }
+            }
+
             if (comerror == '--Select--' || comerror == undefined) {
                 alert("Please choose any of the status");
                 return false;
@@ -1019,8 +1054,7 @@
             //else {
             //    document.getElementById('txtTaxNo').style.borderColor = "green";
             //    document.getElementById('lbldrop').style.color = "green";
-            //}
-
+            //}                     
             if (taxyearerror == "" || taxparcelerror == "" && document.getElementById("chkTBD").checked == false) {
                 return false;
             }
@@ -2437,14 +2471,11 @@
             Discount1();
             myFunctionDiscount1();
 
-            //var diserrormsg1 = "";
-           
-
             var instamunt1 = document.getElementById("instamount1").value;
             var discountamnt1 = document.getElementById("discamt1").value;
 
             if (discountamnt1 > instamunt1) {
-                document.getElementById('discamt1').value = "";               
+                document.getElementById('discamt1').value = "";
                 alert("Discount amount cannot be greater than the installment amount...");
                 return;
                 document.getElementById('discamt1').focus();
@@ -2459,8 +2490,8 @@
             var discountamnt2 = document.getElementById("discamt2").value;
 
             if (discountamnt2 > instamunt2) {
-                document.getElementById('discamt2').value = "";                
-                alert(diserrormsg2);                
+                document.getElementById('discamt2').value = "";
+                alert(diserrormsg2);
                 return;
                 document.getElementById('discamt2').focus();
             }
@@ -2474,7 +2505,7 @@
             var discountamnt3 = document.getElementById("discamt3").value;
 
             if (discountamnt3 > instamunt3) {
-                document.getElementById('discamt3').value = "";                
+                document.getElementById('discamt3').value = "";
                 alert(diserrormsg3);
                 return;
                 document.getElementById('discamt3').focus();
@@ -2489,7 +2520,7 @@
             var discountamnt4 = document.getElementById("discamt4").value;
 
             if (discountamnt4 > instamunt4) {
-                document.getElementById('discamt4').value = "";                
+                document.getElementById('discamt4').value = "";
                 alert(diserrormsg4);
                 return;
                 document.getElementById('discamt4').focus();
@@ -2585,7 +2616,7 @@
             var futdiscountamnt1 = document.getElementById("txtmandisamount1").value;
 
             if (futdiscountamnt1 > futinstamunt1) {
-                document.getElementById('txtmandisamount1').value = "";                
+                document.getElementById('txtmandisamount1').value = "";
                 alert(futdiserrormsg1);
                 return;
                 document.getElementById('txtmandisamount1').focus();
@@ -2600,7 +2631,7 @@
             var futdiscountamnt2 = document.getElementById("txtmandisamount2").value;
 
             if (futdiscountamnt2 > futinstamunt2) {
-                document.getElementById('txtmandisamount2').value = "";                
+                document.getElementById('txtmandisamount2').value = "";
                 alert(futdiserrormsg2);
                 return;
                 document.getElementById('txtmandisamount2').focus();
@@ -2615,7 +2646,7 @@
             var futdiscountamnt3 = document.getElementById("txtmandisamount3").value;
 
             if (futdiscountamnt3 > futinstamunt3) {
-                document.getElementById('txtmandisamount3').value = "";                
+                document.getElementById('txtmandisamount3').value = "";
                 alert(futdiserrormsg3);
                 return;
                 document.getElementById('txtmandisamount3').focus();
@@ -2630,7 +2661,7 @@
             var futdiscountamnt4 = document.getElementById("txtmandisamount4").value;
 
             if (futdiscountamnt4 > futinstamunt4) {
-                document.getElementById('txtmandisamount4').value = "";                
+                document.getElementById('txtmandisamount4').value = "";
                 alert(futdiserrormsg4);
                 return;
                 document.getElementById('txtmandisamount4').focus();
@@ -3924,7 +3955,7 @@
 
         //installmentdetails
         function checkINSTDEDate1() {
-            var errormsg = "Delinquent date must be less than 12 months from the installment date..."
+            var errormsg = "Delinquent date must be less than 12 months from the installment date...";
             var inst1 = document.getElementById("instdate1").value;
             var delinq1 = document.getElementById("delinq1").value;
 
@@ -3951,7 +3982,7 @@
                 return;
             }
             else if (delinq1 == inst1) {
-                document.getElementById('delinq1').value = "";                
+                document.getElementById('delinq1').value = "";
                 alert('Delinquent date and installment date should not be same...');
                 return;
                 document.getElementById("delinq1").focus();
@@ -3959,7 +3990,7 @@
         }
 
         function checkINSTDEDate2() {
-            var errormsg = "Delinquent date must be less than 12 months from the installment date..."
+            var errormsg = "Delinquent date must be less than 12 months from the installment date...";
             var inst2 = document.getElementById("instdate2").value;
             var delinq2 = document.getElementById("delinq2").value;
 
@@ -3985,7 +4016,7 @@
                 return;
             }
             else if (delinq2 == inst2) {
-                document.getElementById('delinq2').value = "";                
+                document.getElementById('delinq2').value = "";
                 alert('Delinquent date and installment date should not be same...');
                 return;
                 document.getElementById("delinq2").focus();
@@ -3993,7 +4024,7 @@
         }
 
         function checkINSTDEDate3() {
-            var errormsg = "Delinquent date must be less than 12 months from the installment date..."
+            var errormsg = "Delinquent date must be less than 12 months from the installment date...";
             var inst3 = document.getElementById("instdate3").value;
             var delinq3 = document.getElementById("delinq3").value;
 
@@ -4019,7 +4050,7 @@
                 return;
             }
             else if (delinq3 == inst3) {
-                document.getElementById('delinq1').value = "";               
+                document.getElementById('delinq1').value = "";
                 alert('Delinquent date and installment date should not be same...');
                 return;
                 document.getElementById("delinq3").focus();
@@ -4027,7 +4058,7 @@
         }
 
         function checkINSTDEDate4() {
-            var errormsg = "Delinquent date must be less than 12 months from the installment date..."
+            var errormsg = "Delinquent date must be less than 12 months from the installment date...";
             var inst4 = document.getElementById("instdate4").value;
             var delinq4 = document.getElementById("delinq4").value;
 
@@ -4053,7 +4084,7 @@
                 return;
             }
             else if (delinq4 == inst4) {
-                document.getElementById('delinq4').value = "";                
+                document.getElementById('delinq4').value = "";
                 alert('Delinquent date and installment date should not be same...');
                 return;
                 document.getElementById("delinq4").focus();
@@ -4063,7 +4094,7 @@
 
 
         function checkmanualDEinstdate2() {
-            var errormsg = "Installment dates must be within 12 months of each other..."
+            var errormsg = "Installment dates must be within 12 months of each other...";
             var inst1 = document.getElementById("instdate1").value;
             var inst2 = document.getElementById("instdate2").value;
 
@@ -4082,10 +4113,16 @@
                     return;
                 }
             }
+            else if (inst2 > inst1) {
+                document.getElementById('instdate2').value = "";
+                document.getElementById("instdate2").focus();
+                alert('Installment date2 must be after Installment date1...');
+                return;
+            }
         }
 
         function checkmanualDEinstdate3() {
-            var errormsg = "Installment dates must be within 12 months of each other..."
+            var errormsg = "Installment dates must be within 12 months of each other...";
             //var inst1 = document.getElementById("instdate1").value;
             var inst2 = document.getElementById("instdate2").value;
             var inst3 = document.getElementById("instdate3").value;
@@ -4108,11 +4145,16 @@
                     return;
                 }
             }
-
+            else if (inst3 > inst2) {
+                document.getElementById('instdate3').value = "";
+                document.getElementById("instdate3").focus();
+                alert('Installment date3 must be after Installment date2...');
+                return;
+            }
         }
 
         function checkmanualDEinstdate4() {
-            var errormsg = "Installment dates must be within 12 months of each other..."
+            var errormsg = "Installment dates must be within 12 months of each other...";
             //var inst1 = document.getElementById("instdate1").value;
             //var inst2 = document.getElementById("instdate2").value;
             var inst3 = document.getElementById("instdate3").value;
@@ -4136,19 +4178,31 @@
                     return;
                 }
             }
+            else if (inst4 > inst3) {
+                document.getElementById('instdate4').value = "";
+                document.getElementById("instdate4").focus();
+                alert('Installment date4 must be after Installment date3...');
+                return;
+            }
         }
 
         //Discount Dates
         function checkDISDate1() {
-            var errormsg1 = "Discount date must be before the delinquent date..."
+            var errormsg = "Discount date must be less than 12 months from the installment date...";
+            var errormsg1 = "Discount date must be before the delinquent date...";
+            var inst1 = document.getElementById("instdate1").value;
             var delinq1 = document.getElementById("delinq1").value;
             var disc1 = document.getElementById("discdate1").value;
 
             var a = new Date(delinq1);
             var b = new Date(disc1);
+            var c = new Date(inst1);
 
             var months = (b.getFullYear() - a.getFullYear()) * 12;
             months += b.getMonth() - a.getMonth();
+
+            var months11 = (c.getFullYear() - b.getFullYear()) * 12;
+            months11 += c.getMonth() - b.getMonth();
 
             if (b > a) {
                 document.getElementById('discdate1').value = "";
@@ -4156,18 +4210,39 @@
                 alert(errormsg1);
                 return;
             }
+            if (c > b) {
+
+                if (months11 >= 12) {
+                    document.getElementById('discdate1').value = "";
+                    document.getElementById("discdate1").focus();
+                    alert(errormsg);
+                    return;
+                }
+            }
+            if (disc1 > delinq1) {
+                document.getElementById('discdate1').value = "";
+                document.getElementById("discdate1").focus();
+                alert('Previous dates dosent allow...');
+                return;
+            }
         }
 
         function checkDISDate2() {
-            var errormsg2 = "Discount date must be before the delinquent date..."
+            var errormsg = "Discount date must be less than 12 months from the installment date...";
+            var errormsg2 = "Discount date must be before the delinquent date...";
+            var inst2 = document.getElementById("instdate2").value;
             var delinq2 = document.getElementById("delinq2").value;
             var disc2 = document.getElementById("discdate2").value;
 
             var a = new Date(delinq2);
             var b = new Date(disc2);
+            var c = new Date(inst2);
 
             var months = (b.getFullYear() - a.getFullYear()) * 12;
             months += b.getMonth() - a.getMonth();
+
+            var months11 = (c.getFullYear() - b.getFullYear()) * 12;
+            months11 += c.getMonth() - b.getMonth();
 
             if (b > a) {
                 document.getElementById('discdate2').value = "";
@@ -4175,18 +4250,39 @@
                 alert(errormsg2);
                 return;
             }
+            if (c > b) {
+
+                if (months11 >= 12) {
+                    document.getElementById('discdate2').value = "";
+                    document.getElementById("discdate2").focus();
+                    alert(errormsg);
+                    return;
+                }
+            }
+            if (disc2 > delinq2) {
+                document.getElementById('discdate2').value = "";
+                document.getElementById("discdate2").focus();
+                alert('Previous dates dosent allow...');
+                return;
+            }
         }
 
         function checkDISDate3() {
-            var errormsg3 = "Discount date must be before the delinquent date..."
+            var errormsg = "Discount date must be less than 12 months from the installment date...";
+            var errormsg3 = "Discount date must be before the delinquent date...";
+            var inst3 = document.getElementById("instdate3").value;
             var delinq3 = document.getElementById("delinq3").value;
             var disc3 = document.getElementById("discdate3").value;
 
             var a = new Date(delinq3);
             var b = new Date(disc3);
+            var c = new Date(inst3);
 
             var months = (b.getFullYear() - a.getFullYear()) * 12;
             months += b.getMonth() - a.getMonth();
+
+            var months11 = (c.getFullYear() - b.getFullYear()) * 12;
+            months11 += c.getMonth() - b.getMonth();
 
             if (b > a) {
                 document.getElementById('discdate3').value = "";
@@ -4194,18 +4290,39 @@
                 alert(errormsg3);
                 return;
             }
+            if (c > b) {
+
+                if (months11 >= 12) {
+                    document.getElementById('discdate3').value = "";
+                    document.getElementById("discdate3").focus();
+                    alert(errormsg);
+                    return;
+                }
+            }
+            if (disc3 > delinq3) {
+                document.getElementById('discdate3').value = "";
+                document.getElementById("discdate3").focus();
+                alert('Previous dates dosent allow...');
+                return;
+            }
         }
 
         function checkDISDate4() {
-            var errormsg4 = "Discount date must be before the delinquent date..."
+            var errormsg = "Discount date must be less than 12 months from the installment date...";
+            var errormsg4 = "Discount date must be before the delinquent date...";
+            var inst4 = document.getElementById("instdate4").value;
             var delinq4 = document.getElementById("delinq4").value;
             var disc4 = document.getElementById("discdate4").value;
 
             var a = new Date(delinq4);
             var b = new Date(disc4);
+            var c = new Date(inst4);
 
             var months = (b.getFullYear() - a.getFullYear()) * 12;
             months += b.getMonth() - a.getMonth();
+
+            var months11 = (c.getFullYear() - b.getFullYear()) * 12;
+            months11 += c.getMonth() - b.getMonth();
 
             if (b > a) {
                 document.getElementById('discdate4').value = "";
@@ -4213,11 +4330,26 @@
                 alert(errormsg4);
                 return;
             }
+            if (c > b) {
+
+                if (months11 >= 12) {
+                    document.getElementById('discdate4').value = "";
+                    document.getElementById("discdate4").focus();
+                    alert(errormsg);
+                    return;
+                }
+            }
+            if (disc4 > delinq4) {
+                document.getElementById('discdate4').value = "";
+                document.getElementById("discdate4").focus();
+                alert('Previous dates dosent allow...');
+                return;
+            }
         }
 
         //future tax
         function checkDate1() {
-            var errormsg = "Delinquent date must be less than 12 months from the installment date..."
+            var errormsg = "Delinquent date must be less than 12 months from the installment date...";
             var inst1 = document.getElementById("txtmaninstdate1").value;
             var delinq1 = document.getElementById("txtmandeliqdate1").value;
 
@@ -4243,7 +4375,7 @@
                 return;
             }
             else if (delinq1 == inst1) {
-                document.getElementById('txtmandeliqdate1').value = "";                
+                document.getElementById('txtmandeliqdate1').value = "";
                 alert('Delinquent date and installment date should not be same...');
                 return;
                 document.getElementById("txtmandeliqdate1").focus();
@@ -4251,7 +4383,7 @@
         }
 
         function checkDate2() {
-            var errormsg = "Delinquent date must be less than 12 months from the installment date..."
+            var errormsg = "Delinquent date must be less than 12 months from the installment date...";
             var inst2 = document.getElementById("txtmaninstdate2").value;
             var delinq2 = document.getElementById("txtmandeliqdate2").value;
 
@@ -4277,7 +4409,7 @@
                 return;
             }
             else if (delinq2 == inst2) {
-                document.getElementById('txtmandeliqdate2').value = "";                
+                document.getElementById('txtmandeliqdate2').value = "";
                 alert('Delinquent date and installment date should not be same...');
                 return;
                 document.getElementById("txtmandeliqdate2").focus();
@@ -4285,7 +4417,7 @@
         }
 
         function checkDate3() {
-            var errormsg = "Delinquent date must be less than 12 months from the installment date..."
+            var errormsg = "Delinquent date must be less than 12 months from the installment date...";
             var inst3 = document.getElementById("txtmaninstdate3").value;
             var delinq3 = document.getElementById("txtmandeliqdate3").value;
 
@@ -4311,7 +4443,7 @@
                 return;
             }
             else if (delinq3 == inst3) {
-                document.getElementById('txtmandeliqdate3').value = "";                
+                document.getElementById('txtmandeliqdate3').value = "";
                 alert('Delinquent date and installment date should not be same...');
                 return;
                 document.getElementById("txtmandeliqdate3").focus();
@@ -4319,7 +4451,7 @@
         }
 
         function checkDate4() {
-            var errormsg = "Installment dates must be within 12 months of each other..."
+            var errormsg = "Installment dates must be within 12 months of each other...";
             var inst4 = document.getElementById("txtmaninstdate4").value;
             var delinq4 = document.getElementById("txtmandeliqdate4").value;
 
@@ -4345,7 +4477,7 @@
                 return;
             }
             else if (delinq4 == inst4) {
-                document.getElementById('txtmandeliqdate4').value = "";                
+                document.getElementById('txtmandeliqdate4').value = "";
                 alert('Delinquent date and installment date should not be same...');
                 return;
                 document.getElementById("txtmandeliqdate4").focus();
@@ -4354,7 +4486,7 @@
 
 
         function checkmanualinstdate2() {
-            var errormsg = "Installment dates must be within 12 months of each other..."
+            var errormsg = "Installment dates must be within 12 months of each other...";
             var inst1 = document.getElementById("txtmaninstdate1").value;
             var inst2 = document.getElementById("txtmaninstdate2").value;
 
@@ -4372,11 +4504,17 @@
                     return;
                 }
             }
+            else if (inst2 > inst1) {
+                document.getElementById('txtmaninstdate2').value = "";
+                document.getElementById("txtmaninstdate2").focus();
+                alert('Installment date2 must be after Installment date1...');
+                return;
+            }
         }
 
 
         function checkmanualinstdate3() {
-            var errormsg = "Installment dates must be within 12 months of each other..."
+            var errormsg = "Installment dates must be within 12 months of each other...";
             //var inst1 = document.getElementById("txtmaninstdate1").value;
             var inst2 = document.getElementById("txtmaninstdate2").value;
             var inst3 = document.getElementById("txtmaninstdate3").value;
@@ -4399,10 +4537,16 @@
                     return;
                 }
             }
+            else if (inst3 > inst2) {
+                document.getElementById('txtmaninstdate3').value = "";
+                document.getElementById("txtmaninstdate3").focus();
+                alert('Installment date3 must be after Installment date2...');
+                return;
+            }
         }
 
         function checkmanualinstdate4() {
-            var errormsg = "Installment dates must be within 12 months of each other..."
+            var errormsg = "Installment dates must be within 12 months of each other...";
             //var inst1 = document.getElementById("txtmaninstdate1").value;
             //var inst2 = document.getElementById("txtmaninstdate2").value;
             var inst3 = document.getElementById("txtmaninstdate3").value;
@@ -4426,19 +4570,31 @@
                     return;
                 }
             }
+            else if (inst4 > inst3) {
+                document.getElementById('txtmaninstdate4').value = "";
+                document.getElementById("txtmaninstdate4").focus();
+                alert('Installment date4 must be after Installment date3...');
+                return;
+            }
         }
 
         //Future Discount Date
         function checkfutINSTDEDate1() {
-            var futerrormsg1 = "Discount date must be before the delinquent date..."
+            var errormsg = "Discount date must be less than 12 months from the installment date..."
+            var futerrormsg1 = "Discount date must be before the delinquent date...";
+            var inst1 = document.getElementById("txtmaninstdate1").value;
             var futdelinq1 = document.getElementById("txtmandeliqdate1").value;
             var futdisc1 = document.getElementById("txtmandisdate1").value;
 
             var a = new Date(futdelinq1);
             var b = new Date(futdisc1);
+            var c = new Date(inst1);
 
             var months = (b.getFullYear() - a.getFullYear()) * 12;
             months += b.getMonth() - a.getMonth();
+
+            var months11 = (c.getFullYear() - b.getFullYear()) * 12;
+            months11 += c.getMonth() - b.getMonth();
 
             if (b > a) {
                 document.getElementById('txtmandisdate1').value = "";
@@ -4446,18 +4602,39 @@
                 alert(futerrormsg1);
                 return;
             }
+            if (c > b) {
+
+                if (months11 >= 12) {
+                    document.getElementById('txtmandisdate1').value = "";
+                    document.getElementById("txtmandisdate1").focus();
+                    alert(errormsg);
+                    return;
+                }
+            }
+            if (futdisc1 > futdelinq1) {
+                document.getElementById('txtmandisdate1').value = "";
+                document.getElementById("txtmandisdate1").focus();
+                alert('Previous dates dosent allow...');
+                return;
+            }
         }
 
         function checkfutINSTDEDate2() {
+            var errormsg = "Discount date must be less than 12 months from the installment date..."
             var futerrormsg2 = "Discount date must be before the delinquent date..."
+            var inst2 = document.getElementById("txtmaninstdate2").value;
             var futdelinq2 = document.getElementById("txtmandeliqdate2").value;
             var futdisc2 = document.getElementById("txtmandisdate2").value;
 
             var a = new Date(futdelinq2);
             var b = new Date(futdisc2);
+            var c = new Date(inst2);
 
             var months = (b.getFullYear() - a.getFullYear()) * 12;
             months += b.getMonth() - a.getMonth();
+
+            var months11 = (c.getFullYear() - b.getFullYear()) * 12;
+            months11 += c.getMonth() - b.getMonth();
 
             if (b > a) {
                 document.getElementById('txtmandisdate2').value = "";
@@ -4465,18 +4642,39 @@
                 alert(futerrormsg2);
                 return;
             }
+            if (c > b) {
+
+                if (months11 >= 12) {
+                    document.getElementById('txtmandisdate2').value = "";
+                    document.getElementById("txtmandisdate2").focus();
+                    alert(errormsg);
+                    return;
+                }
+            }
+            if (futdisc2 > futdelinq2) {
+                document.getElementById('txtmandisdate2').value = "";
+                document.getElementById("txtmandisdate2").focus();
+                alert('Previous dates dosent allow...');
+                return;
+            }
         }
 
         function checkfutINSTDEDate3() {
+            var errormsg = "Discount date must be less than 12 months from the installment date..."
             var futerrormsg3 = "Discount date must be before the delinquent date..."
+            var inst3 = document.getElementById("txtmaninstdate3").value;
             var futdelinq3 = document.getElementById("txtmandeliqdate3").value;
             var futdisc3 = document.getElementById("txtmandisdate3").value;
 
             var a = new Date(futdelinq3);
             var b = new Date(futdisc3);
+            var c = new Date(inst3);
 
             var months = (b.getFullYear() - a.getFullYear()) * 12;
             months += b.getMonth() - a.getMonth();
+
+            var months11 = (c.getFullYear() - b.getFullYear()) * 12;
+            months11 += c.getMonth() - b.getMonth();
 
             if (b > a) {
                 document.getElementById('txtmandisdate3').value = "";
@@ -4484,23 +4682,59 @@
                 alert(futerrormsg3);
                 return;
             }
+            if (c > b) {
+
+                if (months11 >= 12) {
+                    document.getElementById('txtmandisdate3').value = "";
+                    document.getElementById("txtmandisdate3").focus();
+                    alert(errormsg);
+                    return;
+                }
+            }
+            if (futdisc3 > futdelinq3) {
+                document.getElementById('txtmandisdate3').value = "";
+                document.getElementById("txtmandisdate3").focus();
+                alert('Previous dates dosent allow...');
+                return;
+            }
         }
 
         function checkfutINSTDEDate4() {
+            var errormsg = "Discount date must be less than 12 months from the installment date..."
             var futerrormsg4 = "Discount date must be before the delinquent date..."
+            var inst4 = document.getElementById("txtmaninstdate4").value;
             var futdelinq4 = document.getElementById("txtmandeliqdate4").value;
             var futdisc4 = document.getElementById("txtmandisdate4").value;
 
             var a = new Date(futdelinq4);
             var b = new Date(futdisc4);
+            var c = new Date(inst4);
 
             var months = (b.getFullYear() - a.getFullYear()) * 12;
             months += b.getMonth() - a.getMonth();
+
+            var months11 = (c.getFullYear() - b.getFullYear()) * 12;
+            months11 += c.getMonth() - b.getMonth();
 
             if (b > a) {
                 document.getElementById('txtmandisdate4').value = "";
                 document.getElementById("txtmandisdate4").focus();
                 alert(futerrormsg4);
+                return;
+            }
+            if (c > b) {
+
+                if (months11 >= 12) {
+                    document.getElementById('txtmandisdate4').value = "";
+                    document.getElementById("txtmandisdate4").focus();
+                    alert(errormsg);
+                    return;
+                }
+            }
+            if (futdisc4 > futdelinq4) {
+                document.getElementById('txtmandisdate4').value = "";
+                document.getElementById("txtmandisdate4").focus();
+                alert('Previous dates dosent allow...');
                 return;
             }
         }
@@ -4855,7 +5089,19 @@
                 if (id1 < 4) {
                     document.getElementById("txtTaxYear").value = '';
                     document.getElementById("txtTaxYear").focus();
-                    alert("Tax year Year should be 4 Numeric Characters");
+                    alert("Tax Year should be 4 Numeric Characters");
+                    return;
+                }
+            }
+        }
+
+        function IsValidLengthEndYear(year, element, ev) {
+            var id1 = year.length;
+            if (id1 != 0) {
+                if (id1 < 4) {
+                    document.getElementById("txtEndYear").value = '';
+                    document.getElementById("txtEndYear").focus();
+                    alert("End Year should be 4 Numeric Characters");
                     return;
                 }
             }
@@ -5844,6 +6090,23 @@
         }
     </script>
 
+    <script type="text/javascript">
+        function isNumber(ev) {
+            if (ev.type === "paste" || ev.type === "drop") {
+                var textContent = (ev.type === "paste" ? ev.clipboardData : ev.dataTransfer).getData('text');
+                return !isNaN(textContent) && textContent.indexOf(".") === -1;
+            } else if (ev.type === "keydown") {
+                if (ev.ctrlKey || ev.metaKey) {
+                    return true
+                };
+                var keysToAllow = [8, 46, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57];
+                return keysToAllow.indexOf(ev.keyCode) > -1;
+            } else {
+                return true
+            }
+        }
+    </script>
+
 </head>
 <body>
     <div class="sign-up-row widget-shadow" style="width: 100%;" align="center">
@@ -6057,13 +6320,13 @@
                                                     </b>
                                                 </td>
                                                 <td>
-                                                    <asp:TextBox ID="txtTaxYear" runat="server" class="form-control" placeholder="YYYY" pattern="\d{4}" title="Please enter exactly 4 digits" MaxLength="4" onkeypress="return isNumberKey(event)" onblur="checkReqFields(this.value,this,event);IsValidLengthTaxYear(this.value,this,event);" autocomplete='off' Style="width: 95px;" onchange="return TaxparcelFunction()" />
+                                                    <asp:TextBox ID="txtTaxYear" runat="server" class="form-control" placeholder="YYYY" pattern="\d{4}" title="Please enter exactly 4 digits" MaxLength="4" onkeypress="return isNumberKey(event)" onblur="checkReqFields(this.value,this,event);IsValidLengthTaxYear(this.value,this,event);" onpaste="return isNumber(event)" autocomplete='off' Style="width: 95px;" onchange="return TaxparcelFunction()" />
                                                 </td>
                                                 <td>
                                                     <b style="white-space: nowrap;" class="CheckBold">End Year(If Applicable):</b>
                                                 </td>
                                                 <td>
-                                                    <asp:TextBox ID="txtEndYear" runat="server" class="form-control" type="text" placeholder="YYYY" MaxLength="4" onkeypress="return isNumberKey(event);" pattern="\d{4}" title="Please enter exactly 4 digits" onblur="checkReqFields1(this.value,this,event);" autocomplete='off' Style="width: 95px;" />
+                                                    <asp:TextBox ID="txtEndYear" runat="server" class="form-control" placeholder="YYYY" MaxLength="4" onkeypress="return isNumberKey(event);" pattern="\d{4}" title="Please enter exactly 4 digits" onblur="checkReqFields1(this.value,this,event);IsValidLengthEndYear(this.value,this,event);" onpaste="return isNumber(event)" autocomplete='off' Style="width: 95px;" />
                                                 </td>
                                                 <td></td>
                                                 <td>
@@ -6762,7 +7025,7 @@
                                                         <b style="white-space: nowrap" class="CheckBold">Next Bill Date2:</b>
                                                     </td>
                                                     <td>
-                                                        <input type="text" id="nextbilldate2" runat="server" class="form-control" style="width: 167px; margin-bottom: 10px" placeholder="MM/DD/YYYY" maxlength="10" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="return checkDate(this,event)" autocomplete="off" tabindex="38" />
+                                                        <input type="text" id="nextbilldate2" runat="server" class="form-control" style="width: 167px;margin-bottom:5px" placeholder="MM/DD/YYYY" maxlength="10" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="return checkDate(this,event)" autocomplete="off" tabindex="38" />
                                                     </td>
                                                     <td>
                                                         <b style="white-space: nowrap;" id="dd" runat="server" class="CheckBold">Future Tax Calculation:</b>
@@ -6782,7 +7045,7 @@
                                                         <b style="white-space: nowrap;" class="CheckBold">Payment Frequency:</b>
                                                     </td>
                                                     <td>
-                                                        <select class="form-control" id="paymentfrequency" runat="server" style="width: 170px;" onchange="functionpayemtfrequency(this)" tabindex="39">
+                                                        <select class="form-control" id="paymentfrequency" runat="server" style="width: 170px;margin-top:10px;" onchange="functionpayemtfrequency(this)" tabindex="39">
                                                             <option value="1">Annual</option>
                                                             <option value="2">Semi-Annual</option>
                                                             <option value="3">Tri-Annual</option>
@@ -6851,11 +7114,6 @@
                             <div class="tab-content">
                                 <div class="tab-pane fade in active" id="tab2primary1">
                                     <div style="border-top: 1px solid #e5e5e5; margin-top: 15px;"></div>
-                                    <h4 class="panel-title" style="margin-top: 5px;">
-                                        <strong style="text-decoration: underline">Tax Authority Questions</strong>
-                                    </h4>
-                                    <div style="border-top: 1px solid #e5e5e5; margin-top: 10px;"></div>
-
                                     <br />
                                     <div class="tab-content">
                                         <div class="tab-pane fade in active" id="tab3primary1" style="margin-top: -8px;">
@@ -7032,25 +7290,25 @@
                                                         <td>
                                                             <div class="form-group" style="margin-bottom: 0px;">
                                                                 <label style="text-align: right; clear: both; float: left; margin-right: 12px;" class="CheckBold">Remaining Balance:</label>
-                                                                <input type="text" id="txtmanurembal1" runat="server" class="form-control taxing" placeholder="Remaining Balance" style="width: 150px;" onkeypress="return isNumberKey(event)" onkeyup="futureRemBalance1(event);" autocomplete="off" tabindex="56" />
+                                                                <input type="text" id="txtmanurembal1" runat="server" class="form-control taxing" placeholder="Remaining Balance" style="width: 150px;" onkeypress="return isNumberKey(event)" onkeyup="futureRemBalance1(event);" autocomplete="off" tabindex="56" onchange="setTwoNumberDecimal(this)" />
                                                             </div>
                                                         </td>
                                                         <td>
                                                             <div class="form-group" style="margin-bottom: 0px;">
                                                                 <label style="text-align: right; clear: both; float: left; margin-right: 12px;" class="CheckBold">Remaining Balance:</label>
-                                                                <input type="text" id="txtmanurembal2" runat="server" class="form-control taxing" placeholder="Remaining Balance" style="width: 150px;" onkeypress="return isNumberKey(event)" onkeyup="futureRemBalance2(event);" autocomplete="off" tabindex="65" />
+                                                                <input type="text" id="txtmanurembal2" runat="server" class="form-control taxing" placeholder="Remaining Balance" style="width: 150px;" onkeypress="return isNumberKey(event)" onkeyup="futureRemBalance2(event);" autocomplete="off" tabindex="65" onchange="setTwoNumberDecimal(this)" />
                                                             </div>
                                                         </td>
                                                         <td>
                                                             <div class="form-group" style="margin-bottom: 0px;">
                                                                 <label style="text-align: right; clear: both; float: left; margin-right: 12px;" class="CheckBold">Remaining Balance:</label>
-                                                                <input type="text" id="txtmanurembal3" runat="server" class="form-control taxing" placeholder="Remaining Balance" style="width: 150px;" onkeypress="return isNumberKey(event)" onkeyup="futureRemBalance3(event);" autocomplete="off" tabindex="74" />
+                                                                <input type="text" id="txtmanurembal3" runat="server" class="form-control taxing" placeholder="Remaining Balance" style="width: 150px;" onkeypress="return isNumberKey(event)" onkeyup="futureRemBalance3(event);" autocomplete="off" tabindex="74" onchange="setTwoNumberDecimal(this)" />
                                                             </div>
                                                         </td>
                                                         <td>
                                                             <div class="form-group" style="margin-bottom: 0px;">
                                                                 <label style="text-align: right; clear: both; float: left; margin-right: 12px;" class="CheckBold">Remaining Balance:</label>
-                                                                <input type="text" id="txtmanurembal4" runat="server" class="form-control taxing" placeholder="Remaining Balance" style="width: 150px;" onkeypress="return isNumberKey(event)" onkeyup="futureRemBalance4(event);" autocomplete="off" tabindex="83" />
+                                                                <input type="text" id="txtmanurembal4" runat="server" class="form-control taxing" placeholder="Remaining Balance" style="width: 150px;" onkeypress="return isNumberKey(event)" onkeyup="futureRemBalance4(event);" autocomplete="off" tabindex="83" onchange="setTwoNumberDecimal(this)" />
                                                             </div>
                                                         </td>
                                                     </tr>
@@ -7185,7 +7443,7 @@
                                                             <b style="white-space: nowrap" class="CheckBold">Tax Bill:</b>
                                                         </td>
                                                         <td>
-                                                            <input type="text" id="ddlmanutaxbill" runat="server" class="form-control" style="width: 166px;" autocomplete="off" tabindex="89" />
+                                                            <input type="text" id="ddlmanutaxbill" runat="server" class="form-control" style="width: 166px;margin-bottom:5px;" autocomplete="off" tabindex="89" />
                                                             <%--  <select class="form-control" id="ddlmanutaxbill" runat="server" style="width: 170px; margin-bottom: 5px;" tabindex="89">
                                                                 <option value="0">Select Bill</option>
                                                                 <option value="1">Current</option>
@@ -7482,7 +7740,7 @@
                                         <td>
                                             <%--<asp:TextBox ID="txtdelitzip" runat="server" Style="margin-bottom: 5px;" class="form-control" placeholder="Zip" autocomplete='nope' onchange="return functionDelinquent()">
                                             </asp:TextBox>--%>
-                                            <asp:TextBox ID="txtdelitzip" runat="server" class="form-control" placeholder="Zip Code" onkeypress="return isNumberKey(event)" autocomplete='off' MaxLength="5"></asp:TextBox>
+                                            <asp:TextBox ID="txtdelitzip" runat="server" class="form-control" placeholder="Zip Code" onkeypress="return isNumberKey(event)" autocomplete='off' MaxLength="5" style="margin-bottom:5px;"></asp:TextBox>
                                         </td>
                                         <td style="padding-left: 31px;">
                                             <label class="CheckBold" id="lblbaseamntdue">Base Amount Due:</label>
@@ -7496,7 +7754,7 @@
                                             </b>
                                         </td>
                                         <td>
-                                            <asp:TextBox ID="txtdelitaxyear" runat="server" class="form-control" placeholder="YYYY" MaxLength="4" pattern="\d{4}" title="Please enter exactly 4 digits" onkeypress="return isNumberKey(event)" onfocusout="return futureYear(this)" onblur="IsValidLengthTax3(this.value,this,event);" autocomplete='off' onchange="return functionDelinquent();">
+                                            <asp:TextBox ID="txtdelitaxyear" runat="server" class="form-control" placeholder="YYYY" MaxLength="4" pattern="\d{4}" title="Please enter exactly 4 digits" onkeypress="return isNumberKey(event)" onfocusout="return futureYear(this)" onblur="IsValidLengthTax3(this.value,this,event);" autocomplete='off' onchange="return functionDelinquent();" onpaste="return isNumber(event)">
                                             </asp:TextBox>
                                         </td>
                                         <td style="padding-left: 31px;">
@@ -7612,7 +7870,7 @@
                                         </td>
                                         <td style="padding-left: 31px;">
                                             <b title="Date of Tax Sale">
-                                                <label id="lbldatetaxsale" class="CheckBold">Tax Date:</label>
+                                                <label id="lbldatetaxsale" class="CheckBold">Tax Sale Date:</label>
                                             </b>
                                         </td>
                                         <td>
@@ -7827,7 +8085,7 @@
                                         </td>
                                         <td>
                                             <%-- <asp:TextBox ID="txtInstallRemain" runat="server" class="form-control" placeholder="Inst Remaining" Style="margin-bottom: 5px;" onkeyup="SpeAmount1();" onfocusout="SpemyFunctionAmount1();if (this.value=='0.00') this.value='0.00';if (this.value=='') this.value='0.00';" onfocus="this.value='0.00'" onfocusin="if (this.value=='0.00') this.value='';" onblur="mySpe();" autocomplete='off'></asp:TextBox>--%>
-                                            <asp:TextBox ID="txtInstallRemain" runat="server" class="form-control" placeholder="Inst Remaining" onkeypress="return isNumberKey(event)" autocomplete='off'></asp:TextBox>
+                                            <asp:TextBox ID="txtInstallRemain" runat="server" class="form-control" placeholder="Inst Remaining" onkeypress="return isNumberKey(event)" autocomplete='off' onchange="return functionSpecial()" style="margin-bottom:5px;"></asp:TextBox>
                                         </td>
                                         <td style="padding-left: 31px;"><b class="CheckBold">Due Date:</b></td>
                                         <td>
@@ -7859,7 +8117,7 @@
                                         </td>
                                         <td style="padding-left: 31px;"><b class="CheckBold">Per Diem:</b></td>
                                         <td>
-                                            <asp:TextBox ID="txtspecperdiem" runat="server" class="form-control" placeholder="Per Diem" onkeyup="CheckFirstChar(event.keyCode, this);" onkeydown="return CheckFirstChar(event.keyCode, this);" autocomplete='off'></asp:TextBox>
+                                            <asp:TextBox ID="txtspecperdiem" runat="server" class="form-control" placeholder="Per Diem" onkeypress="return isNumberKey(event)" onkeydown="return CheckFirstChar(event.keyCode, this);" autocomplete='off' onpaste="return isNumber(event)"></asp:TextBox>
                                         </td>
                                         <td style="padding-left: 31px;"><b class="CheckBold">Payee:</b></td>
                                         <td>
@@ -7939,7 +8197,7 @@
                                             </b>
                                         </td>
                                         <td>
-                                            <asp:TextBox ID="txtpriodeli" runat="server" class="form-control" placeholder="YYYY" MaxLength="4" Style="margin-bottom: 5px;" onkeypress="return isNumberKey(event)" onblur="IsValidLengthTaxPrior(this.value,this,event);" onchange="return functionPrior()" autocomplete='off' pattern="\d{4}" title="Please enter exactly 4 digits"></asp:TextBox>
+                                            <asp:TextBox ID="txtpriodeli" runat="server" class="form-control" placeholder="YYYY" MaxLength="4" Style="margin-bottom: 5px;" onkeypress="return isNumberKey(event)" onblur="IsValidLengthTaxPrior(this.value,this,event);" onchange="return functionPrior()" autocomplete='off' pattern="\d{4}" title="Please enter exactly 4 digits" onpaste="return isNumber(event)"></asp:TextBox>
                                         </td>
                                         <td style="padding-left: 31px;">
                                             <b>
