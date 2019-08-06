@@ -917,29 +917,29 @@
             var speinstrem = document.getElementById("txtInstallRemain").value;
             var exetype = document.getElementById("txtexetype").value;
 
-            if (delistatus == "Yes") {
-                if (delpayee == "") {
-                    document.getElementById('txtdeliPayee').focus();
-                    alert("Deliquent Status is required");
-                    return false;
-                }                
-            }
+            //if (delistatus == "Yes") {
+            //    if (delpayee == "") {
+            //        document.getElementById('txtdeliPayee').focus();
+            //        alert("Deliquent Status is required");
+            //        return false;
+            //    }                
+            //}
                         
-            if (specialstatus == "Yes") {
-                if (speinstrem == "") {
-                    document.getElementById('txtInstallRemain').focus();
-                    alert("Special Assessment is required");
-                    return false;
-                }
-            }
+            //if (specialstatus == "Yes") {
+            //    if (speinstrem == "") {
+            //        document.getElementById('txtInstallRemain').focus();
+            //        alert("Special Assessment is required");
+            //        return false;
+            //    }
+            //}
 
-            if (exestatus == "Yes") {
-                if (exetype == "Select") {
-                    document.getElementById('txtexetype').focus();
-                    alert("Exemption Status is required");
-                    return false;
-                }
-            }
+            //if (exestatus == "Yes") {
+            //    if (exetype == "Select") {
+            //        document.getElementById('txtexetype').focus();
+            //        alert("Exemption Status is required");
+            //        return false;
+            //    }
+            //}
 
             if (comerror == '--Select--' || comerror == undefined) {
                 alert("Please choose any of the status");
