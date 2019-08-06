@@ -13,7 +13,7 @@ using MySql.Data.MySqlClient;
 using System.Globalization;
 using System.Diagnostics;
 
-//balaji
+//balaji...
 public partial class Pages_STRMICXProduction : System.Web.UI.Page
 {
     myConnection con = new myConnection();
