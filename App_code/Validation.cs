@@ -18,6 +18,7 @@ public class Validation
     }
 
     //must have 1 parcel
+    //balaji
     public string checkParcel(string orderno)
     {
         string result = "";
