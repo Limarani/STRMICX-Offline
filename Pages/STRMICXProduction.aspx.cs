@@ -3574,7 +3574,8 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
             {
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "alertMessage", "alert('Cannot Complete Order Details')", true);
                 return;
-            }            
+            }
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "txtexeSpecial();", true);
         }
 
         else if (OStatus == "Completed" && process == "QC")
