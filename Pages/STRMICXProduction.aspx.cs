@@ -3961,7 +3961,6 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
 
             if (payemntfrequency == "Tri-Annual" || payemntfrequency == "3")
             {
-
                 instamount1.Attributes.Remove("disabled");
                 instamountpaid1.Attributes.Remove("disabled");
                 instpaiddue1.Attributes.Remove("disabled");
