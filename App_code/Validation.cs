@@ -26,12 +26,19 @@ public class Validation
         {
             for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
             {
-                int count = dbconn.ExecuteSPNonQuery("select count(agnecyid) from tbl_taxauthorities2 where orderno='" + orderno + "' and taxid='" + ds.Tables[0].Rows[i]["taxid"] + "'");
-                if (count == 0)
+                string txid = ds.Tables[0].Rows[i]["taxid"].ToString();
+                
+
+                string query = "select count(agencyid) as op,authoritystatus from tbl_taxauthorities2 where orderno = '" + orderno + "' and taxid = '" + txid + "' and authoritystatus = '2'";                
+                DataSet opcou = dbconn.ExecuteQuery(query);
+                string output = opcou.Tables[0].Rows[0]["op"].ToString();
+                string aus = opcou.Tables[0].Rows[0]["authoritystatus"].ToString();             
+
+                if (output == "0")
                 {
                     result = "ParcelNumber: " + ds.Tables[0].Rows[i]["taxid"] + " must have one Agency";
                     return result;
-                }
+                }                
             }
         }
         else
@@ -40,5 +47,4 @@ public class Validation
         }
         return result;
     }
-
 }

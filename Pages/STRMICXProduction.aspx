@@ -663,13 +663,35 @@
         }
 
 
-        function functionInsttax() {
+        function functionInsttax() {           
             var Insterror;
             Insterror = document.getElementById("nextbilldate1").value;
             var Installmenterror1 = document.getElementById("instdate1").value;
             var Installmenterror2 = document.getElementById("instdate2").value;
             var Installmenterror3 = document.getElementById("instdate3").value;
             var Installmenterror4 = document.getElementById("instdate4").value;
+
+            var instamountpaidnew1   = document.getElementById("instamountpaid1").value;
+            var remainingbalancenew1 = document.getElementById("remainingbalance1").value;
+            var exemptrelevynew1 = document.getElementById("exemptrelevy1").checked;
+
+            var instamountpaidnew2 = document.getElementById("instamountpaid2").value;
+            var remainingbalancenew2 = document.getElementById("remainingbalance2").value;
+            var exemptrelevynew2 = document.getElementById("exemptrelevy2").checked;
+            
+            var instamountpaidnew3 = document.getElementById("instamountpaid3").value;
+            var remainingbalancenew3 = document.getElementById("remainingbalance3").value;
+            var exemptrelevynew3 = document.getElementById("exemptrelevy3").checked;
+
+            var instamountpaidnew4 = document.getElementById("instamountpaid4").value;
+            var remainingbalancenew4 = document.getElementById("remainingbalance4").value;
+            var exemptrelevynew4 = document.getElementById("exemptrelevy4").checked;
+
+
+            var instamountnew1 = document.getElementById("instamount1").value;
+            var instamountnew2 = document.getElementById("instamount2").value;
+            var instamountnew3 = document.getElementById("instamount3").value;
+            var instamountnew4 = document.getElementById("instamount4").value;
 
             var payfre = document.getElementById("paymentfrequency").value;
 
@@ -691,6 +713,18 @@
                     alert("Installment Date1 should be required");
                     return false;
                 }
+                else if ((instamountnew1 == "")) {
+                    alert("Installmentamount Cannot Be Empty");
+                    return false;
+                }          
+                else if (instamountpaidnew1 == "") {
+                    alert("Installmentamountpaid Cannot Be Empty");
+                    return false;
+                }                
+                else if (instamountpaidnew1 == "0.00" && remainingbalancenew1 == "0.00" && exemptrelevynew1 == false) {
+                    alert("Installmentamountpaid and remainingbalance Cannot Be Zero");
+                    return false;
+                }
             }
 
             if (Semi == "Semi-Annual") {
@@ -702,6 +736,28 @@
                     alert("Installment2 Date2 should be required");
                     return false;
                 }
+                else if ((instamountnew1 == "")) {
+                    alert("Installmentamount Cannot Be Empty");
+                    return false;
+                }
+                else if (instamountnew2 == "") {
+                    alert("Installmentamount Cannot Be Empty");
+                    return false;
+                }
+
+                else if (instamountpaidnew1 == "" ) {
+                    alert("Installmentamountpaid Cannot Be Empty");
+                    return false;
+                }
+                else if (instamountpaidnew2 == "") {
+                    alert("Installmentamountpaid Cannot Be Empty");
+                    return false;
+                }
+
+                else if ((instamountpaidnew1 == "0.00" && remainingbalancenew1 == "0.00" && exemptrelevynew1 == false) || (instamountpaidnew2 == "0.00" && remainingbalancenew2 == "0.00" && exemptrelevynew2 == false)) {
+                    alert("Installmentamountpaid and remainingbalance Cannot Be Zero");
+                    return false;
+                }                
             }
 
             if (Tri == "Tri-Annual") {
@@ -715,6 +771,34 @@
                 }
                 else if (Installmenterror3 == "") {
                     alert("Installment Date3 should be required");
+                    return false;
+                }
+                else if ((instamountnew1 == "")) {
+                    alert("Installmentamount Cannot Be Empty");
+                    return false;
+                }
+                else if (instamountnew2 == "") {
+                    alert("Installmentamount Cannot Be Empty");
+                    return false;
+                }
+                else if (instamountnew3 == "") {
+                    alert("Installmentamount Cannot Be Empty");
+                    return false;
+                }
+                else if (instamountpaidnew1 == "") {
+                    alert("Installmentamountpaid Cannot Be Empty");
+                    return false;
+                }
+                else if (instamountpaidnew2 == "") {
+                    alert("Installmentamountpaid Cannot Be Empty");
+                    return false;
+                }
+                else if (instamountpaidnew3 == "") {
+                    alert("Installmentamountpaid Cannot Be Empty");
+                    return false;
+                }
+                else if ((instamountpaidnew1 == "0.00" && remainingbalancenew1 == "0.00" && exemptrelevynew1 == false) || (instamountpaidnew2 == "0.00" && remainingbalancenew2 == "0.00" && exemptrelevynew2 == false) || (instamountpaidnew3 == "0.00" && remainingbalancenew3 == "0.00" && exemptrelevynew3 == false)) {
+                    alert("Installmentamountpaid and remainingbalance Cannot Be Zero");
                     return false;
                 }
             }
@@ -736,7 +820,46 @@
                     alert("Installment Date4 should be required");
                     return false;
                 }
+                else if ((instamountnew1 == "")) {
+                    alert("Installmentamount Cannot Be Empty");
+                    return false;
+                }
+                else if (instamountnew2 == "") {
+                    alert("Installmentamount Cannot Be Empty");
+                    return false;
+                }
+                else if (instamountnew3 == "") {
+                    alert("Installmentamount Cannot Be Empty");
+                    return false;
+                }
+                else if (instamountnew4 == "") {
+                    alert("Installmentamount Cannot Be Empty");
+                    return false;
+                }
+                else if (instamountpaidnew1 == "") {
+                    alert("Installmentamountpaid Cannot Be Empty");
+                    return false;
+                }
+                else if (instamountpaidnew2 == "") {
+                    alert("Installmentamountpaid Cannot Be Empty");
+                    return false;
+                }
+                else if (instamountpaidnew3 == "") {
+                    alert("Installmentamountpaid Cannot Be Empty");
+                    return false;
+                }
+                else if (instamountpaidnew4 == "") {
+                    alert("Installmentamountpaid Cannot Be Empty");
+                    return false;
+                }
+                else if ((instamountpaidnew1 == "0.00" && remainingbalancenew1 == "0.00" && exemptrelevynew1 == false) || (instamountpaidnew2 == "0.00" && remainingbalancenew2 == "0.00" && exemptrelevynew2 == false) || (instamountpaidnew3 == "0.00" && remainingbalancenew3 == "0.00" && exemptrelevynew3 == false) || (instamountpaidnew4 == "0.00" && remainingbalancenew4 == "0.00" && exemptrelevynew4 == false)) {
+                    alert("Installmentamountpaid and remainingbalance Cannot Be Zero");
+                    return false;
+                }
             }
+
+
+                   
 
             if (Insterror == "") {
                 document.getElementById('nextbilldate1').style.borderColor = "#ff0000";

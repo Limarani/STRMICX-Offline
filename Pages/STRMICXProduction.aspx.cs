@@ -88,7 +88,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
             tblDeliquentStatus.Visible = true;
             gvDeliquentStatus.Visible = true;
             GrdPriordelinquent.Visible = true;
-            
+
 
             id = Request.QueryString["id"];
             if (id == "12f7tre5") Allotment(sender, e);
@@ -105,7 +105,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
             Lblusername.Text = SessionHandler.UserName;
             fetchtaxparceldetails();
             Prior.Visible = false;
-            deliexemspecial.Visible = false;           
+            deliexemspecial.Visible = false;
         }
     }
 
@@ -140,7 +140,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
     {
         if (ds.Tables.Count == 0)
         {
-            
+
         }
         else if (ds.Tables.Count == 1)
         {
@@ -900,7 +900,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
             {
                 dstest = gl.fetchwebsite(lblord.Text, AgencyId);
                 update = gl.fetchwebsiteupdated(lblord.Text, AgencyId, LblTaxID.Text);
-                dtfetchauthority1 = gl.FetchTaxAuthoritywebsiteDetails(lblord.Text, LblTaxID.Text, LblAgencyID.Text);                                
+                dtfetchauthority1 = gl.FetchTaxAuthoritywebsiteDetails(lblord.Text, LblTaxID.Text, LblAgencyID.Text);
                 gridwebsite.DataSource = dtfetchauthority1;
                 gridwebsite.DataBind();
             }
@@ -919,7 +919,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
                         string updateweb = "";
                         updateweb = "update tbl_website set url = '" + test + "' where orderno = '" + lblord.Text + "' and tax_id = '" + LblTaxID.Text + "' and agency_id = '" + LblAgencyID.Text + "' and tax_type = '" + taxagencytype + "'";
                         gl.ExecuteSPNonQuery(updateweb);
-                    }                    
+                    }
                 }
 
                 gridwebsite.DataSource = dtfetchauthority1;
@@ -2319,7 +2319,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
         fetchDeliquentStatus();
         fetchexemptionsAll();
         fetchspecialAll();
-        PnlTax1.Focus();        
+        PnlTax1.Focus();
         if (ddlfuturetaxcalc.SelectedItem.Text == "Manual")
         {
             btnsavetaxauthorities.Visible = true;
@@ -3070,7 +3070,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
                         manbillenddate = manbillenddate.AddYears(1);
                         txtmanubillenddate.Value = manbillenddate.ToString("MM/dd/yyyy");
                     }
-                }           
+                }
             }
         }
     }
@@ -3125,7 +3125,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
                 chkexrelmanu4.Attributes.Add("disabled", "disabled");
 
                 //instpaiddue
-                ddlmaninstpaiddue1.Value = "Due";             
+                ddlmaninstpaiddue1.Value = "Due";
             }
 
             if (payemntfrequency == "Semi-Annual" || payemntfrequency == "2")
@@ -3175,7 +3175,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
 
                 //instpaiddue
                 ddlmaninstpaiddue1.Value = "Due";
-                ddlmaninstpaiddue2.Value = "Due"; 
+                ddlmaninstpaiddue2.Value = "Due";
             }
 
             if (payemntfrequency == "Tri-Annual" || payemntfrequency == "3")
@@ -3224,7 +3224,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
                 //instpaiddue
                 ddlmaninstpaiddue1.Value = "Due";
                 ddlmaninstpaiddue2.Value = "Due";
-                ddlmaninstpaiddue3.Value = "Due";              
+                ddlmaninstpaiddue3.Value = "Due";
             }
 
 
@@ -3533,10 +3533,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
     }
     string OStatus, process = "";
     protected void btnsaverecordnew_Click(object sender, EventArgs e)
-    {
-        string query = "";
-        string query1 = "";
-
+    {       
         DataSet ds = new DataSet();
         process = processtatus.Text;
         OStatus = ddlstatus.Value;
@@ -3545,22 +3542,11 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
         //ordernumber & parcelnumber validate....
         string message = validate.checkParcel(lblord.Text);
 
-
-
         if (OStatus == "Completed" && process == "KEY")
         {
-            query = "select count(AgencyId) as inputcount from tbl_taxauthorities2 where orderno = '" + lblord.Text + "'";
-            DataSet inputcou = con.ExecuteQuery(query);
-            string inpcou = inputcou.Tables[0].Rows[0]["inputcount"].ToString();
-
-
-            query1 = "select count(authoritystatus) as outputcount from tbl_taxauthorities2 where orderno = '" + lblord.Text + "' and authoritystatus = '2' ";
-            DataSet outputcou = con.ExecuteQuery(query1);
-            string oupcou = outputcou.Tables[0].Rows[0]["outputcount"].ToString();
-
             if (gvTaxParcel.Rows.Count > 0)
             {
-                if (inpcou == oupcou)
+                if (message == "")
                 {
                     UpdateProduction("sp_UpdateKey_User");
 
@@ -3574,13 +3560,18 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
                         Response.Redirect("STRMICXProduction.aspx?id=" + id);
                     }
                 }
+                else
+                {
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "alertMessage", "alert('Atleast One AgencyId is Required')", true);
+                    return;
+                }
             }
             else if (gvTaxParcel.Rows.Count == 0)
             {
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "alertMessage", "alert('Atleast One Tax Parcel And AgencyId is Required')", true);
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "alertMessage", "alert('Atleast One Tax Parcel is Required')", true);
                 return;
             }
-     
+
             else
             {
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "alertMessage", "alert('Cannot Complete Order Details')", true);
@@ -3590,34 +3581,34 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
 
         else if (OStatus == "Completed" && process == "QC")
         {
-            query = "select count(AgencyId) as inputcount from tbl_taxauthorities2 where orderno = '" + lblord.Text + "'";
-            DataSet inputcou = con.ExecuteQuery(query);
-            string inpcou = inputcou.Tables[0].Rows[0]["inputcount"].ToString();
-
-
-            query1 = "select count(authoritystatus) as outputcount from tbl_taxauthorities2 where orderno = '" + lblord.Text + "' and authoritystatus = '2' ";
-            DataSet outputcou = con.ExecuteQuery(query1);
-            string oupcou = outputcou.Tables[0].Rows[0]["outputcount"].ToString();
-
-            if (inpcou == oupcou)
+            if (gvTaxParcel.Rows.Count > 0)
             {
-                UpdateProduction("sp_UpdateQC_User");
-
-                if (id == "12f7tre5")
+                if (message == "")
                 {
-                    Response.Redirect("STRMICXProduction.aspx?id=" + id);
+                    UpdateProduction("sp_UpdateQC_User");
+
+                    if (id == "12f7tre5")
+                    {
+                        Response.Redirect("STRMICXProduction.aspx?id=" + id);
+                    }
+                    else
+                    {
+                        id = "12f7tre5";
+                        Response.Redirect("STRMICXProduction.aspx?id=" + id);
+                    }
                 }
                 else
                 {
-                    id = "12f7tre5";
-                    Response.Redirect("STRMICXProduction.aspx?id=" + id);
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "alertMessage", "alert('Atleast One AgencyId is Required')", true);
+                    return;
                 }
             }
             else if (gvTaxParcel.Rows.Count == 0)
             {
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "alertMessage", "alert('Atleast One Tax Parcel And AgencyId is Required')", true);
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "alertMessage", "alert('Atleast One Tax Parcel is Required')", true);
                 return;
             }
+
             else
             {
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "alertMessage", "alert('Cannot Complete Order Details')", true);
@@ -4104,7 +4095,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
             {
                 taxbill.SelectedIndex = 2;
             }
-         
+
         }
     }
 
