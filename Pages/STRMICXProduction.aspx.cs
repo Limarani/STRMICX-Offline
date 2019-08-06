@@ -3531,8 +3531,6 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
             }
         }
     }
-
-    //balaji
     string OStatus, process = "";
     protected void btnsaverecordnew_Click(object sender, EventArgs e)
     {
@@ -3573,12 +3571,12 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "alertMessage", "alert('Atleast One Tax Parcel is Required')", true);
                 return;
             }
-
             else
             {
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "alertMessage", "alert('Cannot Complete Order Details')", true);
                 return;
             }
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "txtexeSpecial();", true);
         }
 
         else if (OStatus == "Completed" && process == "QC")
@@ -3616,6 +3614,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "alertMessage", "alert('Cannot Complete Order Details')", true);
                 return;
             }
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "txtexeSpecial();", true);
         }
 
         else if (OStatus == "In Process" && process == "KEY")
