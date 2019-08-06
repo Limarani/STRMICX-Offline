@@ -258,8 +258,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
         chkEst.Checked = false;
         chkTBD.Checked = false;
         txtTaxYear.Text = "";
-        txtEndYear.Text = "";
-        ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "txtexeSpecial();", true);
+        txtEndYear.Text = "";        
         string agen = "";
         string taxid = "";
         string taxagencytype = "";
