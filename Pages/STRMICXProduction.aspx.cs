@@ -3541,7 +3541,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
         OStatus = ddlstatus.Value;
 
         Validation validate = new Validation();
-        //ordernumber & parcelnumber validate....
+        //ordernumber & parcelnumber validate........
         string message = validate.checkParcel(lblord.Text);
 
         if (OStatus == "Completed" && process == "KEY")
