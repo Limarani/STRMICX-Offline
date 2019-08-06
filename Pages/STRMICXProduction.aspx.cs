@@ -258,8 +258,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
         chkEst.Checked = false;
         chkTBD.Checked = false;
         txtTaxYear.Text = "";
-        txtEndYear.Text = "";
-        ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "txtexeSpecial();", true);
+        txtEndYear.Text = "";        
         string agen = "";
         string taxid = "";
         string taxagencytype = "";
@@ -327,7 +326,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
         gvTaxParcel.Focus();
         fetchtaxparcel();
         fetchtaxparceldetails();
-        btntaxparcels.Enabled = true;
+        btntaxparcels.Enabled = true;        
     }
     private void checkagencydetails(string AgencyId)
     {
@@ -3575,8 +3574,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
             {
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "alertMessage", "alert('Cannot Complete Order Details')", true);
                 return;
-            }
-            ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "txtexeSpecial();", true);
+            }            
         }
 
         else if (OStatus == "Completed" && process == "QC")
@@ -3630,7 +3628,6 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
                 id = "12f7tre5";
                 Response.Redirect("STRMICXProduction.aspx?id=" + id);
             }
-            ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "txtexeSpecial();", true);
         }
 
         else if (OStatus == "In Process" && process == "QC")
@@ -3646,7 +3643,6 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
                 id = "12f7tre5";
                 Response.Redirect("STRMICXProduction.aspx?id=" + id);
             }
-            ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "txtexeSpecial();", true);
         }
 
 
@@ -3663,7 +3659,6 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
                 id = "12f7tre5";
                 Response.Redirect("STRMICXProduction.aspx?id=" + id);
             }
-            ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "txtexeSpecial();", true);
         }
 
         else if (OStatus == "Mail Away" && process == "QC")
@@ -3679,7 +3674,6 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
                 id = "12f7tre5";
                 Response.Redirect("STRMICXProduction.aspx?id=" + id);
             }
-            ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "txtexeSpecial();", true);
         }
 
         else if (OStatus == "ParcelID" && process == "KEY")
@@ -3695,7 +3689,6 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
                 id = "12f7tre5";
                 Response.Redirect("STRMICXProduction.aspx?id=" + id);
             }
-            ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "txtexeSpecial();", true);
         }
 
         else if (OStatus == "ParcelID" && process == "QC")
@@ -3711,7 +3704,6 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
                 id = "12f7tre5";
                 Response.Redirect("STRMICXProduction.aspx?id=" + id);
             }
-            ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "txtexeSpecial();", true);
         }
 
         else if (OStatus == "On Hold" && process == "KEY")
@@ -3727,7 +3719,6 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
                 id = "12f7tre5";
                 Response.Redirect("STRMICXProduction.aspx?id=" + id);
             }
-            ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "txtexeSpecial();", true);
         }
 
         else if (OStatus == "On Hold" && process == "QC")
@@ -3743,7 +3734,6 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
                 id = "12f7tre5";
                 Response.Redirect("STRMICXProduction.aspx?id=" + id);
             }
-            ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "txtexeSpecial();", true);
         }
 
 
@@ -3760,7 +3750,6 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
                 id = "12f7tre5";
                 Response.Redirect("STRMICXProduction.aspx?id=" + id);
             }
-            ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "txtexeSpecial();", true);
         }
 
         else if (OStatus == "Others" && process == "QC")
@@ -3776,7 +3765,6 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
                 id = "12f7tre5";
                 Response.Redirect("STRMICXProduction.aspx?id=" + id);
             }
-            ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "txtexeSpecial();", true);
         }
 
         else if (OStatus == "Rejected" && process == "KEY")
@@ -3792,7 +3780,6 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
                 id = "12f7tre5";
                 Response.Redirect("STRMICXProduction.aspx?id=" + id);
             }
-            ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "txtexeSpecial();", true);
         }
 
         else if (OStatus == "Rejected" && process == "QC")
@@ -3808,7 +3795,6 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
                 id = "12f7tre5";
                 Response.Redirect("STRMICXProduction.aspx?id=" + id);
             }
-            ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "txtexeSpecial();", true);
         }
 
         else if (process == "REVIEW")
@@ -3824,8 +3810,8 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
                 id = "12f7tre5";
                 Response.Redirect("STRMICXProduction.aspx?id=" + id);
             }
-            ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "txtexeSpecial();", true);
         }
+        ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "txtexeSpecial();", true);
     }
 
     private DataSet UpdateProduction(string Procedurename)
@@ -4288,7 +4274,6 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
             GvAddNotes.DataSource = dtfetch;
             GvAddNotes.DataBind();
         }
-        ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "txtexeSpecial();", true);
     }
 
 
