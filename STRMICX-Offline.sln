@@ -1,27 +1,27 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.23107.0
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "Source", ".", "{6C483FF2-0DFC-409C-B6B0-EC06B29BEFAD}"
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "STRMICX-Offline", ".", "{6C483FF2-0DFC-409C-B6B0-EC06B29BEFAD}"
 	ProjectSection(WebsiteProperties) = preProject
 		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.5"
 		Debug.AspNetCompiler.VirtualPath = "/localhost_49391"
-		Debug.AspNetCompiler.PhysicalPath = "..\Source\"
+		Debug.AspNetCompiler.PhysicalPath = "..\STRMICX-Offline\"
 		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_49391\"
 		Debug.AspNetCompiler.Updateable = "true"
 		Debug.AspNetCompiler.ForceOverwrite = "true"
 		Debug.AspNetCompiler.FixedNames = "false"
 		Debug.AspNetCompiler.Debug = "True"
 		Release.AspNetCompiler.VirtualPath = "/localhost_49391"
-		Release.AspNetCompiler.PhysicalPath = "..\Source\"
+		Release.AspNetCompiler.PhysicalPath = "..\STRMICX-Offline\"
 		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_49391\"
 		Release.AspNetCompiler.Updateable = "true"
 		Release.AspNetCompiler.ForceOverwrite = "true"
 		Release.AspNetCompiler.FixedNames = "false"
 		Release.AspNetCompiler.Debug = "False"
 		VWDPort = "49391"
-		SlnRelativePath = "..\Source\"
+		SlnRelativePath = "..\STRMICX-Offline\"
 	EndProjectSection
 EndProject
 Global
