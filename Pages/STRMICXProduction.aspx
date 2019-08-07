@@ -4514,10 +4514,10 @@
                 }
             }
             if (disc1 == delinq1) {
-                document.getElementById('discdate1').value = "";
-                document.getElementById("discdate1").focus();
+                document.getElementById('discdate1').value = "";                
                 alert('Discount Date and Delinquent Date should not be same...');
                 return;
+                document.getElementById("discdate1").focus();
             }
         }
 
@@ -4554,10 +4554,10 @@
                 }
             }
             if (disc2 == delinq2) {
-                document.getElementById('discdate2').value = "";
-                document.getElementById("discdate2").focus();
+                document.getElementById('discdate2').value = "";                
                 alert('Discount Date and Delinquent Date should not be same...');
                 return;
+                document.getElementById("discdate2").focus();
             }
         }
 
@@ -4594,10 +4594,10 @@
                 }
             }
             if (disc3 == delinq3) {
-                document.getElementById('discdate3').value = "";
-                document.getElementById("discdate3").focus();
+                document.getElementById('discdate3').value = "";                
                 alert('Discount Date and Delinquent Date should not be same...');
                 return;
+                document.getElementById("discdate3").focus();
             }
         }
 
@@ -4634,10 +4634,10 @@
                 }
             }
             if (disc4 == delinq4) {
-                document.getElementById('discdate4').value = "";
-                document.getElementById("discdate4").focus();
+                document.getElementById('discdate4').value = "";                
                 alert('Discount Date and Delinquent Date should not be same...');
                 return;
+                document.getElementById("discdate4").focus();
             }
         }
 
@@ -4906,10 +4906,10 @@
                 }
             }
             if (futdisc1 == futdelinq1) {
-                document.getElementById('txtmandisdate1').value = "";
-                document.getElementById("txtmandisdate1").focus();
+                document.getElementById('txtmandisdate1').value = "";                
                 alert('Discount Date and Delinquent Date should not be same...');
                 return;
+                document.getElementById("txtmandisdate1").focus();
             }
         }
 
@@ -4946,10 +4946,10 @@
                 }
             }
             if (futdisc2 == futdelinq2) {
-                document.getElementById('txtmandisdate2').value = "";
-                document.getElementById("txtmandisdate2").focus();
+                document.getElementById('txtmandisdate2').value = "";                
                 alert('Discount Date and Delinquent Date should not be same...');
                 return;
+                document.getElementById("txtmandisdate2").focus();
             }
         }
 
@@ -4971,10 +4971,10 @@
             months11 += c.getMonth() - b.getMonth();
 
             if (b > a) {
-                document.getElementById('txtmandisdate3').value = "";
-                document.getElementById("txtmandisdate3").focus();
+                document.getElementById('txtmandisdate3').value = "";                
                 alert(futerrormsg3);
                 return;
+                document.getElementById("txtmandisdate3").focus();
             }
             if (c > b) {
 
@@ -4986,10 +4986,10 @@
                 }
             }
             if (futdisc3 == futdelinq3) {
-                document.getElementById('txtmandisdate3').value = "";
-                document.getElementById("txtmandisdate3").focus();
+                document.getElementById('txtmandisdate3').value = "";                
                 alert('Discount Date and Delinquent Date should not be same...');
                 return;
+                document.getElementById("txtmandisdate3").focus();
             }
         }
 
