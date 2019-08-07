@@ -3577,7 +3577,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
             }
             else
             {
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "alertMessage", "alert('Cannot Complete Order Details')", true);
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "alertMessage", "alert('Please Complete The Mandatory Fields')", true);
                 return;
             }
             ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "txtexeSpecial();", true);
@@ -3622,6 +3622,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "alertMessage", "alert('Please Complete The Mandatory Fields')", true);
                 return;
             }
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "txtexeSpecial();", true);
         }
 
         else if (OStatus == "In Process" && process == "KEY")
