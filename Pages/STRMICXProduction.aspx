@@ -8081,7 +8081,7 @@
                                             </b>
                                         </td>
                                         <td>
-                                            <asp:TextBox ID="txtdelitState" runat="server" class="form-control" placeholder="State" autocomplete='off' onchange="return functionDelinquent()" onkeypress="return onlyAlphabets(event,this);" style="text-transform: uppercase" MaxLength="2" onblur="IsValidLengthState(this.value,this,event);">
+                                            <asp:TextBox ID="txtdelitState" runat="server" class="form-control" placeholder="State" autocomplete='off' onchange="return functionDelinquent()" onkeypress="return onlyAlphabets(event,this);" style="text-transform: uppercase" MaxLength="2" onblur="IsValidLengthState(this.value,this,event);" onpaste="return isNumber(event)">
                                             </asp:TextBox>
                                         </td>
                                     </tr>
@@ -8275,12 +8275,12 @@
                                 <asp:BoundField ItemStyle-Width="20%" DataField="city" HeaderText="City" ReadOnly="true" ItemStyle-CssClass="hiddencol" HeaderStyle-CssClass="hiddencol"/>
                                 <asp:BoundField ItemStyle-Width="40%" DataField="state" HeaderText="State" ReadOnly="true" ItemStyle-CssClass="hiddencol" HeaderStyle-CssClass="hiddencol" />
                                 <asp:BoundField ItemStyle-Width="40%" DataField="zip" HeaderText="Zip Code" ReadOnly="true" ItemStyle-CssClass="hiddencol" HeaderStyle-CssClass="hiddencol" />
-                                <asp:BoundField ItemStyle-Width="30%" DataField="deliquenttaxyear" HeaderText="Delinquent Year" ReadOnly="true"/>
-                                <asp:BoundField ItemStyle-Width="30%" DataField="payoffamount" HeaderText="Pay-off Amount" ReadOnly="true"/>
+                                <asp:BoundField ItemStyle-Width="20%" DataField="deliquenttaxyear" HeaderText="Delinquent Year" ReadOnly="true"/>
+                                <asp:BoundField ItemStyle-Width="20%" DataField="payoffamount" HeaderText="Pay-off Amount" ReadOnly="true"/>
                                 <asp:BoundField ItemStyle-Width="40%" DataField="comments" HeaderText="Comments" ReadOnly="true" ItemStyle-CssClass="hiddencol" HeaderStyle-CssClass="hiddencol" />
-                                <asp:BoundField ItemStyle-Width="40%" DataField="goodthuruDate" HeaderText="Good-thru Date" ReadOnly="true"/>
-                                <asp:BoundField ItemStyle-Width="30%" DataField="installmentduedate" HeaderText="Installment Date"/>
-                                <asp:BoundField ItemStyle-Width="30%" DataField="taxsalenotapplicable" HeaderText="TaxSale.NotApp" ReadOnly="true" ItemStyle-CssClass="hiddencol" HeaderStyle-CssClass="hiddencol" />
+                                <asp:BoundField ItemStyle-Width="20%" DataField="goodthuruDate" HeaderText="Good-thru Date" ReadOnly="true"/>
+                                <asp:BoundField ItemStyle-Width="25%" DataField="installmentduedate" HeaderText="Installment Date" ReadOnly="true"/>
+                                <asp:BoundField ItemStyle-Width="40%" DataField="taxsalenotapplicable" HeaderText="TaxSale.NotApp" ReadOnly="true" ItemStyle-CssClass="hiddencol" HeaderStyle-CssClass="hiddencol" />
                                 <asp:BoundField ItemStyle-Width="40%" DataField="dateofTaxsale" HeaderText="DtOfTaxsale" ReadOnly="true" ItemStyle-CssClass="hiddencol" HeaderStyle-CssClass="hiddencol" />
                                 <asp:BoundField ItemStyle-Width="40%" DataField="lastdaytoredeem" HeaderText="LastDayRedeem" ReadOnly="true" ItemStyle-CssClass="hiddencol" HeaderStyle-CssClass="hiddencol" />
                                 <asp:TemplateField>
