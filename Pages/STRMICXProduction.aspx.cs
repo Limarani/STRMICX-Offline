@@ -752,7 +752,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
 
                 string deli, exe, spec;
                 deli = dtfetchauthority.Rows[0]["IsDelinquent"].ToString().Trim();
-                if (deli == "No" || deli == "")
+                if (deli == "")
                 {
                     txtdeliquent.SelectedIndex = 0;
                 }
@@ -1285,7 +1285,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
             Response.Redirect("STRMICXHome.aspx");
         }
 
-        if (lbltransactiontype.Text != "Purchase")
+        if (lbltransactiontype.Text != "PURCHASE")
         {
             dd.Visible = false;
             ddlfuturetaxcalc.Visible = false;
@@ -2287,12 +2287,12 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
         if (GVCommand == "DeleteDelinquent")
         {
             string Item_ID = (e.CommandArgument).ToString();
-            GridViewRow row = (GridViewRow)(((LinkButton)e.CommandSource).NamingContainer);
+            GridViewRow row = (GridViewRow)(((LinkButton)e.CommandSource).NamingContainer);                       
             int result = gl.DeleteGridDeliquentStatus(row.Cells[0].Text.Trim());
             if (result == 1)
             {
                 DeliquentStatusAdd.Enabled = true;
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "txtexeSpecial();", true);
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "txtexeSpecial();", true);              
                 fetchDeliquentStatus();
                 cleardelinquentfields();
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "alertMessage", "alert('Record Deleted Successfully')", true);
@@ -3548,6 +3548,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
                 if (message == "")
                 {
                     UpdateProduction("sp_UpdateKey_User");
+                    Updatetaxauthoritiessection("Sp_Update_taxauthorities_details");
 
                     if (id == "12f7tre5")
                     {
@@ -3590,6 +3591,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
                 if (message == "")
                 {
                     UpdateProduction("sp_UpdateQC_User");
+                    Updatetaxauthoritiessection("Sp_Update_taxauthorities_details");
 
                     if (id == "12f7tre5")
                     {
@@ -3628,6 +3630,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
         else if (OStatus == "In Process" && process == "KEY")
         {
             UpdateProduction("sp_UpdateKey_User");
+            Updatetaxauthoritiessection("Sp_Update_taxauthorities_details");
 
             if (id == "12f7tre5")
             {
@@ -3643,6 +3646,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
         else if (OStatus == "In Process" && process == "QC")
         {
             UpdateProduction("sp_UpdateQC_User");
+            Updatetaxauthoritiessection("Sp_Update_taxauthorities_details");
 
             if (id == "12f7tre5")
             {
@@ -3659,6 +3663,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
         else if (OStatus == "Mail Away" && process == "KEY")
         {
             UpdateProduction("sp_UpdateKey_User");
+            Updatetaxauthoritiessection("Sp_Update_taxauthorities_details");
 
             if (id == "12f7tre5")
             {
@@ -3674,6 +3679,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
         else if (OStatus == "Mail Away" && process == "QC")
         {
             UpdateProduction("sp_UpdateQC_User");
+            Updatetaxauthoritiessection("Sp_Update_taxauthorities_details");
 
             if (id == "12f7tre5")
             {
@@ -3689,6 +3695,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
         else if (OStatus == "ParcelID" && process == "KEY")
         {
             UpdateProduction("sp_UpdateKey_User");
+            Updatetaxauthoritiessection("Sp_Update_taxauthorities_details");
 
             if (id == "12f7tre5")
             {
@@ -3704,6 +3711,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
         else if (OStatus == "ParcelID" && process == "QC")
         {
             UpdateProduction("sp_UpdateQC_User");
+            Updatetaxauthoritiessection("Sp_Update_taxauthorities_details");
 
             if (id == "12f7tre5")
             {
@@ -3719,6 +3727,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
         else if (OStatus == "On Hold" && process == "KEY")
         {
             UpdateProduction("sp_UpdateKey_User");
+            Updatetaxauthoritiessection("Sp_Update_taxauthorities_details");
 
             if (id == "12f7tre5")
             {
@@ -3734,6 +3743,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
         else if (OStatus == "On Hold" && process == "QC")
         {
             UpdateProduction("sp_UpdateQC_User");
+            Updatetaxauthoritiessection("Sp_Update_taxauthorities_details");
 
             if (id == "12f7tre5")
             {
@@ -3750,6 +3760,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
         else if (OStatus == "Others" && process == "KEY")
         {
             UpdateProduction("sp_UpdateKey_User");
+            Updatetaxauthoritiessection("Sp_Update_taxauthorities_details");
 
             if (id == "12f7tre5")
             {
@@ -3765,6 +3776,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
         else if (OStatus == "Others" && process == "QC")
         {
             UpdateProduction("sp_UpdateQC_User");
+            Updatetaxauthoritiessection("Sp_Update_taxauthorities_details");
 
             if (id == "12f7tre5")
             {
@@ -3780,6 +3792,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
         else if (OStatus == "Rejected" && process == "KEY")
         {
             UpdateProduction("sp_UpdateKey_User");
+            Updatetaxauthoritiessection("Sp_Update_taxauthorities_details");
 
             if (id == "12f7tre5")
             {
@@ -3795,6 +3808,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
         else if (OStatus == "Rejected" && process == "QC")
         {
             UpdateProduction("sp_UpdateQC_User");
+            Updatetaxauthoritiessection("Sp_Update_taxauthorities_details");
 
             if (id == "12f7tre5")
             {
@@ -3810,6 +3824,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
         else if (process == "REVIEW")
         {
             UpdateProduction("sp_UpdateReview_New");
+            Updatetaxauthoritiessection("Sp_Update_taxauthorities_details");
 
             if (id == "12f7tre5")
             {
@@ -3827,6 +3842,11 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
     private DataSet UpdateProduction(string Procedurename)
     {
         return gl.UpdateOrderStatusNew(Procedurename, lblord.Text, process, lblzipcode.Text, OStatus);
+    }
+
+    private DataSet Updatetaxauthoritiessection(string Procedurename)
+    {
+        return gl.Updatetaxauthorities(Procedurename, lblord.Text, LblTaxId1.Text, LblAgencyId1.Text, txtTaxType.Text, txtdeliquent.Text, txtexemption.Text, SecialAssmnt.Text, pastDeliquent.Text, txtResidence.Text);
     }
 
     protected void Timer1_Tick(object sender, EventArgs e)

@@ -666,7 +666,7 @@
         }
 
 
-        function functionInsttax() {           
+        function functionInsttax() {
             var Insterror;
             Insterror = document.getElementById("nextbilldate1").value;
             var Installmenterror1 = document.getElementById("instdate1").value;
@@ -674,14 +674,14 @@
             var Installmenterror3 = document.getElementById("instdate3").value;
             var Installmenterror4 = document.getElementById("instdate4").value;
 
-            var instamountpaidnew1   = document.getElementById("instamountpaid1").value;
+            var instamountpaidnew1 = document.getElementById("instamountpaid1").value;
             var remainingbalancenew1 = document.getElementById("remainingbalance1").value;
             var exemptrelevynew1 = document.getElementById("exemptrelevy1").checked;
 
             var instamountpaidnew2 = document.getElementById("instamountpaid2").value;
             var remainingbalancenew2 = document.getElementById("remainingbalance2").value;
             var exemptrelevynew2 = document.getElementById("exemptrelevy2").checked;
-            
+
             var instamountpaidnew3 = document.getElementById("instamountpaid3").value;
             var remainingbalancenew3 = document.getElementById("remainingbalance3").value;
             var exemptrelevynew3 = document.getElementById("exemptrelevy3").checked;
@@ -719,11 +719,11 @@
                 else if ((instamountnew1 == "")) {
                     alert("Installmentamount Cannot Be Empty");
                     return false;
-                }          
+                }
                 else if (instamountpaidnew1 == "") {
                     alert("Installmentamountpaid Cannot Be Empty");
                     return false;
-                }                
+                }
                 else if (instamountpaidnew1 == "0.00" && remainingbalancenew1 == "0.00" && exemptrelevynew1 == false) {
                     alert("Installmentamountpaid and remainingbalance Cannot Be Zero");
                     return false;
@@ -748,7 +748,7 @@
                     return false;
                 }
 
-                else if (instamountpaidnew1 == "" ) {
+                else if (instamountpaidnew1 == "") {
                     alert("Installmentamountpaid Cannot Be Empty");
                     return false;
                 }
@@ -760,7 +760,7 @@
                 else if ((instamountpaidnew1 == "0.00" && remainingbalancenew1 == "0.00" && exemptrelevynew1 == false) || (instamountpaidnew2 == "0.00" && remainingbalancenew2 == "0.00" && exemptrelevynew2 == false)) {
                     alert("Installmentamountpaid and remainingbalance Cannot Be Zero");
                     return false;
-                }                
+                }
             }
 
             if (Tri == "Tri-Annual") {
@@ -862,7 +862,7 @@
             }
 
 
-                   
+
 
             if (Insterror == "") {
                 document.getElementById('nextbilldate1').style.borderColor = "#ff0000";
@@ -908,12 +908,81 @@
         function completeorder() {
             var comerror;
             comerror = document.getElementById("ddlstatus").value;
-          
+
             if (comerror == '--Select--' || comerror == undefined) {
                 alert("Please choose any of the status");
                 return false;
             }
+
+
+
+            var delistatus = document.getElementById("txtdeliquent").value;
+            var delirows = gvDeliquentStatus.rows;
+
+            if (delistatus == "Yes") {
+                if (delirows.length == 1) {
+                    document.getElementById('txtdeliPayee').focus();
+                    alert("Deliquent Status is required");
+                    return false;
+                }
+            }
+
+            if (delistatus == "Select") {
+                alert("Please Choose Any One Option in Deliquency");
+                return false;
+            }
+
+            var exestatus = document.getElementById("txtexemption").value;
+            var exerows = gvExemption.rows;
+
+
+            if (exestatus == "Yes") {
+                if (exerows.length == 1) {
+                    document.getElementById('txtexetype').focus();
+                    alert("Exemption Status is required");
+                    return false;
+                }
+            }
+
+            if (exestatus == "Select") {
+                alert("Please Choose Any One Option in Exemption");
+                return false;
+            }
+
+            var specialstatus = document.getElementById("SecialAssmnt").value;
+            var specrows = gvSpecial.rows;
+
+            if (specialstatus == "Yes") {
+                if (specrows.length == 1) {
+                    document.getElementById('txtInstallRemain').focus();
+                    alert("Special Assessment is required");
+                    return false;
+                }
+            }
+
+            if (specialstatus == "Select") {
+                alert("Please Choose Any One Option in Special Assessment");
+                return false;
+            }
+
+            var priordeli = document.getElementById("pastDeliquent").value;
+            var priorrows = GrdPriordelinquent.rows;
+
+
+            if (priordeli == "Yes") {
+                if (priorrows.length == 1) {
+                    document.getElementById('txtpriodeli').focus();
+                    alert("Prior Delinquent is required");
+                    return false;
+                }
+            }
+
+            if (priordeli == "Select") {
+                alert("Please Choose Any One Option in Prior Delinquent");
+                return false;
+            }
         }
+
 
         function editfunction() {
             document.getElementById("date1").disabled = false;
@@ -6993,7 +7062,7 @@
                                                         <b style="white-space: nowrap" class="CheckBold">Next Bill Date2:</b>
                                                     </td>
                                                     <td>
-                                                        <input type="text" id="nextbilldate2" runat="server" class="form-control" style="width: 167px;margin-bottom:5px" placeholder="MM/DD/YYYY" maxlength="10" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="return checkDate(this,event)" autocomplete="off" tabindex="38" />
+                                                        <input type="text" id="nextbilldate2" runat="server" class="form-control" style="width: 167px; margin-bottom: 5px" placeholder="MM/DD/YYYY" maxlength="10" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="return checkDate(this,event)" autocomplete="off" tabindex="38" />
                                                     </td>
                                                     <td>
                                                         <b style="white-space: nowrap;" id="dd" runat="server" class="CheckBold">Future Tax Calculation:</b>
@@ -7013,7 +7082,7 @@
                                                         <b style="white-space: nowrap;" class="CheckBold">Payment Frequency:</b>
                                                     </td>
                                                     <td>
-                                                        <select class="form-control" id="paymentfrequency" runat="server" style="width: 170px;margin-top:10px;" onchange="functionpayemtfrequency(this)" tabindex="39">
+                                                        <select class="form-control" id="paymentfrequency" runat="server" style="width: 170px; margin-top: 10px;" onchange="functionpayemtfrequency(this)" tabindex="39">
                                                             <option value="1">Annual</option>
                                                             <option value="2">Semi-Annual</option>
                                                             <option value="3">Tri-Annual</option>
@@ -7411,7 +7480,7 @@
                                                             <b style="white-space: nowrap" class="CheckBold">Tax Bill:</b>
                                                         </td>
                                                         <td>
-                                                            <input type="text" id="ddlmanutaxbill" runat="server" class="form-control" style="width: 166px;margin-bottom:5px;" autocomplete="off" tabindex="89" />
+                                                            <input type="text" id="ddlmanutaxbill" runat="server" class="form-control" style="width: 166px; margin-bottom: 5px;" autocomplete="off" tabindex="89" />
                                                             <%--  <select class="form-control" id="ddlmanutaxbill" runat="server" style="width: 170px; margin-bottom: 5px;" tabindex="89">
                                                                 <option value="0">Select Bill</option>
                                                                 <option value="1">Current</option>
@@ -7708,7 +7777,7 @@
                                         <td>
                                             <%--<asp:TextBox ID="txtdelitzip" runat="server" Style="margin-bottom: 5px;" class="form-control" placeholder="Zip" autocomplete='nope' onchange="return functionDelinquent()">
                                             </asp:TextBox>--%>
-                                            <asp:TextBox ID="txtdelitzip" runat="server" class="form-control" placeholder="Zip Code" onkeypress="return isNumberKey(event)" autocomplete='off' MaxLength="5" style="margin-bottom:5px;"></asp:TextBox>
+                                            <asp:TextBox ID="txtdelitzip" runat="server" class="form-control" placeholder="Zip Code" onkeypress="return isNumberKey(event)" autocomplete='off' MaxLength="5" Style="margin-bottom: 5px;"></asp:TextBox>
                                         </td>
                                         <td style="padding-left: 31px;">
                                             <label class="CheckBold" id="lblbaseamntdue">Base Amount Due:</label>
@@ -8053,7 +8122,7 @@
                                         </td>
                                         <td>
                                             <%-- <asp:TextBox ID="txtInstallRemain" runat="server" class="form-control" placeholder="Inst Remaining" Style="margin-bottom: 5px;" onkeyup="SpeAmount1();" onfocusout="SpemyFunctionAmount1();if (this.value=='0.00') this.value='0.00';if (this.value=='') this.value='0.00';" onfocus="this.value='0.00'" onfocusin="if (this.value=='0.00') this.value='';" onblur="mySpe();" autocomplete='off'></asp:TextBox>--%>
-                                            <asp:TextBox ID="txtInstallRemain" runat="server" class="form-control" placeholder="Inst Remaining" onkeypress="return isNumberKey(event)" autocomplete='off' onchange="return functionSpecial()" style="margin-bottom:5px;"></asp:TextBox>
+                                            <asp:TextBox ID="txtInstallRemain" runat="server" class="form-control" placeholder="Inst Remaining" onkeypress="return isNumberKey(event)" autocomplete='off' onchange="return functionSpecial()" Style="margin-bottom: 5px;"></asp:TextBox>
                                         </td>
                                         <td style="padding-left: 31px;"><b class="CheckBold">Due Date:</b></td>
                                         <td>
