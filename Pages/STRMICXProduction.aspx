@@ -674,7 +674,7 @@
             var Installmenterror3 = document.getElementById("instdate3").value;
             var Installmenterror4 = document.getElementById("instdate4").value;
 
-            var instamountpaidnew1   = document.getElementById("instamountpaid1").value;
+            var instamountpaidnew1 = document.getElementById("instamountpaid1").value;
             var remainingbalancenew1 = document.getElementById("remainingbalance1").value;
             var exemptrelevynew1 = document.getElementById("exemptrelevy1").checked;
 
@@ -714,7 +714,7 @@
             if (Ann == "Annual") {
                 if (Installmenterror1 == "") {
                     alert("Installment Date1 should be required");
-                    return false;
+                    return false;                    
                 }
                 else if ((instamountnew1 == "")) {
                     alert("Installmentamount Cannot Be Empty");
@@ -748,8 +748,9 @@
                     return false;
                 }
 
-                else if (instamountpaidnew1 == "" ) {
-                    alert("Installmentamountpaid Cannot Be Empty");
+                else if (instamountpaidnew1 == "") {
+                    document.getElementById("instamountpaid1").focus();
+                    alert("Installmentamount Paid Cannot Be Empty");
                     return false;
                 }
                 else if (instamountpaidnew2 == "") {
@@ -860,7 +861,7 @@
                     return false;
                 }
             }
-
+                 
 
                    
 
@@ -886,35 +887,251 @@
         }
 
         function functionfutinst() {
-            var Instfuterror;
-            Instfuterror = document.getElementById("txtmanunextbilldate1").value;
+            var Instfuterror, Instfuterror1;
+            Instfuterror = document.getElementById("txtmanubillstartdate").value;
+            Instfuterror1 = document.getElementById("txtmanubillenddate").value;
+
+            var Installmenterror1 = document.getElementById("txtmaninstdate1").value;
+            var Installmenterror2 = document.getElementById("txtmaninstdate2").value;
+            var Installmenterror3 = document.getElementById("txtmaninstdate3").value;
+            var Installmenterror4 = document.getElementById("txtmaninstdate4").value;
+
+            var instamountpaidnew1 = document.getElementById("instmanamtpaid1").value;
+            var remainingbalancenew1 = document.getElementById("txtmanurembal1").value;
+            var exemptrelevynew1 = document.getElementById("chkexrelmanu1").checked;
+
+            var instamountpaidnew2 = document.getElementById("instmanamtpaid2").value;
+            var remainingbalancenew2 = document.getElementById("txtmanurembal2").value;
+            var exemptrelevynew2 = document.getElementById("chkexrelmanu2").checked;
+
+            var instamountpaidnew3 = document.getElementById("instmanamtpaid3").value;
+            var remainingbalancenew3 = document.getElementById("txtmanurembal3").value;
+            var exemptrelevynew3 = document.getElementById("chkexrelmanu3").checked;
+
+            var instamountpaidnew4 = document.getElementById("instmanamtpaid4").value;
+            var remainingbalancenew4 = document.getElementById("txtmanurembal4").value;
+            var exemptrelevynew4 = document.getElementById("chkexrelmanu4").checked;
+
+            var instamountnew1 = document.getElementById("instmanamount1").value;
+            var instamountnew2 = document.getElementById("instmanamount2").value;
+            var instamountnew3 = document.getElementById("instmanamount3").value;
+            var instamountnew4 = document.getElementById("instmanamount4").value;
+
+            var payfre = document.getElementById("paymentfrequency").value;
+
+            var Ann = "", Semi = "", Tri = "", Qua = "";
+            if (payfre == "1") {
+                Ann = "Annual";
+            }
+            if (payfre == "2") {
+                Semi = "Semi-Annual";
+            }
+            if (payfre == "4") {
+                Qua = "Quarterly";
+            }
+            if (payfre == "3") {
+                Tri = "Tri-Annual";
+            }
+            if (Ann == "Annual") {
+                if (Installmenterror1 == "") {
+                    document.getElementById("txtmaninstdate1").focus();
+                    alert("Installment Date1 should be required");
+                    return false;
+                }
+                else if ((instamountnew1 == "")) {
+                    document.getElementById("instmanamount1").focus();
+                    alert("Installment Amount Cannot Be Empty");
+                    return false;
+                }
+                else if (instamountpaidnew1 == "") {
+                    document.getElementById("instmanamtpaid1").focus();
+                    alert("Installmentamount Paid Cannot Be Empty");
+                    return false;
+                }
+                else if (instamountpaidnew1 == "0.00" && remainingbalancenew1 == "0.00" && exemptrelevynew1 == false) {
+                    alert("Installmentamount Paid and remainingbalance Cannot Be Zero");
+                    return false;
+                }
+            }
+
+            if (Semi == "Semi-Annual") {
+                if (Installmenterror1 == "") {
+                    document.getElementById("txtmaninstdate1").focus();
+                    alert("Installment1 Date1 should be required");
+                    return false;
+                }
+                else if (Installmenterror2 == "") {
+                    document.getElementById("txtmaninstdate2").focus();
+                    alert("Installment2 Date2 should be required");
+                    return false;
+                }
+                else if ((instamountnew1 == "")) {
+                    document.getElementById("instmanamount1").focus();
+                    alert("Installment Amount Cannot Be Empty");
+                    return false;
+                }
+                else if (instamountnew2 == "") {
+                    document.getElementById("instmanamount2").focus();
+                    alert("Installment Amount Cannot Be Empty");
+                    return false;
+                }
+
+                else if (instamountpaidnew1 == "") {
+                    document.getElementById("instmanamtpaid1").focus();
+                    alert("Installmentamount Paid Cannot Be Empty");
+                    return false;
+                }
+                else if (instamountpaidnew2 == "") {
+                    document.getElementById("instmanamtpaid2").focus();
+                    alert("Installmentamount Paid Cannot Be Empty");
+                    return false;
+                }
+
+                else if ((instamountpaidnew1 == "0.00" && remainingbalancenew1 == "0.00" && exemptrelevynew1 == false) || (instamountpaidnew2 == "0.00" && remainingbalancenew2 == "0.00" && exemptrelevynew2 == false)) {
+                    alert("Installmentamount Paid and remainingbalance Cannot Be Zero");
+                    return false;
+                }
+            }
+
+            if (Tri == "Tri-Annual") {
+                if (Installmenterror1 == "") {
+                    document.getElementById("txtmaninstdate1").focus();
+                    alert("Installment Date1 should be required");
+                    return false;
+                }
+                else if (Installmenterror2 == "") {
+                    document.getElementById("txtmaninstdate2").focus();
+                    alert("Installment Date2 should be required");
+                    return false;
+                }
+                else if (Installmenterror3 == "") {
+                    document.getElementById("txtmaninstdate3").focus();
+                    alert("Installment Date3 should be required");
+                    return false;
+                }
+                else if ((instamountnew1 == "")) {
+                    document.getElementById("instmanamount1").focus();
+                    alert("Installment Amount Cannot Be Empty");
+                    return false;
+                }
+                else if (instamountnew2 == "") {
+                    document.getElementById("instmanamount2").focus();
+                    alert("Installment Amount Cannot Be Empty");
+                    return false;
+                }
+                else if (instamountnew3 == "") {
+                    document.getElementById("instmanamount3").focus();
+                    alert("Installment Amount Cannot Be Empty");
+                    return false;
+                }
+                else if (instamountpaidnew1 == "") {
+                    document.getElementById("instmanamtpaid1").focus();
+                    alert("Installmentamount Paid Cannot Be Empty");
+                    return false;
+                }
+                else if (instamountpaidnew2 == "") {
+                    document.getElementById("instmanamtpaid2").focus();
+                    alert("Installmentamount Paid Cannot Be Empty");
+                    return false;
+                }
+                else if (instamountpaidnew3 == "") {
+                    document.getElementById("instmanamtpaid3").focus();
+                    alert("Installmentamount Paid Cannot Be Empty");
+                    return false;
+                }
+                else if ((instamountpaidnew1 == "0.00" && remainingbalancenew1 == "0.00" && exemptrelevynew1 == false) || (instamountpaidnew2 == "0.00" && remainingbalancenew2 == "0.00" && exemptrelevynew2 == false) || (instamountpaidnew3 == "0.00" && remainingbalancenew3 == "0.00" && exemptrelevynew3 == false)) {
+                    alert("Installmentamount Paid and remainingbalance Cannot Be Zero");
+                    return false;
+                }
+            }
+
+            if (Qua == "Quarterly") {
+                if (Installmenterror1 == "") {
+                    document.getElementById("txtmaninstdate1").focus();
+                    alert("Installment Date1 should be required");
+                    return false;
+                }
+                else if (Installmenterror2 == "") {
+                    document.getElementById("txtmaninstdate2").focus();
+                    alert("Installment Date2 should be required");
+                    return false;
+                }
+                else if (Installmenterror3 == "") {
+                    document.getElementById("txtmaninstdate3").focus();
+                    alert("Installment Date3 should be required");
+                    return false;
+                }
+                else if (Installmenterror4 == "") {
+                    document.getElementById("txtmaninstdate4").focus();
+                    alert("Installment Date4 should be required");
+                    return false;
+                }
+                else if ((instamountnew1 == "")) {
+                    document.getElementById("instmanamount1").focus();
+                    alert("Installment Amount Cannot Be Empty");
+                    return false;
+                }
+                else if (instamountnew2 == "") {
+                    document.getElementById("instmanamount2").focus();
+                    alert("Installment Amount Cannot Be Empty");
+                    return false;
+                }
+                else if (instamountnew3 == "") {
+                    document.getElementById("instmanamount3").focus();
+                    alert("Installment Amount Cannot Be Empty");
+                    return false;
+                }
+                else if (instamountnew4 == "") {
+                    document.getElementById("instmanamount4").focus();
+                    alert("Installment Amount Cannot Be Empty");
+                    return false;
+                }
+                else if (instamountpaidnew1 == "") {
+                    document.getElementById("instmanamtpaid1").focus();
+                    alert("Installmentamount Paid Cannot Be Empty");
+                    return false;
+                }
+                else if (instamountpaidnew2 == "") {
+                    document.getElementById("instmanamtpaid2").focus();
+                    alert("Installmentamount Paid Cannot Be Empty");
+                    return false;
+                }
+                else if (instamountpaidnew3 == "") {
+                    document.getElementById("instmanamtpaid3").focus();
+                    alert("Installmentamount Paid Cannot Be Empty");
+                    return false;
+                }
+                else if (instamountpaidnew4 == "") {
+                    document.getElementById("instmanamtpaid4").focus();
+                    alert("Installmentamount Paid Cannot Be Empty");
+                    return false;
+                }
+                else if ((instamountpaidnew1 == "0.00" && remainingbalancenew1 == "0.00" && exemptrelevynew1 == false) || (instamountpaidnew2 == "0.00" && remainingbalancenew2 == "0.00" && exemptrelevynew2 == false) || (instamountpaidnew3 == "0.00" && remainingbalancenew3 == "0.00" && exemptrelevynew3 == false) || (instamountpaidnew4 == "0.00" && remainingbalancenew4 == "0.00" && exemptrelevynew4 == false)) {
+                    alert("Installmentamount Paid and remaining Balance Cannot Be Zero");
+                    return false;
+                }
+            }
+
 
             if (Instfuterror == "") {
-                alert("Please enter Next Bill Date1");
+                document.getElementById("txtmanubillstartdate").focus();
+                alert("Please enter Billing Start Date...");
+                return false;
+            }
+
+            if (Instfuterror1 == "") {
+                document.getElementById("txtmanubillenddate").focus();
+                alert("Please enter Billing End Date...");
+                return false;                
+            }
+
+            if (priordeli == "Select") {
+                alert("Please Choose Any One Option in Prior Delinquent");
                 return false;
             }
         }
 
-        function userValid() {
-            var error;
-            error = document.getElementById("ddlordstatus").value;
-
-            if (error == '--Select Status--' || error == undefined) {
-                document.getElementById("lbltaxcerterror").innerHTML = "Please Enter The Fields";
-                return false;
-            }
-        }
-
-        function completeorder() {
-            var comerror;
-            comerror = document.getElementById("ddlstatus").value;
           
-            if (comerror == '--Select--' || comerror == undefined) {
-                alert("Please choose any of the status");
-                return false;
-            }
-        }
-
         function editfunction() {
             document.getElementById("date1").disabled = false;
             document.getElementById("date2").disabled = false;
@@ -4753,7 +4970,7 @@
                 document.getElementById('txtinitialinstall').style.color = "green";
                 return true;
             }
-            else {
+            else {                
                 document.getElementById('txtinitialinstall').value = "";
                 document.getElementById('txtinitialinstall').style.borderColor = "#ff0000";
                 document.getElementById('txtinitialinstall').style.color = "#ff0000";
@@ -6993,7 +7210,7 @@
                                                         <b style="white-space: nowrap" class="CheckBold">Next Bill Date2:</b>
                                                     </td>
                                                     <td>
-                                                        <input type="text" id="nextbilldate2" runat="server" class="form-control" style="width: 167px;margin-bottom:5px" placeholder="MM/DD/YYYY" maxlength="10" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="return checkDate(this,event)" autocomplete="off" tabindex="38" />
+                                                        <input type="text" id="nextbilldate2" runat="server" class="form-control" style="width: 167px; margin-bottom: 5px" placeholder="MM/DD/YYYY" maxlength="10" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="return checkDate(this,event)" autocomplete="off" tabindex="38" />
                                                     </td>
                                                     <td>
                                                         <b style="white-space: nowrap;" id="dd" runat="server" class="CheckBold">Future Tax Calculation:</b>
@@ -7013,7 +7230,7 @@
                                                         <b style="white-space: nowrap;" class="CheckBold">Payment Frequency:</b>
                                                     </td>
                                                     <td>
-                                                        <select class="form-control" id="paymentfrequency" runat="server" style="width: 170px;margin-top:10px;" onchange="functionpayemtfrequency(this)" tabindex="39">
+                                                        <select class="form-control" id="paymentfrequency" runat="server" style="width: 170px; margin-top: 10px;" onchange="functionpayemtfrequency(this)" tabindex="39">
                                                             <option value="1">Annual</option>
                                                             <option value="2">Semi-Annual</option>
                                                             <option value="3">Tri-Annual</option>
@@ -7411,7 +7628,7 @@
                                                             <b style="white-space: nowrap" class="CheckBold">Tax Bill:</b>
                                                         </td>
                                                         <td>
-                                                            <input type="text" id="ddlmanutaxbill" runat="server" class="form-control" style="width: 166px;margin-bottom:5px;" autocomplete="off" tabindex="89" />
+                                                            <input type="text" id="ddlmanutaxbill" runat="server" class="form-control" style="width: 166px; margin-bottom: 5px;" autocomplete="off" tabindex="89" />
                                                             <%--  <select class="form-control" id="ddlmanutaxbill" runat="server" style="width: 170px; margin-bottom: 5px;" tabindex="89">
                                                                 <option value="0">Select Bill</option>
                                                                 <option value="1">Current</option>
@@ -7708,7 +7925,7 @@
                                         <td>
                                             <%--<asp:TextBox ID="txtdelitzip" runat="server" Style="margin-bottom: 5px;" class="form-control" placeholder="Zip" autocomplete='nope' onchange="return functionDelinquent()">
                                             </asp:TextBox>--%>
-                                            <asp:TextBox ID="txtdelitzip" runat="server" class="form-control" placeholder="Zip Code" onkeypress="return isNumberKey(event)" autocomplete='off' MaxLength="5" style="margin-bottom:5px;"></asp:TextBox>
+                                            <asp:TextBox ID="txtdelitzip" runat="server" class="form-control" placeholder="Zip Code" onkeypress="return isNumberKey(event)" autocomplete='off' MaxLength="5" style="margin-bottom:5px;" onchange="return functionDelinquent();" onblur="IsValidLengthZip(this.value,this,event);"></asp:TextBox>
                                         </td>
                                         <td style="padding-left: 31px;">
                                             <label class="CheckBold" id="lblbaseamntdue">Base Amount Due:</label>
@@ -8053,7 +8270,7 @@
                                         </td>
                                         <td>
                                             <%-- <asp:TextBox ID="txtInstallRemain" runat="server" class="form-control" placeholder="Inst Remaining" Style="margin-bottom: 5px;" onkeyup="SpeAmount1();" onfocusout="SpemyFunctionAmount1();if (this.value=='0.00') this.value='0.00';if (this.value=='') this.value='0.00';" onfocus="this.value='0.00'" onfocusin="if (this.value=='0.00') this.value='';" onblur="mySpe();" autocomplete='off'></asp:TextBox>--%>
-                                            <asp:TextBox ID="txtInstallRemain" runat="server" class="form-control" placeholder="Inst Remaining" onkeypress="return isNumberKey(event)" autocomplete='off' onchange="return functionSpecial()" style="margin-bottom:5px;"></asp:TextBox>
+                                            <asp:TextBox ID="txtInstallRemain" runat="server" class="form-control" placeholder="Inst Remaining" onkeypress="return isNumberKey(event)" autocomplete='off' onchange="return functionSpecial()" Style="margin-bottom: 5px;"></asp:TextBox>
                                         </td>
                                         <td style="padding-left: 31px;"><b class="CheckBold">Due Date:</b></td>
                                         <td>
