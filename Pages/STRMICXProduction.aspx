@@ -1162,15 +1162,84 @@
             }
         }
 
+        //balaji
         function completeorder() {
             var comerror;
             comerror = document.getElementById("ddlstatus").value;
-          
+
             if (comerror == '--Select--' || comerror == undefined) {
                 alert("Please choose any of the status");
                 return false;
             }
+
+            
+            var delistatus = document.getElementById("txtdeliquent").value;
+            var delirows = gvDeliquentStatus.rows;
+
+            if (delistatus == "Yes") {
+                if (delirows.length == 1) {
+                    document.getElementById('txtdeliPayee').focus();
+                    alert("Deliquent Status is required");
+                    return false;
+                }
+            }
+
+            if (delistatus == "Select") {
+                alert("Please Choose Any One Option in Deliquency");
+                return false;
+            }
+
+            var exestatus = document.getElementById("txtexemption").value;
+            var exerows = gvExemption.rows;
+
+
+            if (exestatus == "Yes") {
+                if (exerows.length == 1) {
+                    document.getElementById('txtexetype').focus();
+                    alert("Exemption Status is required");
+                    return false;
+                }
+            }
+
+            if (exestatus == "Select") {
+                alert("Please Choose Any One Option in Exemption");
+                return false;
+            }
+
+            var specialstatus = document.getElementById("SecialAssmnt").value;
+            var specrows = gvSpecial.rows;
+
+            if (specialstatus == "Yes") {
+                if (specrows.length == 1) {
+                    document.getElementById('txtInstallRemain').focus();
+                    alert("Special Assessment is required");
+                    return false;
+                }
+            }
+
+            if (specialstatus == "Select") {
+                alert("Please Choose Any One Option in Special Assessment");
+                return false;
+            }
+
+            var priordeli = document.getElementById("pastDeliquent").value;
+            var priorrows = GrdPriordelinquent.rows;
+
+
+            if (priordeli == "Yes") {
+                if (priorrows.length == 1) {
+                    document.getElementById('txtpriodeli').focus();
+                    alert("Prior Delinquent is required");
+                    return false;
+                }
+            }
+
+            if (priordeli == "Select") {
+                alert("Please Choose Any One Option in Prior Delinquent");
+                return false;
+            }
         }
+
 
         function editfunction() {
             document.getElementById("date1").disabled = false;
