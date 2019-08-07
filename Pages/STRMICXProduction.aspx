@@ -5055,7 +5055,9 @@
                 document.getElementById('txtpayoffgood').value = "";
                 alert("Date should be greater than current date");
                 return true;
-                document.getElementById("txtpayoffgood").focus();                
+                document.getElementById("txtpayoffgood").focus();
+                //pickeddate.value = '';
+                //return;
             }
         }
 
@@ -8982,7 +8984,7 @@
                                         <asp:GridView ID="GvAddNotes" runat="server" ShowHeaderWhenEmpty="true" AutoGenerateColumns="false"
                                             Width="98%" GridLines="None">
                                             <Columns>
-                                                <asp:BoundField ItemStyle-Width="30%" DataField="note" HeaderText="Note" />
+                                                <asp:BoundField ItemStyle-Width="35%" DataField="note" HeaderText="Note" />
                                                 <asp:BoundField ItemStyle-Width="30%" DataField="note_type" HeaderText="Note Type" />
                                                 <asp:BoundField ItemStyle-Width="30%" DataField="added" HeaderText="Added" />
                                                 <asp:BoundField ItemStyle-Width="30%" DataField="enterby" HeaderText="Entered By" />
