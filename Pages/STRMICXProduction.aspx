@@ -713,157 +713,184 @@
             }
             if (Ann == "Annual") {
                 if (Installmenterror1 == "") {
+                    document.getElementById("instdate1").focus();
                     alert("Installment Date1 should be required");
-                    return false;
+                    return false;                    
                 }
                 else if ((instamountnew1 == "")) {
-                    alert("Installmentamount Cannot Be Empty");
+                    document.getElementById("instamount1").focus();
+                    alert("Installment Amount Cannot Be Empty");
                     return false;
                 }          
                 else if (instamountpaidnew1 == "") {
-                    alert("Installmentamountpaid Cannot Be Empty");
+                    document.getElementById("instamountpaid1").focus();
+                    alert("Installmentamount Paid Cannot Be Empty");
                     return false;
                 }                
                 else if (instamountpaidnew1 == "0.00" && remainingbalancenew1 == "0.00" && exemptrelevynew1 == false) {
-                    alert("Installmentamountpaid and remainingbalance Cannot Be Zero");
+                    alert("Installmentamount Paid and remainingbalance Cannot Be Zero");
                     return false;
                 }
             }
 
             if (Semi == "Semi-Annual") {
                 if (Installmenterror1 == "") {
+                    document.getElementById("instdate1").focus();
                     alert("Installment1 Date1 should be required");
                     return false;
                 }
                 else if (Installmenterror2 == "") {
+                    document.getElementById("instdate2").focus();
                     alert("Installment2 Date2 should be required");
                     return false;
                 }
                 else if ((instamountnew1 == "")) {
-                    alert("Installmentamount Cannot Be Empty");
+                    document.getElementById("instamount1").focus();
+                    alert("Installment Amount Cannot Be Empty");
                     return false;
                 }
                 else if (instamountnew2 == "") {
-                    alert("Installmentamount Cannot Be Empty");
+                    document.getElementById("instamount2").focus();
+                    alert("Installment Amount Cannot Be Empty");
                     return false;
                 }
 
-                else if (instamountpaidnew1 == "" ) {
-                    alert("Installmentamountpaid Cannot Be Empty");
+                else if (instamountpaidnew1 == "") {
+                    document.getElementById("instamountpaid1").focus();
+                    alert("Installmentamount Paid Cannot Be Empty");
                     return false;
                 }
                 else if (instamountpaidnew2 == "") {
-                    alert("Installmentamountpaid Cannot Be Empty");
+                    document.getElementById("instamountpaid2").focus();
+                    alert("Installmentamount Paid Cannot Be Empty");
                     return false;
                 }
 
                 else if ((instamountpaidnew1 == "0.00" && remainingbalancenew1 == "0.00" && exemptrelevynew1 == false) || (instamountpaidnew2 == "0.00" && remainingbalancenew2 == "0.00" && exemptrelevynew2 == false)) {
-                    alert("Installmentamountpaid and remainingbalance Cannot Be Zero");
+                    alert("Installmentamount Paid and remainingbalance Cannot Be Zero");
                     return false;
                 }                
             }
 
             if (Tri == "Tri-Annual") {
                 if (Installmenterror1 == "") {
+                    document.getElementById("instdate1").focus();
                     alert("Installment Date1 should be required");
                     return false;
                 }
                 else if (Installmenterror2 == "") {
+                    document.getElementById("instdate2").focus();
                     alert("Installment Date2 should be required");
                     return false;
                 }
                 else if (Installmenterror3 == "") {
+                    document.getElementById("instdate3").focus();
                     alert("Installment Date3 should be required");
                     return false;
                 }
                 else if ((instamountnew1 == "")) {
-                    alert("Installmentamount Cannot Be Empty");
+                    document.getElementById("instamount1").focus();
+                    alert("Installment Amount Cannot Be Empty");
                     return false;
                 }
                 else if (instamountnew2 == "") {
-                    alert("Installmentamount Cannot Be Empty");
+                    document.getElementById("instamount2").focus();
+                    alert("Installment Amount Cannot Be Empty");
                     return false;
                 }
                 else if (instamountnew3 == "") {
-                    alert("Installmentamount Cannot Be Empty");
+                    document.getElementById("instamount3").focus();
+                    alert("Installment Amount Cannot Be Empty");
                     return false;
                 }
                 else if (instamountpaidnew1 == "") {
-                    alert("Installmentamountpaid Cannot Be Empty");
+                    document.getElementById("instamountpaid1").focus();
+                    alert("Installmentamount Paid Cannot Be Empty");
                     return false;
                 }
                 else if (instamountpaidnew2 == "") {
-                    alert("Installmentamountpaid Cannot Be Empty");
+                    document.getElementById("instamountpaid2").focus();
+                    alert("Installmentamount Paid Cannot Be Empty");
                     return false;
                 }
                 else if (instamountpaidnew3 == "") {
-                    alert("Installmentamountpaid Cannot Be Empty");
+                    document.getElementById("instamountpaid3").focus();
+                    alert("Installmentamount Paid Cannot Be Empty");
                     return false;
                 }
                 else if ((instamountpaidnew1 == "0.00" && remainingbalancenew1 == "0.00" && exemptrelevynew1 == false) || (instamountpaidnew2 == "0.00" && remainingbalancenew2 == "0.00" && exemptrelevynew2 == false) || (instamountpaidnew3 == "0.00" && remainingbalancenew3 == "0.00" && exemptrelevynew3 == false)) {
-                    alert("Installmentamountpaid and remainingbalance Cannot Be Zero");
+                    alert("Installmentamount Paid and remainingbalance Cannot Be Zero");
                     return false;
                 }
             }
 
             if (Qua == "Quarterly") {
                 if (Installmenterror1 == "") {
+                    document.getElementById("instdate1").focus();
                     alert("Installment Date1 should be required");
                     return false;
                 }
                 else if (Installmenterror2 == "") {
+                    document.getElementById("instdate2").focus();
                     alert("Installment Date2 should be required");
                     return false;
                 }
                 else if (Installmenterror3 == "") {
+                    document.getElementById("instdate3").focus();
                     alert("Installment Date3 should be required");
                     return false;
                 }
                 else if (Installmenterror4 == "") {
+                    document.getElementById("instdate4").focus();
                     alert("Installment Date4 should be required");
                     return false;
                 }
                 else if ((instamountnew1 == "")) {
-                    alert("Installmentamount Cannot Be Empty");
+                    document.getElementById("instamount1").focus();
+                    alert("Installment Amount Cannot Be Empty");
                     return false;
                 }
                 else if (instamountnew2 == "") {
-                    alert("Installmentamount Cannot Be Empty");
+                    document.getElementById("instamount2").focus();
+                    alert("Installment Amount Cannot Be Empty");
                     return false;
                 }
                 else if (instamountnew3 == "") {
-                    alert("Installmentamount Cannot Be Empty");
+                    document.getElementById("instamount3").focus();
+                    alert("Installment Amount Cannot Be Empty");
                     return false;
                 }
                 else if (instamountnew4 == "") {
-                    alert("Installmentamount Cannot Be Empty");
+                    document.getElementById("instamount4").focus();
+                    alert("Installment Amount Cannot Be Empty");
                     return false;
                 }
                 else if (instamountpaidnew1 == "") {
-                    alert("Installmentamountpaid Cannot Be Empty");
+                    document.getElementById("instamountpaid1").focus();
+                    alert("Installmentamount Paid Cannot Be Empty");
                     return false;
                 }
                 else if (instamountpaidnew2 == "") {
-                    alert("Installmentamountpaid Cannot Be Empty");
+                    document.getElementById("instamountpaid2").focus();
+                    alert("Installmentamount Paid Cannot Be Empty");
                     return false;
                 }
                 else if (instamountpaidnew3 == "") {
-                    alert("Installmentamountpaid Cannot Be Empty");
+                    document.getElementById("instamountpaid3").focus();
+                    alert("Installmentamount Paid Cannot Be Empty");
                     return false;
                 }
                 else if (instamountpaidnew4 == "") {
-                    alert("Installmentamountpaid Cannot Be Empty");
+                    document.getElementById("instamountpaid4").focus();
+                    alert("Installmentamount Paid Cannot Be Empty");
                     return false;
                 }
                 else if ((instamountpaidnew1 == "0.00" && remainingbalancenew1 == "0.00" && exemptrelevynew1 == false) || (instamountpaidnew2 == "0.00" && remainingbalancenew2 == "0.00" && exemptrelevynew2 == false) || (instamountpaidnew3 == "0.00" && remainingbalancenew3 == "0.00" && exemptrelevynew3 == false) || (instamountpaidnew4 == "0.00" && remainingbalancenew4 == "0.00" && exemptrelevynew4 == false)) {
-                    alert("Installmentamountpaid and remainingbalance Cannot Be Zero");
+                    alert("Installmentamount Paid and remainingbalance Cannot Be Zero");
                     return false;
                 }
             }
-
-
-                   
-
+                 
             if (Insterror == "") {
                 document.getElementById('nextbilldate1').style.borderColor = "#ff0000";
                 document.getElementById("lblnextbilldate1").style.color = "#ff0000";
@@ -886,12 +913,242 @@
         }
 
         function functionfutinst() {
-            var Instfuterror;
-            Instfuterror = document.getElementById("txtmanunextbilldate1").value;
+            var Instfuterror, Instfuterror1;
+            Instfuterror = document.getElementById("txtmanubillstartdate").value;
+            Instfuterror1 = document.getElementById("txtmanubillenddate").value;
+
+            var Installmenterror1 = document.getElementById("txtmaninstdate1").value;
+            var Installmenterror2 = document.getElementById("txtmaninstdate2").value;
+            var Installmenterror3 = document.getElementById("txtmaninstdate3").value;
+            var Installmenterror4 = document.getElementById("txtmaninstdate4").value;
+
+            var instamountpaidnew1 = document.getElementById("instmanamtpaid1").value;
+            var remainingbalancenew1 = document.getElementById("txtmanurembal1").value;
+            var exemptrelevynew1 = document.getElementById("chkexrelmanu1").checked;
+
+            var instamountpaidnew2 = document.getElementById("instmanamtpaid2").value;
+            var remainingbalancenew2 = document.getElementById("txtmanurembal2").value;
+            var exemptrelevynew2 = document.getElementById("chkexrelmanu2").checked;
+
+            var instamountpaidnew3 = document.getElementById("instmanamtpaid3").value;
+            var remainingbalancenew3 = document.getElementById("txtmanurembal3").value;
+            var exemptrelevynew3 = document.getElementById("chkexrelmanu3").checked;
+
+            var instamountpaidnew4 = document.getElementById("instmanamtpaid4").value;
+            var remainingbalancenew4 = document.getElementById("txtmanurembal4").value;
+            var exemptrelevynew4 = document.getElementById("chkexrelmanu4").checked;
+
+            var instamountnew1 = document.getElementById("instmanamount1").value;
+            var instamountnew2 = document.getElementById("instmanamount2").value;
+            var instamountnew3 = document.getElementById("instmanamount3").value;
+            var instamountnew4 = document.getElementById("instmanamount4").value;
+
+            var payfre = document.getElementById("paymentfrequency").value;
+
+            var Ann = "", Semi = "", Tri = "", Qua = "";
+            if (payfre == "1") {
+                Ann = "Annual";
+            }
+            if (payfre == "2") {
+                Semi = "Semi-Annual";
+            }
+            if (payfre == "4") {
+                Qua = "Quarterly";
+            }
+            if (payfre == "3") {
+                Tri = "Tri-Annual";
+            }
+            if (Ann == "Annual") {
+                if (Installmenterror1 == "") {
+                    document.getElementById("txtmaninstdate1").focus();
+                    alert("Installment Date1 should be required");
+                    return false;
+                }
+                else if ((instamountnew1 == "")) {
+                    document.getElementById("instmanamount1").focus();
+                    alert("Installment Amount Cannot Be Empty");
+                    return false;
+                }
+                else if (instamountpaidnew1 == "") {
+                    document.getElementById("instmanamtpaid1").focus();
+                    alert("Installmentamount Paid Cannot Be Empty");
+                    return false;
+                }
+                else if (instamountpaidnew1 == "0.00" && remainingbalancenew1 == "0.00" && exemptrelevynew1 == false) {
+                    alert("Installmentamount Paid and remainingbalance Cannot Be Zero");
+                    return false;
+                }
+            }
+
+            if (Semi == "Semi-Annual") {
+                if (Installmenterror1 == "") {
+                    document.getElementById("txtmaninstdate1").focus();
+                    alert("Installment1 Date1 should be required");
+                    return false;
+                }
+                else if (Installmenterror2 == "") {
+                    document.getElementById("txtmaninstdate2").focus();
+                    alert("Installment2 Date2 should be required");
+                    return false;
+                }
+                else if ((instamountnew1 == "")) {
+                    document.getElementById("instmanamount1").focus();
+                    alert("Installment Amount Cannot Be Empty");
+                    return false;
+                }
+                else if (instamountnew2 == "") {
+                    document.getElementById("instmanamount2").focus();
+                    alert("Installment Amount Cannot Be Empty");
+                    return false;
+                }
+
+                else if (instamountpaidnew1 == "") {
+                    document.getElementById("instmanamtpaid1").focus();
+                    alert("Installmentamount Paid Cannot Be Empty");
+                    return false;
+                }
+                else if (instamountpaidnew2 == "") {
+                    document.getElementById("instmanamtpaid2").focus();
+                    alert("Installmentamount Paid Cannot Be Empty");
+                    return false;
+                }
+
+                else if ((instamountpaidnew1 == "0.00" && remainingbalancenew1 == "0.00" && exemptrelevynew1 == false) || (instamountpaidnew2 == "0.00" && remainingbalancenew2 == "0.00" && exemptrelevynew2 == false)) {
+                    alert("Installmentamount Paid and remainingbalance Cannot Be Zero");
+                    return false;
+                }
+            }
+
+            if (Tri == "Tri-Annual") {
+                if (Installmenterror1 == "") {
+                    document.getElementById("txtmaninstdate1").focus();
+                    alert("Installment Date1 should be required");
+                    return false;
+                }
+                else if (Installmenterror2 == "") {
+                    document.getElementById("txtmaninstdate2").focus();
+                    alert("Installment Date2 should be required");
+                    return false;
+                }
+                else if (Installmenterror3 == "") {
+                    document.getElementById("txtmaninstdate3").focus();
+                    alert("Installment Date3 should be required");
+                    return false;
+                }
+                else if ((instamountnew1 == "")) {
+                    document.getElementById("instmanamount1").focus();
+                    alert("Installment Amount Cannot Be Empty");
+                    return false;
+                }
+                else if (instamountnew2 == "") {
+                    document.getElementById("instmanamount2").focus();
+                    alert("Installment Amount Cannot Be Empty");
+                    return false;
+                }
+                else if (instamountnew3 == "") {
+                    document.getElementById("instmanamount3").focus();
+                    alert("Installment Amount Cannot Be Empty");
+                    return false;
+                }
+                else if (instamountpaidnew1 == "") {
+                    document.getElementById("instmanamtpaid1").focus();
+                    alert("Installmentamount Paid Cannot Be Empty");
+                    return false;
+                }
+                else if (instamountpaidnew2 == "") {
+                    document.getElementById("instmanamtpaid2").focus();
+                    alert("Installmentamount Paid Cannot Be Empty");
+                    return false;
+                }
+                else if (instamountpaidnew3 == "") {
+                    document.getElementById("instmanamtpaid3").focus();
+                    alert("Installmentamount Paid Cannot Be Empty");
+                    return false;
+                }
+                else if ((instamountpaidnew1 == "0.00" && remainingbalancenew1 == "0.00" && exemptrelevynew1 == false) || (instamountpaidnew2 == "0.00" && remainingbalancenew2 == "0.00" && exemptrelevynew2 == false) || (instamountpaidnew3 == "0.00" && remainingbalancenew3 == "0.00" && exemptrelevynew3 == false)) {
+                    alert("Installmentamount Paid and remainingbalance Cannot Be Zero");
+                    return false;
+                }
+            }
+
+            if (Qua == "Quarterly") {
+                if (Installmenterror1 == "") {
+                    document.getElementById("txtmaninstdate1").focus();
+                    alert("Installment Date1 should be required");
+                    return false;
+                }
+                else if (Installmenterror2 == "") {
+                    document.getElementById("txtmaninstdate2").focus();
+                    alert("Installment Date2 should be required");
+                    return false;
+                }
+                else if (Installmenterror3 == "") {
+                    document.getElementById("txtmaninstdate3").focus();
+                    alert("Installment Date3 should be required");
+                    return false;
+                }
+                else if (Installmenterror4 == "") {
+                    document.getElementById("txtmaninstdate4").focus();
+                    alert("Installment Date4 should be required");
+                    return false;
+                }
+                else if ((instamountnew1 == "")) {
+                    document.getElementById("instmanamount1").focus();
+                    alert("Installment Amount Cannot Be Empty");
+                    return false;
+                }
+                else if (instamountnew2 == "") {
+                    document.getElementById("instmanamount2").focus();
+                    alert("Installment Amount Cannot Be Empty");
+                    return false;
+                }
+                else if (instamountnew3 == "") {
+                    document.getElementById("instmanamount3").focus();
+                    alert("Installment Amount Cannot Be Empty");
+                    return false;
+                }
+                else if (instamountnew4 == "") {
+                    document.getElementById("instmanamount4").focus();
+                    alert("Installment Amount Cannot Be Empty");
+                    return false;
+                }
+                else if (instamountpaidnew1 == "") {
+                    document.getElementById("instmanamtpaid1").focus();
+                    alert("Installmentamount Paid Cannot Be Empty");
+                    return false;
+                }
+                else if (instamountpaidnew2 == "") {
+                    document.getElementById("instmanamtpaid2").focus();
+                    alert("Installmentamount Paid Cannot Be Empty");
+                    return false;
+                }
+                else if (instamountpaidnew3 == "") {
+                    document.getElementById("instmanamtpaid3").focus();
+                    alert("Installmentamount Paid Cannot Be Empty");
+                    return false;
+                }
+                else if (instamountpaidnew4 == "") {
+                    document.getElementById("instmanamtpaid4").focus();
+                    alert("Installmentamount Paid Cannot Be Empty");
+                    return false;
+                }
+                else if ((instamountpaidnew1 == "0.00" && remainingbalancenew1 == "0.00" && exemptrelevynew1 == false) || (instamountpaidnew2 == "0.00" && remainingbalancenew2 == "0.00" && exemptrelevynew2 == false) || (instamountpaidnew3 == "0.00" && remainingbalancenew3 == "0.00" && exemptrelevynew3 == false) || (instamountpaidnew4 == "0.00" && remainingbalancenew4 == "0.00" && exemptrelevynew4 == false)) {
+                    alert("Installmentamount Paid and remaining Balance Cannot Be Zero");
+                    return false;
+                }
+            }
+
 
             if (Instfuterror == "") {
-                alert("Please enter Next Bill Date1");
+                document.getElementById("txtmanubillstartdate").focus();
+                alert("Please enter Billing Start Date...");
                 return false;
+            }
+
+            if (Instfuterror1 == "") {
+                document.getElementById("txtmanubillenddate").focus();
+                alert("Please enter Billing End Date...");
+                return false;                
             }
         }
 
@@ -4158,6 +4415,7 @@
         function checkDISDate1() {
             var errormsg = "Discount date must be less than 12 months from the installment date...";
             var errormsg1 = "Discount date must be before the delinquent date...";
+            var errormsg2 = "Discount date must be between the delinquent date and installment date...";
             var inst1 = document.getElementById("instdate1").value;
             var delinq1 = document.getElementById("delinq1").value;
             var disc1 = document.getElementById("discdate1").value;
@@ -4187,10 +4445,10 @@
                     return;
                 }
             }
-            if (disc1 > delinq1) {
+            if (disc1 == delinq1) {
                 document.getElementById('discdate1').value = "";
                 document.getElementById("discdate1").focus();
-                alert('Previous dates dosent allow...');
+                alert('Discount Date and Delinquent Date should not be same...');
                 return;
             }
         }
@@ -4227,10 +4485,10 @@
                     return;
                 }
             }
-            if (disc2 > delinq2) {
+            if (disc2 == delinq2) {
                 document.getElementById('discdate2').value = "";
                 document.getElementById("discdate2").focus();
-                alert('Previous dates dosent allow...');
+                alert('Discount Date and Delinquent Date should not be same...');
                 return;
             }
         }
@@ -4267,10 +4525,10 @@
                     return;
                 }
             }
-            if (disc3 > delinq3) {
+            if (disc3 == delinq3) {
                 document.getElementById('discdate3').value = "";
                 document.getElementById("discdate3").focus();
-                alert('Previous dates dosent allow...');
+                alert('Discount Date and Delinquent Date should not be same...');
                 return;
             }
         }
@@ -4307,10 +4565,10 @@
                     return;
                 }
             }
-            if (disc4 > delinq4) {
+            if (disc4 == delinq4) {
                 document.getElementById('discdate4').value = "";
                 document.getElementById("discdate4").focus();
-                alert('Previous dates dosent allow...');
+                alert('Discount Date and Delinquent Date should not be same...');
                 return;
             }
         }
@@ -4579,10 +4837,10 @@
                     return;
                 }
             }
-            if (futdisc1 > futdelinq1) {
+            if (futdisc1 == futdelinq1) {
                 document.getElementById('txtmandisdate1').value = "";
                 document.getElementById("txtmandisdate1").focus();
-                alert('Previous dates dosent allow...');
+                alert('Discount Date and Delinquent Date should not be same...');
                 return;
             }
         }
@@ -4619,10 +4877,10 @@
                     return;
                 }
             }
-            if (futdisc2 > futdelinq2) {
+            if (futdisc2 == futdelinq2) {
                 document.getElementById('txtmandisdate2').value = "";
                 document.getElementById("txtmandisdate2").focus();
-                alert('Previous dates dosent allow...');
+                alert('Discount Date and Delinquent Date should not be same...');
                 return;
             }
         }
@@ -4659,10 +4917,10 @@
                     return;
                 }
             }
-            if (futdisc3 > futdelinq3) {
+            if (futdisc3 == futdelinq3) {
                 document.getElementById('txtmandisdate3').value = "";
                 document.getElementById("txtmandisdate3").focus();
-                alert('Previous dates dosent allow...');
+                alert('Discount Date and Delinquent Date should not be same...');
                 return;
             }
         }
@@ -4699,10 +4957,10 @@
                     return;
                 }
             }
-            if (futdisc4 > futdelinq4) {
+            if (futdisc4 == futdelinq4) {
                 document.getElementById('txtmandisdate4').value = "";
                 document.getElementById("txtmandisdate4").focus();
-                alert('Previous dates dosent allow...');
+                alert('Discount Date and Delinquent Date should not be same...');
                 return;
             }
         }
@@ -4716,12 +4974,12 @@
                 return true;
             }
             else {
-                txtpayoffgood.txt = "";
                 document.getElementById('txtpayoffgood').style.borderColor = "#ff0000";
                 document.getElementById('lblpayoffgood').style.color = "#ff0000";
+                document.getElementById('txtpayoffgood').value = "";
                 alert("Date should be greater than current date");
-
                 return true;
+                document.getElementById("txtpayoffgood").focus();                
             }
         }
 
@@ -4748,17 +5006,53 @@
             }
 
             if (Date.parse(txtpayoffgood.value) <= Date.parse(today)) {
-
                 document.getElementById('txtinitialinstall').style.borderColor = "green";
-                document.getElementById('txtinitialinstall').style.color = "green";
+                document.getElementById('lblinitialinstall').style.color = "green";
+                return true;
+            }
+            else {                
+                document.getElementById('txtinitialinstall').style.borderColor = "#ff0000";
+                document.getElementById('lblinitialinstall').style.color = "#ff0000";
+                document.getElementById('txtinitialinstall').value = "";
+                document.getElementById("txtinitialinstall").focus();
+                alert("Future date not allowed..");
+                return true;
+            }
+        }
+
+        function dateValidateFutuetaxsale(txtpayoffgood) {
+
+
+            var today = new Date();
+            var dd = today.getDate();
+
+            var mm = today.getMonth() + 1;
+            var yyyy = today.getFullYear();
+            if (dd < 10) {
+                dd = '0' + dd;
+            }
+
+            if (mm < 10) {
+                mm = '0' + mm;
+            }
+
+            today = mm + '/' + dd + '/' + yyyy;
+
+            if (txtpayoffgood.value == "") {
+                return true;
+            }
+
+            if (Date.parse(txtpayoffgood.value) <= Date.parse(today)) {
+                document.getElementById('txtdatetaxsale').style.borderColor = "green";
+                document.getElementById('lbldatetaxsale').style.color = "green";
                 return true;
             }
             else {
-                document.getElementById('txtinitialinstall').value = "";
-                document.getElementById('txtinitialinstall').style.borderColor = "#ff0000";
-                document.getElementById('txtinitialinstall').style.color = "#ff0000";
+                document.getElementById('txtdatetaxsale').style.borderColor = "#ff0000";
+                document.getElementById('lbldatetaxsale').style.color = "#ff0000";
+                document.getElementById('txtdatetaxsale').value = "";
+                document.getElementById("txtdatetaxsale").focus();
                 alert("Future date not allowed..");
-
                 return true;
             }
         }
@@ -5070,6 +5364,30 @@
                     document.getElementById("txtEndYear").value = '';
                     document.getElementById("txtEndYear").focus();
                     alert("End Year should be 4 Numeric Characters");
+                    return;
+                }
+            }
+        }
+
+        function IsValidLengthState(year, element, ev) {
+            var id1 = year.length;
+            if (id1 != 0) {
+                if (id1 < 2) {
+                    document.getElementById("txtdelitState").value = '';
+                    document.getElementById("txtdelitState").focus();
+                    alert("State should be 2 Characters");
+                    return;
+                }
+            }
+        }
+
+        function IsValidLengthZip(year, element, ev) {
+            var id1 = year.length;
+            if (id1 != 0) {
+                if (id1 < 5) {
+                    document.getElementById("txtdelitzip").value = '';
+                    document.getElementById("txtdelitzip").focus();
+                    alert("Zip should be 5 Numeric Characters");
                     return;
                 }
             }
@@ -7694,7 +8012,7 @@
                                             </b>
                                         </td>
                                         <td>
-                                            <asp:TextBox ID="txtdelitState" runat="server" class="form-control" placeholder="State" autocomplete='off' onchange="return functionDelinquent()" onkeypress="return onlyAlphabets(event,this);">
+                                            <asp:TextBox ID="txtdelitState" runat="server" class="form-control" placeholder="State" autocomplete='off' onchange="return functionDelinquent()" onkeypress="return onlyAlphabets(event,this);" style="text-transform: uppercase" MaxLength="2" onblur="IsValidLengthState(this.value,this,event);">
                                             </asp:TextBox>
                                         </td>
                                     </tr>
@@ -7708,7 +8026,7 @@
                                         <td>
                                             <%--<asp:TextBox ID="txtdelitzip" runat="server" Style="margin-bottom: 5px;" class="form-control" placeholder="Zip" autocomplete='nope' onchange="return functionDelinquent()">
                                             </asp:TextBox>--%>
-                                            <asp:TextBox ID="txtdelitzip" runat="server" class="form-control" placeholder="Zip Code" onkeypress="return isNumberKey(event)" autocomplete='off' MaxLength="5" style="margin-bottom:5px;"></asp:TextBox>
+                                            <asp:TextBox ID="txtdelitzip" runat="server" class="form-control" placeholder="Zip Code" onkeypress="return isNumberKey(event)" autocomplete='off' MaxLength="5" style="margin-bottom:5px;" onchange="return functionDelinquent();" onblur="IsValidLengthZip(this.value,this,event);"></asp:TextBox>
                                         </td>
                                         <td style="padding-left: 31px;">
                                             <label class="CheckBold" id="lblbaseamntdue">Base Amount Due:</label>
@@ -7842,7 +8160,7 @@
                                             </b>
                                         </td>
                                         <td>
-                                            <asp:TextBox ID="txtdatetaxsale" runat="server" class="form-control" placeholder="MM/DD/YYYY" MaxLength="10" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="return checkDate(this,event)" autocomplete='off'>
+                                            <asp:TextBox ID="txtdatetaxsale" runat="server" class="form-control" placeholder="MM/DD/YYYY" MaxLength="10" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="return checkDate(this,event)" autocomplete='off' onchange="return functionDelinquent()" onfocusout="return dateValidateFutuetaxsale(this)">
                                             </asp:TextBox>
                                         </td>
                                         <td style="padding-left: 31px;">
@@ -7882,18 +8200,18 @@
                             EmptyDataRowStyle-HorizontalAlign="Center"
                             OnRowCancelingEdit="gvDeliquentStatus_RowCancelingEdit">
                             <Columns>
-                                <asp:BoundField ItemStyle-Width="50%" DataField="Id" HeaderText="Tax ID" ReadOnly="true" ItemStyle-CssClass="hiddencol" HeaderStyle-CssClass="hiddencol" />
-                                <asp:BoundField ItemStyle-Width="30%" DataField="payee" HeaderText="Payee Name" ReadOnly="true" />
-                                <asp:BoundField ItemStyle-Width="30%" DataField="address" HeaderText="Address" ReadOnly="true" />
-                                <asp:BoundField ItemStyle-Width="20%" DataField="city" HeaderText="City" ReadOnly="true" />
+                                <asp:BoundField ItemStyle-Width="50%" DataField="Id" HeaderText="Tax ID" ReadOnly="true" ItemStyle-CssClass="hiddencol" HeaderStyle-CssClass="hiddencol"/>
+                                <asp:BoundField ItemStyle-Width="30%" DataField="payee" HeaderText="Payee Name" ReadOnly="true" ItemStyle-CssClass="hiddencol" HeaderStyle-CssClass="hiddencol"/>
+                                <asp:BoundField ItemStyle-Width="30%" DataField="address" HeaderText="Address" ReadOnly="true" ItemStyle-CssClass="hiddencol" HeaderStyle-CssClass="hiddencol"/>
+                                <asp:BoundField ItemStyle-Width="20%" DataField="city" HeaderText="City" ReadOnly="true" ItemStyle-CssClass="hiddencol" HeaderStyle-CssClass="hiddencol"/>
                                 <asp:BoundField ItemStyle-Width="40%" DataField="state" HeaderText="State" ReadOnly="true" ItemStyle-CssClass="hiddencol" HeaderStyle-CssClass="hiddencol" />
                                 <asp:BoundField ItemStyle-Width="40%" DataField="zip" HeaderText="Zip Code" ReadOnly="true" ItemStyle-CssClass="hiddencol" HeaderStyle-CssClass="hiddencol" />
-                                <asp:BoundField ItemStyle-Width="40%" DataField="deliquenttaxyear" HeaderText="Tax Year" ReadOnly="true" ItemStyle-CssClass="hiddencol" HeaderStyle-CssClass="hiddencol" />
-                                <asp:BoundField ItemStyle-Width="40%" DataField="payoffamount" HeaderText="PayOff Amount" ReadOnly="true" ItemStyle-CssClass="hiddencol" HeaderStyle-CssClass="hiddencol" />
+                                <asp:BoundField ItemStyle-Width="30%" DataField="deliquenttaxyear" HeaderText="Delinquent Year" ReadOnly="true"/>
+                                <asp:BoundField ItemStyle-Width="30%" DataField="payoffamount" HeaderText="Pay-off Amount" ReadOnly="true"/>
                                 <asp:BoundField ItemStyle-Width="40%" DataField="comments" HeaderText="Comments" ReadOnly="true" ItemStyle-CssClass="hiddencol" HeaderStyle-CssClass="hiddencol" />
-                                <asp:BoundField ItemStyle-Width="40%" DataField="goodthuruDate" HeaderText="Good Throughdate" ReadOnly="true" ItemStyle-CssClass="hiddencol" HeaderStyle-CssClass="hiddencol" />
-                                <asp:BoundField ItemStyle-Width="40%" DataField="installmentduedate" HeaderText="Inst.Duedate" ReadOnly="true" ItemStyle-CssClass="hiddencol" HeaderStyle-CssClass="hiddencol" />
-                                <asp:BoundField ItemStyle-Width="40%" DataField="taxsalenotapplicable" HeaderText="TaxSale.NotApp" ReadOnly="true" ItemStyle-CssClass="hiddencol" HeaderStyle-CssClass="hiddencol" />
+                                <asp:BoundField ItemStyle-Width="40%" DataField="goodthuruDate" HeaderText="Good-thru Date" ReadOnly="true"/>
+                                <asp:BoundField ItemStyle-Width="30%" DataField="installmentduedate" HeaderText="Installment Date"/>
+                                <asp:BoundField ItemStyle-Width="30%" DataField="taxsalenotapplicable" HeaderText="TaxSale.NotApp" ReadOnly="true" ItemStyle-CssClass="hiddencol" HeaderStyle-CssClass="hiddencol" />
                                 <asp:BoundField ItemStyle-Width="40%" DataField="dateofTaxsale" HeaderText="DtOfTaxsale" ReadOnly="true" ItemStyle-CssClass="hiddencol" HeaderStyle-CssClass="hiddencol" />
                                 <asp:BoundField ItemStyle-Width="40%" DataField="lastdaytoredeem" HeaderText="LastDayRedeem" ReadOnly="true" ItemStyle-CssClass="hiddencol" HeaderStyle-CssClass="hiddencol" />
                                 <asp:TemplateField>
@@ -8113,7 +8431,8 @@
                             <Columns>
 
                                 <asp:BoundField ItemStyle-Width="50%" ItemStyle-ForeColor="Black" ItemStyle-Font-Bold="false" DataField="Id" HeaderText="Tax ID" ReadOnly="true" ItemStyle-CssClass="hiddencol" HeaderStyle-CssClass="hiddencol" />
-                                <asp:BoundField ItemStyle-Width="30%" ItemStyle-ForeColor="Black" ItemStyle-Font-Bold="false" DataField="description" HeaderText="Description" ReadOnly="true" />
+                                <asp:BoundField ItemStyle-Width="30%" ItemStyle-ForeColor="Black" ItemStyle-Font-Bold="false" DataField="description" HeaderText="Description" ReadOnly="true" ItemStyle-CssClass="hiddencol" HeaderStyle-CssClass="hiddencol"/>
+                                <asp:BoundField ItemStyle-Width="30%" ItemStyle-ForeColor="Black" ItemStyle-Font-Bold="false" DataField="InstallmentsRemaining" HeaderText="Installment Remaining" ReadOnly="true" />
                                 <asp:BoundField ItemStyle-Width="30%" ItemStyle-ForeColor="Black" ItemStyle-Font-Bold="false" DataField="specialassessmentno" HeaderText="Special Assessment No" ReadOnly="true" />
                                 <asp:BoundField ItemStyle-Width="20%" ItemStyle-ForeColor="Black" ItemStyle-Font-Bold="false" DataField="noofinstallment" HeaderText="No.Of.Installments" ReadOnly="true" />
                                 <asp:BoundField ItemStyle-Width="40%" ItemStyle-ForeColor="Black" ItemStyle-Font-Bold="false" DataField="installmentpaid" HeaderText="Installments Paid" ReadOnly="true" ItemStyle-CssClass="hiddencol" HeaderStyle-CssClass="hiddencol" />
