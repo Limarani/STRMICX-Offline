@@ -741,9 +741,23 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
 
                 if (lblclientName.Text == "ORMS")
                 {
+                    string prior;
                     Prior.Visible = true;
-                    pastDeliquent.Visible = true;
-                    pastDeliquent.Text = dtfetchauthority.Rows[0]["IsPastDelinquent"].ToString().Trim();
+                    pastDeliquent.Visible = true;                    
+                    prior = dtfetchauthority.Rows[0]["IsPastDelinquent"].ToString().Trim();
+
+                    if (prior == "")
+                    {
+                        pastDeliquent.SelectedIndex = 0;
+                    }
+                    else if (prior == "Yes")
+                    {
+                        pastDeliquent.SelectedIndex = 1;
+                    }
+                    else if (prior == "No")
+                    {
+                        pastDeliquent.SelectedIndex = 2;
+                    }
                 }
 
                 paymentfrequency.Value = dtfetchauthority.Rows[0]["TaxFrequency"].ToString().Trim();
