@@ -905,49 +905,14 @@
             }
         }
 
-        function completeorder() {           
+        function completeorder() {
             var comerror;
             comerror = document.getElementById("ddlstatus").value;
-
-            //var delistatus = document.getElementById("txtdeliquent").value;
-            //var specialstatus = document.getElementById("SecialAssmnt").value;
-            //var exestatus = document.getElementById("txtexemption").value;
-
-            //var delpayee = document.getElementById("txtdeliPayee").value;
-            //var speinstrem = document.getElementById("txtInstallRemain").value;
-            //var exetype = document.getElementById("txtexetype").value;
-            
-            
+          
             if (comerror == '--Select--' || comerror == undefined) {
                 alert("Please choose any of the status");
                 return false;
             }
-
-            //if (delistatus == "Yes") {
-            //    if (delpayee == "") {
-            //        document.getElementById('txtdeliPayee').focus();
-            //        alert("Deliquent Status is required");
-            //        return false;
-            //    }                
-            //}
-                        
-            //if (specialstatus == "Yes") {
-            //    if (speinstrem == "") {
-            //        document.getElementById('txtInstallRemain').focus();
-            //        alert("Special Assessment is required");
-            //        return false;
-            //    }
-            //}
-
-            //if (exestatus == "Yes") {
-            //    if (exetype == "Select") {
-            //        document.getElementById('txtexetype').focus();
-            //        alert("Exemption Status is required");
-            //        return false;
-            //    }
-            //}
-
-          
         }
 
         function editfunction() {
