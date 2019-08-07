@@ -906,6 +906,7 @@
         }
 
         function completeorder() {
+            debugger;
             var comerror;
             comerror = document.getElementById("ddlstatus").value;
 
@@ -916,6 +917,14 @@
             var delpayee = document.getElementById("txtdeliPayee").value;
             var speinstrem = document.getElementById("txtInstallRemain").value;
             var exetype = document.getElementById("txtexetype").value;
+
+
+
+            if (comerror == '--Select--' || comerror == undefined) {
+                alert("Please choose any of the status");
+                return false;
+            }
+
 
             //if (delistatus == "Yes") {
             //    if (delpayee == "") {
@@ -941,10 +950,7 @@
             //    }
             //}
 
-            if (comerror == '--Select--' || comerror == undefined) {
-                alert("Please choose any of the status");
-                return false;
-            }
+          
         }
 
         function editfunction() {

@@ -3559,6 +3559,11 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
                         Response.Redirect("STRMICXProduction.aspx?id=" + id);
                     }
                 }
+                else if (message == "Cannot Complete Order")
+                {
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "alertMessage", "alert('Cannot Complete Order')", true);
+                    return;
+                }
                 else
                 {
                     ScriptManager.RegisterStartupScript(this, this.GetType(), "alertMessage", "alert('Atleast One AgencyId is Required')", true);
