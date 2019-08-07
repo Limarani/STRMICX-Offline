@@ -1205,6 +1205,14 @@
                 return false;
             }
 
+            var primarystatus = document.getElementById("txtResidence").value;
+
+            if (primarystatus == "Select") {
+                alert("Please Choose Any One Option in primary residence");
+                return false;
+            }
+
+
             var specialstatus = document.getElementById("SecialAssmnt").value;
             var specrows = gvSpecial.rows;
 
