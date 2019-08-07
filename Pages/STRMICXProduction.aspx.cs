@@ -764,7 +764,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
 
 
 
-                string deli, exe, spec;
+                string deli, exe, spec, primaryresidence;
                 deli = dtfetchauthority.Rows[0]["IsDelinquent"].ToString().Trim();
                 if (deli == "")
                 {
@@ -807,8 +807,21 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
                     SecialAssmnt.SelectedIndex = 2;
                 }
 
+                primaryresidence = dtfetchauthority.Rows[0]["primaryresidence"].ToString().Trim();
+                if (primaryresidence == "")
+                {
+                    txtResidence.SelectedIndex = 0;
+                }
+                else if (primaryresidence == "Yes")
+                {
+                    txtResidence.SelectedIndex = 1;
+                }
+                else if (primaryresidence == "No")
+                {
+                    txtResidence.SelectedIndex = 2;
+                }
 
-
+                
                 DataTable dtsdeliquentinp = new DataTable();
                 DataTable dtsdeliquentoup = new DataTable();
                 DataTable dtsexemption = new DataTable();
