@@ -30,15 +30,31 @@ public class Validation
                 string txid = ds.Tables[0].Rows[i]["taxid"].ToString();
 
 
-                string query = "select count(agencyid) as op,authoritystatus from tbl_taxauthorities2 where orderno = '" + orderno + "' and taxid = '" + txid + "' and authoritystatus = '2'";                
+                string query = "select agencyid as op,authoritystatus from tbl_taxauthorities2 where orderno = '" + orderno + "' and taxid = '" + txid + "'";
                 DataSet opcou = dbconn.ExecuteQuery(query);
-                string output = opcou.Tables[0].Rows[0]["op"].ToString();
-                string aus = opcou.Tables[0].Rows[0]["authoritystatus"].ToString();             
 
-                if (output == "0")
+
+                if (opcou.Tables[0].Rows.Count > 0)
                 {
-                    result = "ParcelNumber: " + ds.Tables[0].Rows[i]["taxid"] + " must have one Agency";                    
-                }                
+                    for (int j = 0; j < opcou.Tables[0].Rows.Count; j++)
+                    {
+                        string output = opcou.Tables[0].Rows[j]["op"].ToString();
+                        string aus = opcou.Tables[0].Rows[j]["authoritystatus"].ToString();
+
+                        if (output == "")
+                        {
+                            result = "ParcelNumber: " + ds.Tables[0].Rows[i]["taxid"] + " must have one Agency";
+                        }
+                        else if (output != "" && aus == "")
+                        {
+                            result = "Cannot Complete Order";
+                        }
+                    }
+                } 
+                else
+                {
+                    result = result = "ParcelNumber: " + ds.Tables[0].Rows[i]["taxid"] + " must have one Agency";
+                }              
             }
         }
         else

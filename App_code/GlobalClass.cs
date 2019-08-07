@@ -1245,8 +1245,43 @@ public class GlobalClass : myConnection
         return con.ExecuteQuery(query, true, mParam);
     }
 
-    
-        
+
+    public DataSet Updatetaxauthorities(string query, string orderno, string taxid, string agencyid, string taxtype, string isdelinquent, string exemption, string specialassessment, string priordelinquent, string primaryresidence)
+    {
+        mParam = new MySqlParameter[9];
+
+        mParam[0] = new MySqlParameter("?$orderno", orderno);
+        mParam[0].MySqlDbType = MySqlDbType.VarChar;
+
+        mParam[1] = new MySqlParameter("?$taxid", taxid);
+        mParam[1].MySqlDbType = MySqlDbType.VarChar;
+
+        mParam[2] = new MySqlParameter("?$agencyid", agencyid);
+        mParam[2].MySqlDbType = MySqlDbType.VarChar;
+
+        mParam[3] = new MySqlParameter("?$taxtype", taxtype);
+        mParam[3].MySqlDbType = MySqlDbType.VarChar;
+
+        mParam[4] = new MySqlParameter("?$isdelinquent", isdelinquent);
+        mParam[4].MySqlDbType = MySqlDbType.VarChar;
+
+        mParam[5] = new MySqlParameter("?$exemption", exemption);
+        mParam[5].MySqlDbType = MySqlDbType.VarChar;
+
+        mParam[6] = new MySqlParameter("?$specialassessment", specialassessment);
+        mParam[6].MySqlDbType = MySqlDbType.VarChar;
+
+        mParam[7] = new MySqlParameter("?$priordelinquent", priordelinquent);
+        mParam[7].MySqlDbType = MySqlDbType.VarChar;
+
+        mParam[8] = new MySqlParameter("?$primaryresidence", primaryresidence);
+        mParam[8].MySqlDbType = MySqlDbType.VarChar;
+
+        return con.ExecuteQuery(query, true, mParam);
+    }
+
+
+
     public int MoveToCall(string query, string orderno, string township, string borrower, string ist, string pdate, string oStatus, string ordertype, string ist1, string zipcode, string encount, string processname)
     {
         mParam = new MySqlParameter[11];
