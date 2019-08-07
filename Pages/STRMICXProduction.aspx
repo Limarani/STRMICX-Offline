@@ -905,26 +905,23 @@
             }
         }
 
-        function completeorder() {
-            debugger;
+        function completeorder() {           
             var comerror;
             comerror = document.getElementById("ddlstatus").value;
 
-            var delistatus = document.getElementById("txtdeliquent").value;
-            var specialstatus = document.getElementById("SecialAssmnt").value;
-            var exestatus = document.getElementById("txtexemption").value;
+            //var delistatus = document.getElementById("txtdeliquent").value;
+            //var specialstatus = document.getElementById("SecialAssmnt").value;
+            //var exestatus = document.getElementById("txtexemption").value;
 
-            var delpayee = document.getElementById("txtdeliPayee").value;
-            var speinstrem = document.getElementById("txtInstallRemain").value;
-            var exetype = document.getElementById("txtexetype").value;
-
-
-
+            //var delpayee = document.getElementById("txtdeliPayee").value;
+            //var speinstrem = document.getElementById("txtInstallRemain").value;
+            //var exetype = document.getElementById("txtexetype").value;
+            
+            
             if (comerror == '--Select--' || comerror == undefined) {
                 alert("Please choose any of the status");
                 return false;
             }
-
 
             //if (delistatus == "Yes") {
             //    if (delpayee == "") {

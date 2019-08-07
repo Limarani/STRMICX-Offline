@@ -3561,7 +3561,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
                 }
                 else if (message == "Cannot Complete Order")
                 {
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "alertMessage", "alert('Cannot Complete Order')", true);
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "alertMessage", "alert('Please Complete The Mandatory Fields')", true);
                     return;
                 }
                 else
@@ -3600,6 +3600,11 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
                         Response.Redirect("STRMICXProduction.aspx?id=" + id);
                     }
                 }
+                else if (message == "Cannot Complete Order")
+                {
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "alertMessage", "alert('Please Complete The Mandatory Fields')", true);
+                    return;
+                }
                 else
                 {
                     ScriptManager.RegisterStartupScript(this, this.GetType(), "alertMessage", "alert('Atleast One AgencyId is Required')", true);
@@ -3611,13 +3616,11 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "alertMessage", "alert('Atleast One Tax Parcel is Required')", true);
                 return;
             }
-
             else
             {
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "alertMessage", "alert('Cannot Complete Order Details')", true);
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "alertMessage", "alert('Please Complete The Mandatory Fields')", true);
                 return;
             }
-            ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "txtexeSpecial();", true);
         }
 
         else if (OStatus == "In Process" && process == "KEY")
