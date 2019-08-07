@@ -916,6 +916,18 @@
             var Instfuterror, Instfuterror1;
             Instfuterror = document.getElementById("txtmanubillstartdate").value;
             Instfuterror1 = document.getElementById("txtmanubillenddate").value;
+            
+            if (Instfuterror == "") {
+                document.getElementById("txtmanubillstartdate").focus();
+                alert("Please enter Billing Start Date...");
+                return false;
+            }
+
+            if (Instfuterror1 == "") {
+                document.getElementById("txtmanubillenddate").focus();
+                alert("Please enter Billing End Date...");
+                return false;
+            }
 
             var Installmenterror1 = document.getElementById("txtmaninstdate1").value;
             var Installmenterror2 = document.getElementById("txtmaninstdate2").value;
@@ -1136,20 +1148,7 @@
                     alert("Installmentamount Paid and remaining Balance Cannot Be Zero");
                     return false;
                 }
-            }
-
-
-            if (Instfuterror == "") {
-                document.getElementById("txtmanubillstartdate").focus();
-                alert("Please enter Billing Start Date...");
-                return false;
-            }
-
-            if (Instfuterror1 == "") {
-                document.getElementById("txtmanubillenddate").focus();
-                alert("Please enter Billing End Date...");
-                return false;                
-            }
+            }            
         }
 
         function userValid() {
