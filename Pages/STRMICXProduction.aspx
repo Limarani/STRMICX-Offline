@@ -905,6 +905,7 @@
             }
         }
 
+        //balaji
         function completeorder() {
             var comerror;
             comerror = document.getElementById("ddlstatus").value;
