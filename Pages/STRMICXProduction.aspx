@@ -4246,6 +4246,7 @@
                 if (result != "") {
                     showError(node.value, result);
                     val.value = "";
+                    node.focus();
                 } // endif 
             } // endif 
 
@@ -4282,12 +4283,12 @@
                 alert('Delinquent date must be after the installment date...');
                 return;
             }
-            else if (delinq1 == inst1) {
-                document.getElementById('delinq1').value = "";
-                alert('Delinquent date and installment date should not be same...');
-                return;
-                document.getElementById("delinq1").focus();
-            }
+            //else if (delinq1 == inst1) {
+            //    document.getElementById('delinq1').value = "";
+            //    alert('Delinquent date and installment date should not be same...');
+            //    return;
+            //    document.getElementById("delinq1").focus();
+            //}
         }
 
         function checkINSTDEDate2() {
@@ -4316,12 +4317,12 @@
                 alert('Delinquent date must be after the installment date...');
                 return;
             }
-            else if (delinq2 == inst2) {
-                document.getElementById('delinq2').value = "";
-                alert('Delinquent date and installment date should not be same...');
-                return;
-                document.getElementById("delinq2").focus();
-            }
+            //else if (delinq2 == inst2) {
+            //    document.getElementById('delinq2').value = "";
+            //    alert('Delinquent date and installment date should not be same...');
+            //    return;
+            //    document.getElementById("delinq2").focus();
+            //}
         }
 
         function checkINSTDEDate3() {
@@ -4350,12 +4351,12 @@
                 alert('Delinquent date must be after the installment date...');
                 return;
             }
-            else if (delinq3 == inst3) {
-                document.getElementById('delinq1').value = "";
-                alert('Delinquent date and installment date should not be same...');
-                return;
-                document.getElementById("delinq3").focus();
-            }
+            //else if (delinq3 == inst3) {
+            //    document.getElementById('delinq1').value = "";
+            //    alert('Delinquent date and installment date should not be same...');
+            //    return;
+            //    document.getElementById("delinq3").focus();
+            //}
         }
 
         function checkINSTDEDate4() {
@@ -4384,12 +4385,12 @@
                 alert('Delinquent date must be after the installment date...');
                 return;
             }
-            else if (delinq4 == inst4) {
-                document.getElementById('delinq4').value = "";
-                alert('Delinquent date and installment date should not be same...');
-                return;
-                document.getElementById("delinq4").focus();
-            }
+            //else if (delinq4 == inst4) {
+            //    document.getElementById('delinq4').value = "";
+            //    alert('Delinquent date and installment date should not be same...');
+            //    return;
+            //    document.getElementById("delinq4").focus();
+            //}
         }
 
 
@@ -4521,12 +4522,6 @@
                     return;
                 }
             }
-            if (disc1 == delinq1) {
-                document.getElementById('discdate1').value = "";                
-                alert('Discount Date and Delinquent Date should not be same...');
-                return;
-                document.getElementById("discdate1").focus();
-            }
         }
 
         function checkDISDate2() {
@@ -4561,12 +4556,12 @@
                     return;
                 }
             }
-            if (disc2 == delinq2) {
-                document.getElementById('discdate2').value = "";                
-                alert('Discount Date and Delinquent Date should not be same...');
-                return;
-                document.getElementById("discdate2").focus();
-            }
+            //if (disc2 == delinq2) {
+            //    document.getElementById('discdate2').value = "";                
+            //    alert('Discount Date and Delinquent Date should not be same...');
+            //    return;
+            //    document.getElementById("discdate2").focus();
+            //}
         }
 
         function checkDISDate3() {
@@ -4601,12 +4596,12 @@
                     return;
                 }
             }
-            if (disc3 == delinq3) {
-                document.getElementById('discdate3').value = "";                
-                alert('Discount Date and Delinquent Date should not be same...');
-                return;
-                document.getElementById("discdate3").focus();
-            }
+            //if (disc3 == delinq3) {
+            //    document.getElementById('discdate3').value = "";                
+            //    alert('Discount Date and Delinquent Date should not be same...');
+            //    return;
+            //    document.getElementById("discdate3").focus();
+            //}
         }
 
         function checkDISDate4() {
@@ -4641,12 +4636,12 @@
                     return;
                 }
             }
-            if (disc4 == delinq4) {
-                document.getElementById('discdate4').value = "";                
-                alert('Discount Date and Delinquent Date should not be same...');
-                return;
-                document.getElementById("discdate4").focus();
-            }
+            //if (disc4 == delinq4) {
+            //    document.getElementById('discdate4').value = "";                
+            //    alert('Discount Date and Delinquent Date should not be same...');
+            //    return;
+            //    document.getElementById("discdate4").focus();
+            //}
         }
 
         //future tax
@@ -4676,12 +4671,12 @@
                 alert('Delinquent date must be after the installment date...');
                 return;
             }
-            else if (delinq1 == inst1) {
-                document.getElementById('txtmandeliqdate1').value = "";
-                alert('Delinquent date and installment date should not be same...');
-                return;
-                document.getElementById("txtmandeliqdate1").focus();
-            }
+            //else if (delinq1 == inst1) {
+            //    document.getElementById('txtmandeliqdate1').value = "";
+            //    alert('Delinquent date and installment date should not be same...');
+            //    return;
+            //    document.getElementById("txtmandeliqdate1").focus();
+            //}
         }
 
         function checkDate2() {
@@ -4710,12 +4705,12 @@
                 alert('Delinquent date must be after the installment date...');
                 return;
             }
-            else if (delinq2 == inst2) {
-                document.getElementById('txtmandeliqdate2').value = "";
-                alert('Delinquent date and installment date should not be same...');
-                return;
-                document.getElementById("txtmandeliqdate2").focus();
-            }
+            //else if (delinq2 == inst2) {
+            //    document.getElementById('txtmandeliqdate2').value = "";
+            //    alert('Delinquent date and installment date should not be same...');
+            //    return;
+            //    document.getElementById("txtmandeliqdate2").focus();
+            //}
         }
 
         function checkDate3() {
@@ -4744,12 +4739,12 @@
                 alert('Delinquent date must be after the installment date...');
                 return;
             }
-            else if (delinq3 == inst3) {
-                document.getElementById('txtmandeliqdate3').value = "";
-                alert('Delinquent date and installment date should not be same...');
-                return;
-                document.getElementById("txtmandeliqdate3").focus();
-            }
+            //else if (delinq3 == inst3) {
+            //    document.getElementById('txtmandeliqdate3').value = "";
+            //    alert('Delinquent date and installment date should not be same...');
+            //    return;
+            //    document.getElementById("txtmandeliqdate3").focus();
+            //}
         }
 
         function checkDate4() {
@@ -4778,12 +4773,12 @@
                 alert('Delinquent date must be after the installment date...');
                 return;
             }
-            else if (delinq4 == inst4) {
-                document.getElementById('txtmandeliqdate4').value = "";
-                alert('Delinquent date and installment date should not be same...');
-                return;
-                document.getElementById("txtmandeliqdate4").focus();
-            }
+            //else if (delinq4 == inst4) {
+            //    document.getElementById('txtmandeliqdate4').value = "";
+            //    alert('Delinquent date and installment date should not be same...');
+            //    return;
+            //    document.getElementById("txtmandeliqdate4").focus();
+            //}
         }
 
 
@@ -4913,12 +4908,12 @@
                     return;
                 }
             }
-            if (futdisc1 == futdelinq1) {
-                document.getElementById('txtmandisdate1').value = "";                
-                alert('Discount Date and Delinquent Date should not be same...');
-                return;
-                document.getElementById("txtmandisdate1").focus();
-            }
+            //if (futdisc1 == futdelinq1) {
+            //    document.getElementById('txtmandisdate1').value = "";                
+            //    alert('Discount Date and Delinquent Date should not be same...');
+            //    return;
+            //    document.getElementById("txtmandisdate1").focus();
+            //}
         }
 
         function checkfutINSTDEDate2() {
@@ -4953,12 +4948,12 @@
                     return;
                 }
             }
-            if (futdisc2 == futdelinq2) {
-                document.getElementById('txtmandisdate2').value = "";                
-                alert('Discount Date and Delinquent Date should not be same...');
-                return;
-                document.getElementById("txtmandisdate2").focus();
-            }
+            //if (futdisc2 == futdelinq2) {
+            //    document.getElementById('txtmandisdate2').value = "";                
+            //    alert('Discount Date and Delinquent Date should not be same...');
+            //    return;
+            //    document.getElementById("txtmandisdate2").focus();
+            //}
         }
 
         function checkfutINSTDEDate3() {
@@ -4993,12 +4988,12 @@
                     return;
                 }
             }
-            if (futdisc3 == futdelinq3) {
-                document.getElementById('txtmandisdate3').value = "";                
-                alert('Discount Date and Delinquent Date should not be same...');
-                return;
-                document.getElementById("txtmandisdate3").focus();
-            }
+            //if (futdisc3 == futdelinq3) {
+            //    document.getElementById('txtmandisdate3').value = "";                
+            //    alert('Discount Date and Delinquent Date should not be same...');
+            //    return;
+            //    document.getElementById("txtmandisdate3").focus();
+            //}
         }
 
         function checkfutINSTDEDate4() {
@@ -5033,12 +5028,12 @@
                     return;
                 }
             }
-            if (futdisc4 == futdelinq4) {
-                document.getElementById('txtmandisdate4').value = "";
-                document.getElementById("txtmandisdate4").focus();
-                alert('Discount Date and Delinquent Date should not be same...');
-                return;
-            }
+            //if (futdisc4 == futdelinq4) {
+            //    document.getElementById('txtmandisdate4').value = "";
+            //    document.getElementById("txtmandisdate4").focus();
+            //    alert('Discount Date and Delinquent Date should not be same...');
+            //    return;
+            //}
         }
 
         function dateValidate(txtpayoffgood) {
