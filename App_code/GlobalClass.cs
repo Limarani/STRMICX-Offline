@@ -17275,9 +17275,9 @@ public class GlobalClass : myConnection
 
 
 
-    public int Insert_tax_authorities_paymentdetails(string orderno, string taxid, string agencyid, string taxtype, string instamount1, string instamount2, string instamount3, string instamount4, string instamountpaid1, string instamountpaid2, string instamountpaid3, string instamountpaid4, string instPaidDue1, string instPaidDue2, string instPaidDue3, string instPaidDue4, string remainingbalance1, string remainingbalance2, string remainingbalance3, string remainingbalance4, string installmentdate1, string installmentdate2, string installmentdate3, string installmentdate4, string delinquentdate1, string delinquentdate2, string delinquentdate3, string delinquentdate4, string discountamount1, string discountamount2, string discountamount3, string discountamount4, string discountdate1, string discountdate2, string discountdate3, string discountdate4, string exemptrelevy1, string exemptrelevy2, string exemptrelevy3, string exemptrelevy4, string taxbill, string paymentfrequency, string billingstartdate, string billingenddate, string installmentcomments, string taxauthorityname, string annualtaxamount, string taxauthoritystatus)
+    public int Insert_tax_authorities_paymentdetails(string orderno, string taxid, string agencyid, string taxtype, string instamount1, string instamount2, string instamount3, string instamount4, string instamountpaid1, string instamountpaid2, string instamountpaid3, string instamountpaid4, string instPaidDue1, string instPaidDue2, string instPaidDue3, string instPaidDue4, string remainingbalance1, string remainingbalance2, string remainingbalance3, string remainingbalance4, string installmentdate1, string installmentdate2, string installmentdate3, string installmentdate4, string delinquentdate1, string delinquentdate2, string delinquentdate3, string delinquentdate4, string discountamount1, string discountamount2, string discountamount3, string discountamount4, string discountdate1, string discountdate2, string discountdate3, string discountdate4, string exemptrelevy1, string exemptrelevy2, string exemptrelevy3, string exemptrelevy4, string taxbill, string paymentfrequency, string billingstartdate, string billingenddate, string installmentcomments, string taxauthorityname, string annualtaxamount, string taxauthoritystatus,string futuretax, string billperiodstartdate, string billperiodenddate)
     {
-        mParam = new MySqlParameter[48];
+        mParam = new MySqlParameter[51];
 
         mParam[0] = new MySqlParameter("$orderno", orderno);
         mParam[0].MySqlDbType = MySqlDbType.VarChar;
@@ -17423,6 +17423,15 @@ public class GlobalClass : myConnection
         mParam[47] = new MySqlParameter("$taxauthoritystatus", taxauthoritystatus);
         mParam[47].MySqlDbType = MySqlDbType.VarChar;
 
+        mParam[48] = new MySqlParameter("$futuretaxoption", futuretax);
+        mParam[48].MySqlDbType = MySqlDbType.VarChar;
+
+        mParam[49] = new MySqlParameter("$BillingPeriodStartDate", billingstartdate);
+        mParam[49].MySqlDbType = MySqlDbType.VarChar;
+
+        mParam[50] = new MySqlParameter("$BillingPeriodEndDate", billperiodenddate);
+        mParam[50].MySqlDbType = MySqlDbType.VarChar;
+
         return ExecuteSPNonQuery("Sp_Insert_Taxauthoritynew", true, mParam);
     }
 
@@ -17444,6 +17453,28 @@ public class GlobalClass : myConnection
         mDa.Fill(dt);
         return dt;
     }
+
+
+    public DataTable FetchTaxAuthorityDetailsFuture(string orderno, string taxid, string agencyid, string taxtype)
+    {
+        DataTable dt = new DataTable();
+        string query = "Sp_fetchall_installment_details_future";
+        mParam = new MySqlParameter[4];
+        mParam[0] = new MySqlParameter("?$orderno", orderno);
+        mParam[0].MySqlDbType = MySqlDbType.VarChar;
+        mParam[1] = new MySqlParameter("?$taxid", taxid);
+        mParam[1].MySqlDbType = MySqlDbType.VarChar;
+        mParam[2] = new MySqlParameter("?$agencyid", agencyid);
+        mParam[2].MySqlDbType = MySqlDbType.VarChar;
+        mParam[3] = new MySqlParameter("?$taxtype", taxtype);
+        mParam[3].MySqlDbType = MySqlDbType.VarChar;
+                
+        mDa = con.ExecuteSPAdapter(query, true, mParam);
+        mDa.Fill(dt);
+        return dt;
+    }
+
+
 
 
 
