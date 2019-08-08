@@ -107,6 +107,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
             fetchtaxparceldetails();
             Prior.Visible = false;
             deliexemspecial.Visible = false;
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "txtexeSpecial();", true);
         }
     }
 
@@ -1914,7 +1915,6 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
             if (insertspecial == 1)
             {
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "txtexeSpecial();", true);
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "alertMessage", "alert('Data Saved Successfully')", true);
 
                 string update = "";
                 update = "update tbl_taxauthorities2 set IsSpecial = '" + SecialAssmnt.Text + "' where Orderno = '" + lblord.Text + "' and TaxId = '" + LblTaxId1.Text + "' and AgencyId = '" + LblAgencyId1.Text + "' and TaxAgencyType = '" + txtTaxType.Text + "'";
@@ -2139,8 +2139,6 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
                 if (insertdelinquent == 1)
                 {
                     ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "txtexeSpecial();", true);
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "alertMessage", "alert('Data Saved Successfully')", true);
-
                     string update = "";
                     update = "update tbl_taxauthorities2 set IsDelinquent = '" + txtdeliquent.Text + "' where Orderno = '" + lblord.Text + "' and TaxId = '" + LblTaxId1.Text + "' and AgencyId = '" + LblAgencyId1.Text + "' and TaxAgencyType = '" + txtTaxType.Text + "'";
                     gl.ExecuteSPNonQuery(update);
@@ -3449,7 +3447,6 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
                 if (insertprior == 1)
                 {
                     ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "txtexeSpecial();", true);
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "alertMessage", "alert('Data Saved Successfully')", true);
                     string update = "";
                     update = "update tbl_taxauthorities2 set IsPastDelinquent = '" + pastDeliquent.Text + "' where Orderno = '" + lblord.Text + "' and TaxId = '" + LblTaxId1.Text + "' and AgencyId = '" + LblAgencyId1.Text + "'";
                     gl.ExecuteSPNonQuery(update);

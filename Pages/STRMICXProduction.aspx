@@ -146,8 +146,8 @@
             if (delinq2 == inst2) {
                 document.getElementById('delinq2').value = "";
                 document.getElementById("delinq2").focus();
-                alert('Delinquent date and installment date should not be same...');                
-                return;                
+                alert('Delinquent date and installment date should not be same...');
+                return;
             }
         }
 
@@ -155,11 +155,11 @@
             var inst3 = document.getElementById("instdate3").value;
             var delinq3 = document.getElementById("delinq3").value;
 
-             if (delinq3 == inst3) {
-                 document.getElementById('delinq3').value = "";
-                 document.getElementById("delinq3").focus();
+            if (delinq3 == inst3) {
+                document.getElementById('delinq3').value = "";
+                document.getElementById("delinq3").focus();
                 alert('Delinquent date and installment date should not be same...');
-                return;                
+                return;
             }
         }
 
@@ -171,7 +171,7 @@
                 document.getElementById('delinq4').value = "";
                 document.getElementById("delinq4").focus();
                 alert('Delinquent date and installment date should not be same...');
-                return;                
+                return;
             }
         }
 
@@ -230,7 +230,7 @@
                 document.getElementById('discdate1').value = "";
                 document.getElementById("discdate1").focus();
                 alert('Discount Date and Delinquent Date should not be same...');
-                return;                
+                return;
             }
         }
 
@@ -241,7 +241,7 @@
                 document.getElementById('discdate2').value = "";
                 document.getElementById("discdate2").focus();
                 alert('Discount Date and Delinquent Date should not be same...');
-                return;                
+                return;
             }
         }
 
@@ -252,7 +252,7 @@
                 document.getElementById('discdate3').value = "";
                 document.getElementById("discdate3").focus();
                 alert('Discount Date and Delinquent Date should not be same...');
-                return;               
+                return;
             }
         }
 
@@ -263,7 +263,7 @@
                 document.getElementById('discdate4').value = "";
                 document.getElementById("discdate4").focus();
                 alert('Discount Date and Delinquent Date should not be same...');
-                return;                
+                return;
             }
         }
 
@@ -274,7 +274,7 @@
                 document.getElementById('txtmandisdate1').value = "";
                 document.getElementById("txtmandisdate1").focus();
                 alert('Discount Date and Delinquent Date should not be same...');
-                return;                
+                return;
             }
         }
 
@@ -285,7 +285,7 @@
                 document.getElementById('txtmandisdate2').value = "";
                 document.getElementById("txtmandisdate2").focus();
                 alert('Discount Date and Delinquent Date should not be same...');
-                return;                
+                return;
             }
         }
 
@@ -296,7 +296,7 @@
                 document.getElementById('txtmandisdate3').value = "";
                 document.getElementById("txtmandisdate3").focus();
                 alert('Discount Date and Delinquent Date should not be same...');
-                return;               
+                return;
             }
         }
 
@@ -4493,7 +4493,7 @@
                 document.getElementById("delinq2").focus();
                 alert('Delinquent date must be after the installment date...');
                 return;
-            }            
+            }
         }
 
         function checkINSTDEDate3() {
@@ -4521,7 +4521,7 @@
                 document.getElementById("delinq3").focus();
                 alert('Delinquent date must be after the installment date...');
                 return;
-            }            
+            }
         }
 
         function checkINSTDEDate4() {
@@ -4549,7 +4549,7 @@
                 document.getElementById("delinq4").focus();
                 alert('Delinquent date must be after the installment date...');
                 return;
-            }            
+            }
         }
 
 
@@ -4680,7 +4680,7 @@
                     alert(errormsg);
                     return;
                 }
-            }           
+            }
         }
 
         function checkDISDate2() {
@@ -4714,7 +4714,7 @@
                     alert(errormsg);
                     return;
                 }
-            }            
+            }
         }
 
         function checkDISDate3() {
@@ -4748,7 +4748,7 @@
                     alert(errormsg);
                     return;
                 }
-            }            
+            }
         }
 
         function checkDISDate4() {
@@ -4782,7 +4782,7 @@
                     alert(errormsg);
                     return;
                 }
-            }            
+            }
         }
 
         //future tax
@@ -4811,7 +4811,7 @@
                 document.getElementById("txtmandeliqdate1").focus();
                 alert('Delinquent date must be after the installment date...');
                 return;
-            }            
+            }
         }
 
         function checkDate2() {
@@ -4839,7 +4839,7 @@
                 document.getElementById("txtmandeliqdate2").focus();
                 alert('Delinquent date must be after the installment date...');
                 return;
-            }            
+            }
         }
 
         function checkDate3() {
@@ -4867,7 +4867,7 @@
                 document.getElementById("txtmandeliqdate3").focus();
                 alert('Delinquent date must be after the installment date...');
                 return;
-            }            
+            }
         }
 
         function checkDate4() {
@@ -4895,7 +4895,7 @@
                 document.getElementById("txtmandeliqdate4").focus();
                 alert('Delinquent date must be after the installment date...');
                 return;
-            }           
+            }
         }
 
 
@@ -5024,7 +5024,7 @@
                     alert(errormsg);
                     return;
                 }
-            }            
+            }
         }
 
         function checkfutINSTDEDate2() {
@@ -5058,7 +5058,7 @@
                     alert(errormsg);
                     return;
                 }
-            }            
+            }
         }
 
         function checkfutINSTDEDate3() {
@@ -5092,7 +5092,7 @@
                     alert(errormsg);
                     return;
                 }
-            }           
+            }
         }
 
         function checkfutINSTDEDate4() {
@@ -5126,7 +5126,7 @@
                     alert(errormsg);
                     return;
                 }
-            }           
+            }
         }
 
         function dateValidate(txtpayoffgood) {
@@ -6565,17 +6565,16 @@
         <form id="myForm" name="myForm" style="margin-top: 1px;" runat="server">
             <asp:ScriptManager ID="ScriptManager1" runat="server" />
 
-            <table class="header" style="width: 1350px;">
+            <table class="header">
                 <tr style="width: 250px;">
                     <td style="color: red; font-weight: bold; width: 150px;">
                         <img src="../images/logo.png" style="width: 90px;" /></td>
 
-                    <td style="width: 460px;"></td>
-                    <td style="width: 100px;"></td>
-                    <td style="text-align: center; font-weight: bold; font-size: x-large; color: #ff8100d1;">
-                        <img src="../images/settings.jpg" style="width: 30px; margin-left: -110px;" />
+                    <td style="width: 490px;"></td>
+                    <td style="text-align: center; font-weight: bold; font-size: x-large; color: #280277;">
+                        <img src="../images/favicon-32x32.png" style="width: 30px;" />
                         &nbsp;&nbsp;&nbsp;&nbsp;  <b style="margin-left: -30px; white-space: nowrap;">STRMICX</b></td>
-                    <td style="width: 320px;">
+                    <td style="width: 415px;">
                         <div style="text-align: end; margin-top: -13px;">
                             <img src="../images/Prcess image.png" alt="image" style="width: 15px" />
                             <asp:Label ID="processtatus" runat="server" Style="color: black; font-weight: 500"></asp:Label>
@@ -6632,8 +6631,8 @@
             <br />
             <br />
             <div class="panel-group" id="accordion" style="margin-top: -35px; margin-left: 15px; margin-right: 15px;">
-                <div class="panel panel-default">
-                    <div class="panel-heading" data-toggle="collapse" data-target="#collapse1">
+                <div class="panel panel-default" style="border-color: #280277;">
+                    <div class="panel-heading" data-toggle="collapse" data-target="#collapse1" style="color: #FFFFFF; background-color: #280277; border-color: #280277">
                         <h4 class="panel-title">
                             <strong style="text-decoration: underline; cursor: pointer">Order Details Information</strong><i class="indicator glyphicon glyphicon-chevron-down pull-left"></i>
                         </h4>
@@ -6735,8 +6734,8 @@
 
                 <br />
 
-                <div class="panel panel-default">
-                    <div class="panel-heading" data-toggle="collapse" data-target="#collapse3">
+                <div class="panel panel-default" style="border-color: #280277;">
+                    <div class="panel-heading" data-toggle="collapse" data-target="#collapse3" style="color: #FFFFFF; background-color: #280277; border-color: #280277">
                         <h4 class="panel-title">
                             <strong style="cursor: pointer; text-decoration: underline;">Tax Parcels And Agencies</strong><i class="indicator glyphicon glyphicon-chevron-down pull-left"></i>
                         </h4>
@@ -6759,7 +6758,7 @@
                                                         <div class="select-editable">
                                                             <select runat="server" id="txtTaxNo" onchange="this.nextElementSibling.value=this.value" style="width: 225px; height: 27px; background-color: #d3d3d35c">
                                                             </select>
-                                                            <input type="text" runat="server" id="txtdrop" name="format" placeholder="Tax ID" value="--Select--" autocomplete="off" onchange="return TaxparcelFunction()" onkeyup="CheckFirstChar(event.keyCode, this);" onkeydown="return CheckFirstChar(event.keyCode, this);"/>
+                                                            <input type="text" runat="server" id="txtdrop" name="format" placeholder="Tax ID" value="--Select--" autocomplete="off" onchange="return TaxparcelFunction()" onkeyup="CheckFirstChar(event.keyCode, this);" onkeydown="return CheckFirstChar(event.keyCode, this);" />
                                                         </div>
                                                     </div>
                                                     <%--<cc1:ComboBox ID="txtTaxNo" runat="server" AutoCompleteMode="SuggestAppend"></cc1:ComboBox>--%>
@@ -6858,7 +6857,7 @@
                                                                     </asp:TemplateField>
                                                                 </Columns>
                                                                 <AlternatingRowStyle BackColor="#f3f2ea" />
-                                                                <HeaderStyle BackColor="#d9241b" ForeColor="white" />
+                                                                <HeaderStyle BackColor="#f94848" ForeColor="white" />
                                                             </asp:GridView>
                                                         </asp:Panel>
                                                     </ItemTemplate>
@@ -6900,7 +6899,7 @@
                                                     </ItemTemplate>
                                                 </asp:TemplateField>
                                             </Columns>
-                                            <HeaderStyle BackColor="#d9241b" ForeColor="white" />
+                                            <HeaderStyle BackColor="#f94848" ForeColor="white" />
                                         </asp:GridView>
                                     </asp:Panel>
                                 </div>
@@ -6911,9 +6910,9 @@
                 </div>
                 <br />
 
-                <asp:Panel ID="PnlTax" class="panel panel-default" runat="server" Visible="false">
+                <asp:Panel ID="PnlTax" class="panel panel-default" runat="server" Visible="false" Style="border-color: #280277;">
 
-                    <div class="panel-heading" data-toggle="collapse" data-target="#collapse4">
+                    <div class="panel-heading" data-toggle="collapse" data-target="#collapse4" style="color: #FFFFFF; background-color: #280277; border-color: #280277;">
                         <h4 class="panel-title">
                             <strong style="cursor: pointer; text-decoration: underline;">Tax Authorities</strong><i class="indicator glyphicon glyphicon-chevron-down pull-left"></i>
                         </h4>
@@ -7087,7 +7086,7 @@
                                                         </asp:BoundField>
                                                     </Columns>
                                                     <AlternatingRowStyle BackColor="#f3f2ea" />
-                                                    <HeaderStyle BackColor="#d9241b" ForeColor="white" />
+                                                    <HeaderStyle BackColor="#f94848" ForeColor="white" />
                                                     <EmptyDataTemplate>
                                                         <div style="color: red; font-weight: bold;" align="center">No records found.</div>
                                                     </EmptyDataTemplate>
@@ -7149,7 +7148,7 @@
                                         <br />
 
                                         <table class="table table-striped table-hover">
-                                            <thead style="background-color: #d9241b; color: #fff;">
+                                            <thead style="background-color: #f94848; color: #fff;">
                                                 <tr>
                                                     <th>Installment 1</th>
                                                     <th>Installment 2</th>
@@ -7418,25 +7417,25 @@
                                                     <td>
                                                         <div class="form-group" style="margin-bottom: 0px;">
                                                             <label style="text-align: right; clear: both; float: left; margin-right: 44px;" class="CheckBold">Discount Date:</label>
-                                                            <input type="text" id="discdate1" runat="server" class="form-control taxing" style="width: 150px;" placeholder="MM/DD/YYYY" maxlength="10" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="checkDISDate1(); return checkDate(this,event)" autocomplete="off" tabindex="8" onchange="discountdate1(this.value);"/>
+                                                            <input type="text" id="discdate1" runat="server" class="form-control taxing" style="width: 150px;" placeholder="MM/DD/YYYY" maxlength="10" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="checkDISDate1(); return checkDate(this,event)" autocomplete="off" tabindex="8" onchange="discountdate1(this.value);" />
                                                         </div>
                                                     </td>
                                                     <td>
                                                         <div class="form-group" style="margin-bottom: 0px;">
                                                             <label style="text-align: right; clear: both; float: left; margin-right: 44px;" class="CheckBold">Discount Date:</label>
-                                                            <input type="text" id="discdate2" runat="server" class="form-control taxing" style="width: 150px;" placeholder="MM/DD/YYYY" maxlength="10" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="checkDISDate2(); return checkDate(this,event)" autocomplete="off" tabindex="17" onchange="discountdate2(this.value);"/>
+                                                            <input type="text" id="discdate2" runat="server" class="form-control taxing" style="width: 150px;" placeholder="MM/DD/YYYY" maxlength="10" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="checkDISDate2(); return checkDate(this,event)" autocomplete="off" tabindex="17" onchange="discountdate2(this.value);" />
                                                         </div>
                                                     </td>
                                                     <td>
                                                         <div class="form-group" style="margin-bottom: 0px;">
                                                             <label style="text-align: right; clear: both; float: left; margin-right: 44px;" class="CheckBold">Discount Date:</label>
-                                                            <input type="text" id="discdate3" runat="server" class="form-control taxing" style="width: 150px;" placeholder="MM/DD/YYYY" maxlength="10" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="checkDISDate3(); return checkDate(this,event)" autocomplete="off" tabindex="25" onchange="discountdate3(this.value);"/>
+                                                            <input type="text" id="discdate3" runat="server" class="form-control taxing" style="width: 150px;" placeholder="MM/DD/YYYY" maxlength="10" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="checkDISDate3(); return checkDate(this,event)" autocomplete="off" tabindex="25" onchange="discountdate3(this.value);" />
                                                         </div>
                                                     </td>
                                                     <td>
                                                         <div class="form-group" style="margin-bottom: 0px;">
                                                             <label style="text-align: right; clear: both; float: left; margin-right: 44px;" class="CheckBold">Discount Date:</label>
-                                                            <input type="text" id="discdate4" runat="server" class="form-control taxing" style="width: 150px;" placeholder="MM/DD/YYYY" maxlength="10" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="checkDISDate4(); return checkDate(this,event)" autocomplete="off" tabindex="34" onchange="discountdate4(this.value);"/>
+                                                            <input type="text" id="discdate4" runat="server" class="form-control taxing" style="width: 150px;" placeholder="MM/DD/YYYY" maxlength="10" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="checkDISDate4(); return checkDate(this,event)" autocomplete="off" tabindex="34" onchange="discountdate4(this.value);" />
                                                         </div>
                                                     </td>
                                                 </tr>
@@ -7556,8 +7555,8 @@
                         </div>
                     </div>
                 </asp:Panel>
-                <br />
-                <asp:Panel ID="PnlTax1" class="panel panel-default" runat="server">
+
+                <asp:Panel ID="PnlTax1" class="panel panel-default" runat="server" Style="margin-top: 15px; border-color: #280277;">
                     <div id="collapsefut" style="margin-top: -3px;" class="panel-collapse collapse in">
 
                         <div class="panel-body" style="margin-top: -20px;">
@@ -7580,7 +7579,7 @@
                                             <br />
 
                                             <table class="table table-striped table-hover">
-                                                <thead style="background-color: #d9241b; color: #fff;">
+                                                <thead style="background-color: #f94848; color: #fff;">
                                                     <tr>
                                                         <th>Installment 1</th>
                                                         <th>Installment 2</th>
@@ -7792,25 +7791,25 @@
                                                         <td>
                                                             <div class="form-group" style="margin-bottom: 0px;">
                                                                 <label style="text-align: right; clear: both; float: left; margin-right: 29px;" class="CheckBold">Delinquent Date:</label>
-                                                                <input type="text" id="txtmandeliqdate1" runat="server" class="form-control taxing" style="width: 150px;" placeholder="MM/DD/YYYY" maxlength="10" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="checkDate1(); return checkDate(this,event);" autocomplete="off" tabindex="58" onchange="futuresamedate1(this.value);"/>
+                                                                <input type="text" id="txtmandeliqdate1" runat="server" class="form-control taxing" style="width: 150px;" placeholder="MM/DD/YYYY" maxlength="10" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="checkDate1(); return checkDate(this,event);" autocomplete="off" tabindex="58" onchange="futuresamedate1(this.value);" />
                                                             </div>
                                                         </td>
                                                         <td>
                                                             <div class="form-group" style="margin-bottom: 0px;">
                                                                 <label style="text-align: right; clear: both; float: left; margin-right: 29px;" class="CheckBold">Delinquent Date:</label>
-                                                                <input type="text" id="txtmandeliqdate2" runat="server" class="form-control taxing" style="width: 150px;" placeholder="MM/DD/YYYY" maxlength="10" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="checkDate2(); return checkDate(this,event)" autocomplete="off" tabindex="67" onchange="futuresamedate2(this.value);"/>
+                                                                <input type="text" id="txtmandeliqdate2" runat="server" class="form-control taxing" style="width: 150px;" placeholder="MM/DD/YYYY" maxlength="10" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="checkDate2(); return checkDate(this,event)" autocomplete="off" tabindex="67" onchange="futuresamedate2(this.value);" />
                                                             </div>
                                                         </td>
                                                         <td>
                                                             <div class="form-group" style="margin-bottom: 0px;">
                                                                 <label style="text-align: right; clear: both; float: left; margin-right: 29px;" class="CheckBold">Delinquent Date:</label>
-                                                                <input type="text" id="txtmandeliqdate3" runat="server" class="form-control taxing" style="width: 150px;" placeholder="MM/DD/YYYY" maxlength="10" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="checkDate3(); return checkDate(this,event)" autocomplete="off" tabindex="76" onchange="futuresamedate3(this.value);"/>
+                                                                <input type="text" id="txtmandeliqdate3" runat="server" class="form-control taxing" style="width: 150px;" placeholder="MM/DD/YYYY" maxlength="10" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="checkDate3(); return checkDate(this,event)" autocomplete="off" tabindex="76" onchange="futuresamedate3(this.value);" />
                                                             </div>
                                                         </td>
                                                         <td>
                                                             <div class="form-group" style="margin-bottom: 0px;">
                                                                 <label style="text-align: right; clear: both; float: left; margin-right: 29px;" class="CheckBold">Delinquent Date:</label>
-                                                                <input type="text" id="txtmandeliqdate4" runat="server" class="form-control taxing" style="width: 150px;" placeholder="MM/DD/YYYY" maxlength="10" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="checkDate4(); return checkDate(this,event)" autocomplete="off" tabindex="85" onchange="futuresamedate4(this.value);"/>
+                                                                <input type="text" id="txtmandeliqdate4" runat="server" class="form-control taxing" style="width: 150px;" placeholder="MM/DD/YYYY" maxlength="10" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="checkDate4(); return checkDate(this,event)" autocomplete="off" tabindex="85" onchange="futuresamedate4(this.value);" />
                                                             </div>
                                                         </td>
                                                     </tr>
@@ -7946,18 +7945,18 @@
                         </div>
                     </div>
                 </asp:Panel>
-                <br />
-                <asp:Panel ID="deliexemspecial" TabIndex="45" class="panel panel-default" runat="server">
-                    <div class="panel-heading" data-toggle="collapse" data-target="#collapse10">
+
+                <asp:Panel ID="deliexemspecial" TabIndex="45" class="panel panel-default" runat="server" Style="border-color: #280277; margin-top: 12px;">
+                    <div class="panel-heading" data-toggle="collapse" data-target="#collapse10" style="color: #FFFFFF; background-color: #280277; border-color: #280277;">
                         <h4 class="panel-title">
                             <i class="indicator glyphicon glyphicon-chevron-down pull-left"></i>
                             <strong style="float: left">
-                                <label class="colorbold" style="padding-left: 58px;"><b class="CheckBold">Tax Id:</b></label>
+                                <label class="colorbold" style="padding-left: 58px; color: #FFFFFF"><b class="CheckBold">Tax Id:</b></label>
                                 <asp:Label ID="LblTaxId1" runat="server" Style="font-size: 14px; margin-bottom: 10px; font-weight: bold" />
                             </strong>
                             <strong style="cursor: pointer; text-decoration: underline;">Delinquency and Exemption Status</strong>
                             <strong style="float: right">
-                                <label class="colorbold"><b class="CheckBold">Agency Id:</b></label>
+                                <label class="colorbold" style="color: #FFFFFF"><b class="CheckBold">Agency Id:</b></label>
                                 <asp:Label ID="LblAgencyId1" runat="server" Style="font-size: 14px; font-weight: bold; margin-right: 60px;" />
                             </strong>
                         </h4>
@@ -8022,8 +8021,8 @@
                         </div>
                     </div>
                 </asp:Panel>
-                <br />
 
+                <br />
                 <div class="modal fade" id="delinquentstatus" role="dialog">
                     <div class="modal-dialog">
                         <div class="modal-content" style="height: auto">
@@ -8131,10 +8130,10 @@
                         </div>
                     </div>
                 </div>
-                <br />
+
                 <%--Delinquent Status--%>
-                <asp:Panel ID="tblDeliquentStatus" TabIndex="46" class="panel panel-default" runat="server" Style="visibility: hidden; display: none;">
-                    <div class="panel-heading" data-toggle="collapse" data-target="#collapseDeliquent">
+                <asp:Panel ID="tblDeliquentStatus" TabIndex="46" class="panel panel-default" runat="server" Style="visibility: hidden; display: none; border-color: #280277;">
+                    <div class="panel-heading" data-toggle="collapse" data-target="#collapseDeliquent" style="color: #FFFFFF; background-color: #280277; border-color: #280277;">
                         <h4 class="panel-title">
                             <strong style="cursor: pointer; text-decoration: underline;">Delinquent Status</strong><i class="indicator glyphicon glyphicon-chevron-down pull-left"></i>
                         </h4>
@@ -8400,7 +8399,7 @@
                                 </asp:TemplateField>
                             </Columns>
                             <AlternatingRowStyle BackColor="#f3f2ea" />
-                            <HeaderStyle BackColor="#d9241b" ForeColor="white" />
+                            <HeaderStyle BackColor="#f94848" ForeColor="white" />
                             <EmptyDataTemplate>
                                 <div id="delirecord" style="color: red; font-weight: bold;" align="center">No records found.</div>
                             </EmptyDataTemplate>
@@ -8408,10 +8407,10 @@
                         <br />
                     </div>
                 </asp:Panel>
-                <br />
+
                 <%--Excemption Status--%>
-                <asp:Panel ID="tblExestatus" TabIndex="47" class="panel panel-default" runat="server" Style="visibility: hidden; display: none;">
-                    <div id="exefocus" class="panel-heading" data-toggle="collapse" data-target="#collapseExemption">
+                <asp:Panel ID="tblExestatus" TabIndex="47" class="panel panel-default" runat="server" Style="visibility: hidden; display: none; border-color: #280277; margin-top: 12px;">
+                    <div id="exefocus" class="panel-heading" data-toggle="collapse" data-target="#collapseExemption" style="color: #FFFFFF; background-color: #280277; border-color: #280277;">
                         <h4 class="panel-title">
                             <strong style="cursor: pointer; text-decoration: underline;">Exemption Status</strong><i class="indicator glyphicon glyphicon-chevron-down pull-left"></i>
                         </h4>
@@ -8483,7 +8482,7 @@
                                     </asp:TemplateField>
                                 </Columns>
                                 <AlternatingRowStyle BackColor="#f3f2ea" />
-                                <HeaderStyle BackColor="#d9241b" ForeColor="white" />
+                                <HeaderStyle BackColor="#f94848" ForeColor="white" />
                                 <EmptyDataTemplate>
                                     <div style="margin-left: 392px; color: red; font-weight: bold;" align="center">No records found.</div>
                                 </EmptyDataTemplate>
@@ -8491,10 +8490,10 @@
                         </div>
                     </div>
                 </asp:Panel>
-                <br />
+
                 <%--Special Assessment Status--%>
-                <asp:Panel ID="tblSpecialstatus" TabIndex="48" class="panel panel-default" runat="server" Style="visibility: hidden; display: none;">
-                    <div class="panel-heading" data-toggle="collapse" data-target="#collapseSpecial">
+                <asp:Panel ID="tblSpecialstatus" TabIndex="48" class="panel panel-default" runat="server" Style="visibility: hidden; display: none; border-color: #280277; margin-top: 12px;">
+                    <div class="panel-heading" data-toggle="collapse" data-target="#collapseSpecial" style="color: #FFFFFF; background-color: #280277; border-color: #280277;">
                         <h4 class="panel-title">
                             <strong style="cursor: pointer; text-decoration: underline;">Special Assessment</strong><i class="indicator glyphicon glyphicon-chevron-down pull-left"></i>
                         </h4>
@@ -8622,7 +8621,7 @@
                                 </asp:TemplateField>
                             </Columns>
                             <AlternatingRowStyle BackColor="#f3f2ea" />
-                            <HeaderStyle BackColor="#d9241b" ForeColor="white" />
+                            <HeaderStyle BackColor="#f94848" ForeColor="white" />
                             <EmptyDataTemplate>
                                 <div style="color: red; font-weight: bold;" align="center">No records found.</div>
                             </EmptyDataTemplate>
@@ -8630,9 +8629,9 @@
                         <br />
                     </div>
                 </asp:Panel>
-                <br />
-                <asp:Panel ID="tblPastDeliquent" TabIndex="49" class="panel panel-default" runat="server" Style="visibility: hidden; display: none;">
-                    <div class="panel-heading" data-toggle="collapse" data-target="#collapsePast">
+
+                <asp:Panel ID="tblPastDeliquent" TabIndex="49" class="panel panel-default" runat="server" Style="visibility: hidden; display: none; border-color: #280277; margin-top: 12px;">
+                    <div class="panel-heading" data-toggle="collapse" data-target="#collapsePast" style="color: #FFFFFF; background-color: #280277; border-color: #280277;">
                         <h4 class="panel-title">
                             <strong style="cursor: pointer; text-decoration: underline;">Prior Delinquent Tax</strong><i class="indicator glyphicon glyphicon-chevron-down pull-left"></i>
                         </h4>
@@ -8730,7 +8729,7 @@
                             </asp:TemplateField>
                         </Columns>
                         <AlternatingRowStyle BackColor="#f3f2ea" />
-                        <HeaderStyle BackColor="#d9241b" ForeColor="white" />
+                        <HeaderStyle BackColor="#f94848" ForeColor="white" />
                         <EmptyDataTemplate>
                             <div style="color: red; font-weight: bold;" align="center">No records found.</div>
                         </EmptyDataTemplate>
@@ -8796,7 +8795,6 @@
                         </div>
                     </div>
                 </div>
-
 
                 <div class="modal fade" role="dialog" id="AddNotes">
                     <div class="modal-dialog">
@@ -8872,7 +8870,7 @@
                                                                     </asp:TemplateField>
                                                                 </Columns>
                                                                 <AlternatingRowStyle BackColor="#f3f2ea" />
-                                                                <HeaderStyle BackColor="#d9241b" ForeColor="white" />
+                                                                <HeaderStyle BackColor="#f94848" ForeColor="white" />
                                                             </asp:GridView>
                                                         </div>
                                                     </div>
@@ -8981,69 +8979,9 @@
                         </div>
                     </div>
                 </div>
-                <br />
-                <div class="panel panel-default" tabindex="50">
-                    <div class="panel-heading" data-toggle="collapse" data-target="#collapse2">
-                        <h4 class="panel-title">
-                            <strong style="cursor: pointer; text-decoration: underline;">Tax Cert Info</strong><i class="indicator glyphicon glyphicon-chevron-down pull-left"></i>
-                        </h4>
-                    </div>
-                    <div id="collapse2" class="panel-collapse collapse in">
-                        <div class="panel-body">
-                            <table style="width: 1083px;">
-                                <tbody>
-                                    <tr>
-                                        <td class="colorbold">
-                                            <label for="txtdate1"><b class="CheckBold">Expected Date:</b></label>
-                                        </td>
-                                        <td style="width: 215px">
-                                            <input type="text" id="date1" name="txtdate1" runat="server" class="form-control" placeholder="MM/DD/YYYY" maxlength="10" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="return checkDate(this,event)" style="height: 35px; width: 160px; background-color: white;" autocomplete="off" />
-                                        </td>
-                                        <td class="colorbold">
-                                            <label for="txtdate2"><b class="CheckBold">Followup Date:</b></label>
-                                        </td>
-                                        <td style="width: 190px">
-                                            <input runat="server" id="date2" name="txtdate2" class="form-control" placeholder="MM/DD/YYYY" maxlength="10" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="return checkDate(this,event)" style="height: 35px; width: 160px; background-color: white;" autocomplete="off" />
-                                        </td>
-                                        <td colspan="4">
-                                            <button type="button" id="btneditdates" runat="server" class="btn btn-success" onclick="editfunction()">Edit</button>
-                                            <button type="button" id="btnTaxOrderStatus" runat="server" class="btn btn-success" data-toggle="modal" data-target="#AddTaxStatus">Add Tax Status</button>
-                                            <button type="button" id="btnsavedates" runat="server" class="btn btn-success" style="visibility: hidden; display: none" onserverclick="btnEditDatesSave_Click">Save</button>
-                                            <button type="button" id="btncanceldates" runat="server" style="visibility: hidden; display: none" class="btn btn-success" onclick="Cancelfunction()">Cancel</button>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-
-                            <div id="TaxStatus" runat="server" style="height: auto; width: 100%; overflow: auto; margin-top: -15px;">
-                                <asp:Panel ID="PnlTaxStatus" runat="server">
-                                    <table class="table table-striped table-hover">
-                                        <thead style="background-color: #d9241b; color: #fff;">
-                                            <tr>
-                                                <asp:GridView ID="GvTaxStatus" runat="server" ShowHeaderWhenEmpty="true" AutoGenerateColumns="false"
-                                                    Width="100%" GridLines="None">
-                                                    <Columns>
-                                                        <asp:BoundField ItemStyle-Width="30%" DataField="orderstatus" HeaderText="Order Status" />
-                                                        <asp:BoundField ItemStyle-Width="30%" DataField="createddate" HeaderText="Created Date" />
-                                                        <asp:BoundField ItemStyle-Width="30%" DataField="comments" HeaderText="Comments" />
-                                                        <asp:BoundField ItemStyle-Width="30%" DataField="enteredby" HeaderText="Entered By" />
-                                                    </Columns>
-                                                    <AlternatingRowStyle BackColor="#f3f2ea" />
-                                                    <HeaderStyle BackColor="#d9241b" ForeColor="white" />
-                                                </asp:GridView>
-                                            </tr>
-                                        </thead>
-                                    </table>
-                                </asp:Panel>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <br />
-
                 <%--Add Notes--%>
-                <div class="panel panel-default" tabindex="51" style="width: 1322px;">
-                    <div class="panel-heading" data-toggle="collapse" data-target="#collapsenotes">
+                <div class="panel panel-default" tabindex="51" style="border-color: #280277; margin-top: 12px;">
+                    <div class="panel-heading" data-toggle="collapse" data-target="#collapsenotes" style="color: #FFFFFF; background-color: #280277; border-color: #280277;">
                         <h4 class="panel-title">
                             <strong style="cursor: pointer; text-decoration: underline;">Notes</strong><i class="indicator glyphicon glyphicon-chevron-down pull-left"></i>
                         </h4>
@@ -9060,65 +8998,123 @@
                                     </tr>
                                 </tbody>
                             </table>
+                            <div id="Addnotesdiv" runat="server" style="height: auto; width: 100%; overflow: auto; margin-top: -15px;">
+                                <asp:Panel ID="Panel2" runat="server">
+                                    <table class="table table-striped table-hover">
+                                        <thead style="background-color: #f94848; color: #fff;">
+                                            <tr>
+                                                <asp:GridView ID="GvAddNotes" runat="server" ShowHeaderWhenEmpty="true" AutoGenerateColumns="false"
+                                                    Width="98%" GridLines="None">
+                                                    <Columns>
+                                                        <asp:BoundField ItemStyle-Width="35%" DataField="note" HeaderText="Note" />
+                                                        <asp:BoundField ItemStyle-Width="30%" DataField="note_type" HeaderText="Note Type" />
+                                                        <asp:BoundField ItemStyle-Width="30%" DataField="added" HeaderText="Added" />
+                                                        <asp:BoundField ItemStyle-Width="30%" DataField="enterby" HeaderText="Entered By" />
+                                                    </Columns>
+                                                    <AlternatingRowStyle BackColor="#f3f2ea" />
+                                                    <HeaderStyle BackColor="#f94848" ForeColor="white" />
+                                                </asp:GridView>
+                                            </tr>
+                                        </thead>
+                                    </table>
+                                </asp:Panel>
+                            </div>
                         </div>
                     </div>
-                    <div id="Addnotesdiv" runat="server" style="height: auto; width: 100%; overflow: auto; margin-top: -15px;">
-                        <asp:Panel ID="Panel2" runat="server">
-                            <table class="table table-striped table-hover">
-                                <thead style="background-color: #d9241b; color: #fff;">
-                                    <tr>
-                                        <asp:GridView ID="GvAddNotes" runat="server" ShowHeaderWhenEmpty="true" AutoGenerateColumns="false"
-                                            Width="98%" GridLines="None">
-                                            <Columns>
-                                                <asp:BoundField ItemStyle-Width="35%" DataField="note" HeaderText="Note" />
-                                                <asp:BoundField ItemStyle-Width="30%" DataField="note_type" HeaderText="Note Type" />
-                                                <asp:BoundField ItemStyle-Width="30%" DataField="added" HeaderText="Added" />
-                                                <asp:BoundField ItemStyle-Width="30%" DataField="enterby" HeaderText="Entered By" />
-                                            </Columns>
-                                            <AlternatingRowStyle BackColor="#f3f2ea" />
-                                            <HeaderStyle BackColor="#d9241b" ForeColor="white" />
-                                        </asp:GridView>
-                                    </tr>
-                                </thead>
-                            </table>
-                        </asp:Panel>
-                    </div>
                     <br />
-                    <br />
-                    <div style="margin-left: 125px;">
-                        <table style="width: 995px;">
-                            <tr>
-                                <td>
-                                    <b class="CheckBold">Order Comments:</b>
-                                </td>
-                                <td>
-                                    <textarea runat="server" rows="2" id="txttotalcomments" class="form-control" style="resize: none" tabindex="51"></textarea>
-                                </td>
-                                <td></td>
-                                <td>&nbsp;</td>
-                                <td>
-                                    <b class="CheckBold">Status:</b>
-                                </td>
-                                <td>
-                                    <select class="form-control" id="ddlstatus" runat="server" style="width: 180px;" tabindex="52">
-                                        <option>--Select--</option>
-                                        <option>Completed</option>
-                                        <option>In Process</option>
-                                        <option>Mail Away</option>
-                                        <option>On Hold</option>
-                                        <option>Others</option>
-                                        <option>ParcelID</option>
-                                        <option>Rejected</option>
-                                    </select>
-                                </td>
-                                <td>
-                                    <asp:Button ID="btnsaverecordnew" class="btn btn-success" runat="server" Text="Complete" OnClick="btnsaverecordnew_Click" OnClientClick="return completeorder();" />
-                                </td>
-                            </tr>
-                        </table>
+                    <div class="panel panel-default" tabindex="50" style="border-color: #280277;">
+                        <div class="panel-heading" data-toggle="collapse" data-target="#collapse2" style="color: #FFFFFF; background-color: #280277; border-color: #280277;">
+                            <h4 class="panel-title">
+                                <strong style="cursor: pointer; text-decoration: underline;">Tax Cert Info</strong><i class="indicator glyphicon glyphicon-chevron-down pull-left"></i>
+                            </h4>
+                        </div>
+                        <div id="collapse2" class="panel-collapse collapse in">
+                            <div class="panel-body">
+                                <table style="width: 1083px;">
+                                    <tbody>
+                                        <tr>
+                                            <td class="colorbold">
+                                                <label for="txtdate1"><b class="CheckBold">Expected Date:</b></label>
+                                            </td>
+                                            <td style="width: 215px">
+                                                <input type="text" id="date1" name="txtdate1" runat="server" class="form-control" placeholder="MM/DD/YYYY" maxlength="10" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="return checkDate(this,event)" style="height: 35px; width: 160px; background-color: white;" autocomplete="off" />
+                                            </td>
+                                            <td class="colorbold">
+                                                <label for="txtdate2"><b class="CheckBold">Followup Date:</b></label>
+                                            </td>
+                                            <td style="width: 190px">
+                                                <input runat="server" id="date2" name="txtdate2" class="form-control" placeholder="MM/DD/YYYY" maxlength="10" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="return checkDate(this,event)" style="height: 35px; width: 160px; background-color: white;" autocomplete="off" />
+                                            </td>
+                                            <td colspan="4">
+                                                <button type="button" id="btneditdates" runat="server" class="btn btn-success" onclick="editfunction()">Edit</button>
+                                                <button type="button" id="btnTaxOrderStatus" runat="server" class="btn btn-success" data-toggle="modal" data-target="#AddTaxStatus">Add Tax Status</button>
+                                                <button type="button" id="btnsavedates" runat="server" class="btn btn-success" style="visibility: hidden; display: none" onserverclick="btnEditDatesSave_Click">Save</button>
+                                                <button type="button" id="btncanceldates" runat="server" style="visibility: hidden; display: none" class="btn btn-success" onclick="Cancelfunction()">Cancel</button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+                                <div id="TaxStatus" runat="server" style="height: auto; width: 100%; overflow: auto; margin-top: -15px;">
+                                    <asp:Panel ID="PnlTaxStatus" runat="server">
+                                        <table class="table table-striped table-hover">
+                                            <thead style="background-color: #f94848; color: #fff;">
+                                                <tr>
+                                                    <asp:GridView ID="GvTaxStatus" runat="server" ShowHeaderWhenEmpty="true" AutoGenerateColumns="false"
+                                                        Width="100%" GridLines="None">
+                                                        <Columns>
+                                                            <asp:BoundField ItemStyle-Width="30%" DataField="orderstatus" HeaderText="Order Status" />
+                                                            <asp:BoundField ItemStyle-Width="30%" DataField="createddate" HeaderText="Created Date" />
+                                                            <asp:BoundField ItemStyle-Width="30%" DataField="comments" HeaderText="Comments" />
+                                                            <asp:BoundField ItemStyle-Width="30%" DataField="enteredby" HeaderText="Entered By" />
+                                                        </Columns>
+                                                        <AlternatingRowStyle BackColor="#f3f2ea" />
+                                                        <HeaderStyle BackColor="#f94848" ForeColor="white" />
+                                                    </asp:GridView>
+                                                </tr>
+                                            </thead>
+                                        </table>
+                                    </asp:Panel>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <br />
                 </div>
+                <br />
+                <div style="margin-left: 275px;">
+                    <table style="width: 995px;">
+                        <tr>
+                            <td>
+                                <b class="CheckBold">Order Comments:</b>
+                            </td>
+                            <td>
+                                <textarea runat="server" rows="2" id="txttotalcomments" class="form-control" style="resize: none" tabindex="51"></textarea>
+                            </td>
+                            <td></td>
+                            <td>&nbsp;</td>
+                            <td>
+                                <b class="CheckBold">Status:</b>
+                            </td>
+                            <td>
+                                <select class="form-control" id="ddlstatus" runat="server" style="width: 180px;" tabindex="52">
+                                    <option>--Select--</option>
+                                    <option>Completed</option>
+                                    <option>In Process</option>
+                                    <option>Mail Away</option>
+                                    <option>On Hold</option>
+                                    <option>Others</option>
+                                    <option>ParcelID</option>
+                                    <option>Rejected</option>
+                                </select>
+                            </td>
+                            <td>
+                                <asp:Button ID="btnsaverecordnew" class="btn btn-success" runat="server" Text="Complete" OnClick="btnsaverecordnew_Click" OnClientClick="return completeorder();" />
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <br />
             </div>
         </form>
     </div>
