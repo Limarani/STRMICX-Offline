@@ -3654,6 +3654,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
                 else if (message == "Cannot Complete Order")
                 {
                     paymentfrequency.Value = taxfrequency;
+
                     ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "txtexeSpecial();", true);
                     ScriptManager.RegisterStartupScript(this, this.GetType(), "alertMessage", "alert('Please Complete The Mandatory Fields')", true);
                     return;
