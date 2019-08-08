@@ -30,7 +30,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
     string id = "";
     string s = "";
     string taxagencytype = "";
-    decimal Inst1, Inst2, Inst3, Inst4, Instoutput;
+    decimal Inst1, Inst2, Inst3, Inst4, Instoutput, Instoutputfuture;
     public bool chk = false;
     string TaxAuthorityName = "";
     protected void Page_Load(object sender, EventArgs e)
@@ -1239,7 +1239,69 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
     {
         btnsavetaxauthorities.Enabled = true;
         int insert = 0;
-        insert = gl.Insert_tax_authorities_paymentdetails(lblord.Text, LblTaxID.Text.ToString(), LblAgencyID.Text, txtTaxType.Text, instmanamount1.Value, instmanamount2.Value, instmanamount3.Value, instmanamount4.Value, instmanamtpaid1.Value, instmanamtpaid2.Value, instmanamtpaid3.Value, instmanamtpaid4.Value, ddlmaninstpaiddue1.Value, ddlmaninstpaiddue2.Value, ddlmaninstpaiddue3.Value, ddlmaninstpaiddue4.Value, txtmanurembal1.Value, txtmanurembal2.Value, txtmanurembal3.Value, txtmanurembal4.Value, txtmaninstdate1.Value, txtmaninstdate2.Value, txtmaninstdate3.Value, txtmaninstdate4.Value, txtmandeliqdate1.Value, txtmandeliqdate2.Value, txtmandeliqdate3.Value, txtmandeliqdate4.Value, txtmandisamount1.Value, txtmandisamount2.Value, txtmandisamount3.Value, txtmandisamount4.Value, txtmandisdate1.Value, txtmandisdate2.Value, txtmandisdate3.Value, txtmandisdate4.Value, chkexrelmanu1.Value, chkexrelmanu2.Value, chkexrelmanu3.Value, chkexrelmanu4.Value, "", "", ddlmanutaxbill.Value, ddlpayfreqmanu.Value, txtmanubillstartdate.Value, txtmanubillenddate.Value, txtinstcommentsmanual.Value);
+
+
+        if (chkexrelmanu1.Checked == true)
+        {
+            chkexrelmanu1.Value = "yes";
+        }
+        else
+        {
+            chkexrelmanu1.Value = "no";
+        }
+
+        if (chkexrelmanu2.Checked == true)
+        {
+            chkexrelmanu2.Value = "yes";
+        }
+        else
+        {
+            chkexrelmanu2.Value = "no";
+        }
+
+        if (chkexrelmanu3.Checked == true)
+        {
+            chkexrelmanu3.Value = "yes";
+        }
+        else
+        {
+            chkexrelmanu3.Value = "no";
+        }
+
+        if (chkexrelmanu4.Checked == true)
+        {
+            chkexrelmanu4.Value = "yes";
+        }
+        else
+        {
+            chkexrelmanu4.Value = "no";
+        }
+
+        if (instmanamount1.Value != "")
+        {
+            Inst1 = decimal.Parse(instmanamount1.Value, CultureInfo.InvariantCulture);
+        }
+        if (instmanamount2.Value != "")
+        {
+            Inst2 = decimal.Parse(instmanamount2.Value, CultureInfo.InvariantCulture);
+        }
+        if (instmanamount3.Value != "")
+        {
+            Inst3 = decimal.Parse(instmanamount3.Value, CultureInfo.InvariantCulture);
+        }
+        if (instmanamount4.Value != "")
+        {
+            Inst4 = decimal.Parse(instmanamount4.Value, CultureInfo.InvariantCulture);
+        }
+
+        if (instmanamount1.Value != "" || instmanamount2.Value != "" || instmanamount3.Value != "" || instmanamount4.Value != "")
+        {
+            Instoutputfuture = Inst1 + Inst2 + Inst3 + Inst4;
+            txtAnnualTaxAmount.Text = (Instoutputfuture.ToString("#,##0.00"));
+        }
+        
+
+        insert = gl.Insert_tax_authorities_paymentdetails(lblord.Text, LblTaxID.Text.ToString(), LblAgencyID.Text, txtTaxType.Text, instmanamount1.Value, instmanamount2.Value, instmanamount3.Value, instmanamount4.Value, instmanamtpaid1.Value, instmanamtpaid2.Value, instmanamtpaid3.Value, instmanamtpaid4.Value, ddlmaninstpaiddue1.Value, ddlmaninstpaiddue2.Value, ddlmaninstpaiddue3.Value, ddlmaninstpaiddue4.Value, txtmanurembal1.Value, txtmanurembal2.Value, txtmanurembal3.Value, txtmanurembal4.Value, txtmaninstdate1.Value, txtmaninstdate2.Value, txtmaninstdate3.Value, txtmaninstdate4.Value, txtmandeliqdate1.Value, txtmandeliqdate2.Value, txtmandeliqdate3.Value, txtmandeliqdate4.Value, txtmandisamount1.Value, txtmandisamount2.Value, txtmandisamount3.Value, txtmandisamount4.Value, txtmandisdate1.Value, txtmandisdate2.Value, txtmandisdate3.Value, txtmandisdate4.Value, chkexrelmanu1.Value, chkexrelmanu2.Value, chkexrelmanu3.Value, chkexrelmanu4.Value, ddlmanutaxbill.Value, ddlpayfreqmanu.Value, txtmanubillstartdate.Value, txtmanubillenddate.Value, txtinstcommentsmanual.Value, txtAuthorityname.Text,txtAnnualTaxAmount.Text,"2");
         if (insert == 1)
         {
             ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "txtexeSpecial();", true);

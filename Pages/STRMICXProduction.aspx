@@ -7542,12 +7542,7 @@
                                                     <td>
                                                         <asp:Button ID="btnTaxParcelSave" runat="server" Text="Update" CssClass="btn btn-success" Style="margin-left: -90px;" AutoPostBack="true" OnClick="btnTaxParcelSave_Click" OnClientClick="return functionInsttax();" TabIndex="44" />
                                                     </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <asp:Button ID="btnsavetaxauthorities" runat="server" Text="Save" CssClass="btn btn-success" Style="margin-left: -275px; margin-bottom: -14px;" AutoPostBack="true" OnClick="btnsavetaxauthorities_Click" />
-                                                    </td>
-                                                </tr>
+                                                </tr>                                                
                                             </tbody>
                                         </table>
                                     </fieldset>
@@ -7934,7 +7929,9 @@
                                                             <textarea id="txtinstcommentsmanual" placeholder="Installment Comments" runat="server" class="form-control" rows="2" style="resize: none;" autocomplete='off' tabindex="93"></textarea>
                                                         </td>
                                                         <td>
-                                                            <asp:Button ID="btntaxparcelsavemanual" runat="server" Text="Save" CssClass="btn btn-success" Style="margin-left: 25px;" AutoPostBack="true" OnClientClick="return functionfutinst();" />
+                                                            <%--<asp:Button ID="btntaxparcelsavemanual" runat="server" Text="Save" OnClick="btntaxparcelsavemanual_Click" CssClass="btn btn-success" Style="margin-left: 25px;" AutoPostBack="true" " />--%>
+
+                                                            <asp:Button ID="btnsavetaxauthorities" runat="server" Text="Save" CssClass="btn btn-success" Style="margin-left: 25px;" AutoPostBack="true" OnClick="btnsavetaxauthorities_Click" OnClientClick="return functionfutinst();" />                                                            
                                                         </td>
                                                     </tr>
                                                 </tbody>
