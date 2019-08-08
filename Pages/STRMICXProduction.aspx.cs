@@ -32,9 +32,15 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
     string taxagencytype = "";
     decimal Inst1, Inst2, Inst3, Inst4, Instoutput, Instoutputfuture;
     public bool chk = false;
+    Response jsonResponse = new Response();
+    Validation validate = new Validation();
+    CallAPI postData = new CallAPI();
     string TaxAuthorityName = "";
     protected void Page_Load(object sender, EventArgs e)
     {
+        //string jsonData = jsonResponse.GetJsonData("57411242");
+
+        //string isSuccess = postData.POST(jsonData, "57411242");
         //string connect = ConfigurationManager.ConnectionStrings["MysqlConnection"].ConnectionString;
         //using (MySqlConnection con = new MySqlConnection(connect))
         //{
@@ -3031,7 +3037,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
                 ddlmaninstpaiddue1.Value = "Due";
             }
 
-            if (payemntfrequency == "Semi-Annual" || payemntfrequency == "2")
+            if (payemntfrequency == "SemiAnnual" || payemntfrequency == "2")
             {
                 SetTaxBillValue1(txtmandeliqdate2.Value);
 
@@ -3081,7 +3087,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
                 ddlmaninstpaiddue2.Value = "Due";
             }
 
-            if (payemntfrequency == "Tri-Annual" || payemntfrequency == "3")
+            if (payemntfrequency == "TriAnnual" || payemntfrequency == "3")
             {
 
                 instmanamount1.Attributes.Remove("disabled");
@@ -3441,7 +3447,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
         process = processtatus.Text;
         OStatus = ddlstatus.Value;
 
-        Validation validate = new Validation();
+      
         //ordernumber & parcelnumber validate..........
         string message = validate.checkParcel(lblord.Text);
         string taxfrequency = "";
@@ -3452,6 +3458,9 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
         {
             taxfrequency = dtfetchauthority.Rows[0]["TaxFrequency"].ToString().Trim();
         }
+
+   
+      
 
         if (OStatus == "Completed" && process == "KEY")
         {
@@ -3509,8 +3518,6 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
                 if (message == "")
                 {
                     UpdateProduction("sp_UpdateQC_User");
-                    Updatetaxauthoritiessection("Sp_Update_taxauthorities_details");
-                    paymentfrequency.Value = taxfrequency;
 
                     if (id == "12f7tre5")
                     {
@@ -3549,7 +3556,6 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "alertMessage", "alert('Please Complete The Mandatory Fields')", true);
                 return;
             }
-            ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "txtexeSpecial();", true);
         }
 
         else if (OStatus == "In Process" && process == "KEY")
@@ -3567,6 +3573,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
                 id = "12f7tre5";
                 Response.Redirect("STRMICXProduction.aspx?id=" + id);
             }
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "txtexeSpecial();", true);
         }
 
         else if (OStatus == "In Process" && process == "QC")
@@ -3584,6 +3591,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
                 id = "12f7tre5";
                 Response.Redirect("STRMICXProduction.aspx?id=" + id);
             }
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "txtexeSpecial();", true);
         }
 
 
@@ -3602,6 +3610,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
                 id = "12f7tre5";
                 Response.Redirect("STRMICXProduction.aspx?id=" + id);
             }
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "txtexeSpecial();", true);
         }
 
         else if (OStatus == "Mail Away" && process == "QC")
@@ -3619,6 +3628,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
                 id = "12f7tre5";
                 Response.Redirect("STRMICXProduction.aspx?id=" + id);
             }
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "txtexeSpecial();", true);
         }
 
         else if (OStatus == "ParcelID" && process == "KEY")
@@ -3636,6 +3646,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
                 id = "12f7tre5";
                 Response.Redirect("STRMICXProduction.aspx?id=" + id);
             }
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "txtexeSpecial();", true);
         }
 
         else if (OStatus == "ParcelID" && process == "QC")
@@ -3653,6 +3664,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
                 id = "12f7tre5";
                 Response.Redirect("STRMICXProduction.aspx?id=" + id);
             }
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "txtexeSpecial();", true);
         }
 
         else if (OStatus == "On Hold" && process == "KEY")
@@ -3670,6 +3682,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
                 id = "12f7tre5";
                 Response.Redirect("STRMICXProduction.aspx?id=" + id);
             }
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "txtexeSpecial();", true);
         }
 
         else if (OStatus == "On Hold" && process == "QC")
@@ -3687,6 +3700,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
                 id = "12f7tre5";
                 Response.Redirect("STRMICXProduction.aspx?id=" + id);
             }
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "txtexeSpecial();", true);
         }
 
 
@@ -3705,6 +3719,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
                 id = "12f7tre5";
                 Response.Redirect("STRMICXProduction.aspx?id=" + id);
             }
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "txtexeSpecial();", true);
         }
 
         else if (OStatus == "Others" && process == "QC")
@@ -3722,6 +3737,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
                 id = "12f7tre5";
                 Response.Redirect("STRMICXProduction.aspx?id=" + id);
             }
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "txtexeSpecial();", true);
         }
 
         else if (OStatus == "Rejected" && process == "KEY")
@@ -3739,6 +3755,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
                 id = "12f7tre5";
                 Response.Redirect("STRMICXProduction.aspx?id=" + id);
             }
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "txtexeSpecial();", true);
         }
 
         else if (OStatus == "Rejected" && process == "QC")
@@ -3756,6 +3773,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
                 id = "12f7tre5";
                 Response.Redirect("STRMICXProduction.aspx?id=" + id);
             }
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "txtexeSpecial();", true);
         }
 
         else if (process == "REVIEW")
@@ -3773,8 +3791,8 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
                 id = "12f7tre5";
                 Response.Redirect("STRMICXProduction.aspx?id=" + id);
             }
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "txtexeSpecial();", true);
         }
-        ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "txtexeSpecial();", true);
     }
 
     private DataSet UpdateProduction(string Procedurename)
@@ -4246,6 +4264,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
             GvAddNotes.DataSource = dtfetch;
             GvAddNotes.DataBind();
         }
+        ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "txtexeSpecial();", true);
     }
 
 
@@ -4314,6 +4333,14 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
     {
         Response.Redirect("STRMICXHome.aspx");
     }
+
+    public void Alert(string msg)
+    {
+        ScriptManager.RegisterStartupScript(this, this.GetType(), "alertMessage", "alert('" + msg + "')", true);
+       
+    }
+
+
     //Rasheed123
 }
 

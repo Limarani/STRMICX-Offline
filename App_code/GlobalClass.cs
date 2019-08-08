@@ -16757,6 +16757,12 @@ public class GlobalClass : myConnection
 
     public int insert_Exemptions(string orderno, string taxidnumber, string agencyid, string exetype, string exeamount, string taxtype)
     {
+        if (string.IsNullOrEmpty(exeamount))
+        {
+            exeamount = "0";
+        }
+
+
         mParam = new MySqlParameter[6];
 
         mParam[0] = new MySqlParameter("$orderno", orderno);
@@ -16775,6 +16781,11 @@ public class GlobalClass : myConnection
     }
     public int update_Exemptions(string id, string orderno, string taxidnumber, string agencyid, string exetype, string exeamount)
     {
+        if (string.IsNullOrEmpty(exeamount))
+        {
+            exeamount = "0";
+        }
+
         mParam = new MySqlParameter[6];
 
         mParam[0] = new MySqlParameter("$Id", id);
@@ -16829,6 +16840,53 @@ public class GlobalClass : myConnection
     }
     public int insert_SpecialAssessment(string orderno, string taxidnumber, string agencyid, string description, string specialassessmentno, string noofinstallment, string installmentpaid, string installmentremaining, string duedate, string amount, string remainingbalance, string goodthroughdate, string perdiem, string payee, string comments, string taxtype)
     {
+
+        if (string.IsNullOrEmpty(specialassessmentno))
+        {
+            specialassessmentno = "";
+        }
+        if (string.IsNullOrEmpty(duedate))
+        {
+            duedate = "";
+        }
+        if (string.IsNullOrEmpty(amount))
+        {
+            amount = null;
+        }
+        if (string.IsNullOrEmpty(noofinstallment))
+        {
+            noofinstallment = null;
+        }
+        if (string.IsNullOrEmpty(installmentpaid))
+        {
+            installmentpaid = null;
+        }
+        if (string.IsNullOrEmpty(installmentremaining))
+        {
+            installmentremaining = null;
+        }
+        if (string.IsNullOrEmpty(remainingbalance))
+        {
+            remainingbalance = null;
+        }
+        if (string.IsNullOrEmpty(perdiem))
+        {
+            perdiem = null;
+        }
+        if (string.IsNullOrEmpty(payee))
+        {
+            payee = "";
+        }
+        if (string.IsNullOrEmpty(goodthroughdate))
+        {
+            goodthroughdate = null;
+        }
+
+        if (string.IsNullOrEmpty(comments))
+        {
+            comments = "";
+        }
+
         mParam = new MySqlParameter[16];
 
         mParam[0] = new MySqlParameter("$orderno", orderno);
@@ -16867,6 +16925,53 @@ public class GlobalClass : myConnection
     }
     public int update_SpecialAssessment(int id, string taxidnumber, string agencyid, string description, string specialassessmentno, string noofinstallment, string installmentpaid, string amount)
     {
+
+        if (string.IsNullOrEmpty(specialassessmentno))
+        {
+            specialassessmentno = "";
+        }
+        //if (string.IsNullOrEmpty(duedate))
+        //{
+        //    duedate = "";
+        //}
+        if (string.IsNullOrEmpty(amount))
+        {
+            amount = null;
+        }
+        if (string.IsNullOrEmpty(noofinstallment))
+        {
+            noofinstallment = null;
+        }
+        if (string.IsNullOrEmpty(installmentpaid))
+        {
+            installmentpaid = null;
+        }
+        //if (string.IsNullOrEmpty(installmentremaining))
+        //{
+        //    installmentremaining = null;
+        //}
+        //if (string.IsNullOrEmpty(remainingbalance))
+        //{
+        //    remainingbalance = null;
+        //}
+        //if (string.IsNullOrEmpty(perdiem))
+        //{
+        //    perdiem = null;
+        //}
+        //if (string.IsNullOrEmpty(payee))
+        //{
+        //    payee = "";
+        //}
+        //if (string.IsNullOrEmpty(goodthroughdate))
+        //{
+        //    goodthroughdate = null;
+        //}
+
+        //if (string.IsNullOrEmpty(comments))
+        //{
+        //    comments = "";
+        //}
+
         mParam = new MySqlParameter[8];
 
         mParam[0] = new MySqlParameter("$Id", id);
@@ -16957,6 +17062,48 @@ public class GlobalClass : myConnection
          string state, string zip, string deliquenttaxyear, string payoffamount, string comments, string goodthuruDate, string installmentduedate,
          string taxsalenotapplicable, string dateofTaxsale, string lastdaytoredeem, string BaseAmountDue, string RollOverDate, string PenaltyAmount, string PenaltyAmountFrequency, string AdditionalPenaltyAmount, string PerDiem, string PenaltyDueDate, string taxtype)
     {
+        if (string.IsNullOrEmpty(AdditionalPenaltyAmount))
+        {
+            AdditionalPenaltyAmount = null;
+        }
+        if (string.IsNullOrEmpty(goodthuruDate))
+        {
+            goodthuruDate = null;
+        }
+        if (string.IsNullOrEmpty(installmentduedate))
+        {
+            installmentduedate = null;
+        }
+        if (string.IsNullOrEmpty(BaseAmountDue))
+        {
+            BaseAmountDue = null;
+        }
+        if (string.IsNullOrEmpty(payoffamount))
+        {
+            payoffamount = null;
+        }
+        if (string.IsNullOrEmpty(PenaltyAmount))
+        {
+            PenaltyAmount = null;
+        }
+
+        if (string.IsNullOrEmpty(PenaltyDueDate))
+        {
+            PenaltyDueDate = null;
+        }
+        if (PenaltyAmountFrequency == "--Select--")
+        {
+            PenaltyAmountFrequency = "";
+        }
+        if (string.IsNullOrEmpty(PerDiem))
+        {
+            PerDiem = null;
+        }
+        if (string.IsNullOrEmpty(comments))
+        {
+            comments = "";
+        }
+
         mParam = new MySqlParameter[24];
 
         mParam[0] = new MySqlParameter("$orderno", orderno);
@@ -17014,6 +17161,51 @@ public class GlobalClass : myConnection
         string state, string zip, string deliquenttaxyear, string payoffamount, string comments, string goodthuruDate, string installmentduedate,
         string taxsalenotapplicable, string dateofTaxsale, string lastdaytoredeem, string BaseAmountDue, string RollOverDate, string PenaltyAmount, string PenaltyAmountFrequency, string AdditionalPenaltyAmount, string PerDiem, string PenaltyDueDate)
     {
+
+        if (string.IsNullOrEmpty(AdditionalPenaltyAmount))
+        {
+            AdditionalPenaltyAmount = null;
+        }
+        if (string.IsNullOrEmpty(goodthuruDate))
+        {
+            goodthuruDate = null;
+        }
+        if (string.IsNullOrEmpty(installmentduedate))
+        {
+            installmentduedate = null;
+        }
+        if (string.IsNullOrEmpty(BaseAmountDue))
+        {
+            BaseAmountDue = null;
+        }
+        if (string.IsNullOrEmpty(payoffamount))
+        {
+            payoffamount = null;
+        }
+        if (string.IsNullOrEmpty(PenaltyAmount))
+        {
+            PenaltyAmount = null;
+        }
+
+        if (string.IsNullOrEmpty(PenaltyDueDate))
+        {
+            PenaltyDueDate = null;
+        }
+        if (PenaltyAmountFrequency == "--Select--")
+        {
+            PenaltyAmountFrequency = "";
+        }
+        if (string.IsNullOrEmpty(PerDiem))
+        {
+            PerDiem = null;
+        }
+        if (string.IsNullOrEmpty(comments))
+        {
+            comments = "";
+        }
+
+
+
         mParam = new MySqlParameter[23];
 
         mParam[0] = new MySqlParameter("$Id", id);
@@ -17113,9 +17305,9 @@ public class GlobalClass : myConnection
     }
 
     //amrock
-    public int update_tax_authorities_paymentdetails(string orderno, string taxid, string agencyid, string taxagencytype, string address, string instamount1, string instamount2, string instamount3, string instamount4, string instamountpaid1, string instamountpaid2, string instamountpaid3, string instamountpaid4, string instPaidDue1, string instPaidDue2, string instPaidDue3, string instPaidDue4, string remainingbalance1, string remainingbalance2, string remainingbalance3, string remainingbalance4, string installmentdate1, string installmentdate2, string installmentdate3, string installmentdate4, string delinquentdate1, string delinquentdate2, string delinquentdate3, string delinquentdate4, string discountamount1, string discountamount2, string discountamount3, string discountamount4, string discountdate1, string discountdate2, string discountdate3, string discountdate4, string exemptrelevy1, string exemptrelevy2, string exemptrelevy3, string exemptrelevy4, string nextbilldate1, string nextbilldate2, string taxbill, string paymentfrequency, string billingstartdate, string billingenddate, string futuretaxcal, string installmentcomments, string authoritystatus, string annualtaxamount)
+    public int update_tax_authorities_paymentdetails(string orderno, string taxid, string agencyid, string taxagencytype, string address, string instamount1, string instamount2, string instamount3, string instamount4, string instamountpaid1, string instamountpaid2, string instamountpaid3, string instamountpaid4, string instPaidDue1, string instPaidDue2, string instPaidDue3, string instPaidDue4, string remainingbalance1, string remainingbalance2, string remainingbalance3, string remainingbalance4, string installmentdate1, string installmentdate2, string installmentdate3, string installmentdate4, string delinquentdate1, string delinquentdate2, string delinquentdate3, string delinquentdate4, string discountamount1, string discountamount2, string discountamount3, string discountamount4, string discountdate1, string discountdate2, string discountdate3, string discountdate4, string exemptrelevy1, string exemptrelevy2, string exemptrelevy3, string exemptrelevy4, string nextbilldate1, string nextbilldate2, string taxbill, string paymentfrequency, string billingstartdate, string billingenddate, string futuretaxcal, string installmentcomments, string authoritystatus)
     {        
-        mParam = new MySqlParameter[51];
+        mParam = new MySqlParameter[50];
 
         mParam[0] = new MySqlParameter("$orderno", orderno);
         mParam[0].MySqlDbType = MySqlDbType.VarChar;
@@ -17909,6 +18101,59 @@ public class GlobalClass : myConnection
         mDa = con.ExecuteSPAdapter(query, true, mParam);
         mDa.Fill(dt);
         return dt;
+    }
+    public int UpdateUser(string usr, string admin, string qc, string production, string du, string otype)
+    {
+        mParam = new MySqlParameter[6];
+
+        mParam[0] = new MySqlParameter("?$User_Id", usr);
+        mParam[0].MySqlDbType = MySqlDbType.VarChar;
+
+        mParam[1] = new MySqlParameter("?$Admin", admin);
+        mParam[1].MySqlDbType = MySqlDbType.VarChar;
+
+        mParam[2] = new MySqlParameter("?$QC", qc);
+        mParam[2].MySqlDbType = MySqlDbType.VarChar;
+
+        mParam[3] = new MySqlParameter("?$Keying", production);
+        mParam[3].MySqlDbType = MySqlDbType.VarChar;
+
+        mParam[4] = new MySqlParameter("?$DU", du);
+        mParam[4].MySqlDbType = MySqlDbType.VarChar;
+
+        mParam[5] = new MySqlParameter("?$Order_type", otype);
+        mParam[5].MySqlDbType = MySqlDbType.VarChar;
+
+        return con.ExecuteSPNonQuery("sp_UpdateUser", true, mParam);
+
+    }
+
+
+
+    public int InsertUser(string usr, string admin, string du, string pro, string qc, string order_type)
+    {
+        mParam = new MySqlParameter[6];
+
+        mParam[0] = new MySqlParameter("?$User_Name", usr);
+        mParam[0].MySqlDbType = MySqlDbType.VarChar;
+        mParam[0].IsNullable = false;
+
+        mParam[1] = new MySqlParameter("?$Admin", admin);
+        mParam[1].MySqlDbType = MySqlDbType.VarChar;
+
+        mParam[2] = new MySqlParameter("?$DU", du);
+        mParam[2].MySqlDbType = MySqlDbType.VarChar;
+
+        mParam[3] = new MySqlParameter("?$Pro", pro);
+        mParam[3].MySqlDbType = MySqlDbType.VarChar;
+
+        mParam[4] = new MySqlParameter("?$QC", qc);
+        mParam[4].MySqlDbType = MySqlDbType.VarChar;
+
+        mParam[5] = new MySqlParameter("?$Order_type", order_type);
+        mParam[5].MySqlDbType = MySqlDbType.VarChar;
+
+        return con.ExecuteSPNonQuery("sp_InsertUser", true, mParam);
     }
 }
 

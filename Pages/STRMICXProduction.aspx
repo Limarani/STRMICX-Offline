@@ -7497,8 +7497,8 @@
                                                     <td>
                                                         <select class="form-control" id="paymentfrequency" runat="server" style="width: 170px; margin-top: 10px;" onchange="functionpayemtfrequency(this)" tabindex="39">
                                                             <option value="1">Annual</option>
-                                                            <option value="2">Semi-Annual</option>
-                                                            <option value="3">Tri-Annual</option>
+                                                            <option value="2">SemiAnnual</option>
+                                                            <option value="3">TriAnnual</option>
                                                             <option value="4">Quarterly</option>
                                                         </select>
                                                         <%--   <asp:DropDownList ID="paymentfrequency" runat="server"  style="width: 170px;" TabIndex="39" OnSelectedIndexChanged="paymentfrequency_SelectedIndexChanged" AutoPostBack="true">
@@ -8173,7 +8173,7 @@
                                             </b>
                                         </td>
                                         <td>
-                                            <asp:TextBox ID="txtdelitState" runat="server" class="form-control" placeholder="State" autocomplete='off' onchange="return functionDelinquent()" onkeypress="return onlyAlphabets(event,this);" Style="text-transform: uppercase" MaxLength="2" onblur="IsValidLengthState(this.value,this,event);" onpaste="return isNumber(event)" onkeyup="CheckFirstChar(event.keyCode, this);" onkeydown="return CheckFirstChar(event.keyCode, this);">
+                                            <asp:TextBox ID="txtdelitState" runat="server" class="form-control" placeholder="State" autocomplete='off' onchange="return functionDelinquent()" onkeypress="return onlyAlphabets(event,this);">
                                             </asp:TextBox>
                                         </td>
                                     </tr>
