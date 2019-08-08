@@ -338,33 +338,34 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
     protected void lnkgvOrders_Click(object sender, EventArgs e)
     {
         string queryfetchprevious = "";
-        queryfetchprevious = "select AgencyId from tbl_taxauthorities2 where Orderno = '" + lblord.Text + "' and TaxId = '" + LblTaxID.Text + "' and AgencyId = '" + LblAgencyID.Text + "'";
+        queryfetchprevious = "select AgencyId,TaxAgencyType from tbl_taxauthorities2 where Orderno = '" + lblord.Text + "' and TaxId = '" + LblTaxID.Text + "' and AgencyId = '" + LblAgencyID.Text + "' and TaxAgencyType = '" + txtTaxType.Text + "'";
         DataSet ds = gl.ExecuteQuery(queryfetchprevious);        
         if (ds.Tables[0].Rows.Count > 0)
         {
             string agency = ds.Tables[0].Rows[0]["AgencyId"].ToString().Trim();
+            string agencytype = ds.Tables[0].Rows[0]["TaxAgencyType"].ToString().Trim();
             if (txtdeliquent.SelectedValue == "No")
             {
                 string updatedeli = "";
-                updatedeli = "update tbl_taxauthorities2 set IsDelinquent = 'No' where Orderno = '" + lblord.Text + "' AND TaxId = '" + LblTaxID.Text + "' And AgencyId = '" + agency + "'";
+                updatedeli = "update tbl_taxauthorities2 set IsDelinquent = 'No' where Orderno = '" + lblord.Text + "' AND TaxId = '" + LblTaxID.Text + "' And AgencyId = '" + agency + "' And TaxAgencyType = '" + agencytype + "'";
                 gl.ExecuteSPNonQuery(updatedeli);
             }
-            else if (txtexemption.SelectedValue == "No")
+            if (txtexemption.SelectedValue == "No")
             {
                 string updatedeli = "";
-                updatedeli = "update tbl_taxauthorities2 set IsExemption = 'No' where Orderno = '" + lblord.Text + "' AND TaxId = '" + LblTaxID.Text + "' And AgencyId = '" + agency + "'";
+                updatedeli = "update tbl_taxauthorities2 set IsExemption = 'No' where Orderno = '" + lblord.Text + "' AND TaxId = '" + LblTaxID.Text + "' And AgencyId = '" + agency + "' And TaxAgencyType = '" + agencytype + "'";
                 gl.ExecuteSPNonQuery(updatedeli);
             }
-            else if (txtResidence.SelectedValue == "No")
+            if (txtResidence.SelectedValue == "No")
             {
                 string updatedeli = "";
-                updatedeli = "update tbl_taxauthorities2 set primaryresidence = 'No' where Orderno = '" + lblord.Text + "' AND TaxId = '" + LblTaxID.Text + "' And AgencyId = '" + agency + "'";
+                updatedeli = "update tbl_taxauthorities2 set primaryresidence = 'No' where Orderno = '" + lblord.Text + "' AND TaxId = '" + LblTaxID.Text + "' And AgencyId = '" + agency + "' And TaxAgencyType = '" + agencytype + "'"; 
                 gl.ExecuteSPNonQuery(updatedeli);
             }
-            else if (SecialAssmnt.SelectedValue == "No")
+            if (SecialAssmnt.SelectedValue == "No")
             {
                 string updatedeli = "";
-                updatedeli = "update tbl_taxauthorities2 set IsSpecial = 'No' where Orderno = '" + lblord.Text + "' AND TaxId = '" + LblTaxID.Text + "' And AgencyId = '" + agency + "'";
+                updatedeli = "update tbl_taxauthorities2 set IsSpecial = 'No' where Orderno = '" + lblord.Text + "' AND TaxId = '" + LblTaxID.Text + "' And AgencyId = '" + agency + "' And TaxAgencyType = '" + agencytype + "'"; 
                 gl.ExecuteSPNonQuery(updatedeli);
             }
         }
@@ -3930,7 +3931,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
 
     private DataSet UpdateProduction(string Procedurename)
     {
-        return gl.UpdateOrderStatusNew(Procedurename, lblord.Text, process, lblzipcode.Text, OStatus);
+        return gl.UpdateOrderStatusNew(Procedurename, lblord.Text, process, lblzipcode.Text, OStatus, txttotalcomments.Value);
     }
 
     private DataSet Updatetaxauthoritiessection(string Procedurename)

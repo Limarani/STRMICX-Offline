@@ -1223,9 +1223,9 @@ public class GlobalClass : myConnection
 
 
 
-    public DataSet UpdateOrderStatusNew(string query, string orderno, string processname, string zipcode, string Ostatus)
+    public DataSet UpdateOrderStatusNew(string query, string orderno, string processname, string zipcode, string Ostatus, string comments)
     {
-        mParam = new MySqlParameter[5];
+        mParam = new MySqlParameter[6];
 
         mParam[0] = new MySqlParameter("?$OrderNo", orderno);
         mParam[0].MySqlDbType = MySqlDbType.VarChar;         
@@ -1241,6 +1241,9 @@ public class GlobalClass : myConnection
 
         mParam[4] = new MySqlParameter("?$Ostatus", Ostatus);
         mParam[4].MySqlDbType = MySqlDbType.VarChar;
+
+        mParam[5] = new MySqlParameter("?$comments", comments);
+        mParam[5].MySqlDbType = MySqlDbType.VarChar;
 
         return con.ExecuteQuery(query, true, mParam);
     }
