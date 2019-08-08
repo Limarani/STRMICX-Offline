@@ -17306,7 +17306,159 @@ public class GlobalClass : myConnection
 
     
     public int update_tax_authorities_paymentdetails(string orderno, string taxid, string agencyid, string taxagencytype, string address, string instamount1, string instamount2, string instamount3, string instamount4, string instamountpaid1, string instamountpaid2, string instamountpaid3, string instamountpaid4, string instPaidDue1, string instPaidDue2, string instPaidDue3, string instPaidDue4, string remainingbalance1, string remainingbalance2, string remainingbalance3, string remainingbalance4, string installmentdate1, string installmentdate2, string installmentdate3, string installmentdate4, string delinquentdate1, string delinquentdate2, string delinquentdate3, string delinquentdate4, string discountamount1, string discountamount2, string discountamount3, string discountamount4, string discountdate1, string discountdate2, string discountdate3, string discountdate4, string exemptrelevy1, string exemptrelevy2, string exemptrelevy3, string exemptrelevy4, string nextbilldate1, string nextbilldate2, string taxbill, string paymentfrequency, string billingstartdate, string billingenddate, string futuretaxcal, string installmentcomments, string authoritystatus,string annualtaxamount)
-    {        
+    {
+        if (string.IsNullOrEmpty(instamount1) || instamount1 == "0.00")
+        {
+            instamount1 = null;
+        }
+        if (string.IsNullOrEmpty(instamount2) || instamount2 == "0.00")
+        {
+            instamount2 = null;
+        }
+        if (string.IsNullOrEmpty(instamount3) || instamount3 == "0.00")
+        {
+            instamount3 = null;
+        }
+        if (string.IsNullOrEmpty(instamount4) || instamount4 == "0.00")
+        {
+            instamount4 = null;
+        }
+        if (string.IsNullOrEmpty(instamountpaid1) || instamountpaid1 == "0.00")
+        {
+            instamountpaid1 = null;
+        }
+        if (string.IsNullOrEmpty(instamountpaid2) || instamountpaid2 == "0.00")
+        {
+            instamountpaid2 = null;
+        }
+        if (string.IsNullOrEmpty(instamountpaid3) || instamountpaid3 == "0.00")
+        {
+            instamountpaid3 = null;
+        }
+        if (string.IsNullOrEmpty(instamountpaid4) || instamountpaid4 == "0.00")
+        {
+            instamountpaid4 = null;
+        }
+        if (string.IsNullOrEmpty(instPaidDue1) || instPaidDue1 == "Select")
+        {
+            instPaidDue1 = null;
+        }
+        if (string.IsNullOrEmpty(instPaidDue2) || instPaidDue2 == "Select")
+        {
+            instPaidDue2 = null;
+        }
+        if (string.IsNullOrEmpty(instPaidDue3) || instPaidDue3 == "Select")
+        {
+            instPaidDue3 = null;
+        }
+        if (string.IsNullOrEmpty(instPaidDue4) || instPaidDue4 == "Select")
+        {
+            instPaidDue4 = null;
+        }
+        if (string.IsNullOrEmpty(remainingbalance1) || remainingbalance1 == "0.00")
+        {
+            remainingbalance1 = null;
+        }
+        if (string.IsNullOrEmpty(remainingbalance2) || remainingbalance2 == "0.00")
+        {
+            remainingbalance2 = null;
+        }
+        if (string.IsNullOrEmpty(remainingbalance3) || remainingbalance3 == "0.00")
+        {
+            remainingbalance3 = null;
+        }
+        if (string.IsNullOrEmpty(remainingbalance4) || remainingbalance4 == "0.00")
+        {
+            remainingbalance4 = null;
+        }
+        if (string.IsNullOrEmpty(installmentdate1))
+        {
+            installmentdate1 = null;
+        }
+        if (string.IsNullOrEmpty(installmentdate2))
+        {
+            installmentdate2 = null;
+        }
+        if (string.IsNullOrEmpty(installmentdate3))
+        {
+            installmentdate3 = null;
+        }
+        if (string.IsNullOrEmpty(installmentdate4))
+        {
+            installmentdate4 = null;
+        }
+
+        if (string.IsNullOrEmpty(delinquentdate1))
+        {
+            delinquentdate1 = null;
+        }
+        if (string.IsNullOrEmpty(delinquentdate2))
+        {
+            delinquentdate2 = null;
+        }
+        if (string.IsNullOrEmpty(delinquentdate3))
+        {
+            delinquentdate3 = null;
+        }
+        if (string.IsNullOrEmpty(delinquentdate4))
+        {
+            delinquentdate4 = null;
+        }
+        if (string.IsNullOrEmpty(discountamount1) || discountamount1 == "0.00")
+        {
+            discountamount1 = null;
+        }
+        if (string.IsNullOrEmpty(discountamount2) || discountamount2 == "0.00")
+        {
+            discountamount2 = null;
+        }
+        if (string.IsNullOrEmpty(discountamount3) || discountamount3 == "0.00")
+        {
+            discountamount3 = null;
+        }
+        if (string.IsNullOrEmpty(discountamount4) || discountamount4 == "0.00")
+        {
+            discountamount4 = null;
+        }
+        if (string.IsNullOrEmpty(discountdate1))
+        {
+            discountdate1 = null;
+        }
+        if (string.IsNullOrEmpty(discountdate2))
+        {
+            discountdate2 = null;
+        }
+        if (string.IsNullOrEmpty(discountdate3))
+        {
+            discountdate3 = null;
+        }
+        if (string.IsNullOrEmpty(discountdate4))
+        {
+            discountdate4 = null;
+        }
+        if (string.IsNullOrEmpty(nextbilldate2))
+        {
+            nextbilldate2 = null;
+        }
+        if (paymentfrequency == "1")
+        {
+            paymentfrequency = "Annual";
+        }
+        if (paymentfrequency == "2")
+        {
+            paymentfrequency = "SemiAnnual";
+        }
+        if (paymentfrequency == "3")
+        {
+            paymentfrequency = "SemiAnnual";
+        }
+        if (paymentfrequency == "4")
+        {
+            paymentfrequency = "Quarterly";
+        }
+
+
+
         mParam = new MySqlParameter[51];
 
         mParam[0] = new MySqlParameter("$orderno", orderno);
@@ -17469,6 +17621,158 @@ public class GlobalClass : myConnection
 
     public int Insert_tax_authorities_paymentdetails(string orderno, string taxid, string agencyid, string taxtype, string instamount1, string instamount2, string instamount3, string instamount4, string instamountpaid1, string instamountpaid2, string instamountpaid3, string instamountpaid4, string instPaidDue1, string instPaidDue2, string instPaidDue3, string instPaidDue4, string remainingbalance1, string remainingbalance2, string remainingbalance3, string remainingbalance4, string installmentdate1, string installmentdate2, string installmentdate3, string installmentdate4, string delinquentdate1, string delinquentdate2, string delinquentdate3, string delinquentdate4, string discountamount1, string discountamount2, string discountamount3, string discountamount4, string discountdate1, string discountdate2, string discountdate3, string discountdate4, string exemptrelevy1, string exemptrelevy2, string exemptrelevy3, string exemptrelevy4, string taxbill, string paymentfrequency, string billingstartdate, string billingenddate, string installmentcomments, string taxauthorityname, string annualtaxamount, string taxauthoritystatus,string futuretax, string billperiodstartdate, string billperiodenddate)
     {
+
+        if (string.IsNullOrEmpty(instamount1) || instamount1 == "0.00")
+        {
+            instamount1 = null;
+        }
+        if (string.IsNullOrEmpty(instamount2) || instamount2 == "0.00")
+        {
+            instamount2 = null;
+        }
+        if (string.IsNullOrEmpty(instamount3) || instamount3 == "0.00")
+        {
+            instamount3 = null;
+        }
+        if (string.IsNullOrEmpty(instamount4) || instamount4 == "0.00")
+        {
+            instamount4 = null;
+        }
+        if (string.IsNullOrEmpty(instamountpaid1) || instamountpaid1 == "0.00")
+        {
+            instamountpaid1 = null;
+        }
+        if (string.IsNullOrEmpty(instamountpaid2) || instamountpaid2 == "0.00")
+        {
+            instamountpaid2 = null;
+        }
+        if (string.IsNullOrEmpty(instamountpaid3) || instamountpaid3 == "0.00")
+        {
+            instamountpaid3 = null;
+        }
+        if (string.IsNullOrEmpty(instamountpaid4) || instamountpaid4 == "0.00")
+        {
+            instamountpaid4 = null;
+        }
+        if (string.IsNullOrEmpty(instPaidDue1) || instPaidDue1 == "Select")
+        {
+            instPaidDue1 = null;
+        }
+        if (string.IsNullOrEmpty(instPaidDue2) || instPaidDue2 == "Select")
+        {
+            instPaidDue2 = null;
+        }
+        if (string.IsNullOrEmpty(instPaidDue3) || instPaidDue3 == "Select")
+        {
+            instPaidDue3 = null;
+        }
+        if (string.IsNullOrEmpty(instPaidDue4) || instPaidDue4 == "Select")
+        {
+            instPaidDue4 = null;
+        }
+        if (string.IsNullOrEmpty(remainingbalance1) || remainingbalance1 == "0.00")
+        {
+            remainingbalance1 = null;
+        }
+        if (string.IsNullOrEmpty(remainingbalance2) || remainingbalance2 == "0.00")
+        {
+            remainingbalance2 = null;
+        }
+        if (string.IsNullOrEmpty(remainingbalance3) || remainingbalance3 == "0.00")
+        {
+            remainingbalance3 = null;
+        }
+        if (string.IsNullOrEmpty(remainingbalance4) || remainingbalance4 == "0.00")
+        {
+            remainingbalance4 = null;
+        }
+        if (string.IsNullOrEmpty(installmentdate1))
+        {
+            installmentdate1 = null;
+        }
+        if (string.IsNullOrEmpty(installmentdate2))
+        {
+            installmentdate2 = null;
+        }
+        if (string.IsNullOrEmpty(installmentdate3))
+        {
+            installmentdate3 = null;
+        }
+        if (string.IsNullOrEmpty(installmentdate4))
+        {
+            installmentdate4 = null;
+        }
+
+        if (string.IsNullOrEmpty(delinquentdate1))
+        {
+            delinquentdate1 = null;
+        }
+        if (string.IsNullOrEmpty(delinquentdate2))
+        {
+            delinquentdate2 = null;
+        }
+        if (string.IsNullOrEmpty(delinquentdate3))
+        {
+            delinquentdate3 = null;
+        }
+        if (string.IsNullOrEmpty(delinquentdate4))
+        {
+            delinquentdate4 = null;
+        }
+        if (string.IsNullOrEmpty(discountamount1) || discountamount1 == "0.00")
+        {
+            discountamount1 = null;
+        }
+        if (string.IsNullOrEmpty(discountamount2) || discountamount2 == "0.00")
+        {
+            discountamount2 = null;
+        }
+        if (string.IsNullOrEmpty(discountamount3) || discountamount3 == "0.00")
+        {
+            discountamount3 = null;
+        }
+        if (string.IsNullOrEmpty(discountamount4) || discountamount4 == "0.00")
+        {
+            discountamount4 = null;
+        }
+        if (string.IsNullOrEmpty(discountdate1))
+        {
+            discountdate1 = null;
+        }
+        if (string.IsNullOrEmpty(discountdate2))
+        {
+            discountdate2 = null;
+        }
+        if (string.IsNullOrEmpty(discountdate3))
+        {
+            discountdate3 = null;
+        }
+        if (string.IsNullOrEmpty(discountdate4))
+        {
+            discountdate4 = null;
+        }
+        //if (string.IsNullOrEmpty(nextbilldate2))
+        //{
+        //    nextbilldate2 = null;
+        //}
+        if (paymentfrequency == "1")
+        {
+            paymentfrequency = "Annual";
+        }
+        if (paymentfrequency == "2")
+        {
+            paymentfrequency = "SemiAnnual";
+        }
+        if (paymentfrequency == "3")
+        {
+            paymentfrequency = "SemiAnnual";
+        }
+        if (paymentfrequency == "4")
+        {
+            paymentfrequency = "Quarterly";
+        }
+
+
         mParam = new MySqlParameter[51];
 
         mParam[0] = new MySqlParameter("$orderno", orderno);
