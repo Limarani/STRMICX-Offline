@@ -3567,10 +3567,14 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
         Validation validate = new Validation();
         //ordernumber & parcelnumber validate..........
         string message = validate.checkParcel(lblord.Text);
+        string taxfrequency = "";
 
         dtfetchauthority = gl.FetchTaxAuthorityDetails(lblord.Text, LblTaxId1.Text, LblAgencyId1.Text, txtTaxType.Text);
 
-        string taxfrequency = dtfetchauthority.Rows[0]["TaxFrequency"].ToString().Trim();
+        if (dtfetchauthority.Rows.Count > 0)
+        {
+            taxfrequency = dtfetchauthority.Rows[0]["TaxFrequency"].ToString().Trim();
+        }
 
         if (OStatus == "Completed" && process == "KEY")
         {
