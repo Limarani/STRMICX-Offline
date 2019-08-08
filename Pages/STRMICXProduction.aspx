@@ -127,6 +127,189 @@
 
         }
 
+        function samedate1(val) {
+            var inst1 = document.getElementById("instdate1").value;
+            var delinq1 = document.getElementById("delinq1").value;
+
+            if (delinq1 == inst1) {
+                document.getElementById('delinq1').value = "";
+                document.getElementById("delinq1").focus();
+                alert('Delinquent date and installment date should not be same...');
+                return;
+            }
+        }
+
+        function samedate2(val) {
+            var inst2 = document.getElementById("instdate2").value;
+            var delinq2 = document.getElementById("delinq2").value;
+
+            if (delinq2 == inst2) {
+                document.getElementById('delinq2').value = "";
+                document.getElementById("delinq2").focus();
+                alert('Delinquent date and installment date should not be same...');                
+                return;                
+            }
+        }
+
+        function samedate3(val) {
+            var inst3 = document.getElementById("instdate3").value;
+            var delinq3 = document.getElementById("delinq3").value;
+
+             if (delinq3 == inst3) {
+                 document.getElementById('delinq3').value = "";
+                 document.getElementById("delinq3").focus();
+                alert('Delinquent date and installment date should not be same...');
+                return;                
+            }
+        }
+
+        function samedate4(val) {
+            var inst4 = document.getElementById("instdate4").value;
+            var delinq4 = document.getElementById("delinq4").value;
+
+            if (delinq4 == inst4) {
+                document.getElementById('delinq4').value = "";
+                document.getElementById("delinq4").focus();
+                alert('Delinquent date and installment date should not be same...');
+                return;                
+            }
+        }
+
+        function futuresamedate1(val) {
+            var inst1 = document.getElementById("txtmaninstdate1").value;
+            var delinq1 = document.getElementById("txtmandeliqdate1").value;
+
+            if (delinq1 == inst1) {
+                document.getElementById('txtmandeliqdate1').value = "";
+                document.getElementById("txtmandeliqdate1").focus();
+                alert('Delinquent date and installment date should not be same...');
+                return;
+            }
+        }
+
+        function futuresamedate2(val) {
+            var inst2 = document.getElementById("txtmaninstdate2").value;
+            var delinq2 = document.getElementById("txtmandeliqdate2").value;
+
+            if (delinq2 == inst2) {
+                document.getElementById('txtmandeliqdate2').value = "";
+                document.getElementById("txtmandeliqdate2").focus();
+                alert('Delinquent date and installment date should not be same...');
+                return;
+            }
+        }
+
+        function futuresamedate3(val) {
+            var inst3 = document.getElementById("txtmaninstdate3").value;
+            var delinq3 = document.getElementById("txtmandeliqdate3").value;
+
+            if (delinq3 == inst3) {
+                document.getElementById('txtmandeliqdate3').value = "";
+                document.getElementById("txtmandeliqdate3").focus();
+                alert('Delinquent date and installment date should not be same...');
+                return;
+            }
+        }
+
+        function futuresamedate4(val) {
+            var inst4 = document.getElementById("txtmaninstdate4").value;
+            var delinq4 = document.getElementById("txtmandeliqdate4").value;
+
+            if (delinq4 == inst4) {
+                document.getElementById('txtmandeliqdate4').value = "";
+                document.getElementById("txtmandeliqdate4").focus();
+                alert('Delinquent date and installment date should not be same...');
+                return;
+            }
+        }
+
+        function discountdate1(val) {
+            var delinq1 = document.getElementById("delinq1").value;
+            var disc1 = document.getElementById("discdate1").value;
+            if (disc1 == delinq1) {
+                document.getElementById('discdate1').value = "";
+                document.getElementById("discdate1").focus();
+                alert('Discount Date and Delinquent Date should not be same...');
+                return;                
+            }
+        }
+
+        function discountdate2(val) {
+            var delinq2 = document.getElementById("delinq2").value;
+            var disc2 = document.getElementById("discdate2").value;
+            if (disc2 == delinq2) {
+                document.getElementById('discdate2').value = "";
+                document.getElementById("discdate2").focus();
+                alert('Discount Date and Delinquent Date should not be same...');
+                return;                
+            }
+        }
+
+        function discountdate3(val) {
+            var delinq3 = document.getElementById("delinq3").value;
+            var disc3 = document.getElementById("discdate3").value;
+            if (disc3 == delinq3) {
+                document.getElementById('discdate3').value = "";
+                document.getElementById("discdate3").focus();
+                alert('Discount Date and Delinquent Date should not be same...');
+                return;               
+            }
+        }
+
+        function discountdate4(val) {
+            var delinq4 = document.getElementById("delinq4").value;
+            var disc4 = document.getElementById("discdate4").value;
+            if (disc4 == delinq4) {
+                document.getElementById('discdate4').value = "";
+                document.getElementById("discdate4").focus();
+                alert('Discount Date and Delinquent Date should not be same...');
+                return;                
+            }
+        }
+
+        function futurdiscountdate1(val) {
+            var futdelinq1 = document.getElementById("txtmandeliqdate1").value;
+            var futdisc1 = document.getElementById("txtmandisdate1").value;
+            if (futdisc1 == futdelinq1) {
+                document.getElementById('txtmandisdate1').value = "";
+                document.getElementById("txtmandisdate1").focus();
+                alert('Discount Date and Delinquent Date should not be same...');
+                return;                
+            }
+        }
+
+        function futurdiscountdate2(val) {
+            var futdelinq2 = document.getElementById("txtmandeliqdate2").value;
+            var futdisc2 = document.getElementById("txtmandisdate2").value;
+            if (futdisc2 == futdelinq2) {
+                document.getElementById('txtmandisdate2').value = "";
+                document.getElementById("txtmandisdate2").focus();
+                alert('Discount Date and Delinquent Date should not be same...');
+                return;                
+            }
+        }
+
+        function futurdiscountdate3(val) {
+            var futdelinq3 = document.getElementById("txtmandeliqdate3").value;
+            var futdisc3 = document.getElementById("txtmandisdate3").value;
+            if (futdisc3 == futdelinq3) {
+                document.getElementById('txtmandisdate3').value = "";
+                document.getElementById("txtmandisdate3").focus();
+                alert('Discount Date and Delinquent Date should not be same...');
+                return;               
+            }
+        }
+
+        function futurdiscountdate4(val) {
+            var futdelinq4 = document.getElementById("txtmandeliqdate4").value;
+            var futdisc4 = document.getElementById("txtmandisdate4").value;
+            if (futdisc4 == futdelinq4) {
+                document.getElementById('txtmandisdate4').value = "";
+                document.getElementById("txtmandisdate4").focus();
+                alert('Discount Date and Delinquent Date should not be same...');
+                return;
+            }
+        }
 
         function functionpayemtfrequency(ddlPay) {
             // var payfre = document.getElementById("paymentfrequency").value;
@@ -666,7 +849,7 @@
         }
 
 
-        function functionInsttax() {           
+        function functionInsttax() {
             var Insterror;
             Insterror = document.getElementById("nextbilldate1").value;
             var Installmenterror1 = document.getElementById("instdate1").value;
@@ -674,14 +857,14 @@
             var Installmenterror3 = document.getElementById("instdate3").value;
             var Installmenterror4 = document.getElementById("instdate4").value;
 
-            var instamountpaidnew1   = document.getElementById("instamountpaid1").value;
+            var instamountpaidnew1 = document.getElementById("instamountpaid1").value;
             var remainingbalancenew1 = document.getElementById("remainingbalance1").value;
             var exemptrelevynew1 = document.getElementById("exemptrelevy1").checked;
 
             var instamountpaidnew2 = document.getElementById("instamountpaid2").value;
             var remainingbalancenew2 = document.getElementById("remainingbalance2").value;
             var exemptrelevynew2 = document.getElementById("exemptrelevy2").checked;
-            
+
             var instamountpaidnew3 = document.getElementById("instamountpaid3").value;
             var remainingbalancenew3 = document.getElementById("remainingbalance3").value;
             var exemptrelevynew3 = document.getElementById("exemptrelevy3").checked;
@@ -715,18 +898,18 @@
                 if (Installmenterror1 == "") {
                     document.getElementById("instdate1").focus();
                     alert("Installment Date1 should be required");
-                    return false;                    
+                    return false;
                 }
                 else if ((instamountnew1 == "")) {
                     document.getElementById("instamount1").focus();
                     alert("Installment Amount Cannot Be Empty");
                     return false;
-                }          
+                }
                 else if (instamountpaidnew1 == "") {
                     document.getElementById("instamountpaid1").focus();
                     alert("Installmentamount Paid Cannot Be Empty");
                     return false;
-                }                
+                }
                 else if (instamountpaidnew1 == "0.00" && remainingbalancenew1 == "0.00" && exemptrelevynew1 == false) {
                     alert("Installmentamount Paid and remainingbalance Cannot Be Zero");
                     return false;
@@ -769,7 +952,7 @@
                 else if ((instamountpaidnew1 == "0.00" && remainingbalancenew1 == "0.00" && exemptrelevynew1 == false) || (instamountpaidnew2 == "0.00" && remainingbalancenew2 == "0.00" && exemptrelevynew2 == false)) {
                     alert("Installmentamount Paid and remainingbalance Cannot Be Zero");
                     return false;
-                }                
+                }
             }
 
             if (Tri == "Tri-Annual") {
@@ -890,7 +1073,7 @@
                     return false;
                 }
             }
-                 
+
             if (Insterror == "") {
                 document.getElementById('nextbilldate1').style.borderColor = "#ff0000";
                 document.getElementById("lblnextbilldate1").style.color = "#ff0000";
@@ -916,7 +1099,7 @@
             var Instfuterror, Instfuterror1;
             Instfuterror = document.getElementById("txtmanubillstartdate").value;
             Instfuterror1 = document.getElementById("txtmanubillenddate").value;
-            
+
             if (Instfuterror == "") {
                 document.getElementById("txtmanubillstartdate").focus();
                 alert("Please enter Billing Start Date...");
@@ -1148,7 +1331,7 @@
                     alert("Installmentamount Paid and remaining Balance Cannot Be Zero");
                     return false;
                 }
-            }            
+            }
         }
 
         function userValid() {
@@ -1171,7 +1354,7 @@
                 return false;
             }
 
-            
+
             var delistatus = document.getElementById("txtdeliquent").value;
             var delirows = gvDeliquentStatus.rows;
 
@@ -4283,12 +4466,6 @@
                 alert('Delinquent date must be after the installment date...');
                 return;
             }
-            //else if (delinq1 == inst1) {
-            //    document.getElementById('delinq1').value = "";
-            //    alert('Delinquent date and installment date should not be same...');
-            //    return;
-            //    document.getElementById("delinq1").focus();
-            //}
         }
 
         function checkINSTDEDate2() {
@@ -4316,13 +4493,7 @@
                 document.getElementById("delinq2").focus();
                 alert('Delinquent date must be after the installment date...');
                 return;
-            }
-            //else if (delinq2 == inst2) {
-            //    document.getElementById('delinq2').value = "";
-            //    alert('Delinquent date and installment date should not be same...');
-            //    return;
-            //    document.getElementById("delinq2").focus();
-            //}
+            }            
         }
 
         function checkINSTDEDate3() {
@@ -4350,13 +4521,7 @@
                 document.getElementById("delinq3").focus();
                 alert('Delinquent date must be after the installment date...');
                 return;
-            }
-            //else if (delinq3 == inst3) {
-            //    document.getElementById('delinq1').value = "";
-            //    alert('Delinquent date and installment date should not be same...');
-            //    return;
-            //    document.getElementById("delinq3").focus();
-            //}
+            }            
         }
 
         function checkINSTDEDate4() {
@@ -4384,13 +4549,7 @@
                 document.getElementById("delinq4").focus();
                 alert('Delinquent date must be after the installment date...');
                 return;
-            }
-            //else if (delinq4 == inst4) {
-            //    document.getElementById('delinq4').value = "";
-            //    alert('Delinquent date and installment date should not be same...');
-            //    return;
-            //    document.getElementById("delinq4").focus();
-            //}
+            }            
         }
 
 
@@ -4521,7 +4680,7 @@
                     alert(errormsg);
                     return;
                 }
-            }
+            }           
         }
 
         function checkDISDate2() {
@@ -4555,13 +4714,7 @@
                     alert(errormsg);
                     return;
                 }
-            }
-            //if (disc2 == delinq2) {
-            //    document.getElementById('discdate2').value = "";                
-            //    alert('Discount Date and Delinquent Date should not be same...');
-            //    return;
-            //    document.getElementById("discdate2").focus();
-            //}
+            }            
         }
 
         function checkDISDate3() {
@@ -4595,13 +4748,7 @@
                     alert(errormsg);
                     return;
                 }
-            }
-            //if (disc3 == delinq3) {
-            //    document.getElementById('discdate3').value = "";                
-            //    alert('Discount Date and Delinquent Date should not be same...');
-            //    return;
-            //    document.getElementById("discdate3").focus();
-            //}
+            }            
         }
 
         function checkDISDate4() {
@@ -4635,13 +4782,7 @@
                     alert(errormsg);
                     return;
                 }
-            }
-            //if (disc4 == delinq4) {
-            //    document.getElementById('discdate4').value = "";                
-            //    alert('Discount Date and Delinquent Date should not be same...');
-            //    return;
-            //    document.getElementById("discdate4").focus();
-            //}
+            }            
         }
 
         //future tax
@@ -4670,13 +4811,7 @@
                 document.getElementById("txtmandeliqdate1").focus();
                 alert('Delinquent date must be after the installment date...');
                 return;
-            }
-            //else if (delinq1 == inst1) {
-            //    document.getElementById('txtmandeliqdate1').value = "";
-            //    alert('Delinquent date and installment date should not be same...');
-            //    return;
-            //    document.getElementById("txtmandeliqdate1").focus();
-            //}
+            }            
         }
 
         function checkDate2() {
@@ -4704,13 +4839,7 @@
                 document.getElementById("txtmandeliqdate2").focus();
                 alert('Delinquent date must be after the installment date...');
                 return;
-            }
-            //else if (delinq2 == inst2) {
-            //    document.getElementById('txtmandeliqdate2').value = "";
-            //    alert('Delinquent date and installment date should not be same...');
-            //    return;
-            //    document.getElementById("txtmandeliqdate2").focus();
-            //}
+            }            
         }
 
         function checkDate3() {
@@ -4738,13 +4867,7 @@
                 document.getElementById("txtmandeliqdate3").focus();
                 alert('Delinquent date must be after the installment date...');
                 return;
-            }
-            //else if (delinq3 == inst3) {
-            //    document.getElementById('txtmandeliqdate3').value = "";
-            //    alert('Delinquent date and installment date should not be same...');
-            //    return;
-            //    document.getElementById("txtmandeliqdate3").focus();
-            //}
+            }            
         }
 
         function checkDate4() {
@@ -4772,13 +4895,7 @@
                 document.getElementById("txtmandeliqdate4").focus();
                 alert('Delinquent date must be after the installment date...');
                 return;
-            }
-            //else if (delinq4 == inst4) {
-            //    document.getElementById('txtmandeliqdate4').value = "";
-            //    alert('Delinquent date and installment date should not be same...');
-            //    return;
-            //    document.getElementById("txtmandeliqdate4").focus();
-            //}
+            }           
         }
 
 
@@ -4907,13 +5024,7 @@
                     alert(errormsg);
                     return;
                 }
-            }
-            //if (futdisc1 == futdelinq1) {
-            //    document.getElementById('txtmandisdate1').value = "";                
-            //    alert('Discount Date and Delinquent Date should not be same...');
-            //    return;
-            //    document.getElementById("txtmandisdate1").focus();
-            //}
+            }            
         }
 
         function checkfutINSTDEDate2() {
@@ -4947,13 +5058,7 @@
                     alert(errormsg);
                     return;
                 }
-            }
-            //if (futdisc2 == futdelinq2) {
-            //    document.getElementById('txtmandisdate2').value = "";                
-            //    alert('Discount Date and Delinquent Date should not be same...');
-            //    return;
-            //    document.getElementById("txtmandisdate2").focus();
-            //}
+            }            
         }
 
         function checkfutINSTDEDate3() {
@@ -4974,7 +5079,7 @@
             months11 += c.getMonth() - b.getMonth();
 
             if (b > a) {
-                document.getElementById('txtmandisdate3').value = "";                
+                document.getElementById('txtmandisdate3').value = "";
                 alert(futerrormsg3);
                 return;
                 document.getElementById("txtmandisdate3").focus();
@@ -4987,13 +5092,7 @@
                     alert(errormsg);
                     return;
                 }
-            }
-            //if (futdisc3 == futdelinq3) {
-            //    document.getElementById('txtmandisdate3').value = "";                
-            //    alert('Discount Date and Delinquent Date should not be same...');
-            //    return;
-            //    document.getElementById("txtmandisdate3").focus();
-            //}
+            }           
         }
 
         function checkfutINSTDEDate4() {
@@ -5027,13 +5126,7 @@
                     alert(errormsg);
                     return;
                 }
-            }
-            //if (futdisc4 == futdelinq4) {
-            //    document.getElementById('txtmandisdate4').value = "";
-            //    document.getElementById("txtmandisdate4").focus();
-            //    alert('Discount Date and Delinquent Date should not be same...');
-            //    return;
-            //}
+            }           
         }
 
         function dateValidate(txtpayoffgood) {
@@ -5049,10 +5142,8 @@
                 document.getElementById('lblpayoffgood').style.color = "#ff0000";
                 document.getElementById('txtpayoffgood').value = "";
                 alert("Date should be greater than current date");
-                return true;
                 document.getElementById("txtpayoffgood").focus();
-                //pickeddate.value = '';
-                //return;
+                return true;
             }
         }
 
@@ -5083,7 +5174,7 @@
                 document.getElementById('lblinitialinstall').style.color = "green";
                 return true;
             }
-            else {                
+            else {
                 document.getElementById('txtinitialinstall').style.borderColor = "#ff0000";
                 document.getElementById('lblinitialinstall').style.color = "#ff0000";
                 document.getElementById('txtinitialinstall').value = "";
@@ -7275,25 +7366,25 @@
                                                     <td>
                                                         <div class="form-group" style="margin-bottom: 0px;">
                                                             <label style="text-align: right; clear: both; float: left; margin-right: 29px;" class="CheckBold">Delinquent Date:</label>
-                                                            <input type="text" id="delinq1" runat="server" class="form-control taxing" style="width: 150px;" placeholder="MM/DD/YYYY" maxlength="10" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="checkINSTDEDate1(); checkDate(this,event)" autocomplete="off" tabindex="6" onchange="functionTaxBill(this)" />
+                                                            <input type="text" id="delinq1" runat="server" class="form-control taxing" style="width: 150px;" placeholder="MM/DD/YYYY" maxlength="10" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="checkINSTDEDate1(); checkDate(this,event)" autocomplete="off" tabindex="6" onchange="functionTaxBill(this);samedate1(this.value);" />
                                                         </div>
                                                     </td>
                                                     <td>
                                                         <div class="form-group" style="margin-bottom: 0px;">
                                                             <label style="text-align: right; clear: both; float: left; margin-right: 29px;" class="CheckBold">Delinquent Date:</label>
-                                                            <input type="text" id="delinq2" runat="server" class="form-control taxing" style="width: 150px;" placeholder="MM/DD/YYYY" maxlength="10" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="checkINSTDEDate2(); checkDate(this,event)" autocomplete="off" tabindex="15" onchange="functionTaxBill(this)" />
+                                                            <input type="text" id="delinq2" runat="server" class="form-control taxing" style="width: 150px;" placeholder="MM/DD/YYYY" maxlength="10" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="checkINSTDEDate2(); checkDate(this,event)" autocomplete="off" tabindex="15" onchange="functionTaxBill(this);samedate2(this.value);" />
                                                         </div>
                                                     </td>
                                                     <td>
                                                         <div class="form-group" style="margin-bottom: 0px;">
                                                             <label style="text-align: right; clear: both; float: left; margin-right: 29px;" class="CheckBold">Delinquent Date:</label>
-                                                            <input type="text" id="delinq3" runat="server" class="form-control taxing" style="width: 150px;" placeholder="MM/DD/YYYY" maxlength="10" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="checkINSTDEDate3(); checkDate(this,event)" autocomplete="off" tabindex="23" onchange="functionTaxBill(this)" />
+                                                            <input type="text" id="delinq3" runat="server" class="form-control taxing" style="width: 150px;" placeholder="MM/DD/YYYY" maxlength="10" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="checkINSTDEDate3(); checkDate(this,event)" autocomplete="off" tabindex="23" onchange="functionTaxBill(this);samedate3(this.value);" />
                                                         </div>
                                                     </td>
                                                     <td>
                                                         <div class="form-group" style="margin-bottom: 0px;">
                                                             <label style="text-align: right; clear: both; float: left; margin-right: 29px;" class="CheckBold">Delinquent Date:</label>
-                                                            <input type="text" id="delinq4" runat="server" class="form-control taxing" style="width: 150px;" placeholder="MM/DD/YYYY" maxlength="10" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="checkINSTDEDate4(); checkDate(this,event)" autocomplete="off" tabindex="32" onchange="functionTaxBill(this)" />
+                                                            <input type="text" id="delinq4" runat="server" class="form-control taxing" style="width: 150px;" placeholder="MM/DD/YYYY" maxlength="10" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="checkINSTDEDate4(); checkDate(this,event)" autocomplete="off" tabindex="32" onchange="functionTaxBill(this);samedate4(this.value);" />
                                                         </div>
                                                     </td>
                                                 </tr>
@@ -7327,25 +7418,25 @@
                                                     <td>
                                                         <div class="form-group" style="margin-bottom: 0px;">
                                                             <label style="text-align: right; clear: both; float: left; margin-right: 44px;" class="CheckBold">Discount Date:</label>
-                                                            <input type="text" id="discdate1" runat="server" class="form-control taxing" style="width: 150px;" placeholder="MM/DD/YYYY" maxlength="10" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="checkDISDate1(); return checkDate(this,event)" autocomplete="off" tabindex="8" />
+                                                            <input type="text" id="discdate1" runat="server" class="form-control taxing" style="width: 150px;" placeholder="MM/DD/YYYY" maxlength="10" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="checkDISDate1(); return checkDate(this,event)" autocomplete="off" tabindex="8" onchange="discountdate1(this.value);"/>
                                                         </div>
                                                     </td>
                                                     <td>
                                                         <div class="form-group" style="margin-bottom: 0px;">
                                                             <label style="text-align: right; clear: both; float: left; margin-right: 44px;" class="CheckBold">Discount Date:</label>
-                                                            <input type="text" id="discdate2" runat="server" class="form-control taxing" style="width: 150px;" placeholder="MM/DD/YYYY" maxlength="10" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="checkDISDate2(); return checkDate(this,event)" autocomplete="off" tabindex="17" />
+                                                            <input type="text" id="discdate2" runat="server" class="form-control taxing" style="width: 150px;" placeholder="MM/DD/YYYY" maxlength="10" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="checkDISDate2(); return checkDate(this,event)" autocomplete="off" tabindex="17" onchange="discountdate2(this.value);"/>
                                                         </div>
                                                     </td>
                                                     <td>
                                                         <div class="form-group" style="margin-bottom: 0px;">
                                                             <label style="text-align: right; clear: both; float: left; margin-right: 44px;" class="CheckBold">Discount Date:</label>
-                                                            <input type="text" id="discdate3" runat="server" class="form-control taxing" style="width: 150px;" placeholder="MM/DD/YYYY" maxlength="10" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="checkDISDate3(); return checkDate(this,event)" autocomplete="off" tabindex="25" />
+                                                            <input type="text" id="discdate3" runat="server" class="form-control taxing" style="width: 150px;" placeholder="MM/DD/YYYY" maxlength="10" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="checkDISDate3(); return checkDate(this,event)" autocomplete="off" tabindex="25" onchange="discountdate3(this.value);"/>
                                                         </div>
                                                     </td>
                                                     <td>
                                                         <div class="form-group" style="margin-bottom: 0px;">
                                                             <label style="text-align: right; clear: both; float: left; margin-right: 44px;" class="CheckBold">Discount Date:</label>
-                                                            <input type="text" id="discdate4" runat="server" class="form-control taxing" style="width: 150px;" placeholder="MM/DD/YYYY" maxlength="10" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="checkDISDate4(); return checkDate(this,event)" autocomplete="off" tabindex="34" />
+                                                            <input type="text" id="discdate4" runat="server" class="form-control taxing" style="width: 150px;" placeholder="MM/DD/YYYY" maxlength="10" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="checkDISDate4(); return checkDate(this,event)" autocomplete="off" tabindex="34" onchange="discountdate4(this.value);"/>
                                                         </div>
                                                     </td>
                                                 </tr>
@@ -7384,7 +7475,7 @@
                                                         <b style="white-space: nowrap" class="CheckBold">Next Bill Date2:</b>
                                                     </td>
                                                     <td>
-                                                        <input type="text" id="nextbilldate2" runat="server" class="form-control" style="width: 167px;margin-bottom:5px" placeholder="MM/DD/YYYY" maxlength="10" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="return checkDate(this,event)" autocomplete="off" tabindex="38" />
+                                                        <input type="text" id="nextbilldate2" runat="server" class="form-control" style="width: 167px; margin-bottom: 5px" placeholder="MM/DD/YYYY" maxlength="10" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="return checkDate(this,event)" autocomplete="off" tabindex="38" />
                                                     </td>
                                                     <td>
                                                         <b style="white-space: nowrap;" id="dd" runat="server" class="CheckBold">Future Tax Calculation:</b>
@@ -7404,7 +7495,7 @@
                                                         <b style="white-space: nowrap;" class="CheckBold">Payment Frequency:</b>
                                                     </td>
                                                     <td>
-                                                        <select class="form-control" id="paymentfrequency" runat="server" style="width: 170px;margin-top:10px;" onchange="functionpayemtfrequency(this)" tabindex="39">
+                                                        <select class="form-control" id="paymentfrequency" runat="server" style="width: 170px; margin-top: 10px;" onchange="functionpayemtfrequency(this)" tabindex="39">
                                                             <option value="1">Annual</option>
                                                             <option value="2">Semi-Annual</option>
                                                             <option value="3">Tri-Annual</option>
@@ -7701,25 +7792,25 @@
                                                         <td>
                                                             <div class="form-group" style="margin-bottom: 0px;">
                                                                 <label style="text-align: right; clear: both; float: left; margin-right: 29px;" class="CheckBold">Delinquent Date:</label>
-                                                                <input type="text" id="txtmandeliqdate1" runat="server" class="form-control taxing" style="width: 150px;" placeholder="MM/DD/YYYY" maxlength="10" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="checkDate1(); return checkDate(this,event);" autocomplete="off" tabindex="58" />
+                                                                <input type="text" id="txtmandeliqdate1" runat="server" class="form-control taxing" style="width: 150px;" placeholder="MM/DD/YYYY" maxlength="10" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="checkDate1(); return checkDate(this,event);" autocomplete="off" tabindex="58" onchange="futuresamedate1(this.value);"/>
                                                             </div>
                                                         </td>
                                                         <td>
                                                             <div class="form-group" style="margin-bottom: 0px;">
                                                                 <label style="text-align: right; clear: both; float: left; margin-right: 29px;" class="CheckBold">Delinquent Date:</label>
-                                                                <input type="text" id="txtmandeliqdate2" runat="server" class="form-control taxing" style="width: 150px;" placeholder="MM/DD/YYYY" maxlength="10" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="checkDate2(); return checkDate(this,event)" autocomplete="off" tabindex="67" />
+                                                                <input type="text" id="txtmandeliqdate2" runat="server" class="form-control taxing" style="width: 150px;" placeholder="MM/DD/YYYY" maxlength="10" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="checkDate2(); return checkDate(this,event)" autocomplete="off" tabindex="67" onchange="futuresamedate2(this.value);"/>
                                                             </div>
                                                         </td>
                                                         <td>
                                                             <div class="form-group" style="margin-bottom: 0px;">
                                                                 <label style="text-align: right; clear: both; float: left; margin-right: 29px;" class="CheckBold">Delinquent Date:</label>
-                                                                <input type="text" id="txtmandeliqdate3" runat="server" class="form-control taxing" style="width: 150px;" placeholder="MM/DD/YYYY" maxlength="10" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="checkDate3(); return checkDate(this,event)" autocomplete="off" tabindex="76" />
+                                                                <input type="text" id="txtmandeliqdate3" runat="server" class="form-control taxing" style="width: 150px;" placeholder="MM/DD/YYYY" maxlength="10" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="checkDate3(); return checkDate(this,event)" autocomplete="off" tabindex="76" onchange="futuresamedate3(this.value);"/>
                                                             </div>
                                                         </td>
                                                         <td>
                                                             <div class="form-group" style="margin-bottom: 0px;">
                                                                 <label style="text-align: right; clear: both; float: left; margin-right: 29px;" class="CheckBold">Delinquent Date:</label>
-                                                                <input type="text" id="txtmandeliqdate4" runat="server" class="form-control taxing" style="width: 150px;" placeholder="MM/DD/YYYY" maxlength="10" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="checkDate4(); return checkDate(this,event)" autocomplete="off" tabindex="85" />
+                                                                <input type="text" id="txtmandeliqdate4" runat="server" class="form-control taxing" style="width: 150px;" placeholder="MM/DD/YYYY" maxlength="10" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="checkDate4(); return checkDate(this,event)" autocomplete="off" tabindex="85" onchange="futuresamedate4(this.value);"/>
                                                             </div>
                                                         </td>
                                                     </tr>
@@ -7753,25 +7844,25 @@
                                                         <td>
                                                             <div class="form-group" style="margin-bottom: 0px;">
                                                                 <label style="text-align: right; clear: both; float: left; margin-right: 44px;" class="CheckBold">Discount Date:</label>
-                                                                <input type="text" id="txtmandisdate1" runat="server" class="form-control taxing" style="width: 150px;" placeholder="MM/DD/YYYY" maxlength="10" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="checkfutINSTDEDate1(); return checkDate(this,event)" autocomplete="off" tabindex="60" />
+                                                                <input type="text" id="txtmandisdate1" runat="server" class="form-control taxing" style="width: 150px;" placeholder="MM/DD/YYYY" maxlength="10" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="checkfutINSTDEDate1(); return checkDate(this,event)" onchange="futurdiscountdate1(this.value);" autocomplete="off" tabindex="60" />
                                                             </div>
                                                         </td>
                                                         <td>
                                                             <div class="form-group" style="margin-bottom: 0px;">
                                                                 <label style="text-align: right; clear: both; float: left; margin-right: 44px;" class="CheckBold">Discount Date:</label>
-                                                                <input type="text" id="txtmandisdate2" runat="server" class="form-control taxing" style="width: 150px;" placeholder="MM/DD/YYYY" maxlength="10" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="checkfutINSTDEDate2(); return checkDate(this,event)" autocomplete="off" tabindex="69" />
+                                                                <input type="text" id="txtmandisdate2" runat="server" class="form-control taxing" style="width: 150px;" placeholder="MM/DD/YYYY" maxlength="10" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="checkfutINSTDEDate2(); return checkDate(this,event)" onchange="futurdiscountdate2(this.value);" autocomplete="off" tabindex="69" />
                                                             </div>
                                                         </td>
                                                         <td>
                                                             <div class="form-group" style="margin-bottom: 0px;">
                                                                 <label style="text-align: right; clear: both; float: left; margin-right: 44px;" class="CheckBold">Discount Date:</label>
-                                                                <input type="text" id="txtmandisdate3" runat="server" class="form-control taxing" style="width: 150px;" placeholder="MM/DD/YYYY" maxlength="10" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="checkfutINSTDEDate3(); return checkDate(this,event)" autocomplete="off" tabindex="78" />
+                                                                <input type="text" id="txtmandisdate3" runat="server" class="form-control taxing" style="width: 150px;" placeholder="MM/DD/YYYY" maxlength="10" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="checkfutINSTDEDate3(); return checkDate(this,event)" onchange="futurdiscountdate3(this.value);" autocomplete="off" tabindex="78" />
                                                             </div>
                                                         </td>
                                                         <td>
                                                             <div class="form-group" style="margin-bottom: 0px;">
                                                                 <label style="text-align: right; clear: both; float: left; margin-right: 44px;" class="CheckBold">Discount Date:</label>
-                                                                <input type="text" id="txtmandisdate4" runat="server" class="form-control taxing" style="width: 150px;" placeholder="MM/DD/YYYY" maxlength="10" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="checkfutINSTDEDate4(); return checkDate(this,event)" autocomplete="off" tabindex="87" />
+                                                                <input type="text" id="txtmandisdate4" runat="server" class="form-control taxing" style="width: 150px;" placeholder="MM/DD/YYYY" maxlength="10" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="checkfutINSTDEDate4(); return checkDate(this,event)" onchange="futurdiscountdate4(this.value);" autocomplete="off" tabindex="87" />
                                                             </div>
                                                         </td>
                                                     </tr>
@@ -7802,7 +7893,7 @@
                                                             <b style="white-space: nowrap" class="CheckBold">Tax Bill:</b>
                                                         </td>
                                                         <td>
-                                                            <input type="text" id="ddlmanutaxbill" runat="server" class="form-control" style="width: 166px;margin-bottom:5px;" autocomplete="off" tabindex="89" />
+                                                            <input type="text" id="ddlmanutaxbill" runat="server" class="form-control" style="width: 166px; margin-bottom: 5px;" autocomplete="off" tabindex="89" />
                                                             <%--  <select class="form-control" id="ddlmanutaxbill" runat="server" style="width: 170px; margin-bottom: 5px;" tabindex="89">
                                                                 <option value="0">Select Bill</option>
                                                                 <option value="1">Current</option>
@@ -8085,7 +8176,7 @@
                                             </b>
                                         </td>
                                         <td>
-                                            <asp:TextBox ID="txtdelitState" runat="server" class="form-control" placeholder="State" autocomplete='off' onchange="return functionDelinquent()" onkeypress="return onlyAlphabets(event,this);" style="text-transform: uppercase" MaxLength="2" onblur="IsValidLengthState(this.value,this,event);" onpaste="return isNumber(event)">
+                                            <asp:TextBox ID="txtdelitState" runat="server" class="form-control" placeholder="State" autocomplete='off' onchange="return functionDelinquent()" onkeypress="return onlyAlphabets(event,this);" Style="text-transform: uppercase" MaxLength="2" onblur="IsValidLengthState(this.value,this,event);" onpaste="return isNumber(event)">
                                             </asp:TextBox>
                                         </td>
                                     </tr>
@@ -8099,7 +8190,7 @@
                                         <td>
                                             <%--<asp:TextBox ID="txtdelitzip" runat="server" Style="margin-bottom: 5px;" class="form-control" placeholder="Zip" autocomplete='nope' onchange="return functionDelinquent()">
                                             </asp:TextBox>--%>
-                                            <asp:TextBox ID="txtdelitzip" runat="server" class="form-control" placeholder="Zip Code" onkeypress="return isNumberKey(event)" autocomplete='off' MaxLength="5" style="margin-bottom:5px;" onchange="return functionDelinquent();" onblur="IsValidLengthZip(this.value,this,event);"></asp:TextBox>
+                                            <asp:TextBox ID="txtdelitzip" runat="server" class="form-control" placeholder="Zip Code" onkeypress="return isNumberKey(event)" autocomplete='off' MaxLength="5" Style="margin-bottom: 5px;" onchange="return functionDelinquent();" onblur="IsValidLengthZip(this.value,this,event);"></asp:TextBox>
                                         </td>
                                         <td style="padding-left: 31px;">
                                             <label class="CheckBold" id="lblbaseamntdue">Base Amount Due:</label>
@@ -8198,7 +8289,7 @@
                                             </b>
                                         </td>
                                         <td>
-                                            <asp:TextBox ID="txtpayoffgood" runat="server" class="form-control" placeholder="MM/DD/YYYY" MaxLength="10" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="return dateValidate(this)" autocomplete='off' onchange="return functionDelinquent()"></asp:TextBox>
+                                            <asp:TextBox ID="txtpayoffgood" runat="server" class="form-control" placeholder="MM/DD/YYYY" MaxLength="10" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" autocomplete='off' onchange="dateValidate(this);return functionDelinquent();"></asp:TextBox>
                                         </td>
 
                                         <td style="padding-left: 31px;">
@@ -8273,17 +8364,17 @@
                             EmptyDataRowStyle-HorizontalAlign="Center"
                             OnRowCancelingEdit="gvDeliquentStatus_RowCancelingEdit">
                             <Columns>
-                                <asp:BoundField ItemStyle-Width="50%" DataField="Id" HeaderText="Tax ID" ReadOnly="true" ItemStyle-CssClass="hiddencol" HeaderStyle-CssClass="hiddencol"/>
-                                <asp:BoundField ItemStyle-Width="30%" DataField="payee" HeaderText="Payee Name" ReadOnly="true" ItemStyle-CssClass="hiddencol" HeaderStyle-CssClass="hiddencol"/>
-                                <asp:BoundField ItemStyle-Width="30%" DataField="address" HeaderText="Address" ReadOnly="true" ItemStyle-CssClass="hiddencol" HeaderStyle-CssClass="hiddencol"/>
-                                <asp:BoundField ItemStyle-Width="20%" DataField="city" HeaderText="City" ReadOnly="true" ItemStyle-CssClass="hiddencol" HeaderStyle-CssClass="hiddencol"/>
+                                <asp:BoundField ItemStyle-Width="50%" DataField="Id" HeaderText="Tax ID" ReadOnly="true" ItemStyle-CssClass="hiddencol" HeaderStyle-CssClass="hiddencol" />
+                                <asp:BoundField ItemStyle-Width="30%" DataField="payee" HeaderText="Payee Name" ReadOnly="true" ItemStyle-CssClass="hiddencol" HeaderStyle-CssClass="hiddencol" />
+                                <asp:BoundField ItemStyle-Width="30%" DataField="address" HeaderText="Address" ReadOnly="true" ItemStyle-CssClass="hiddencol" HeaderStyle-CssClass="hiddencol" />
+                                <asp:BoundField ItemStyle-Width="20%" DataField="city" HeaderText="City" ReadOnly="true" ItemStyle-CssClass="hiddencol" HeaderStyle-CssClass="hiddencol" />
                                 <asp:BoundField ItemStyle-Width="40%" DataField="state" HeaderText="State" ReadOnly="true" ItemStyle-CssClass="hiddencol" HeaderStyle-CssClass="hiddencol" />
                                 <asp:BoundField ItemStyle-Width="40%" DataField="zip" HeaderText="Zip Code" ReadOnly="true" ItemStyle-CssClass="hiddencol" HeaderStyle-CssClass="hiddencol" />
-                                <asp:BoundField ItemStyle-Width="20%" DataField="deliquenttaxyear" HeaderText="Delinquent Year" ReadOnly="true"/>
-                                <asp:BoundField ItemStyle-Width="20%" DataField="payoffamount" HeaderText="Pay-off Amount" ReadOnly="true"/>
+                                <asp:BoundField ItemStyle-Width="20%" DataField="deliquenttaxyear" HeaderText="Delinquent Year" ReadOnly="true" />
+                                <asp:BoundField ItemStyle-Width="20%" DataField="payoffamount" HeaderText="Pay-off Amount" ReadOnly="true" />
                                 <asp:BoundField ItemStyle-Width="40%" DataField="comments" HeaderText="Comments" ReadOnly="true" ItemStyle-CssClass="hiddencol" HeaderStyle-CssClass="hiddencol" />
-                                <asp:BoundField ItemStyle-Width="20%" DataField="goodthuruDate" HeaderText="Good-thru Date" ReadOnly="true"/>
-                                <asp:BoundField ItemStyle-Width="25%" DataField="installmentduedate" HeaderText="Installment Date" ReadOnly="true"/>
+                                <asp:BoundField ItemStyle-Width="20%" DataField="goodthuruDate" HeaderText="Good-thru Date" ReadOnly="true" />
+                                <asp:BoundField ItemStyle-Width="25%" DataField="installmentduedate" HeaderText="Installment Date" ReadOnly="true" />
                                 <asp:BoundField ItemStyle-Width="40%" DataField="taxsalenotapplicable" HeaderText="TaxSale.NotApp" ReadOnly="true" ItemStyle-CssClass="hiddencol" HeaderStyle-CssClass="hiddencol" />
                                 <asp:BoundField ItemStyle-Width="40%" DataField="dateofTaxsale" HeaderText="DtOfTaxsale" ReadOnly="true" ItemStyle-CssClass="hiddencol" HeaderStyle-CssClass="hiddencol" />
                                 <asp:BoundField ItemStyle-Width="40%" DataField="lastdaytoredeem" HeaderText="LastDayRedeem" ReadOnly="true" ItemStyle-CssClass="hiddencol" HeaderStyle-CssClass="hiddencol" />
@@ -8444,7 +8535,7 @@
                                         </td>
                                         <td>
                                             <%-- <asp:TextBox ID="txtInstallRemain" runat="server" class="form-control" placeholder="Inst Remaining" Style="margin-bottom: 5px;" onkeyup="SpeAmount1();" onfocusout="SpemyFunctionAmount1();if (this.value=='0.00') this.value='0.00';if (this.value=='') this.value='0.00';" onfocus="this.value='0.00'" onfocusin="if (this.value=='0.00') this.value='';" onblur="mySpe();" autocomplete='off'></asp:TextBox>--%>
-                                            <asp:TextBox ID="txtInstallRemain" runat="server" class="form-control" placeholder="Inst Remaining" onkeypress="return isNumberKey(event)" autocomplete='off' onchange="return functionSpecial()" style="margin-bottom:5px;"></asp:TextBox>
+                                            <asp:TextBox ID="txtInstallRemain" runat="server" class="form-control" placeholder="Inst Remaining" onkeypress="return isNumberKey(event)" autocomplete='off' onchange="return functionSpecial()" Style="margin-bottom: 5px;"></asp:TextBox>
                                         </td>
                                         <td style="padding-left: 31px;"><b class="CheckBold">Due Date:</b></td>
                                         <td>
@@ -8504,7 +8595,7 @@
                             <Columns>
 
                                 <asp:BoundField ItemStyle-Width="50%" ItemStyle-ForeColor="Black" ItemStyle-Font-Bold="false" DataField="Id" HeaderText="Tax ID" ReadOnly="true" ItemStyle-CssClass="hiddencol" HeaderStyle-CssClass="hiddencol" />
-                                <asp:BoundField ItemStyle-Width="30%" ItemStyle-ForeColor="Black" ItemStyle-Font-Bold="false" DataField="description" HeaderText="Description" ReadOnly="true" ItemStyle-CssClass="hiddencol" HeaderStyle-CssClass="hiddencol"/>
+                                <asp:BoundField ItemStyle-Width="30%" ItemStyle-ForeColor="Black" ItemStyle-Font-Bold="false" DataField="description" HeaderText="Description" ReadOnly="true" ItemStyle-CssClass="hiddencol" HeaderStyle-CssClass="hiddencol" />
                                 <asp:BoundField ItemStyle-Width="30%" ItemStyle-ForeColor="Black" ItemStyle-Font-Bold="false" DataField="InstallmentsRemaining" HeaderText="Installment Remaining" ReadOnly="true" />
                                 <asp:BoundField ItemStyle-Width="30%" ItemStyle-ForeColor="Black" ItemStyle-Font-Bold="false" DataField="specialassessmentno" HeaderText="Special Assessment No" ReadOnly="true" />
                                 <asp:BoundField ItemStyle-Width="20%" ItemStyle-ForeColor="Black" ItemStyle-Font-Bold="false" DataField="noofinstallment" HeaderText="No.Of.Installments" ReadOnly="true" />
