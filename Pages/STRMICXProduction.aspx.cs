@@ -31,9 +31,15 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
     string taxagencytype = "";
     decimal Inst1, Inst2, Inst3, Inst4, Instoutput;
     public bool chk = false;
-
+    Response jsonResponse = new Response();
+    Validation validate = new Validation();
+    CallAPI postData = new CallAPI();
+    string TaxAuthorityName = "";
     protected void Page_Load(object sender, EventArgs e)
     {
+        //string jsonData = jsonResponse.GetJsonData("57411242");
+
+        //string isSuccess = postData.POST(jsonData, "57411242");
         //string connect = ConfigurationManager.ConnectionStrings["MysqlConnection"].ConnectionString;
         //using (MySqlConnection con = new MySqlConnection(connect))
         //{
@@ -3127,7 +3133,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
                 ddlmaninstpaiddue1.Value = "Due";
             }
 
-            if (payemntfrequency == "Semi-Annual" || payemntfrequency == "2")
+            if (payemntfrequency == "SemiAnnual" || payemntfrequency == "2")
             {
                 SetTaxBillValue1(txtmandeliqdate2.Value);
 
@@ -3177,7 +3183,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
                 ddlmaninstpaiddue2.Value = "Due";
             }
 
-            if (payemntfrequency == "Tri-Annual" || payemntfrequency == "3")
+            if (payemntfrequency == "TriAnnual" || payemntfrequency == "3")
             {
 
                 instmanamount1.Attributes.Remove("disabled");
@@ -3537,11 +3543,12 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
         process = processtatus.Text;
         OStatus = ddlstatus.Value;
 
-        Validation validate = new Validation();
+      
         //ordernumber & parcelnumber validate..........
         string message = validate.checkParcel(lblord.Text);
 
-
+   
+      
 
         if (OStatus == "Completed" && process == "KEY")
         {
@@ -3586,8 +3593,18 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
             {
                 if (message == "")
                 {
-                    UpdateProduction("sp_UpdateQC_User");
-
+                    string jsonData = jsonResponse.GetJsonData(lblord.Text);
+                    
+                    string isSuccess = postData.POST(jsonData, lblord.Text);
+                    if (isSuccess == "OK")
+                    {
+                        UpdateProduction("sp_UpdateQC_User");
+                    }
+                    else
+                    {
+                        Alert("Order not deliverd");
+                        return;
+                    }
                     if (id == "12f7tre5")
                     {
                         Response.Redirect("STRMICXProduction.aspx?id=" + id);
@@ -4357,6 +4374,14 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
     {
         Response.Redirect("STRMICXHome.aspx");
     }
+
+    public void Alert(string msg)
+    {
+        ScriptManager.RegisterStartupScript(this, this.GetType(), "alertMessage", "alert('" + msg + "')", true);
+       
+    }
+
+
     //Rasheed123
 }
 
