@@ -4342,8 +4342,6 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
         ScriptManager.RegisterStartupScript(this, this.GetType(), "alertMessage", "alert('" + msg + "')", true);
        
     }
-
-
     //Rasheed123
 }
 
