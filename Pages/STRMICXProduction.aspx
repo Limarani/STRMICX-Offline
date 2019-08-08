@@ -6565,16 +6565,16 @@
         <form id="myForm" name="myForm" style="margin-top: 1px;" runat="server">
             <asp:ScriptManager ID="ScriptManager1" runat="server" />
 
-            <table class="header">
+            <table class="header" style="width: 1380px;">
                 <tr style="width: 250px;">
                     <td style="color: red; font-weight: bold; width: 150px;">
                         <img src="../images/logo.png" style="width: 90px;" /></td>
 
-                    <td style="width: 490px;"></td>
+                    <td style="width: 470px;"></td>
                     <td style="text-align: center; font-weight: bold; font-size: x-large; color: #280277;">
                         <img src="../images/favicon-32x32.png" style="width: 30px;" />
                         &nbsp;&nbsp;&nbsp;&nbsp;  <b style="margin-left: -30px; white-space: nowrap;">STRMICX</b></td>
-                    <td style="width: 415px;">
+                    <td style="width: 315px;">
                         <div style="text-align: end; margin-top: -13px;">
                             <img src="../images/Prcess image.png" alt="image" style="width: 15px" />
                             <asp:Label ID="processtatus" runat="server" Style="color: black; font-weight: 500"></asp:Label>
