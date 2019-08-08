@@ -356,13 +356,13 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
                 updatedeli = "update tbl_taxauthorities2 set IsExemption = 'No' where Orderno = '" + lblord.Text + "' AND TaxId = '" + LblTaxID.Text + "' And AgencyId = '" + agency + "' And TaxAgencyType = '" + agencytype + "'";
                 gl.ExecuteSPNonQuery(updatedeli);
             }
-            else if (txtResidence.SelectedValue == "No")
+            if (txtResidence.SelectedValue == "No")
             {
                 string updatedeli = "";
                 updatedeli = "update tbl_taxauthorities2 set primaryresidence = 'No' where Orderno = '" + lblord.Text + "' AND TaxId = '" + LblTaxID.Text + "' And AgencyId = '" + agency + "' And TaxAgencyType = '" + agencytype + "'"; 
                 gl.ExecuteSPNonQuery(updatedeli);
             }
-            else if (SecialAssmnt.SelectedValue == "No")
+            if (SecialAssmnt.SelectedValue == "No")
             {
                 string updatedeli = "";
                 updatedeli = "update tbl_taxauthorities2 set IsSpecial = 'No' where Orderno = '" + lblord.Text + "' AND TaxId = '" + LblTaxID.Text + "' And AgencyId = '" + agency + "' And TaxAgencyType = '" + agencytype + "'"; 
@@ -3931,7 +3931,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
 
     private DataSet UpdateProduction(string Procedurename)
     {
-        return gl.UpdateOrderStatusNew(Procedurename, lblord.Text, process, lblzipcode.Text, OStatus);
+        return gl.UpdateOrderStatusNew(Procedurename, lblord.Text, process, lblzipcode.Text, OStatus, txttotalcomments.Value);
     }
 
     private DataSet Updatetaxauthoritiessection(string Procedurename)
