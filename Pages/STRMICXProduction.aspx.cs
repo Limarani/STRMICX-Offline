@@ -1242,8 +1242,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
     }
 
 
-    //balaji
-
+   
     protected void btnsavetaxauthorities_Click(object sender, EventArgs e)
     {
         btnsavetaxauthorities.Enabled = true;
@@ -1322,6 +1321,10 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "alertMessage", "alert('Data Saved Successfully')", true);
                 return;
             }
+        }
+        else if (ds.Tables[0].Rows.Count > 0)
+        {
+
         }
         else
         {
