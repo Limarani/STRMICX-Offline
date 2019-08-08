@@ -8150,7 +8150,7 @@
                                             </b>
                                         </td>
                                         <td>
-                                            <asp:TextBox ID="txtdeliPayee" runat="server" Style="margin-bottom: 5px;" class="form-control" placeholder="Payee Name" autocomplete='off' onchange="return functionDelinquent()">
+                                            <asp:TextBox ID="txtdeliPayee" runat="server" Style="margin-bottom: 5px;" class="form-control" placeholder="Payee Name" autocomplete='off' onchange="return functionDelinquent()" onkeyup="CheckFirstChar(event.keyCode, this);" onkeydown="return CheckFirstChar(event.keyCode, this);">
                                             </asp:TextBox>
                                         </td>
                                         <td style="padding-left: 31px;">
@@ -8159,7 +8159,7 @@
                                             </b>
                                         </td>
                                         <td>
-                                            <asp:TextBox runat="server" class="form-control" ID="txtdelitAddress" autocomplete='off' placeholder="Address" onchange="return functionDelinquent()"></asp:TextBox>
+                                            <asp:TextBox runat="server" class="form-control" ID="txtdelitAddress" autocomplete='off' placeholder="Address" onchange="return functionDelinquent()" onkeydown="return CheckFirstChar(event.keyCode, this);" onkeyup="CheckFirstChar(event.keyCode, this);"></asp:TextBox>
                                         </td>
                                         <td style="padding-left: 31px;">
                                             <b>
@@ -8167,7 +8167,7 @@
                                             </b>
                                         </td>
                                         <td>
-                                            <asp:TextBox ID="txtdelitCity" runat="server" class="form-control" placeholder="City" autocomplete='off' onchange="return functionDelinquent()" onkeypress="return onlyAlphabets(event,this);">
+                                            <asp:TextBox ID="txtdelitCity" runat="server" class="form-control" placeholder="City" autocomplete='off' onchange="return functionDelinquent()" onkeypress="return onlyAlphabets(event,this);" onkeyup="CheckFirstChar(event.keyCode, this);" onkeydown="return CheckFirstChar(event.keyCode, this);">
                                             </asp:TextBox>
                                         </td>
                                         <td style="padding-left: 31px;">
@@ -8176,7 +8176,7 @@
                                             </b>
                                         </td>
                                         <td>
-                                            <asp:TextBox ID="txtdelitState" runat="server" class="form-control" placeholder="State" autocomplete='off' onchange="return functionDelinquent()" onkeypress="return onlyAlphabets(event,this);" Style="text-transform: uppercase" MaxLength="2" onblur="IsValidLengthState(this.value,this,event);" onpaste="return isNumber(event)">
+                                            <asp:TextBox ID="txtdelitState" runat="server" class="form-control" placeholder="State" autocomplete='off' onchange="return functionDelinquent()" onkeypress="return onlyAlphabets(event,this);" Style="text-transform: uppercase" MaxLength="2" onblur="IsValidLengthState(this.value,this,event);" onpaste="return isNumber(event)" onkeyup="CheckFirstChar(event.keyCode, this);" onkeydown="return CheckFirstChar(event.keyCode, this);">
                                             </asp:TextBox>
                                         </td>
                                     </tr>
@@ -8571,14 +8571,14 @@
                                         </td>
                                         <td style="padding-left: 31px;"><b class="CheckBold">Payee:</b></td>
                                         <td>
-                                            <asp:TextBox ID="txtspecpayee" runat="server" placeholder="Payee" class="form-control" autocomplete='off'></asp:TextBox>
+                                            <asp:TextBox ID="txtspecpayee" runat="server" placeholder="Payee" class="form-control" autocomplete='off' onkeyup="CheckFirstChar(event.keyCode, this);" onkeydown="return CheckFirstChar(event.keyCode, this);"></asp:TextBox>
                                         </td>
 
                                     </tr>
                                     <tr>
                                         <td><b class="CheckBold">Comments:</b></td>
                                         <td colspan="5">
-                                            <asp:TextBox ID="txtspeccomments" runat="server" class="form-control" placeholder="Comments" autocomplete='off'></asp:TextBox>
+                                            <asp:TextBox ID="txtspeccomments" runat="server" class="form-control" placeholder="Comments" autocomplete='off' onkeyup="CheckFirstChar(event.keyCode, this);" onkeydown="return CheckFirstChar(event.keyCode, this);"></asp:TextBox>
                                         </td>
                                         <td style="padding-left: 31px;">
                                             <asp:Button ID="SpecialAdd" runat="server" Text="Add" class="btn btn-success" Style="height: 32px; padding-top: 3px;" OnClick="btnSpecialAdd_Click" OnClientClick="return functionSpecial()" />
@@ -8686,7 +8686,7 @@
                                             <b class="CheckBold">Delinquency Comments:</b>
                                         </td>
                                         <td colspan="3">
-                                            <asp:TextBox ID="txtprideliqcommts" runat="server" placeholder="Delinquency Comments" Rows="2" cols="20" class="form-control" Style="resize: none"></asp:TextBox>
+                                            <asp:TextBox ID="txtprideliqcommts" runat="server" placeholder="Delinquency Comments" Rows="2" cols="20" class="form-control" Style="resize: none" onkeyup="CheckFirstChar(event.keyCode, this);" onkeydown="return CheckFirstChar(event.keyCode, this);"></asp:TextBox>
                                         </td>
                                         <td style="padding-left: 31px;">
                                             <asp:Button ID="btnpriordelinquenttax" runat="server" Text="Add" class="btn btn-success" Style="height: 32px; padding-top: 3px;" OnClick="btnpriordelinquenttax_Click" OnClientClick="return functionPrior()" />
