@@ -17307,7 +17307,7 @@ public class GlobalClass : myConnection
     
     public int update_tax_authorities_paymentdetails(string orderno, string taxid, string agencyid, string taxagencytype, string address, string instamount1, string instamount2, string instamount3, string instamount4, string instamountpaid1, string instamountpaid2, string instamountpaid3, string instamountpaid4, string instPaidDue1, string instPaidDue2, string instPaidDue3, string instPaidDue4, string remainingbalance1, string remainingbalance2, string remainingbalance3, string remainingbalance4, string installmentdate1, string installmentdate2, string installmentdate3, string installmentdate4, string delinquentdate1, string delinquentdate2, string delinquentdate3, string delinquentdate4, string discountamount1, string discountamount2, string discountamount3, string discountamount4, string discountdate1, string discountdate2, string discountdate3, string discountdate4, string exemptrelevy1, string exemptrelevy2, string exemptrelevy3, string exemptrelevy4, string nextbilldate1, string nextbilldate2, string taxbill, string paymentfrequency, string billingstartdate, string billingenddate, string futuretaxcal, string installmentcomments, string authoritystatus,string annualtaxamount)
     {        
-        mParam = new MySqlParameter[50];
+        mParam = new MySqlParameter[51];
 
         mParam[0] = new MySqlParameter("$orderno", orderno);
         mParam[0].MySqlDbType = MySqlDbType.VarChar;
