@@ -1223,9 +1223,9 @@ public class GlobalClass : myConnection
 
 
 
-    public DataSet UpdateOrderStatusNew(string query, string orderno, string processname, string zipcode, string Ostatus)
+    public DataSet UpdateOrderStatusNew(string query, string orderno, string processname, string zipcode, string Ostatus, string comments)
     {
-        mParam = new MySqlParameter[5];
+        mParam = new MySqlParameter[6];
 
         mParam[0] = new MySqlParameter("?$OrderNo", orderno);
         mParam[0].MySqlDbType = MySqlDbType.VarChar;         
@@ -1242,11 +1242,49 @@ public class GlobalClass : myConnection
         mParam[4] = new MySqlParameter("?$Ostatus", Ostatus);
         mParam[4].MySqlDbType = MySqlDbType.VarChar;
 
+        mParam[5] = new MySqlParameter("?$comments", comments);
+        mParam[5].MySqlDbType = MySqlDbType.VarChar;
+
         return con.ExecuteQuery(query, true, mParam);
     }
 
-    
-        
+
+    public DataSet Updatetaxauthorities(string query, string orderno, string taxid, string agencyid, string taxtype, string isdelinquent, string exemption, string specialassessment, string priordelinquent, string primaryresidence)
+    {
+        mParam = new MySqlParameter[9];
+
+        mParam[0] = new MySqlParameter("?$orderno", orderno);
+        mParam[0].MySqlDbType = MySqlDbType.VarChar;
+
+        mParam[1] = new MySqlParameter("?$taxid", taxid);
+        mParam[1].MySqlDbType = MySqlDbType.VarChar;
+
+        mParam[2] = new MySqlParameter("?$agencyid", agencyid);
+        mParam[2].MySqlDbType = MySqlDbType.VarChar;
+
+        mParam[3] = new MySqlParameter("?$taxtype", taxtype);
+        mParam[3].MySqlDbType = MySqlDbType.VarChar;
+
+        mParam[4] = new MySqlParameter("?$isdelinquent", isdelinquent);
+        mParam[4].MySqlDbType = MySqlDbType.VarChar;
+
+        mParam[5] = new MySqlParameter("?$exemption", exemption);
+        mParam[5].MySqlDbType = MySqlDbType.VarChar;
+
+        mParam[6] = new MySqlParameter("?$specialassessment", specialassessment);
+        mParam[6].MySqlDbType = MySqlDbType.VarChar;
+
+        mParam[7] = new MySqlParameter("?$priordelinquent", priordelinquent);
+        mParam[7].MySqlDbType = MySqlDbType.VarChar;
+
+        mParam[8] = new MySqlParameter("?$primaryresidence", primaryresidence);
+        mParam[8].MySqlDbType = MySqlDbType.VarChar;
+
+        return con.ExecuteQuery(query, true, mParam);
+    }
+
+
+
     public int MoveToCall(string query, string orderno, string township, string borrower, string ist, string pdate, string oStatus, string ordertype, string ist1, string zipcode, string encount, string processname)
     {
         mParam = new MySqlParameter[11];
@@ -17268,157 +17306,7 @@ public class GlobalClass : myConnection
 
     //amrock
     public int update_tax_authorities_paymentdetails(string orderno, string taxid, string agencyid, string taxagencytype, string address, string instamount1, string instamount2, string instamount3, string instamount4, string instamountpaid1, string instamountpaid2, string instamountpaid3, string instamountpaid4, string instPaidDue1, string instPaidDue2, string instPaidDue3, string instPaidDue4, string remainingbalance1, string remainingbalance2, string remainingbalance3, string remainingbalance4, string installmentdate1, string installmentdate2, string installmentdate3, string installmentdate4, string delinquentdate1, string delinquentdate2, string delinquentdate3, string delinquentdate4, string discountamount1, string discountamount2, string discountamount3, string discountamount4, string discountdate1, string discountdate2, string discountdate3, string discountdate4, string exemptrelevy1, string exemptrelevy2, string exemptrelevy3, string exemptrelevy4, string nextbilldate1, string nextbilldate2, string taxbill, string paymentfrequency, string billingstartdate, string billingenddate, string futuretaxcal, string installmentcomments, string authoritystatus)
-    {     
-        if(string.IsNullOrEmpty(instamount1)|| instamount1=="0.00")
-        {
-            instamount1 = null;
-        }
-        if (string.IsNullOrEmpty(instamount2) || instamount2 == "0.00")
-        {
-            instamount2 = null;
-        }
-        if (string.IsNullOrEmpty(instamount3) || instamount3 == "0.00")
-        {
-            instamount3 = null;
-        }
-        if (string.IsNullOrEmpty(instamount4) || instamount4 == "0.00")
-        {
-            instamount4 = null;
-        }
-        if (string.IsNullOrEmpty(instamountpaid1) || instamountpaid1 == "0.00")
-        {
-            instamountpaid1 = null;
-        }
-        if (string.IsNullOrEmpty(instamountpaid2) || instamountpaid2 == "0.00")
-        {
-            instamountpaid2 = null;
-        }
-        if (string.IsNullOrEmpty(instamountpaid3) || instamountpaid3 == "0.00")
-        {
-            instamountpaid3 = null;
-        }
-        if (string.IsNullOrEmpty(instamountpaid4) || instamountpaid4 == "0.00")
-        {
-            instamountpaid4 = null;
-        }
-        if (string.IsNullOrEmpty(instPaidDue1) || instPaidDue1 == "Select")
-        {
-            instPaidDue1 = null;
-        }
-        if (string.IsNullOrEmpty(instPaidDue2) || instPaidDue2 == "Select")
-        {
-            instPaidDue2 = null;
-        }
-        if (string.IsNullOrEmpty(instPaidDue3) || instPaidDue3 == "Select")
-        {
-            instPaidDue3 = null;
-        }
-        if (string.IsNullOrEmpty(instPaidDue4) || instPaidDue4 == "Select")
-        {
-            instPaidDue4 = null;
-        }
-        if (string.IsNullOrEmpty(remainingbalance1) || remainingbalance1 == "0.00")
-        {
-            remainingbalance1 = null;
-        }
-        if (string.IsNullOrEmpty(remainingbalance2) || remainingbalance2 == "0.00")
-        {
-            remainingbalance2 = null;
-        }
-        if (string.IsNullOrEmpty(remainingbalance3) || remainingbalance3 == "0.00")
-        {
-            remainingbalance3 = null;
-        }
-        if (string.IsNullOrEmpty(remainingbalance4) || remainingbalance4 == "0.00")
-        {
-            remainingbalance4 = null;
-        }
-        if (string.IsNullOrEmpty(installmentdate1))
-        {
-            installmentdate1 = null;
-        }
-        if (string.IsNullOrEmpty(installmentdate2))
-        {
-            installmentdate2 = null;
-        }
-        if (string.IsNullOrEmpty(installmentdate3))
-        {
-            installmentdate3 = null;
-        }
-        if (string.IsNullOrEmpty(installmentdate4))
-        {
-            installmentdate4 = null;
-        }
-
-        if (string.IsNullOrEmpty(delinquentdate1))
-        {
-            delinquentdate1 = null;
-        }
-        if (string.IsNullOrEmpty(delinquentdate2))
-        {
-            delinquentdate2 = null;
-        }
-        if (string.IsNullOrEmpty(delinquentdate3))
-        {
-            delinquentdate3 = null;
-        }
-        if (string.IsNullOrEmpty(delinquentdate4))
-        {
-            delinquentdate4 = null;
-        }
-        if (string.IsNullOrEmpty(discountamount1) || discountamount1 == "0.00")
-        {
-            discountamount1 = null;
-        }
-        if (string.IsNullOrEmpty(discountamount2) || discountamount2 == "0.00")
-        {
-            discountamount2 = null;
-        }
-        if (string.IsNullOrEmpty(discountamount3) || discountamount3 == "0.00")
-        {
-            discountamount3 = null;
-        }
-        if (string.IsNullOrEmpty(discountamount4) || discountamount4 == "0.00")
-        {
-            discountamount4 = null;
-        }
-        if (string.IsNullOrEmpty(discountdate1))
-        {
-            discountdate1 = null;
-        }
-        if (string.IsNullOrEmpty(discountdate2))
-        {
-            discountdate2 = null;
-        }
-        if (string.IsNullOrEmpty(discountdate3))
-        {
-            discountdate3 = null;
-        }
-        if (string.IsNullOrEmpty(discountdate4))
-        {
-            discountdate4 = null;
-        }
-        if (string.IsNullOrEmpty(nextbilldate2))
-        {
-            nextbilldate2 = null;
-        }
-        if (paymentfrequency == "1")
-        {
-            paymentfrequency = "Annual";
-        }
-        if (paymentfrequency == "2")
-        {
-            paymentfrequency = "SemiAnnual";
-        }
-        if (paymentfrequency == "3")
-        {
-            paymentfrequency = "SemiAnnual";
-        }
-        if (paymentfrequency == "4")
-        {
-            paymentfrequency = "Quarterly";
-        }
-
+    {        
         mParam = new MySqlParameter[50];
 
         mParam[0] = new MySqlParameter("$orderno", orderno);
@@ -17571,14 +17459,17 @@ public class GlobalClass : myConnection
         mParam[49] = new MySqlParameter("$authoritystatus", authoritystatus);
         mParam[49].MySqlDbType = MySqlDbType.VarChar;
 
+        mParam[50] = new MySqlParameter("$annualtaxamount", annualtaxamount);
+        mParam[50].MySqlDbType = MySqlDbType.VarChar;
+
         return ExecuteSPNonQuery("Sp_Update_taxparcelauthority", true, mParam);
     }
 
 
 
-    public int Insert_tax_authorities_paymentdetails(string orderno, string taxid, string agencyid, string taxtype, string instamount1, string instamount2, string instamount3, string instamount4, string instamountpaid1, string instamountpaid2, string instamountpaid3, string instamountpaid4, string instPaidDue1, string instPaidDue2, string instPaidDue3, string instPaidDue4, string remainingbalance1, string remainingbalance2, string remainingbalance3, string remainingbalance4, string installmentdate1, string installmentdate2, string installmentdate3, string installmentdate4, string delinquentdate1, string delinquentdate2, string delinquentdate3, string delinquentdate4, string discountamount1, string discountamount2, string discountamount3, string discountamount4, string discountdate1, string discountdate2, string discountdate3, string discountdate4, string exemptrelevy1, string exemptrelevy2, string exemptrelevy3, string exemptrelevy4, string nextbilldate1, string nextbilldate2, string taxbill, string paymentfrequency, string billingstartdate, string billingenddate, string installmentcomments)
+    public int Insert_tax_authorities_paymentdetails(string orderno, string taxid, string agencyid, string taxtype, string instamount1, string instamount2, string instamount3, string instamount4, string instamountpaid1, string instamountpaid2, string instamountpaid3, string instamountpaid4, string instPaidDue1, string instPaidDue2, string instPaidDue3, string instPaidDue4, string remainingbalance1, string remainingbalance2, string remainingbalance3, string remainingbalance4, string installmentdate1, string installmentdate2, string installmentdate3, string installmentdate4, string delinquentdate1, string delinquentdate2, string delinquentdate3, string delinquentdate4, string discountamount1, string discountamount2, string discountamount3, string discountamount4, string discountdate1, string discountdate2, string discountdate3, string discountdate4, string exemptrelevy1, string exemptrelevy2, string exemptrelevy3, string exemptrelevy4, string taxbill, string paymentfrequency, string billingstartdate, string billingenddate, string installmentcomments, string taxauthorityname, string annualtaxamount, string taxauthoritystatus)
     {
-        mParam = new MySqlParameter[47];
+        mParam = new MySqlParameter[48];
 
         mParam[0] = new MySqlParameter("$orderno", orderno);
         mParam[0].MySqlDbType = MySqlDbType.VarChar;
@@ -17589,7 +17480,7 @@ public class GlobalClass : myConnection
         mParam[2] = new MySqlParameter("$agencyid", agencyid);
         mParam[2].MySqlDbType = MySqlDbType.VarChar;              
 
-        mParam[3] = new MySqlParameter("$taxtype", taxtype);
+        mParam[3] = new MySqlParameter("$taxagencytype", taxtype);
         mParam[3].MySqlDbType = MySqlDbType.VarChar;      
 
         mParam[4] = new MySqlParameter("$instamount1", instamount1);
@@ -17698,29 +17589,31 @@ public class GlobalClass : myConnection
         mParam[38].MySqlDbType = MySqlDbType.VarChar;
     
         mParam[39] = new MySqlParameter("$exemptrelevy4", exemptrelevy4);
-        mParam[39].MySqlDbType = MySqlDbType.VarChar;
+        mParam[39].MySqlDbType = MySqlDbType.VarChar;          
 
-        mParam[40] = new MySqlParameter("$nextbilldate1", nextbilldate1);
+        mParam[40] = new MySqlParameter("$taxbill", taxbill);
         mParam[40].MySqlDbType = MySqlDbType.VarChar;
 
-        mParam[41] = new MySqlParameter("$nextbilldate2", nextbilldate2);
+        mParam[41] = new MySqlParameter("$paymentfrequency", paymentfrequency);
         mParam[41].MySqlDbType = MySqlDbType.VarChar;
 
-        mParam[42] = new MySqlParameter("$taxbill", taxbill);
+        mParam[42] = new MySqlParameter("$billingstartdate", billingstartdate);
         mParam[42].MySqlDbType = MySqlDbType.VarChar;
 
-        mParam[43] = new MySqlParameter("$paymentfrequency", paymentfrequency);
+        mParam[43] = new MySqlParameter("$billingenddate", billingenddate);
         mParam[43].MySqlDbType = MySqlDbType.VarChar;
 
-        mParam[44] = new MySqlParameter("$billingstartdate", billingstartdate);
+        mParam[44] = new MySqlParameter("$installmentcomments", installmentcomments);
         mParam[44].MySqlDbType = MySqlDbType.VarChar;
 
-        mParam[45] = new MySqlParameter("$billingenddate", billingenddate);
+        mParam[45] = new MySqlParameter("$taxauthorityname", taxauthorityname);
         mParam[45].MySqlDbType = MySqlDbType.VarChar;
 
-        mParam[46] = new MySqlParameter("$installmentcomments", installmentcomments);
+        mParam[46] = new MySqlParameter("$annualtaxamount", annualtaxamount);
         mParam[46].MySqlDbType = MySqlDbType.VarChar;
 
+        mParam[47] = new MySqlParameter("$taxauthoritystatus", taxauthoritystatus);
+        mParam[47].MySqlDbType = MySqlDbType.VarChar;
 
         return ExecuteSPNonQuery("Sp_Insert_Taxauthoritynew", true, mParam);
     }
