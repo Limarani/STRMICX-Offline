@@ -362,6 +362,18 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
                 updatedeli = "update tbl_taxauthorities2 set primaryresidence = 'No' where Orderno = '" + lblord.Text + "' AND TaxId = '" + LblTaxID.Text + "' And AgencyId = '" + agency + "' And TaxAgencyType = '" + agencytype + "'"; 
                 gl.ExecuteSPNonQuery(updatedeli);
             }
+            if (txtResidence.SelectedValue == "Yes")
+            {
+                string updatedeli = "";
+                updatedeli = "update tbl_taxauthorities2 set primaryresidence = 'Yes' where Orderno = '" + lblord.Text + "' AND TaxId = '" + LblTaxID.Text + "' And AgencyId = '" + agency + "' And TaxAgencyType = '" + agencytype + "'";
+                gl.ExecuteSPNonQuery(updatedeli);
+            }
+            if (txtResidence.SelectedValue == "Not Applicable")
+            {
+                string updatedeli = "";
+                updatedeli = "update tbl_taxauthorities2 set primaryresidence = 'Not Applicable' where Orderno = '" + lblord.Text + "' AND TaxId = '" + LblTaxID.Text + "' And AgencyId = '" + agency + "' And TaxAgencyType = '" + agencytype + "'";
+                gl.ExecuteSPNonQuery(updatedeli);
+            }
             if (SecialAssmnt.SelectedValue == "No")
             {
                 string updatedeli = "";
@@ -1369,7 +1381,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
             Response.Redirect("STRMICXHome.aspx");
         }
 
-        if (lbltransactiontype.Text != "PURCHASE")
+        if (lbltransactiontype.Text != "Purchase")
         {
             dd.Visible = false;
             ddlfuturetaxcalc.Visible = false;
@@ -3704,6 +3716,8 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
                 else if (message == "Cannot Complete Order")
                 {
                     paymentfrequency.Value = taxfrequency;
+
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "txtexeSpecial();", true);
                     ScriptManager.RegisterStartupScript(this, this.GetType(), "alertMessage", "alert('Please Complete The Mandatory Fields')", true);
                     return;
                 }
