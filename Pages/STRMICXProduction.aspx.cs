@@ -32,7 +32,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
     string taxagencytype = "";
     decimal Inst1, Inst2, Inst3, Inst4, Instoutput;
     public bool chk = false;
-    string TaxAuthorityName = "";   
+    string TaxAuthorityName = "";
     protected void Page_Load(object sender, EventArgs e)
     {
         //string connect = ConfigurationManager.ConnectionStrings["MysqlConnection"].ConnectionString;
@@ -259,7 +259,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
         chkEst.Checked = false;
         chkTBD.Checked = false;
         txtTaxYear.Text = "";
-        txtEndYear.Text = "";        
+        txtEndYear.Text = "";
         string agen = "";
         string taxid = "";
         string taxagencytype = "";
@@ -327,16 +327,48 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
         gvTaxParcel.Focus();
         fetchtaxparcel();
         fetchtaxparceldetails();
-        btntaxparcels.Enabled = true;        
+        btntaxparcels.Enabled = true;
     }
     private void checkagencydetails(string AgencyId)
     {
 
     }
 
-  
+
     protected void lnkgvOrders_Click(object sender, EventArgs e)
     {
+        string queryfetchprevious = "";
+        queryfetchprevious = "select AgencyId from tbl_taxauthorities2 where Orderno = '" + lblord.Text + "' and TaxId = '" + LblTaxID.Text + "' and AgencyId = '" + LblAgencyID.Text + "'";
+        DataSet ds = gl.ExecuteQuery(queryfetchprevious);        
+        if (ds.Tables[0].Rows.Count > 0)
+        {
+            string agency = ds.Tables[0].Rows[0]["AgencyId"].ToString().Trim();
+            if (txtdeliquent.SelectedValue == "No")
+            {
+                string updatedeli = "";
+                updatedeli = "update tbl_taxauthorities2 set IsDelinquent = 'No' where Orderno = '" + lblord.Text + "' AND TaxId = '" + LblTaxID.Text + "' And AgencyId = '" + agency + "'";
+                gl.ExecuteSPNonQuery(updatedeli);
+            }
+            else if (txtexemption.SelectedValue == "No")
+            {
+                string updatedeli = "";
+                updatedeli = "update tbl_taxauthorities2 set IsExemption = 'No' where Orderno = '" + lblord.Text + "' AND TaxId = '" + LblTaxID.Text + "' And AgencyId = '" + agency + "'";
+                gl.ExecuteSPNonQuery(updatedeli);
+            }
+            else if (txtResidence.SelectedValue == "No")
+            {
+                string updatedeli = "";
+                updatedeli = "update tbl_taxauthorities2 set primaryresidence = 'No' where Orderno = '" + lblord.Text + "' AND TaxId = '" + LblTaxID.Text + "' And AgencyId = '" + agency + "'";
+                gl.ExecuteSPNonQuery(updatedeli);
+            }
+            else if (SecialAssmnt.SelectedValue == "No")
+            {
+                string updatedeli = "";
+                updatedeli = "update tbl_taxauthorities2 set IsSpecial = 'No' where Orderno = '" + lblord.Text + "' AND TaxId = '" + LblTaxID.Text + "' And AgencyId = '" + agency + "'";
+                gl.ExecuteSPNonQuery(updatedeli);
+            }
+        }
+
         clearfiledsTaxInstallments();
         gvTaxParcel.EditIndex = -1;
         chkTBD.Enabled = true;
@@ -350,7 +382,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
         gvSpecialAssessment_RowCancelingEdit(null, null);
         LinkButton lb = (LinkButton)sender;
         GridViewRow row = (GridViewRow)lb.NamingContainer;
-        int index;        
+        int index;
         if (row != null)
         {
             index = row.RowIndex; //gets the row index selected                                                        
@@ -743,7 +775,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
                 {
                     string prior;
                     Prior.Visible = true;
-                    pastDeliquent.Visible = true;                    
+                    pastDeliquent.Visible = true;
                     prior = dtfetchauthority.Rows[0]["IsPastDelinquent"].ToString().Trim();
 
                     if (prior == "")
@@ -769,7 +801,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
                 if (deli == "")
                 {
                     txtdeliquent.SelectedIndex = 0;
-                }                
+                }
                 else if (deli == "Yes")
                 {
                     txtdeliquent.SelectedIndex = 1;
@@ -822,7 +854,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
                     txtResidence.SelectedIndex = 2;
                 }
 
-                
+
                 DataTable dtsdeliquentinp = new DataTable();
                 DataTable dtsdeliquentoup = new DataTable();
                 DataTable dtsexemption = new DataTable();
@@ -917,7 +949,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
                 //    nextbilldate1.Value = instdate4.ToString("MM/dd/yyyy");
                 //}
 
-                paymentfreq(dtfetchauthority.Rows[0]["TaxFrequency"].ToString());                                
+                paymentfreq(dtfetchauthority.Rows[0]["TaxFrequency"].ToString());
             }
 
             DataSet dstest = new DataSet();
@@ -1515,7 +1547,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
                     {
                         string countCDD = gl.ExecuteScalarst("select count(taxid) from tbl_taxparcel where taxid = '" + txtdrop.Value + "' and orderno='" + lblord.Text + "' and status = 'C'");
                         if (countCDD == "0")
-                        {                            
+                        {
                             insert = gl.insert_taxparcel(lblord.Text, txtdrop.Value.Trim(), txtTaxYear.Text.Trim(), txtEndYear.Text.Trim(), "M", "false", "false");
                         }
                     }
@@ -1849,7 +1881,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "alertMessage", "alert('Data Saved Successfully')", true);
 
                 string update = "";
-                update = "update tbl_taxauthorities2 set IsSpecial = '" + SecialAssmnt.Text + "' where Orderno = '" + lblord.Text + "' and TaxId = '" + LblTaxId1.Text + "' and AgencyId = '" + LblAgencyId1.Text + "' and TaxAgencyType = '" + txtTaxType.Text + "'"; 
+                update = "update tbl_taxauthorities2 set IsSpecial = '" + SecialAssmnt.Text + "' where Orderno = '" + lblord.Text + "' and TaxId = '" + LblTaxId1.Text + "' and AgencyId = '" + LblAgencyId1.Text + "' and TaxAgencyType = '" + txtTaxType.Text + "'";
                 gl.ExecuteSPNonQuery(update);
                 fetchspecialAll();
                 tblSpecialstatus.Visible = true;
@@ -2072,7 +2104,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
                 {
                     ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "txtexeSpecial();", true);
                     ScriptManager.RegisterStartupScript(this, this.GetType(), "alertMessage", "alert('Data Saved Successfully')", true);
-                    
+
                     string update = "";
                     update = "update tbl_taxauthorities2 set IsDelinquent = '" + txtdeliquent.Text + "' where Orderno = '" + lblord.Text + "' and TaxId = '" + LblTaxId1.Text + "' and AgencyId = '" + LblAgencyId1.Text + "' and TaxAgencyType = '" + txtTaxType.Text + "'";
                     gl.ExecuteSPNonQuery(update);
@@ -2314,12 +2346,12 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
         if (GVCommand == "DeleteDelinquent")
         {
             string Item_ID = (e.CommandArgument).ToString();
-            GridViewRow row = (GridViewRow)(((LinkButton)e.CommandSource).NamingContainer);                       
+            GridViewRow row = (GridViewRow)(((LinkButton)e.CommandSource).NamingContainer);
             int result = gl.DeleteGridDeliquentStatus(row.Cells[0].Text.Trim());
             if (result == 1)
             {
                 DeliquentStatusAdd.Enabled = true;
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "txtexeSpecial();", true);              
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "txtexeSpecial();", true);
                 fetchDeliquentStatus();
                 cleardelinquentfields();
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "alertMessage", "alert('Record Deleted Successfully')", true);
@@ -3582,7 +3614,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
             {
                 if (message == "")
                 {
-                    UpdateProduction("sp_UpdateKey_User");                  
+                    UpdateProduction("sp_UpdateKey_User");
                     Updatetaxauthoritiessection("Sp_Update_taxauthorities_details");
                     paymentfrequency.Value = taxfrequency;
                     if (id == "12f7tre5")
@@ -3598,7 +3630,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
                 else if (message == "Cannot Complete Order")
                 {
                     paymentfrequency.Value = taxfrequency;
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "alertMessage", "alert('Please Complete The Mandatory Fields')", true);                    
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "alertMessage", "alert('Please Complete The Mandatory Fields')", true);
                     return;
                 }
                 else
@@ -3906,8 +3938,8 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
         if (pastDeliquent.Text == "Select")
         {
             pastDeliquent.Text = null;
-        }       
-       return gl.Updatetaxauthorities(Procedurename, lblord.Text, LblTaxId1.Text, LblAgencyId1.Text, txtTaxType.Text, txtdeliquent.Text, txtexemption.Text, SecialAssmnt.Text, pastDeliquent.Text, txtResidence.Text);       
+        }
+        return gl.Updatetaxauthorities(Procedurename, lblord.Text, LblTaxId1.Text, LblAgencyId1.Text, txtTaxType.Text, txtdeliquent.Text, txtexemption.Text, SecialAssmnt.Text, pastDeliquent.Text, txtResidence.Text);
     }
 
     protected void Timer1_Tick(object sender, EventArgs e)
