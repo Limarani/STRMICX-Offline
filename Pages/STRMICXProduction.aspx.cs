@@ -1323,6 +1323,10 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
                 return;
             }
         }
+        else if (ds.Tables[0].Rows.Count > 0)
+        {
+
+        }
         else
         {
             ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "txtexeSpecial();", true);
