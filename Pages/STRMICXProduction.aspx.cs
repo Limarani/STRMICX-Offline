@@ -1182,6 +1182,29 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
             exemptrelevy4.Value = "no";
         }
 
+        if (instamount1.Value != "")
+        {
+            Inst1 = decimal.Parse(instamount1.Value, CultureInfo.InvariantCulture);
+        }
+        if (instamount2.Value != "")
+        {
+            Inst2 = decimal.Parse(instamount2.Value, CultureInfo.InvariantCulture);
+        }
+        if (instamount3.Value != "")
+        {
+            Inst3 = decimal.Parse(instamount3.Value, CultureInfo.InvariantCulture);
+        }
+        if (instamount4.Value != "")
+        {
+            Inst4 = decimal.Parse(instamount4.Value, CultureInfo.InvariantCulture);
+        }
+
+        if (instamount1.Value != "" || instamount2.Value != "" || instamount3.Value != "" || instamount4.Value != "")
+        {
+            Instoutput = Inst1 + Inst2 + Inst3 + Inst4;
+            txtAnnualTaxAmount.Text = (Instoutput.ToString("#,##0.00"));
+        }
+
         update = gl.update_tax_authorities_paymentdetails(lblord.Text, LblTaxID.Text.ToString(), LblAgencyID.Text, txtTaxType.Text, txtstartyeardate.Text, instamount1.Value, instamount2.Value, instamount3.Value, instamount4.Value, instamountpaid1.Value, instamountpaid2.Value, instamountpaid3.Value, instamountpaid4.Value, instpaiddue1.Value, instpaiddue2.Value, instpaiddue3.Value, instpaiddue4.Value, remainingbalance1.Value, remainingbalance2.Value, remainingbalance3.Value, remainingbalance4.Value, instdate1.Value, instdate2.Value, instdate3.Value, instdate4.Value, delinq1.Value, delinq2.Value, delinq3.Value, delinq4.Value, discamt1.Value, discamt2.Value, discamt3.Value, discamt4.Value, discdate1.Value, discdate2.Value, discdate3.Value, discdate4.Value, exemptrelevy1.Value, exemptrelevy2.Value, exemptrelevy3.Value, exemptrelevy4.Value, nextbilldate1.Value, nextbilldate2.Value, taxbill.Value, paymentfrequency.Value, txtbillstartdate.Value, txtbillenddate.Value, ddlfuturetaxcalc.Text, instcomm.Value, "2", txtAnnualTaxAmount.Text);
         if (update == 1)
         {
