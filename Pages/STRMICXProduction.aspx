@@ -6759,7 +6759,7 @@
                                                         <div class="select-editable">
                                                             <select runat="server" id="txtTaxNo" onchange="this.nextElementSibling.value=this.value" style="width: 225px; height: 27px; background-color: #d3d3d35c">
                                                             </select>
-                                                            <input type="text" runat="server" id="txtdrop" name="format" placeholder="Tax ID" value="--Select--" autocomplete="off" onchange="return TaxparcelFunction()" />
+                                                            <input type="text" runat="server" id="txtdrop" name="format" placeholder="Tax ID" value="--Select--" autocomplete="off" onchange="return TaxparcelFunction()" onkeyup="CheckFirstChar(event.keyCode, this);" onkeydown="return CheckFirstChar(event.keyCode, this);"/>
                                                         </div>
                                                     </div>
                                                     <%--<cc1:ComboBox ID="txtTaxNo" runat="server" AutoCompleteMode="SuggestAppend"></cc1:ComboBox>--%>
