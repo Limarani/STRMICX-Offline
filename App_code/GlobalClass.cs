@@ -17479,7 +17479,7 @@ public class GlobalClass : myConnection
         {
             taxbill = "Previous";
         }
-
+////
 
 
         mParam = new MySqlParameter[51];
