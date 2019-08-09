@@ -83,7 +83,7 @@
                     document.getElementById("taxbill").selectedIndex = 0;
                 }
             }
-            else if (txBill == "Semi-Annual") {
+            else if (txBill == "SemiAnnual") {
                 var dt = document.getElementById("delinq2").value;
                 if (Date.parse(dt) >= Date.parse(today)) {
                     document.getElementById("taxbill").selectedIndex = 1;
@@ -97,7 +97,7 @@
                 }
 
             }
-            else if (txBill == "Tri-Annual") {
+            else if (txBill == "TriAnnual") {
                 var dt = document.getElementById("delinq3").value;
                 if (Date.parse(dt) >= Date.parse(today)) {
                     document.getElementById("taxbill").selectedIndex = 1;
@@ -319,14 +319,14 @@
             if (payfre == "Annual") {
                 Ann = "Annual";
             }
-            if (payfre == "Semi-Annual") {
-                Semi = "Semi-Annual";
+            if (payfre == "SemiAnnual") {
+                Semi = "SemiAnnual";
             }
             if (payfre == "Quarterly") {
                 Qua = "Quarterly";
             }
-            if (payfre == "Tri-Annual") {
-                Tri = "Tri-Annual";
+            if (payfre == "TriAnnual") {
+                Tri = "TriAnnual";
             }
             if (Ann == "Annual") {
                 document.getElementById("instamount1").disabled = false;
@@ -401,7 +401,7 @@
                 //document.getElementById("remainingbalance1").value = "0.00";
             }
 
-            if (Semi == "Semi-Annual") {
+            if (Semi == "SemiAnnual") {
 
                 document.getElementById("instamount1").disabled = false;
                 document.getElementById("instamountpaid1").disabled = false;
@@ -469,7 +469,7 @@
                 //document.getElementById("remainingbalance2").value = "0.00";
             }
 
-            if (Tri == "Tri-Annual") {
+            if (Tri == "TriAnnual") {
                 document.getElementById("instamount1").disabled = false;
                 document.getElementById("instamountpaid1").disabled = false;
                 document.getElementById("instpaiddue1").disabled = false;
@@ -596,14 +596,14 @@
             if (payfre == "Annual") {
                 Ann = "Annual";
             }
-            if (payfre == "Semi-Annual") {
-                Semi = "Semi-Annual";
+            if (payfre == "SemiAnnual") {
+                Semi = "SemiAnnual";
             }
             if (payfre == "Quarterly") {
                 Qua = "Quarterly";
             }
-            if (payfre == "Tri-Annual") {
-                Tri = "Tri-Annual";
+            if (payfre == "TriAnnual") {
+                Tri = "TriAnnual";
             }
             if (Ann == "Annual") {
                 document.getElementById("instmanamount1").disabled = false;
@@ -674,7 +674,7 @@
                 document.getElementById("chkexrelmanu4").checked = false;
             }
 
-            if (Semi == "Semi-Annual") {
+            if (Semi == "SemiAnnual") {
 
                 document.getElementById("instmanamount1").disabled = false;
                 document.getElementById("instmanamtpaid1").disabled = false;
@@ -735,7 +735,7 @@
                 document.getElementById("chkexrelmanu4").checked = false;
             }
 
-            if (Tri == "Tri-Annual") {
+            if (Tri == "TriAnnual") {
                 document.getElementById("instmanamount1").disabled = false;
                 document.getElementById("instmanamtpaid1").disabled = false;
                 document.getElementById("ddlmaninstpaiddue1").disabled = false;
@@ -886,13 +886,13 @@
                 Ann = "Annual";
             }
             if (payfre == "2") {
-                Semi = "Semi-Annual";
+                Semi = "SemiAnnual";
             }
             if (payfre == "4") {
                 Qua = "Quarterly";
             }
             if (payfre == "3") {
-                Tri = "Tri-Annual";
+                Tri = "TriAnnual";
             }
             if (Ann == "Annual") {
                 if (Installmenterror1 == "") {
@@ -916,7 +916,7 @@
                 }
             }
 
-            if (Semi == "Semi-Annual") {
+            if (Semi == "SemiAnnual") {
                 if (Installmenterror1 == "") {
                     document.getElementById("instdate1").focus();
                     alert("Installment1 Date1 should be required");
@@ -955,7 +955,7 @@
                 }
             }
 
-            if (Tri == "Tri-Annual") {
+            if (Tri == "TriAnnual") {
                 if (Installmenterror1 == "") {
                     document.getElementById("instdate1").focus();
                     alert("Installment Date1 should be required");
@@ -1145,13 +1145,13 @@
                 Ann = "Annual";
             }
             if (payfre == "2") {
-                Semi = "Semi-Annual";
+                Semi = "SemiAnnual";
             }
             if (payfre == "4") {
                 Qua = "Quarterly";
             }
             if (payfre == "3") {
-                Tri = "Tri-Annual";
+                Tri = "TriAnnual";
             }
             if (Ann == "Annual") {
                 if (Installmenterror1 == "") {
@@ -1175,7 +1175,7 @@
                 }
             }
 
-            if (Semi == "Semi-Annual") {
+            if (Semi == "SemiAnnual") {
                 if (Installmenterror1 == "") {
                     document.getElementById("txtmaninstdate1").focus();
                     alert("Installment1 Date1 should be required");
@@ -1214,7 +1214,7 @@
                 }
             }
 
-            if (Tri == "Tri-Annual") {
+            if (Tri == "TriAnnual") {
                 if (Installmenterror1 == "") {
                     document.getElementById("txtmaninstdate1").focus();
                     alert("Installment Date1 should be required");
@@ -7503,7 +7503,7 @@
                                                         <%--   <asp:DropDownList ID="paymentfrequency" runat="server"  style="width: 170px;" TabIndex="39" OnSelectedIndexChanged="paymentfrequency_SelectedIndexChanged" AutoPostBack="true">
                                                             <asp:ListItem Value="1">Annual</asp:ListItem>
                                                             <asp:ListItem Value="2">Semi-Annual</asp:ListItem>
-                                                            <asp:ListItem Value="3">Tri-Annual</asp:ListItem>
+                                                            <asp:ListItem Value="3">TriAnnual</asp:ListItem>
                                                             <asp:ListItem Value="4">Quarterly</asp:ListItem>
                                                         </asp:DropDownList>--%>
                                                     </td>
@@ -7902,9 +7902,9 @@
                                                         <td>
                                                             <select class="form-control" id="ddlpayfreqmanu" runat="server" onchange="functionpayemtfrequency1(this)" style="width: 170px; margin-bottom: 5px;" tabindex="90">
                                                                 <option value="1">Annual</option>
-                                                                <option value="2">Semi-Annual</option>
+                                                                <option value="2">SemiAnnual</option>
                                                                 <option value="3">Quarterly</option>
-                                                                <option value="4">Tri-Annual</option>
+                                                                <option value="4">TriAnnual</option>
                                                             </select>
                                                         </td>
                                                         <td>

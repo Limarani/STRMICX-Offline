@@ -38,9 +38,9 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
     string TaxAuthorityName = "";
     protected void Page_Load(object sender, EventArgs e)
     {
-        string jsonData = jsonResponse.GetJsonData("55259049");
+        //string jsonData = jsonResponse.GetJsonData("55259049");
 
-        string isSuccess = postData.POST(jsonData, "55259049");
+        //string isSuccess = postData.POST(jsonData, "55259049");
         //string connect = ConfigurationManager.ConnectionStrings["MysqlConnection"].ConnectionString;
         //using (MySqlConnection con = new MySqlConnection(connect))
         //{
@@ -1260,7 +1260,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
         if (instmanamount1.Value != "" || instmanamount2.Value != "" || instmanamount3.Value != "" || instmanamount4.Value != "")
         {
             Instoutputfuture = Inst1 + Inst2 + Inst3 + Inst4;
-            txtAnnualTaxAmount.Text = (Instoutputfuture.ToString("#,##0.00"));
+            futuretxtAnnualTaxAmount.Text = (Instoutputfuture.ToString("#,##0.00"));
         }
 
         string query = "";
@@ -2560,7 +2560,32 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
 
                 //BillingPeriodEndDate
                 txtmanubillenddate.Value = dtfetchauthorityfuture.Rows[0]["BillingPeriodEndDate"].ToString().Trim();
-                    
+
+                //installmentcomments
+                txtinstcommentsmanual.Value = dtfetchauthorityfuture.Rows[0]["installmentcomments"].ToString().Trim();
+
+                if (instmanamount1.Value != "")
+                {
+                    Inst1 = decimal.Parse(instmanamount1.Value, CultureInfo.InvariantCulture);
+                }
+                if (instmanamount2.Value != "")
+                {
+                    Inst2 = decimal.Parse(instmanamount2.Value, CultureInfo.InvariantCulture);
+                }
+                if (instmanamount3.Value != "")
+                {
+                    Inst3 = decimal.Parse(instmanamount3.Value, CultureInfo.InvariantCulture);
+                }
+                if (instmanamount4.Value != "")
+                {
+                    Inst4 = decimal.Parse(instmanamount4.Value, CultureInfo.InvariantCulture);
+                }
+
+                if (instmanamount1.Value != "" || instmanamount2.Value != "" || instmanamount3.Value != "" || instmanamount4.Value != "")
+                {
+                    Instoutputfuture = Inst1 + Inst2 + Inst3 + Inst4;
+                    futuretxtAnnualTaxAmount.Text = (Instoutputfuture.ToString("#,##0.00"));
+                }
             }
 
             else if (dtfetchauthorityfuture.Rows.Count == 0)
@@ -4117,7 +4142,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
 
         if (ds.Tables[0].Rows.Count == 0)
         {
-            update = gl.updatetaxtypedetails(mdftaxtype, id);
+            update = gl.updatetaxtypedetails(mdftaxtype, id);                        
         }
         txtTaxType.Text = mdftaxtype;
         fetchtaxparcel();
