@@ -110,6 +110,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
             fetchtaxparceldetails();
             Prior.Visible = false;
             deliexemspecial.Visible = false;
+            ddlfuturetaxcalc.Enabled = false;
             ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "txtexeSpecial();", true);
         }
     }
@@ -789,11 +790,11 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
                 {
                     paymentfrequency.SelectedIndex = 1;
                 }
-                if (paymentfr == "Quarterly")
+                if (paymentfr == "TriAnnual")
                 {
                     paymentfrequency.SelectedIndex = 2;
                 }
-                if (paymentfr == "TriAnnual")
+                if (paymentfr == "Quarterly")
                 {
                     paymentfrequency.SelectedIndex = 3;
                 }
@@ -1133,6 +1134,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
     protected void btnTaxParcelSave_Click(object sender, EventArgs e)
     {
         int update = 0;
+        ddlfuturetaxcalc.Enabled = true;
 
         if (exemptrelevy1.Checked == true)
         {
@@ -2564,6 +2566,8 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
             //paymentfrequency              
             string paymentfr = "";
             paymentfr = dtfetchauthorityfuture.Rows[0]["TaxFrequency"].ToString().Trim();
+
+            //paymentfr = paymentfrequency.Value;
             if (paymentfr == "Annual")
             {
                 ddlpayfreqmanu.SelectedIndex = 0;
@@ -3246,21 +3250,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
 
     protected void SetTaxBillValue1(string delinquentDate)
     {
-        if (delinquentDate != "")
-        {
-            string test = delinquentDate;
-            DateTime dt1 = DateTime.Now;
-            string currentdate = dt1.ToShortDateString();
-
-            if (Convert.ToDateTime(test) >= Convert.ToDateTime(currentdate))
-            {
-                ddlmanutaxbill.Value = "FUTURE";
-            }
-            else
-            {
-                ddlmanutaxbill.Value = "FUTURE";
-            }
-        }
+        ddlmanutaxbill.Value = "FUTURE";
     }
 
 
@@ -3536,7 +3526,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
                 }
                 else if (message == "Cannot Complete Order")
                 {
-                    paymentfrequency.Value = taxfrequency;                    
+                    paymentfrequency.Value = taxfrequency;
                     ScriptManager.RegisterStartupScript(this, this.GetType(), "alertMessage", "alert('Please Complete The Mandatory Fields')", true);
                     return;
                 }

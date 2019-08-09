@@ -8765,8 +8765,11 @@
                                             <td>
                                                 <asp:DropDownList ID="ddlordstatus" runat="server" class="form-control" Style="width: 180px;">
                                                     <asp:ListItem>--Select Status--</asp:ListItem>
-                                                    <asp:ListItem>Ordered</asp:ListItem>
-                                                    <asp:ListItem>Attempted</asp:ListItem>
+                                                    <asp:ListItem>ORDERED</asp:ListItem>
+                                                    <asp:ListItem>ATTEMPTED</asp:ListItem>
+                                                     <asp:ListItem>REORDERED</asp:ListItem>
+                                                     <asp:ListItem>PROBLEM</asp:ListItem>                                                
+                                                    <asp:ListItem>DECLINED</asp:ListItem>
                                                 </asp:DropDownList>
                                             </td>
                                             <td>
