@@ -335,6 +335,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
         fetchtaxparcel();
         fetchtaxparceldetails();
         btntaxparcels.Enabled = true;
+        ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "txtexeSpecial();", true);
     }
     private void checkagencydetails(string AgencyId)
     {
@@ -1420,6 +1421,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
 
             gvtaxauthorities.DataSource = dtfetchauthority;
             gvtaxauthorities.DataBind();
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "txtexeSpecial();", true);
         }
     }
 
@@ -4175,7 +4177,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
         }
         ClientScript.RegisterStartupScript(this.GetType(), "Pop", "TaxtypeModal();", true);
         PanelTaxtype.Visible = true;
-        ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "txtexeSpecial();", true);
+        ClientScript.RegisterStartupScript(this.GetType(), "Pop", "txtexeSpecial();", true);
     }
 
 
