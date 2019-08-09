@@ -655,11 +655,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
                 discamt3.Value = dtfetchauthority.Rows[0]["Discountamount3"].ToString().Trim();
                 discamt4.Value = dtfetchauthority.Rows[0]["Discountamount4"].ToString().Trim();
 
-                //discdate1.Value = dtfetchauthority.Rows[0]["DiscountDate1"].ToString().Trim();
-                //discdate2.Value = dtfetchauthority.Rows[0]["DiscountDate2"].ToString().Trim();
-                //discdate3.Value = dtfetchauthority.Rows[0]["DiscountDate3"].ToString().Trim();
-                //discdate4.Value = dtfetchauthority.Rows[0]["DiscountDate4"].ToString().Trim();
-
+                
                 exemptrelevy1.Value = dtfetchauthority.Rows[0]["ExemptRelevy1"].ToString().Trim();
 
                 if (exemptrelevy1.Value == "yes")
@@ -703,35 +699,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
                 {
                     this.exemptrelevy4.Checked = false;
                 }
-
-                //if (dtfetchauthority.Rows[0]["billingdate1"].ToString().Trim() != "")
-                //{
-                //    string nextbildate1 = dtfetchauthority.Rows[0]["billingdate1"].ToString().Trim();
-
-                //    if (nextbildate1.Contains("T"))
-                //    {
-                //        nextbilldate1.Value = Convert.ToDateTime(dtfetchauthority.Rows[0]["billingdate1"].ToString().Trim().Remove(10)).ToString("MM/dd/yyyy");
-                //    }
-                //    else
-                //    {
-                //        nextbilldate1.Value = dtfetchauthority.Rows[0]["billingdate1"].ToString().Trim();
-                //    }
-                //}
-
-                //if (dtfetchauthority.Rows[0]["billingdate2"].ToString().Trim() != "")
-                //{
-                //    string nextbildate2 = dtfetchauthority.Rows[0]["billingdate2"].ToString().Trim();
-
-                //    if (nextbildate2.Contains("T"))
-                //    {
-                //        nextbilldate2.Value = Convert.ToDateTime(dtfetchauthority.Rows[0]["billingdate2"].ToString().Trim().Remove(10)).ToString("MM/dd/yyyy");
-                //    }
-                //    else
-                //    {
-                //        nextbilldate2.Value = dtfetchauthority.Rows[0]["billingdate2"].ToString().Trim();
-                //    }
-                //}
-
+                               
 
                 nextbilldate1.Value = dtfetchauthority.Rows[0]["nextbilldate1"].ToString();
                 nextbilldate2.Value = dtfetchauthority.Rows[0]["nextbilldate2"].ToString();
@@ -873,6 +841,10 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
                 {
                     txtResidence.SelectedIndex = 2;
                 }
+                else if (primaryresidence == "Not Applicable")
+                {
+                    txtResidence.SelectedIndex = 3;
+                }
 
 
                 DataTable dtsdeliquentinp = new DataTable();
@@ -937,38 +909,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
                 {
                     GrdPriordelinquent.DataSource = dtpriordeliquent;
                     GrdPriordelinquent.DataBind();
-                }
-
-
-                //if (paymentfrequency.Value == "1")
-                //{
-                //    string inputData = instdate1.Value;
-                //    DateTime iinstdate1 = DateTime.ParseExact(inputData, "MM/dd/yyyy", null);
-                //    iinstdate1 = iinstdate1.AddYears(1);
-                //    nextbilldate1.Value = iinstdate1.ToString("MM/dd/yyyy");
-                //}
-                //else if (paymentfrequency.Value == "2")
-                //{
-                //    string inputData = instdate2.Value;
-                //    DateTime iinstdate2 = DateTime.ParseExact(inputData, "MM/dd/yyyy", null);
-                //    iinstdate2 = iinstdate2.AddYears(1);
-                //    nextbilldate1.Value = iinstdate2.ToString("MM/dd/yyyy");                                        
-                //}
-                //else if (paymentfrequency.Value == "3")
-                //{
-                //    string inputData = instdate3.Value;
-                //    DateTime instdate3 = DateTime.ParseExact(inputData, "MM/dd/yyyy", null);
-                //    instdate3 = instdate3.AddYears(1);
-                //    nextbilldate1.Value = instdate3.ToString("MM/dd/yyyy");
-                //}
-                //else if (paymentfrequency.Value == "4")
-                //{
-                //    string inputData = instdate4.Value;
-                //    DateTime instdate4 = DateTime.ParseExact(inputData, "MM/dd/yyyy", null);
-                //    instdate4 = instdate4.AddYears(1);
-                //    nextbilldate1.Value = instdate4.ToString("MM/dd/yyyy");
-                //}
-
+                }                                               
                 paymentfreq(dtfetchauthority.Rows[0]["TaxFrequency"].ToString());
             }
 
@@ -1006,11 +947,17 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
             }
         }
 
+        
+        string ordercomments = "";
+        ordercomments = "select Comments from record_status where Order_No = '" + lblord.Text + "'";
+        DataSet dsfetchordcomments = gl.ExecuteQuery(ordercomments);
 
-        string commentsfetch = "";
-        commentsfetch = "select Comments from record_status where Order_No = '" + lblord.Text + "'";
-
-
+        if (dsfetchordcomments.Tables[0].Rows.Count > 0)
+        {
+            string comments = dsfetchordcomments.Tables[0].Rows[0]["Comments"].ToString();
+            txttotalcomments.Value = comments;
+        }
+        
 
         btntaxparcels.Enabled = true;
         ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "txtexeSpecial();", true);
@@ -1254,6 +1201,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
     {
         btnsavetaxauthorities.Enabled = true;
         int insert = 0;
+        int update = 0;
 
 
         if (chkexrelmanu1.Checked == true)
@@ -1328,17 +1276,29 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "alertMessage", "alert('Data Saved Successfully')", true);
                 return;
             }
+            else
+            {
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "txtexeSpecial();", true);
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "alertMessage", "alert('Data Not Saved')", true);
+                return;
+            }
         }
         else if (ds.Tables[0].Rows.Count > 0)
         {
-
-        }
-        else
-        {
-            ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "txtexeSpecial();", true);
-            ScriptManager.RegisterStartupScript(this, this.GetType(), "alertMessage", "alert('Data Not Saved')", true);
-            return;
-        }
+            update = gl.Update_tax_authorities_paymentdetails(lblord.Text, LblTaxID.Text.ToString(), LblAgencyID.Text, txtTaxType.Text, instmanamount1.Value, instmanamount2.Value, instmanamount3.Value, instmanamount4.Value, instmanamtpaid1.Value, instmanamtpaid2.Value, instmanamtpaid3.Value, instmanamtpaid4.Value, ddlmaninstpaiddue1.Value, ddlmaninstpaiddue2.Value, ddlmaninstpaiddue3.Value, ddlmaninstpaiddue4.Value, txtmanurembal1.Value, txtmanurembal2.Value, txtmanurembal3.Value, txtmanurembal4.Value, txtmaninstdate1.Value, txtmaninstdate2.Value, txtmaninstdate3.Value, txtmaninstdate4.Value, txtmandeliqdate1.Value, txtmandeliqdate2.Value, txtmandeliqdate3.Value, txtmandeliqdate4.Value, txtmandisamount1.Value, txtmandisamount2.Value, txtmandisamount3.Value, txtmandisamount4.Value, txtmandisdate1.Value, txtmandisdate2.Value, txtmandisdate3.Value, txtmandisdate4.Value, chkexrelmanu1.Value, chkexrelmanu2.Value, chkexrelmanu3.Value, chkexrelmanu4.Value, ddlmanutaxbill.Value, ddlpayfreqmanu.Value, txtmanubillstartdate.Value, txtmanubillenddate.Value, txtinstcommentsmanual.Value, txtAnnualTaxAmount.Text, txtmanubillstartdate.Value, txtmanubillenddate.Value);
+            if (update == 1)
+            {
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "txtexeSpecial();", true);
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "alertMessage", "alert('Data Updated Successfully')", true);
+                return;
+            }
+            else
+            {
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "txtexeSpecial();", true);
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "alertMessage", "alert('Data Not Updated')", true);
+                return;
+            }
+        }        
     }
 
     protected void btnTaxParcelModal_RowCommand(object sender, GridViewCommandEventArgs e)
