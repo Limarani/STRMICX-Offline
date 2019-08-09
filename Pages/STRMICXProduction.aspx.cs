@@ -1006,6 +1006,12 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
             }
         }
 
+
+        string commentsfetch = "";
+        commentsfetch = "select Comments from record_status where Order_No = '" + lblord.Text + "'";
+
+
+
         btntaxparcels.Enabled = true;
         ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "txtexeSpecial();", true);
     }
