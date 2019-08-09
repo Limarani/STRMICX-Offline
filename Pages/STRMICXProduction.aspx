@@ -5141,8 +5141,8 @@
                 document.getElementById('txtpayoffgood').style.borderColor = "#ff0000";
                 document.getElementById('lblpayoffgood').style.color = "#ff0000";
                 document.getElementById('txtpayoffgood').value = "";
-                alert("Date should be greater than current date");
                 document.getElementById("txtpayoffgood").focus();
+                alert("Date should be greater than current date");               
                 return true;
             }
         }
@@ -8149,13 +8149,15 @@
                                             <asp:TextBox ID="txtdeliPayee" runat="server" Style="margin-bottom: 5px;" class="form-control" placeholder="Payee Name" autocomplete='off' onchange="return functionDelinquent()" onkeyup="CheckFirstChar(event.keyCode, this);" onkeydown="return CheckFirstChar(event.keyCode, this);">
                                             </asp:TextBox>
                                         </td>
+
                                         <td style="padding-left: 31px;">
                                             <b>
                                                 <label id="lbldelitAddress" class="CheckBold">Address:</label>
                                             </b>
                                         </td>
                                         <td>
-                                            <asp:TextBox runat="server" class="form-control" ID="txtdelitAddress" autocomplete='off' placeholder="Address" onchange="return functionDelinquent()" onkeydown="return CheckFirstChar(event.keyCode, this);" onkeyup="CheckFirstChar(event.keyCode, this);"></asp:TextBox>
+                                            <asp:TextBox ID="txtdelitAddress" runat="server" class="form-control"  placeholder="Address" autocomplete='off'  onchange="return functionDelinquent()" onkeyup="CheckFirstChar(event.keyCode, this);" onkeydown="return CheckFirstChar(event.keyCode, this);">
+                                            </asp:TextBox>
                                         </td>
                                         <td style="padding-left: 31px;">
                                             <b>
@@ -8172,7 +8174,7 @@
                                             </b>
                                         </td>
                                         <td>
-                                            <asp:TextBox ID="txtdelitState" runat="server" class="form-control" placeholder="State" autocomplete='off' onchange="return functionDelinquent()" onkeypress="return onlyAlphabets(event,this);">
+                                            <asp:TextBox ID="txtdelitState" runat="server" class="form-control" placeholder="State" autocomplete='off' Style="text-transform: uppercase" MaxLength="2" onchange="return functionDelinquent()" onkeypress="return onlyAlphabets(event,this);" onkeyup="CheckFirstChar(event.keyCode, this);" onkeydown="return CheckFirstChar(event.keyCode, this);" onblur="IsValidLengthState(this.value,this,event);">
                                             </asp:TextBox>
                                         </td>
                                     </tr>
@@ -8539,11 +8541,11 @@
                                         </td>
                                         <td style="padding-left: 31px;"><b class="CheckBold">Amount:</b></td>
                                         <td>
-                                            <asp:TextBox ID="txtamountspecial" runat="server" class="form-control" placeholder="Amount" onkeyup="SpeRemian1();" onfocusout="SpemyFunctionRemian1();if (this.value=='0.00') this.value='0.00';if (this.value=='') this.value='0.00';" onfocusin="if (this.value=='0.00') this.value='';" onblur="myRemian();" autocomplete='off' value="0.00"></asp:TextBox>
+                                            <asp:TextBox ID="txtamountspecial" runat="server" class="form-control" placeholder="Amount" onkeyup="RemianAmount1();" onfocusout="SpemyFunctionRemian1();if (this.value=='0.00') this.value='0.00';if (this.value=='') this.value='0.00';" onfocusin="if (this.value=='0.00') this.value='';" onblur="myRemian();" autocomplete='off' value="0.00"></asp:TextBox>
                                         </td>
                                         <td style="padding-left: 31px;"><b class="CheckBold">Remaining Balance:</b></td>
                                         <td>
-                                            <asp:TextBox ID="txtsperembal" runat="server" class="form-control" onkeyup="SpeRemianBal1();" placeholder="Remaining Balance" onfocusout="SpemyFunctionRemianBal1();if (this.value=='0.00') this.value='0.00';if (this.value=='') this.value='0.00';" onfocusin="if (this.value=='0.00') this.value='';" onblur="myRemianBal();" autocomplete='off' value="0.00"></asp:TextBox>
+                                            <asp:TextBox ID="txtsperembal" runat="server" class="form-control" onkeyup="RemianBalAmount1();" placeholder="Remaining Balance" onfocusout="SpemyFunctionRemianBal1();if (this.value=='0.00') this.value='0.00';if (this.value=='') this.value='0.00';" onfocusin="if (this.value=='0.00') this.value='';" onblur="myRemianBal();" autocomplete='off' value="0.00"></asp:TextBox>
                                         </td>
                                         <td hidden>
                                             <p id="s"></p>
@@ -8811,7 +8813,7 @@
                                         </tr>
                                         <tr>
                                             <td>
-                                                <textarea id="txtnotes" runat="server" rows="5" style="resize: none; width: 550px;"></textarea>
+                                                <textarea id="txtnotes" runat="server" rows="5" style="resize: none; width: 550px;" onkeyup="CheckFirstChar(event.keyCode, this);" onkeydown="return CheckFirstChar(event.keyCode, this);"></textarea>
                                             </td>
                                         </tr>
                                     </tbody>
@@ -8977,7 +8979,7 @@
                     </div>
                 </div>
                 <%--Add Notes--%>
-                <div class="panel panel-default" tabindex="51" style="border-color: #280277; margin-top: 12px;">
+                <div class="panel panel-default" tabindex="50" style="border-color: #280277; margin-top: 12px;">
                     <div class="panel-heading" data-toggle="collapse" data-target="#collapsenotes" style="color: #FFFFFF; background-color: #280277; border-color: #280277;">
                         <h4 class="panel-title">
                             <strong style="cursor: pointer; text-decoration: underline;">Notes</strong><i class="indicator glyphicon glyphicon-chevron-down pull-left"></i>
@@ -9005,8 +9007,8 @@
                                                     <Columns>
                                                         <asp:BoundField ItemStyle-Width="35%" DataField="note" HeaderText="Note" />
                                                         <asp:BoundField ItemStyle-Width="30%" DataField="note_type" HeaderText="Note Type" />
-                                                        <asp:BoundField ItemStyle-Width="30%" DataField="added" HeaderText="Added" />
-                                                        <asp:BoundField ItemStyle-Width="30%" DataField="enterby" HeaderText="Entered By" />
+                                                        <asp:BoundField ItemStyle-Width="25%" DataField="added" HeaderText="Added" />
+                                                        <asp:BoundField ItemStyle-Width="25%" DataField="enterby" HeaderText="Entered By" />
                                                     </Columns>
                                                     <AlternatingRowStyle BackColor="#f3f2ea" />
                                                     <HeaderStyle BackColor="#f94848" ForeColor="white" />
@@ -9019,7 +9021,7 @@
                         </div>
                     </div>
                     <br />
-                    <div class="panel panel-default" tabindex="50" style="border-color: #280277;">
+                    <div class="panel panel-default" tabindex="51" style="border-color: #280277;margin-top:12px;">
                         <div class="panel-heading" data-toggle="collapse" data-target="#collapse2" style="color: #FFFFFF; background-color: #280277; border-color: #280277;">
                             <h4 class="panel-title">
                                 <strong style="cursor: pointer; text-decoration: underline;">Tax Cert Info</strong><i class="indicator glyphicon glyphicon-chevron-down pull-left"></i>

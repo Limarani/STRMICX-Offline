@@ -332,6 +332,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
         fetchtaxparcel();
         fetchtaxparceldetails();
         btntaxparcels.Enabled = true;
+        ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "txtexeSpecial();", true);
     }
     private void checkagencydetails(string AgencyId)
     {
@@ -1402,6 +1403,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
 
             gvtaxauthorities.DataSource = dtfetchauthority;
             gvtaxauthorities.DataBind();
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "txtexeSpecial();", true);
         }
     }
 
@@ -2431,7 +2433,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
                 txtbaseamntdue.Text = ds.Tables[0].Rows[0]["BaseAmountDue"].ToString();
                 txtrolloverdate.Text = ds.Tables[0].Rows[0]["RollOverDate"].ToString();
                 txtpenlatyamt.Text = ds.Tables[0].Rows[0]["PenaltyAmount"].ToString();
-                txtpencalfre.SelectedValue = ds.Tables[0].Rows[0]["PenaltyAmountFrequency"].ToString();
+                //txtpencalfre.SelectedValue = ds.Tables[0].Rows[0]["PenaltyAmountFrequency"].ToString();
                 txtaddpenAmnt.Text = ds.Tables[0].Rows[0]["AdditionalPenaltyAmount"].ToString();
                 txtPerdiem.Text = ds.Tables[0].Rows[0]["PerDiem"].ToString();
                 txtpenamtdue.Text = ds.Tables[0].Rows[0]["PenaltyDueDate"].ToString();
@@ -4232,7 +4234,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
         }
         ClientScript.RegisterStartupScript(this.GetType(), "Pop", "TaxtypeModal();", true);
         PanelTaxtype.Visible = true;
-        ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "txtexeSpecial();", true);
+        ClientScript.RegisterStartupScript(this.GetType(), "Pop", "txtexeSpecial();", true);
     }
 
 
