@@ -37,10 +37,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
     CallAPI postData = new CallAPI();
     string TaxAuthorityName = "";
     protected void Page_Load(object sender, EventArgs e)
-    {
-        //string jsonData = jsonResponse.GetJsonData("55259049");
-
-        //string isSuccess = postData.POST(jsonData, "55259049");
+    {        
         //string connect = ConfigurationManager.ConnectionStrings["MysqlConnection"].ConnectionString;
         //using (MySqlConnection con = new MySqlConnection(connect))
         //{
@@ -3462,17 +3459,8 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
             {
                 if (message == "")
                 {
-                    string jData = jsonResponse.GetJsonData(lblord.Text);
-                    string successMsg = postData.POST(jData, lblord.Text);
-                    if (successMsg == "OK")
-                    {
-                        UpdateProduction("sp_UpdateKey_User");
-                        Updatetaxauthoritiessection("Sp_Update_taxauthorities_details");
-                    }
-                    else
-                    {
-                        return;
-                    }
+                    UpdateProduction("sp_UpdateKey_User");
+                    Updatetaxauthoritiessection("Sp_Update_taxauthorities_details");                                        
                     paymentfrequency.Value = taxfrequency;
                     if (id == "12f7tre5")
                     {
@@ -3520,8 +3508,17 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
             {
                 if (message == "")
                 {
-                    UpdateProduction("sp_UpdateQC_User");
-
+                    string jData = jsonResponse.GetJsonData(lblord.Text);
+                    string successMsg = postData.POST(jData, lblord.Text);
+                    if (successMsg == "OK")
+                    {
+                        UpdateProduction("sp_UpdateQC_User");
+                    }
+                    else
+                    {
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "alertMessage", "alert('Cannot Deliver The Order')", true);
+                        return;
+                    }                    
                     if (id == "12f7tre5")
                     {
                         Response.Redirect("STRMICXProduction.aspx?id=" + id);
