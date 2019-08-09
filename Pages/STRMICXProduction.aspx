@@ -83,7 +83,7 @@
                     document.getElementById("taxbill").selectedIndex = 0;
                 }
             }
-            else if (txBill == "Semi-Annual") {
+            else if (txBill == "SemiAnnual") {
                 var dt = document.getElementById("delinq2").value;
                 if (Date.parse(dt) >= Date.parse(today)) {
                     document.getElementById("taxbill").selectedIndex = 1;
@@ -97,7 +97,7 @@
                 }
 
             }
-            else if (txBill == "Tri-Annual") {
+            else if (txBill == "TriAnnual") {
                 var dt = document.getElementById("delinq3").value;
                 if (Date.parse(dt) >= Date.parse(today)) {
                     document.getElementById("taxbill").selectedIndex = 1;

@@ -76,8 +76,8 @@ public class Response
         DataSet dsStatus = dbconn.ExecuteQuery("select id,orderstatus from tbl_taxcert_info where Orderno='" + orderno + "' order by id desc limit 1");
         for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
         {
-            taxDetailTag.ExpectedDate = ds.Tables[0].Rows[i]["expecteddate"] != DBNull.Value ? Convert.ToDateTime(ds.Tables[0].Rows[i]["expecteddate"]).ToString() : blankDate.ToString();
-            taxDetailTag.FollowUpDate = ds.Tables[0].Rows[i]["followupdate"] != DBNull.Value ? Convert.ToDateTime(ds.Tables[0].Rows[i]["followupdate"]).ToString() : blankDateTime.ToString();
+            taxDetailTag.ExpectedDate = ds.Tables[0].Rows[i]["expecteddate"] != DBNull.Value ? Convert.ToDateTime(ds.Tables[0].Rows[i]["expecteddate"]).Date.ToString() : blankDate.ToString();
+            taxDetailTag.FollowUpDate = ds.Tables[0].Rows[i]["followupdate"] != DBNull.Value ? Convert.ToDateTime(ds.Tables[0].Rows[i]["followupdate"]).Date.ToString() : blankDateTime.ToString();
            
             taxDetailTag.WasAssessedAsLand = null;//not sending
             taxDetailTag.WasAssessedAsHomestead = false;
@@ -253,7 +253,7 @@ public class Response
     }
     public List<DelinquentTaxesTag> GetDelinquentTaxesList(string orderno)
     {
-        DelinquentTaxesTag DelinquentTaxes = new DelinquentTaxesTag();
+        DelinquentTaxesTag DelinquentTaxes = new DelinquentTaxesTag(); 
         List<DelinquentTaxesTag> DelinquentTaxesList = new List<DelinquentTaxesTag> { };
         DataSet ds = dbconn.ExecuteQuery("select * from tbl_deliquent where orderno='" + orderno + "'");
         if (ds.Tables[0].Rows.Count > 0)

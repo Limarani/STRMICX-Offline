@@ -40,7 +40,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
     {
         string jsonData = jsonResponse.GetJsonData("55259049");
 
-        string isSuccess = postData.POST(jsonData, "55259049");
+        //string isSuccess = postData.POST(jsonData, "55259049");
         //string connect = ConfigurationManager.ConnectionStrings["MysqlConnection"].ConnectionString;
         //using (MySqlConnection con = new MySqlConnection(connect))
         //{
