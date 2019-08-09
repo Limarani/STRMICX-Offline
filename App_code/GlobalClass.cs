@@ -16633,6 +16633,21 @@ public class GlobalClass : myConnection
 
     public int insert_taxparcel(string orderno, string taxidnumber, string taxyear, string endyear,string status, string tbd, string estimate)
     {
+
+        if (string.IsNullOrEmpty(endyear) )
+        {
+            endyear = null;
+        }
+        if (string.IsNullOrEmpty(tbd))
+        {
+            tbd = "false";
+        }
+        if (string.IsNullOrEmpty(estimate))
+        {
+            estimate = "false";
+        }
+
+
         mParam = new MySqlParameter[7];
 
         mParam[0] = new MySqlParameter("$orderno", orderno);
@@ -16653,6 +16668,20 @@ public class GlobalClass : myConnection
     }
     public void update_taxparcel(string id, string taxidnumber, string taxyear, string endyear,string taxid_input,string orderno, string tbd, string est)
     {
+
+        if (string.IsNullOrEmpty(endyear))
+        {
+            endyear = null;
+        }
+        if (string.IsNullOrEmpty(tbd))
+        {
+            tbd = "false";
+        }
+        if (string.IsNullOrEmpty(est))
+        {
+            est = "false";
+        }
+
         mParam = new MySqlParameter[8];
 
         mParam[0] = new MySqlParameter("$Id", id);
