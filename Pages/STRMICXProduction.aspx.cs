@@ -1594,6 +1594,8 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
         int insert = 0;
         string query = "";
 
+        
+
 
         query = "select orderno,taxid,taxyear,endyear from tbl_taxparcel where taxid = '" + txtdrop.Value + "' and (status = 'M' or status = 'C') and orderno='" + lblord.Text + "' ";
         DataSet ds = gl.ExecuteQuery(query);
