@@ -17471,7 +17471,15 @@ public class GlobalClass : myConnection
         {
             paymentfrequency = "Quarterly";
         }
-
+        if (taxbill == "1")
+        {
+            taxbill = "Current";
+        }
+        else if (taxbill == "2")
+        {
+            taxbill = "Previous";
+        }
+////
 
 
         mParam = new MySqlParameter[51];
@@ -17786,7 +17794,14 @@ public class GlobalClass : myConnection
         {
             paymentfrequency = "Quarterly";
         }
-
+        if (taxbill == "1")
+        {
+            paymentfrequency = "Current";
+        }
+        else if (taxbill == "2")
+        {
+            taxbill = "Previous";
+        }
 
         mParam = new MySqlParameter[51];
 
