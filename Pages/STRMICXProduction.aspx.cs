@@ -777,7 +777,25 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
                     }
                 }
 
-                paymentfrequency.Value = dtfetchauthority.Rows[0]["TaxFrequency"].ToString().Trim();
+
+                string paymentfr = "";
+                paymentfr = dtfetchauthority.Rows[0]["TaxFrequency"].ToString().Trim();
+                if (paymentfr == "Annual")
+                {
+                    paymentfrequency.SelectedIndex = 0;
+                }
+                if (paymentfr == "SemiAnnual")
+                {
+                    paymentfrequency.SelectedIndex = 1;
+                }
+                if (paymentfr == "Quarterly")
+                {
+                    paymentfrequency.SelectedIndex = 2;
+                }
+                if (paymentfr == "TriAnnual")
+                {
+                    paymentfrequency.SelectedIndex = 3;
+                }
 
 
 
@@ -2548,9 +2566,27 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
                     this.chkexrelmanu4.Checked = false;
                 }
 
-                //paymentfrequency
-                ddlpayfreqmanu.Value = dtfetchauthorityfuture.Rows[0]["TaxFrequency"].ToString().Trim();
-                paymentfreq1(ddlpayfreqmanu.Value);
+                //paymentfrequency              
+                string paymentfr = "";
+                paymentfr = dtfetchauthorityfuture.Rows[0]["TaxFrequency"].ToString().Trim();
+                if (paymentfr == "Annual")
+                {
+                    ddlpayfreqmanu.SelectedIndex = 0;
+                }
+                if (paymentfr == "SemiAnnual")
+                {
+                    ddlpayfreqmanu.SelectedIndex = 1;
+                }
+                if (paymentfr == "Quarterly")
+                {
+                    ddlpayfreqmanu.SelectedIndex = 2;
+                }
+                if (paymentfr == "TriAnnual")
+                {
+                    ddlpayfreqmanu.SelectedIndex = 3;
+                }
+                paymentfreq1(paymentfr);
+
 
                 //BillingPeriodStartDate
                 txtmanubillstartdate.Value = dtfetchauthorityfuture.Rows[0]["BillingPeriodStartDate"].ToString().Trim();                
@@ -2594,10 +2630,10 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
                 instmanamount3.Value = dtfetchauthority.Rows[0]["Instamount3"].ToString();
                 instmanamount4.Value = dtfetchauthority.Rows[0]["Instamount4"].ToString();
 
-                txtmanurembal1.Value = dtfetchauthority.Rows[0]["Remainingbalance1"].ToString();
-                txtmanurembal2.Value = dtfetchauthority.Rows[0]["Remainingbalance2"].ToString();
-                txtmanurembal3.Value = dtfetchauthority.Rows[0]["Remainingbalance3"].ToString();
-                txtmanurembal4.Value = dtfetchauthority.Rows[0]["Remainingbalance4"].ToString();
+                //txtmanurembal1.Value = dtfetchauthority.Rows[0]["Remainingbalance1"].ToString();
+                //txtmanurembal2.Value = dtfetchauthority.Rows[0]["Remainingbalance2"].ToString();
+                //txtmanurembal3.Value = dtfetchauthority.Rows[0]["Remainingbalance3"].ToString();
+                //txtmanurembal4.Value = dtfetchauthority.Rows[0]["Remainingbalance4"].ToString();
 
                 txtmandisamount1.Value = dtfetchauthority.Rows[0]["discountamount1"].ToString();
                 txtmandisamount2.Value = dtfetchauthority.Rows[0]["discountamount2"].ToString();
@@ -2910,8 +2946,30 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
                 }
 
                 //paymentfrequency
-                ddlpayfreqmanu.Value = dtfetchauthority.Rows[0]["TaxFrequency"].ToString().Trim();
-                paymentfreq1(ddlpayfreqmanu.Value);
+                string paymentmanual = "";
+                paymentmanual = dtfetchauthority.Rows[0]["TaxFrequency"].ToString().Trim();
+                paymentfreq1(paymentmanual);
+                if (paymentmanual == "Annual")
+                {
+                    ddlpayfreqmanu.SelectedIndex = 0;
+                }
+                if (paymentmanual == "SemiAnnual")
+                {
+                    ddlpayfreqmanu.SelectedIndex = 1;
+                }
+                if (paymentmanual == "Quarterly")
+                {
+                    ddlpayfreqmanu.SelectedIndex = 2;
+                }
+                if (paymentmanual == "TriAnnual")
+                {
+                    ddlpayfreqmanu.SelectedIndex = 3;
+                }
+              
+                
+
+                
+               
 
                 //BillingPeriodStartDate
                 if (dtfetchauthority.Rows[0]["BillingPeriodStartDate"].ToString().Trim() != "")
