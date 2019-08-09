@@ -3593,7 +3593,6 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
                 {
                     paymentfrequency.Value = taxfrequency;
 
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "txtexeSpecial();", true);
                     ScriptManager.RegisterStartupScript(this, this.GetType(), "alertMessage", "alert('Please Complete The Mandatory Fields')", true);
                     return;
                 }
@@ -3616,6 +3615,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "alertMessage", "alert('Please Complete The Mandatory Fields')", true);
                 return;
             }
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "txtexeSpecial();", true);
         }
 
         else if (OStatus == "In Process" && process == "KEY")
