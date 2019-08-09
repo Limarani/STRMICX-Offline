@@ -16592,6 +16592,16 @@ public class GlobalClass : myConnection
 
     public int updatedate(string orderno, string expecteddate, string followupdate)
     {
+        if (string.IsNullOrEmpty(expecteddate))
+        {
+            expecteddate = null;
+        }
+
+        if (string.IsNullOrEmpty(followupdate))
+        {
+            followupdate = null;
+        }
+
         mParam = new MySqlParameter[3];
 
         mParam[0] = new MySqlParameter("$orderno", orderno);
