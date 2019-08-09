@@ -849,9 +849,7 @@
         }
 
 
-        function functionInsttax() {
-            var Insterror;
-            Insterror = document.getElementById("nextbilldate1").value;
+        function functionInsttax() {            
             var Installmenterror1 = document.getElementById("instdate1").value;
             var Installmenterror2 = document.getElementById("instdate2").value;
             var Installmenterror3 = document.getElementById("instdate3").value;
@@ -1074,6 +1072,8 @@
                 }
             }
 
+            var Insterror;
+            Insterror = document.getElementById("nextbilldate1").value;
             if (Insterror == "") {
                 document.getElementById('nextbilldate1').style.borderColor = "#ff0000";
                 document.getElementById("lblnextbilldate1").style.color = "#ff0000";
@@ -1412,22 +1412,25 @@
                 return false;
             }
 
-            var priordeli = document.getElementById("pastDeliquent").value;
-            var priorrows = GrdPriordelinquent.rows;
+            var clientmame = document.getElementById("lblclientName").value;
+            if (clientmame == "ORMS") {
+                var priordeli = document.getElementById("pastDeliquent").value;
+                var priorrows = GrdPriordelinquent.rows;
 
 
-            if (priordeli == "Yes") {
-                if (priorrows.length == 1) {
-                    document.getElementById('txtpriodeli').focus();
-                    alert("Prior Delinquent is required");
+                if (priordeli == "Yes") {
+                    if (priorrows.length == 1) {
+                        document.getElementById('txtpriodeli').focus();
+                        alert("Prior Delinquent is required");
+                        return false;
+                    }
+                }
+
+                if (priordeli == "Select") {
+                    alert("Please Choose Any One Option in Prior Delinquent");
                     return false;
                 }
-            }
-
-            if (priordeli == "Select") {
-                alert("Please Choose Any One Option in Prior Delinquent");
-                return false;
-            }
+            }            
         }
 
 
@@ -1735,11 +1738,19 @@
                 document.getElementById('lbllastdayred').style.color = "green";
             }
 
-            if (txtdeliPayeeerror == "" || txtdelitAddresserror == "" || txtdelitaxyearerror == "" || txtpayoffamounterror == "" || txtpayoffgooderror == "" || txtinitialinstallerror == "" || txtnotapplicableerror == "Select" && txtdatetaxsaleerror == "" && txtlastdayrederror == "") {
-                return false;
+            if (txtdeliPayeeerror == "" || txtdelitAddresserror == "" || txtdelitaxyearerror == "" || txtpayoffamounterror == "" || txtpayoffgooderror == "" || txtinitialinstallerror == "" || txtnotapplicableerror == "Select" || txtnotapplicableerror == "No" || txtdatetaxsaleerror == "" && txtlastdayrederror == "") {
+                if (txtnotapplicableerror == "No" || txtnotapplicableerror == "Select") {
+                    if ((txtdatetaxsaleerror == "" || txtlastdayrederror == "")) {
+                        return false;
+                    }                   
+                }                
             }
-            else if (txtdeliPayeeerror != "" || txtdelitAddresserror != "" || txtdelitaxyearerror != "" || txtpayoffamounterror != "" || txtpayoffgooderror != "" || txtinitialinstallerror != "" || txtnotapplicableerror != "Select" && txtdatetaxsaleerror != "" && txtlastdayrederror != "") {
-                return true;
+            else if (txtdeliPayeeerror != "" || txtdelitAddresserror != "" || txtdelitaxyearerror != "" || txtpayoffamounterror != "" || txtpayoffgooderror != "" || txtinitialinstallerror != "" || txtnotapplicableerror != "Select" || txtnotapplicableerror == "No" || txtdatetaxsaleerror != "" && txtlastdayrederror != "") {
+                if (txtnotapplicableerror == "Yes") {
+                    if ((txtdatetaxsaleerror != "" || txtlastdayrederror != "")) {
+                        return true;
+                    }
+                }
             }
         }
 
@@ -6565,7 +6576,7 @@
         <form id="myForm" name="myForm" style="margin-top: 1px;" runat="server">
             <asp:ScriptManager ID="ScriptManager1" runat="server" />
 
-            <table class="header" style="width: 1380px;">
+            <table class="header" style="width: 1350px;">
                 <tr style="width: 250px;">
                     <td style="color: red; font-weight: bold; width: 150px;">
                         <img src="../images/logo.png" style="width: 90px;" /></td>
@@ -7973,7 +7984,7 @@
                                         </td>
                                         <td style="padding-left: 31px;"><b class="CheckBold">Is this property taxed as the primary residence? :</b></td>
                                         <td>
-                                            <asp:DropDownList ID="txtResidence" runat="server" class="form-control" onchange="txtResidence1()" Style="width: 100px;">
+                                            <asp:DropDownList ID="txtResidence" runat="server" class="form-control" Style="width: 100px;">
                                                 <asp:ListItem>Select</asp:ListItem>
                                                 <asp:ListItem>Yes</asp:ListItem>
                                                 <asp:ListItem>No</asp:ListItem>
@@ -8296,7 +8307,7 @@
                                             </b>
                                         </td>
                                         <td>
-                                            <asp:TextBox ID="txtinitialinstall" runat="server" class="form-control" placeholder="MM/DD/YYYY" MaxLength="10" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onfocusout="return dateValidateFutue(this)" autocomplete='off' onchange="return functionDelinquent()">
+                                            <asp:TextBox ID="txtinitialinstall" runat="server" class="form-control" placeholder="MM/DD/YYYY" MaxLength="10" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="return dateValidateFutue(this);" autocomplete='off' onchange="return functionDelinquent()">
                                             </asp:TextBox>
                                         </td>
 
@@ -8985,6 +8996,7 @@
                             <strong style="cursor: pointer; text-decoration: underline;">Notes</strong><i class="indicator glyphicon glyphicon-chevron-down pull-left"></i>
                         </h4>
                     </div>
+                    <br />
                     <div id="collapsenotes" class="panel-collapse collapse in">
                         <div class="panel-body">
                             <table>
@@ -9020,8 +9032,9 @@
                             </div>
                         </div>
                     </div>
-                    <br />
-                    <div class="panel panel-default" tabindex="51" style="border-color: #280277;margin-top:12px;">
+                    <br />                   
+                </div>
+                 <div class="panel panel-default" tabindex="51" style="border-color: #280277;margin-top:12px;">
                         <div class="panel-heading" data-toggle="collapse" data-target="#collapse2" style="color: #FFFFFF; background-color: #280277; border-color: #280277;">
                             <h4 class="panel-title">
                                 <strong style="cursor: pointer; text-decoration: underline;">Tax Cert Info</strong><i class="indicator glyphicon glyphicon-chevron-down pull-left"></i>
@@ -9078,8 +9091,6 @@
                             </div>
                         </div>
                     </div>
-                    <br />
-                </div>
                 <br />
                 <div style="margin-left: 275px;">
                     <table style="width: 995px;">
