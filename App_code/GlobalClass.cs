@@ -17103,6 +17103,14 @@ public class GlobalClass : myConnection
         {
             comments = "";
         }
+        if (string.IsNullOrEmpty(dateofTaxsale))
+        {
+            dateofTaxsale = null;
+        }
+        if (string.IsNullOrEmpty(lastdaytoredeem))
+        {
+            lastdaytoredeem = null;
+        }
 
         mParam = new MySqlParameter[24];
 
@@ -17204,7 +17212,14 @@ public class GlobalClass : myConnection
             comments = "";
         }
 
-
+        if (string.IsNullOrEmpty(dateofTaxsale))
+        {
+            dateofTaxsale = null;
+        }
+        if (string.IsNullOrEmpty(lastdaytoredeem))
+        {
+            lastdaytoredeem = null;
+        }
 
         mParam = new MySqlParameter[23];
 
