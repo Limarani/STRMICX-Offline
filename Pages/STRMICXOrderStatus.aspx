@@ -72,6 +72,13 @@
         }
     </script>
 
+     <script type="text/javascript">
+         function StatusChange() {
+             $('[id*=ModalStatus]').modal('show');
+         }
+    </script>
+        
+
     <script type="text/javascript">
         function Search_Gridview(strKey, strGV) {
             var message = "No Records were found...";
@@ -311,17 +318,15 @@
                             <span class="glyphicon glyphicon-user" style="font-size: 20px;"></span>
                             <br />
                             Assign
-                        </button>
-                        <%--<button type="button" class="btn btn-default" id="btnhold1" data-toggle="modal" data-target="HoldModal" title="Hold" runat="server" onserverclick="Hold_Click">
-                            <span class="fa fa-hand-paper-o" style="font-size: 20px;"></span>
+                        </button>                                              
+
+                        <button type="button" class="btn btn-default ng-pristine ng-untouched ng-valid ng-empty" data-toggle="modal" data-target="#Status1" title="Status1" id="Status1" runat="server" onserverclick="StatusChange_Click">
+                            <span class="glyphicon glyphicon-user" style="font-size: 20px;"></span>
                             <br />
-                            Hold
-                        </button>
-                        <button type="button" class="btn btn-default" id="Button1" data-toggle="modal" data-target="HoldModal" title="UnHold" runat="server" onserverclick="UnHold_Click">
-                            <span class="fa fa-hand-lizard-o" style="font-size: 20px;"></span>
-                            <br />
-                            UnHold
-                        </button>--%>
+                            StatusChange
+                        </button>   
+
+
                         <button type="button" class="btn btn-default" id="btnhold" data-toggle="modal" data-target="HoldModal" title="Reject" runat="server" onserverclick="Reject_Click">
                             <span class="glyphicon glyphicon-remove" style="font-size: 20px;"></span>
                             <br />
@@ -490,6 +495,125 @@
             </div>
         </div>
     </asp:Panel>
+
+
+
+        <asp:Panel ID="PanelStatusChange" class="panel panel-default" runat="server" Visible="false">
+        <div class="modal fade" id="ModalStatus" role="dialog" runat="server">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content" style="width: 100%; height: 500px; margin-left: 0px;">
+                    <div class="modal-header">
+                        <button type="button" id="btn1" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title" style="margin-left: 359px; margin-bottom: -27px;">Status Change</h4>
+                        <h4 class="modal-title" style="margin-left: 635px;"></h4>
+                    </div>
+
+                     <table border="0" cellspacing="5" cellpadding="5" width="100%">
+                    <tr>
+                                        <td style="width: 35%;" align="right">
+                                            <asp:TextBox ID="txtmovestatus" runat="server" TextMode="MultiLine" CssClass="txtuser"
+                                                Height="400px" Width="200px" AutoPostBack="true"></asp:TextBox>                                                                                                                                    
+                                        </td>
+                                        <td style="width: 20%; padding-top: 30px;" valign="top" align="center">
+                                            <table width="80%">
+                                                <tr>
+                                                    <td align="left">
+                                                        <asp:RadioButtonList ID="rdbtnstatuschange" OnSelectedIndexChanged="rdbtnstatuschange_Changed" runat="server" AutoPostBack ="true" Width="100%" CssClass="Lblall1">
+                                                            <asp:ListItem Value="0">InProcess</asp:ListItem>
+                                                            <asp:ListItem Value="1">ParcelID</asp:ListItem>
+                                                            <asp:ListItem Value="2">Mailaway</asp:ListItem>
+                                                            <asp:ListItem Value="3">OnHold</asp:ListItem>
+                                                            <asp:ListItem Value="4">Rejected</asp:ListItem>
+                                                            <asp:ListItem Value="5">YTS</asp:ListItem>                                                            
+                                                            <asp:ListItem Value="7">Move QC</asp:ListItem>
+                                                        </asp:RadioButtonList>
+                                                    </td>
+                                                </tr>
+                                                <tr style="height: 5px;">
+                                                    <td>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <asp:Button ID="btnmove" runat="server" Text=">>" OnClick="btnmove_Click" CssClass="MenuFont" Width="150px"
+                                                            Font-Bold="true"/>
+                                                    </td>
+                                                </tr>
+                                                <tr style="height: 5px;">
+                                                    <td>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <asp:DropDownList ID="ddlusername" runat="server" CssClass="txtuser" Width="150px">
+                                                        </asp:DropDownList>
+                                                    </td>
+                                                </tr>
+                                                <tr style="height: 5px;">
+                                                    <td>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <asp:Button ID="btnassignorder" OnClick="btnassignorder_Click" runat="server" Text="Assign Order" CssClass="MenuFont"
+                                                            Width="150px" Font-Bold="true" />
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                        <td style="width: 35%;" align="left">
+                                            <asp:TextBox ID="txtstatuschange" runat="server" TextMode="MultiLine" CssClass="txtuser"
+                                                Height="400px" Width="200px"></asp:TextBox>
+                                        </td>
+                                    </tr>
+                         </table>
+
+
+                  <%--  <div class="modal-body">
+                        <div class="panel-body" style="margin-top: -17px;">
+                            <div class="tab-content">
+                                <div class="tab-pane fade in active" id="tab1primary152">
+                                    <div class="col-md-12">
+                                        <div class="col-md-6">
+                                            <div class="col-md-12">
+                                                <div style="width: 150%; height: 250px;">
+                                               <asp:ListBox ID="ListBox1" runat="server" Style="width: 200px; height: 290px; margin-left: 42px; overflow-x:auto;" CssClass="txtuser"
+                                                        Font-Names="Verdana"></asp:ListBox>     
+                                                </div>
+                                            </div>
+                                        </div> 
+                                        
+                                        
+                                         <table>
+                                            <tr>
+                                                <td style="width: 35%;" align="right">
+                                                    <asp:ListBox ID="ListBox2" runat="server" Style="width: 200px; height: 290px; margin-left: -74px" CssClass="txtuser" Font-Names="Verdana"></asp:ListBox>
+                                                </td>
+                                            </tr>
+                                        </table>                                       
+                                        <br />
+                                        <br />                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>--%>
+                </div>
+            </div>
+        </div>
+    </asp:Panel>
+   
+    
+   
+
+
+
+
+
+
+
+
+
     <div class="footer" style="text-align: center;">
         <p style="background-color: #337ab7; margin-left: 2px; margin-bottom: 0px; color: white; font-family: Roboto,-apple-system,BlinkMacSystemFont,Segoe UI,Oxygen,Ubuntu,Cantarell,Fira San,Droid Sans,Helvetica Neue,sans-serif;">
             &copy; 2019. All rights reserved | Designed & Developed by String Information Services

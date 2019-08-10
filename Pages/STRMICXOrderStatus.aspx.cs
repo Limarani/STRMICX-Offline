@@ -10,6 +10,7 @@ using System.Web.UI.WebControls.WebParts;
 using System.Web.UI.HtmlControls;
 using MySql.Data.MySqlClient;
 using System.Text.RegularExpressions;
+using System.ComponentModel;
 //madesh 08/01/2019....
 public partial class Pages_STRMICXOrderStatus : System.Web.UI.Page
 {
@@ -801,6 +802,180 @@ public partial class Pages_STRMICXOrderStatus : System.Web.UI.Page
         }
     }
 
+
+    protected void StatusChange_Click(object sender, EventArgs e)
+    {
+        lblerror.Text = "";
+        string ord = "";
+        ClientScript.RegisterStartupScript(this.GetType(), "Pop", "StatusChange();", true);
+        PanelStatusChange.Visible = true;
+        DataTable dtfetchorders = new DataTable();
+        dtfetchorders.Columns.AddRange(new DataColumn[1] { new DataColumn("Order_No") });
+
+        foreach (GridViewRow row in GridUser.Rows)
+        {
+            if (row.RowType == DataControlRowType.DataRow)
+            {
+                CheckBox chkRow = (row.Cells[0].FindControl("chktrackdetails") as CheckBox);
+                if (chkRow.Checked)
+                {
+                    LinkButton orderno = (row.Cells[2].FindControl("Lnkorder") as LinkButton);
+                    dtfetchorders.Rows.Add(Convert.ToString(orderno.Text));
+                    ord += Convert.ToString(orderno.Text) + ",";
+                    bindusername1();
+                }
+            }
+        }
+
+        if (ord != "")
+        {
+            string[] fetchord = ord.ToString().Trim().Split(',');
+
+            foreach (String item in fetchord)
+            {               
+               txtmovestatus.Text += "\n" + item;               
+            }
+        }
+    }
+
+    private void bindusername1()
+    {
+        try
+        {
+            DataSet dsprd = new DataSet();
+            dsprd = gblcls.GetUsers();
+            ddlusername.DataSource = dsprd;
+            ddlusername.DataTextField = "User_Name";
+            ddlusername.DataBind();
+        }
+        catch (Exception ex)
+        {
+            myConnection.setError(ex.ToString());
+        }
+    }
+
+
+    protected void btnmove_Click(object sender, EventArgs e)
+    {
+        ClientScript.RegisterStartupScript(this.GetType(), "Pop", "StatusChange();", true);
+        PanelStatusChange.Visible = true;
+        string strorderno = txtmovestatus.Text;
+        string[] ord_no = strorderno.Split(new string[] { "\r\n" }, StringSplitOptions.None);
+        string orders, query = "";
+        for (int i = 0; i < ord_no.Length; i++)
+        {
+            orders = ord_no[i];
+            //In-Process       
+            if (rdbtnstatuschange.Items[0].Selected == true)
+            {
+                query = "update record_status set k1='2',qc='2',status='2',tax='0',pend='3',parcel='0',rejected='0',lock1='0' where Order_No='" + ord_no[i].ToString() + "'";
+            }
+            //ParcelID
+            else if (rdbtnstatuschange.Items[1].Selected == true)
+            {
+                query = "update record_status set k1='2',qc='2',status='2',tax='0',pend='0',parcel='3',rejected='0',lock1='0' where Order_No='" + ord_no[i].ToString() + "'";
+            }
+            //MailAway
+            else if (rdbtnstatuschange.Items[2].Selected == true)
+            {
+                query = "update record_status set k1='2',qc='2',status='2',tax='3',pend='0',parcel='0',rejected='0',lock1='0' where Order_No='" + ord_no[i].ToString() + "'";
+            }
+            //On-Hold
+            else if (rdbtnstatuschange.Items[3].Selected == true)
+            {
+                query = "update record_status set k1='4',qc='4',status='4',tax='0',pend='0',parcel='0',rejected='0',lock1='0' where Order_No='" + ord_no[i].ToString() + "'";
+            }
+            //Rejected
+            else if (rdbtnstatuschange.Items[4].Selected == true)
+            {
+                query = "update record_status set k1='7',qc='7',status='7', tax='0',pend='0',parcel='0',rejected='0',lock1='0' where Order_No='" + ord_no[i].ToString() + "'";
+            }
+            //YTS
+            else if (rdbtnstatuschange.Items[5].Selected == true)
+            {
+                query = "update record_status set K1=0,QC=0,Status=0,Direct=0,Review=0,Parcel=0,Pend=0,Tax=0,Lock1=0,K1_OP=null,K1_ST=null,K1_ET=null,QC_OP=null,QC_ST=null,QC_ET=null,key_status=null,ComStatus=null,Error=null,ErrorField=null,Incorrect=null,Correct=null where Order_No='" + ord_no[i].ToString() + "'";
+            }
+            //QC-Move
+            else if (rdbtnstatuschange.Items[7].Selected == true)
+            {
+                query = "update record_status set K1=2,QC=0,Status=2,Review=0,Parcel=0,Pend=0,Tax=0,Lock1=0,QC_OP=null,QC_ST=null,QC_ET=null,key_status='Completed',ComStatus=null where Order_No='" + ord_no[i].ToString() + "'";
+            }
+            con.ExecuteSPNonQuery(query);
+        }
+        txtstatuschange.Text = txtmovestatus.Text;
+        txtmovestatus.Text = "";
+        btnordershow_Click(sender, e);
+    }
+
+
+
+    protected void rdbtnstatuschange_Changed(object sender, EventArgs e)
+    {
+        ClientScript.RegisterStartupScript(this.GetType(), "Pop", "StatusChange();", true);
+        PanelStatusChange.Visible = true;
+    }
+
+    protected void btnassignorder_Click(object sender, EventArgs e)
+    {
+        string strusername = ddlusername.SelectedItem.Text;
+        string query = "";
+        if (strusername != " ")
+        {
+            string strorderno = txtmovestatus.Text;
+            string[] ord_no = strorderno.Split(new string[] { "\r\n" }, StringSplitOptions.None);
+
+            for (int i = 0; i < ord_no.Length; i++)
+            {
+                if (rdbtnstatuschange.Items[0].Selected == true)
+                {
+                    query = "update record_status set K1_OP='" + strusername + "',k1=2,qc=1,status=1,pend=1,tax=0,parcel=0 where Order_No='" + ord_no[i].ToString() + "'";
+                }
+                else if (rdbtnstatuschange.Items[1].Selected == true)
+                {
+                    query = "update record_status set K1_OP='" + strusername + "',k1=2,qc=1,status=1,pend=0,tax=0,parcel=0 where Order_No='" + ord_no[i].ToString() + "'";
+                }
+                else if (rdbtnstatuschange.Items[2].Selected == true)
+                {
+                    query = "update record_status set K1_OP='" + strusername + "',k1=2,qc=1,status=1,pend=0,tax=1,parcel=0 where Order_No='" + ord_no[i].ToString() + "'";
+                }
+                else if (rdbtnstatuschange.Items[3].Selected == true)
+                {
+                    query = "update record_status set QC_OP='" + strusername + "',k1=2,qc=1,status=1,pend=0,tax=0,parcel=0 where Order_No='" + ord_no[i].ToString() + "'";
+
+                }
+                else if (rdbtnstatuschange.Items[4].Selected == true)
+                {
+
+                }
+                else if (rdbtnstatuschange.Items[5].Selected == true)
+                {
+                    query = "update record_status set K1_OP='" + strusername + "',k1=1,qc=0,status=1 where Order_No='" + ord_no[i].ToString() + "'";
+                }
+                else if (rdbtnstatuschange.Items[6].Selected == true)
+                {
+                    query = "update record_status set K1_OP='" + strusername + "',k1=1,qc=0,status=1,Direct=1 where Order_No='" + ord_no[i].ToString() + "'";
+                }
+                else if (rdbtnstatuschange.Items[7].Selected == true)
+                {
+
+                }
+                con.ExecuteSPNonQuery(query);
+            }
+
+            if (rdbtnstatuschange.Items[1].Selected != true && rdbtnstatuschange.Items[2].Selected != true && rdbtnstatuschange.Items[3].Selected != true && rdbtnstatuschange.Items[5].Selected != true && rdbtnstatuschange.Items[6].Selected != true)
+            {
+                txtstatuschange.Text = txtmovestatus.Text;
+                txtmovestatus.Text = "";
+            }
+        }
+        btnordershow_Click(sender, e);
+    }
+
+
+
+
+
+
     private void bindusername()
     {
         try
@@ -919,14 +1094,14 @@ public partial class Pages_STRMICXOrderStatus : System.Web.UI.Page
                 {
                     gvorderdetails.DataSource = dttable;
                     gvorderdetails.DataBind();
-                }                
+                }
             }
         }
 
         btnordershow_Click(sender, e);
     }
 
-           
+
     protected void btnqcassign_Click(object sender, EventArgs e)
     {
         string orderno = "";
@@ -1107,7 +1282,7 @@ public partial class Pages_STRMICXOrderStatus : System.Web.UI.Page
                     }
                 }
             }
-        }        
+        }
         btnordershow_Click(sender, e);
     }
 
@@ -1193,10 +1368,10 @@ public partial class Pages_STRMICXOrderStatus : System.Web.UI.Page
                                     else if (concatsts == "2110001")
                                     {
                                         gblcls.GetOrderUnLockQC(orderno.Text, strfrmdate, strtodate);
-                                    }                                    
+                                    }
                                     else
                                     {
-                                        gblcls.GetOrderUnLock(orderno.Text, strfrmdate, strtodate);                                        
+                                        gblcls.GetOrderUnLock(orderno.Text, strfrmdate, strtodate);
                                     }
 
                                     ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Order Status Changed Successfully')", true);
