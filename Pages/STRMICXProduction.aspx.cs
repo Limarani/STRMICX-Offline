@@ -782,19 +782,19 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
 
                 string paymentfr = "";
                 paymentfr = dtfetchauthority.Rows[0]["TaxFrequency"].ToString().Trim();
-                if (paymentfr == "Annual")
+                if (paymentfr == "Annual" || paymentfr == "1")
                 {
                     paymentfrequency.SelectedIndex = 0;
                 }
-                if (paymentfr == "SemiAnnual")
+                if (paymentfr == "SemiAnnual" || paymentfr == "2")
                 {
                     paymentfrequency.SelectedIndex = 1;
                 }
-                if (paymentfr == "TriAnnual")
+                if (paymentfr == "TriAnnual" || paymentfr == "3")
                 {
                     paymentfrequency.SelectedIndex = 2;
                 }
-                if (paymentfr == "Quarterly")
+                if (paymentfr == "Quarterly" || paymentfr == "4")
                 {
                     paymentfrequency.SelectedIndex = 3;
                 }
