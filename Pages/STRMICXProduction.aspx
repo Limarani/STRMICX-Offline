@@ -1346,6 +1346,7 @@
 
         //balaji
         function completeorder() {
+            debugger;
             var comerror;
             comerror = document.getElementById("ddlstatus").value;
 
@@ -9158,7 +9159,7 @@
                         </div>
                     </div>
                 <br />
-            </div>
+         
             <div style="margin-left: 275px;">
                     <table style="width: 995px;">
                         <tr>
@@ -9186,7 +9187,7 @@
                                 </select>
                             </td>
                             <td>
-                                <asp:Button ID="btnsaverecordnew" class="btn btn-success" runat="server" Text="Complete" OnClick="btnsaverecordnew_Click" OnClientClick="return completeorder();" />
+                                <asp:Button ID="btnsaverecordnew" class="btn btn-success" runat="server" Text="Complete" OnClick="btnsaverecordnew_Click"  OnClientClick="return completeorder();" />
                             </td>
                         </tr>
                     </table>
