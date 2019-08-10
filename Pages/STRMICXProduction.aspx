@@ -2961,65 +2961,97 @@
             }
         }
 
-
-        function mydiscountamount1() {
-            Discount1();
-            myFunctionDiscount1();
-
+        function greateramount1(val) {
             var instamunt1 = document.getElementById("instamount1").value;
             var discountamnt1 = document.getElementById("discamt1").value;
 
-            if (discountamnt1 > instamunt1) {
+            var regex = /[.,\s]/g;
+            var result = instamunt1.replace(regex, '');
+            result = (result - (result % 100)) / 100;
+
+            var regex1 = /[.,\s]/g;
+            var result1 = discountamnt1.replace(regex1, '');
+
+            if (result1 > result) {
                 document.getElementById('discamt1').value = "";
+                document.getElementById('discamt1').focus();
+                alert("Discount amount cannot be greater than the installment amount...");
+                return;                
+            }
+        }
+
+        function greateramount2(val) {           
+            var instamunt2 = document.getElementById("instamount2").value;
+            var discountamnt2 = document.getElementById("discamt2").value;
+
+            var regex1 = /[.,\s]/g;
+            var result1 = instamunt2.replace(regex1, '');
+            result1 = (result1 - (result1 % 100)) / 100;
+
+            var regex11 = /[.,\s]/g;
+            var result11 = discountamnt2.replace(regex11, '');
+
+            if (result11 > result1) {
+                document.getElementById('discamt2').value = "";
+                document.getElementById('discamt2').focus();
+                alert("Discount amount cannot be greater than the installment amount...");
+                return;                
+            }
+        }
+
+        function greateramount3(val) {          
+            var instamunt3 = document.getElementById("instamount3").value;
+            var discountamnt3 = document.getElementById("discamt3").value;
+
+            var regex11 = /[.,\s]/g;
+            var result11 = instamunt3.replace(regex11, '');
+            result11 = (result11 - (result11 % 100)) / 100;
+
+            var regex111 = /[.,\s]/g;
+            var result111 = discountamnt3.replace(regex111, '');
+
+            if (result111 > result11) {
+                document.getElementById('discamt3').value = "";
+                document.getElementById('discamt3').focus();
+                alert("Discount amount cannot be greater than the installment amount...");
+                return;                
+            }
+        }
+
+        function greateramount4(val) {           
+            var instamunt4 = document.getElementById("instamount4").value;
+            var discountamnt4 = document.getElementById("discamt4").value;
+
+            var regex111 = /[.,\s]/g;
+            var result111 = instamunt4.replace(regex111, '');
+            result111 = (result111 - (result111 % 100)) / 100;
+
+            var regex1111 = /[.,\s]/g;
+            var result1111 = discountamnt4.replace(regex1111, '');
+
+            if (result1111 > result111) {
+                document.getElementById('discamt4').value = "";
+                document.getElementById('discamt4').focus();
                 alert("Discount amount cannot be greater than the installment amount...");
                 return;
-                document.getElementById('discamt1').focus();
             }
+        }
+
+        function mydiscountamount1() {
+            Discount1();
+            myFunctionDiscount1();           
         }
         function mydiscountamount2() {
             Discount2();
             myFunctionDiscount2();
-
-            var diserrormsg2 = "Discount amount cannot be greater than the installment amount"
-            var instamunt2 = document.getElementById("instamount2").value;
-            var discountamnt2 = document.getElementById("discamt2").value;
-
-            if (discountamnt2 > instamunt2) {
-                document.getElementById('discamt2').value = "";
-                alert(diserrormsg2);
-                return;
-                document.getElementById('discamt2').focus();
-            }
         }
         function mydiscountamount3() {
             Discount3();
-            myFunctionDiscount3();
-
-            var diserrormsg3 = "Discount amount cannot be greater than the installment amount"
-            var instamunt3 = document.getElementById("instamount3").value;
-            var discountamnt3 = document.getElementById("discamt3").value;
-
-            if (discountamnt3 > instamunt3) {
-                document.getElementById('discamt3').value = "";
-                alert(diserrormsg3);
-                return;
-                document.getElementById('discamt3').focus();
-            }
+            myFunctionDiscount3();           
         }
         function mydiscountamount4() {
             Discount4();
-            myFunctionDiscount4();
-
-            var diserrormsg4 = "Discount amount cannot be greater than the installment amount"
-            var instamunt4 = document.getElementById("instamount4").value;
-            var discountamnt4 = document.getElementById("discamt4").value;
-
-            if (discountamnt4 > instamunt4) {
-                document.getElementById('discamt4').value = "";
-                alert(diserrormsg4);
-                return;
-                document.getElementById('discamt4').focus();
-            }
+            myFunctionDiscount4();            
         }
 
         function formatMoneyDiscount1(n, c, discamt1, t) {
@@ -3101,66 +3133,97 @@
             document.getElementById("discamt4").value = document.getElementById("d").innerText;
         }
         //Future Discount
-
-        function futuremydiscountamount1() {
-            futureDiscount1();
-            futuremyFunctionDiscount1();
-
-            var futdiserrormsg1 = "Discount amount cannot be greater than the installment amount"
+        function futgreateramount1(val) {
             var futinstamunt1 = document.getElementById("instmanamount1").value;
             var futdiscountamnt1 = document.getElementById("txtmandisamount1").value;
 
-            if (futdiscountamnt1 > futinstamunt1) {
+            var regex = /[.,\s]/g;
+            var result = futinstamunt1.replace(regex, '');
+            result = (result - (result % 100)) / 100;
+
+            var regex1 = /[.,\s]/g;
+            var result1 = futdiscountamnt1.replace(regex1, '');
+
+            if (result1 > result) {
                 document.getElementById('txtmandisamount1').value = "";
-                alert(futdiserrormsg1);
-                return;
                 document.getElementById('txtmandisamount1').focus();
+                alert("Discount amount cannot be greater than the installment amount...");
+                return;
             }
         }
-        function futuremydiscountamount2() {
-            futureDiscount2();
-            futuremyFunctionDiscount2();
 
-            var futdiserrormsg2 = "Discount amount cannot be greater than the installment amount"
+        function futgreateramount2(val) {           
             var futinstamunt2 = document.getElementById("instmanamount2").value;
             var futdiscountamnt2 = document.getElementById("txtmandisamount2").value;
 
-            if (futdiscountamnt2 > futinstamunt2) {
+            var regex = /[.,\s]/g;
+            var result = futinstamunt2.replace(regex, '');
+            result = (result - (result % 100)) / 100;
+
+            var regex1 = /[.,\s]/g;
+            var result1 = futdiscountamnt2.replace(regex1, '');
+
+            if (result1 > result) {
                 document.getElementById('txtmandisamount2').value = "";
-                alert(futdiserrormsg2);
-                return;
                 document.getElementById('txtmandisamount2').focus();
+                alert("Discount amount cannot be greater than the installment amount...");
+                return;
             }
+        }
+
+        function futgreateramount3(val) {            
+            var futinstamunt3 = document.getElementById("instmanamount3").value;
+            var futdiscountamnt3 = document.getElementById("txtmandisamount3").value;
+
+            var regex = /[.,\s]/g;
+            var result = futinstamunt3.replace(regex, '');
+            result = (result - (result % 100)) / 100;
+
+            var regex1 = /[.,\s]/g;
+            var result1 = futdiscountamnt3.replace(regex1, '');
+
+            if (result1 > result) {
+                document.getElementById('txtmandisamount3').value = "";
+                document.getElementById('txtmandisamount3').focus();
+                alert("Discount amount cannot be greater than the installment amount...");
+                return;
+            }
+        }
+
+        function futgreateramount4(val) {
+            var futinstamunt4 = document.getElementById("instmanamount4").value;
+            var futdiscountamnt4 = document.getElementById("txtmandisamount4").value;
+
+            var regex = /[.,\s]/g;
+            var result = futinstamunt4.replace(regex, '');
+            result = (result - (result % 100)) / 100;
+
+            var regex1 = /[.,\s]/g;
+            var result1 = futdiscountamnt4.replace(regex1, '');
+
+            if (result1 > result) {
+                document.getElementById('txtmandisamount4').value = "";
+                document.getElementById('txtmandisamount4').focus();
+                alert("Discount amount cannot be greater than the installment amount...");
+                return;
+            }
+        }
+
+        function futuremydiscountamount1() {
+            futureDiscount1();
+            futuremyFunctionDiscount1();            
+        }
+        function futuremydiscountamount2() {
+            futureDiscount2();
+            futuremyFunctionDiscount2();            
         }
         function futuremydiscountamount3() {
             futureDiscount3();
             futuremyFunctionDiscount3();
-
-            var futdiserrormsg3 = "Discount amount cannot be greater than the installment amount"
-            var futinstamunt3 = document.getElementById("instmanamount3").value;
-            var futdiscountamnt3 = document.getElementById("txtmandisamount3").value;
-
-            if (futdiscountamnt3 > futinstamunt3) {
-                document.getElementById('txtmandisamount3').value = "";
-                alert(futdiserrormsg3);
-                return;
-                document.getElementById('txtmandisamount3').focus();
-            }
         }
         function futuremydiscountamount4() {
             futureDiscount4();
-            futuremyFunctionDiscount4();
-
-            var futdiserrormsg4 = "Discount amount cannot be greater than the installment amount"
-            var futinstamunt4 = document.getElementById("instmanamount4").value;
-            var futdiscountamnt4 = document.getElementById("txtmandisamount4").value;
-
-            if (futdiscountamnt4 > futinstamunt4) {
-                document.getElementById('txtmandisamount4').value = "";
-                alert(futdiserrormsg4);
-                return;
-                document.getElementById('txtmandisamount4').focus();
-            }
+            futuremyFunctionDiscount4();            
         }
 
         function futureformatMoneyDiscount1(n, c, txtmandisamount1, t) {
@@ -7402,25 +7465,25 @@
                                                     <td>
                                                         <div class="form-group" style="margin-bottom: 0px;">
                                                             <label style="text-align: right; clear: both; float: left; margin-right: 21px;" class="CheckBold">Discount Amount:</label>
-                                                            <input type="text" id="discamt1" runat="server" class="form-control taxing" placeholder="Discount Amount" style="width: 150px;" onkeyup="Discount1();" onfocusout="myFunctionDiscount1();if (this.value=='0.00') this.value='0.00';if (this.value=='') this.value='0.00';" onfocusin="if (this.value=='0.00') this.value='';" onblur="mydiscountamount1();" autocomplete="off" tabindex="7" />
+                                                            <input type="text" id="discamt1" runat="server" class="form-control taxing" placeholder="Discount Amount" style="width: 150px;" onkeyup="Discount1();" onfocusout="myFunctionDiscount1();if (this.value=='0.00') this.value='0.00';if (this.value=='') this.value='0.00';" onfocusin="if (this.value=='0.00') this.value='';" onblur="mydiscountamount1();" onchange="greateramount1(this.value)" autocomplete="off" tabindex="7" />
                                                         </div>
                                                     </td>
                                                     <td>
                                                         <div class="form-group" style="margin-bottom: 0px;">
                                                             <label style="text-align: right; clear: both; float: left; margin-right: 21px;" class="CheckBold">Discount Amount:</label>
-                                                            <input type="text" id="discamt2" runat="server" class="form-control taxing" placeholder="Discount Amount" style="width: 150px;" onkeyup="Discount2();" onfocusout="myFunctionDiscount2();if (this.value=='0.00') this.value='0.00';if (this.value=='') this.value='0.00';" onfocusin="if (this.value=='0.00') this.value='';" onblur="mydiscountamount2();" autocomplete="off" tabindex="16" />
+                                                            <input type="text" id="discamt2" runat="server" class="form-control taxing" placeholder="Discount Amount" style="width: 150px;" onkeyup="Discount2();" onfocusout="myFunctionDiscount2();if (this.value=='0.00') this.value='0.00';if (this.value=='') this.value='0.00';" onfocusin="if (this.value=='0.00') this.value='';" onblur="mydiscountamount2();" onchange="greateramount2(this.value)" autocomplete="off" tabindex="16" />
                                                         </div>
                                                     </td>
                                                     <td>
                                                         <div class="form-group" style="margin-bottom: 0px;">
                                                             <label style="text-align: right; clear: both; float: left; margin-right: 21px;" class="CheckBold">Discount Amount:</label>
-                                                            <input type="text" id="discamt3" runat="server" class="form-control taxing" placeholder="Discount Amount" style="width: 150px;" onkeyup="Discount3();" onfocusout="myFunctionDiscount3();if (this.value=='0.00') this.value='0.00';if (this.value=='') this.value='0.00';" onfocusin="if (this.value=='0.00') this.value='';" onblur="mydiscountamount3()" autocomplete="off" tabindex="24" />
+                                                            <input type="text" id="discamt3" runat="server" class="form-control taxing" placeholder="Discount Amount" style="width: 150px;" onkeyup="Discount3();" onfocusout="myFunctionDiscount3();if (this.value=='0.00') this.value='0.00';if (this.value=='') this.value='0.00';" onfocusin="if (this.value=='0.00') this.value='';" onblur="mydiscountamount3()" onchange="greateramount3(this.value)" autocomplete="off" tabindex="24" />
                                                         </div>
                                                     </td>
                                                     <td>
                                                         <div class="form-group" style="margin-bottom: 0px;">
                                                             <label style="text-align: right; clear: both; float: left; margin-right: 21px;" class="CheckBold">Discount Amount:</label>
-                                                            <input type="text" id="discamt4" runat="server" class="form-control taxing" placeholder="Discount Amount" style="width: 150px;" onkeyup="Discount4();" onfocusout="myFunctionDiscount4();if (this.value=='0.00') this.value='0.00';if (this.value=='') this.value='0.00';" onfocusin="if (this.value=='0.00') this.value='';" onblur="mydiscountamount4();" autocomplete="off" tabindex="33" />
+                                                            <input type="text" id="discamt4" runat="server" class="form-control taxing" placeholder="Discount Amount" style="width: 150px;" onkeyup="Discount4();" onfocusout="myFunctionDiscount4();if (this.value=='0.00') this.value='0.00';if (this.value=='') this.value='0.00';" onfocusin="if (this.value=='0.00') this.value='';" onblur="mydiscountamount4();" onchange="greateramount4(this.value)" autocomplete="off" tabindex="33" />
                                                         </div>
                                                     </td>
                                                 </tr>
@@ -7547,7 +7610,7 @@
                                                         <b class="CheckBold">Installment Comments:</b>
                                                     </td>
                                                     <td colspan="3">
-                                                        <textarea id="instcomm" runat="server" placeholder="Installment Comments" class="form-control" style="resize: none; width: 636px;" autocomplete='off' tabindex="43"></textarea>
+                                                        <textarea id="instcomm" runat="server" placeholder="Installment Comments" class="form-control" style="resize: none; width: 636px;" autocomplete='off' tabindex="43" onkeyup="CheckFirstChar(event.keyCode, this);" onkeydown="return CheckFirstChar(event.keyCode, this);"></textarea>
                                                     </td>
                                                     <td>
                                                         <asp:Button ID="btnTaxParcelSave" runat="server" Text="Update" CssClass="btn btn-success" Style="margin-left: -90px;" AutoPostBack="true" OnClick="btnTaxParcelSave_Click" OnClientClick="return functionInsttax();" TabIndex="44" />
@@ -7823,25 +7886,25 @@
                                                         <td>
                                                             <div class="form-group" style="margin-bottom: 0px;">
                                                                 <label style="text-align: right; clear: both; float: left; margin-right: 21px;" class="CheckBold">Discount Amount:</label>
-                                                                <input type="text" id="txtmandisamount1" runat="server" class="form-control taxing" placeholder="Delinquent Amount" style="width: 150px;" onkeyup="futureDiscount1();" onfocusout="futuremyFunctionDiscount1();if (this.value=='0.00') this.value='0.00';if (this.value=='') this.value='0.00';" onfocusin="if (this.value=='0.00') this.value='';" onblur="futuremydiscountamount1();" autocomplete="off" tabindex="59" />
+                                                                <input type="text" id="txtmandisamount1" runat="server" class="form-control taxing" placeholder="Discount Amount" style="width: 150px;" onkeyup="futureDiscount1();" onfocusout="futuremyFunctionDiscount1();if (this.value=='0.00') this.value='0.00';if (this.value=='') this.value='0.00';" onfocusin="if (this.value=='0.00') this.value='';" onblur="futuremydiscountamount1();" onchange="futgreateramount1(this.value)" autocomplete="off" tabindex="59" />
                                                             </div>
                                                         </td>
                                                         <td>
                                                             <div class="form-group" style="margin-bottom: 0px;">
                                                                 <label style="text-align: right; clear: both; float: left; margin-right: 21px;" class="CheckBold">Discount Amount:</label>
-                                                                <input type="text" id="txtmandisamount2" runat="server" class="form-control taxing" placeholder="Delinquent Amount" style="width: 150px;" onkeyup="futureDiscount2();" onfocusout="futuremyFunctionDiscount2();if (this.value=='0.00') this.value='0.00';if (this.value=='') this.value='0.00';" onfocusin="if (this.value=='0.00') this.value='';" onblur="futuremydiscountamount2();" autocomplete="off" tabindex="68" />
+                                                                <input type="text" id="txtmandisamount2" runat="server" class="form-control taxing" placeholder="Discount Amount" style="width: 150px;" onkeyup="futureDiscount2();" onfocusout="futuremyFunctionDiscount2();if (this.value=='0.00') this.value='0.00';if (this.value=='') this.value='0.00';" onfocusin="if (this.value=='0.00') this.value='';" onblur="futuremydiscountamount2();" onchange="futgreateramount2(this.value)" autocomplete="off" tabindex="68" />
                                                             </div>
                                                         </td>
                                                         <td>
                                                             <div class="form-group" style="margin-bottom: 0px;">
                                                                 <label style="text-align: right; clear: both; float: left; margin-right: 21px;" class="CheckBold">Discount Amount:</label>
-                                                                <input type="text" id="txtmandisamount3" runat="server" class="form-control taxing" placeholder="Delinquent Amount" style="width: 150px;" onkeyup="futureDiscount3();" onfocusout="futuremyFunctionDiscount3();if (this.value=='0.00') this.value='0.00';if (this.value=='') this.value='0.00';" onfocusin="if (this.value=='0.00') this.value='';" onblur="futuremydiscountamount3()" autocomplete="off" tabindex="77" />
+                                                                <input type="text" id="txtmandisamount3" runat="server" class="form-control taxing" placeholder="Discount Amount" style="width: 150px;" onkeyup="futureDiscount3();" onfocusout="futuremyFunctionDiscount3();if (this.value=='0.00') this.value='0.00';if (this.value=='') this.value='0.00';" onfocusin="if (this.value=='0.00') this.value='';" onblur="futuremydiscountamount3()" onchange="futgreateramount3(this.value)" autocomplete="off" tabindex="77" />
                                                             </div>
                                                         </td>
                                                         <td>
                                                             <div class="form-group" style="margin-bottom: 0px;">
                                                                 <label style="text-align: right; clear: both; float: left; margin-right: 21px;" class="CheckBold">Discount Amount:</label>
-                                                                <input type="text" id="txtmandisamount4" runat="server" class="form-control taxing" placeholder="Delinquent Amount" style="width: 150px;" onkeyup="futureDiscount4();" onfocusout="futuremyFunctionDiscount4();if (this.value=='0.00') this.value='0.00';if (this.value=='') this.value='0.00';" onfocusin="if (this.value=='0.00') this.value='';" onblur="futuremydiscountamount4();" autocomplete="off" tabindex="86" />
+                                                                <input type="text" id="txtmandisamount4" runat="server" class="form-control taxing" placeholder="Discount Amount" style="width: 150px;" onkeyup="futureDiscount4();" onfocusout="futuremyFunctionDiscount4();if (this.value=='0.00') this.value='0.00';if (this.value=='') this.value='0.00';" onfocusin="if (this.value=='0.00') this.value='';" onblur="futuremydiscountamount4();" onchange="futgreateramount4(this.value)" autocomplete="off" tabindex="86" />
                                                             </div>
                                                         </td>
                                                     </tr>
@@ -7936,7 +7999,7 @@
                                                             <b class="CheckBold">Installment Comments:</b>
                                                         </td>
                                                         <td colspan="3">
-                                                            <textarea id="txtinstcommentsmanual" placeholder="Installment Comments" runat="server" class="form-control" rows="2" style="resize: none;" autocomplete='off' tabindex="93"></textarea>
+                                                            <textarea id="txtinstcommentsmanual" placeholder="Installment Comments" runat="server" class="form-control" rows="2" style="resize: none;" autocomplete='off' tabindex="93" onkeyup="CheckFirstChar(event.keyCode, this);" onkeydown="return CheckFirstChar(event.keyCode, this);"></textarea>
                                                         </td>
                                                         <td>
                                                             <%--<asp:Button ID="btntaxparcelsavemanual" runat="server" Text="Save" OnClick="btntaxparcelsavemanual_Click" CssClass="btn btn-success" Style="margin-left: 25px;" AutoPostBack="true" " />--%>
@@ -8298,7 +8361,7 @@
                                             </b>
                                         </td>
                                         <td>
-                                            <asp:TextBox ID="txtpayoffgood" runat="server" class="form-control" placeholder="MM/DD/YYYY" MaxLength="10" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" autocomplete='off' onchange="dateValidate(this);return functionDelinquent();"></asp:TextBox>
+                                            <asp:TextBox ID="txtpayoffgood" runat="server" class="form-control" placeholder="MM/DD/YYYY" MaxLength="10" onkeyup="isvalidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="return checkDate(this,event)" autocomplete='off' onchange="dateValidate(this);return functionDelinquent();"></asp:TextBox>
                                         </td>
 
                                         <td style="padding-left: 31px;">
@@ -8307,7 +8370,7 @@
                                             </b>
                                         </td>
                                         <td>
-                                            <asp:TextBox ID="txtinitialinstall" runat="server" class="form-control" placeholder="MM/DD/YYYY" MaxLength="10" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="return dateValidateFutue(this);" autocomplete='off' onchange="return functionDelinquent()">
+                                            <asp:TextBox ID="txtinitialinstall" runat="server" class="form-control" placeholder="MM/DD/YYYY" MaxLength="10" onkeyup="isvalidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)"  autocomplete='off' onblur="return checkDate(this,event)" onchange="return functionDelinquent();" onfocusout="return dateValidateFutue(this);">
                                             </asp:TextBox>
                                         </td>
 
@@ -8354,7 +8417,7 @@
                                             </b>
                                         </td>
                                         <td colspan="5">
-                                            <textarea id="txtdelitcomment" runat="server" rows="2" class="form-control" placeholder="Comments" style="resize: none;" autocomplete='off'></textarea>
+                                            <textarea id="txtdelitcomment" runat="server" rows="2" class="form-control" placeholder="Comments" style="resize: none;" autocomplete='off' onkeyup="CheckFirstChar(event.keyCode, this);" onkeydown="return CheckFirstChar(event.keyCode, this);"></textarea>
                                         </td>
                                         <td style="padding-left: 31px;">
                                             <asp:Button runat="server" ID="DeliquentStatusAdd" Text="Add" class="btn btn-success" Style="height: 30px;" OnClick="btnDeliquentStatusAdd_Click" OnClientClick="return functionDelinquent()" />
@@ -8776,7 +8839,7 @@
                                                 <b style="white-space: nowrap;" class="CheckBold">Comments: </b>
                                             </td>
                                             <td>
-                                                <asp:TextBox ID="txtComments" runat="server" class="form-control" Style="width: 300px;" autocomplete="off" />
+                                                <asp:TextBox ID="txtComments" runat="server" class="form-control" Style="width: 300px;" autocomplete="off" onkeyup="CheckFirstChar(event.keyCode, this);" onkeydown="return CheckFirstChar(event.keyCode, this);"/>
                                             </td>
                                         </tr>
 
@@ -9095,14 +9158,15 @@
                         </div>
                     </div>
                 <br />
-                <div style="margin-left: 275px;">
+            </div>
+            <div style="margin-left: 275px;">
                     <table style="width: 995px;">
                         <tr>
                             <td>
                                 <b class="CheckBold">Order Comments:</b>
                             </td>
                             <td>
-                                <textarea runat="server" rows="2" id="txttotalcomments" class="form-control" style="resize: none" tabindex="51"></textarea>
+                                <textarea runat="server" rows="2" id="txttotalcomments" class="form-control" style="resize: none" tabindex="51" onkeyup="CheckFirstChar(event.keyCode, this);" onkeydown="return CheckFirstChar(event.keyCode, this);"></textarea>
                             </td>
                             <td></td>
                             <td>&nbsp;</td>
@@ -9127,8 +9191,7 @@
                         </tr>
                     </table>
                 </div>
-                <br />
-            </div>
+            <br />
         </form>
     </div>
     <footer id="footer">

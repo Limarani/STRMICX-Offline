@@ -3551,7 +3551,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
                 paymentfrequency.Value = taxfrequency;
                 return;
             }
-            ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "txtexeSpecial();", true);
+            //ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "txtexeSpecial();", true);
         }
 
         else if (OStatus == "Completed" && process == "QC")
