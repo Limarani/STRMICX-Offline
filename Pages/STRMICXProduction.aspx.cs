@@ -700,8 +700,35 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
                 }
 
 
-                nextbilldate1.Value = dtfetchauthority.Rows[0]["nextbilldate1"].ToString();
-                nextbilldate2.Value = dtfetchauthority.Rows[0]["nextbilldate2"].ToString();
+                nextbilldate1.Value = dtfetchauthority.Rows[0]["billingdate1"].ToString();
+                if (dtfetchauthority.Rows[0]["billingdate1"].ToString().Trim() != "")
+                {
+                    string nextbilldatenew1 = dtfetchauthority.Rows[0]["billingdate1"].ToString().Trim();
+
+                    if (nextbilldatenew1.Contains("T"))
+                    {
+                        nextbilldate1.Value = Convert.ToDateTime(dtfetchauthority.Rows[0]["billingdate1"].ToString().Trim().Remove(10)).ToString("MM/dd/yyyy");
+                    }
+                    else
+                    {
+                        nextbilldate1.Value = dtfetchauthority.Rows[0]["billingdate1"].ToString().Trim();
+                    }
+                }                              
+
+                nextbilldate2.Value = dtfetchauthority.Rows[0]["billingdate2"].ToString();
+                if (dtfetchauthority.Rows[0]["billingdate2"].ToString().Trim() != "")
+                {
+                    string nextbilldatenew2 = dtfetchauthority.Rows[0]["billingdate2"].ToString().Trim();
+
+                    if (nextbilldatenew2.Contains("T"))
+                    {
+                        nextbilldate2.Value = Convert.ToDateTime(dtfetchauthority.Rows[0]["billingdate2"].ToString().Trim().Remove(10)).ToString("MM/dd/yyyy");
+                    }
+                    else
+                    {
+                        nextbilldate2.Value = dtfetchauthority.Rows[0]["billingdate2"].ToString().Trim();
+                    }
+                }
 
                 taxbill.Value = dtfetchauthority.Rows[0]["taxbill"].ToString();
                 instcomm.Value = dtfetchauthority.Rows[0]["installmentcomments"].ToString();
@@ -807,11 +834,11 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
                 {
                     txtdeliquent.SelectedIndex = 0;
                 }
-                else if (deli == "Yes")
+                else if (deli == "true")
                 {
                     txtdeliquent.SelectedIndex = 1;
                 }
-                else if (deli == "No")
+                else if (deli == "false")
                 {
                     txtdeliquent.SelectedIndex = 2;
                 }
@@ -821,11 +848,11 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
                 {
                     txtexemption.SelectedIndex = 0;
                 }
-                else if (exe == "Yes")
+                else if (exe == "true")
                 {
                     txtexemption.SelectedIndex = 1;
                 }
-                else if (exe == "No")
+                else if (exe == "false")
                 {
                     txtexemption.SelectedIndex = 2;
                 }
@@ -835,11 +862,11 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
                 {
                     SecialAssmnt.SelectedIndex = 0;
                 }
-                else if (spec == "Yes")
+                else if (spec == "true")
                 {
                     SecialAssmnt.SelectedIndex = 1;
                 }
-                else if (spec == "No")
+                else if (spec == "false")
                 {
                     SecialAssmnt.SelectedIndex = 2;
                 }
@@ -850,15 +877,15 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
                 {
                     txtResidence.SelectedIndex = 0;
                 }
-                else if (primaryresidence == "Yes")
+                else if (primaryresidence == "true")
                 {
                     txtResidence.SelectedIndex = 1;
                 }
-                else if (primaryresidence == "No")
+                else if (primaryresidence == "false")
                 {
                     txtResidence.SelectedIndex = 2;
                 }
-                else if (primaryresidence == "Not Applicable")
+                else if (primaryresidence == "false")
                 {
                     txtResidence.SelectedIndex = 3;
                 }
@@ -2041,7 +2068,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
             if (LblTaxId1.Text.ToString() != "" || LblAgencyId1.Text.ToString() != "")
             {
                 var strValue = gvSpecial.Rows[e.RowIndex].Cells[0].Text.ToString().Trim().Replace("&nbsp;", "");
-                int result = gl.update_SpecialAssessment(Convert.ToInt32(strValue), LblTaxId1.Text.ToString(), LblAgencyId1.Text.ToString(), txtdescription.Text.ToString(), txtspecialassno.Text, txtnoinstall.Text, txtinstallpaid.Text, txtamountspecial.Text);
+                int result = gl.update_SpecialAssessment(Convert.ToInt32(strValue), LblTaxId1.Text.ToString(), LblAgencyId1.Text.ToString(), txtdescription.Text.ToString(), txtspecialassno.Text, txtnoinstall.Text, txtinstallpaid.Text, txtamountspecial.Text, txtsperembal.Text, txtspecdate.Text, txtspecperdiem.Text, txtspecpayee.Text, txtspeccomments.Text, txtInstallRemain.Text, txtduedate.Text);
                 if (result == 1)
                 {
                     ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "txtexeSpecial();", true);

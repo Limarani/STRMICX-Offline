@@ -17005,7 +17005,7 @@ public class GlobalClass : myConnection
         mParam[15].MySqlDbType = MySqlDbType.VarChar;
         return ExecuteSPNonQuery("sp_insert_specialassessment_authority", true, mParam);
     }
-    public int update_SpecialAssessment(int id, string taxidnumber, string agencyid, string description, string specialassessmentno, string noofinstallment, string installmentpaid, string amount)
+    public int update_SpecialAssessment(int id, string taxidnumber, string agencyid, string description, string specialassessmentno, string noofinstallment, string installmentpaid, string amount, string remainingbalance, string date, string perdiem, string payee, string comments, string remaining, string duedate)
     {
 
         if (string.IsNullOrEmpty(specialassessmentno))
@@ -17054,7 +17054,7 @@ public class GlobalClass : myConnection
         //    comments = "";
         //}
 
-        mParam = new MySqlParameter[8];
+        mParam = new MySqlParameter[15];
 
         mParam[0] = new MySqlParameter("$Id", id);
         mParam[0].MySqlDbType = MySqlDbType.VarChar;
@@ -17072,7 +17072,22 @@ public class GlobalClass : myConnection
         mParam[6].MySqlDbType = MySqlDbType.VarChar;
         mParam[7] = new MySqlParameter("$amount", amount);
         mParam[7].MySqlDbType = MySqlDbType.VarChar;
-
+        mParam[8] = new MySqlParameter("$remainingbalance", remainingbalance);
+        mParam[8].MySqlDbType = MySqlDbType.VarChar;
+        mParam[9] = new MySqlParameter("$goodthroughtdate", date);
+        mParam[9].MySqlDbType = MySqlDbType.VarChar;
+        mParam[10] = new MySqlParameter("$perdiem", perdiem);
+        mParam[10].MySqlDbType = MySqlDbType.VarChar;
+        mParam[11] = new MySqlParameter("$payee", payee);
+        mParam[11].MySqlDbType = MySqlDbType.VarChar;
+        mParam[12] = new MySqlParameter("$comments", comments);
+        mParam[12].MySqlDbType = MySqlDbType.VarChar;
+        mParam[13] = new MySqlParameter("$installmentremaining", remaining);
+        mParam[13].MySqlDbType = MySqlDbType.VarChar;
+        mParam[14] = new MySqlParameter("$duedate", duedate);
+        mParam[14].MySqlDbType = MySqlDbType.VarChar;
+        
+                        
         return ExecuteSPNonQuery("Sp_update_specialassessment", true, mParam);
     }
 
