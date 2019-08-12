@@ -17576,7 +17576,15 @@ public class GlobalClass : myConnection
         {
             taxbill = "Previous";
         }
-////
+        if (string.IsNullOrEmpty(billingstartdate))
+        {
+            billingstartdate = null;
+        }
+        if (string.IsNullOrEmpty(billingenddate))
+        {
+            billingenddate = null;
+        }
+        ////
 
 
         mParam = new MySqlParameter[51];
