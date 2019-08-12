@@ -988,7 +988,8 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
 
                 gridwebsite.DataSource = dtfetchauthority1;
                 gridwebsite.DataBind();
-            }
+            }                                
+                                 
         }
 
 
@@ -1003,7 +1004,26 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
         }
 
 
-        btntaxparcels.Enabled = true;
+      
+        string futuretaxoption = "select FutureTaxOption from tbl_taxauthorities2 where Orderno = '" + lblord.Text + "' and TaxId = '" + LblTaxID.Text + "' and AgencyId = '" + LblAgencyID.Text + "' and TaxAgencyType = '" + taxagencytype + "'";
+        DataSet dsfut = gl.ExecuteQuery(futuretaxoption);
+
+        if (dsfut.Tables[0].Rows.Count == 2)
+        {
+            string test = "";
+            for (int i = 0; i < dsfut.Tables[0].Rows.Count; i++)
+            {
+                test = dsfut.Tables[0].Rows[i]["FutureTaxOption"].ToString();
+                if (test == "Manual")
+                {
+                    ddlfuturetaxcalc.SelectedIndex = 1;
+                    PnlTax1.Visible = true;
+                    futuretaxmanual();
+                }
+            }
+        }                
+
+        btntaxparcels.Enabled = true;       
         ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "txtexeSpecial();", true);
     }
 
@@ -1680,6 +1700,10 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
                         string countCDD = gl.ExecuteScalarst("select count(taxid) from tbl_taxparcel where taxid = '" + txtdrop.Value + "' and orderno='" + lblord.Text + "' and status = 'C'");
                         if (countCDD == "0")
                         {
+                            if (txtEndYear.Text == "")
+                            {
+                                txtEndYear.Text = null;
+                            }
                             insert = gl.insert_taxparcel(lblord.Text, txtdrop.Value.Trim(), txtTaxYear.Text.Trim(), txtEndYear.Text.Trim(), "M", "false", "false");
                         }
                     }
@@ -3586,7 +3610,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
                 {
                     string jData = jsonResponse.GetJsonData(lblord.Text);
                     string successMsg = postData.POST(jData, lblord.Text);
-                    if (successMsg == "OK")
+                    if (successMsg == "True")
                     {
                         UpdateProduction("sp_UpdateQC_User");
                     }
