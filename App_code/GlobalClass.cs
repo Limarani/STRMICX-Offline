@@ -1251,6 +1251,49 @@ public class GlobalClass : myConnection
 
     public DataSet Updatetaxauthorities(string query, string orderno, string taxid, string agencyid, string taxtype, string isdelinquent, string exemption, string specialassessment, string priordelinquent, string primaryresidence)
     {
+        if (primaryresidence == "Yes")
+        {
+            primaryresidence = "true";
+        }
+        else
+        {
+            primaryresidence = "false";
+        }
+
+        if (isdelinquent == "Yes")
+        {
+            isdelinquent = "true";
+        }
+        else
+        {
+            isdelinquent = "false";
+        }
+        if (exemption == "Yes")
+        {
+            exemption = "true";
+        }
+        else
+        {
+            exemption = "false";
+        }
+        if (specialassessment == "Yes")
+        {
+            specialassessment = "true";
+        }
+        else
+        {
+            specialassessment = "false";
+        }
+        if (priordelinquent == "Yes")
+        {
+            priordelinquent = "true";
+        }
+        else
+        {
+            priordelinquent = "false";
+        }
+
+
         mParam = new MySqlParameter[9];
 
         mParam[0] = new MySqlParameter("?$orderno", orderno);
