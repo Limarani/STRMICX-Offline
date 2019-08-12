@@ -19,30 +19,41 @@ public class Response
     string blankDate = "1900-01-01";
     string blankDateTime = "1900-01-01T00:00:00Z";
     TaxAgencyDetailsTag TaxAgency = new TaxAgencyDetailsTag();
-    public string GetJsonData(string orderno)
+    TaxDetailTag taxDetailTag = new TaxDetailTag();
+    public string GetJsonData(string orderno, string orderStatus)
     {
         JsonOutputTag JsonOutput = new JsonOutputTag();
-        JsonOutput.Response = GetResponseTagData(orderno);
+        JsonOutput.Response = GetResponseTagData(orderno, orderStatus);
         JsonOutput.Response.OrderDetail = GetOrderDetailTagData(orderno);
-        JsonOutput.Response.OrderDetail.TaxDetail = GetTaxDetailTagData(orderno);
+        JsonOutput.Response.OrderDetail.TaxDetail = GetTaxDetailTagData(orderno, orderStatus);
 
         JsonOutput.Response.OrderDetail.TaxDetail.TaxParcels = GetTaxParcelTagData(orderno);
-        JsonOutput.Response.OrderDetail.TaxVendor = GetTaxVendorTagData(orderno);
+        JsonOutput.Response.OrderDetail.TaxVendor = GetTaxVendorTagData(orderno, orderStatus);
         string JsonResult = JsonConvert.SerializeObject(JsonOutput);
         return JsonResult;
     }
 
 
-    public ResponseTag GetResponseTagData(string orderno)
+    public ResponseTag GetResponseTagData(string orderno, string ordstatus)
     {
         ResponseTag Response = new ResponseTag();
-        DataSet ds = dbconn.ExecuteQuery("select message_type_code from tbl_order_details where OrderDetailId='" + orderno + "'");
-        //read data from dataset 
-        for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
+        // string msgCode = GetOrderStatusCode(orderno);
+        if (ordstatus == "Completed")
         {
-            //Response.MessageTypeCode = ds.Tables[0].Rows[i]["message_type_code"] != DBNull.Value ? ds.Tables[0].Rows[i]["message_type_code"].ToString() : null;
             Response.MessageTypeCode = "COMPLETE";
         }
+        else if (ordstatus == "Mail Away" || ordstatus == "In Process" || ordstatus == "On Hold" || ordstatus == "Others" || ordstatus == "ParcelID")
+        {
+            Response.MessageTypeCode = "STATUSUPDATE";
+        }
+
+        //DataSet ds = dbconn.ExecuteQuery("select message_type_code from tbl_order_details where OrderDetailId='" + orderno + "'");
+        ////read data from dataset 
+        //for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
+        //{
+        //    //Response.MessageTypeCode = ds.Tables[0].Rows[i]["message_type_code"] != DBNull.Value ? ds.Tables[0].Rows[i]["message_type_code"].ToString() : null;
+        //    Response.MessageTypeCode = "COMPLETE";
+        //}
 
         return Response;
     }
@@ -68,26 +79,42 @@ public class Response
         return orderDetail;
     }
 
-    public TaxDetailTag GetTaxDetailTagData(string orderno)
+    public TaxDetailTag GetTaxDetailTagData(string orderno, string orderStatus)
     {
-        TaxDetailTag taxDetailTag = new TaxDetailTag();
+
         //read data from dataset 
         DataSet ds = dbconn.ExecuteQuery("select * from tbl_order_details where OrderDetailId='" + orderno + "'");
         DataSet dsStatus = dbconn.ExecuteQuery("select id,orderstatus from tbl_taxcert_info where Orderno='" + orderno + "' order by id desc limit 1");
         for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
         {
-            taxDetailTag.ExpectedDate = ds.Tables[0].Rows[i]["expecteddate"] != DBNull.Value ? Convert.ToDateTime(ds.Tables[0].Rows[i]["expecteddate"]).Date.ToString() : blankDate.ToString();
-            taxDetailTag.FollowUpDate = ds.Tables[0].Rows[i]["followupdate"] != DBNull.Value ? Convert.ToDateTime(ds.Tables[0].Rows[i]["followupdate"]).Date.ToString() : blankDateTime.ToString();
+            taxDetailTag.ExpectedDate = ds.Tables[0].Rows[i]["expecteddate"] != DBNull.Value ? Convert.ToDateTime(ds.Tables[0].Rows[i]["expecteddate"]).Date.ToString() : null;
+            taxDetailTag.FollowUpDate = ds.Tables[0].Rows[i]["followupdate"] != DBNull.Value ? Convert.ToDateTime(ds.Tables[0].Rows[i]["followupdate"]).Date.ToString() : null;
 
             taxDetailTag.WasAssessedAsLand = false;//not sending
             taxDetailTag.WasAssessedAsHomestead = false;
         }
+        if (orderStatus == "Completed")
+        {
+            taxDetailTag.StatusCode = "COMPLETED";
+        }
+        else
+        {
+            for (int i = 0; i < dsStatus.Tables[0].Rows.Count; i++)
+            {
+                taxDetailTag.StatusCode = dsStatus.Tables[0].Rows[i]["orderstatus"].ToString();
+            }
+        }
+        return taxDetailTag;
+    }
 
+    public string GetOrderStatusCode(string orderno)
+    {
+        DataSet dsStatus = dbconn.ExecuteQuery("select id,orderstatus from tbl_taxcert_info where Orderno='" + orderno + "' order by id desc limit 1");
         for (int i = 0; i < dsStatus.Tables[0].Rows.Count; i++)
         {
             taxDetailTag.StatusCode = dsStatus.Tables[0].Rows[i]["orderstatus"].ToString();
         }
-        return taxDetailTag;
+        return taxDetailTag.StatusCode;
     }
 
 
@@ -100,13 +127,44 @@ public class Response
 
         for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
         {
-            TaxParcel.TaxYear = ds.Tables[0].Rows[i]["taxyear"] != DBNull.Value ? ds.Tables[0].Rows[i]["taxyear"].ToString() : null;
-            TaxParcel.EndYear = ds.Tables[0].Rows[i]["endyear"] != DBNull.Value ? Convert.ToInt32(ds.Tables[0].Rows[i]["endyear"]) : value;
+            string endyear = ds.Tables[0].Rows[i]["endyear"].ToString();
+            string taxyear = ds.Tables[0].Rows[i]["taxyear"].ToString();
+            if (taxyear.Contains("EST"))
+            {
+                taxyear = taxyear.Remove(4, 3);
+                TaxParcel.TaxYear = taxyear;
+            }
+            else
+            {
+                TaxParcel.TaxYear = TaxParcel.TaxYear = ds.Tables[0].Rows[i]["taxyear"] != DBNull.Value ? ds.Tables[0].Rows[i]["taxyear"].ToString() : null;
+            }
+
+
+            if (endyear == "")
+            {
+                TaxParcel.EndYear = null;
+            }
+            else
+            {
+                if (endyear.Contains("EST"))
+                {
+                    endyear = endyear.Remove(4, 3);
+                    TaxParcel.EndYear = Convert.ToInt32(endyear);
+                }
+                else
+                {
+                    TaxParcel.EndYear = ds.Tables[0].Rows[i]["endyear"] != DBNull.Value ? Convert.ToInt32(ds.Tables[0].Rows[i]["endyear"]) : value;
+                }
+            }
             TaxParcel.TaxId = ds.Tables[0].Rows[i]["taxid"] != DBNull.Value ? ds.Tables[0].Rows[i]["taxid"].ToString() : null;
             TaxParcel.IsToBeDetermined = ds.Tables[0].Rows[i]["tbd"] != DBNull.Value ? Convert.ToBoolean(ds.Tables[0].Rows[i]["tbd"]) : false;
             TaxParcel.IsEstimate = ds.Tables[0].Rows[i]["estimate"] != DBNull.Value ? Convert.ToBoolean(ds.Tables[0].Rows[i]["estimate"]) : false;
             TaxParcel.TaxAgencyDetails = GetTaxAgencyDetailsTagData(orderno);
-            TaxParcel.SpecialAssessments = GetSpecialAssessmentsList(orderno);
+            DataSet dsSpecial = dbconn.ExecuteQuery("select * from tbl_specialassessment_authority where orderno='" + orderno + "'");
+            if (dsSpecial.Tables[0].Rows.Count > 0)
+            {
+                TaxParcel.SpecialAssessments = GetSpecialAssessmentsList(orderno);
+            }
             TaxParcelList.Add(TaxParcel);
         }
         return TaxParcelList;
@@ -220,8 +278,16 @@ public class Response
             TaxAgency.FutureTaxOption = ds.Tables[0].Rows[i]["FutureTaxOption"] != DBNull.Value ? Convert.ToString(ds.Tables[0].Rows[i]["FutureTaxOption"]) : "";
             TaxAgency.WasFullyAssessedLastYear = ds.Tables[0].Rows[i]["primaryresidence"] != DBNull.Value ? Convert.ToBoolean(ds.Tables[0].Rows[i]["primaryresidence"]) : false;
             TaxAgency.AssessedValue = 0; //need to clarify
-            TaxAgency.TaxExemptions = GetTaxExemptionList(orderno);
-            TaxAgency.DelinquentTaxes = GetDelinquentTaxesList(orderno);
+            DataSet dsExemp = dbconn.ExecuteQuery("select * from tbl_exemption_taxauthority where orderno='" + orderno + "'");
+            if (dsExemp.Tables[0].Rows.Count > 0)
+            {
+                TaxAgency.TaxExemptions = GetTaxExemptionList(orderno);
+            }
+            DataSet dsdelq = dbconn.ExecuteQuery("select * from tbl_deliquent where orderno='" + orderno + "'");
+            if (dsdelq.Tables[0].Rows.Count > 0)
+            {
+                TaxAgency.DelinquentTaxes = GetDelinquentTaxesList(orderno);
+            }
             TaxAgencyDetails.Add(TaxAgency);
         }
         return TaxAgencyDetails;
@@ -363,7 +429,7 @@ public class Response
         }
         return SpecialAssessmentsList;
     }
-    public TaxVendorTag GetTaxVendorTagData(string orderno)
+    public TaxVendorTag GetTaxVendorTagData(string orderno, string orderStatus)
     {
         TaxVendorTag Taxvendor = new TaxVendorTag();
         DataSet ds = dbconn.ExecuteQuery("select * from tax_vendor where order_no='" + orderno + "'");
@@ -376,7 +442,23 @@ public class Response
             Taxvendor.TaxVendorService.TaxVendorServiceId = ds.Tables[0].Rows[i]["service_id"] != DBNull.Value ? Convert.ToInt32(ds.Tables[0].Rows[i]["service_id"]) : 0;
             Taxvendor.TaxVendorService.ServiceCode = ds.Tables[0].Rows[i]["service_code"] != DBNull.Value ? Convert.ToString(ds.Tables[0].Rows[i]["service_code"]) : null;
             Taxvendor.TaxVendorService.ActualCost = ds.Tables[0].Rows[i]["projected_cost"] != DBNull.Value ? Convert.ToDecimal(ds.Tables[0].Rows[i]["projected_cost"]) : 0;
-            Taxvendor.TaxVendorService.StatusCode = null; //Completed
+            if (orderStatus == "Completed")
+            {
+                Taxvendor.TaxVendorService.StatusCode = "COMPLETED";
+            }
+            else
+            {
+                string getStatus = GetOrderStatusCode(orderStatus);
+
+                if (getStatus == "DECLINED")
+                {
+                    Taxvendor.TaxVendorService.StatusCode = "DECLINED";
+                }
+                if (getStatus == "ORDERED" || getStatus == "ATTEMPTED" || getStatus == "PROBLEM")
+                {
+                    Taxvendor.TaxVendorService.StatusCode = "ASSIGNED";
+                }
+            }
         }
         return Taxvendor;
 

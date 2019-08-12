@@ -713,7 +713,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
                     {
                         nextbilldate1.Value = dtfetchauthority.Rows[0]["billingdate1"].ToString().Trim();
                     }
-                }                              
+                }
 
                 nextbilldate2.Value = dtfetchauthority.Rows[0]["billingdate2"].ToString();
                 if (dtfetchauthority.Rows[0]["billingdate2"].ToString().Trim() != "")
@@ -988,8 +988,8 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
 
                 gridwebsite.DataSource = dtfetchauthority1;
                 gridwebsite.DataBind();
-            }                                
-                                 
+            }
+
         }
 
 
@@ -1004,7 +1004,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
         }
 
 
-      
+
         string futuretaxoption = "select FutureTaxOption from tbl_taxauthorities2 where Orderno = '" + lblord.Text + "' and TaxId = '" + LblTaxID.Text + "' and AgencyId = '" + LblAgencyID.Text + "' and TaxAgencyType = '" + taxagencytype + "'";
         DataSet dsfut = gl.ExecuteQuery(futuretaxoption);
 
@@ -1021,9 +1021,9 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
                     futuretaxmanual();
                 }
             }
-        }                
+        }
 
-        btntaxparcels.Enabled = true;       
+        btntaxparcels.Enabled = true;
         ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "txtexeSpecial();", true);
     }
 
@@ -1641,7 +1641,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
         int insert = 0;
         string query = "";
 
-        
+
 
 
         query = "select orderno,taxid,taxyear,endyear from tbl_taxparcel where taxid = '" + txtdrop.Value + "' and (status = 'M' or status = 'C') and orderno='" + lblord.Text + "' ";
@@ -2521,7 +2521,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
         }
     }
 
-    private void futuretaxmanual()
+    private void futuretaxsameascurrent()
     {
         DataTable dtfetchauthorityfuture = new DataTable();
         DataTable dtfetchauthority = new DataTable();
@@ -2529,11 +2529,755 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
         dtfetchauthorityfuture = gl.FetchTaxAuthorityDetailsFuture(lblord.Text, LblTaxID.Text, LblAgencyID.Text, txtTaxType.Text);
         if (dtfetchauthorityfuture.Rows.Count > 0)
         {
+            ////instamount
+            //instmanamount1.Value = dtfetchauthorityfuture.Rows[0]["Instamount1"].ToString();
+            //instmanamount2.Value = dtfetchauthorityfuture.Rows[0]["Instamount2"].ToString();
+            //instmanamount3.Value = dtfetchauthorityfuture.Rows[0]["Instamount3"].ToString();
+            //instmanamount4.Value = dtfetchauthorityfuture.Rows[0]["Instamount4"].ToString();
+
+            //string futinstpaiddue1 = dtfetchauthorityfuture.Rows[0]["instPaidDue1"].ToString();
+            //if (futinstpaiddue1 == "Paid")
+            //{
+            //    ddlmaninstpaiddue1.SelectedIndex = 1;
+            //}
+            //if (futinstpaiddue1 == "Due")
+            //{
+            //    ddlmaninstpaiddue1.SelectedIndex = 2;
+            //}
+
+            //string futinstpaiddue2 = dtfetchauthorityfuture.Rows[0]["instPaidDue2"].ToString();
+            //if (futinstpaiddue2 == "Paid")
+            //{
+            //    ddlmaninstpaiddue2.SelectedIndex = 1;
+            //}
+            //if (futinstpaiddue2 == "Due")
+            //{
+            //    ddlmaninstpaiddue2.SelectedIndex = 2;
+            //}
+
+            //string futinstpaiddue3 = dtfetchauthorityfuture.Rows[0]["instPaidDue3"].ToString();
+            //if (futinstpaiddue3 == "Paid")
+            //{
+            //    ddlmaninstpaiddue3.SelectedIndex = 1;
+            //}
+            //if (futinstpaiddue3 == "Due")
+            //{
+            //    ddlmaninstpaiddue3.SelectedIndex = 2;
+            //}
+
+            //string futinstpaiddue4 = dtfetchauthorityfuture.Rows[0]["instPaidDue4"].ToString();
+            //if (futinstpaiddue4 == "Paid")
+            //{
+            //    ddlmaninstpaiddue4.SelectedIndex = 1;
+            //}
+            //if (futinstpaiddue4 == "Due")
+            //{
+            //    ddlmaninstpaiddue4.SelectedIndex = 2;
+            //}
+
+
+            //instmanamtpaid1.Value = dtfetchauthorityfuture.Rows[0]["instamountpaid1"].ToString();
+            //instmanamtpaid2.Value = dtfetchauthorityfuture.Rows[0]["instamountpaid2"].ToString();
+            //instmanamtpaid3.Value = dtfetchauthorityfuture.Rows[0]["instamountpaid3"].ToString();
+            //instmanamtpaid4.Value = dtfetchauthorityfuture.Rows[0]["instamountpaid4"].ToString();
+
+            //txtmanurembal1.Value = dtfetchauthorityfuture.Rows[0]["Remainingbalance1"].ToString();
+            //txtmanurembal2.Value = dtfetchauthorityfuture.Rows[0]["Remainingbalance2"].ToString();
+            //txtmanurembal3.Value = dtfetchauthorityfuture.Rows[0]["Remainingbalance3"].ToString();
+            //txtmanurembal4.Value = dtfetchauthorityfuture.Rows[0]["Remainingbalance4"].ToString();
+
+            //txtmandisamount1.Value = dtfetchauthorityfuture.Rows[0]["discountamount1"].ToString();
+            //txtmandisamount2.Value = dtfetchauthorityfuture.Rows[0]["discountamount2"].ToString();
+            //txtmandisamount3.Value = dtfetchauthorityfuture.Rows[0]["discountamount3"].ToString();
+            //txtmandisamount4.Value = dtfetchauthorityfuture.Rows[0]["discountamount4"].ToString();
+
+
+            ////Installment date
+            //txtmaninstdate1.Value = dtfetchauthorityfuture.Rows[0]["duedate1"].ToString().Trim();
+            //txtmaninstdate2.Value = dtfetchauthorityfuture.Rows[0]["duedate2"].ToString().Trim();
+            //txtmaninstdate3.Value = dtfetchauthorityfuture.Rows[0]["duedate3"].ToString().Trim();
+            //txtmaninstdate4.Value = dtfetchauthorityfuture.Rows[0]["duedate4"].ToString().Trim();
+
+
+            ////Delinquent Date
+            //txtmandeliqdate1.Value = dtfetchauthorityfuture.Rows[0]["DelinquentDate1"].ToString();
+            //txtmandeliqdate2.Value = dtfetchauthorityfuture.Rows[0]["DelinquentDate2"].ToString();
+            //txtmandeliqdate3.Value = dtfetchauthorityfuture.Rows[0]["DelinquentDate3"].ToString();
+            //txtmandeliqdate4.Value = dtfetchauthorityfuture.Rows[0]["DelinquentDate4"].ToString();
+
+
+            ////Discount Date
+            //txtmandisdate1.Value = dtfetchauthorityfuture.Rows[0]["DiscountDate1"].ToString();
+            //txtmandisdate2.Value = dtfetchauthorityfuture.Rows[0]["DiscountDate2"].ToString();
+            //txtmandisdate3.Value = dtfetchauthorityfuture.Rows[0]["DiscountDate3"].ToString();
+            //txtmandisdate4.Value = dtfetchauthorityfuture.Rows[0]["DiscountDate4"].ToString();
+
+
+            ////ExemptRelevy
+            //chkexrelmanu1.Value = dtfetchauthorityfuture.Rows[0]["ExemptRelevy1"].ToString().Trim();
+            //if (chkexrelmanu1.Value == "yes")
+            //{
+            //    this.chkexrelmanu1.Checked = true;
+            //}
+            //else
+            //{
+            //    this.chkexrelmanu1.Checked = false;
+            //}
+
+            //chkexrelmanu2.Value = dtfetchauthorityfuture.Rows[0]["ExemptRelevy2"].ToString();
+
+            //if (chkexrelmanu2.Value == "yes")
+            //{
+            //    this.chkexrelmanu2.Checked = true;
+            //}
+            //else
+            //{
+            //    this.chkexrelmanu2.Checked = false;
+            //}
+
+            //chkexrelmanu3.Value = dtfetchauthorityfuture.Rows[0]["ExemptRelevy3"].ToString();
+
+            //if (chkexrelmanu3.Value == "yes")
+            //{
+            //    this.chkexrelmanu3.Checked = true;
+            //}
+            //else
+            //{
+            //    this.chkexrelmanu3.Checked = false;
+            //}
+
+            //chkexrelmanu4.Value = dtfetchauthorityfuture.Rows[0]["ExemptRelevy4"].ToString();
+
+            //if (chkexrelmanu4.Value == "yes")
+            //{
+            //    this.chkexrelmanu4.Checked = true;
+            //}
+            //else
+            //{
+            //    this.chkexrelmanu4.Checked = false;
+            //}
+
+            ////paymentfrequency              
+            //string paymentfr = "";
+            //paymentfr = dtfetchauthorityfuture.Rows[0]["TaxFrequency"].ToString().Trim();
+
+            ////paymentfr = paymentfrequency.Value;
+            //if (paymentfr == "Annual")
+            //{
+            //    ddlpayfreqmanu.SelectedIndex = 0;
+            //}
+            //if (paymentfr == "SemiAnnual")
+            //{
+            //    ddlpayfreqmanu.SelectedIndex = 1;
+            //}
+            //if (paymentfr == "Quarterly")
+            //{
+            //    ddlpayfreqmanu.SelectedIndex = 2;
+            //}
+            //if (paymentfr == "TriAnnual")
+            //{
+            //    ddlpayfreqmanu.SelectedIndex = 3;
+            //}
+            //paymentfreq1(paymentfr);
+
+
+            ////BillingPeriodStartDate
+            //txtmanubillstartdate.Value = dtfetchauthorityfuture.Rows[0]["BillingPeriodStartDate"].ToString().Trim();
+
+            ////BillingPeriodEndDate
+            //txtmanubillenddate.Value = dtfetchauthorityfuture.Rows[0]["BillingPeriodEndDate"].ToString().Trim();
+
+            ////installmentcomments
+            //txtinstcommentsmanual.Value = dtfetchauthorityfuture.Rows[0]["installmentcomments"].ToString().Trim();
+
+            //if (instmanamount1.Value != "")
+            //{
+            //    Inst1 = decimal.Parse(instmanamount1.Value, CultureInfo.InvariantCulture);
+            //}
+            //if (instmanamount2.Value != "")
+            //{
+            //    Inst2 = decimal.Parse(instmanamount2.Value, CultureInfo.InvariantCulture);
+            //}
+            //if (instmanamount3.Value != "")
+            //{
+            //    Inst3 = decimal.Parse(instmanamount3.Value, CultureInfo.InvariantCulture);
+            //}
+            //if (instmanamount4.Value != "")
+            //{
+            //    Inst4 = decimal.Parse(instmanamount4.Value, CultureInfo.InvariantCulture);
+            //}
+
+            //if (instmanamount1.Value != "" || instmanamount2.Value != "" || instmanamount3.Value != "" || instmanamount4.Value != "")
+            //{
+            //    Instoutputfuture = Inst1 + Inst2 + Inst3 + Inst4;
+            //    futuretxtAnnualTaxAmount.Text = (Instoutputfuture.ToString("#,##0.00"));
+            //}
+        }
+
+        if (dtfetchauthorityfuture.Rows.Count == 0)
+        {
+            dtfetchauthority = gl.FetchTaxAuthorityDetails(lblord.Text, LblTaxID.Text, LblAgencyID.Text, txtTaxType.Text);
+            //instamount
+            instmanamount1.Value = dtfetchauthority.Rows[0]["Instamount1"].ToString();
+            instmanamount2.Value = dtfetchauthority.Rows[0]["Instamount2"].ToString();
+            instmanamount3.Value = dtfetchauthority.Rows[0]["Instamount3"].ToString();
+            instmanamount4.Value = dtfetchauthority.Rows[0]["Instamount4"].ToString();
+
+            txtmanurembal1.Value = dtfetchauthority.Rows[0]["Instamount1"].ToString();
+            txtmanurembal2.Value = dtfetchauthority.Rows[0]["Instamount2"].ToString();
+            txtmanurembal3.Value = dtfetchauthority.Rows[0]["Instamount3"].ToString();
+            txtmanurembal4.Value = dtfetchauthority.Rows[0]["Instamount4"].ToString();
+
+            txtmandisamount1.Value = dtfetchauthority.Rows[0]["discountamount1"].ToString();
+            txtmandisamount2.Value = dtfetchauthority.Rows[0]["discountamount2"].ToString();
+            txtmandisamount3.Value = dtfetchauthority.Rows[0]["discountamount3"].ToString();
+            txtmandisamount4.Value = dtfetchauthority.Rows[0]["discountamount4"].ToString();
+
+
+            //Installment date
+            txtmaninstdate1.Value = dtfetchauthority.Rows[0]["duedate1"].ToString().Trim();
+            if (txtmaninstdate1.Value != "")
+            {
+                string duedate1 = txtmaninstdate1.Value;
+                if (duedate1.Contains("T"))
+                {
+                    txtmaninstdate1.Value = Convert.ToDateTime(dtfetchauthority.Rows[0]["duedate1"].ToString().Trim().Remove(10)).ToString("MM/dd/yyyy");
+                    string inputData = txtmaninstdate1.Value;
+                    DateTime maninstdate1 = DateTime.ParseExact(inputData, "MM/dd/yyyy", null);
+                    maninstdate1 = maninstdate1.AddYears(1);
+                    txtmaninstdate1.Value = maninstdate1.ToString("MM/dd/yyyy");
+                }
+                else
+                {
+                    string inputData = txtmaninstdate1.Value;
+                    DateTime maninstdate1 = DateTime.ParseExact(inputData, "MM/dd/yyyy", null);
+                    maninstdate1 = maninstdate1.AddYears(1);
+                    txtmaninstdate1.Value = maninstdate1.ToString("MM/dd/yyyy");
+                }
+            }
+
+            txtmaninstdate2.Value = dtfetchauthority.Rows[0]["duedate2"].ToString().Trim();
+            if (txtmaninstdate2.Value != "")
+            {
+                string duedate2 = txtmaninstdate2.Value;
+                if (duedate2.Contains("T"))
+                {
+                    txtmaninstdate2.Value = Convert.ToDateTime(dtfetchauthority.Rows[0]["duedate2"].ToString().Trim().Remove(10)).ToString("MM/dd/yyyy");
+                    string inputData = txtmaninstdate2.Value;
+                    DateTime maninstdate2 = DateTime.ParseExact(inputData, "MM/dd/yyyy", null);
+                    maninstdate2 = maninstdate2.AddYears(1);
+                    txtmaninstdate2.Value = maninstdate2.ToString("MM/dd/yyyy");
+                }
+                else
+                {
+                    string inputData = txtmaninstdate2.Value;
+                    DateTime maninstdate2 = DateTime.ParseExact(inputData, "MM/dd/yyyy", null);
+                    maninstdate2 = maninstdate2.AddYears(1);
+                    txtmaninstdate2.Value = maninstdate2.ToString("MM/dd/yyyy");
+                }
+            }
+
+            txtmaninstdate3.Value = dtfetchauthority.Rows[0]["duedate3"].ToString().Trim();
+            if (txtmaninstdate3.Value != "")
+            {
+                string duedate3 = txtmaninstdate3.Value;
+                if (duedate3.Contains("T"))
+                {
+                    txtmaninstdate3.Value = Convert.ToDateTime(dtfetchauthority.Rows[0]["duedate3"].ToString().Trim().Remove(10)).ToString("MM/dd/yyyy");
+                    string inputData = txtmaninstdate3.Value;
+                    DateTime maninstdate3 = DateTime.ParseExact(inputData, "MM/dd/yyyy", null);
+                    maninstdate3 = maninstdate3.AddYears(1);
+                    txtmaninstdate3.Value = maninstdate3.ToString("MM/dd/yyyy");
+                }
+                else
+                {
+                    string inputData = txtmaninstdate3.Value;
+                    DateTime maninstdate3 = DateTime.ParseExact(inputData, "MM/dd/yyyy", null);
+                    maninstdate3 = maninstdate3.AddYears(1);
+                    txtmaninstdate3.Value = maninstdate3.ToString("MM/dd/yyyy");
+                }
+            }
+
+
+            txtmaninstdate4.Value = dtfetchauthority.Rows[0]["duedate4"].ToString().Trim();
+            if (txtmaninstdate4.Value != "")
+            {
+                string duedate4 = txtmaninstdate4.Value;
+                if (duedate4.Contains("T"))
+                {
+                    txtmaninstdate4.Value = Convert.ToDateTime(dtfetchauthority.Rows[0]["duedate4"].ToString().Trim().Remove(10)).ToString("MM/dd/yyyy");
+                    string inputData = txtmaninstdate4.Value;
+                    DateTime maninstdate4 = DateTime.ParseExact(inputData, "MM/dd/yyyy", null);
+                    maninstdate4 = maninstdate4.AddYears(1);
+                    txtmaninstdate4.Value = maninstdate4.ToString("MM/dd/yyyy");
+                }
+                else
+                {
+                    string inputData = txtmaninstdate4.Value;
+                    DateTime maninstdate4 = DateTime.ParseExact(inputData, "MM/dd/yyyy", null);
+                    maninstdate4 = maninstdate4.AddYears(1);
+                    txtmaninstdate4.Value = maninstdate4.ToString("MM/dd/yyyy");
+                }
+            }
+
+
+            //Delinquent Date
+            txtmandeliqdate1.Value = dtfetchauthority.Rows[0]["DelinquentDate1"].ToString();
+            if (txtmandeliqdate1.Value != "")
+            {
+                string delinq1 = txtmandeliqdate1.Value;
+                if (delinq1.Contains("T"))
+                {
+                    txtmandeliqdate1.Value = Convert.ToDateTime(dtfetchauthority.Rows[0]["DelinquentDate1"].ToString().Trim().Remove(10)).ToString("MM/dd/yyyy");
+                    string inputData = txtmandeliqdate1.Value;
+                    DateTime mandeliqdate1 = DateTime.ParseExact(inputData, "MM/dd/yyyy", null);
+                    mandeliqdate1 = mandeliqdate1.AddYears(1);
+                    txtmandeliqdate1.Value = mandeliqdate1.ToString("MM/dd/yyyy");
+                }
+                else
+                {
+                    string inputData = txtmandeliqdate1.Value;
+                    DateTime mandeliqdate1 = DateTime.ParseExact(inputData, "MM/dd/yyyy", null);
+                    mandeliqdate1 = mandeliqdate1.AddYears(1);
+                    txtmandeliqdate1.Value = mandeliqdate1.ToString("MM/dd/yyyy");
+                }
+            }
+
+
+            txtmandeliqdate2.Value = dtfetchauthority.Rows[0]["DelinquentDate2"].ToString();
+            if (txtmandeliqdate2.Value != "")
+            {
+                string delinq2 = txtmandeliqdate2.Value;
+                if (delinq2.Contains("T"))
+                {
+                    txtmandeliqdate2.Value = Convert.ToDateTime(dtfetchauthority.Rows[0]["DelinquentDate2"].ToString().Trim().Remove(10)).ToString("MM/dd/yyyy");
+                    string inputData = txtmandeliqdate2.Value;
+                    DateTime mandeliqdate2 = DateTime.ParseExact(inputData, "MM/dd/yyyy", null);
+                    mandeliqdate2 = mandeliqdate2.AddYears(1);
+                    txtmandeliqdate2.Value = mandeliqdate2.ToString("MM/dd/yyyy");
+                }
+                else
+                {
+                    string inputData = txtmandeliqdate2.Value;
+                    DateTime mandeliqdate2 = DateTime.ParseExact(inputData, "MM/dd/yyyy", null);
+                    mandeliqdate2 = mandeliqdate2.AddYears(1);
+                    txtmandeliqdate2.Value = mandeliqdate2.ToString("MM/dd/yyyy");
+                }
+            }
+
+
+            txtmandeliqdate3.Value = dtfetchauthority.Rows[0]["DelinquentDate3"].ToString();
+            if (txtmandeliqdate3.Value != "")
+            {
+                string delinq3 = txtmandeliqdate3.Value;
+                if (delinq3.Contains("T"))
+                {
+                    txtmandeliqdate3.Value = Convert.ToDateTime(dtfetchauthority.Rows[0]["DelinquentDate3"].ToString().Trim().Remove(10)).ToString("MM/dd/yyyy");
+                    string inputData = txtmandeliqdate3.Value;
+                    DateTime mandeliqdate3 = DateTime.ParseExact(inputData, "MM/dd/yyyy", null);
+                    mandeliqdate3 = mandeliqdate3.AddYears(1);
+                    txtmandeliqdate3.Value = mandeliqdate3.ToString("MM/dd/yyyy");
+                }
+                else
+                {
+                    string inputData = txtmandeliqdate3.Value;
+                    DateTime mandeliqdate3 = DateTime.ParseExact(inputData, "MM/dd/yyyy", null);
+                    mandeliqdate3 = mandeliqdate3.AddYears(1);
+                    txtmandeliqdate3.Value = mandeliqdate3.ToString("MM/dd/yyyy");
+                }
+            }
+
+
+            txtmandeliqdate4.Value = dtfetchauthority.Rows[0]["DelinquentDate4"].ToString();
+            if (txtmandeliqdate4.Value != "")
+            {
+                string delinq4 = txtmandeliqdate4.Value;
+                if (delinq4.Contains("T"))
+                {
+                    txtmandeliqdate4.Value = Convert.ToDateTime(dtfetchauthority.Rows[0]["DelinquentDate4"].ToString().Trim().Remove(10)).ToString("MM/dd/yyyy");
+                    string inputData = txtmandeliqdate4.Value;
+                    DateTime mandeliqdate4 = DateTime.ParseExact(inputData, "MM/dd/yyyy", null);
+                    mandeliqdate4 = mandeliqdate4.AddYears(1);
+                    txtmandeliqdate4.Value = mandeliqdate4.ToString("MM/dd/yyyy");
+                }
+                else
+                {
+                    string inputData = txtmandeliqdate4.Value;
+                    DateTime mandeliqdate4 = DateTime.ParseExact(inputData, "MM/dd/yyyy", null);
+                    mandeliqdate4 = mandeliqdate4.AddYears(1);
+                    txtmandeliqdate4.Value = mandeliqdate4.ToString("MM/dd/yyyy");
+                }
+            }
+
+            //Discount Date
+            txtmandisdate1.Value = dtfetchauthority.Rows[0]["DiscountDate1"].ToString();
+            if (txtmandisdate1.Value != "")
+            {
+                string disdate1 = txtmandisdate1.Value;
+                if (disdate1.Contains("T"))
+                {
+                    txtmandisdate1.Value = Convert.ToDateTime(dtfetchauthority.Rows[0]["DiscountDate1"].ToString().Trim().Remove(10)).ToString("MM/dd/yyyy");
+                    string inputData = txtmandisdate1.Value;
+                    DateTime mandisdate1 = DateTime.ParseExact(inputData, "MM/dd/yyyy", null);
+                    mandisdate1 = mandisdate1.AddYears(1);
+                    txtmandisdate1.Value = mandisdate1.ToString("MM/dd/yyyy");
+                }
+                else
+                {
+                    string inputData = txtmandisdate1.Value;
+                    DateTime mandisdate1 = DateTime.ParseExact(inputData, "MM/dd/yyyy", null);
+                    mandisdate1 = mandisdate1.AddYears(1);
+                    txtmandisdate1.Value = mandisdate1.ToString("MM/dd/yyyy");
+                }
+            }
+
+            txtmandisdate2.Value = dtfetchauthority.Rows[0]["DiscountDate2"].ToString();
+            if (txtmandisdate2.Value != "")
+            {
+                string disdate2 = txtmandisdate2.Value;
+                if (disdate2.Contains("T"))
+                {
+                    txtmandisdate2.Value = Convert.ToDateTime(dtfetchauthority.Rows[0]["DiscountDate2"].ToString().Trim().Remove(10)).ToString("MM/dd/yyyy");
+                    string inputData = txtmandisdate2.Value;
+                    DateTime mandisdate2 = DateTime.ParseExact(inputData, "MM/dd/yyyy", null);
+                    mandisdate2 = mandisdate2.AddYears(1);
+                    txtmandisdate2.Value = mandisdate2.ToString("MM/dd/yyyy");
+                }
+                else
+                {
+                    string inputData = txtmandisdate2.Value;
+                    DateTime mandisdate2 = DateTime.ParseExact(inputData, "MM/dd/yyyy", null);
+                    mandisdate2 = mandisdate2.AddYears(1);
+                    txtmandisdate2.Value = mandisdate2.ToString("MM/dd/yyyy");
+                }
+            }
+
+            txtmandisdate3.Value = dtfetchauthority.Rows[0]["DiscountDate3"].ToString();
+            if (txtmandisdate3.Value != "")
+            {
+                string disdate3 = txtmandisdate3.Value;
+                if (disdate3.Contains("T"))
+                {
+                    txtmandisdate3.Value = Convert.ToDateTime(dtfetchauthority.Rows[0]["DiscountDate3"].ToString().Trim().Remove(10)).ToString("MM/dd/yyyy");
+                    string inputData = txtmandisdate3.Value;
+                    DateTime mandisdate3 = DateTime.ParseExact(inputData, "MM/dd/yyyy", null);
+                    mandisdate3 = mandisdate3.AddYears(1);
+                    txtmandisdate3.Value = mandisdate3.ToString("MM/dd/yyyy");
+                }
+                else
+                {
+                    string inputData = txtmandisdate3.Value;
+                    DateTime mandisdate3 = DateTime.ParseExact(inputData, "MM/dd/yyyy", null);
+                    mandisdate3 = mandisdate3.AddYears(1);
+                    txtmandisdate3.Value = mandisdate3.ToString("MM/dd/yyyy");
+                }
+            }
+
+            txtmandisdate4.Value = dtfetchauthority.Rows[0]["DiscountDate4"].ToString();
+            if (txtmandisdate4.Value != "")
+            {
+                string disdate4 = txtmandisdate4.Value;
+                if (disdate4.Contains("T"))
+                {
+                    txtmandisdate4.Value = Convert.ToDateTime(dtfetchauthority.Rows[0]["DiscountDate4"].ToString().Trim().Remove(10)).ToString("MM/dd/yyyy");
+                    string inputData = txtmandisdate4.Value;
+                    DateTime mandisdate4 = DateTime.ParseExact(inputData, "MM/dd/yyyy", null);
+                    mandisdate4 = mandisdate4.AddYears(1);
+                    txtmandisdate4.Value = mandisdate4.ToString("MM/dd/yyyy");
+                }
+                else
+                {
+                    string inputData = txtmandisdate4.Value;
+                    DateTime mandisdate4 = DateTime.ParseExact(inputData, "MM/dd/yyyy", null);
+                    mandisdate4 = mandisdate4.AddYears(1);
+                    txtmandisdate4.Value = mandisdate4.ToString("MM/dd/yyyy");
+                }
+            }
+
+            //ExemptRelevy
+            chkexrelmanu1.Value = dtfetchauthority.Rows[0]["ExemptRelevy1"].ToString().Trim();
+            if (chkexrelmanu1.Value == "yes")
+            {
+                this.chkexrelmanu1.Checked = true;
+            }
+            else
+            {
+                this.chkexrelmanu1.Checked = false;
+            }
+
+            chkexrelmanu2.Value = dtfetchauthority.Rows[0]["ExemptRelevy2"].ToString();
+
+            if (chkexrelmanu2.Value == "yes")
+            {
+                this.chkexrelmanu2.Checked = true;
+            }
+            else
+            {
+                this.chkexrelmanu2.Checked = false;
+            }
+
+            chkexrelmanu3.Value = dtfetchauthority.Rows[0]["ExemptRelevy3"].ToString();
+
+            if (chkexrelmanu3.Value == "yes")
+            {
+                this.chkexrelmanu3.Checked = true;
+            }
+            else
+            {
+                this.chkexrelmanu3.Checked = false;
+            }
+
+            chkexrelmanu4.Value = dtfetchauthority.Rows[0]["ExemptRelevy4"].ToString();
+
+            if (chkexrelmanu4.Value == "yes")
+            {
+                this.chkexrelmanu4.Checked = true;
+            }
+            else
+            {
+                this.chkexrelmanu4.Checked = false;
+            }
+
+            //paymentfrequency
+            string paymentmanual = "";
+            paymentmanual = dtfetchauthority.Rows[0]["TaxFrequency"].ToString().Trim();
+            hidesameascurrent(paymentmanual);
+            if (paymentmanual == "Annual")
+            {
+                ddlpayfreqmanu.SelectedIndex = 0;
+            }
+            if (paymentmanual == "SemiAnnual")
+            {
+                ddlpayfreqmanu.SelectedIndex = 1;
+            }
+            if (paymentmanual == "Quarterly")
+            {
+                ddlpayfreqmanu.SelectedIndex = 2;
+            }
+            if (paymentmanual == "TriAnnual")
+            {
+                ddlpayfreqmanu.SelectedIndex = 3;
+            }
+
+            //BillingPeriodStartDate
+            if (dtfetchauthority.Rows[0]["BillingPeriodStartDate"].ToString().Trim() != "")
+            {
+                string startdate = dtfetchauthority.Rows[0]["BillingPeriodStartDate"].ToString().Trim();
+
+                if (startdate.Contains("T"))
+                {
+                    txtmanubillstartdate.Value = Convert.ToDateTime(dtfetchauthority.Rows[0]["BillingPeriodStartDate"].ToString().Trim().Remove(10)).ToString("MM/dd/yyyy");
+
+                    string inputData = txtmanubillstartdate.Value;
+                    DateTime manbillstartdate = DateTime.ParseExact(inputData, "MM/dd/yyyy", null);
+                    manbillstartdate = manbillstartdate.AddYears(1);
+                    txtmanubillstartdate.Value = manbillstartdate.ToString("MM/dd/yyyy");
+                }
+                else
+                {
+                    txtmanubillstartdate.Value = dtfetchauthority.Rows[0]["BillingPeriodStartDate"].ToString().Trim();
+                    string inputData = txtmanubillstartdate.Value;
+                    DateTime manbillstartdate = DateTime.ParseExact(inputData, "MM/dd/yyyy", null);
+                    manbillstartdate = manbillstartdate.AddYears(1);
+                    txtmanubillstartdate.Value = manbillstartdate.ToString("MM/dd/yyyy");
+                }
+            }
+
+            //BillingPeriodEndDate
+            if (dtfetchauthority.Rows[0]["BillingPeriodEndDate"].ToString().Trim() != "")
+            {
+                string enddate = dtfetchauthority.Rows[0]["BillingPeriodEndDate"].ToString().Trim();
+
+                if (enddate.Contains("T"))
+                {
+                    txtmanubillenddate.Value = Convert.ToDateTime(dtfetchauthority.Rows[0]["BillingPeriodEndDate"].ToString().Trim().Remove(10)).ToString("MM/dd/yyyy");
+
+                    string inputData = txtmanubillenddate.Value;
+                    DateTime manbillenddate = DateTime.ParseExact(inputData, "MM/dd/yyyy", null);
+                    manbillenddate = manbillenddate.AddYears(1);
+                    txtmanubillenddate.Value = manbillenddate.ToString("MM/dd/yyyy");
+                }
+                else
+                {
+                    txtmanubillenddate.Value = dtfetchauthority.Rows[0]["BillingPeriodEndDate"].ToString().Trim();
+
+                    string inputData = txtmanubillenddate.Value;
+                    DateTime manbillenddate = DateTime.ParseExact(inputData, "MM/dd/yyyy", null);
+                    manbillenddate = manbillenddate.AddYears(1);
+                    txtmanubillenddate.Value = manbillenddate.ToString("MM/dd/yyyy");
+                }
+            }
+        }
+    }
+
+
+
+    protected void ddlfuturetaxcalc_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "txtexeSpecial();", true);
+        PnlTax1.Visible = true;
+        fetchDeliquentStatus();
+        fetchexemptionsAll();
+        fetchspecialAll();
+        PnlTax1.Focus();
+        if (ddlfuturetaxcalc.SelectedItem.Text == "Same As Current")
+        {
+            futuretaxsameascurrent();
+        }
+
+        else if (ddlfuturetaxcalc.SelectedItem.Text == "Select")
+        {
+            PnlTax1.Visible = false;
+        }
+
+        else if (ddlfuturetaxcalc.SelectedItem.Text == "Manual")
+        {
+            futuretaxmanual();
+        }
+    }
+
+
+
+    private void hidesameascurrent(string payementfrequency)
+    {
+        instmanamount1.Attributes.Add("disabled", "disabled");
+        instmanamtpaid1.Attributes.Add("disabled", "disabled");
+        ddlmaninstpaiddue1.Attributes.Add("disabled", "disabled");
+        txtmanurembal1.Attributes.Add("disabled", "disabled");
+        txtmaninstdate1.Attributes.Add("disabled", "disabled");
+        txtmandeliqdate1.Attributes.Add("disabled", "disabled");
+        txtmandisamount1.Attributes.Add("disabled", "disabled");
+        txtmandisdate1.Attributes.Add("disabled", "disabled");
+        chkexrelmanu1.Attributes.Add("disabled", "disabled");
+
+        instmanamount2.Attributes.Add("disabled", "disabled");
+        instmanamtpaid2.Attributes.Add("disabled", "disabled");
+        ddlmaninstpaiddue2.Attributes.Add("disabled", "disabled");
+        txtmanurembal2.Attributes.Add("disabled", "disabled");
+        txtmaninstdate2.Attributes.Add("disabled", "disabled");
+        txtmandeliqdate2.Attributes.Add("disabled", "disabled");
+        txtmandisamount2.Attributes.Add("disabled", "disabled");
+        txtmandisdate2.Attributes.Add("disabled", "disabled");
+        chkexrelmanu2.Attributes.Add("disabled", "disabled");
+
+        instmanamount3.Attributes.Add("disabled", "disabled");
+        instmanamtpaid3.Attributes.Add("disabled", "disabled");
+        ddlmaninstpaiddue3.Attributes.Add("disabled", "disabled");
+        txtmanurembal3.Attributes.Add("disabled", "disabled");
+        txtmaninstdate3.Attributes.Add("disabled", "disabled");
+        txtmandeliqdate3.Attributes.Add("disabled", "disabled");
+        txtmandisamount3.Attributes.Add("disabled", "disabled");
+        txtmandisdate3.Attributes.Add("disabled", "disabled");
+        chkexrelmanu3.Attributes.Add("disabled", "disabled");
+
+        instmanamount4.Attributes.Add("disabled", "disabled");
+        instmanamtpaid4.Attributes.Add("disabled", "disabled");
+        ddlmaninstpaiddue4.Attributes.Add("disabled", "disabled");
+        txtmanurembal4.Attributes.Add("disabled", "disabled");
+        txtmaninstdate4.Attributes.Add("disabled", "disabled");
+        txtmandeliqdate4.Attributes.Add("disabled", "disabled");
+        txtmandisamount4.Attributes.Add("disabled", "disabled");
+        txtmandisdate4.Attributes.Add("disabled", "disabled");
+        chkexrelmanu4.Attributes.Add("disabled", "disabled");
+
+        ddlmanutaxbill.Attributes.Add("disabled", "disabled");
+        ddlpayfreqmanu.Attributes.Add("disabled", "disabled");
+        txtinstcommentsmanual.Attributes.Add("disabled", "disabled");
+        txtmanubillstartdate.Attributes.Add("disabled", "disabled");
+        txtmanubillenddate.Attributes.Add("disabled", "disabled");
+
+        btnsavetaxauthorities.Visible = false;
+
+        if (payementfrequency != "")
+        {
+            if (payementfrequency == "Annual" || payementfrequency == "1")
+            {
+                SetTaxBillValue1(txtmandeliqdate1.Value);
+                ddlmaninstpaiddue1.Value = "Due";
+            }
+
+            if (payementfrequency == "SemiAnnual" || payementfrequency == "2")
+            {
+                SetTaxBillValue1(txtmandeliqdate2.Value);
+                ddlmaninstpaiddue1.Value = "Due";
+                ddlmaninstpaiddue2.Value = "Due";
+            }
+            if (payementfrequency == "TriAnnual" || payementfrequency == "3")
+            {
+                SetTaxBillValue1(txtmandeliqdate3.Value);
+                ddlmaninstpaiddue1.Value = "Due";
+                ddlmaninstpaiddue2.Value = "Due";
+                ddlmaninstpaiddue3.Value = "Due";
+            }
+            if (payementfrequency == "Quarterly" || payementfrequency == "4")
+            {
+                SetTaxBillValue1(txtmandeliqdate4.Value);
+                ddlmaninstpaiddue1.Value = "Due";
+                ddlmaninstpaiddue2.Value = "Due";
+                ddlmaninstpaiddue3.Value = "Due";
+                ddlmaninstpaiddue4.Value = "Due";
+            }
+        }
+    }
+
+
+
+
+    private void futuretaxmanual()
+    {
+        DataTable dtfetchauthorityfuture = new DataTable();
+        DataTable dtfetchauthority = new DataTable();
+        btnsavetaxauthorities.Visible = true;
+        dtfetchauthorityfuture = gl.FetchTaxAuthorityDetailsFuture(lblord.Text, LblTaxID.Text, LblAgencyID.Text, txtTaxType.Text);
+
+        if (dtfetchauthorityfuture.Rows.Count > 0)
+        {
             //instamount
             instmanamount1.Value = dtfetchauthorityfuture.Rows[0]["Instamount1"].ToString();
             instmanamount2.Value = dtfetchauthorityfuture.Rows[0]["Instamount2"].ToString();
             instmanamount3.Value = dtfetchauthorityfuture.Rows[0]["Instamount3"].ToString();
             instmanamount4.Value = dtfetchauthorityfuture.Rows[0]["Instamount4"].ToString();
+
+            string futinstpaiddue1 = dtfetchauthorityfuture.Rows[0]["instPaidDue1"].ToString();
+            if (futinstpaiddue1 == "Paid")
+            {
+                ddlmaninstpaiddue1.SelectedIndex = 1;
+            }
+            if (futinstpaiddue1 == "Due")
+            {
+                ddlmaninstpaiddue1.SelectedIndex = 2;
+            }
+
+            string futinstpaiddue2 = dtfetchauthorityfuture.Rows[0]["instPaidDue2"].ToString();
+            if (futinstpaiddue2 == "Paid")
+            {
+                ddlmaninstpaiddue2.SelectedIndex = 1;
+            }
+            if (futinstpaiddue2 == "Due")
+            {
+                ddlmaninstpaiddue2.SelectedIndex = 2;
+            }
+
+            string futinstpaiddue3 = dtfetchauthorityfuture.Rows[0]["instPaidDue3"].ToString();
+            if (futinstpaiddue3 == "Paid")
+            {
+                ddlmaninstpaiddue3.SelectedIndex = 1;
+            }
+            if (futinstpaiddue3 == "Due")
+            {
+                ddlmaninstpaiddue3.SelectedIndex = 2;
+            }
+
+            string futinstpaiddue4 = dtfetchauthorityfuture.Rows[0]["instPaidDue4"].ToString();
+            if (futinstpaiddue4 == "Paid")
+            {
+                ddlmaninstpaiddue4.SelectedIndex = 1;
+            }
+            if (futinstpaiddue4 == "Due")
+            {
+                ddlmaninstpaiddue4.SelectedIndex = 2;
+            }
+
 
             instmanamtpaid1.Value = dtfetchauthorityfuture.Rows[0]["instamountpaid1"].ToString();
             instmanamtpaid2.Value = dtfetchauthorityfuture.Rows[0]["instamountpaid2"].ToString();
@@ -2672,28 +3416,10 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
                 futuretxtAnnualTaxAmount.Text = (Instoutputfuture.ToString("#,##0.00"));
             }
         }
-
         else if (dtfetchauthorityfuture.Rows.Count == 0)
         {
             dtfetchauthority = gl.FetchTaxAuthorityDetails(lblord.Text, LblTaxID.Text, LblAgencyID.Text, txtTaxType.Text);
-            //instamount
-            instmanamount1.Value = dtfetchauthority.Rows[0]["Instamount1"].ToString();
-            instmanamount2.Value = dtfetchauthority.Rows[0]["Instamount2"].ToString();
-            instmanamount3.Value = dtfetchauthority.Rows[0]["Instamount3"].ToString();
-            instmanamount4.Value = dtfetchauthority.Rows[0]["Instamount4"].ToString();
 
-            //txtmanurembal1.Value = dtfetchauthority.Rows[0]["Remainingbalance1"].ToString();
-            //txtmanurembal2.Value = dtfetchauthority.Rows[0]["Remainingbalance2"].ToString();
-            //txtmanurembal3.Value = dtfetchauthority.Rows[0]["Remainingbalance3"].ToString();
-            //txtmanurembal4.Value = dtfetchauthority.Rows[0]["Remainingbalance4"].ToString();
-
-            txtmandisamount1.Value = dtfetchauthority.Rows[0]["discountamount1"].ToString();
-            txtmandisamount2.Value = dtfetchauthority.Rows[0]["discountamount2"].ToString();
-            txtmandisamount3.Value = dtfetchauthority.Rows[0]["discountamount3"].ToString();
-            txtmandisamount4.Value = dtfetchauthority.Rows[0]["discountamount4"].ToString();
-
-
-            //Installment date
             txtmaninstdate1.Value = dtfetchauthority.Rows[0]["duedate1"].ToString().Trim();
             if (txtmaninstdate1.Value != "")
             {
@@ -3070,34 +3796,27 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
     }
 
 
-
-    protected void ddlfuturetaxcalc_SelectedIndexChanged(object sender, EventArgs e)
-    {
-        ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "txtexeSpecial();", true);
-        PnlTax1.Visible = true;
-        fetchDeliquentStatus();
-        fetchexemptionsAll();
-        fetchspecialAll();
-        PnlTax1.Focus();
-        if (ddlfuturetaxcalc.SelectedItem.Text == "Manual")
-        {
-            futuretaxmanual();
-        }
-
-        else if (ddlfuturetaxcalc.SelectedItem.Text == "Select")
-        {
-            PnlTax1.Visible = false;
-        }
-
-        else if (ddlfuturetaxcalc.SelectedItem.Text == "Same As Above")
-        {
-            PnlTax1.Visible = false;
-        }
-    }
-
-
     protected void paymentfreq1(string payemntfrequency)
     {
+        txtmaninstdate1.Attributes.Add("disabled", "disabled");
+        txtmandeliqdate1.Attributes.Add("disabled", "disabled");
+        txtmandisdate1.Attributes.Add("disabled", "disabled");
+
+        txtmaninstdate2.Attributes.Add("disabled", "disabled");
+        txtmandeliqdate2.Attributes.Add("disabled", "disabled");
+        txtmandisdate2.Attributes.Add("disabled", "disabled");
+
+        txtmaninstdate3.Attributes.Add("disabled", "disabled");
+        txtmandeliqdate3.Attributes.Add("disabled", "disabled");
+        txtmandisdate3.Attributes.Add("disabled", "disabled");
+
+        txtmaninstdate4.Attributes.Add("disabled", "disabled");
+        txtmandeliqdate4.Attributes.Add("disabled", "disabled");
+        txtmandisdate4.Attributes.Add("disabled", "disabled");
+
+        txtmanubillstartdate.Attributes.Add("disabled", "disabled");
+        txtmanubillenddate.Attributes.Add("disabled", "disabled");
+
         if (payemntfrequency != "")
         {
             if (payemntfrequency == "Annual" || payemntfrequency == "1")
@@ -3107,196 +3826,129 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
                 instmanamount1.Attributes.Remove("disabled");
                 instmanamtpaid1.Attributes.Remove("disabled");
                 ddlmaninstpaiddue1.Attributes.Remove("disabled");
-                txtmanurembal1.Attributes.Remove("disabled");
-                txtmaninstdate1.Attributes.Remove("disabled");
-                txtmandeliqdate1.Attributes.Remove("disabled");
-                txtmandisamount1.Attributes.Remove("disabled");
-                txtmandisdate1.Attributes.Remove("disabled");
+                txtmanurembal1.Attributes.Remove("disabled");              
+                txtmandisamount1.Attributes.Remove("disabled");               
                 chkexrelmanu1.Attributes.Remove("disabled");
 
                 instmanamount2.Attributes.Add("disabled", "disabled");
                 instmanamtpaid2.Attributes.Add("disabled", "disabled");
                 ddlmaninstpaiddue2.Attributes.Add("disabled", "disabled");
-                txtmanurembal2.Attributes.Add("disabled", "disabled");
-                txtmaninstdate2.Attributes.Add("disabled", "disabled");
-                txtmandeliqdate2.Attributes.Add("disabled", "disabled");
-                txtmandisamount2.Attributes.Add("disabled", "disabled");
-                txtmandisdate2.Attributes.Add("disabled", "disabled");
+                txtmanurembal2.Attributes.Add("disabled", "disabled");               
+                txtmandisamount2.Attributes.Add("disabled", "disabled");                
                 chkexrelmanu2.Attributes.Add("disabled", "disabled");
 
                 instmanamount3.Attributes.Add("disabled", "disabled");
                 instmanamtpaid3.Attributes.Add("disabled", "disabled");
                 ddlmaninstpaiddue3.Attributes.Add("disabled", "disabled");
-                txtmanurembal3.Attributes.Add("disabled", "disabled");
-                txtmaninstdate3.Attributes.Add("disabled", "disabled");
-                txtmandeliqdate3.Attributes.Add("disabled", "disabled");
-                txtmandisamount3.Attributes.Add("disabled", "disabled");
-                txtmandisdate3.Attributes.Add("disabled", "disabled");
+                txtmanurembal3.Attributes.Add("disabled", "disabled");                
+                txtmandisamount3.Attributes.Add("disabled", "disabled");                
                 chkexrelmanu3.Attributes.Add("disabled", "disabled");
 
                 instmanamount4.Attributes.Add("disabled", "disabled");
                 instmanamtpaid4.Attributes.Add("disabled", "disabled");
                 ddlmaninstpaiddue4.Attributes.Add("disabled", "disabled");
-                txtmanurembal4.Attributes.Add("disabled", "disabled");
-                txtmaninstdate4.Attributes.Add("disabled", "disabled");
-                txtmandeliqdate4.Attributes.Add("disabled", "disabled");
-                txtmandisamount4.Attributes.Add("disabled", "disabled");
-                txtmandisdate4.Attributes.Add("disabled", "disabled");
+                txtmanurembal4.Attributes.Add("disabled", "disabled");                
+                txtmandisamount4.Attributes.Add("disabled", "disabled");                
                 chkexrelmanu4.Attributes.Add("disabled", "disabled");
-
-                //instpaiddue
-                ddlmaninstpaiddue1.Value = "Due";
             }
 
             if (payemntfrequency == "SemiAnnual" || payemntfrequency == "2")
             {
                 SetTaxBillValue1(txtmandeliqdate2.Value);
 
-
                 instmanamount1.Attributes.Remove("disabled");
                 instmanamtpaid1.Attributes.Remove("disabled");
                 ddlmaninstpaiddue1.Attributes.Remove("disabled");
-                txtmanurembal1.Attributes.Remove("disabled");
-                txtmaninstdate1.Attributes.Remove("disabled");
-                txtmandeliqdate1.Attributes.Remove("disabled");
-                txtmandisamount1.Attributes.Remove("disabled");
-                txtmandisdate1.Attributes.Remove("disabled");
+                txtmanurembal1.Attributes.Remove("disabled");                
+                txtmandisamount1.Attributes.Remove("disabled");                
                 chkexrelmanu1.Attributes.Remove("disabled");
 
                 instmanamount2.Attributes.Remove("disabled");
                 instmanamtpaid2.Attributes.Remove("disabled");
                 ddlmaninstpaiddue2.Attributes.Remove("disabled");
-                txtmanurembal2.Attributes.Remove("disabled");
-                txtmaninstdate2.Attributes.Remove("disabled");
-                txtmandeliqdate2.Attributes.Remove("disabled");
-                txtmandisamount2.Attributes.Remove("disabled");
-                txtmandisdate2.Attributes.Remove("disabled");
+                txtmanurembal2.Attributes.Remove("disabled");                                
+                txtmandisamount2.Attributes.Remove("disabled");                
                 chkexrelmanu2.Attributes.Remove("disabled");
 
                 instmanamount3.Attributes.Add("disabled", "disabled");
                 instmanamtpaid3.Attributes.Add("disabled", "disabled");
                 ddlmaninstpaiddue3.Attributes.Add("disabled", "disabled");
                 txtmanurembal3.Attributes.Add("disabled", "disabled");
-                txtmaninstdate3.Attributes.Add("disabled", "disabled");
-                txtmandeliqdate3.Attributes.Add("disabled", "disabled");
-                txtmandisamount3.Attributes.Add("disabled", "disabled");
-                txtmandisdate3.Attributes.Add("disabled", "disabled");
+                txtmandisamount3.Attributes.Add("disabled", "disabled");                
                 chkexrelmanu3.Attributes.Add("disabled", "disabled");
 
                 instmanamount4.Attributes.Add("disabled", "disabled");
                 instmanamtpaid4.Attributes.Add("disabled", "disabled");
                 ddlmaninstpaiddue4.Attributes.Add("disabled", "disabled");
-                txtmanurembal4.Attributes.Add("disabled", "disabled");
-                txtmaninstdate4.Attributes.Add("disabled", "disabled");
-                txtmandeliqdate4.Attributes.Add("disabled", "disabled");
-                txtmandisamount4.Attributes.Add("disabled", "disabled");
-                txtmandisdate4.Attributes.Add("disabled", "disabled");
+                txtmanurembal4.Attributes.Add("disabled", "disabled");                                
+                txtmandisamount4.Attributes.Add("disabled", "disabled");                
                 chkexrelmanu4.Attributes.Add("disabled", "disabled");
-
-                //instpaiddue
-                ddlmaninstpaiddue1.Value = "Due";
-                ddlmaninstpaiddue2.Value = "Due";
             }
 
             if (payemntfrequency == "TriAnnual" || payemntfrequency == "3")
             {
+                SetTaxBillValue1(txtmandeliqdate3.Value);
 
                 instmanamount1.Attributes.Remove("disabled");
                 instmanamtpaid1.Attributes.Remove("disabled");
                 ddlmaninstpaiddue1.Attributes.Remove("disabled");
-                txtmanurembal1.Attributes.Remove("disabled");
-                txtmaninstdate1.Attributes.Remove("disabled");
-                txtmandeliqdate1.Attributes.Remove("disabled");
-                txtmandisamount1.Attributes.Remove("disabled");
-                txtmandisdate1.Attributes.Remove("disabled");
+                txtmanurembal1.Attributes.Remove("disabled");                
+                txtmandisamount1.Attributes.Remove("disabled");                
                 chkexrelmanu1.Attributes.Remove("disabled");
 
                 instmanamount2.Attributes.Remove("disabled");
                 instmanamtpaid2.Attributes.Remove("disabled");
                 ddlmaninstpaiddue2.Attributes.Remove("disabled");
-                txtmanurembal2.Attributes.Remove("disabled");
-                txtmaninstdate2.Attributes.Remove("disabled");
-                txtmandeliqdate2.Attributes.Remove("disabled");
-                txtmandisamount2.Attributes.Remove("disabled");
-                txtmandisdate2.Attributes.Remove("disabled");
+                txtmanurembal2.Attributes.Remove("disabled");                                
+                txtmandisamount2.Attributes.Remove("disabled");                
                 chkexrelmanu2.Attributes.Remove("disabled");
 
                 instmanamount3.Attributes.Remove("disabled");
                 instmanamtpaid3.Attributes.Remove("disabled");
                 ddlmaninstpaiddue3.Attributes.Remove("disabled");
                 txtmanurembal3.Attributes.Remove("disabled");
-                txtmaninstdate3.Attributes.Remove("disabled");
-                txtmandeliqdate3.Attributes.Remove("disabled");
-                txtmandisamount3.Attributes.Remove("disabled");
-                txtmandisdate3.Attributes.Remove("disabled");
+                txtmandisamount3.Attributes.Remove("disabled");                
                 chkexrelmanu3.Attributes.Remove("disabled");
 
                 instmanamount4.Attributes.Add("disabled", "disabled");
                 instmanamtpaid4.Attributes.Add("disabled", "disabled");
                 ddlmaninstpaiddue4.Attributes.Add("disabled", "disabled");
-                txtmanurembal4.Attributes.Add("disabled", "disabled");
-                txtmaninstdate4.Attributes.Add("disabled", "disabled");
-                txtmandeliqdate4.Attributes.Add("disabled", "disabled");
-                txtmandisamount4.Attributes.Add("disabled", "disabled");
-                txtmandisdate4.Attributes.Add("disabled", "disabled");
+                txtmanurembal4.Attributes.Add("disabled", "disabled");                
+                txtmandisamount4.Attributes.Add("disabled", "disabled");                
                 chkexrelmanu4.Attributes.Add("disabled", "disabled");
-
-                //instpaiddue
-                ddlmaninstpaiddue1.Value = "Due";
-                ddlmaninstpaiddue2.Value = "Due";
-                ddlmaninstpaiddue3.Value = "Due";
             }
-
 
             if (payemntfrequency == "Quarterly" || payemntfrequency == "4")
             {
                 SetTaxBillValue1(txtmandeliqdate4.Value);
-
                 instmanamount1.Attributes.Remove("disabled");
                 instmanamtpaid1.Attributes.Remove("disabled");
                 ddlmaninstpaiddue1.Attributes.Remove("disabled");
                 txtmanurembal1.Attributes.Remove("disabled");
-                txtmaninstdate1.Attributes.Remove("disabled");
-                txtmandeliqdate1.Attributes.Remove("disabled");
-                txtmandisamount1.Attributes.Remove("disabled");
-                txtmandisdate1.Attributes.Remove("disabled");
+                txtmandisamount1.Attributes.Remove("disabled");                
                 chkexrelmanu1.Attributes.Remove("disabled");
 
                 instmanamount2.Attributes.Remove("disabled");
                 instmanamtpaid2.Attributes.Remove("disabled");
                 ddlmaninstpaiddue2.Attributes.Remove("disabled");
                 txtmanurembal2.Attributes.Remove("disabled");
-                txtmaninstdate2.Attributes.Remove("disabled");
-                txtmandeliqdate2.Attributes.Remove("disabled");
-                txtmandisamount2.Attributes.Remove("disabled");
-                txtmandisdate2.Attributes.Remove("disabled");
+                txtmandisamount2.Attributes.Remove("disabled");                
                 chkexrelmanu2.Attributes.Remove("disabled");
 
                 instmanamount3.Attributes.Remove("disabled");
                 instmanamtpaid3.Attributes.Remove("disabled");
                 ddlmaninstpaiddue3.Attributes.Remove("disabled");
-                txtmanurembal3.Attributes.Remove("disabled");
-                txtmaninstdate3.Attributes.Remove("disabled");
-                txtmandeliqdate3.Attributes.Remove("disabled");
-                txtmandisamount3.Attributes.Remove("disabled");
-                txtmandisdate3.Attributes.Remove("disabled");
+                txtmanurembal3.Attributes.Remove("disabled");                
+                txtmandisamount3.Attributes.Remove("disabled");                
                 chkexrelmanu3.Attributes.Remove("disabled");
 
                 instmanamount4.Attributes.Remove("disabled");
                 instmanamtpaid4.Attributes.Remove("disabled");
                 ddlmaninstpaiddue4.Attributes.Remove("disabled");
-                txtmanurembal4.Attributes.Remove("disabled");
-                txtmaninstdate4.Attributes.Remove("disabled");
-                txtmandeliqdate4.Attributes.Remove("disabled");
-                txtmandisamount4.Attributes.Remove("disabled");
-                txtmandisdate4.Attributes.Remove("disabled");
+                txtmanurembal4.Attributes.Remove("disabled");                
+                txtmandisamount4.Attributes.Remove("disabled");                
                 chkexrelmanu4.Attributes.Remove("disabled");
 
-                //instpaiddue
-                ddlmaninstpaiddue1.Value = "Due";
-                ddlmaninstpaiddue2.Value = "Due";
-                ddlmaninstpaiddue3.Value = "Due";
-                ddlmaninstpaiddue4.Value = "Due";
             }
         }
     }
@@ -3554,7 +4206,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
         {
             taxfrequency = dtfetchauthority.Rows[0]["TaxFrequency"].ToString().Trim();
         }
-                        
+
         if (OStatus == "Completed" && process == "KEY")
         {
             if (gvTaxParcel.Rows.Count > 0)
@@ -3608,7 +4260,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
             {
                 if (message == "")
                 {
-                    string jData = jsonResponse.GetJsonData(lblord.Text);
+                    string jData = jsonResponse.GetJsonData(lblord.Text, "Completed");
                     string successMsg = postData.POST(jData, lblord.Text);
                     if (successMsg == "True")
                     {
