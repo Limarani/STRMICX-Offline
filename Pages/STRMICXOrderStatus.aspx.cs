@@ -926,14 +926,17 @@ public partial class Pages_STRMICXOrderStatus : System.Web.UI.Page
 
             for (int i = 0; i < ord_no.Length; i++)
             {
+                //In-Process  
                 if (rdbtnstatuschange.Items[0].Selected == true)
                 {
                     query = "update record_status set K1_OP='" + strusername + "',k1=2,qc=1,status=1,pend=1,tax=0,parcel=0 where Order_No='" + ord_no[i].ToString() + "'";
                 }
+                //ParcelID
                 else if (rdbtnstatuschange.Items[1].Selected == true)
                 {
                     query = "update record_status set K1_OP='" + strusername + "',k1=2,qc=1,status=1,pend=0,tax=0,parcel=0 where Order_No='" + ord_no[i].ToString() + "'";
                 }
+                //MailAway
                 else if (rdbtnstatuschange.Items[2].Selected == true)
                 {
                     query = "update record_status set K1_OP='" + strusername + "',k1=2,qc=1,status=1,pend=0,tax=1,parcel=0 where Order_No='" + ord_no[i].ToString() + "'";

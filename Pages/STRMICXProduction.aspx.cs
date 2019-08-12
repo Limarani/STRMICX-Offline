@@ -3503,10 +3503,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
         {
             taxfrequency = dtfetchauthority.Rows[0]["TaxFrequency"].ToString().Trim();
         }
-
-
-
-
+                        
         if (OStatus == "Completed" && process == "KEY")
         {
             if (gvTaxParcel.Rows.Count > 0)
@@ -4391,7 +4388,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
         ScriptManager.RegisterStartupScript(this, this.GetType(), "alertMessage", "alert('" + msg + "')", true);
 
     }
-    //Rasheed123
+    //Rasheed123        
 }
 
 
