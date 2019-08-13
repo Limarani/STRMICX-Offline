@@ -1,7 +1,9 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data;
+using System.IO;
 using System.Linq;
 using System.Web;
 
@@ -30,6 +32,9 @@ public class Response
         JsonOutput.Response.OrderDetail.TaxDetail.TaxParcels = GetTaxParcelTagData(orderno);
         JsonOutput.Response.OrderDetail.TaxVendor = GetTaxVendorTagData(orderno, orderStatus);
         string JsonResult = JsonConvert.SerializeObject(JsonOutput);
+        string today = DateTime.Now.ToString("ddMMyyyyhhmmss");
+        string jsonPath = ConfigurationManager.AppSettings["JsonFilePath"] + orderno + "_" + today + ".json";
+        File.WriteAllText(jsonPath, JsonResult);
         return JsonResult;
     }
 
@@ -65,9 +70,15 @@ public class Response
         DataSet ds = dbconn.ExecuteQuery("select * from tbl_order_details where OrderDetailId='" + orderno + "'");
         DataSet dsNotes = dbconn.ExecuteQuery("select * from tbl_notes where Orderno='" + orderno + "'");
         //read data from dataset 
-        for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
+        //for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
         {
-            orderDetail.OrderDetailId = Convert.ToInt64(ds.Tables[0].Rows[i]["OrderDetailId"]);
+            string order = ds.Tables[0].Rows[0]["OrderDetailId"].ToString();
+            if (order.Contains("_"))
+            {
+                int index = order.LastIndexOf("_");
+                order = order.Substring(0, index);
+            }
+            orderDetail.OrderDetailId = Convert.ToInt64(order);
 
         }
         for (int i = 0; i < dsNotes.Tables[0].Rows.Count; i++)
@@ -182,7 +193,7 @@ public class Response
         {
             TaxAgency.AgencyId = ds.Tables[0].Rows[i]["AgencyId"].ToString();
             TaxAgency.TaxAgencyType = ds.Tables[0].Rows[i]["TaxAgencyType"].ToString();
-            if (ds.Tables[0].Rows[i]["IsDelinquent"].ToString() == "Yes")
+            if (ds.Tables[0].Rows[i]["IsDelinquent"].ToString() == "true")
             {
                 TaxAgency.IsDelinquent = true;
             }
@@ -215,7 +226,7 @@ public class Response
             TaxAgency.InstallmentAmount2 = ds.Tables[0].Rows[i]["Instamount2"] != DBNull.Value ? Convert.ToDecimal(ds.Tables[0].Rows[i]["Instamount2"]) : decimalnull;
             TaxAgency.InstallmentAmount3 = ds.Tables[0].Rows[i]["Instamount3"] != DBNull.Value ? Convert.ToDecimal(ds.Tables[0].Rows[i]["Instamount3"]) : decimalnull;
             TaxAgency.InstallmentAmount4 = ds.Tables[0].Rows[i]["Instamount4"] != DBNull.Value ? Convert.ToDecimal(ds.Tables[0].Rows[i]["Instamount4"]) : decimalnull;
-            TaxAgency.InstallmentAmountPaid1 = Convert.ToDecimal(ds.Tables[0].Rows[i]["Instamountpaid1"]);
+            TaxAgency.InstallmentAmountPaid1 = ds.Tables[0].Rows[i]["Instamountpaid1"] != DBNull.Value ? Convert.ToDecimal(ds.Tables[0].Rows[i]["Instamountpaid1"]) : decimalnull;
             TaxAgency.InstallmentAmountPaid2 = ds.Tables[0].Rows[i]["Instamountpaid2"] != DBNull.Value ? Convert.ToDecimal(ds.Tables[0].Rows[i]["Instamountpaid2"]) : decimalnull;
             TaxAgency.InstallmentAmountPaid3 = ds.Tables[0].Rows[i]["Instamountpaid3"] != DBNull.Value ? Convert.ToDecimal(ds.Tables[0].Rows[i]["Instamountpaid3"]) : decimalnull;
             TaxAgency.InstallmentAmountPaid4 = ds.Tables[0].Rows[i]["Instamountpaid4"] != DBNull.Value ? Convert.ToDecimal(ds.Tables[0].Rows[i]["Instamountpaid4"]) : decimalnull;
@@ -536,7 +547,7 @@ public class TaxAgencyDetailsTag
     public Decimal? InstallmentAmount2;
     public Decimal? InstallmentAmount3;
     public Decimal? InstallmentAmount4;
-    public Decimal InstallmentAmountPaid1;
+    public Decimal? InstallmentAmountPaid1;
     public Decimal? InstallmentAmountPaid2;
     public Decimal? InstallmentAmountPaid3;
     public Decimal? InstallmentAmountPaid4;
