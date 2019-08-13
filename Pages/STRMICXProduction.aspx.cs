@@ -109,8 +109,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
             Lblusername.Text = SessionHandler.UserName;
             fetchtaxparceldetails();
             Prior.Visible = false;
-            deliexemspecial.Visible = false;
-            ddlfuturetaxcalc.Enabled = false;
+            deliexemspecial.Visible = false;          
             ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "txtexeSpecial();", true);
         }
     }
@@ -343,6 +342,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
 
     protected void lnkgvOrders_Click(object sender, EventArgs e)
     {
+        ddlfuturetaxcalc.Enabled = false;
         string queryfetchprevious = "";
         queryfetchprevious = "select AgencyId,TaxAgencyType,IsDelinquent from tbl_taxauthorities2 where Orderno = '" + lblord.Text + "' and TaxId = '" + LblTaxID.Text + "' and AgencyId = '" + LblAgencyID.Text + "' and TaxAgencyType = '" + txtTaxType.Text + "'";
         DataSet ds = gl.ExecuteQuery(queryfetchprevious);
@@ -1041,14 +1041,26 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
                     ddlfuturetaxcalc.SelectedIndex = 1;
                     PnlTax1.Visible = true;
                     futuretaxmanual();
-                }
-                if (test == "SameAsCurrent")
-                {
-                    ddlfuturetaxcalc.SelectedIndex = 2;
-                    PnlTax1.Visible = true;
-                    futuretaxsameascurrent();
-                }
+                }               
             }
+        }
+        else if (dsfut.Tables[0].Rows.Count == 0)
+        {            
+            PnlTax1.Visible = false;
+            ddlfuturetaxcalc.SelectedIndex = 0;          
+        }
+
+        string futuresameascu = dtfetchauthority.Rows[0]["FutureTaxOption"].ToString();
+        if (futuresameascu == "SameAsCurrent")
+        {
+            ddlfuturetaxcalc.SelectedIndex = 2;
+            PnlTax1.Visible = true;
+            futuretaxsameascurrent();
+        }
+        else if (futuresameascu == "")
+        {
+            PnlTax1.Visible = false;
+            ddlfuturetaxcalc.SelectedIndex = 0;
         }
 
         btntaxparcels.Enabled = true;
@@ -3206,7 +3218,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
             txtmandisamount4.Attributes.Remove("disabled");
             chkexrelmanu4.Attributes.Remove("disabled");
             ddlmanutaxbill.Attributes.Remove("disabled");
-            ddlpayfreqmanu.Attributes.Remove("disabled");
+            ddlpayfreqmanu.Attributes.Add("disabled", "disabled");
             txtinstcommentsmanual.Attributes.Remove("disabled");
 
             instmanamount1.Value = "";
