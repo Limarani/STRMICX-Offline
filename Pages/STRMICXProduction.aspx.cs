@@ -226,7 +226,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
             GridView gvOrders = e.Row.FindControl("gvOrders") as GridView;
 
             string query = "";
-            query = "select Id,Orderno, TaxId, AgencyId, TaxAuthorityName, TaxAgencyType, TaxAgencyState, Phone, TaxYearStartDate, PreferredContactMethod, JobTitle, City, County, State, ContactType, Zip, Address1  from tbl_taxauthorities2 where TaxId = '" + customerId + "' and FutureTaxOption IS NULL";
+            query = "select Id,Orderno, TaxId, AgencyId, TaxAuthorityName, TaxAgencyType, TaxAgencyState, Phone, TaxYearStartDate, PreferredContactMethod, JobTitle, City, County, State, ContactType, Zip, Address1  from tbl_taxauthorities2 where TaxId = '" + customerId + "' and  (taxbill = 'Current' or taxbill IS NULL)";
             DataSet ds = gl.ExecuteQuery(query);
             gvOrders.DataSource = ds.Tables[0];
             gvOrders.DataBind();
@@ -1007,10 +1007,10 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
 
 
 
-        string futuretaxoption = "select FutureTaxOption from tbl_taxauthorities2 where Orderno = '" + lblord.Text + "' and TaxId = '" + LblTaxID.Text + "' and AgencyId = '" + LblAgencyID.Text + "' and TaxAgencyType = '" + taxagencytype + "'";
+        string futuretaxoption = "select FutureTaxOption from tbl_taxauthorities2 where Orderno = '" + lblord.Text + "' and TaxId = '" + LblTaxID.Text + "' and AgencyId = '" + LblAgencyID.Text + "' and TaxAgencyType = '" + taxagencytype + "' and taxbill = 'FUTURE'";
         DataSet dsfut = gl.ExecuteQuery(futuretaxoption);
 
-        if (dsfut.Tables[0].Rows.Count == 2)
+        if (dsfut.Tables[0].Rows.Count > 0)
         {
             string test = "";
             for (int i = 0; i < dsfut.Tables[0].Rows.Count; i++)
@@ -1256,7 +1256,15 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
             fetchtaxparcel();
             fetchtaxparceldetails();
             paymentfreq(paymentfrequency.Value);
-            futuretaxmanual();
+
+            if (ddlfuturetaxcalc.Text == "Manual")
+            {
+                futuretaxmanual();
+            }
+            if (ddlfuturetaxcalc.Text == "SameAsCurrent")
+            {
+                futuretaxsameascurrent();
+            }
             ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "txtexeSpecial();", true);
             ScriptManager.RegisterStartupScript(this, this.GetType(), "alertMessage", "alert('Data Saved Successfully')", true);
             return;
@@ -1503,7 +1511,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
             Response.Redirect("STRMICXHome.aspx");
         }
 
-        if (lbltransactiontype.Text != "Purchase")
+        if (lbltransactiontype.Text != "PURCHASE")
         {
             dd.Visible = false;
             ddlfuturetaxcalc.Visible = false;
@@ -4627,8 +4635,8 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
         if (future == "Select")
         {
             future = "";
-        }
-            
+        }           
+       
         return gl.Updatetaxauthorities(Procedurename, lblord.Text, LblTaxId1.Text, LblAgencyId1.Text, txtTaxType.Text, txtdeliquent.Text, txtexemption.Text, SecialAssmnt.Text, pastDeliquent.Text, txtResidence.Text, future);
     }
 
