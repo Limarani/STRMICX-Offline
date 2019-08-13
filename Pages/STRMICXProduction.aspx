@@ -45,7 +45,8 @@
             var yyyy = today.getFullYear();
             if (current > yyyy) {
                 document.getElementById('txtdelitaxyear').value = "";
-                document.getElementById('txtdelitaxyear').focus();
+                setTimeout(function () { document.getElementById("txtdelitaxyear").focus(); }, 1);
+                //document.getElementById('txtdelitaxyear').focus();
                 alert("Future year not allowed");
                 return;
             }
@@ -133,7 +134,8 @@
 
             if (delinq1 == inst1) {
                 document.getElementById('delinq1').value = "";
-                document.getElementById("delinq1").focus();
+                setTimeout(function () { document.getElementById("delinq1").focus(); }, 1);
+                //document.getElementById("delinq1").focus();
                 alert('Delinquent date and installment date should not be same...');
                 return;
             }
@@ -145,7 +147,8 @@
 
             if (delinq2 == inst2) {
                 document.getElementById('delinq2').value = "";
-                document.getElementById("delinq2").focus();
+                setTimeout(function () { document.getElementById("delinq2").focus(); }, 1);
+                //document.getElementById("delinq2").focus();
                 alert('Delinquent date and installment date should not be same...');
                 return;
             }
@@ -157,7 +160,8 @@
 
             if (delinq3 == inst3) {
                 document.getElementById('delinq3').value = "";
-                document.getElementById("delinq3").focus();
+                setTimeout(function () { document.getElementById("delinq3").focus(); }, 1);
+                //document.getElementById("delinq3").focus();
                 alert('Delinquent date and installment date should not be same...');
                 return;
             }
@@ -169,7 +173,8 @@
 
             if (delinq4 == inst4) {
                 document.getElementById('delinq4').value = "";
-                document.getElementById("delinq4").focus();
+                setTimeout(function () { document.getElementById("delinq4").focus(); }, 1);
+                //document.getElementById("delinq4").focus();
                 alert('Delinquent date and installment date should not be same...');
                 return;
             }
@@ -181,7 +186,8 @@
 
             if (delinq1 == inst1) {
                 document.getElementById('txtmandeliqdate1').value = "";
-                document.getElementById("txtmandeliqdate1").focus();
+                setTimeout(function () { document.getElementById("txtmandeliqdate1").focus(); }, 1);
+                //document.getElementById("txtmandeliqdate1").focus();
                 alert('Delinquent date and installment date should not be same...');
                 return;
             }
@@ -193,7 +199,8 @@
 
             if (delinq2 == inst2) {
                 document.getElementById('txtmandeliqdate2').value = "";
-                document.getElementById("txtmandeliqdate2").focus();
+                setTimeout(function () { document.getElementById("txtmandeliqdate2").focus(); }, 1);
+                //document.getElementById("txtmandeliqdate2").focus();
                 alert('Delinquent date and installment date should not be same...');
                 return;
             }
@@ -205,7 +212,8 @@
 
             if (delinq3 == inst3) {
                 document.getElementById('txtmandeliqdate3').value = "";
-                document.getElementById("txtmandeliqdate3").focus();
+                setTimeout(function () { document.getElementById("txtmandeliqdate3").focus(); }, 1);
+                //document.getElementById("txtmandeliqdate3").focus();
                 alert('Delinquent date and installment date should not be same...');
                 return;
             }
@@ -217,7 +225,8 @@
 
             if (delinq4 == inst4) {
                 document.getElementById('txtmandeliqdate4').value = "";
-                document.getElementById("txtmandeliqdate4").focus();
+                setTimeout(function () { document.getElementById("txtmandeliqdate4").focus(); }, 1);
+                //document.getElementById("txtmandeliqdate4").focus();
                 alert('Delinquent date and installment date should not be same...');
                 return;
             }
@@ -228,7 +237,8 @@
             var disc1 = document.getElementById("discdate1").value;
             if (disc1 == delinq1) {
                 document.getElementById('discdate1').value = "";
-                document.getElementById("discdate1").focus();
+                setTimeout(function () { document.getElementById("discdate1").focus(); }, 1);
+                //document.getElementById("discdate1").focus();
                 alert('Discount Date and Delinquent Date should not be same...');
                 return;
             }
@@ -239,7 +249,8 @@
             var disc2 = document.getElementById("discdate2").value;
             if (disc2 == delinq2) {
                 document.getElementById('discdate2').value = "";
-                document.getElementById("discdate2").focus();
+                setTimeout(function () { document.getElementById("discdate2").focus(); }, 1);
+                //document.getElementById("discdate2").focus();
                 alert('Discount Date and Delinquent Date should not be same...');
                 return;
             }
@@ -250,7 +261,8 @@
             var disc3 = document.getElementById("discdate3").value;
             if (disc3 == delinq3) {
                 document.getElementById('discdate3').value = "";
-                document.getElementById("discdate3").focus();
+                setTimeout(function () { document.getElementById("discdate2").focus(); }, 1);
+                //document.getElementById("discdate3").focus();
                 alert('Discount Date and Delinquent Date should not be same...');
                 return;
             }
@@ -261,7 +273,8 @@
             var disc4 = document.getElementById("discdate4").value;
             if (disc4 == delinq4) {
                 document.getElementById('discdate4').value = "";
-                document.getElementById("discdate4").focus();
+                setTimeout(function () { document.getElementById("discdate4").focus(); }, 1);
+                //document.getElementById("discdate4").focus();
                 alert('Discount Date and Delinquent Date should not be same...');
                 return;
             }
@@ -272,7 +285,8 @@
             var futdisc1 = document.getElementById("txtmandisdate1").value;
             if (futdisc1 == futdelinq1) {
                 document.getElementById('txtmandisdate1').value = "";
-                document.getElementById("txtmandisdate1").focus();
+                setTimeout(function () { document.getElementById("txtmandisdate1").focus(); }, 1);
+                //document.getElementById("txtmandisdate1").focus();
                 alert('Discount Date and Delinquent Date should not be same...');
                 return;
             }
@@ -283,7 +297,8 @@
             var futdisc2 = document.getElementById("txtmandisdate2").value;
             if (futdisc2 == futdelinq2) {
                 document.getElementById('txtmandisdate2').value = "";
-                document.getElementById("txtmandisdate2").focus();
+                setTimeout(function () { document.getElementById("txtmandisdate2").focus(); }, 1);
+                //document.getElementById("txtmandisdate2").focus();
                 alert('Discount Date and Delinquent Date should not be same...');
                 return;
             }
@@ -294,7 +309,8 @@
             var futdisc3 = document.getElementById("txtmandisdate3").value;
             if (futdisc3 == futdelinq3) {
                 document.getElementById('txtmandisdate3').value = "";
-                document.getElementById("txtmandisdate3").focus();
+                setTimeout(function () { document.getElementById("txtmandisdate3").focus(); }, 1);
+                //document.getElementById("txtmandisdate3").focus();
                 alert('Discount Date and Delinquent Date should not be same...');
                 return;
             }
@@ -305,7 +321,8 @@
             var futdisc4 = document.getElementById("txtmandisdate4").value;
             if (futdisc4 == futdelinq4) {
                 document.getElementById('txtmandisdate4').value = "";
-                document.getElementById("txtmandisdate4").focus();
+                setTimeout(function () { document.getElementById("txtmandisdate4").focus(); }, 1);
+                //document.getElementById("txtmandisdate4").focus();
                 alert('Discount Date and Delinquent Date should not be same...');
                 return;
             }
@@ -894,21 +911,25 @@
             }
             if (Ann == "Annual") {
                 if (Installmenterror1 == "") {
-                    document.getElementById("instdate1").focus();
+                    setTimeout(function () { document.getElementById("instdate1").focus(); }, 1);
+                    //document.getElementById("instdate1").focus();
                     alert("Installment Date1 should be required");
                     return false;
                 }
                 else if ((instamountnew1 == "")) {
-                    document.getElementById("instamount1").focus();
+                    setTimeout(function () { document.getElementById("instamount1").focus(); }, 1);
+                    //document.getElementById("instamount1").focus();
                     alert("Installment Amount Cannot Be Empty");
                     return false;
                 }
                 else if (instamountpaidnew1 == "") {
-                    document.getElementById("instamountpaid1").focus();
+                    setTimeout(function () { document.getElementById("instamountpaid1").focus(); }, 1);
+                    //document.getElementById("instamountpaid1").focus();
                     alert("Installmentamount Paid Cannot Be Empty");
                     return false;
                 }
                 else if (instamountpaidnew1 == "0.00" && remainingbalancenew1 == "0.00" && exemptrelevynew1 == false) {
+                    setTimeout(function () { document.getElementById("instamount1").focus(); }, 1);
                     alert("Installmentamount Paid and remainingbalance Cannot Be Zero");
                     return false;
                 }
@@ -916,38 +937,45 @@
 
             if (Semi == "SemiAnnual") {
                 if (Installmenterror1 == "") {
-                    document.getElementById("instdate1").focus();
+                    setTimeout(function () { document.getElementById("instdate1").focus(); }, 1);
+                    //document.getElementById("instdate1").focus();
                     alert("Installment1 Date1 should be required");
                     return false;
                 }
                 else if (Installmenterror2 == "") {
-                    document.getElementById("instdate2").focus();
+                    setTimeout(function () { document.getElementById("instdate2").focus(); }, 1);
+                    //document.getElementById("instdate2").focus();
                     alert("Installment2 Date2 should be required");
                     return false;
                 }
                 else if ((instamountnew1 == "")) {
-                    document.getElementById("instamount1").focus();
+                    setTimeout(function () { document.getElementById("instamount1").focus(); }, 1);
+                    //document.getElementById("instamount1").focus();
                     alert("Installment Amount Cannot Be Empty");
                     return false;
                 }
                 else if (instamountnew2 == "") {
-                    document.getElementById("instamount2").focus();
+                    setTimeout(function () { document.getElementById("instamount2").focus(); }, 1);
+                    //document.getElementById("instamount2").focus();
                     alert("Installment Amount Cannot Be Empty");
                     return false;
                 }
 
                 else if (instamountpaidnew1 == "") {
-                    document.getElementById("instamountpaid1").focus();
+                    setTimeout(function () { document.getElementById("instamountpaid1").focus(); }, 1);
+                    //document.getElementById("instamountpaid1").focus();
                     alert("Installmentamount Paid Cannot Be Empty");
                     return false;
                 }
                 else if (instamountpaidnew2 == "") {
-                    document.getElementById("instamountpaid2").focus();
+                    setTimeout(function () { document.getElementById("instamountpaid2").focus(); }, 1);
+                    //document.getElementById("instamountpaid2").focus();
                     alert("Installmentamount Paid Cannot Be Empty");
                     return false;
                 }
 
                 else if ((instamountpaidnew1 == "0.00" && remainingbalancenew1 == "0.00" && exemptrelevynew1 == false) || (instamountpaidnew2 == "0.00" && remainingbalancenew2 == "0.00" && exemptrelevynew2 == false)) {
+                    setTimeout(function () { document.getElementById("instamount2").focus(); }, 1);
                     alert("Installmentamount Paid and remainingbalance Cannot Be Zero");
                     return false;
                 }
@@ -955,51 +983,61 @@
 
             if (Tri == "TriAnnual") {
                 if (Installmenterror1 == "") {
-                    document.getElementById("instdate1").focus();
+                    setTimeout(function () { document.getElementById("instdate1").focus(); }, 1);
+                    //document.getElementById("instdate1").focus();
                     alert("Installment Date1 should be required");
                     return false;
                 }
                 else if (Installmenterror2 == "") {
-                    document.getElementById("instdate2").focus();
+                    setTimeout(function () { document.getElementById("instdate2").focus(); }, 1);
+                    //document.getElementById("instdate2").focus();
                     alert("Installment Date2 should be required");
                     return false;
                 }
                 else if (Installmenterror3 == "") {
-                    document.getElementById("instdate3").focus();
+                    setTimeout(function () { document.getElementById("instdate3").focus(); }, 1);
+                    //document.getElementById("instdate3").focus();
                     alert("Installment Date3 should be required");
                     return false;
                 }
                 else if ((instamountnew1 == "")) {
-                    document.getElementById("instamount1").focus();
+                    setTimeout(function () { document.getElementById("instamount1").focus(); }, 1);
+                    //document.getElementById("instamount1").focus();
                     alert("Installment Amount Cannot Be Empty");
                     return false;
                 }
                 else if (instamountnew2 == "") {
-                    document.getElementById("instamount2").focus();
+                    setTimeout(function () { document.getElementById("instamount2").focus(); }, 1);
+                    //document.getElementById("instamount2").focus();
                     alert("Installment Amount Cannot Be Empty");
                     return false;
                 }
                 else if (instamountnew3 == "") {
-                    document.getElementById("instamount3").focus();
+                    setTimeout(function () { document.getElementById("instamount3").focus(); }, 1);
+                    //document.getElementById("instamount3").focus();
                     alert("Installment Amount Cannot Be Empty");
                     return false;
                 }
                 else if (instamountpaidnew1 == "") {
-                    document.getElementById("instamountpaid1").focus();
+                    setTimeout(function () { document.getElementById("instamountpaid1").focus(); }, 1);
+                    //document.getElementById("instamountpaid1").focus();
                     alert("Installmentamount Paid Cannot Be Empty");
                     return false;
                 }
                 else if (instamountpaidnew2 == "") {
-                    document.getElementById("instamountpaid2").focus();
+                    setTimeout(function () { document.getElementById("instamountpaid2").focus(); }, 1);
+                    //document.getElementById("instamountpaid2").focus();
                     alert("Installmentamount Paid Cannot Be Empty");
                     return false;
                 }
                 else if (instamountpaidnew3 == "") {
-                    document.getElementById("instamountpaid3").focus();
+                    setTimeout(function () { document.getElementById("instamountpaid3").focus(); }, 1);
+                    //document.getElementById("instamountpaid3").focus();
                     alert("Installmentamount Paid Cannot Be Empty");
                     return false;
                 }
                 else if ((instamountpaidnew1 == "0.00" && remainingbalancenew1 == "0.00" && exemptrelevynew1 == false) || (instamountpaidnew2 == "0.00" && remainingbalancenew2 == "0.00" && exemptrelevynew2 == false) || (instamountpaidnew3 == "0.00" && remainingbalancenew3 == "0.00" && exemptrelevynew3 == false)) {
+                    setTimeout(function () { document.getElementById("instamount3").focus(); }, 1);
                     alert("Installmentamount Paid and remainingbalance Cannot Be Zero");
                     return false;
                 }
@@ -1007,66 +1045,79 @@
 
             if (Qua == "Quarterly") {
                 if (Installmenterror1 == "") {
-                    document.getElementById("instdate1").focus();
+                    setTimeout(function () { document.getElementById("instdate1").focus(); }, 1);
+                    //document.getElementById("instdate1").focus();
                     alert("Installment Date1 should be required");
                     return false;
                 }
                 else if (Installmenterror2 == "") {
-                    document.getElementById("instdate2").focus();
+                    setTimeout(function () { document.getElementById("instdate2").focus(); }, 1);
+                    //document.getElementById("instdate2").focus();
                     alert("Installment Date2 should be required");
                     return false;
                 }
                 else if (Installmenterror3 == "") {
-                    document.getElementById("instdate3").focus();
+                    setTimeout(function () { document.getElementById("instdate3").focus(); }, 1);
+                    //document.getElementById("instdate3").focus();
                     alert("Installment Date3 should be required");
                     return false;
                 }
                 else if (Installmenterror4 == "") {
-                    document.getElementById("instdate4").focus();
+                    setTimeout(function () { document.getElementById("instdate4").focus(); }, 1);
+                    //document.getElementById("instdate4").focus();
                     alert("Installment Date4 should be required");
                     return false;
                 }
                 else if ((instamountnew1 == "")) {
-                    document.getElementById("instamount1").focus();
+                    setTimeout(function () { document.getElementById("instamount1").focus(); }, 1);
+                    //document.getElementById("instamount1").focus();
                     alert("Installment Amount Cannot Be Empty");
                     return false;
                 }
                 else if (instamountnew2 == "") {
-                    document.getElementById("instamount2").focus();
+                    setTimeout(function () { document.getElementById("instamount2").focus(); }, 1);
+                    //document.getElementById("instamount2").focus();
                     alert("Installment Amount Cannot Be Empty");
                     return false;
                 }
                 else if (instamountnew3 == "") {
-                    document.getElementById("instamount3").focus();
+                    setTimeout(function () { document.getElementById("instamount3").focus(); }, 1);
+                    //document.getElementById("instamount3").focus();
                     alert("Installment Amount Cannot Be Empty");
                     return false;
                 }
                 else if (instamountnew4 == "") {
-                    document.getElementById("instamount4").focus();
+                    setTimeout(function () { document.getElementById("instamount4").focus(); }, 1);
+                    //document.getElementById("instamount4").focus();
                     alert("Installment Amount Cannot Be Empty");
                     return false;
                 }
                 else if (instamountpaidnew1 == "") {
-                    document.getElementById("instamountpaid1").focus();
+                    setTimeout(function () { document.getElementById("instamountpaid1").focus(); }, 1);
+                    //document.getElementById("instamountpaid1").focus();
                     alert("Installmentamount Paid Cannot Be Empty");
                     return false;
                 }
                 else if (instamountpaidnew2 == "") {
-                    document.getElementById("instamountpaid2").focus();
+                    setTimeout(function () { document.getElementById("instamountpaid2").focus(); }, 1);
+                    //document.getElementById("instamountpaid2").focus();
                     alert("Installmentamount Paid Cannot Be Empty");
                     return false;
                 }
                 else if (instamountpaidnew3 == "") {
-                    document.getElementById("instamountpaid3").focus();
+                    setTimeout(function () { document.getElementById("instamountpaid3").focus(); }, 1);
+                    //document.getElementById("instamountpaid3").focus();
                     alert("Installmentamount Paid Cannot Be Empty");
                     return false;
                 }
                 else if (instamountpaidnew4 == "") {
-                    document.getElementById("instamountpaid4").focus();
+                    setTimeout(function () { document.getElementById("instamountpaid4").focus(); }, 1);
+                    //document.getElementById("instamountpaid4").focus();
                     alert("Installmentamount Paid Cannot Be Empty");
                     return false;
                 }
                 else if ((instamountpaidnew1 == "0.00" && remainingbalancenew1 == "0.00" && exemptrelevynew1 == false) || (instamountpaidnew2 == "0.00" && remainingbalancenew2 == "0.00" && exemptrelevynew2 == false) || (instamountpaidnew3 == "0.00" && remainingbalancenew3 == "0.00" && exemptrelevynew3 == false) || (instamountpaidnew4 == "0.00" && remainingbalancenew4 == "0.00" && exemptrelevynew4 == false)) {
+                    setTimeout(function () { document.getElementById("instamount4").focus(); }, 1);
                     alert("Installmentamount Paid and remainingbalance Cannot Be Zero");
                     return false;
                 }
@@ -1095,19 +1146,61 @@
             }
         }
 
+        function samedatenextbill(val) {
+            var inst1 = document.getElementById("instdate1").value;
+            var nextbilldate = document.getElementById("nextbilldate1").value;
+
+            if (nextbilldate == inst1) {
+                document.getElementById('nextbilldate1').value = "";
+                setTimeout(function () { document.getElementById("nextbilldate1").focus(); }, 1);
+                //document.getElementById("nextbilldate1").focus();
+                alert('Next bill date1 and installment date should not be same...');
+                return;
+            }
+
+            var inst2 = document.getElementById("instdate2").value;
+            if (nextbilldate == inst2) {
+                document.getElementById('nextbilldate1').value = "";
+                setTimeout(function () { document.getElementById("nextbilldate1").focus(); }, 1);
+                //document.getElementById("nextbilldate1").focus();
+                alert('Next bill date1 and installment date should not be same...');
+                return;
+            }
+
+            var inst3 = document.getElementById("instdate3").value;
+            if (nextbilldate == inst3) {
+                document.getElementById('nextbilldate1').value = "";
+                setTimeout(function () { document.getElementById("nextbilldate1").focus(); }, 1);
+                //document.getElementById("nextbilldate1").focus();
+                alert('Next bill date1 and installment date should not be same...');
+                return;
+            }
+
+            var inst4 = document.getElementById("instdate4").value;
+            if (nextbilldate == inst4) {
+                document.getElementById('nextbilldate1').value = "";
+                setTimeout(function () { document.getElementById("nextbilldate1").focus(); }, 1);
+                //document.getElementById("nextbilldate1").focus();
+                alert('Next bill date1 and installment date should not be same...');
+                return;
+            }
+        }
+
         function functionfutinst() {
             var Instfuterror, Instfuterror1;
             Instfuterror = document.getElementById("txtmanubillstartdate").value;
             Instfuterror1 = document.getElementById("txtmanubillenddate").value;
 
             if (Instfuterror == "") {
-                document.getElementById("txtmanubillstartdate").focus();
+                setTimeout(function () { document.getElementById("txtmanubillstartdate").focus(); }, 1);
+                //document.getElementById("txtmanubillstartdate").focus();
                 alert("Please enter Billing Start Date...");
                 return false;
             }
 
             if (Instfuterror1 == "") {
-                document.getElementById("txtmanubillenddate").focus();
+                setTimeout(function () { document.getElementById("txtmanubillenddate").focus(); }, 1);
+                //document.getElementById("txtmanubillenddate").focus();
                 alert("Please enter Billing End Date...");
                 return false;
             }
@@ -1155,21 +1248,25 @@
             }
             if (Ann == "Annual") {
                 if (Installmenterror1 == "") {
-                    document.getElementById("txtmaninstdate1").focus();
+                    setTimeout(function () { document.getElementById("txtmaninstdate1").focus(); }, 1);
+                    //document.getElementById("txtmaninstdate1").focus();
                     alert("Installment Date1 should be required");
                     return false;
                 }
                 else if ((instamountnew1 == "")) {
-                    document.getElementById("instmanamount1").focus();
+                    setTimeout(function () { document.getElementById("instmanamount1").focus(); }, 1);
+                    //document.getElementById("instmanamount1").focus();
                     alert("Installment Amount Cannot Be Empty");
                     return false;
                 }
                 else if (instamountpaidnew1 == "") {
-                    document.getElementById("instmanamtpaid1").focus();
+                    setTimeout(function () { document.getElementById("instmanamtpaid1").focus(); }, 1);
+                    //document.getElementById("instmanamtpaid1").focus();
                     alert("Installmentamount Paid Cannot Be Empty");
                     return false;
                 }
                 else if (instamountpaidnew1 == "0.00" && remainingbalancenew1 == "0.00" && exemptrelevynew1 == false) {
+                    setTimeout(function () { document.getElementById("instmanamount1").focus(); }, 1);
                     alert("Installmentamount Paid and remainingbalance Cannot Be Zero");
                     return false;
                 }
@@ -1177,38 +1274,45 @@
 
             if (Semi == "SemiAnnual") {
                 if (Installmenterror1 == "") {
-                    document.getElementById("txtmaninstdate1").focus();
+                    setTimeout(function () { document.getElementById("txtmaninstdate1").focus(); }, 1);
+                    //document.getElementById("txtmaninstdate1").focus();
                     alert("Installment1 Date1 should be required");
                     return false;
                 }
                 else if (Installmenterror2 == "") {
-                    document.getElementById("txtmaninstdate2").focus();
+                    setTimeout(function () { document.getElementById("txtmaninstdate2").focus(); }, 1);
+                    //document.getElementById("txtmaninstdate2").focus();
                     alert("Installment2 Date2 should be required");
                     return false;
                 }
                 else if ((instamountnew1 == "")) {
-                    document.getElementById("instmanamount1").focus();
+                    setTimeout(function () { document.getElementById("instmanamount1").focus(); }, 1);
+                    //document.getElementById("instmanamount1").focus();
                     alert("Installment Amount Cannot Be Empty");
                     return false;
                 }
                 else if (instamountnew2 == "") {
-                    document.getElementById("instmanamount2").focus();
+                    setTimeout(function () { document.getElementById("instmanamount2").focus(); }, 1);
+                    //document.getElementById("instmanamount2").focus();
                     alert("Installment Amount Cannot Be Empty");
                     return false;
                 }
 
                 else if (instamountpaidnew1 == "") {
-                    document.getElementById("instmanamtpaid1").focus();
+                    setTimeout(function () { document.getElementById("instmanamtpaid1").focus(); }, 1);
+                    //document.getElementById("instmanamtpaid1").focus();
                     alert("Installmentamount Paid Cannot Be Empty");
                     return false;
                 }
                 else if (instamountpaidnew2 == "") {
-                    document.getElementById("instmanamtpaid2").focus();
+                    setTimeout(function () { document.getElementById("instmanamtpaid2").focus(); }, 1);
+                    //document.getElementById("instmanamtpaid2").focus();
                     alert("Installmentamount Paid Cannot Be Empty");
                     return false;
                 }
 
                 else if ((instamountpaidnew1 == "0.00" && remainingbalancenew1 == "0.00" && exemptrelevynew1 == false) || (instamountpaidnew2 == "0.00" && remainingbalancenew2 == "0.00" && exemptrelevynew2 == false)) {
+                    setTimeout(function () { document.getElementById("instmanamount2").focus(); }, 1);
                     alert("Installmentamount Paid and remainingbalance Cannot Be Zero");
                     return false;
                 }
@@ -1216,51 +1320,61 @@
 
             if (Tri == "TriAnnual") {
                 if (Installmenterror1 == "") {
-                    document.getElementById("txtmaninstdate1").focus();
+                    setTimeout(function () { document.getElementById("txtmaninstdate1").focus(); }, 1);
+                    //document.getElementById("txtmaninstdate1").focus();
                     alert("Installment Date1 should be required");
                     return false;
                 }
                 else if (Installmenterror2 == "") {
-                    document.getElementById("txtmaninstdate2").focus();
+                    setTimeout(function () { document.getElementById("txtmaninstdate2").focus(); }, 1);
+                    //document.getElementById("txtmaninstdate2").focus();
                     alert("Installment Date2 should be required");
                     return false;
                 }
                 else if (Installmenterror3 == "") {
-                    document.getElementById("txtmaninstdate3").focus();
+                    setTimeout(function () { document.getElementById("txtmaninstdate3").focus(); }, 1);
+                    //document.getElementById("txtmaninstdate3").focus();
                     alert("Installment Date3 should be required");
                     return false;
                 }
                 else if ((instamountnew1 == "")) {
-                    document.getElementById("instmanamount1").focus();
+                    setTimeout(function () { document.getElementById("instmanamount1").focus(); }, 1);
+                    //document.getElementById("instmanamount1").focus();
                     alert("Installment Amount Cannot Be Empty");
                     return false;
                 }
                 else if (instamountnew2 == "") {
-                    document.getElementById("instmanamount2").focus();
+                    setTimeout(function () { document.getElementById("instmanamount2").focus(); }, 1);
+                    //document.getElementById("instmanamount2").focus();
                     alert("Installment Amount Cannot Be Empty");
                     return false;
                 }
                 else if (instamountnew3 == "") {
-                    document.getElementById("instmanamount3").focus();
+                    setTimeout(function () { document.getElementById("instmanamount3").focus(); }, 1);
+                    //document.getElementById("instmanamount3").focus();
                     alert("Installment Amount Cannot Be Empty");
                     return false;
                 }
                 else if (instamountpaidnew1 == "") {
-                    document.getElementById("instmanamtpaid1").focus();
+                    setTimeout(function () { document.getElementById("instmanamtpaid1").focus(); }, 1);
+                    //document.getElementById("instmanamtpaid1").focus();
                     alert("Installmentamount Paid Cannot Be Empty");
                     return false;
                 }
                 else if (instamountpaidnew2 == "") {
-                    document.getElementById("instmanamtpaid2").focus();
+                    setTimeout(function () { document.getElementById("instmanamtpaid2").focus(); }, 1);
+                    //document.getElementById("instmanamtpaid2").focus();
                     alert("Installmentamount Paid Cannot Be Empty");
                     return false;
                 }
                 else if (instamountpaidnew3 == "") {
-                    document.getElementById("instmanamtpaid3").focus();
+                    setTimeout(function () { document.getElementById("instmanamtpaid3").focus(); }, 1);
+                    //document.getElementById("instmanamtpaid3").focus();
                     alert("Installmentamount Paid Cannot Be Empty");
                     return false;
                 }
                 else if ((instamountpaidnew1 == "0.00" && remainingbalancenew1 == "0.00" && exemptrelevynew1 == false) || (instamountpaidnew2 == "0.00" && remainingbalancenew2 == "0.00" && exemptrelevynew2 == false) || (instamountpaidnew3 == "0.00" && remainingbalancenew3 == "0.00" && exemptrelevynew3 == false)) {
+                    setTimeout(function () { document.getElementById("instmanamount3").focus(); }, 1);
                     alert("Installmentamount Paid and remainingbalance Cannot Be Zero");
                     return false;
                 }
@@ -1268,66 +1382,79 @@
 
             if (Qua == "Quarterly") {
                 if (Installmenterror1 == "") {
-                    document.getElementById("txtmaninstdate1").focus();
+                    setTimeout(function () { document.getElementById("txtmaninstdate1").focus(); }, 1);
+                    //document.getElementById("txtmaninstdate1").focus();
                     alert("Installment Date1 should be required");
                     return false;
                 }
                 else if (Installmenterror2 == "") {
-                    document.getElementById("txtmaninstdate2").focus();
+                    setTimeout(function () { document.getElementById("txtmaninstdate2").focus(); }, 1);
+                    //document.getElementById("txtmaninstdate2").focus();
                     alert("Installment Date2 should be required");
                     return false;
                 }
                 else if (Installmenterror3 == "") {
-                    document.getElementById("txtmaninstdate3").focus();
+                    setTimeout(function () { document.getElementById("txtmaninstdate3").focus(); }, 1);
+                    //document.getElementById("txtmaninstdate3").focus();
                     alert("Installment Date3 should be required");
                     return false;
                 }
                 else if (Installmenterror4 == "") {
-                    document.getElementById("txtmaninstdate4").focus();
+                    setTimeout(function () { document.getElementById("txtmaninstdate4").focus(); }, 1);
+                    //document.getElementById("txtmaninstdate4").focus();
                     alert("Installment Date4 should be required");
                     return false;
                 }
                 else if ((instamountnew1 == "")) {
-                    document.getElementById("instmanamount1").focus();
+                    setTimeout(function () { document.getElementById("instmanamount1").focus(); }, 1);
+                    //document.getElementById("instmanamount1").focus();
                     alert("Installment Amount Cannot Be Empty");
                     return false;
                 }
                 else if (instamountnew2 == "") {
-                    document.getElementById("instmanamount2").focus();
+                    setTimeout(function () { document.getElementById("instmanamount2").focus(); }, 1);
+                    //document.getElementById("instmanamount2").focus();
                     alert("Installment Amount Cannot Be Empty");
                     return false;
                 }
                 else if (instamountnew3 == "") {
-                    document.getElementById("instmanamount3").focus();
+                    setTimeout(function () { document.getElementById("instmanamount3").focus(); }, 1);
+                    //document.getElementById("instmanamount3").focus();
                     alert("Installment Amount Cannot Be Empty");
                     return false;
                 }
                 else if (instamountnew4 == "") {
-                    document.getElementById("instmanamount4").focus();
+                    setTimeout(function () { document.getElementById("instmanamount4").focus(); }, 1);
+                    //document.getElementById("instmanamount4").focus();
                     alert("Installment Amount Cannot Be Empty");
                     return false;
                 }
                 else if (instamountpaidnew1 == "") {
-                    document.getElementById("instmanamtpaid1").focus();
+                    setTimeout(function () { document.getElementById("instmanamtpaid1").focus(); }, 1);
+                    //document.getElementById("instmanamtpaid1").focus();
                     alert("Installmentamount Paid Cannot Be Empty");
                     return false;
                 }
                 else if (instamountpaidnew2 == "") {
-                    document.getElementById("instmanamtpaid2").focus();
+                    setTimeout(function () { document.getElementById("instmanamtpaid2").focus(); }, 1);
+                    //document.getElementById("instmanamtpaid2").focus();
                     alert("Installmentamount Paid Cannot Be Empty");
                     return false;
                 }
                 else if (instamountpaidnew3 == "") {
-                    document.getElementById("instmanamtpaid3").focus();
+                    setTimeout(function () { document.getElementById("instmanamtpaid3").focus(); }, 1);
+                    //document.getElementById("instmanamtpaid3").focus();
                     alert("Installmentamount Paid Cannot Be Empty");
                     return false;
                 }
                 else if (instamountpaidnew4 == "") {
-                    document.getElementById("instmanamtpaid4").focus();
+                    setTimeout(function () { document.getElementById("instmanamtpaid4").focus(); }, 1);
+                    //document.getElementById("instmanamtpaid4").focus();
                     alert("Installmentamount Paid Cannot Be Empty");
                     return false;
                 }
                 else if ((instamountpaidnew1 == "0.00" && remainingbalancenew1 == "0.00" && exemptrelevynew1 == false) || (instamountpaidnew2 == "0.00" && remainingbalancenew2 == "0.00" && exemptrelevynew2 == false) || (instamountpaidnew3 == "0.00" && remainingbalancenew3 == "0.00" && exemptrelevynew3 == false) || (instamountpaidnew4 == "0.00" && remainingbalancenew4 == "0.00" && exemptrelevynew4 == false)) {
+                    setTimeout(function () { document.getElementById("instmanamount4").focus(); }, 1);
                     alert("Installmentamount Paid and remaining Balance Cannot Be Zero");
                     return false;
                 }
@@ -1346,7 +1473,6 @@
 
         //balaji
         function completeorder() {
-            debugger;
             var comerror;
             comerror = document.getElementById("ddlstatus").value;
 
@@ -1361,7 +1487,8 @@
 
             if (delistatus == "Yes") {
                 if (delirows.length == 1) {
-                    document.getElementById('txtdeliPayee').focus();
+                    setTimeout(function () { document.getElementById("txtdeliPayee").focus(); }, 1);
+                    //document.getElementById('txtdeliPayee').focus();
                     alert("Deliquent Status is required");
                     return false;
                 }
@@ -1378,7 +1505,8 @@
 
             if (exestatus == "Yes") {
                 if (exerows.length == 1) {
-                    document.getElementById('txtexetype').focus();
+                    setTimeout(function () { document.getElementById("txtexetype").focus(); }, 1);
+                    //document.getElementById('txtexetype').focus();
                     alert("Exemption Status is required");
                     return false;
                 }
@@ -1402,7 +1530,8 @@
 
             if (specialstatus == "Yes") {
                 if (specrows.length == 1) {
-                    document.getElementById('txtInstallRemain').focus();
+                    setTimeout(function () { document.getElementById("txtInstallRemain").focus(); }, 1);
+                    //document.getElementById('txtInstallRemain').focus();
                     alert("Special Assessment is required");
                     return false;
                 }
@@ -1421,7 +1550,8 @@
 
                 if (priordeli == "Yes") {
                     if (priorrows.length == 1) {
-                        document.getElementById('txtpriodeli').focus();
+                        setTimeout(function () { document.getElementById("txtpriodeli").focus(); }, 1);
+                        //document.getElementById('txtpriodeli').focus();
                         alert("Prior Delinquent is required");
                         return false;
                     }
@@ -1872,16 +2002,6 @@
             }
         }
 
-        function functioncomplete() {
-            var Completeerror;
-            Completeerror = document.getElementById("ddlstatus").value;
-
-            if (Completeerror == '--Select--') {
-                alert("Please Choose Any One Status Option");
-                return false;
-            }
-        }
-
         function checkinstdate1() {
             var startDate = document.getElementById("instdate1").value;
             var endDate = document.getElementById("instdate2").value;
@@ -1890,19 +2010,22 @@
             if (startDate == "") {
                 if (endDate != "") {
                     document.getElementById("instdate2").value = "";
-                    document.getElementById('instdate2').focus();
+                    setTimeout(function () { document.getElementById("instdate2").focus(); }, 1);
+                    //document.getElementById('instdate2').focus();
                     alert("Installment Date1 Should not be Empty");
                     return;
                 }
                 if (startDate1 != "") {
                     document.getElementById("instdate3").value = "";
-                    document.getElementById('instdate3').focus();
+                    setTimeout(function () { document.getElementById("instdate3").focus(); }, 1);
+                    //document.getElementById('instdate3').focus();
                     alert("Installment Date1 Should not be Empty");
                     return;
                 }
                 if (endDate1 != "") {
                     document.getElementById("instdate4").value = "";
-                    document.getElementById('instdate4').focus();
+                    setTimeout(function () { document.getElementById("instdate4").focus(); }, 1);
+                    //document.getElementById('instdate4').focus();
                     alert("Installment Date1 Should not be Empty");
                     return;
                 }
@@ -1911,13 +2034,15 @@
             if (endDate == "") {
                 if (startDate1 != "") {
                     document.getElementById("instdate3").value = "";
-                    document.getElementById('instdate3').focus();
+                    setTimeout(function () { document.getElementById("instdate3").focus(); }, 1);
+                    //document.getElementById('instdate3').focus();
                     alert("Installment Date2 Should not be Empty");
                     return;
                 }
                 if (endDate1 != "") {
                     document.getElementById("instdate4").value = "";
-                    document.getElementById('instdate4').focus();
+                    setTimeout(function () { document.getElementById("instdate4").focus(); }, 1);
+                    //document.getElementById('instdate4').focus();
                     alert("Installment Date2 Should not be Empty");
                     return;
                 }
@@ -1925,7 +2050,8 @@
             if (startDate1 == "") {
                 if (endDate1 != "") {
                     document.getElementById("instdate4").value = "";
-                    document.getElementById('instdate4').focus();
+                    setTimeout(function () { document.getElementById("instdate4").focus(); }, 1);
+                    //document.getElementById('instdate4').focus();
                     alert("Installment Date3 Should not be Empty");
                     return;
                 }
@@ -1971,19 +2097,22 @@
             if (startDate == "") {
                 if (endDate != "") {
                     document.getElementById("instdate2").value = "";
-                    document.getElementById('instdate2').focus();
+                    setTimeout(function () { document.getElementById("instdate2").focus(); }, 1);
+                    //document.getElementById('instdate2').focus();
                     alert("Installment Date1 Should not be Empty");
                     return;
                 }
                 if (startDate1 != "") {
                     document.getElementById("instdate3").value = "";
-                    document.getElementById('instdate3').focus();
+                    setTimeout(function () { document.getElementById("instdate3").focus(); }, 1);
+                    //document.getElementById('instdate3').focus();
                     alert("Installment Date1 Should not be Empty");
                     return;
                 }
                 if (endDate1 != "") {
                     document.getElementById("instdate4").value = "";
-                    document.getElementById('instdate4').focus();
+                    setTimeout(function () { document.getElementById("instdate4").focus(); }, 1);
+                    //document.getElementById('instdate4').focus();
                     alert("Installment Date1 Should not be Empty");
                     return;
                 }
@@ -1991,13 +2120,15 @@
             if (endDate == "") {
                 if (startDate1 != "") {
                     document.getElementById("instdate3").value = "";
-                    document.getElementById('instdate3').focus();
+                    setTimeout(function () { document.getElementById("instdate3").focus(); }, 1);
+                    //document.getElementById('instdate3').focus();
                     alert("Installment Date2 Should not be Empty");
                     return;
                 }
                 if (endDate1 != "") {
                     document.getElementById("instdate4").value = "";
-                    document.getElementById('instdate4').focus();
+                    setTimeout(function () { document.getElementById("instdate4").focus(); }, 1);
+                    //document.getElementById('instdate4').focus();
                     alert("Installment Date2 Should not be Empty");
                     return;
                 }
@@ -2005,7 +2136,8 @@
             if (startDate1 == "") {
                 if (endDate1 != "") {
                     document.getElementById("instdate4").value = "";
-                    document.getElementById('instdate4').focus();
+                    setTimeout(function () { document.getElementById("instdate4").focus(); }, 1);
+                    //document.getElementById('instdate4').focus();
                     alert("Installment Date3 Should not be Empty");
                     return;
                 }
@@ -2051,19 +2183,22 @@
             if (startDate == "") {
                 if (endDate != "") {
                     document.getElementById("instdate2").value = "";
-                    document.getElementById('instdate2').focus();
+                    setTimeout(function () { document.getElementById("instdate2").focus(); }, 1);
+                    //document.getElementById('instdate2').focus();
                     alert("Installment Date1 Should not be Empty");
                     return;
                 }
                 if (startDate1 != "") {
                     document.getElementById("instdate3").value = "";
-                    document.getElementById('instdate3').focus();
+                    setTimeout(function () { document.getElementById("instdate3").focus(); }, 1);
+                    //document.getElementById('instdate3').focus();
                     alert("Installment Date1 Should not be Empty");
                     return;
                 }
                 if (endDate1 != "") {
                     document.getElementById("instdate4").value = "";
-                    document.getElementById('instdate4').focus();
+                    setTimeout(function () { document.getElementById("instdate4").focus(); }, 1);
+                    //document.getElementById('instdate4').focus();
                     alert("Installment Date1 Should not be Empty");
                     return;
                 }
@@ -2071,13 +2206,15 @@
             if (endDate == "") {
                 if (startDate1 != "") {
                     document.getElementById("instdate3").value = "";
-                    document.getElementById('instdate3').focus();
+                    setTimeout(function () { document.getElementById("instdate3").focus(); }, 1);
+                    //document.getElementById('instdate3').focus();
                     alert("Installment Date2 Should not be Empty");
                     return;
                 }
                 if (endDate1 != "") {
                     document.getElementById("instdate4").value = "";
-                    document.getElementById('instdate4').focus();
+                    setTimeout(function () { document.getElementById("instdate4").focus(); }, 1);
+                    //document.getElementById('instdate4').focus();
                     alert("Installment Date2 Should not be Empty");
                     return;
                 }
@@ -2085,7 +2222,8 @@
             if (startDate1 == "") {
                 if (endDate1 != "") {
                     document.getElementById("instdate4").value = "";
-                    document.getElementById('instdate4').focus();
+                    setTimeout(function () { document.getElementById("instdate4").focus(); }, 1);
+                    //document.getElementById('instdate4').focus();
                     alert("Installment Date3 Should not be Empty");
                     return;
                 }
@@ -2131,19 +2269,22 @@
             if (startDate == "") {
                 if (endDate != "") {
                     document.getElementById("instdate2").value = "";
-                    document.getElementById('instdate2').focus();
+                    setTimeout(function () { document.getElementById("instdate2").focus(); }, 1);
+                    //document.getElementById('instdate2').focus();
                     alert("Installment Date1 Should not be Empty");
                     return;
                 }
                 if (startDate1 != "") {
                     document.getElementById("instdate3").value = "";
-                    document.getElementById('instdate3').focus();
+                    setTimeout(function () { document.getElementById("instdate3").focus(); }, 1);
+                    //document.getElementById('instdate3').focus();
                     alert("Installment Date1 Should not be Empty");
                     return;
                 }
                 if (endDate1 != "") {
                     document.getElementById("instdate4").value = "";
-                    document.getElementById('instdate4').focus();
+                    setTimeout(function () { document.getElementById("instdate4").focus(); }, 1);
+                    //document.getElementById('instdate4').focus();
                     alert("Installment Date1 Should not be Empty");
                     return;
                 }
@@ -2151,13 +2292,15 @@
             if (endDate == "") {
                 if (startDate1 != "") {
                     document.getElementById("instdate3").value = "";
-                    document.getElementById('instdate3').focus();
+                    setTimeout(function () { document.getElementById("instdate3").focus(); }, 1);
+                    //document.getElementById('instdate3').focus();
                     alert("Installment Date2 Should not be Empty");
                     return;
                 }
                 if (endDate1 != "") {
                     document.getElementById("instdate4").value = "";
-                    document.getElementById('instdate4').focus();
+                    setTimeout(function () { document.getElementById("instdate4").focus(); }, 1);
+                    //document.getElementById('instdate4').focus();
                     alert("Installment Date2 Should not be Empty");
                     return;
                 }
@@ -2165,7 +2308,8 @@
             if (startDate1 == "") {
                 if (endDate1 != "") {
                     document.getElementById("instdate4").value = "";
-                    document.getElementById('instdate4').focus();
+                    setTimeout(function () { document.getElementById("instdate4").focus(); }, 1);
+                    //document.getElementById('instdate4').focus();
                     alert("Installment Date3 Should not be Empty");
                     return;
                 }
@@ -2231,19 +2375,22 @@
             if (fstartDate == "") {
                 if (fendDate != "") {
                     document.getElementById("txtmaninstdate2").value = "";
-                    document.getElementById('txtmaninstdate2').focus();
+                    setTimeout(function () { document.getElementById("txtmaninstdate2").focus(); }, 1);
+                    //document.getElementById('txtmaninstdate2').focus();
                     alert("Installment Date1 Should not be Empty");
                     return;
                 }
                 if (fstartDate1 != "") {
                     document.getElementById("txtmaninstdate3").value = "";
-                    document.getElementById('txtmaninstdate3').focus();
+                    setTimeout(function () { document.getElementById("txtmaninstdate3").focus(); }, 1);
+                    //document.getElementById('txtmaninstdate3').focus();
                     alert("Installment Date1 Should not be Empty");
                     return;
                 }
                 if (fendDate1 != "") {
                     document.getElementById("txtmaninstdate4").value = "";
-                    document.getElementById('txtmaninstdate4').focus();
+                    setTimeout(function () { document.getElementById("txtmaninstdate4").focus(); }, 1);
+                    //document.getElementById('txtmaninstdate4').focus();
                     alert("Installment Date1 Should not be Empty");
                     return;
                 }
@@ -2252,13 +2399,15 @@
             if (fendDate == "") {
                 if (fstartDate1 != "") {
                     document.getElementById("txtmaninstdate3").value = "";
-                    document.getElementById('txtmaninstdate3').focus();
+                    setTimeout(function () { document.getElementById("txtmaninstdate3").focus(); }, 1);
+                    //document.getElementById('txtmaninstdate3').focus();
                     alert("Installment Date2 Should not be Empty");
                     return;
                 }
                 if (fendDate1 != "") {
                     document.getElementById("txtmaninstdate4").value = "";
-                    document.getElementById('txtmaninstdate4').focus();
+                    setTimeout(function () { document.getElementById("txtmaninstdate4").focus(); }, 1);
+                    //document.getElementById('txtmaninstdate4').focus();
                     alert("Installment Date2 Should not be Empty");
                     return;
                 }
@@ -2266,7 +2415,8 @@
             if (fstartDate1 == "") {
                 if (fendDate1 != "") {
                     document.getElementById("txtmaninstdate4").value = "";
-                    document.getElementById('txtmaninstdate4').focus();
+                    setTimeout(function () { document.getElementById("txtmaninstdate4").focus(); }, 1);
+                    //document.getElementById('txtmaninstdate4').focus();
                     alert("Installment Date3 Should not be Empty");
                     return;
                 }
@@ -2312,19 +2462,22 @@
             if (fstartDate == "") {
                 if (fendDate != "") {
                     document.getElementById("txtmaninstdate2").value = "";
-                    document.getElementById('txtmaninstdate2').focus();
+                    setTimeout(function () { document.getElementById("txtmaninstdate2").focus(); }, 1);
+                    //document.getElementById('txtmaninstdate2').focus();
                     alert("Installment Date1 Should not be Empty");
                     return;
                 }
                 if (fstartDate1 != "") {
                     document.getElementById("txtmaninstdate3").value = "";
-                    document.getElementById('txtmaninstdate3').focus();
+                    setTimeout(function () { document.getElementById("txtmaninstdate3").focus(); }, 1);
+                    //document.getElementById('txtmaninstdate3').focus();
                     alert("Installment Date1 Should not be Empty");
                     return;
                 }
                 if (fendDate1 != "") {
                     document.getElementById("txtmaninstdate4").value = "";
-                    document.getElementById('txtmaninstdate4').focus();
+                    setTimeout(function () { document.getElementById("txtmaninstdate4").focus(); }, 1);
+                    //document.getElementById('txtmaninstdate4').focus();
                     alert("Installment Date1 Should not be Empty");
                     return;
                 }
@@ -2332,13 +2485,15 @@
             if (fendDate == "") {
                 if (fstartDate1 != "") {
                     document.getElementById("txtmaninstdate3").value = "";
-                    document.getElementById('txtmaninstdate3').focus();
+                    setTimeout(function () { document.getElementById("txtmaninstdate3").focus(); }, 1);
+                    //document.getElementById('txtmaninstdate3').focus();
                     alert("Installment Date2 Should not be Empty");
                     return;
                 }
                 if (fendDate1 != "") {
                     document.getElementById("txtmaninstdate4").value = "";
-                    document.getElementById('txtmaninstdate4').focus();
+                    setTimeout(function () { document.getElementById("txtmaninstdate4").focus(); }, 1);
+                    //document.getElementById('txtmaninstdate4').focus();
                     alert("Installment Date2 Should not be Empty");
                     return;
                 }
@@ -2346,7 +2501,8 @@
             if (fstartDate1 == "") {
                 if (fendDate1 != "") {
                     document.getElementById("txtmaninstdate4").value = "";
-                    document.getElementById('txtmaninstdate4').focus();
+                    setTimeout(function () { document.getElementById("txtmaninstdate4").focus(); }, 1);
+                    //document.getElementById('txtmaninstdate4').focus();
                     alert("Installment Date3 Should not be Empty");
                     return;
                 }
@@ -2392,19 +2548,22 @@
             if (fstartDate == "") {
                 if (fendDate != "") {
                     document.getElementById("txtmaninstdate2").value = "";
-                    document.getElementById('txtmaninstdate2').focus();
+                    setTimeout(function () { document.getElementById("txtmaninstdate2").focus(); }, 1);
+                    //document.getElementById('txtmaninstdate2').focus();
                     alert("Installment Date1 Should not be Empty");
                     return;
                 }
                 if (fstartDate1 != "") {
                     document.getElementById("txtmaninstdate3").value = "";
-                    document.getElementById('txtmaninstdate3').focus();
+                    setTimeout(function () { document.getElementById("txtmaninstdate3").focus(); }, 1);
+                    //document.getElementById('txtmaninstdate3').focus();
                     alert("Installment Date1 Should not be Empty");
                     return;
                 }
                 if (fendDate1 != "") {
                     document.getElementById("txtmaninstdate4").value = "";
-                    document.getElementById('txtmaninstdate4').focus();
+                    setTimeout(function () { document.getElementById("txtmaninstdate4").focus(); }, 1);
+                    //document.getElementById('txtmaninstdate4').focus();
                     alert("Installment Date1 Should not be Empty");
                     return;
                 }
@@ -2412,13 +2571,15 @@
             if (fendDate == "") {
                 if (fstartDate1 != "") {
                     document.getElementById("txtmaninstdate3").value = "";
-                    document.getElementById('txtmaninstdate3').focus();
+                    setTimeout(function () { document.getElementById("txtmaninstdate3").focus(); }, 1);
+                    //document.getElementById('txtmaninstdate3').focus();
                     alert("Installment Date2 Should not be Empty");
                     return;
                 }
                 if (fendDate1 != "") {
                     document.getElementById("txtmaninstdate4").value = "";
-                    document.getElementById('txtmaninstdate4').focus();
+                    setTimeout(function () { document.getElementById("txtmaninstdate4").focus(); }, 1);
+                    //document.getElementById('txtmaninstdate4').focus();
                     alert("Installment Date2 Should not be Empty");
                     return;
                 }
@@ -2426,7 +2587,8 @@
             if (fstartDate1 == "") {
                 if (fendDate1 != "") {
                     document.getElementById("txtmaninstdate4").value = "";
-                    document.getElementById('txtmaninstdate4').focus();
+                    setTimeout(function () { document.getElementById("txtmaninstdate4").focus(); }, 1);
+                    //document.getElementById('txtmaninstdate4').focus();
                     alert("Installment Date3 Should not be Empty");
                     return;
                 }
@@ -2472,19 +2634,22 @@
             if (fstartDate == "") {
                 if (fendDate != "") {
                     document.getElementById("txtmaninstdate2").value = "";
-                    document.getElementById('txtmaninstdate2').focus();
+                    setTimeout(function () { document.getElementById("txtmaninstdate2").focus(); }, 1);
+                    //document.getElementById('txtmaninstdate2').focus();
                     alert("Installment Date1 Should not be Empty");
                     return;
                 }
                 if (fstartDate1 != "") {
                     document.getElementById("txtmaninstdate3").value = "";
-                    document.getElementById('txtmaninstdate3').focus();
+                    setTimeout(function () { document.getElementById("txtmaninstdate3").focus(); }, 1);
+                    //document.getElementById('txtmaninstdate3').focus();
                     alert("Installment Date1 Should not be Empty");
                     return;
                 }
                 if (fendDate1 != "") {
                     document.getElementById("txtmaninstdate4").value = "";
-                    document.getElementById('txtmaninstdate4').focus();
+                    setTimeout(function () { document.getElementById("txtmaninstdate4").focus(); }, 1);
+                    //document.getElementById('txtmaninstdate4').focus();
                     alert("Installment Date1 Should not be Empty");
                     return;
                 }
@@ -2492,13 +2657,15 @@
             if (fendDate == "") {
                 if (fstartDate1 != "") {
                     document.getElementById("txtmaninstdate3").value = "";
-                    document.getElementById('txtmaninstdate3').focus();
+                    setTimeout(function () { document.getElementById("txtmaninstdate3").focus(); }, 1);
+                    //document.getElementById('txtmaninstdate3').focus();
                     alert("Installment Date2 Should not be Empty");
                     return;
                 }
                 if (fendDate1 != "") {
                     document.getElementById("txtmaninstdate4").value = "";
-                    document.getElementById('txtmaninstdate4').focus();
+                    setTimeout(function () { document.getElementById("txtmaninstdate4").focus(); }, 1);
+                    //document.getElementById('txtmaninstdate4').focus();
                     alert("Installment Date2 Should not be Empty");
                     return;
                 }
@@ -2506,7 +2673,8 @@
             if (fstartDate1 == "") {
                 if (fendDate1 != "") {
                     document.getElementById("txtmaninstdate4").value = "";
-                    document.getElementById('txtmaninstdate4').focus();
+                    setTimeout(function () { document.getElementById("txtmaninstdate4").focus(); }, 1);
+                    //document.getElementById('txtmaninstdate4').focus();
                     alert("Installment Date3 Should not be Empty");
                     return;
                 }
@@ -2972,10 +3140,16 @@
 
             var regex1 = /[.,\s]/g;
             var result1 = discountamnt1.replace(regex1, '');
+            //var n = discountamnt1.includes(".00");
+
+            //if (n = ".00") {
+            //    result1 = (result1 - (result1 % 100)) / 100;
+            //}
 
             if (result1 > result) {
                 document.getElementById('discamt1').value = "";
-                document.getElementById('discamt1').focus();
+                setTimeout(function () { document.getElementById("discamt1").focus(); }, 1);
+                //document.getElementById('discamt1').focus();
                 alert("Discount amount cannot be greater than the installment amount...");
                 return;
             }
@@ -2994,7 +3168,8 @@
 
             if (result11 > result1) {
                 document.getElementById('discamt2').value = "";
-                document.getElementById('discamt2').focus();
+                setTimeout(function () { document.getElementById("discamt2").focus(); }, 1);
+                //document.getElementById('discamt2').focus();
                 alert("Discount amount cannot be greater than the installment amount...");
                 return;
             }
@@ -3013,7 +3188,8 @@
 
             if (result111 > result11) {
                 document.getElementById('discamt3').value = "";
-                document.getElementById('discamt3').focus();
+                setTimeout(function () { document.getElementById("discamt3").focus(); }, 1);
+                //document.getElementById('discamt3').focus();
                 alert("Discount amount cannot be greater than the installment amount...");
                 return;
             }
@@ -3032,7 +3208,8 @@
 
             if (result1111 > result111) {
                 document.getElementById('discamt4').value = "";
-                document.getElementById('discamt4').focus();
+                setTimeout(function () { document.getElementById("discamt4").focus(); }, 1);
+                //document.getElementById('discamt4').focus();
                 alert("Discount amount cannot be greater than the installment amount...");
                 return;
             }
@@ -3147,7 +3324,8 @@
 
             if (result1 > result) {
                 document.getElementById('txtmandisamount1').value = "";
-                document.getElementById('txtmandisamount1').focus();
+                setTimeout(function () { document.getElementById("txtmandisamount1").focus(); }, 1);
+                //document.getElementById('txtmandisamount1').focus();
                 alert("Discount amount cannot be greater than the installment amount...");
                 return;
             }
@@ -3166,7 +3344,8 @@
 
             if (result1 > result) {
                 document.getElementById('txtmandisamount2').value = "";
-                document.getElementById('txtmandisamount2').focus();
+                setTimeout(function () { document.getElementById("txtmandisamount2").focus(); }, 1);
+                //document.getElementById('txtmandisamount2').focus();
                 alert("Discount amount cannot be greater than the installment amount...");
                 return;
             }
@@ -3185,7 +3364,8 @@
 
             if (result1 > result) {
                 document.getElementById('txtmandisamount3').value = "";
-                document.getElementById('txtmandisamount3').focus();
+                setTimeout(function () { document.getElementById("txtmandisamount3").focus(); }, 1);
+                //document.getElementById('txtmandisamount3').focus();
                 alert("Discount amount cannot be greater than the installment amount...");
                 return;
             }
@@ -3204,7 +3384,8 @@
 
             if (result1 > result) {
                 document.getElementById('txtmandisamount4').value = "";
-                document.getElementById('txtmandisamount4').focus();
+                setTimeout(function () { document.getElementById("txtmandisamount4").focus(); }, 1);
+                //document.getElementById('txtmandisamount4').focus();
                 alert("Discount amount cannot be greater than the installment amount...");
                 return;
             }
@@ -4423,7 +4604,8 @@
             if (year != "") {
                 if (year < startyear) {
                     document.getElementById(element.id).value = '';
-                    document.getElementById(element.id).focus();
+                    setTimeout(function () { document.getElementById(element.id).focus();; }, 1);
+                    //document.getElementById(element.id).focus();
                     alert("End Year should be greater than Tax year");
                     return;
                 }
@@ -4439,7 +4621,8 @@
             if (startyear != "") {
                 if (year > startyear) {
                     document.getElementById(element.id).value = '';
-                    document.getElementById("txtEndYear").focus();
+                    setTimeout(function () { document.getElementById("txtEndYear").focus(); }, 1);
+                    //document.getElementById("txtEndYear").focus();
                     alert("End Year should be greater than Tax year");
                     return;
                 }
@@ -4504,7 +4687,7 @@
                 if (result != "") {
                     showError(node.value, result);
                     val.value = "";
-                    node.focus();
+                    setTimeout(function () { node.focus(); node.select(); }, 1);
                 } // endif 
             } // endif 
 
@@ -4530,14 +4713,16 @@
 
                 if (months >= 12) {
                     document.getElementById('delinq1').value = "";
-                    document.getElementById("delinq1").focus();
+                    setTimeout(function () { document.getElementById("delinq1").focus(); }, 1);
+                    //document.getElementById("delinq1").focus();
                     alert(errormsg);
                     return;
                 }
             }
             else if (b < a) {
                 document.getElementById('delinq1').value = "";
-                document.getElementById("delinq1").focus();
+                setTimeout(function () { document.getElementById("delinq1").focus(); }, 1);
+                //document.getElementById("delinq1").focus();
                 alert('Delinquent date must be after the installment date...');
                 return;
             }
@@ -4558,14 +4743,16 @@
 
                 if (months >= 12) {
                     document.getElementById('delinq2').value = "";
-                    document.getElementById("delinq2").focus();
+                    setTimeout(function () { document.getElementById("delinq2").focus(); }, 1);
+                    //document.getElementById("delinq2").focus();
                     alert(errormsg);
                     return;
                 }
             }
             else if (b < a) {
                 document.getElementById('delinq2').value = "";
-                document.getElementById("delinq2").focus();
+                setTimeout(function () { document.getElementById("delinq2").focus(); }, 1);
+                //document.getElementById("delinq2").focus();
                 alert('Delinquent date must be after the installment date...');
                 return;
             }
@@ -4586,14 +4773,16 @@
 
                 if (months >= 12) {
                     document.getElementById('delinq3').value = "";
-                    document.getElementById("delinq3").focus();
+                    setTimeout(function () { document.getElementById("delinq3").focus(); }, 1);
+                    //document.getElementById("delinq3").focus();
                     alert(errormsg);
                     return;
                 }
             }
             else if (b < a) {
                 document.getElementById('delinq3').value = "";
-                document.getElementById("delinq3").focus();
+                setTimeout(function () { document.getElementById("delinq3").focus(); }, 1);
+                //document.getElementById("delinq3").focus();
                 alert('Delinquent date must be after the installment date...');
                 return;
             }
@@ -4614,14 +4803,16 @@
 
                 if (months >= 12) {
                     document.getElementById('delinq4').value = "";
-                    document.getElementById("delinq4").focus();
+                    setTimeout(function () { document.getElementById("delinq4").focus(); }, 1);
+                    //document.getElementById("delinq4").focus();
                     alert(errormsg);
                     return;
                 }
             }
             else if (b < a) {
                 document.getElementById('delinq4').value = "";
-                document.getElementById("delinq4").focus();
+                setTimeout(function () { document.getElementById("delinq4").focus(); }, 1);
+                //document.getElementById("delinq4").focus();
                 alert('Delinquent date must be after the installment date...');
                 return;
             }
@@ -4644,14 +4835,16 @@
             if (b > a) {
                 if (months >= 12) {
                     document.getElementById('instdate2').value = "";
-                    document.getElementById("instdate2").focus();
+                    setTimeout(function () { document.getElementById("instdate2").focus(); }, 1);
+                    //document.getElementById("instdate2").focus();
                     alert(errormsg);
                     return;
                 }
             }
             else if (inst2 > inst1) {
                 document.getElementById('instdate2').value = "";
-                document.getElementById("instdate2").focus();
+                setTimeout(function () { document.getElementById("instdate2").focus(); }, 1);
+                //document.getElementById("instdate2").focus();
                 alert('Installment date2 must be after Installment date1...');
                 return;
             }
@@ -4676,14 +4869,16 @@
             if (c > b) {
                 if (months >= 12) {
                     document.getElementById('instdate3').value = "";
-                    document.getElementById("instdate3").focus();
+                    setTimeout(function () { document.getElementById("instdate3").focus(); }, 1);
+                    //document.getElementById("instdate3").focus();
                     alert(errormsg);
                     return;
                 }
             }
             else if (inst3 > inst2) {
                 document.getElementById('instdate3').value = "";
-                document.getElementById("instdate3").focus();
+                setTimeout(function () { document.getElementById("instdate3").focus(); }, 1);
+                //document.getElementById("instdate3").focus();
                 alert('Installment date3 must be after Installment date2...');
                 return;
             }
@@ -4709,14 +4904,16 @@
             if (d > c) {
                 if (months >= 12) {
                     document.getElementById('instdate4').value = "";
-                    document.getElementById("instdate4").focus();
+                    setTimeout(function () { document.getElementById("instdate4").focus(); }, 1);
+                    //document.getElementById("instdate4").focus();
                     alert(errormsg);
                     return;
                 }
             }
             else if (inst4 > inst3) {
                 document.getElementById('instdate4').value = "";
-                document.getElementById("instdate4").focus();
+                setTimeout(function () { document.getElementById("instdate4").focus(); }, 1);
+                //document.getElementById("instdate4").focus();
                 alert('Installment date4 must be after Installment date3...');
                 return;
             }
@@ -4743,7 +4940,8 @@
 
             if (b > a) {
                 document.getElementById('discdate1').value = "";
-                document.getElementById("discdate1").focus();
+                setTimeout(function () { document.getElementById("discdate1").focus(); }, 1);
+                //document.getElementById("discdate1").focus();
                 alert(errormsg1);
                 return;
             }
@@ -4751,7 +4949,8 @@
 
                 if (months11 >= 12) {
                     document.getElementById('discdate1').value = "";
-                    document.getElementById("discdate1").focus();
+                    setTimeout(function () { document.getElementById("discdate1").focus(); }, 1);
+                    //document.getElementById("discdate1").focus();
                     alert(errormsg);
                     return;
                 }
@@ -4777,7 +4976,8 @@
 
             if (b > a) {
                 document.getElementById('discdate2').value = "";
-                document.getElementById("discdate2").focus();
+                setTimeout(function () { document.getElementById("discdate2").focus(); }, 1);
+                //document.getElementById("discdate2").focus();
                 alert(errormsg2);
                 return;
             }
@@ -4785,7 +4985,8 @@
 
                 if (months11 >= 12) {
                     document.getElementById('discdate2').value = "";
-                    document.getElementById("discdate2").focus();
+                    setTimeout(function () { document.getElementById("discdate2").focus(); }, 1);
+                    //document.getElementById("discdate2").focus();
                     alert(errormsg);
                     return;
                 }
@@ -4811,7 +5012,8 @@
 
             if (b > a) {
                 document.getElementById('discdate3').value = "";
-                document.getElementById("discdate3").focus();
+                setTimeout(function () { document.getElementById("discdate3").focus(); }, 1);
+                //document.getElementById("discdate3").focus();
                 alert(errormsg3);
                 return;
             }
@@ -4819,7 +5021,8 @@
 
                 if (months11 >= 12) {
                     document.getElementById('discdate3').value = "";
-                    document.getElementById("discdate3").focus();
+                    setTimeout(function () { document.getElementById("discdate3").focus(); }, 1);
+                    //document.getElementById("discdate3").focus();
                     alert(errormsg);
                     return;
                 }
@@ -4845,7 +5048,8 @@
 
             if (b > a) {
                 document.getElementById('discdate4').value = "";
-                document.getElementById("discdate4").focus();
+                setTimeout(function () { document.getElementById("discdate4").focus(); }, 1);
+                //document.getElementById("discdate4").focus();
                 alert(errormsg4);
                 return;
             }
@@ -4853,7 +5057,8 @@
 
                 if (months11 >= 12) {
                     document.getElementById('discdate4').value = "";
-                    document.getElementById("discdate4").focus();
+                    setTimeout(function () { document.getElementById("discdate4").focus(); }, 1);
+                    //document.getElementById("discdate4").focus();
                     alert(errormsg);
                     return;
                 }
@@ -4876,14 +5081,16 @@
 
                 if (months >= 12) {
                     document.getElementById('txtmandeliqdate1').value = "";
-                    document.getElementById("txtmandeliqdate1").focus();
+                    setTimeout(function () { document.getElementById("txtmandeliqdate1").focus(); }, 1);
+                    //document.getElementById("txtmandeliqdate1").focus();
                     alert(errormsg);
                     return;
                 }
             }
             else if (b < a) {
                 document.getElementById('txtmandeliqdate1').value = "";
-                document.getElementById("txtmandeliqdate1").focus();
+                setTimeout(function () { document.getElementById("txtmandeliqdate1").focus(); }, 1);
+                //document.getElementById("txtmandeliqdate1").focus();
                 alert('Delinquent date must be after the installment date...');
                 return;
             }
@@ -4904,14 +5111,16 @@
 
                 if (months >= 12) {
                     document.getElementById('txtmandeliqdate2').value = "";
-                    document.getElementById("txtmandeliqdate2").focus();
+                    setTimeout(function () { document.getElementById("txtmandeliqdate2").focus(); }, 1);
+                    //document.getElementById("txtmandeliqdate2").focus();
                     alert(errormsg);
                     return;
                 }
             }
             else if (b < a) {
                 document.getElementById('txtmandeliqdate2').value = "";
-                document.getElementById("txtmandeliqdate2").focus();
+                setTimeout(function () { document.getElementById("txtmandeliqdate2").focus(); }, 1);
+                //document.getElementById("txtmandeliqdate2").focus();
                 alert('Delinquent date must be after the installment date...');
                 return;
             }
@@ -4932,14 +5141,16 @@
 
                 if (months >= 12) {
                     document.getElementById('txtmandeliqdate3').value = "";
-                    document.getElementById("txtmandeliqdate3").focus();
+                    setTimeout(function () { document.getElementById("txtmandeliqdate3").focus(); }, 1);
+                    //document.getElementById("txtmandeliqdate3").focus();
                     alert(errormsg);
                     return;
                 }
             }
             else if (b < a) {
                 document.getElementById('txtmandeliqdate3').value = "";
-                document.getElementById("txtmandeliqdate3").focus();
+                setTimeout(function () { document.getElementById("txtmandeliqdate3").focus(); }, 1);
+                //document.getElementById("txtmandeliqdate3").focus();
                 alert('Delinquent date must be after the installment date...');
                 return;
             }
@@ -4960,15 +5171,37 @@
 
                 if (months >= 12) {
                     document.getElementById('txtmandeliqdate4').value = "";
-                    document.getElementById("txtmandeliqdate4").focus();
+                    setTimeout(function () { document.getElementById("txtmandeliqdate3").focus(); }, 1);
+                    //document.getElementById("txtmandeliqdate4").focus();
                     alert(errormsg);
                     return;
                 }
             }
             else if (b < a) {
                 document.getElementById('txtmandeliqdate4').value = "";
-                document.getElementById("txtmandeliqdate4").focus();
+                setTimeout(function () { document.getElementById("txtmandeliqdate3").focus(); }, 1);
+                //document.getElementById("txtmandeliqdate4").focus();
                 alert('Delinquent date must be after the installment date...');
+                return;
+            }
+        }
+
+        function checkNextBillDate() {
+            var inst = document.getElementById("instdate1").value;
+            var nextbill = document.getElementById("nextbilldate1").value;
+
+            var a = new Date(inst);
+            var b = new Date(nextbill);
+
+            var months = (b.getFullYear() - a.getFullYear()) * 12;
+            months += b.getMonth() - a.getMonth();
+
+
+            if (b < a) {
+                document.getElementById('nextbilldate1').value = "";
+                setTimeout(function () { document.getElementById("nextbilldate1").focus(); }, 1);
+                //document.getElementById("nextbilldate1").focus();
+                alert('Next bill date1 must be after the installment date...');
                 return;
             }
         }
@@ -4988,14 +5221,16 @@
             if (b > a) {
                 if (months >= 12) {
                     document.getElementById('txtmaninstdate2').value = "";
-                    document.getElementById("txtmaninstdate2").focus();
+                    setTimeout(function () { document.getElementById("txtmaninstdate2").focus(); }, 1);
+                    //document.getElementById("txtmaninstdate2").focus();
                     alert(errormsg);
                     return;
                 }
             }
             else if (inst2 > inst1) {
                 document.getElementById('txtmaninstdate2').value = "";
-                document.getElementById("txtmaninstdate2").focus();
+                setTimeout(function () { document.getElementById("txtmaninstdate2").focus(); }, 1);
+                //document.getElementById("txtmaninstdate2").focus();
                 alert('Installment date2 must be after Installment date1...');
                 return;
             }
@@ -5021,14 +5256,16 @@
             if (c > b) {
                 if (months >= 12) {
                     document.getElementById('txtmaninstdate3').value = "";
-                    document.getElementById("txtmaninstdate3").focus();
+                    setTimeout(function () { document.getElementById("txtmaninstdate3").focus(); }, 1);
+                    //document.getElementById("txtmaninstdate3").focus();
                     alert(errormsg);
                     return;
                 }
             }
             else if (inst3 > inst2) {
                 document.getElementById('txtmaninstdate3').value = "";
-                document.getElementById("txtmaninstdate3").focus();
+                setTimeout(function () { document.getElementById("txtmaninstdate3").focus(); }, 1);
+                //document.getElementById("txtmaninstdate3").focus();
                 alert('Installment date3 must be after Installment date2...');
                 return;
             }
@@ -5054,14 +5291,16 @@
             if (d > c) {
                 if (months >= 12) {
                     document.getElementById('txtmaninstdate4').value = "";
-                    document.getElementById("txtmaninstdate4").focus();
+                    setTimeout(function () { document.getElementById("txtmaninstdate4").focus(); }, 1);
+                    //document.getElementById("txtmaninstdate4").focus();
                     alert(errormsg);
                     return;
                 }
             }
             else if (inst4 > inst3) {
                 document.getElementById('txtmaninstdate4').value = "";
-                document.getElementById("txtmaninstdate4").focus();
+                setTimeout(function () { document.getElementById("txtmaninstdate4").focus(); }, 1);
+                //document.getElementById("txtmaninstdate4").focus();
                 alert('Installment date4 must be after Installment date3...');
                 return;
             }
@@ -5087,7 +5326,8 @@
 
             if (b > a) {
                 document.getElementById('txtmandisdate1').value = "";
-                document.getElementById("txtmandisdate1").focus();
+                setTimeout(function () { document.getElementById("txtmandisdate1").focus(); }, 1);
+                //document.getElementById("txtmandisdate1").focus();
                 alert(futerrormsg1);
                 return;
             }
@@ -5095,7 +5335,8 @@
 
                 if (months11 >= 12) {
                     document.getElementById('txtmandisdate1').value = "";
-                    document.getElementById("txtmandisdate1").focus();
+                    setTimeout(function () { document.getElementById("txtmandisdate1").focus(); }, 1);
+                    //document.getElementById("txtmandisdate1").focus();
                     alert(errormsg);
                     return;
                 }
@@ -5121,7 +5362,8 @@
 
             if (b > a) {
                 document.getElementById('txtmandisdate2').value = "";
-                document.getElementById("txtmandisdate2").focus();
+                setTimeout(function () { document.getElementById("txtmandisdate2").focus(); }, 1);
+                //document.getElementById("txtmandisdate2").focus();
                 alert(futerrormsg2);
                 return;
             }
@@ -5129,7 +5371,8 @@
 
                 if (months11 >= 12) {
                     document.getElementById('txtmandisdate2').value = "";
-                    document.getElementById("txtmandisdate2").focus();
+                    setTimeout(function () { document.getElementById("txtmandisdate2").focus(); }, 1);
+                    //document.getElementById("txtmandisdate2").focus();
                     alert(errormsg);
                     return;
                 }
@@ -5155,15 +5398,17 @@
 
             if (b > a) {
                 document.getElementById('txtmandisdate3').value = "";
+                setTimeout(function () { document.getElementById("txtmandisdate3").focus(); }, 1);
                 alert(futerrormsg3);
                 return;
-                document.getElementById("txtmandisdate3").focus();
+                //document.getElementById("txtmandisdate3").focus();
             }
             if (c > b) {
 
                 if (months11 >= 12) {
                     document.getElementById('txtmandisdate3').value = "";
-                    document.getElementById("txtmandisdate3").focus();
+                    setTimeout(function () { document.getElementById("txtmandisdate3").focus(); }, 1);
+                    //document.getElementById("txtmandisdate3").focus();
                     alert(errormsg);
                     return;
                 }
@@ -5189,7 +5434,8 @@
 
             if (b > a) {
                 document.getElementById('txtmandisdate4').value = "";
-                document.getElementById("txtmandisdate4").focus();
+                setTimeout(function () { document.getElementById("txtmandisdate4").focus(); }, 1);
+                //document.getElementById("txtmandisdate4").focus();
                 alert(futerrormsg4);
                 return;
             }
@@ -5197,7 +5443,8 @@
 
                 if (months11 >= 12) {
                     document.getElementById('txtmandisdate4').value = "";
-                    document.getElementById("txtmandisdate4").focus();
+                    setTimeout(function () { document.getElementById("txtmandisdate4").focus(); }, 1);
+                    //document.getElementById("txtmandisdate4").focus();
                     alert(errormsg);
                     return;
                 }
@@ -5216,7 +5463,8 @@
                 document.getElementById('txtpayoffgood').style.borderColor = "#ff0000";
                 document.getElementById('lblpayoffgood').style.color = "#ff0000";
                 document.getElementById('txtpayoffgood').value = "";
-                document.getElementById("txtpayoffgood").focus();
+                setTimeout(function () { document.getElementById("txtpayoffgood").focus(); }, 1);
+                //document.getElementById("txtpayoffgood").focus();
                 alert("Date should be greater than current date");
                 return true;
             }
@@ -5253,7 +5501,8 @@
                 document.getElementById('txtinitialinstall').style.borderColor = "#ff0000";
                 document.getElementById('lblinitialinstall').style.color = "#ff0000";
                 document.getElementById('txtinitialinstall').value = "";
-                document.getElementById("txtinitialinstall").focus();
+                setTimeout(function () { document.getElementById("txtinitialinstall").focus(); }, 1);
+                //document.getElementById("txtinitialinstall").focus();
                 alert("Future date not allowed..");
                 return true;
             }
@@ -5290,7 +5539,8 @@
                 document.getElementById('txtdatetaxsale').style.borderColor = "#ff0000";
                 document.getElementById('lbldatetaxsale').style.color = "#ff0000";
                 document.getElementById('txtdatetaxsale').value = "";
-                document.getElementById("txtdatetaxsale").focus();
+                setTimeout(function () { document.getElementById("txtdatetaxsale").focus(); }, 1);
+                //document.getElementById("txtdatetaxsale").focus();
                 alert("Future date not allowed..");
                 return true;
             }
@@ -5577,7 +5827,8 @@
             if (id1 != 0) {
                 if (id1 < 4) {
                     document.getElementById("txtdelitaxyear").value = '';
-                    document.getElementById("txtdelitaxyear").focus();
+                    setTimeout(function () { document.getElementById("txtdelitaxyear").focus(); }, 1);
+                    //document.getElementById("txtdelitaxyear").focus();
                     alert("Delinquent Status Year should be 4 Numeric Characters");
                     return;
                 }
@@ -5589,7 +5840,8 @@
             if (id1 != 0) {
                 if (id1 < 4) {
                     document.getElementById("txtTaxYear").value = '';
-                    document.getElementById("txtTaxYear").focus();
+                    setTimeout(function () { document.getElementById("txtTaxYear").focus(); }, 1);
+                    //document.getElementById("txtTaxYear").focus();
                     alert("Tax Year should be 4 Numeric Characters");
                     return;
                 }
@@ -5601,7 +5853,8 @@
             if (id1 != 0) {
                 if (id1 < 4) {
                     document.getElementById("txtEndYear").value = '';
-                    document.getElementById("txtEndYear").focus();
+                    setTimeout(function () { document.getElementById("txtEndYear").focus(); }, 1);
+                    //document.getElementById("txtEndYear").focus();
                     alert("End Year should be 4 Numeric Characters");
                     return;
                 }
@@ -5613,7 +5866,8 @@
             if (id1 != 0) {
                 if (id1 < 2) {
                     document.getElementById("txtdelitState").value = '';
-                    document.getElementById("txtdelitState").focus();
+                    setTimeout(function () { document.getElementById("txtdelitState").focus(); }, 1);
+                    //document.getElementById("txtdelitState").focus();
                     alert("State should be 2 Characters");
                     return;
                 }
@@ -5625,7 +5879,8 @@
             if (id1 != 0) {
                 if (id1 < 5) {
                     document.getElementById("txtdelitzip").value = '';
-                    document.getElementById("txtdelitzip").focus();
+                    setTimeout(function () { document.getElementById("txtdelitzip").focus(); }, 1);
+                    //document.getElementById("txtdelitzip").focus();
                     alert("Zip should be 5 Numeric Characters");
                     return;
                 }
@@ -5637,7 +5892,8 @@
             if (priorid != 0) {
                 if (priorid < 4) {
                     document.getElementById("txtpriodeli").value = '';
-                    document.getElementById("txtpriodeli").focus();
+                    setTimeout(function () { document.getElementById("txtpriodeli").focus(); }, 1);
+                    //document.getElementById("txtpriodeli").focus();
                     alert("Prior Deliquent Year should be 4 Numeric Characters");
                     return;
                 }
@@ -6029,12 +6285,12 @@
             $(this).closest("tr").after("<tr><td style='width: 10px;'></td><td colspan = '999'>" + $(this).next().html() + "</td></tr>")
             $(this).attr("src", "../images/STRArrow.png");
             //var edit_save = document.getElementById("edit-save");
-            document.getElementById("edit-save").disabled = true;
+            //document.getElementById("edit-save").disabled = true;
         });
-        //$("[src*=minus]").live("click", function () {
-        //    $(this).attr("src", "../images/STRplus.jpg");
-        //    $(this).closest("tr").next().remove();
-        //});
+        $("[src*=minus]").live("click", function () {
+            $(this).attr("src", "../images/STRplus.jpg");
+            $(this).closest("tr").next().remove();
+        });
         $(document).ready(function () { // on document ready
             $("[src*=Arrow]").click();
         })
@@ -6555,6 +6811,11 @@
             background-color: #fff;
             background-image: none;
         }
+
+        .tdalign
+        {
+            text-align:left;
+        }
     </style>
     <script src="../SelectDist/easytimer.min.js"></script>
     <script>
@@ -6640,7 +6901,7 @@
         <form id="myForm" name="myForm" style="margin-top: 1px;" runat="server">
             <asp:ScriptManager ID="ScriptManager1" runat="server" />
 
-            <table class="header" style="width: 1350px;">
+            <table class="header" style="width:100%;table-layout:auto">
                 <tr style="width: 250px;">
                     <td style="color: red; font-weight: bold; width: 150px;">
                         <img src="../images/logo.png" style="width: 90px;" /></td>
@@ -6673,7 +6934,7 @@
                     </td>
 
                     <td>
-                        <div class="header-right" style="margin-left: 12px; margin-top: 5px;">
+                        <div class="header-right" style="margin-left: 12px; margin-top: -15px;">
                             <div class="profile_details">
                                 <ul style="padding-left: 6px;">
                                     <li class="dropdown profile_details_drop">
@@ -7543,7 +7804,7 @@
                                                         </b>
                                                     </td>
                                                     <td>
-                                                        <input type="text" id="nextbilldate1" runat="server" class="form-control" style="width: 170px;" placeholder="MM/DD/YYYY" maxlength="10" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="return checkDate(this,event)" autocomplete="off" onchange="return functionInsttax();" tabindex="37" />
+                                                        <input type="text" id="nextbilldate1" runat="server" class="form-control" style="width: 170px;" placeholder="MM/DD/YYYY" maxlength="10" onkeyup="ValidateDate(this, event.keyCode)" onkeydown="return DateFormat(this, event.keyCode)" onblur="checkNextBillDate(); return checkDate(this,event)" autocomplete="off" onchange="samedatenextbill(this.value);return functionInsttax();" tabindex="37" />
                                                     </td>
                                                     <td>
                                                         <b style="white-space: nowrap" class="CheckBold">Next Bill Date2:</b>
@@ -8443,11 +8704,11 @@
                                 <asp:BoundField ItemStyle-Width="20%" DataField="city" HeaderText="City" ReadOnly="true" ItemStyle-CssClass="hiddencol" HeaderStyle-CssClass="hiddencol" />
                                 <asp:BoundField ItemStyle-Width="40%" DataField="state" HeaderText="State" ReadOnly="true" ItemStyle-CssClass="hiddencol" HeaderStyle-CssClass="hiddencol" />
                                 <asp:BoundField ItemStyle-Width="40%" DataField="zip" HeaderText="Zip Code" ReadOnly="true" ItemStyle-CssClass="hiddencol" HeaderStyle-CssClass="hiddencol" />
-                                <asp:BoundField ItemStyle-Width="20%" DataField="deliquenttaxyear" HeaderText="Delinquent Year" ReadOnly="true" />
-                                <asp:BoundField ItemStyle-Width="20%" DataField="payoffamount" HeaderText="Pay-off Amount" ReadOnly="true" />
+                                <asp:BoundField ItemStyle-Width="20%" DataField="deliquenttaxyear" HeaderText="Delinquent Year" ReadOnly="true" ItemStyle-CssClass="tdalign"/>
+                                <asp:BoundField ItemStyle-Width="20%" DataField="payoffamount" HeaderText="Pay-off Amount" ReadOnly="true" ItemStyle-CssClass="tdalign"/>
                                 <asp:BoundField ItemStyle-Width="40%" DataField="comments" HeaderText="Comments" ReadOnly="true" ItemStyle-CssClass="hiddencol" HeaderStyle-CssClass="hiddencol" />
-                                <asp:BoundField ItemStyle-Width="20%" DataField="goodthuruDate" HeaderText="Good-thru Date" ReadOnly="true" />
-                                <asp:BoundField ItemStyle-Width="25%" DataField="installmentduedate" HeaderText="Installment Date" ReadOnly="true" />
+                                <asp:BoundField ItemStyle-Width="20%" DataField="goodthuruDate" HeaderText="Good-thru Date" ReadOnly="true" ItemStyle-CssClass="tdalign"/>
+                                <asp:BoundField ItemStyle-Width="25%" DataField="installmentduedate" HeaderText="Installment Date" ReadOnly="true" ItemStyle-CssClass="tdalign"/>
                                 <asp:BoundField ItemStyle-Width="40%" DataField="taxsalenotapplicable" HeaderText="TaxSale.NotApp" ReadOnly="true" ItemStyle-CssClass="hiddencol" HeaderStyle-CssClass="hiddencol" />
                                 <asp:BoundField ItemStyle-Width="40%" DataField="dateofTaxsale" HeaderText="DtOfTaxsale" ReadOnly="true" ItemStyle-CssClass="hiddencol" HeaderStyle-CssClass="hiddencol" />
                                 <asp:BoundField ItemStyle-Width="40%" DataField="lastdaytoredeem" HeaderText="LastDayRedeem" ReadOnly="true" ItemStyle-CssClass="hiddencol" HeaderStyle-CssClass="hiddencol" />
@@ -8532,8 +8793,8 @@
                                 OnRowCancelingEdit="gvExemption_RowCancelingEdit">
                                 <Columns>
                                     <asp:BoundField ItemStyle-Width="50%" DataField="Id" HeaderText="Tax ID" ReadOnly="true" ItemStyle-CssClass="hiddencol" HeaderStyle-CssClass="hiddencol" />
-                                    <asp:BoundField ItemStyle-Width="50%" DataField="exemptiontype" HeaderText="Exemption Type" ReadOnly="true" />
-                                    <asp:BoundField ItemStyle-Width="40%" DataField="exemptionamount" HeaderText="Exemption Amount" ReadOnly="true" />
+                                    <asp:BoundField ItemStyle-Width="50%" DataField="exemptiontype" HeaderText="Exemption Type" ReadOnly="true" ItemStyle-CssClass="tdalign"/>
+                                    <asp:BoundField ItemStyle-Width="40%" DataField="exemptionamount" HeaderText="Exemption Amount" ReadOnly="true" ItemStyle-CssClass="tdalign"/>
                                     <asp:TemplateField>
                                         <ItemTemplate>
                                             <asp:HiddenField ID="HdnExemptionId" runat="server" Value='<%# Bind("Id") %>' />
@@ -8669,9 +8930,9 @@
 
                                 <asp:BoundField ItemStyle-Width="50%" ItemStyle-ForeColor="Black" ItemStyle-Font-Bold="false" DataField="Id" HeaderText="Tax ID" ReadOnly="true" ItemStyle-CssClass="hiddencol" HeaderStyle-CssClass="hiddencol" />
                                 <asp:BoundField ItemStyle-Width="30%" ItemStyle-ForeColor="Black" ItemStyle-Font-Bold="false" DataField="description" HeaderText="Description" ReadOnly="true" ItemStyle-CssClass="hiddencol" HeaderStyle-CssClass="hiddencol" />
-                                <asp:BoundField ItemStyle-Width="30%" ItemStyle-ForeColor="Black" ItemStyle-Font-Bold="false" DataField="InstallmentsRemaining" HeaderText="Installment Remaining" ReadOnly="true" />
-                                <asp:BoundField ItemStyle-Width="30%" ItemStyle-ForeColor="Black" ItemStyle-Font-Bold="false" DataField="specialassessmentno" HeaderText="Special Assessment No" ReadOnly="true" />
-                                <asp:BoundField ItemStyle-Width="20%" ItemStyle-ForeColor="Black" ItemStyle-Font-Bold="false" DataField="noofinstallment" HeaderText="No.Of.Installments" ReadOnly="true" />
+                                <asp:BoundField ItemStyle-Width="30%" ItemStyle-ForeColor="Black" ItemStyle-Font-Bold="false" DataField="InstallmentsRemaining" HeaderText="Installment Remaining" ReadOnly="true" ItemStyle-CssClass="tdalign"/>
+                                <asp:BoundField ItemStyle-Width="30%" ItemStyle-ForeColor="Black" ItemStyle-Font-Bold="false" DataField="specialassessmentno" HeaderText="Special Assessment No" ReadOnly="true" ItemStyle-CssClass="tdalign"/>
+                                <asp:BoundField ItemStyle-Width="20%" ItemStyle-ForeColor="Black" ItemStyle-Font-Bold="false" DataField="noofinstallment" HeaderText="No.Of.Installments" ReadOnly="true" ItemStyle-CssClass="tdalign"/>
                                 <asp:BoundField ItemStyle-Width="40%" ItemStyle-ForeColor="Black" ItemStyle-Font-Bold="false" DataField="installmentpaid" HeaderText="Installments Paid" ReadOnly="true" ItemStyle-CssClass="hiddencol" HeaderStyle-CssClass="hiddencol" />
                                 <asp:BoundField ItemStyle-Width="40%" ItemStyle-ForeColor="Black" ItemStyle-Font-Bold="false" DataField="amount" HeaderText="Amount" ReadOnly="true" ItemStyle-CssClass="hiddencol" HeaderStyle-CssClass="hiddencol" />
                                 <asp:TemplateField>
@@ -9165,17 +9426,17 @@
                                 </div>
                                 <div id="collapsecomplete" class="panel-collapse collapse in">
                                     <div class="panel-body">
-                                        <table style="width: 1083px;">
+                                        <table style="width: 780px;">
                                             <tbody>
                                                 <tr>
-                                                    <td class="colorbold">
+                                                    <td class="colorbold" style="width:135px;">
                                                         <b class="CheckBold">Order Comments:</b>
                                                     </td>
-                                                    <td style="width: 215px">
+                                                    <td style="width: 330px">
                                                         <textarea runat="server" rows="2" id="txttotalcomments" class="form-control" style="resize: none" tabindex="51" onkeyup="CheckFirstChar(event.keyCode, this);" onkeydown="return CheckFirstChar(event.keyCode, this);"></textarea>
                                                     </td>
-                                                    <td class="colorbold">
-                                                        <b class="CheckBold">Status:</b>
+                                                    <td class="colorbold" style="width:75px;">
+                                                        <b class="CheckBold" style="margin-left:10px;">Status:</b>
                                                     </td>
                                                     <td style="width: 190px">
                                                         <select class="form-control" id="ddlstatus" runat="server" style="width: 180px;" tabindex="52">
