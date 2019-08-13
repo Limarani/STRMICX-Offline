@@ -7558,7 +7558,7 @@
                                                         <asp:DropDownList ID="ddlfuturetaxcalc" runat="server" Style="width: 179px;" class="form-control" OnSelectedIndexChanged="ddlfuturetaxcalc_SelectedIndexChanged" AutoPostBack="True">
                                                             <asp:ListItem>Select</asp:ListItem>
                                                             <asp:ListItem>Manual</asp:ListItem>
-                                                            <asp:ListItem>Same As Current</asp:ListItem>
+                                                            <asp:ListItem>SameAsCurrent</asp:ListItem>
                                                         </asp:DropDownList>
                                                     </td>
 

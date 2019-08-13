@@ -1249,7 +1249,7 @@ public class GlobalClass : myConnection
     }
 
 
-    public DataSet Updatetaxauthorities(string query, string orderno, string taxid, string agencyid, string taxtype, string isdelinquent, string exemption, string specialassessment, string priordelinquent, string primaryresidence)
+    public DataSet Updatetaxauthorities(string query, string orderno, string taxid, string agencyid, string taxtype, string isdelinquent, string exemption, string specialassessment, string priordelinquent, string primaryresidence, string future)
     {
         if (primaryresidence == "Yes")
         {
@@ -1294,7 +1294,7 @@ public class GlobalClass : myConnection
         }
 
 
-        mParam = new MySqlParameter[9];
+        mParam = new MySqlParameter[10];
 
         mParam[0] = new MySqlParameter("?$orderno", orderno);
         mParam[0].MySqlDbType = MySqlDbType.VarChar;
@@ -1322,6 +1322,9 @@ public class GlobalClass : myConnection
 
         mParam[8] = new MySqlParameter("?$primaryresidence", primaryresidence);
         mParam[8].MySqlDbType = MySqlDbType.VarChar;
+
+        mParam[9] = new MySqlParameter("?$futuretaxoption", future);
+        mParam[9].MySqlDbType = MySqlDbType.VarChar;
 
         return con.ExecuteQuery(query, true, mParam);
     }

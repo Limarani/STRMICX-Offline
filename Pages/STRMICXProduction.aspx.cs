@@ -450,6 +450,8 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
             cleardelinquentfields();
             fetchtaxparceldetails();
             deliexemspecial.Visible = true;
+            paymentfrequency.Attributes.Add("disabled", "disabled");
+            ddlpayfreqmanu.Attributes.Add("disabled", "disabled");
             if (dtfetchauthority.Rows.Count > 0)
             {
                 //contact information
@@ -1019,6 +1021,12 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
                     ddlfuturetaxcalc.SelectedIndex = 1;
                     PnlTax1.Visible = true;
                     futuretaxmanual();
+                }
+                if (test == "SameAsCurrent")
+                {
+                    ddlfuturetaxcalc.SelectedIndex = 2;
+                    PnlTax1.Visible = true;
+                    futuretaxsameascurrent();
                 }
             }
         }
@@ -3115,13 +3123,14 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
     protected void ddlfuturetaxcalc_SelectedIndexChanged(object sender, EventArgs e)
     {
         ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "txtexeSpecial();", true);
-        PnlTax1.Visible = true;
+        PnlTax1.Visible = false;
         fetchDeliquentStatus();
         fetchexemptionsAll();
         fetchspecialAll();
         PnlTax1.Focus();
-        if (ddlfuturetaxcalc.SelectedItem.Text == "Same As Current")
+        if (ddlfuturetaxcalc.SelectedItem.Text == "SameAsCurrent")
         {
+            PnlTax1.Visible = true;
             futuretaxsameascurrent();
         }
 
@@ -3132,6 +3141,57 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
 
         else if (ddlfuturetaxcalc.SelectedItem.Text == "Manual")
         {
+            PnlTax1.Visible = true;
+            instmanamount1.Attributes.Remove("disabled");
+            instmanamtpaid1.Attributes.Remove("disabled");
+            ddlmaninstpaiddue1.Attributes.Remove("disabled");
+            txtmanurembal1.Attributes.Remove("disabled");
+            txtmandisamount1.Attributes.Remove("disabled");
+            chkexrelmanu1.Attributes.Remove("disabled");
+
+            instmanamount2.Attributes.Remove("disabled");
+            instmanamtpaid2.Attributes.Remove("disabled");
+            ddlmaninstpaiddue2.Attributes.Remove("disabled");
+            txtmanurembal2.Attributes.Remove("disabled");
+            txtmandisamount2.Attributes.Remove("disabled");
+            chkexrelmanu2.Attributes.Remove("disabled");
+
+            instmanamount3.Attributes.Remove("disabled");
+            instmanamtpaid3.Attributes.Remove("disabled");
+            ddlmaninstpaiddue3.Attributes.Remove("disabled");
+            txtmanurembal3.Attributes.Remove("disabled");
+            txtmandisamount3.Attributes.Remove("disabled");
+            chkexrelmanu3.Attributes.Remove("disabled");
+
+            instmanamount4.Attributes.Remove("disabled");
+            instmanamtpaid4.Attributes.Remove("disabled");
+            ddlmaninstpaiddue4.Attributes.Remove("disabled");
+            txtmanurembal4.Attributes.Remove("disabled");
+            txtmandisamount4.Attributes.Remove("disabled");
+            chkexrelmanu4.Attributes.Remove("disabled");
+            ddlmanutaxbill.Attributes.Remove("disabled");
+            ddlpayfreqmanu.Attributes.Remove("disabled");
+            txtinstcommentsmanual.Attributes.Remove("disabled");
+
+            instmanamount1.Value = "";
+            instmanamount2.Value = "";
+            instmanamount3.Value = "";
+            instmanamount4.Value = "";
+
+            txtmanurembal1.Value = "";
+            txtmanurembal2.Value = "";
+            txtmanurembal3.Value = "";
+            txtmanurembal4.Value = "";
+
+            instmanamtpaid1.Value = "";
+            instmanamtpaid2.Value = "";
+            instmanamtpaid3.Value = "";
+            instmanamtpaid4.Value = "";
+
+            ddlmaninstpaiddue1.SelectedIndex = 0;
+            ddlmaninstpaiddue2.SelectedIndex = 0;
+            ddlmaninstpaiddue3.SelectedIndex = 0;
+            ddlmaninstpaiddue4.SelectedIndex = 0;
             futuretaxmanual();
         }
     }
@@ -3826,29 +3886,29 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
                 instmanamount1.Attributes.Remove("disabled");
                 instmanamtpaid1.Attributes.Remove("disabled");
                 ddlmaninstpaiddue1.Attributes.Remove("disabled");
-                txtmanurembal1.Attributes.Remove("disabled");              
-                txtmandisamount1.Attributes.Remove("disabled");               
+                txtmanurembal1.Attributes.Remove("disabled");
+                txtmandisamount1.Attributes.Remove("disabled");
                 chkexrelmanu1.Attributes.Remove("disabled");
 
                 instmanamount2.Attributes.Add("disabled", "disabled");
                 instmanamtpaid2.Attributes.Add("disabled", "disabled");
                 ddlmaninstpaiddue2.Attributes.Add("disabled", "disabled");
-                txtmanurembal2.Attributes.Add("disabled", "disabled");               
-                txtmandisamount2.Attributes.Add("disabled", "disabled");                
+                txtmanurembal2.Attributes.Add("disabled", "disabled");
+                txtmandisamount2.Attributes.Add("disabled", "disabled");
                 chkexrelmanu2.Attributes.Add("disabled", "disabled");
 
                 instmanamount3.Attributes.Add("disabled", "disabled");
                 instmanamtpaid3.Attributes.Add("disabled", "disabled");
                 ddlmaninstpaiddue3.Attributes.Add("disabled", "disabled");
-                txtmanurembal3.Attributes.Add("disabled", "disabled");                
-                txtmandisamount3.Attributes.Add("disabled", "disabled");                
+                txtmanurembal3.Attributes.Add("disabled", "disabled");
+                txtmandisamount3.Attributes.Add("disabled", "disabled");
                 chkexrelmanu3.Attributes.Add("disabled", "disabled");
 
                 instmanamount4.Attributes.Add("disabled", "disabled");
                 instmanamtpaid4.Attributes.Add("disabled", "disabled");
                 ddlmaninstpaiddue4.Attributes.Add("disabled", "disabled");
-                txtmanurembal4.Attributes.Add("disabled", "disabled");                
-                txtmandisamount4.Attributes.Add("disabled", "disabled");                
+                txtmanurembal4.Attributes.Add("disabled", "disabled");
+                txtmandisamount4.Attributes.Add("disabled", "disabled");
                 chkexrelmanu4.Attributes.Add("disabled", "disabled");
             }
 
@@ -3859,29 +3919,29 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
                 instmanamount1.Attributes.Remove("disabled");
                 instmanamtpaid1.Attributes.Remove("disabled");
                 ddlmaninstpaiddue1.Attributes.Remove("disabled");
-                txtmanurembal1.Attributes.Remove("disabled");                
-                txtmandisamount1.Attributes.Remove("disabled");                
+                txtmanurembal1.Attributes.Remove("disabled");
+                txtmandisamount1.Attributes.Remove("disabled");
                 chkexrelmanu1.Attributes.Remove("disabled");
 
                 instmanamount2.Attributes.Remove("disabled");
                 instmanamtpaid2.Attributes.Remove("disabled");
                 ddlmaninstpaiddue2.Attributes.Remove("disabled");
-                txtmanurembal2.Attributes.Remove("disabled");                                
-                txtmandisamount2.Attributes.Remove("disabled");                
+                txtmanurembal2.Attributes.Remove("disabled");
+                txtmandisamount2.Attributes.Remove("disabled");
                 chkexrelmanu2.Attributes.Remove("disabled");
 
                 instmanamount3.Attributes.Add("disabled", "disabled");
                 instmanamtpaid3.Attributes.Add("disabled", "disabled");
                 ddlmaninstpaiddue3.Attributes.Add("disabled", "disabled");
                 txtmanurembal3.Attributes.Add("disabled", "disabled");
-                txtmandisamount3.Attributes.Add("disabled", "disabled");                
+                txtmandisamount3.Attributes.Add("disabled", "disabled");
                 chkexrelmanu3.Attributes.Add("disabled", "disabled");
 
                 instmanamount4.Attributes.Add("disabled", "disabled");
                 instmanamtpaid4.Attributes.Add("disabled", "disabled");
                 ddlmaninstpaiddue4.Attributes.Add("disabled", "disabled");
-                txtmanurembal4.Attributes.Add("disabled", "disabled");                                
-                txtmandisamount4.Attributes.Add("disabled", "disabled");                
+                txtmanurembal4.Attributes.Add("disabled", "disabled");
+                txtmandisamount4.Attributes.Add("disabled", "disabled");
                 chkexrelmanu4.Attributes.Add("disabled", "disabled");
             }
 
@@ -3892,29 +3952,29 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
                 instmanamount1.Attributes.Remove("disabled");
                 instmanamtpaid1.Attributes.Remove("disabled");
                 ddlmaninstpaiddue1.Attributes.Remove("disabled");
-                txtmanurembal1.Attributes.Remove("disabled");                
-                txtmandisamount1.Attributes.Remove("disabled");                
+                txtmanurembal1.Attributes.Remove("disabled");
+                txtmandisamount1.Attributes.Remove("disabled");
                 chkexrelmanu1.Attributes.Remove("disabled");
 
                 instmanamount2.Attributes.Remove("disabled");
                 instmanamtpaid2.Attributes.Remove("disabled");
                 ddlmaninstpaiddue2.Attributes.Remove("disabled");
-                txtmanurembal2.Attributes.Remove("disabled");                                
-                txtmandisamount2.Attributes.Remove("disabled");                
+                txtmanurembal2.Attributes.Remove("disabled");
+                txtmandisamount2.Attributes.Remove("disabled");
                 chkexrelmanu2.Attributes.Remove("disabled");
 
                 instmanamount3.Attributes.Remove("disabled");
                 instmanamtpaid3.Attributes.Remove("disabled");
                 ddlmaninstpaiddue3.Attributes.Remove("disabled");
                 txtmanurembal3.Attributes.Remove("disabled");
-                txtmandisamount3.Attributes.Remove("disabled");                
+                txtmandisamount3.Attributes.Remove("disabled");
                 chkexrelmanu3.Attributes.Remove("disabled");
 
                 instmanamount4.Attributes.Add("disabled", "disabled");
                 instmanamtpaid4.Attributes.Add("disabled", "disabled");
                 ddlmaninstpaiddue4.Attributes.Add("disabled", "disabled");
-                txtmanurembal4.Attributes.Add("disabled", "disabled");                
-                txtmandisamount4.Attributes.Add("disabled", "disabled");                
+                txtmanurembal4.Attributes.Add("disabled", "disabled");
+                txtmandisamount4.Attributes.Add("disabled", "disabled");
                 chkexrelmanu4.Attributes.Add("disabled", "disabled");
             }
 
@@ -3925,28 +3985,28 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
                 instmanamtpaid1.Attributes.Remove("disabled");
                 ddlmaninstpaiddue1.Attributes.Remove("disabled");
                 txtmanurembal1.Attributes.Remove("disabled");
-                txtmandisamount1.Attributes.Remove("disabled");                
+                txtmandisamount1.Attributes.Remove("disabled");
                 chkexrelmanu1.Attributes.Remove("disabled");
 
                 instmanamount2.Attributes.Remove("disabled");
                 instmanamtpaid2.Attributes.Remove("disabled");
                 ddlmaninstpaiddue2.Attributes.Remove("disabled");
                 txtmanurembal2.Attributes.Remove("disabled");
-                txtmandisamount2.Attributes.Remove("disabled");                
+                txtmandisamount2.Attributes.Remove("disabled");
                 chkexrelmanu2.Attributes.Remove("disabled");
 
                 instmanamount3.Attributes.Remove("disabled");
                 instmanamtpaid3.Attributes.Remove("disabled");
                 ddlmaninstpaiddue3.Attributes.Remove("disabled");
-                txtmanurembal3.Attributes.Remove("disabled");                
-                txtmandisamount3.Attributes.Remove("disabled");                
+                txtmanurembal3.Attributes.Remove("disabled");
+                txtmandisamount3.Attributes.Remove("disabled");
                 chkexrelmanu3.Attributes.Remove("disabled");
 
                 instmanamount4.Attributes.Remove("disabled");
                 instmanamtpaid4.Attributes.Remove("disabled");
                 ddlmaninstpaiddue4.Attributes.Remove("disabled");
-                txtmanurembal4.Attributes.Remove("disabled");                
-                txtmandisamount4.Attributes.Remove("disabled");                
+                txtmanurembal4.Attributes.Remove("disabled");
+                txtmandisamount4.Attributes.Remove("disabled");
                 chkexrelmanu4.Attributes.Remove("disabled");
 
             }
@@ -4260,6 +4320,9 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
             {
                 if (message == "")
                 {
+
+                    Updatetaxauthoritiessection("Sp_Update_taxauthorities_details");
+
                     string jData = jsonResponse.GetJsonData(lblord.Text, "Completed");
                     string successMsg = postData.POST(jData, lblord.Text);
                     if (successMsg == "True")
@@ -4558,7 +4621,15 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
         {
             pastDeliquent.Text = null;
         }
-        return gl.Updatetaxauthorities(Procedurename, lblord.Text, LblTaxId1.Text, LblAgencyId1.Text, txtTaxType.Text, txtdeliquent.Text, txtexemption.Text, SecialAssmnt.Text, pastDeliquent.Text, txtResidence.Text);
+
+        string future = ddlfuturetaxcalc.SelectedItem.Text;
+
+        if (future == "Select")
+        {
+            future = "";
+        }
+            
+        return gl.Updatetaxauthorities(Procedurename, lblord.Text, LblTaxId1.Text, LblAgencyId1.Text, txtTaxType.Text, txtdeliquent.Text, txtexemption.Text, SecialAssmnt.Text, pastDeliquent.Text, txtResidence.Text, future);
     }
 
     protected void Timer1_Tick(object sender, EventArgs e)
