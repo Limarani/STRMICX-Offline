@@ -176,36 +176,109 @@ public partial class Pages_STRMICXOrderStatus : System.Web.UI.Page
                     dt = Convert.ToDateTime(txttodate.Text);
                     strtodate = String.Format("{0:MM/dd/yyyy}", dt);
 
-                    if (strfrmdate != "" && strtodate != "" && Statelist.Text == "NA" && Usernamelist.Text == "NA")
+                    if (strfrmdate != "" && strtodate != "" && Ordertypelist.Text == "NA" && Statelist.Text == "NA" && Usernamelist.Text == "NA")
                     {
-                        dttracking = gblcls.FetchTrackingDetails(strfrmdate, strtodate, "", "", "ALL");
+                        dttracking = gblcls.FetchTrackingDetails(strfrmdate, strtodate, "", "", "", "ALL");
                         GridUser.DataSource = dttracking;
                         GridUser.DataBind();
                         showoverallcount();                     
                         PanelReset.Visible = true;
                         Counts.Visible = true;
                     }
-                    else if (strfrmdate != "" && strtodate != "" && Statelist.Text != "NA" && Usernamelist.Text == "NA")
+
+                    //statewise
+                    else if (strfrmdate != "" && strtodate != "" && Ordertypelist.Text == "NA" && Statelist.Text != "NA" && Usernamelist.Text == "NA")
                     {
-                        dttracking = gblcls.FetchTrackingDetails(strfrmdate, strtodate, Statelist.Text, "", "Statewise");
+                        dttracking = gblcls.FetchTrackingDetails(strfrmdate, strtodate, "", Statelist.Text, "", "Statewise");
                         GridUser.DataSource = dttracking;
                         GridUser.DataBind();
                         showoverallcount();
                         PanelReset.Visible = true;
                         Counts.Visible = true;
                     }
-                    else if (strfrmdate != "" && strtodate != "" && Statelist.Text == "NA" && Usernamelist.Text != "NA")
+                    else if (strfrmdate != "" && strtodate != "" && Ordertypelist.Text != "NA" && Statelist.Text != "NA" && Usernamelist.Text == "NA")
                     {
-                        dttracking = gblcls.FetchTrackingDetails(strfrmdate, strtodate, "", Usernamelist.Text, "UserNamewise");
+                        dttracking = gblcls.FetchTrackingDetails(strfrmdate, strtodate, Ordertypelist.Text, Statelist.Text, "", "Statewise1");
                         GridUser.DataSource = dttracking;
                         GridUser.DataBind();
                         showoverallcount();
                         PanelReset.Visible = true;
                         Counts.Visible = true;
                     }
-                    else if (strfrmdate != "" && strtodate != "" && Statelist.Text != "NA" && Usernamelist.Text != "NA")
+                    else if (strfrmdate != "" && strtodate != "" && Ordertypelist.Text == "NA" && Statelist.Text != "NA" && Usernamelist.Text != "NA")
                     {
-                        dttracking = gblcls.FetchTrackingDetails(strfrmdate, strtodate, Statelist.Text, Usernamelist.Text, "overall");
+                        dttracking = gblcls.FetchTrackingDetails(strfrmdate, strtodate,"", Statelist.Text, Usernamelist.Text, "Statewise2");
+                        GridUser.DataSource = dttracking;
+                        GridUser.DataBind();
+                        showoverallcount();
+                        PanelReset.Visible = true;
+                        Counts.Visible = true;
+                    }
+
+
+                    //usernamewise
+                    else if (strfrmdate != "" && strtodate != "" && Ordertypelist.Text == "NA" && Statelist.Text == "NA" && Usernamelist.Text != "NA")
+                    {
+                        dttracking = gblcls.FetchTrackingDetails(strfrmdate, strtodate,"", "", Usernamelist.Text, "UserNamewise");
+                        GridUser.DataSource = dttracking;
+                        GridUser.DataBind();
+                        showoverallcount();
+                        PanelReset.Visible = true;
+                        Counts.Visible = true;
+                    }
+                    else if (strfrmdate != "" && strtodate != "" && Ordertypelist.Text != "NA" && Statelist.Text == "NA" && Usernamelist.Text != "NA")
+                    {
+                        dttracking = gblcls.FetchTrackingDetails(strfrmdate, strtodate, Ordertypelist.Text, "", Usernamelist.Text, "UserNamewise1");
+                        GridUser.DataSource = dttracking;
+                        GridUser.DataBind();
+                        showoverallcount();
+                        PanelReset.Visible = true;
+                        Counts.Visible = true;
+                    }
+                    else if (strfrmdate != "" && strtodate != "" && Ordertypelist.Text == "NA" && Statelist.Text != "NA" && Usernamelist.Text != "NA")
+                    {
+                        dttracking = gblcls.FetchTrackingDetails(strfrmdate, strtodate, "", Statelist.Text, Usernamelist.Text, "UserNamewise2");
+                        GridUser.DataSource = dttracking;
+                        GridUser.DataBind();
+                        showoverallcount();
+                        PanelReset.Visible = true;
+                        Counts.Visible = true;
+                    }
+                    
+
+                    //TransactionType
+                    else if (strfrmdate != "" && strtodate != "" && Ordertypelist.Text != "NA" && Statelist.Text == "NA" && Usernamelist.Text == "NA")
+                    {
+                        dttracking = gblcls.FetchTrackingDetails(strfrmdate, strtodate, Ordertypelist.Text, "", "", "TransactionTypewise");
+                        GridUser.DataSource = dttracking;
+                        GridUser.DataBind();
+                        showoverallcount();
+                        PanelReset.Visible = true;
+                        Counts.Visible = true;
+                    }                    
+                    else if (strfrmdate != "" && strtodate != "" && Ordertypelist.Text != "NA" && Statelist.Text != "NA" && Usernamelist.Text == "NA")
+                    {
+                        dttracking = gblcls.FetchTrackingDetails(strfrmdate, strtodate, Ordertypelist.Text, Statelist.Text, "", "TransactionTypewise1");
+                        GridUser.DataSource = dttracking;
+                        GridUser.DataBind();
+                        showoverallcount();
+                        PanelReset.Visible = true;
+                        Counts.Visible = true;
+                    }
+                    else if (strfrmdate != "" && strtodate != "" && Ordertypelist.Text != "NA" && Statelist.Text == "NA" && Usernamelist.Text != "NA")
+                    {
+                        dttracking = gblcls.FetchTrackingDetails(strfrmdate, strtodate, Ordertypelist.Text,"",Usernamelist.Text, "TransactionTypewise2");
+                        GridUser.DataSource = dttracking;
+                        GridUser.DataBind();
+                        showoverallcount();
+                        PanelReset.Visible = true;
+                        Counts.Visible = true;
+                    }
+
+
+                    else if (strfrmdate != "" && strtodate != "" && Ordertypelist.Text != "NA" && Statelist.Text != "NA" && Usernamelist.Text != "NA")
+                    {
+                        dttracking = gblcls.FetchTrackingDetails(strfrmdate, strtodate, Ordertypelist.Text, Statelist.Text, Usernamelist.Text, "overall");
                         GridUser.DataSource = dttracking;
                         GridUser.DataBind();
                         showoverallcount();
@@ -606,7 +679,7 @@ public partial class Pages_STRMICXOrderStatus : System.Web.UI.Page
 
                 if (strfrmdate != "" && strtodate != "")
                 {
-                    wiporders = gblcls.FetchTrackingDetails(strfrmdate, strtodate, "", "", "WIP");
+                    wiporders = gblcls.FetchTrackingDetails(strfrmdate, strtodate,"", "", "", "WIP");
                     GridUser.DataSource = wiporders;
                     GridUser.DataBind();
                     showoverallcount();
@@ -633,7 +706,7 @@ public partial class Pages_STRMICXOrderStatus : System.Web.UI.Page
 
                 if (strfrmdate != "" && strtodate != "")
                 {
-                    yts = gblcls.FetchTrackingDetails(strfrmdate, strtodate, "", "", "YTS");
+                    yts = gblcls.FetchTrackingDetails(strfrmdate, strtodate,"", "", "", "YTS");
                     GridUser.DataSource = yts;
                     GridUser.DataBind();
                     showoverallcount();
@@ -660,7 +733,7 @@ public partial class Pages_STRMICXOrderStatus : System.Web.UI.Page
 
                 if (strfrmdate != "" && strtodate != "")
                 {
-                    mailwayorders = gblcls.FetchTrackingDetails(strfrmdate, strtodate, "", "", "Mailaway");
+                    mailwayorders = gblcls.FetchTrackingDetails(strfrmdate, strtodate,"", "", "", "Mailaway");
                     GridUser.DataSource = mailwayorders;
                     GridUser.DataBind();
                     showoverallcount();
@@ -687,7 +760,7 @@ public partial class Pages_STRMICXOrderStatus : System.Web.UI.Page
 
                 if (strfrmdate != "" && strtodate != "")
                 {
-                    inprocessorders = gblcls.FetchTrackingDetails(strfrmdate, strtodate, "", "", "Inprocess");
+                    inprocessorders = gblcls.FetchTrackingDetails(strfrmdate, strtodate,"", "", "", "Inprocess");
                     GridUser.DataSource = inprocessorders;
                     GridUser.DataBind();
                     showoverallcount();
@@ -714,7 +787,7 @@ public partial class Pages_STRMICXOrderStatus : System.Web.UI.Page
 
                 if (strfrmdate != "" && strtodate != "")
                 {
-                    deliveredorders = gblcls.FetchTrackingDetails(strfrmdate, strtodate, "", "", "Delivered");
+                    deliveredorders = gblcls.FetchTrackingDetails(strfrmdate, strtodate,"", "", "", "Delivered");
                     GridUser.DataSource = deliveredorders;
                     GridUser.DataBind();
                     showoverallcount();
@@ -741,7 +814,7 @@ public partial class Pages_STRMICXOrderStatus : System.Web.UI.Page
 
                 if (strfrmdate != "" && strtodate != "")
                 {
-                    rejectedorders = gblcls.FetchTrackingDetails(strfrmdate, strtodate, "", "", "Rejected");
+                    rejectedorders = gblcls.FetchTrackingDetails(strfrmdate, strtodate,"", "", "", "Rejected");
                     GridUser.DataSource = rejectedorders;
                     GridUser.DataBind();
                     showoverallcount();

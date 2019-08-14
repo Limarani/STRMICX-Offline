@@ -17904,7 +17904,7 @@ public class GlobalClass : myConnection
         }
         if (paymentfrequency == "3")
         {
-            paymentfrequency = "SemiAnnual";
+            paymentfrequency = "Triannual";
         }
         if (paymentfrequency == "4")
         {
@@ -18506,21 +18506,23 @@ public class GlobalClass : myConnection
         return dt1;
     }
 
-    public DataTable FetchTrackingDetails(string fdate, string tdate, string state, string username, string status)
+    public DataTable FetchTrackingDetails(string fdate, string tdate, string transactiontype, string state, string username, string status)
     {
         DataTable dt = new DataTable();
         string query = "Sp_TrackingDetailsALL";
-        mParam = new MySqlParameter[5];
+        mParam = new MySqlParameter[6];
         mParam[0] = new MySqlParameter("?$fdate", fdate);
         mParam[0].MySqlDbType = MySqlDbType.VarChar;
         mParam[1] = new MySqlParameter("?$tdate", tdate);
         mParam[1].MySqlDbType = MySqlDbType.VarChar;
-        mParam[2] = new MySqlParameter("?$state", state);
+        mParam[2] = new MySqlParameter("?$transactiontype", transactiontype);
         mParam[2].MySqlDbType = MySqlDbType.VarChar;
-        mParam[3] = new MySqlParameter("?$username", username);
+        mParam[3] = new MySqlParameter("?$state", state);
         mParam[3].MySqlDbType = MySqlDbType.VarChar;
-        mParam[4] = new MySqlParameter("?$status", status);
+        mParam[4] = new MySqlParameter("?$username", username);
         mParam[4].MySqlDbType = MySqlDbType.VarChar;
+        mParam[5] = new MySqlParameter("?$status", status);
+        mParam[5].MySqlDbType = MySqlDbType.VarChar;
 
         mDa = con.ExecuteSPAdapter(query, true, mParam);
         mDa.Fill(dt);
