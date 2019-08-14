@@ -3174,6 +3174,9 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
         PnlTax1.Focus();
         if (ddlfuturetaxcalc.SelectedItem.Text == "SameAsCurrent")
         {
+            string updatesameascurrent = "";
+            updatesameascurrent = "update tbl_taxauthorities2 set FutureTaxOption = '" + ddlfuturetaxcalc.Text + "' Where Orderno = '" + lblord.Text + "' AND TaxId = '" + LblTaxID.Text + "' AND AgencyId = '" + LblAgencyID.Text + "' AND TaxAgencyType = '" + txtTaxType.Text + "'";
+            gl.ExecuteSPNonQuery(updatesameascurrent);
             PnlTax1.Visible = true;
             futuretaxsameascurrent();
         }
@@ -4700,6 +4703,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
                 fetchtaxparceldetails();
                 PnlTax.Visible = false;
                 PnlTax1.Visible = false;
+                deliexemspecial.Visible = false;
                 chkTBD.Enabled = true;
                 chkEst.Checked = false;
                 chkTBD.Checked = false;
@@ -4974,7 +4978,6 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
 
     protected void btntaxtypeupdate_Click(object sender, EventArgs e)
     {
-
         gvTaxParcel.EditIndex = -1;
         chkTBD.Enabled = true;
         chkEst.Checked = false;
