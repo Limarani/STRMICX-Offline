@@ -18220,7 +18220,7 @@ public class GlobalClass : myConnection
         }
         if (paymentfrequency == "3")
         {
-            paymentfrequency = "SemiAnnual";
+            paymentfrequency = "TriAnnual";
         }
         if (paymentfrequency == "4")
         {
