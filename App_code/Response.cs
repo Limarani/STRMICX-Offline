@@ -226,7 +226,7 @@ public class Response
             TaxAgency.InstallmentAmount2 = ds.Tables[0].Rows[i]["Instamount2"] != DBNull.Value ? Convert.ToDecimal(ds.Tables[0].Rows[i]["Instamount2"]) : decimalnull;
             TaxAgency.InstallmentAmount3 = ds.Tables[0].Rows[i]["Instamount3"] != DBNull.Value ? Convert.ToDecimal(ds.Tables[0].Rows[i]["Instamount3"]) : decimalnull;
             TaxAgency.InstallmentAmount4 = ds.Tables[0].Rows[i]["Instamount4"] != DBNull.Value ? Convert.ToDecimal(ds.Tables[0].Rows[i]["Instamount4"]) : decimalnull;
-            TaxAgency.InstallmentAmountPaid1 = ds.Tables[0].Rows[i]["Instamountpaid1"] != DBNull.Value ? Convert.ToDecimal(ds.Tables[0].Rows[i]["Instamountpaid1"]) : decimalnull;
+            TaxAgency.InstallmentAmountPaid1 = Convert.ToDecimal(ds.Tables[0].Rows[i]["Instamountpaid1"]);
             TaxAgency.InstallmentAmountPaid2 = ds.Tables[0].Rows[i]["Instamountpaid2"] != DBNull.Value ? Convert.ToDecimal(ds.Tables[0].Rows[i]["Instamountpaid2"]) : decimalnull;
             TaxAgency.InstallmentAmountPaid3 = ds.Tables[0].Rows[i]["Instamountpaid3"] != DBNull.Value ? Convert.ToDecimal(ds.Tables[0].Rows[i]["Instamountpaid3"]) : decimalnull;
             TaxAgency.InstallmentAmountPaid4 = ds.Tables[0].Rows[i]["Instamountpaid4"] != DBNull.Value ? Convert.ToDecimal(ds.Tables[0].Rows[i]["Instamountpaid4"]) : decimalnull;
@@ -547,7 +547,7 @@ public class TaxAgencyDetailsTag
     public Decimal? InstallmentAmount2;
     public Decimal? InstallmentAmount3;
     public Decimal? InstallmentAmount4;
-    public Decimal? InstallmentAmountPaid1;
+    public Decimal InstallmentAmountPaid1;
     public Decimal? InstallmentAmountPaid2;
     public Decimal? InstallmentAmountPaid3;
     public Decimal? InstallmentAmountPaid4;

@@ -110,7 +110,6 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
             fetchtaxparceldetails();
             Prior.Visible = false;
             deliexemspecial.Visible = false;
-            ddlfuturetaxcalc.Enabled = false;
             ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "txtexeSpecial();", true);
         }
     }
@@ -343,6 +342,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
 
     protected void lnkgvOrders_Click(object sender, EventArgs e)
     {
+        ddlfuturetaxcalc.Enabled = false;
         string queryfetchprevious = "";
         queryfetchprevious = "select AgencyId,TaxAgencyType,IsDelinquent from tbl_taxauthorities2 where Orderno = '" + lblord.Text + "' and TaxId = '" + LblTaxID.Text + "' and AgencyId = '" + LblAgencyID.Text + "' and TaxAgencyType = '" + txtTaxType.Text + "'";
         DataSet ds = gl.ExecuteQuery(queryfetchprevious);
@@ -350,7 +350,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
         {
             string agency = ds.Tables[0].Rows[0]["AgencyId"].ToString().Trim();
             string agencytype = ds.Tables[0].Rows[0]["TaxAgencyType"].ToString().Trim();
-            
+
             if (txtdeliquent.SelectedValue == "No")
             {
                 string updatedeli = "";
@@ -390,7 +390,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
                 updatedeli = "update tbl_taxauthorities2 set primaryresidence = 'false' where Orderno = '" + lblord.Text + "' AND TaxId = '" + LblTaxID.Text + "' And AgencyId = '" + agency + "' And TaxAgencyType = '" + agencytype + "'";
                 gl.ExecuteSPNonQuery(updatedeli);
             }
-            
+
             if (txtResidence.SelectedValue == "Not Applicable")
             {
                 string updatedeli = "";
@@ -910,7 +910,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
                 else if (primaryresidence == "false")
                 {
                     txtResidence.SelectedIndex = 2;
-                }               
+                }
 
 
                 DataTable dtsdeliquentinp = new DataTable();
@@ -1042,14 +1042,22 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
                     PnlTax1.Visible = true;
                     futuretaxmanual();
                 }
-                if (test == "SameAsCurrent")
-                {
-                    ddlfuturetaxcalc.SelectedIndex = 2;
-                    PnlTax1.Visible = true;
-                    futuretaxsameascurrent();
-                }
             }
         }
+        else if (dsfut.Tables[0].Rows.Count == 0)
+        {
+            PnlTax1.Visible = false;
+            ddlfuturetaxcalc.SelectedIndex = 0;
+        }
+
+        string futuresameascu = "select FutureTaxOption from tbl_taxauthorities2 where Orderno = '" + lblord.Text + "' and TaxId = '" + LblTaxID.Text + "' and AgencyId = '" + LblAgencyID.Text + "' and TaxAgencyType = '" + taxagencytype + "' and FutureTaxOption = 'SameAsCurrent'";
+        DataSet dssamecu = gl.ExecuteQuery(futuresameascu);
+        if (dssamecu.Tables[0].Rows.Count > 0)
+        {
+            ddlfuturetaxcalc.SelectedIndex = 2;
+            PnlTax1.Visible = true;
+            futuretaxsameascurrent();
+        }       
 
         btntaxparcels.Enabled = true;
         ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "txtexeSpecial();", true);
@@ -3166,6 +3174,9 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
         PnlTax1.Focus();
         if (ddlfuturetaxcalc.SelectedItem.Text == "SameAsCurrent")
         {
+            string updatesameascurrent = "";
+            updatesameascurrent = "update tbl_taxauthorities2 set FutureTaxOption = '" + ddlfuturetaxcalc.Text + "' Where Orderno = '" + lblord.Text + "' AND TaxId = '" + LblTaxID.Text + "' AND AgencyId = '" + LblAgencyID.Text + "' AND TaxAgencyType = '" + txtTaxType.Text + "'";
+            gl.ExecuteSPNonQuery(updatesameascurrent);
             PnlTax1.Visible = true;
             futuretaxsameascurrent();
         }
@@ -3206,7 +3217,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
             txtmandisamount4.Attributes.Remove("disabled");
             chkexrelmanu4.Attributes.Remove("disabled");
             ddlmanutaxbill.Attributes.Remove("disabled");
-            ddlpayfreqmanu.Attributes.Remove("disabled");
+            ddlpayfreqmanu.Attributes.Add("disabled", "disabled");
             txtinstcommentsmanual.Attributes.Remove("disabled");
 
             instmanamount1.Value = "";
@@ -3912,6 +3923,8 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
 
         txtmanubillstartdate.Attributes.Add("disabled", "disabled");
         txtmanubillenddate.Attributes.Add("disabled", "disabled");
+
+        txtinstcommentsmanual.Attributes.Remove("disabled");
 
         if (payemntfrequency != "")
         {
@@ -4690,6 +4703,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
                 fetchtaxparceldetails();
                 PnlTax.Visible = false;
                 PnlTax1.Visible = false;
+                deliexemspecial.Visible = false;
                 chkTBD.Enabled = true;
                 chkEst.Checked = false;
                 chkTBD.Checked = false;
@@ -4964,7 +4978,6 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
 
     protected void btntaxtypeupdate_Click(object sender, EventArgs e)
     {
-
         gvTaxParcel.EditIndex = -1;
         chkTBD.Enabled = true;
         chkEst.Checked = false;
