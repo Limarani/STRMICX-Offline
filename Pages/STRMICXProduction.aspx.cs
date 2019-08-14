@@ -3101,12 +3101,12 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
             if (paymentmanual == "SemiAnnual")
             {
                 ddlpayfreqmanu.SelectedIndex = 1;
-            }
-            if (paymentmanual == "Quarterly")
+            }          
+            if (paymentmanual == "TriAnnual")
             {
                 ddlpayfreqmanu.SelectedIndex = 2;
             }
-            if (paymentmanual == "TriAnnual")
+            if (paymentmanual == "Quarterly")
             {
                 ddlpayfreqmanu.SelectedIndex = 3;
             }
@@ -3168,6 +3168,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
     {
         ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "txtexeSpecial();", true);
         PnlTax1.Visible = false;
+        txtinstcommentsmanual.Value = "";
         fetchDeliquentStatus();
         fetchexemptionsAll();
         fetchspecialAll();
@@ -3480,11 +3481,11 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
             {
                 ddlpayfreqmanu.SelectedIndex = 1;
             }
-            if (paymentfr == "Quarterly")
+            if (paymentfr == "TriAnnual")
             {
                 ddlpayfreqmanu.SelectedIndex = 2;
             }
-            if (paymentfr == "TriAnnual")
+            if (paymentfr == "Quarterly")
             {
                 ddlpayfreqmanu.SelectedIndex = 3;
             }
@@ -3842,11 +3843,11 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
             {
                 ddlpayfreqmanu.SelectedIndex = 1;
             }
-            if (paymentmanual == "Quarterly")
+            if (paymentmanual == "TriAnnual")
             {
                 ddlpayfreqmanu.SelectedIndex = 2;
             }
-            if (paymentmanual == "TriAnnual")
+            if (paymentmanual == "Quarterly")
             {
                 ddlpayfreqmanu.SelectedIndex = 3;
             }

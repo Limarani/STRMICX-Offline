@@ -38,6 +38,8 @@ public class CallAPI
 
                 { "client_id", "String" },
                 { "client_secret", "VDAMxAk6TWXGzXe0IailVvy89pepVfoui2IHp2xfmUCsqpIoqHCIDPWwEPm1pQsg" }
+                // { "client_id", "string" },
+                //{ "client_secret", "5smAKJV9AX7CVRm99D7EZ3eRQ3YRwmoE0Tfx3LySBl5L0Yr9qSMyiO7F4U8mFyKi" }
             };
 
         var content = new FormUrlEncodedContent(values);

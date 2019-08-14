@@ -8348,8 +8348,8 @@
                                                             <select class="form-control" id="ddlpayfreqmanu" runat="server" onchange="functionpayemtfrequency1(this)" style="width: 170px; margin-bottom: 5px;" tabindex="90">
                                                                 <option value="1">Annual</option>
                                                                 <option value="2">SemiAnnual</option>
-                                                                <option value="3">Quarterly</option>
-                                                                <option value="4">TriAnnual</option>
+                                                                <option value="3">TriAnnual</option>
+                                                                <option value="4">Quarterly</option>
                                                             </select>
                                                         </td>
                                                         <td>
