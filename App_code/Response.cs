@@ -20,7 +20,7 @@ public class Response
     string stringnull = null;
     string blankDate = "1900-01-01";
     string blankDateTime = "1900-01-01T00:00:00Z";
-    TaxAgencyDetailsTag TaxAgency = new TaxAgencyDetailsTag();
+    string delinqTemp = "";
     TaxDetailTag taxDetailTag = new TaxDetailTag();
     public string GetJsonData(string orderno, string orderStatus)
     {
@@ -132,12 +132,13 @@ public class Response
     public List<TaxParcelTag> GetTaxParcelTagData(string orderno)
     {
         List<TaxParcelTag> TaxParcelList = new List<TaxParcelTag> { };
-        TaxParcelTag TaxParcel = new TaxParcelTag();
+       
         //read data from dataset 
         DataSet ds = dbconn.ExecuteQuery("select * from tbl_taxparcel where orderno='" + orderno + "'");
 
         for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
         {
+            TaxParcelTag TaxParcel = new TaxParcelTag();
             string endyear = ds.Tables[0].Rows[i]["endyear"].ToString();
             string taxyear = ds.Tables[0].Rows[i]["taxyear"].ToString();
             if (taxyear.Contains("EST"))
@@ -170,7 +171,7 @@ public class Response
             TaxParcel.TaxId = ds.Tables[0].Rows[i]["taxid"] != DBNull.Value ? ds.Tables[0].Rows[i]["taxid"].ToString() : null;
             TaxParcel.IsToBeDetermined = ds.Tables[0].Rows[i]["tbd"] != DBNull.Value ? Convert.ToBoolean(ds.Tables[0].Rows[i]["tbd"]) : false;
             TaxParcel.IsEstimate = ds.Tables[0].Rows[i]["estimate"] != DBNull.Value ? Convert.ToBoolean(ds.Tables[0].Rows[i]["estimate"]) : false;
-            TaxParcel.TaxAgencyDetails = GetTaxAgencyDetailsTagData(orderno);
+            TaxParcel.TaxAgencyDetails = GetTaxAgencyDetailsTagData(orderno, TaxParcel.TaxId);
             DataSet dsSpecial = dbconn.ExecuteQuery("select * from tbl_specialassessment_authority where orderno='" + orderno + "'");
             if (dsSpecial.Tables[0].Rows.Count > 0)
             {
@@ -183,7 +184,7 @@ public class Response
 
 
 
-    public List<TaxAgencyDetailsTag> GetTaxAgencyDetailsTagData(string orderno)
+    public List<TaxAgencyDetailsTag> GetTaxAgencyDetailsTagData(string orderno,string taxid)
     {
 
         List<TaxAgencyDetailsTag> TaxAgencyDetails = new List<TaxAgencyDetailsTag>() { };
@@ -191,18 +192,22 @@ public class Response
 
         for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
         {
+            TaxAgencyDetailsTag TaxAgency = new TaxAgencyDetailsTag();
             TaxAgency.AgencyId = ds.Tables[0].Rows[i]["AgencyId"].ToString();
             TaxAgency.TaxAgencyType = ds.Tables[0].Rows[i]["TaxAgencyType"].ToString();
             if (ds.Tables[0].Rows[i]["IsDelinquent"].ToString() == "true")
             {
                 TaxAgency.IsDelinquent = true;
+                delinqTemp = "true";
             }
             else
             {
                 TaxAgency.IsDelinquent = false;
+                delinqTemp = "false";
             }
-            //TaxAgency.IsDelinquent = Convert.ToBoolean(ds.Tables[0].Rows[i]["IsDelinquent"]);
-            TaxAgency.DelinquentAgencyId = ds.Tables[0].Rows[i]["DelinquencyAgencyId"].ToString();
+
+            //TaxAgency.DelinquentAgencyId = ds.Tables[0].Rows[i]["DelinquencyAgencyId"].ToString();
+            TaxAgency.DelinquentAgencyId = TaxAgency.AgencyId;
             TaxAgency.BillingFrequency = ds.Tables[0].Rows[i]["taxfrequency"].ToString();
             TaxAgency.NextBillDate1 = ds.Tables[0].Rows[i]["billingdate1"] != DBNull.Value ? Convert.ToString(ds.Tables[0].Rows[i]["billingdate1"]) : null;
             TaxAgency.NextBillDate2 = ds.Tables[0].Rows[i]["billingdate2"] != DBNull.Value ? Convert.ToString(ds.Tables[0].Rows[i]["billingdate2"]) : null;
@@ -219,6 +224,10 @@ public class Response
             TaxAgency.DiscountDate3 = ds.Tables[0].Rows[i]["DiscountDate3"] != DBNull.Value ? Convert.ToString(ds.Tables[0].Rows[i]["DiscountDate3"]) : null;
             TaxAgency.DiscountDate4 = ds.Tables[0].Rows[i]["DiscountDate4"] != DBNull.Value ? Convert.ToString(ds.Tables[0].Rows[i]["DiscountDate2"]) : null;
             TaxAgency.InstallmentDate1 = ds.Tables[0].Rows[i]["duedate1"] != DBNull.Value ? Convert.ToString(ds.Tables[0].Rows[i]["duedate1"]) : null;
+            if (TaxAgency.NextBillDate1 == null || TaxAgency.NextBillDate1 == "")
+            {
+                TaxAgency.NextBillDate1 = Convert.ToDateTime(TaxAgency.InstallmentDate1).AddYears(1).ToString("MM/dd/yyyy");
+            }
             TaxAgency.InstallmentDate2 = ds.Tables[0].Rows[i]["duedate2"] != DBNull.Value ? Convert.ToString(ds.Tables[0].Rows[i]["duedate2"]) : null;
             TaxAgency.InstallmentDate3 = ds.Tables[0].Rows[i]["duedate3"] != DBNull.Value ? Convert.ToString(ds.Tables[0].Rows[i]["duedate3"]) : null;
             TaxAgency.InstallmentDate4 = ds.Tables[0].Rows[i]["duedate4"] != DBNull.Value ? Convert.ToString(ds.Tables[0].Rows[i]["duedate4"]) : null;
@@ -287,17 +296,29 @@ public class Response
             TaxAgency.BillingPeriodStartDate = ds.Tables[0].Rows[i]["BillingPeriodStartDate"] != DBNull.Value ? Convert.ToString(ds.Tables[0].Rows[i]["BillingPeriodStartDate"]) : null;
             TaxAgency.BillingPeriodEndDate = ds.Tables[0].Rows[i]["BillingPeriodEndDate"] != DBNull.Value ? Convert.ToString(ds.Tables[0].Rows[i]["BillingPeriodEndDate"]) : null;
             TaxAgency.FutureTaxOption = ds.Tables[0].Rows[i]["FutureTaxOption"] != DBNull.Value ? Convert.ToString(ds.Tables[0].Rows[i]["FutureTaxOption"]) : "";
-            TaxAgency.WasFullyAssessedLastYear = ds.Tables[0].Rows[i]["primaryresidence"] != DBNull.Value ? Convert.ToBoolean(ds.Tables[0].Rows[i]["primaryresidence"]) : false;
-            TaxAgency.AssessedValue = 0; //need to clarify
-            DataSet dsExemp = dbconn.ExecuteQuery("select * from tbl_exemption_taxauthority where orderno='" + orderno + "'");
-            if (dsExemp.Tables[0].Rows.Count > 0)
+            string primary = ds.Tables[0].Rows[i]["primaryresidence"].ToString();
+            if (primary == "Yes")
             {
-                TaxAgency.TaxExemptions = GetTaxExemptionList(orderno);
+                TaxAgency.WasFullyAssessedLastYear = true;
             }
-            DataSet dsdelq = dbconn.ExecuteQuery("select * from tbl_deliquent where orderno='" + orderno + "'");
-            if (dsdelq.Tables[0].Rows.Count > 0)
+            else
             {
-                TaxAgency.DelinquentTaxes = GetDelinquentTaxesList(orderno);
+                TaxAgency.WasFullyAssessedLastYear = false;
+            }
+           // TaxAgency.WasFullyAssessedLastYear = ds.Tables[0].Rows[i]["primaryresidence"] != DBNull.Value ? Convert.ToBoolean(ds.Tables[0].Rows[i]["primaryresidence"]) : false;
+            TaxAgency.AssessedValue = 0; //need to clarify
+            if (TaxAgency.TaxBill != "FUTURE")
+            {
+                DataSet dsExemp = dbconn.ExecuteQuery("select * from tbl_exemption_taxauthority where orderno='" + orderno + "' and taxid='" + taxid + "' and agencyid='" + TaxAgency.AgencyId + "' and taxtype='" + TaxAgency.TaxAgencyType + "'");
+                if (dsExemp.Tables[0].Rows.Count > 0)
+                {
+                    TaxAgency.TaxExemptions = GetTaxExemptionList(orderno, taxid, TaxAgency.AgencyId, TaxAgency.TaxAgencyType);
+                }
+                DataSet dsdelq = dbconn.ExecuteQuery("select * from tbl_deliquent where orderno='" + orderno + "' and taxid='" + taxid + "' and agencyid='" + TaxAgency.AgencyId + "' and taxtype='" + TaxAgency.TaxAgencyType + "'");
+                if (dsdelq.Tables[0].Rows.Count > 0)
+                {
+                    TaxAgency.DelinquentTaxes = GetDelinquentTaxesList(orderno, taxid, TaxAgency.AgencyId, TaxAgency.TaxAgencyType);
+                }
             }
             TaxAgencyDetails.Add(TaxAgency);
         }
@@ -306,38 +327,40 @@ public class Response
     }
 
 
-    public List<TaxExemptionsTag> GetTaxExemptionList(string orderno)
+    public List<TaxExemptionsTag> GetTaxExemptionList(string orderno,string taxid,string AgencyId,string TaxAgencyType)
     {
-        TaxExemptionsTag TaxExemptions = new TaxExemptionsTag();
+       
         List<TaxExemptionsTag> TaxExemptionList = new List<TaxExemptionsTag> { };
-        DataSet ds = dbconn.ExecuteQuery("select * from tbl_exemption_taxauthority where orderno='" + orderno + "'");
+        DataSet ds = dbconn.ExecuteQuery("select * from tbl_exemption_taxauthority where orderno='" + orderno + "' and taxid='" + taxid + "' and agencyid='" + AgencyId + "' and taxtype='" + TaxAgencyType + "'");
         if (ds.Tables[0].Rows.Count > 0)
         {
             for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
             {
+                TaxExemptionsTag TaxExemptions = new TaxExemptionsTag();
                 TaxExemptions.ExemptionTypeCode = ds.Tables[0].Rows[i]["exemptiontype"] != DBNull.Value ? Convert.ToString(ds.Tables[0].Rows[i]["exemptiontype"]) : null;
                 TaxExemptions.ExemptionAmount = ds.Tables[0].Rows[i]["exemptionamount"] != DBNull.Value ? Convert.ToDecimal(ds.Tables[0].Rows[i]["exemptionamount"]) : 0;
                 TaxExemptionList.Add(TaxExemptions);
             }
         }
-        else
-        {
-            TaxExemptions.ExemptionTypeCode = null; //non empty string???
-            TaxExemptions.ExemptionAmount = 0;
-            TaxExemptionList.Add(TaxExemptions);
-        }
+        //else
+        //{
+        //    TaxExemptions.ExemptionTypeCode = null; //non empty string???
+        //    TaxExemptions.ExemptionAmount = 0;
+        //    TaxExemptionList.Add(TaxExemptions);
+        //}
         return TaxExemptionList;
     }
-    public List<DelinquentTaxesTag> GetDelinquentTaxesList(string orderno)
+    public List<DelinquentTaxesTag> GetDelinquentTaxesList(string orderno,string taxid,string AgencyId,string TaxAgencyType)
     {
-        DelinquentTaxesTag DelinquentTaxes = new DelinquentTaxesTag();
+       
         List<DelinquentTaxesTag> DelinquentTaxesList = new List<DelinquentTaxesTag> { };
-        DataSet ds = dbconn.ExecuteQuery("select * from tbl_deliquent where orderno='" + orderno + "'");
+        DataSet ds = dbconn.ExecuteQuery("select * from tbl_deliquent where orderno='" + orderno + "' and taxid='" + taxid + "' and agencyid='" + AgencyId + "' and taxtype='" + TaxAgencyType + "'");
         if (ds.Tables[0].Rows.Count > 0)
         {
             for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
             {
-                DelinquentTaxes.IsCurrentDelinquency = TaxAgency.IsDelinquent;
+                DelinquentTaxesTag DelinquentTaxes = new DelinquentTaxesTag();
+                DelinquentTaxes.IsCurrentDelinquency = Convert.ToBoolean(delinqTemp);
                 DelinquentTaxes.IsFullyPaidOff = ds.Tables[0].Rows[i]["IsFullyPaidOff"] != DBNull.Value ? Convert.ToBoolean(ds.Tables[0].Rows[i]["IsFullyPaidOff"]) : false;
                 DelinquentTaxes.AdditionalPenaltyAmount = ds.Tables[0].Rows[i]["AdditionalPenaltyAmount"] != DBNull.Value ? Convert.ToDecimal(ds.Tables[0].Rows[i]["AdditionalPenaltyAmount"]) : 0;
                 DelinquentTaxes.AmountGoodThruDate = ds.Tables[0].Rows[i]["goodthuruDate"] != DBNull.Value ? Convert.ToString(ds.Tables[0].Rows[i]["goodthuruDate"]) : null;
@@ -370,30 +393,30 @@ public class Response
                 DelinquentTaxesList.Add(DelinquentTaxes);
             }
         }
-        else
-        {
-            DelinquentTaxes.IsCurrentDelinquency = false;
-            DelinquentTaxes.IsFullyPaidOff = false;
-            DelinquentTaxes.AdditionalPenaltyAmount = 0;
-            DelinquentTaxes.AmountGoodThruDate = null;
-            DelinquentTaxes.InitialInstallmentDueDate = null;
-            DelinquentTaxes.BaseAmountDue = 0;
-            DelinquentTaxes.PayOffAmount = 0;
-            DelinquentTaxes.PenaltyAmount = 0;
-            DelinquentTaxes.PenaltyAmountFrequency = "";
-            DelinquentTaxes.PenaltyDueDate = null;
-            DelinquentTaxes.PercentOfPenaltyAmount = 0;
-            DelinquentTaxes.RollOverDate = null;
-            DelinquentTaxes.PerDiem = 0;
-            DelinquentTaxes.TaxYear = "";
-            DelinquentTaxes.Comments = "";
-            DelinquentTaxes.PayeeName = "";
-            DelinquentTaxes.AmountPaid = null;
-            DelinquentTaxes.LatestPaymentDateTime = null;
-            DelinquentTaxes.TaxSaleDate = null;
-            DelinquentTaxes.LastDayToRedeemDate = null;
-            DelinquentTaxesList.Add(DelinquentTaxes);
-        }
+        //else
+        //{
+        //    DelinquentTaxes.IsCurrentDelinquency = false;
+        //    DelinquentTaxes.IsFullyPaidOff = false;
+        //    DelinquentTaxes.AdditionalPenaltyAmount = 0;
+        //    DelinquentTaxes.AmountGoodThruDate = null;
+        //    DelinquentTaxes.InitialInstallmentDueDate = null;
+        //    DelinquentTaxes.BaseAmountDue = 0;
+        //    DelinquentTaxes.PayOffAmount = 0;
+        //    DelinquentTaxes.PenaltyAmount = 0;
+        //    DelinquentTaxes.PenaltyAmountFrequency = "";
+        //    DelinquentTaxes.PenaltyDueDate = null;
+        //    DelinquentTaxes.PercentOfPenaltyAmount = 0;
+        //    DelinquentTaxes.RollOverDate = null;
+        //    DelinquentTaxes.PerDiem = 0;
+        //    DelinquentTaxes.TaxYear = "";
+        //    DelinquentTaxes.Comments = "";
+        //    DelinquentTaxes.PayeeName = "";
+        //    DelinquentTaxes.AmountPaid = null;
+        //    DelinquentTaxes.LatestPaymentDateTime = null;
+        //    DelinquentTaxes.TaxSaleDate = null;
+        //    DelinquentTaxes.LastDayToRedeemDate = null;
+        //    DelinquentTaxesList.Add(DelinquentTaxes);
+        //}
 
         return DelinquentTaxesList;
     }
@@ -401,12 +424,13 @@ public class Response
     public List<SpecialAssessmentsTag> GetSpecialAssessmentsList(string orderno)
     {
         List<SpecialAssessmentsTag> SpecialAssessmentsList = new List<SpecialAssessmentsTag>() { };
-        SpecialAssessmentsTag SpecialAssessments = new SpecialAssessmentsTag();
+       
         DataSet ds = dbconn.ExecuteQuery("select * from tbl_specialassessment_authority where orderno='" + orderno + "'");
         if (ds.Tables[0].Rows.Count > 0)
         {
             for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
             {
+                SpecialAssessmentsTag SpecialAssessments = new SpecialAssessmentsTag();
                 SpecialAssessments.Number = ds.Tables[0].Rows[i]["specialassessmentno"] != DBNull.Value ? Convert.ToString(ds.Tables[0].Rows[i]["specialassessmentno"]) : null;
                 SpecialAssessments.DueDate = ds.Tables[0].Rows[i]["DueDate"] != DBNull.Value ? Convert.ToString(ds.Tables[0].Rows[i]["DueDate"]) : null;
                 SpecialAssessments.Description = ds.Tables[0].Rows[i]["description"] != DBNull.Value ? Convert.ToString(ds.Tables[0].Rows[i]["description"]) : null;
@@ -422,22 +446,22 @@ public class Response
                 SpecialAssessmentsList.Add(SpecialAssessments);
             }
         }
-        else
-        {
-            SpecialAssessments.Number = "";
-            SpecialAssessments.DueDate = null;
-            SpecialAssessments.Description = "";
-            SpecialAssessments.Amount = null;
-            SpecialAssessments.NumberOfInstallments = null;
-            SpecialAssessments.InstallmentsPaid = null;
-            SpecialAssessments.InstallmentsRemaining = null;
-            SpecialAssessments.RemainingBalance = null;
-            SpecialAssessments.PerDiem = null;
-            SpecialAssessments.Payee = "";
-            SpecialAssessments.GoodThroughDate = null;
-            SpecialAssessments.Comments = "";
-            SpecialAssessmentsList.Add(SpecialAssessments);
-        }
+        //else
+        //{
+        //    SpecialAssessments.Number = "";
+        //    SpecialAssessments.DueDate = null;
+        //    SpecialAssessments.Description = "";
+        //    SpecialAssessments.Amount = null;
+        //    SpecialAssessments.NumberOfInstallments = null;
+        //    SpecialAssessments.InstallmentsPaid = null;
+        //    SpecialAssessments.InstallmentsRemaining = null;
+        //    SpecialAssessments.RemainingBalance = null;
+        //    SpecialAssessments.PerDiem = null;
+        //    SpecialAssessments.Payee = "";
+        //    SpecialAssessments.GoodThroughDate = null;
+        //    SpecialAssessments.Comments = "";
+        //    SpecialAssessmentsList.Add(SpecialAssessments);
+        //}
         return SpecialAssessmentsList;
     }
     public TaxVendorTag GetTaxVendorTagData(string orderno, string orderStatus)

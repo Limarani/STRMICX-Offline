@@ -743,7 +743,7 @@ public class GlobalClass : myConnection
         }
     }
 
-    
+
 
 
 
@@ -1228,11 +1228,11 @@ public class GlobalClass : myConnection
         mParam = new MySqlParameter[6];
 
         mParam[0] = new MySqlParameter("?$OrderNo", orderno);
-        mParam[0].MySqlDbType = MySqlDbType.VarChar;         
+        mParam[0].MySqlDbType = MySqlDbType.VarChar;
 
         mParam[1] = new MySqlParameter("?$processname", processname);
         mParam[1].MySqlDbType = MySqlDbType.VarChar;
-                        
+
         mParam[2] = new MySqlParameter("?$zipcode", zipcode);
         mParam[2].MySqlDbType = MySqlDbType.VarChar;
 
@@ -2233,8 +2233,8 @@ public class GlobalClass : myConnection
         dview = new DataView(DtTable);
         return dview;
     }
-        
-    
+
+
 
     //SAMPLE
     public DataView ConvertDataSetToDataViewSample(DataSet ds)
@@ -2281,7 +2281,7 @@ public class GlobalClass : myConnection
         Dtcolumn.ColumnName = "OrderType";
         Dtcolumn.Caption = "OrderType";
         DtTable.Columns.Add(Dtcolumn);
-       
+
         Dtcolumn = new DataColumn();
         Dtcolumn.DataType = System.Type.GetType("System.String");
         Dtcolumn.ColumnName = "Download Time";
@@ -2299,7 +2299,7 @@ public class GlobalClass : myConnection
         Dtcolumn.ColumnName = "K1 Name";
         Dtcolumn.Caption = "K1 Name";
         DtTable.Columns.Add(Dtcolumn);
-        
+
         Dtcolumn = new DataColumn();
         Dtcolumn.DataType = System.Type.GetType("System.String");
         Dtcolumn.ColumnName = "K1Start Time";
@@ -2342,7 +2342,7 @@ public class GlobalClass : myConnection
         Dtcolumn.ColumnName = "QCTime Taken";
         Dtcolumn.Caption = "QCTime Taken";
         DtTable.Columns.Add(Dtcolumn);
-               
+
         Dtcolumn = new DataColumn();
         Dtcolumn.DataType = System.Type.GetType("System.String");
         Dtcolumn.ColumnName = "Upload Time";
@@ -2379,7 +2379,7 @@ public class GlobalClass : myConnection
                 hp = 0;
                 lk = 0;
                 rej = 0;
-                                
+
                 DataRow dtRow = DtTable.NewRow();
                 dtRow[0] = cnt;
                 dtRow[1] = ds.Tables[0].Rows[i]["Order_no"];
@@ -2390,7 +2390,7 @@ public class GlobalClass : myConnection
                     dtRow[2] = String.Format("{0:dd-MMM-yy}", pDt);
                 }
                 dtRow[3] = ds.Tables[0].Rows[i]["State"];
-                dtRow[4] = ds.Tables[0].Rows[i]["County"];                
+                dtRow[4] = ds.Tables[0].Rows[i]["County"];
                 dtRow[5] = ds.Tables[0].Rows[i]["OrderType"];
 
                 loc = ds.Tables[0].Rows[i]["Lock1"].ToString();
@@ -2398,14 +2398,14 @@ public class GlobalClass : myConnection
                 qc = ds.Tables[0].Rows[i]["qc"].ToString();
                 review = ds.Tables[0].Rows[i]["Review"].ToString();
                 stat = ds.Tables[0].Rows[i]["status"].ToString();
-                
+
                 if (loc == "1")
                 { dtRow[7] = "Locked"; }
                 else if (k1 == "0" && qc == "0")
                 { dtRow[7] = "YTS"; }
                 else if (k1 == "1" && qc == "0")
                 { dtRow[7] = "Key Started"; }
-                else if (k1 == "2" && qc == "0") 
+                else if (k1 == "2" && qc == "0")
                 { dtRow[7] = "Key Completed"; }
                 else if (k1 == "2" && qc == "0")
                 { dtRow[7] = "Others"; }
@@ -2419,9 +2419,9 @@ public class GlobalClass : myConnection
                 { dtRow[7] = "Rejected"; }
                 else if (k1 == "9" && qc == "9" && stat == "9" && review == "9")
                 { dtRow[7] = "Order Missing"; }
-                             
-                
-                dtRow[9]  = ds.Tables[0].Rows[i]["K1_OP"];                
+
+
+                dtRow[9] = ds.Tables[0].Rows[i]["K1_OP"];
                 dtRow[10] = ds.Tables[0].Rows[i]["k1_st"];
                 dtRow[11] = ds.Tables[0].Rows[i]["k1_et"];
 
@@ -2444,12 +2444,12 @@ public class GlobalClass : myConnection
                     TimeSpan TimeDiff = EnTime.Subtract(StTime);
                     dtRow[16] = TimeDiff;
                 }
-                
+
                 dtRow[17] = ds.Tables[0].Rows[i]["UploadTime"];
                 dtRow[18] = ds.Tables[0].Rows[i]["Id"];
 
                 if (k1 == "5" && qc == "5" && stat == "5" && review == "5") dtRow[27] = "Yes";
-                                                
+
                 cnt += 1;
                 DtTable.Rows.Add(dtRow);
             }
@@ -2897,7 +2897,7 @@ public class GlobalClass : myConnection
         return ds;
     }
 
-   
+
 
     public DataSet GetTat(string strorder, string strweb)
     {
@@ -16677,10 +16677,10 @@ public class GlobalClass : myConnection
         }
     }
 
-    public int insert_taxparcel(string orderno, string taxidnumber, string taxyear, string endyear,string status, string tbd, string estimate)
+    public int insert_taxparcel(string orderno, string taxidnumber, string taxyear, string endyear, string status, string tbd, string estimate)
     {
 
-        if (string.IsNullOrEmpty(endyear) )
+        if (string.IsNullOrEmpty(endyear))
         {
             endyear = null;
         }
@@ -16712,7 +16712,7 @@ public class GlobalClass : myConnection
         mParam[6].MySqlDbType = MySqlDbType.VarChar;
         return ExecuteSPNonQuery("Sp_insert_taxparcel", true, mParam);
     }
-    public void update_taxparcel(string id, string taxidnumber, string taxyear, string endyear,string taxid_input,string orderno, string tbd, string est)
+    public void update_taxparcel(string id, string taxidnumber, string taxyear, string endyear, string taxid_input, string orderno, string tbd, string est)
     {
 
         if (string.IsNullOrEmpty(endyear))
@@ -16741,7 +16741,7 @@ public class GlobalClass : myConnection
         mParam[4] = new MySqlParameter("$taxid_input", taxid_input);
         mParam[4].MySqlDbType = MySqlDbType.VarChar;
         mParam[5] = new MySqlParameter("$orderno", orderno);
-        mParam[5].MySqlDbType = MySqlDbType.VarChar;        
+        mParam[5].MySqlDbType = MySqlDbType.VarChar;
         mParam[6] = new MySqlParameter("$tbd", tbd);
         mParam[6].MySqlDbType = MySqlDbType.VarChar;
         mParam[7] = new MySqlParameter("$est", est);
@@ -16761,7 +16761,7 @@ public class GlobalClass : myConnection
         return dt;
     }
 
-        
+
     public DataTable Fetchtaxauthorities(string orderno, string taxid)
     {
         DataTable dt = new DataTable();
@@ -16808,8 +16808,8 @@ public class GlobalClass : myConnection
             throw ex;
         }
     }
-    
-           
+
+
     public DataSet edittaxauthorities(string Id)
     {
         mParam = new MySqlParameter[1];
@@ -16832,7 +16832,7 @@ public class GlobalClass : myConnection
             mParam[0] = new MySqlParameter("?$Id", id);
             mParam[0].MySqlDbType = MySqlDbType.VarChar;
 
-           ExecuteSPNonQuery("sp_delete_orders", true, mParam);
+            ExecuteSPNonQuery("sp_delete_orders", true, mParam);
         }
         catch (Exception ex)
         {
@@ -16889,11 +16889,11 @@ public class GlobalClass : myConnection
         return ExecuteSPNonQuery("Sp_update_exemption_taxauthority", true, mParam);
     }
 
-    public DataTable FetchExemptionAll(string orderno, string taxid, string agencyid)
+    public DataTable FetchExemptionAll(string orderno, string taxid, string agencyid, string taxtype)
     {
         DataTable dt = new DataTable();
         string query = "Sp_fetchall_exemption_taxauthority";
-        mParam = new MySqlParameter[3];
+        mParam = new MySqlParameter[4];
         mParam[0] = new MySqlParameter("?$orderno", orderno);
         mParam[0].MySqlDbType = MySqlDbType.VarChar;
 
@@ -16902,6 +16902,9 @@ public class GlobalClass : myConnection
 
         mParam[2] = new MySqlParameter("?$agencyid", agencyid);
         mParam[2].MySqlDbType = MySqlDbType.VarChar;
+
+        mParam[3] = new MySqlParameter("?$taxtype", taxtype);
+        mParam[3].MySqlDbType = MySqlDbType.VarChar;
         mDa = con.ExecuteSPAdapter(query, true, mParam);
         mDa.Fill(dt);
         return dt;
@@ -17089,22 +17092,24 @@ public class GlobalClass : myConnection
         mParam[13].MySqlDbType = MySqlDbType.VarChar;
         mParam[14] = new MySqlParameter("$duedate", duedate);
         mParam[14].MySqlDbType = MySqlDbType.VarChar;
-        
-                        
+
+
         return ExecuteSPNonQuery("Sp_update_specialassessment", true, mParam);
     }
 
-    public DataTable FetchSpecialAssessmentAll(string orderno, string taxid, string agencyid)
+    public DataTable FetchSpecialAssessmentAll(string orderno, string taxid, string agencyid, string taxtype)
     {
         DataTable dt = new DataTable();
         string query = "Sp_fetchall_specialassessment";
-        mParam = new MySqlParameter[3];
+        mParam = new MySqlParameter[4];
         mParam[0] = new MySqlParameter("?$orderno", orderno);
         mParam[0].MySqlDbType = MySqlDbType.VarChar;
         mParam[1] = new MySqlParameter("?$taxid", taxid);
         mParam[1].MySqlDbType = MySqlDbType.VarChar;
         mParam[2] = new MySqlParameter("?$agencyid", agencyid);
         mParam[2].MySqlDbType = MySqlDbType.VarChar;
+        mParam[3] = new MySqlParameter("?$taxtype", taxtype);
+        mParam[3].MySqlDbType = MySqlDbType.VarChar;
 
         mDa = con.ExecuteSPAdapter(query, true, mParam);
         mDa.Fill(dt);
@@ -17373,19 +17378,22 @@ public class GlobalClass : myConnection
         return ExecuteSPNonQuery("Sp_update_delinquent", true, mParam);
     }
     //balaji
-    public DataTable FetchDeliquentStatusAll(string orderno, string agencyid,string taxid)
+    public DataTable FetchDeliquentStatusAll(string orderno, string agencyid, string taxid, string taxtype)
     {
         DataTable dt = new DataTable();
         string query = "Sp_fetchall_delinquent";
-        mParam = new MySqlParameter[3];
+        mParam = new MySqlParameter[4];
         mParam[0] = new MySqlParameter("?$orderno", orderno);
-        mParam[0].MySqlDbType = MySqlDbType.VarChar;              
+        mParam[0].MySqlDbType = MySqlDbType.VarChar;
 
         mParam[1] = new MySqlParameter("?$agencyid", agencyid);
         mParam[1].MySqlDbType = MySqlDbType.VarChar;
 
         mParam[2] = new MySqlParameter("?$taxid", taxid);
         mParam[2].MySqlDbType = MySqlDbType.VarChar;
+
+        mParam[3] = new MySqlParameter("?$taxtype", taxtype);
+        mParam[3].MySqlDbType = MySqlDbType.VarChar;
 
         mDa = con.ExecuteSPAdapter(query, true, mParam);
         mDa.Fill(dt);
@@ -17419,8 +17427,8 @@ public class GlobalClass : myConnection
         }
     }
 
-    
-    public int update_tax_authorities_paymentdetails(string orderno, string taxid, string agencyid, string taxagencytype, string address, string instamount1, string instamount2, string instamount3, string instamount4, string instamountpaid1, string instamountpaid2, string instamountpaid3, string instamountpaid4, string instPaidDue1, string instPaidDue2, string instPaidDue3, string instPaidDue4, string remainingbalance1, string remainingbalance2, string remainingbalance3, string remainingbalance4, string installmentdate1, string installmentdate2, string installmentdate3, string installmentdate4, string delinquentdate1, string delinquentdate2, string delinquentdate3, string delinquentdate4, string discountamount1, string discountamount2, string discountamount3, string discountamount4, string discountdate1, string discountdate2, string discountdate3, string discountdate4, string exemptrelevy1, string exemptrelevy2, string exemptrelevy3, string exemptrelevy4, string nextbilldate1, string nextbilldate2, string taxbill, string paymentfrequency, string billingstartdate, string billingenddate, string futuretaxcal, string installmentcomments, string authoritystatus,string annualtaxamount)
+
+    public int update_tax_authorities_paymentdetails(string orderno, string taxid, string agencyid, string taxagencytype, string address, string instamount1, string instamount2, string instamount3, string instamount4, string instamountpaid1, string instamountpaid2, string instamountpaid3, string instamountpaid4, string instPaidDue1, string instPaidDue2, string instPaidDue3, string instPaidDue4, string remainingbalance1, string remainingbalance2, string remainingbalance3, string remainingbalance4, string installmentdate1, string installmentdate2, string installmentdate3, string installmentdate4, string delinquentdate1, string delinquentdate2, string delinquentdate3, string delinquentdate4, string discountamount1, string discountamount2, string discountamount3, string discountamount4, string discountdate1, string discountdate2, string discountdate3, string discountdate4, string exemptrelevy1, string exemptrelevy2, string exemptrelevy3, string exemptrelevy4, string nextbilldate1, string nextbilldate2, string taxbill, string paymentfrequency, string billingstartdate, string billingenddate, string futuretaxcal, string installmentcomments, string authoritystatus, string annualtaxamount)
     {
         if (string.IsNullOrEmpty(instamount1) || instamount1 == "0.00")
         {
@@ -17600,13 +17608,13 @@ public class GlobalClass : myConnection
 
         mParam[2] = new MySqlParameter("$agencyid", agencyid);
         mParam[2].MySqlDbType = MySqlDbType.VarChar;
-                
+
         mParam[3] = new MySqlParameter("$taxagencytype", taxagencytype);
         mParam[3].MySqlDbType = MySqlDbType.VarChar;
 
         mParam[4] = new MySqlParameter("$address", address);
         mParam[4].MySqlDbType = MySqlDbType.VarChar;
-               
+
         mParam[5] = new MySqlParameter("$instamount1", instamount1);
         mParam[5].MySqlDbType = MySqlDbType.VarChar;
 
@@ -17725,14 +17733,14 @@ public class GlobalClass : myConnection
         mParam[43].MySqlDbType = MySqlDbType.VarChar;
 
         mParam[44] = new MySqlParameter("$paymentfrequency", paymentfrequency);
-        mParam[44].MySqlDbType = MySqlDbType.VarChar;               
+        mParam[44].MySqlDbType = MySqlDbType.VarChar;
 
         mParam[45] = new MySqlParameter("$billingstartdate", billingstartdate);
         mParam[45].MySqlDbType = MySqlDbType.VarChar;
 
         mParam[46] = new MySqlParameter("$billingenddate", billingenddate);
         mParam[46].MySqlDbType = MySqlDbType.VarChar;
-        
+
         mParam[47] = new MySqlParameter("$futuretaxcal", futuretaxcal);
         mParam[47].MySqlDbType = MySqlDbType.VarChar;
 
@@ -17750,7 +17758,7 @@ public class GlobalClass : myConnection
 
     //
 
-    public int Insert_tax_authorities_paymentdetails(string orderno, string taxid, string agencyid, string taxtype, string instamount1, string instamount2, string instamount3, string instamount4, string instamountpaid1, string instamountpaid2, string instamountpaid3, string instamountpaid4, string instPaidDue1, string instPaidDue2, string instPaidDue3, string instPaidDue4, string remainingbalance1, string remainingbalance2, string remainingbalance3, string remainingbalance4, string installmentdate1, string installmentdate2, string installmentdate3, string installmentdate4, string delinquentdate1, string delinquentdate2, string delinquentdate3, string delinquentdate4, string discountamount1, string discountamount2, string discountamount3, string discountamount4, string discountdate1, string discountdate2, string discountdate3, string discountdate4, string exemptrelevy1, string exemptrelevy2, string exemptrelevy3, string exemptrelevy4, string taxbill, string paymentfrequency, string billingstartdate, string billingenddate, string installmentcomments, string taxauthorityname, string annualtaxamount, string taxauthoritystatus,string futuretax, string billperiodstartdate, string billperiodenddate)
+    public int Insert_tax_authorities_paymentdetails(string orderno, string taxid, string agencyid, string taxtype, string instamount1, string instamount2, string instamount3, string instamount4, string instamountpaid1, string instamountpaid2, string instamountpaid3, string instamountpaid4, string instPaidDue1, string instPaidDue2, string instPaidDue3, string instPaidDue4, string remainingbalance1, string remainingbalance2, string remainingbalance3, string remainingbalance4, string installmentdate1, string installmentdate2, string installmentdate3, string installmentdate4, string delinquentdate1, string delinquentdate2, string delinquentdate3, string delinquentdate4, string discountamount1, string discountamount2, string discountamount3, string discountamount4, string discountdate1, string discountdate2, string discountdate3, string discountdate4, string exemptrelevy1, string exemptrelevy2, string exemptrelevy3, string exemptrelevy4, string taxbill, string paymentfrequency, string billingstartdate, string billingenddate, string installmentcomments, string taxauthorityname, string annualtaxamount, string taxauthoritystatus, string futuretax, string billperiodstartdate, string billperiodenddate)
     {
 
         if (string.IsNullOrEmpty(instamount1) || instamount1 == "0.00")
@@ -17896,7 +17904,7 @@ public class GlobalClass : myConnection
         }
         if (paymentfrequency == "3")
         {
-            paymentfrequency = "SemiAnnual";
+            paymentfrequency = "Triannual";
         }
         if (paymentfrequency == "4")
         {
@@ -17920,10 +17928,10 @@ public class GlobalClass : myConnection
         mParam[1].MySqlDbType = MySqlDbType.VarChar;
 
         mParam[2] = new MySqlParameter("$agencyid", agencyid);
-        mParam[2].MySqlDbType = MySqlDbType.VarChar;              
+        mParam[2].MySqlDbType = MySqlDbType.VarChar;
 
         mParam[3] = new MySqlParameter("$taxagencytype", taxtype);
-        mParam[3].MySqlDbType = MySqlDbType.VarChar;      
+        mParam[3].MySqlDbType = MySqlDbType.VarChar;
 
         mParam[4] = new MySqlParameter("$instamount1", instamount1);
         mParam[4].MySqlDbType = MySqlDbType.VarChar;
@@ -18029,9 +18037,9 @@ public class GlobalClass : myConnection
 
         mParam[38] = new MySqlParameter("$exemptrelevy3", exemptrelevy3);
         mParam[38].MySqlDbType = MySqlDbType.VarChar;
-    
+
         mParam[39] = new MySqlParameter("$exemptrelevy4", exemptrelevy4);
-        mParam[39].MySqlDbType = MySqlDbType.VarChar;          
+        mParam[39].MySqlDbType = MySqlDbType.VarChar;
 
         mParam[40] = new MySqlParameter("$taxbill", taxbill);
         mParam[40].MySqlDbType = MySqlDbType.VarChar;
@@ -18201,7 +18209,7 @@ public class GlobalClass : myConnection
         if (string.IsNullOrEmpty(discountdate4))
         {
             discountdate4 = null;
-        }        
+        }
         if (paymentfrequency == "1")
         {
             paymentfrequency = "Annual";
@@ -18358,7 +18366,7 @@ public class GlobalClass : myConnection
         mParam[44].MySqlDbType = MySqlDbType.VarChar;
 
         mParam[45] = new MySqlParameter("$annualtaxamount", annualtaxamount);
-        mParam[45].MySqlDbType = MySqlDbType.VarChar;                       
+        mParam[45].MySqlDbType = MySqlDbType.VarChar;
 
         mParam[46] = new MySqlParameter("$BillingPeriodStartDate", billperiodstartdate);
         mParam[46].MySqlDbType = MySqlDbType.VarChar;
@@ -18410,7 +18418,7 @@ public class GlobalClass : myConnection
         mParam[2].MySqlDbType = MySqlDbType.VarChar;
         mParam[3] = new MySqlParameter("?$taxtype", taxtype);
         mParam[3].MySqlDbType = MySqlDbType.VarChar;
-                
+
         mDa = con.ExecuteSPAdapter(query, true, mParam);
         mDa.Fill(dt);
         return dt;
@@ -18434,10 +18442,10 @@ public class GlobalClass : myConnection
 
         mParam[2] = new MySqlParameter("?$oType", ordertype);
         mParam[2].MySqlDbType = MySqlDbType.VarChar;
-                
+
         mParam[3] = new MySqlParameter("?$username", SessionHandler.UserName);
-        mParam[3].MySqlDbType = MySqlDbType.VarChar;       
-                
+        mParam[3].MySqlDbType = MySqlDbType.VarChar;
+
         mParam[4] = new MySqlParameter("?$payfreq", myVariables.PayFreq);
         mParam[4].MySqlDbType = MySqlDbType.VarChar;
 
@@ -18448,9 +18456,9 @@ public class GlobalClass : myConnection
 
         return con.ExecuteQuery(query, true, mParam);
     }
-    
-        
-    public int Inserttaxauthoritiesdetails(string orderno, string taxid, string AgencyId, string TaxAuthorityName, string TaxAgencyType, string TaxAgencyState, string Phone,string taxyearstartdate)
+
+
+    public int Inserttaxauthoritiesdetails(string orderno, string taxid, string AgencyId, string TaxAuthorityName, string TaxAgencyType, string TaxAgencyState, string Phone, string taxyearstartdate)
     {
         mParam = new MySqlParameter[8];
 
@@ -18498,21 +18506,23 @@ public class GlobalClass : myConnection
         return dt1;
     }
 
-    public DataTable FetchTrackingDetails(string fdate, string tdate, string state, string username, string status)
+    public DataTable FetchTrackingDetails(string fdate, string tdate, string transactiontype, string state, string username, string status)
     {
         DataTable dt = new DataTable();
         string query = "Sp_TrackingDetailsALL";
-        mParam = new MySqlParameter[5];
+        mParam = new MySqlParameter[6];
         mParam[0] = new MySqlParameter("?$fdate", fdate);
         mParam[0].MySqlDbType = MySqlDbType.VarChar;
         mParam[1] = new MySqlParameter("?$tdate", tdate);
         mParam[1].MySqlDbType = MySqlDbType.VarChar;
-        mParam[2] = new MySqlParameter("?$state", state);
+        mParam[2] = new MySqlParameter("?$transactiontype", transactiontype);
         mParam[2].MySqlDbType = MySqlDbType.VarChar;
-        mParam[3] = new MySqlParameter("?$username", username);
+        mParam[3] = new MySqlParameter("?$state", state);
         mParam[3].MySqlDbType = MySqlDbType.VarChar;
-        mParam[4] = new MySqlParameter("?$status", status);
+        mParam[4] = new MySqlParameter("?$username", username);
         mParam[4].MySqlDbType = MySqlDbType.VarChar;
+        mParam[5] = new MySqlParameter("?$status", status);
+        mParam[5].MySqlDbType = MySqlDbType.VarChar;
 
         mDa = con.ExecuteSPAdapter(query, true, mParam);
         mDa.Fill(dt);
@@ -18612,7 +18622,7 @@ public class GlobalClass : myConnection
         mParam = new MySqlParameter[1];
         mParam[0] = new MySqlParameter("?$orderno", orderno);
         mParam[0].MySqlDbType = MySqlDbType.VarChar;
-        
+
         mDa = con.ExecuteSPAdapter(query, true, mParam);
         mDa.Fill(dt1);
         return dt1;
@@ -18625,10 +18635,10 @@ public class GlobalClass : myConnection
 
         mParam[0] = new MySqlParameter("$orderno", orderno);
         mParam[0].MySqlDbType = MySqlDbType.VarChar;
-        
+
         mParam[1] = new MySqlParameter("$taxid", taxid);
         mParam[1].MySqlDbType = MySqlDbType.VarChar;
-        
+
         mParam[2] = new MySqlParameter("$agencyid", agencyid);
         mParam[2].MySqlDbType = MySqlDbType.VarChar;
 
@@ -18642,7 +18652,7 @@ public class GlobalClass : myConnection
 
         mParam[0] = new MySqlParameter("$orderno", orderno);
         mParam[0].MySqlDbType = MySqlDbType.VarChar;
-              
+
         mParam[1] = new MySqlParameter("$agencyid", agencyid);
         mParam[1].MySqlDbType = MySqlDbType.VarChar;
 
@@ -18665,7 +18675,7 @@ public class GlobalClass : myConnection
         mParam[1].MySqlDbType = MySqlDbType.VarChar;
 
         mParam[2] = new MySqlParameter("$AgencyId", AgencyId);
-        mParam[2].MySqlDbType = MySqlDbType.VarChar;                           
+        mParam[2].MySqlDbType = MySqlDbType.VarChar;
 
         return ExecuteSPNonQuery("Sp_Update_Taxauthoritydetails", true, mParam);
     }
@@ -18726,7 +18736,7 @@ public class GlobalClass : myConnection
         string query = "Sp_fetchall_deliquent_details";
         mParam = new MySqlParameter[2];
         mParam[0] = new MySqlParameter("?$orderno", orderno);
-        mParam[0].MySqlDbType = MySqlDbType.VarChar;        
+        mParam[0].MySqlDbType = MySqlDbType.VarChar;
         mParam[1] = new MySqlParameter("?$agencyid", agencyid);
         mParam[1].MySqlDbType = MySqlDbType.VarChar;
 
@@ -18767,7 +18777,7 @@ public class GlobalClass : myConnection
         mParam[2].MySqlDbType = MySqlDbType.VarChar;
         mParam[3] = new MySqlParameter("?$taxtype", taxtype);
         mParam[3].MySqlDbType = MySqlDbType.VarChar;
-        
+
         mDa = con.ExecuteSPAdapter(query, true, mParam);
         mDa.Fill(dt);
         return dt;
@@ -18819,7 +18829,7 @@ public class GlobalClass : myConnection
         mParam[0].MySqlDbType = MySqlDbType.VarChar;
         mParam[1] = new MySqlParameter("$id", id);
         mParam[1].MySqlDbType = MySqlDbType.VarChar;
-        
+
         return ExecuteSPNonQuery("Sp_update_taxtype", true, mParam);
     }
 
@@ -18839,7 +18849,7 @@ public class GlobalClass : myConnection
         mParam[4].MySqlDbType = MySqlDbType.VarChar;
         return ExecuteSPNonQuery("Sp_insert_addnotes", true, mParam);
     }
-    
+
 
     public DataTable Fetchaddnotes(string orderno)
     {

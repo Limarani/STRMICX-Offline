@@ -141,7 +141,7 @@
                                                         <cc1:CalendarExtender ID="CalendarExtender2" runat="server" TargetControlID="txttodate" Format="dd-MMM-yyyy"></cc1:CalendarExtender>
                                                     </td>
 
-                                                    <td class="Lblall" style="width: 96px; font-weight: bold;">Order Type
+                                                    <td class="Lblall" style="width: 96px; font-weight: bold;">Transaction Type
                                                     </td>
                                                     <td style="width: 207px;">
                                                         <asp:DropDownList runat="server" ID="Ordertypelist" CausesValidation="false" CssClass="form-control" Style="width: 186px;">
@@ -299,9 +299,9 @@
                                 <asp:BoundField DataField="TAT" HeaderText="TAT (Hrs)" HeaderStyle-CssClass="check" />
                                 <asp:BoundField DataField="State" HeaderText="State" HeaderStyle-CssClass="check" />
                                 <asp:BoundField DataField="County" HeaderText="County" HeaderStyle-CssClass="check" />
-                                <asp:BoundField DataField="OrderType" HeaderText="OrderType" HeaderStyle-CssClass="check" />
+                                <asp:BoundField DataField="TransactionType" HeaderText="TransactionType" HeaderStyle-CssClass="check" />
                                 <asp:BoundField DataField="orderstatus" HeaderText="Status" HeaderStyle-CssClass="check" />
-                                <asp:BoundField DataField="HP" HeaderText="Priority" HeaderStyle-CssClass="check" />
+                                <asp:BoundField DataField="prior" HeaderText="Priority" HeaderStyle-CssClass="check" />
                                 <asp:BoundField DataField="K1_OP" HeaderText="Key OP" HeaderStyle-CssClass="check" />
                                 <asp:BoundField DataField="QC_OP" HeaderText="QC OP" HeaderStyle-CssClass="check" />
                                 <asp:BoundField DataField="Comments" HeaderText="Comments" HeaderStyle-CssClass="check" />
