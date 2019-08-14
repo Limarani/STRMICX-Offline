@@ -7832,7 +7832,7 @@
                                                     <td>
                                                         <div class="form-group" style="margin-bottom: 0px;">
                                                             <label style="text-align: right; clear: both; float: left; margin-right: 21px;" class="CheckBold">Discount Amount:</label>
-                                                            <input type="text" id="discamt1" runat="server" class="form-control taxing" placeholder="Discount Amount" style="width: 150px;" onkeyup="Discount1();" onfocusout="myFunctionDiscount1();if (this.value=='0.00') this.value='0.00';if (this.value=='') this.value='0.00';" onfocusin="if (this.value=='0.00') this.value='';" onblur="mydiscountamount1();" onchange="greateramount1(this.value)" autocomplete="off" tabindex="7" />
+                                                            <input type="text" id="discamt1" runat="server" class="form-control taxing" placeholder="Discount Amount" style="width: 150px;" onkeyup="Discount1();" onfocusout="myFunctionDiscount1();if (this.value=='0.00') this.value='0.00';if (this.value=='') this.value='0.00';" onfocusin="if (this.value=='0.00') this.value='';" onblur="mydiscountamount1();" onchange="greateramount1(this.value);" autocomplete="off" tabindex="7" />
                                                         </div>
                                                     </td>
                                                     <td>
