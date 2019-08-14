@@ -1057,7 +1057,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
             ddlfuturetaxcalc.SelectedIndex = 2;
             PnlTax1.Visible = true;
             futuretaxsameascurrent();
-        }
+        }       
 
         btntaxparcels.Enabled = true;
         ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "txtexeSpecial();", true);
@@ -3101,7 +3101,7 @@ public partial class Pages_STRMICXProduction : System.Web.UI.Page
             if (paymentmanual == "SemiAnnual")
             {
                 ddlpayfreqmanu.SelectedIndex = 1;
-            }
+            }          
             if (paymentmanual == "TriAnnual")
             {
                 ddlpayfreqmanu.SelectedIndex = 2;
