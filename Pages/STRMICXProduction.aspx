@@ -894,6 +894,11 @@
             var instamountnew3 = document.getElementById("instamount3").value;
             var instamountnew4 = document.getElementById("instamount4").value;
 
+            var delinquentdate1 = document.getElementById("delinq1").value;
+            var delinquentdate2 = document.getElementById("delinq2").value;
+            var delinquentdate3 = document.getElementById("delinq3").value;
+            var delinquentdate4 = document.getElementById("delinq4").value;
+
             var payfre = document.getElementById("paymentfrequency").value;
 
             var Ann = "", Semi = "", Tri = "", Qua = "";
@@ -926,6 +931,11 @@
                     setTimeout(function () { document.getElementById("instamountpaid1").focus(); }, 1);
                     //document.getElementById("instamountpaid1").focus();
                     alert("Installmentamount Paid Cannot Be Empty");
+                    return false;
+                }
+                else if (delinquentdate1 == "") {
+                    setTimeout(function () { document.getElementById("delinq1").focus(); }, 1);
+                    alert("Delinquent Date1 Cannot Be Empty");
                     return false;
                 }
                 else if (instamountpaidnew1 == "0.00" && remainingbalancenew1 == "0.00" && exemptrelevynew1 == false) {
@@ -973,7 +983,16 @@
                     alert("Installmentamount Paid Cannot Be Empty");
                     return false;
                 }
-
+                else if (delinquentdate1 == "") {
+                    setTimeout(function () { document.getElementById("delinq1").focus(); }, 1);
+                    alert("Delinquent Date1 Cannot Be Empty");
+                    return false;
+                }
+                else if (delinquentdate2 == "") {
+                    setTimeout(function () { document.getElementById("delinq2").focus(); }, 1);
+                    alert("Delinquent Date2 Cannot Be Empty");
+                    return false;
+                }
                 else if ((instamountpaidnew1 == "0.00" && remainingbalancenew1 == "0.00" && exemptrelevynew1 == false) || (instamountpaidnew2 == "0.00" && remainingbalancenew2 == "0.00" && exemptrelevynew2 == false)) {
                     setTimeout(function () { document.getElementById("instamount2").focus(); }, 1);
                     alert("Installmentamount Paid and remainingbalance Cannot Be Zero");
@@ -1034,6 +1053,21 @@
                     setTimeout(function () { document.getElementById("instamountpaid3").focus(); }, 1);
                     //document.getElementById("instamountpaid3").focus();
                     alert("Installmentamount Paid Cannot Be Empty");
+                    return false;
+                }
+                else if (delinquentdate1 == "") {
+                    setTimeout(function () { document.getElementById("delinq1").focus(); }, 1);
+                    alert("Delinquent Date1 Cannot Be Empty");
+                    return false;
+                }
+                else if (delinquentdate2 == "") {
+                    setTimeout(function () { document.getElementById("delinq2").focus(); }, 1);
+                    alert("Delinquent Date2 Cannot Be Empty");
+                    return false;
+                }
+                else if (delinquentdate3 == "") {
+                    setTimeout(function () { document.getElementById("delinq3").focus(); }, 1);
+                    alert("Delinquent Date3 Cannot Be Empty");
                     return false;
                 }
                 else if ((instamountpaidnew1 == "0.00" && remainingbalancenew1 == "0.00" && exemptrelevynew1 == false) || (instamountpaidnew2 == "0.00" && remainingbalancenew2 == "0.00" && exemptrelevynew2 == false) || (instamountpaidnew3 == "0.00" && remainingbalancenew3 == "0.00" && exemptrelevynew3 == false)) {
@@ -1114,6 +1148,26 @@
                     setTimeout(function () { document.getElementById("instamountpaid4").focus(); }, 1);
                     //document.getElementById("instamountpaid4").focus();
                     alert("Installmentamount Paid Cannot Be Empty");
+                    return false;
+                }
+                else if (delinquentdate1 == "") {
+                    setTimeout(function () { document.getElementById("delinq1").focus(); }, 1);
+                    alert("Delinquent Date1 Cannot Be Empty");
+                    return false;
+                }
+                else if (delinquentdate2 == "") {
+                    setTimeout(function () { document.getElementById("delinq2").focus(); }, 1);
+                    alert("Delinquent Date2 Cannot Be Empty");
+                    return false;
+                }
+                else if (delinquentdate3 == "") {
+                    setTimeout(function () { document.getElementById("delinq3").focus(); }, 1);
+                    alert("Delinquent Date3 Cannot Be Empty");
+                    return false;
+                }
+                else if (delinquentdate4 == "") {
+                    setTimeout(function () { document.getElementById("delinq4").focus(); }, 1);
+                    alert("Delinquent Date4 Cannot Be Empty");
                     return false;
                 }
                 else if ((instamountpaidnew1 == "0.00" && remainingbalancenew1 == "0.00" && exemptrelevynew1 == false) || (instamountpaidnew2 == "0.00" && remainingbalancenew2 == "0.00" && exemptrelevynew2 == false) || (instamountpaidnew3 == "0.00" && remainingbalancenew3 == "0.00" && exemptrelevynew3 == false) || (instamountpaidnew4 == "0.00" && remainingbalancenew4 == "0.00" && exemptrelevynew4 == false)) {
@@ -2946,6 +3000,7 @@
             document.getElementById("hdntxtbxTaksit3").value = formatMoney1(result);
             var myHidden3 = document.getElementById("hdntxtbxTaksit3").value;
             document.getElementById("remainingbalance3").value = myHidden3;
+
             instAmt3 = instAmt3.replace(',', '');
             instPaid3 = instPaid3.replace(',', '');
             if (parseFloat(Money1) == parseFloat(Money2)) {
@@ -3140,11 +3195,12 @@
 
             var regex1 = /[.,\s]/g;
             var result1 = discountamnt1.replace(regex1, '');
-            //var n = discountamnt1.includes(".00");
 
-            //if (n = ".00") {
-            //    result1 = (result1 - (result1 % 100)) / 100;
-            //}
+            var lastDigit1 = discountamnt1.toString().slice(-3);
+
+            if (lastDigit1 == ".00") {
+                result1 = (result1 - (result1 % 100)) / 100;
+            }
 
             if (result1 > result) {
                 document.getElementById('discamt1').value = "";
@@ -3166,6 +3222,12 @@
             var regex11 = /[.,\s]/g;
             var result11 = discountamnt2.replace(regex11, '');
 
+            var lastDigit2 = discountamnt2.toString().slice(-3);
+
+            if (lastDigit2 == ".00") {
+                result11 = (result11 - (result11 % 100)) / 100;
+            }
+
             if (result11 > result1) {
                 document.getElementById('discamt2').value = "";
                 setTimeout(function () { document.getElementById("discamt2").focus(); }, 1);
@@ -3186,6 +3248,12 @@
             var regex111 = /[.,\s]/g;
             var result111 = discountamnt3.replace(regex111, '');
 
+            var lastDigit3 = discountamnt3.toString().slice(-3);
+
+            if (lastDigit3 == ".00") {
+                result111 = (result111 - (result111 % 100)) / 100;
+            }
+
             if (result111 > result11) {
                 document.getElementById('discamt3').value = "";
                 setTimeout(function () { document.getElementById("discamt3").focus(); }, 1);
@@ -3205,6 +3273,12 @@
 
             var regex1111 = /[.,\s]/g;
             var result1111 = discountamnt4.replace(regex1111, '');
+
+            var lastDigit4 = discountamnt4.toString().slice(-3);
+
+            if (lastDigit4 == ".00") {
+                result1111 = (result1111 - (result1111 % 100)) / 100;
+            }
 
             if (result1111 > result111) {
                 document.getElementById('discamt4').value = "";
@@ -3322,6 +3396,12 @@
             var regex1 = /[.,\s]/g;
             var result1 = futdiscountamnt1.replace(regex1, '');
 
+            var lastDigit1 = futdiscountamnt1.toString().slice(-3);
+
+            if (lastDigit1 == ".00") {
+                result1 = (result1 - (result1 % 100)) / 100;
+            }
+
             if (result1 > result) {
                 document.getElementById('txtmandisamount1').value = "";
                 setTimeout(function () { document.getElementById("txtmandisamount1").focus(); }, 1);
@@ -3341,6 +3421,12 @@
 
             var regex1 = /[.,\s]/g;
             var result1 = futdiscountamnt2.replace(regex1, '');
+
+            var lastDigit2 = futdiscountamnt2.toString().slice(-3);
+
+            if (lastDigit2 == ".00") {
+                result1 = (result1 - (result1 % 100)) / 100;
+            }
 
             if (result1 > result) {
                 document.getElementById('txtmandisamount2').value = "";
@@ -3362,6 +3448,12 @@
             var regex1 = /[.,\s]/g;
             var result1 = futdiscountamnt3.replace(regex1, '');
 
+            var lastDigit3 = futdiscountamnt3.toString().slice(-3);
+
+            if (lastDigit3 == ".00") {
+                result1 = (result1 - (result1 % 100)) / 100;
+            }
+
             if (result1 > result) {
                 document.getElementById('txtmandisamount3').value = "";
                 setTimeout(function () { document.getElementById("txtmandisamount3").focus(); }, 1);
@@ -3381,6 +3473,12 @@
 
             var regex1 = /[.,\s]/g;
             var result1 = futdiscountamnt4.replace(regex1, '');
+
+            var lastDigit4 = futdiscountamnt4.toString().slice(-3);
+
+            if (lastDigit4 == ".00") {
+                result1 = (result1 - (result1 % 100)) / 100;
+            }
 
             if (result1 > result) {
                 document.getElementById('txtmandisamount4').value = "";
@@ -4686,7 +4784,7 @@
                 var result = isvalidateDate(node.value);
                 if (result != "") {
                     showError(node.value, result);
-                    val.value = "";
+                    //val.value = "";
                     setTimeout(function () { node.focus(); node.select(); }, 1);
                 } // endif 
             } // endif 
@@ -4841,7 +4939,7 @@
                     return;
                 }
             }
-            else if (inst2 > inst1) {
+            if (b < a) {
                 document.getElementById('instdate2').value = "";
                 setTimeout(function () { document.getElementById("instdate2").focus(); }, 1);
                 //document.getElementById("instdate2").focus();
@@ -4852,21 +4950,21 @@
 
         function checkmanualDEinstdate3() {
             var errormsg = "Installment dates must be within 12 months of each other...";
-            //var inst1 = document.getElementById("instdate1").value;
+            var inst1 = document.getElementById("instdate1").value;
             var inst2 = document.getElementById("instdate2").value;
             var inst3 = document.getElementById("instdate3").value;
 
-            //var a = new Date(inst1);
+            var a = new Date(inst1);
             var b = new Date(inst2);
             var c = new Date(inst3);
 
-            var months = (c.getFullYear() - b.getFullYear()) * 12;
-            months += c.getMonth() - b.getMonth();
+            //var months = (c.getFullYear() - b.getFullYear()) * 12;
+            //months += c.getMonth() - b.getMonth();
 
-            //var months = (c.getFullYear() - b.getFullYear() - a.getFullYear()) * 12;
-            //months += c.getMonth() - b.getMonth() - a.getMonth();
+            var months = (c.getFullYear() - a.getFullYear()) * 12;
+            months += c.getMonth() + a.getMonth();
 
-            if (c > b) {
+            if (c > a) {
                 if (months >= 12) {
                     document.getElementById('instdate3').value = "";
                     setTimeout(function () { document.getElementById("instdate3").focus(); }, 1);
@@ -4875,7 +4973,8 @@
                     return;
                 }
             }
-            else if (inst3 > inst2) {
+
+            if (c < b || c < a) {
                 document.getElementById('instdate3').value = "";
                 setTimeout(function () { document.getElementById("instdate3").focus(); }, 1);
                 //document.getElementById("instdate3").focus();
@@ -4886,22 +4985,22 @@
 
         function checkmanualDEinstdate4() {
             var errormsg = "Installment dates must be within 12 months of each other...";
-            //var inst1 = document.getElementById("instdate1").value;
-            //var inst2 = document.getElementById("instdate2").value;
+            var inst1 = document.getElementById("instdate1").value;
+            var inst2 = document.getElementById("instdate2").value;
             var inst3 = document.getElementById("instdate3").value;
             var inst4 = document.getElementById("instdate4").value;
 
-            //var a = new Date(inst1);
-            //var b = new Date(inst2);
+            var a = new Date(inst1);
+            var b = new Date(inst2);
             var c = new Date(inst3);
             var d = new Date(inst4);
 
-            var months = (d.getFullYear() - c.getFullYear()) * 12;
-            months += d.getMonth() - c.getMonth();
+            var months = (d.getFullYear() - a.getFullYear()) * 12;
+            months += d.getMonth() - a.getMonth();
 
             //var months = (d.getFullYear() - c.getFullYear() - b.getFullYear() - a.getFullYear()) * 12;
             //months += d.getMonth() - c.getMonth() - b.getMonth() - a.getMonth();
-            if (d > c) {
+            if (d > a) {
                 if (months >= 12) {
                     document.getElementById('instdate4').value = "";
                     setTimeout(function () { document.getElementById("instdate4").focus(); }, 1);
@@ -4910,7 +5009,8 @@
                     return;
                 }
             }
-            else if (inst4 > inst3) {
+
+            if (d < c || d < b || d < a) {
                 document.getElementById('instdate4').value = "";
                 setTimeout(function () { document.getElementById("instdate4").focus(); }, 1);
                 //document.getElementById("instdate4").focus();
@@ -5227,7 +5327,8 @@
                     return;
                 }
             }
-            else if (inst2 > inst1) {
+
+            if (b < a) {
                 document.getElementById('txtmaninstdate2').value = "";
                 setTimeout(function () { document.getElementById("txtmaninstdate2").focus(); }, 1);
                 //document.getElementById("txtmaninstdate2").focus();
@@ -5239,21 +5340,21 @@
 
         function checkmanualinstdate3() {
             var errormsg = "Installment dates must be within 12 months of each other...";
-            //var inst1 = document.getElementById("txtmaninstdate1").value;
+            var inst1 = document.getElementById("txtmaninstdate1").value;
             var inst2 = document.getElementById("txtmaninstdate2").value;
             var inst3 = document.getElementById("txtmaninstdate3").value;
 
-            //var a = new Date(inst1);
+            var a = new Date(inst1);
             var b = new Date(inst2);
             var c = new Date(inst3);
 
-            var months = (c.getFullYear() - b.getFullYear()) * 12;
-            months += c.getMonth() - b.getMonth();
+            var months = (c.getFullYear() - a.getFullYear()) * 12;
+            months += c.getMonth() - a.getMonth();
 
             //var months = (c.getFullYear() - b.getFullYear() - a.getFullYear()) * 12;
             //months += c.getMonth() - b.getMonth() - a.getMonth();
 
-            if (c > b) {
+            if (c > a) {
                 if (months >= 12) {
                     document.getElementById('txtmaninstdate3').value = "";
                     setTimeout(function () { document.getElementById("txtmaninstdate3").focus(); }, 1);
@@ -5262,7 +5363,8 @@
                     return;
                 }
             }
-            else if (inst3 > inst2) {
+
+            if (c < b || c < a) {
                 document.getElementById('txtmaninstdate3').value = "";
                 setTimeout(function () { document.getElementById("txtmaninstdate3").focus(); }, 1);
                 //document.getElementById("txtmaninstdate3").focus();
@@ -5273,22 +5375,22 @@
 
         function checkmanualinstdate4() {
             var errormsg = "Installment dates must be within 12 months of each other...";
-            //var inst1 = document.getElementById("txtmaninstdate1").value;
-            //var inst2 = document.getElementById("txtmaninstdate2").value;
+            var inst1 = document.getElementById("txtmaninstdate1").value;
+            var inst2 = document.getElementById("txtmaninstdate2").value;
             var inst3 = document.getElementById("txtmaninstdate3").value;
             var inst4 = document.getElementById("txtmaninstdate4").value;
 
-            //var a = new Date(inst1);
-            //var b = new Date(inst2);
+            var a = new Date(inst1);
+            var b = new Date(inst2);
             var c = new Date(inst3);
             var d = new Date(inst4);
 
-            var months = (d.getFullYear() - c.getFullYear()) * 12;
-            months += d.getMonth() - c.getMonth();
+            var months = (d.getFullYear() - a.getFullYear()) * 12;
+            months += d.getMonth() - a.getMonth();
 
             //var months = (d.getFullYear() - c.getFullYear() - b.getFullYear() - a.getFullYear()) * 12;
             //months += d.getMonth() - c.getMonth() - b.getMonth() - a.getMonth();
-            if (d > c) {
+            if (d > a) {
                 if (months >= 12) {
                     document.getElementById('txtmaninstdate4').value = "";
                     setTimeout(function () { document.getElementById("txtmaninstdate4").focus(); }, 1);
@@ -5297,7 +5399,8 @@
                     return;
                 }
             }
-            else if (inst4 > inst3) {
+
+            if (d < c || d < b || d < a) {
                 document.getElementById('txtmaninstdate4').value = "";
                 setTimeout(function () { document.getElementById("txtmaninstdate4").focus(); }, 1);
                 //document.getElementById("txtmaninstdate4").focus();
@@ -6283,14 +6386,13 @@
     <script type="text/javascript">
         $("[src*=Arrow]").live("click", function () {
             $(this).closest("tr").after("<tr><td style='width: 10px;'></td><td colspan = '999'>" + $(this).next().html() + "</td></tr>")
-            $(this).attr("src", "../images/STRArrow.png");
-            //var edit_save = document.getElementById("edit-save");
-            //document.getElementById("edit-save").disabled = true;
+            $(this).attr("src", "../images/STRArrow.png");          
+            document.getElementById("edit-save").disabled = true;
         });
-        $("[src*=minus]").live("click", function () {
-            $(this).attr("src", "../images/STRplus.jpg");
-            $(this).closest("tr").next().remove();
-        });
+        //$("[src*=minus]").live("click", function () {
+        //    $(this).attr("src", "../images/STRplus.jpg");
+        //    $(this).closest("tr").next().remove();
+        //});
         $(document).ready(function () { // on document ready
             $("[src*=Arrow]").click();
         })
@@ -6812,9 +6914,8 @@
             background-image: none;
         }
 
-        .tdalign
-        {
-            text-align:left;
+        .tdalign {
+            text-align: left;
         }
     </style>
     <script src="../SelectDist/easytimer.min.js"></script>
@@ -6901,7 +7002,7 @@
         <form id="myForm" name="myForm" style="margin-top: 1px;" runat="server">
             <asp:ScriptManager ID="ScriptManager1" runat="server" />
 
-            <table class="header" style="width:100%;table-layout:auto">
+            <table class="header" style="width: 100%; table-layout: auto">
                 <tr style="width: 250px;">
                     <td style="color: red; font-weight: bold; width: 150px;">
                         <img src="../images/logo.png" style="width: 90px;" /></td>
@@ -7649,25 +7750,29 @@
                                                         <asp:HiddenField ID="hdntxtbxTaksit4" runat="server" Value=""></asp:HiddenField>
                                                         <div class="form-group" style="margin-bottom: 0px;">
                                                             <label style="text-align: right; clear: both; float: left; margin-right: 12px;" class="CheckBold">Remaining Balance:</label>
-                                                            <input type="text" id="remainingbalance1" class="form-control taxing" runat="server" placeholder="Remaining Balance" style="width: 150px;" onkeypress="return isNumberKey(event)" onkeyup="RemBalance1(event);" autocomplete="off" tabindex="4" onchange="setTwoNumberDecimal(this)" />
+                                                            <input type="text" id="remainingbalance1" class="form-control taxing" runat="server" placeholder="Remaining Balance" style="width: 150px;" onkeyup="RemBalance1();" onfocusout="myFunctionRemBalance1();if (this.value=='0.00') this.value='0.00';if (this.value=='') this.value='0.00';" onfocusin="if (this.value=='0.00') this.value='';" onblur="myremamount1()" autocomplete="off" tabindex="4" onchange="setTwoNumberDecimal(this)" />
+                                                            <%--<input type="text" id="remainingbalance1" class="form-control taxing" runat="server" placeholder="Remaining Balance" style="width: 150px;" onkeypress="return isNumberKey(event)" onkeyup="RemBalance1(event);" autocomplete="off" tabindex="4" onchange="setTwoNumberDecimal(this)" />--%>
                                                         </div>
                                                     </td>
                                                     <td>
                                                         <div class="form-group" style="margin-bottom: 0px;">
                                                             <label style="text-align: right; clear: both; float: left; margin-right: 12px;" class="CheckBold">Remaining Balance:</label>
-                                                            <input type="text" id="remainingbalance2" runat="server" class="form-control taxing" placeholder="Remaining Balance" style="width: 150px;" onkeypress="return isNumberKey(event)" onkeyup="RemBalance2(event);" autocomplete="off" tabindex="13" onchange="setTwoNumberDecimal(this)" />
+                                                            <input type="text" id="remainingbalance2" runat="server" class="form-control taxing" placeholder="Remaining Balance" style="width: 150px;" onkeyup="RemBalance2();" onfocusout="myFunctionRemBalance2();if (this.value=='0.00') this.value='0.00';if (this.value=='') this.value='0.00';" onfocusin="if (this.value=='0.00') this.value='';" onblur="myremamount2()" autocomplete="off" tabindex="13" onchange="setTwoNumberDecimal(this)" />
+                                                            <%--<input type="text" id="remainingbalance2" runat="server" class="form-control taxing" placeholder="Remaining Balance" style="width: 150px;" onkeypress="return isNumberKey(event)" onkeyup="RemBalance2(event);" autocomplete="off" tabindex="13" onchange="setTwoNumberDecimal(this)" />--%>
                                                         </div>
                                                     </td>
                                                     <td>
                                                         <div class="form-group" style="margin-bottom: 0px;">
                                                             <label style="text-align: right; clear: both; float: left; margin-right: 12px;" class="CheckBold">Remaining Balance:</label>
-                                                            <input type="text" id="remainingbalance3" class="form-control taxing" runat="server" placeholder="Remaining Balance" style="width: 150px;" onkeypress="return isNumberKey(event)" onkeyup="RemBalance3(event);" autocomplete="off" tabindex="21" onchange="setTwoNumberDecimal(this)" />
+                                                            <input type="text" id="remainingbalance3" class="form-control taxing" runat="server" placeholder="Remaining Balance" style="width: 150px;" onkeyup="RemBalance3();" onfocusout="myFunctionRemBalance3();if (this.value=='0.00') this.value='0.00';if (this.value=='') this.value='0.00';" onfocusin="if (this.value=='0.00') this.value='';" onblur="myremamount3()" autocomplete="off" tabindex="21" onchange="setTwoNumberDecimal(this)" />
+                                                            <%--<input type="text" id="remainingbalance3" class="form-control taxing" runat="server" placeholder="Remaining Balance" style="width: 150px;" onkeypress="return isNumberKey(event)" onkeyup="RemBalance3(event);" autocomplete="off" tabindex="21" onchange="setTwoNumberDecimal(this)" />--%>
                                                         </div>
                                                     </td>
                                                     <td>
                                                         <div class="form-group" style="margin-bottom: 0px;">
                                                             <label style="text-align: right; clear: both; float: left; margin-right: 12px;" class="CheckBold">Remaining Balance:</label>
-                                                            <input type="text" id="remainingbalance4" runat="server" class="form-control taxing" placeholder="Remaining Balance" style="width: 150px;" onkeypress="return isNumberKey(event)" onkeyup="RemBalance4(event);" autocomplete="off" tabindex="30" onchange="setTwoNumberDecimal(this)" />
+                                                            <input type="text" id="remainingbalance4" runat="server" class="form-control taxing" placeholder="Remaining Balance" style="width: 150px;" onkeyup="RemBalance4();" onfocusout="myFunctionRemBalance4();if (this.value=='0.00') this.value='0.00';if (this.value=='') this.value='0.00';" onfocusin="if (this.value=='0.00') this.value='';" onblur="myremamount4()" autocomplete="off" tabindex="30" onchange="setTwoNumberDecimal(this)" />
+                                                            <%--<input type="text" id="remainingbalance4" runat="server" class="form-control taxing" placeholder="Remaining Balance" style="width: 150px;" onkeypress="return isNumberKey(event)" onkeyup="RemBalance4(event);" autocomplete="off" tabindex="30" onchange="setTwoNumberDecimal(this)" />--%>
                                                         </div>
                                                     </td>
                                                 </tr>
@@ -8070,25 +8175,29 @@
                                                         <td>
                                                             <div class="form-group" style="margin-bottom: 0px;">
                                                                 <label style="text-align: right; clear: both; float: left; margin-right: 12px;" class="CheckBold">Remaining Balance:</label>
-                                                                <input type="text" id="txtmanurembal1" runat="server" class="form-control taxing" placeholder="Remaining Balance" style="width: 150px;" onkeypress="return isNumberKey(event)" onkeyup="futureRemBalance1(event);" autocomplete="off" tabindex="56" onchange="setTwoNumberDecimal(this)" />
+                                                                <input type="text" id="txtmanurembal1" runat="server" class="form-control taxing" placeholder="Remaining Balance" style="width: 150px;" onkeyup="futureRemBalance1();" onfocusout="futuremyFunctionRemBalance1();if (this.value=='0.00') this.value='0.00';if (this.value=='') this.value='0.00';" onfocusin="if (this.value=='0.00') this.value='';" onblur="futuremyremamount1()" autocomplete="off" tabindex="56" onchange="setTwoNumberDecimal(this)" />
+                                                                <%--<input type="text" id="txtmanurembal1" runat="server" class="form-control taxing" placeholder="Remaining Balance" style="width: 150px;" onkeypress="return isNumberKey(event)" onkeyup="futureRemBalance1(event);" autocomplete="off" tabindex="56" onchange="setTwoNumberDecimal(this)" />--%>
                                                             </div>
                                                         </td>
                                                         <td>
                                                             <div class="form-group" style="margin-bottom: 0px;">
                                                                 <label style="text-align: right; clear: both; float: left; margin-right: 12px;" class="CheckBold">Remaining Balance:</label>
-                                                                <input type="text" id="txtmanurembal2" runat="server" class="form-control taxing" placeholder="Remaining Balance" style="width: 150px;" onkeypress="return isNumberKey(event)" onkeyup="futureRemBalance2(event);" autocomplete="off" tabindex="65" onchange="setTwoNumberDecimal(this)" />
+                                                                <input type="text" id="txtmanurembal2" runat="server" class="form-control taxing" placeholder="Remaining Balance" style="width: 150px;" onkeyup="futureRemBalance2();" onfocusout="futuremyFunctionRemBalance2();if (this.value=='0.00') this.value='0.00';if (this.value=='') this.value='0.00';" onfocusin="if (this.value=='0.00') this.value='';" onblur="futuremyremamount2()" autocomplete="off" tabindex="65" onchange="setTwoNumberDecimal(this)" />
+                                                                <%--<input type="text" id="txtmanurembal2" runat="server" class="form-control taxing" placeholder="Remaining Balance" style="width: 150px;" onkeypress="return isNumberKey(event)" onkeyup="futureRemBalance2(event);" autocomplete="off" tabindex="65" onchange="setTwoNumberDecimal(this)" />--%>
                                                             </div>
                                                         </td>
                                                         <td>
                                                             <div class="form-group" style="margin-bottom: 0px;">
                                                                 <label style="text-align: right; clear: both; float: left; margin-right: 12px;" class="CheckBold">Remaining Balance:</label>
-                                                                <input type="text" id="txtmanurembal3" runat="server" class="form-control taxing" placeholder="Remaining Balance" style="width: 150px;" onkeypress="return isNumberKey(event)" onkeyup="futureRemBalance3(event);" autocomplete="off" tabindex="74" onchange="setTwoNumberDecimal(this)" />
+                                                                <input type="text" id="txtmanurembal3" runat="server" class="form-control taxing" placeholder="Remaining Balance" style="width: 150px;" onkeyup="futureRemBalance3(event);" onfocusout="futuremyFunctionRemBalance3();if (this.value=='0.00') this.value='0.00';if (this.value=='') this.value='0.00';" onfocusin="if (this.value=='0.00') this.value='';" onblur="futuremyremamount3()" autocomplete="off" tabindex="74" onchange="setTwoNumberDecimal(this)" />
+                                                                <%--<input type="text" id="txtmanurembal3" runat="server" class="form-control taxing" placeholder="Remaining Balance" style="width: 150px;" onkeypress="return isNumberKey(event)" onkeyup="futureRemBalance3(event);" autocomplete="off" tabindex="74" onchange="setTwoNumberDecimal(this)" />--%>
                                                             </div>
                                                         </td>
                                                         <td>
                                                             <div class="form-group" style="margin-bottom: 0px;">
                                                                 <label style="text-align: right; clear: both; float: left; margin-right: 12px;" class="CheckBold">Remaining Balance:</label>
-                                                                <input type="text" id="txtmanurembal4" runat="server" class="form-control taxing" placeholder="Remaining Balance" style="width: 150px;" onkeypress="return isNumberKey(event)" onkeyup="futureRemBalance4(event);" autocomplete="off" tabindex="83" onchange="setTwoNumberDecimal(this)" />
+                                                                <input type="text" id="txtmanurembal4" runat="server" class="form-control taxing" placeholder="Remaining Balance" style="width: 150px;" onkeyup="futureRemBalance4(event);" onfocusout="futuremyFunctionRemBalance4();if (this.value=='0.00') this.value='0.00';if (this.value=='') this.value='0.00';" onfocusin="if (this.value=='0.00') this.value='';" onblur="futuremyremamount4()" autocomplete="off" tabindex="83" onchange="setTwoNumberDecimal(this)" />
+                                                                <%--<input type="text" id="txtmanurembal4" runat="server" class="form-control taxing" placeholder="Remaining Balance" style="width: 150px;" onkeypress="return isNumberKey(event)" onkeyup="futureRemBalance4(event);" autocomplete="off" tabindex="83" onchange="setTwoNumberDecimal(this)" />--%>
                                                             </div>
                                                         </td>
                                                     </tr>
@@ -8704,11 +8813,11 @@
                                 <asp:BoundField ItemStyle-Width="20%" DataField="city" HeaderText="City" ReadOnly="true" ItemStyle-CssClass="hiddencol" HeaderStyle-CssClass="hiddencol" />
                                 <asp:BoundField ItemStyle-Width="40%" DataField="state" HeaderText="State" ReadOnly="true" ItemStyle-CssClass="hiddencol" HeaderStyle-CssClass="hiddencol" />
                                 <asp:BoundField ItemStyle-Width="40%" DataField="zip" HeaderText="Zip Code" ReadOnly="true" ItemStyle-CssClass="hiddencol" HeaderStyle-CssClass="hiddencol" />
-                                <asp:BoundField ItemStyle-Width="20%" DataField="deliquenttaxyear" HeaderText="Delinquent Year" ReadOnly="true" ItemStyle-CssClass="tdalign"/>
-                                <asp:BoundField ItemStyle-Width="20%" DataField="payoffamount" HeaderText="Pay-off Amount" ReadOnly="true" ItemStyle-CssClass="tdalign"/>
+                                <asp:BoundField ItemStyle-Width="20%" DataField="deliquenttaxyear" HeaderText="Delinquent Year" ReadOnly="true" ItemStyle-CssClass="tdalign" />
+                                <asp:BoundField ItemStyle-Width="20%" DataField="payoffamount" HeaderText="Pay-off Amount" ReadOnly="true" ItemStyle-CssClass="tdalign" />
                                 <asp:BoundField ItemStyle-Width="40%" DataField="comments" HeaderText="Comments" ReadOnly="true" ItemStyle-CssClass="hiddencol" HeaderStyle-CssClass="hiddencol" />
-                                <asp:BoundField ItemStyle-Width="20%" DataField="goodthuruDate" HeaderText="Good-thru Date" ReadOnly="true" ItemStyle-CssClass="tdalign"/>
-                                <asp:BoundField ItemStyle-Width="25%" DataField="installmentduedate" HeaderText="Installment Date" ReadOnly="true" ItemStyle-CssClass="tdalign"/>
+                                <asp:BoundField ItemStyle-Width="20%" DataField="goodthuruDate" HeaderText="Good-thru Date" ReadOnly="true" ItemStyle-CssClass="tdalign" />
+                                <asp:BoundField ItemStyle-Width="25%" DataField="installmentduedate" HeaderText="Installment Date" ReadOnly="true" ItemStyle-CssClass="tdalign" />
                                 <asp:BoundField ItemStyle-Width="40%" DataField="taxsalenotapplicable" HeaderText="TaxSale.NotApp" ReadOnly="true" ItemStyle-CssClass="hiddencol" HeaderStyle-CssClass="hiddencol" />
                                 <asp:BoundField ItemStyle-Width="40%" DataField="dateofTaxsale" HeaderText="DtOfTaxsale" ReadOnly="true" ItemStyle-CssClass="hiddencol" HeaderStyle-CssClass="hiddencol" />
                                 <asp:BoundField ItemStyle-Width="40%" DataField="lastdaytoredeem" HeaderText="LastDayRedeem" ReadOnly="true" ItemStyle-CssClass="hiddencol" HeaderStyle-CssClass="hiddencol" />
@@ -8793,8 +8902,8 @@
                                 OnRowCancelingEdit="gvExemption_RowCancelingEdit">
                                 <Columns>
                                     <asp:BoundField ItemStyle-Width="50%" DataField="Id" HeaderText="Tax ID" ReadOnly="true" ItemStyle-CssClass="hiddencol" HeaderStyle-CssClass="hiddencol" />
-                                    <asp:BoundField ItemStyle-Width="50%" DataField="exemptiontype" HeaderText="Exemption Type" ReadOnly="true" ItemStyle-CssClass="tdalign"/>
-                                    <asp:BoundField ItemStyle-Width="40%" DataField="exemptionamount" HeaderText="Exemption Amount" ReadOnly="true" ItemStyle-CssClass="tdalign"/>
+                                    <asp:BoundField ItemStyle-Width="50%" DataField="exemptiontype" HeaderText="Exemption Type" ReadOnly="true" ItemStyle-CssClass="tdalign" />
+                                    <asp:BoundField ItemStyle-Width="40%" DataField="exemptionamount" HeaderText="Exemption Amount" ReadOnly="true" ItemStyle-CssClass="tdalign" />
                                     <asp:TemplateField>
                                         <ItemTemplate>
                                             <asp:HiddenField ID="HdnExemptionId" runat="server" Value='<%# Bind("Id") %>' />
@@ -8930,9 +9039,9 @@
 
                                 <asp:BoundField ItemStyle-Width="50%" ItemStyle-ForeColor="Black" ItemStyle-Font-Bold="false" DataField="Id" HeaderText="Tax ID" ReadOnly="true" ItemStyle-CssClass="hiddencol" HeaderStyle-CssClass="hiddencol" />
                                 <asp:BoundField ItemStyle-Width="30%" ItemStyle-ForeColor="Black" ItemStyle-Font-Bold="false" DataField="description" HeaderText="Description" ReadOnly="true" ItemStyle-CssClass="hiddencol" HeaderStyle-CssClass="hiddencol" />
-                                <asp:BoundField ItemStyle-Width="30%" ItemStyle-ForeColor="Black" ItemStyle-Font-Bold="false" DataField="InstallmentsRemaining" HeaderText="Installment Remaining" ReadOnly="true" ItemStyle-CssClass="tdalign"/>
-                                <asp:BoundField ItemStyle-Width="30%" ItemStyle-ForeColor="Black" ItemStyle-Font-Bold="false" DataField="specialassessmentno" HeaderText="Special Assessment No" ReadOnly="true" ItemStyle-CssClass="tdalign"/>
-                                <asp:BoundField ItemStyle-Width="20%" ItemStyle-ForeColor="Black" ItemStyle-Font-Bold="false" DataField="noofinstallment" HeaderText="No.Of.Installments" ReadOnly="true" ItemStyle-CssClass="tdalign"/>
+                                <asp:BoundField ItemStyle-Width="30%" ItemStyle-ForeColor="Black" ItemStyle-Font-Bold="false" DataField="InstallmentsRemaining" HeaderText="Installment Remaining" ReadOnly="true" ItemStyle-CssClass="tdalign" />
+                                <asp:BoundField ItemStyle-Width="30%" ItemStyle-ForeColor="Black" ItemStyle-Font-Bold="false" DataField="specialassessmentno" HeaderText="Special Assessment No" ReadOnly="true" ItemStyle-CssClass="tdalign" />
+                                <asp:BoundField ItemStyle-Width="20%" ItemStyle-ForeColor="Black" ItemStyle-Font-Bold="false" DataField="noofinstallment" HeaderText="No.Of.Installments" ReadOnly="true" ItemStyle-CssClass="tdalign" />
                                 <asp:BoundField ItemStyle-Width="40%" ItemStyle-ForeColor="Black" ItemStyle-Font-Bold="false" DataField="installmentpaid" HeaderText="Installments Paid" ReadOnly="true" ItemStyle-CssClass="hiddencol" HeaderStyle-CssClass="hiddencol" />
                                 <asp:BoundField ItemStyle-Width="40%" ItemStyle-ForeColor="Black" ItemStyle-Font-Bold="false" DataField="amount" HeaderText="Amount" ReadOnly="true" ItemStyle-CssClass="hiddencol" HeaderStyle-CssClass="hiddencol" />
                                 <asp:TemplateField>
@@ -9429,14 +9538,14 @@
                                         <table style="width: 780px;">
                                             <tbody>
                                                 <tr>
-                                                    <td class="colorbold" style="width:135px;">
+                                                    <td class="colorbold" style="width: 135px;">
                                                         <b class="CheckBold">Order Comments:</b>
                                                     </td>
                                                     <td style="width: 330px">
                                                         <textarea runat="server" rows="2" id="txttotalcomments" class="form-control" style="resize: none" tabindex="51" onkeyup="CheckFirstChar(event.keyCode, this);" onkeydown="return CheckFirstChar(event.keyCode, this);"></textarea>
                                                     </td>
-                                                    <td class="colorbold" style="width:75px;">
-                                                        <b class="CheckBold" style="margin-left:10px;">Status:</b>
+                                                    <td class="colorbold" style="width: 75px;">
+                                                        <b class="CheckBold" style="margin-left: 10px;">Status:</b>
                                                     </td>
                                                     <td style="width: 190px">
                                                         <select class="form-control" id="ddlstatus" runat="server" style="width: 180px;" tabindex="52">

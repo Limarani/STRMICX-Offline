@@ -69,7 +69,7 @@
         <img src="../images/logo.png" class="img-responsive" style="width:121px; margin-top: 10px;" />
         <h1 style="width:3%;float:left; margin-left:42.5%;">
 
-            <img src="../images/favicon-32x32.png" style="width:40px; height:40px;" />
+            <img src="../images/favicon-32x32.png" style="width:40px; height:30px;margin-top:8px;" />
             </h1>
             <h1 style="Margin-left:11px;float:left;">
                 <span style="font-weight:bold; color:#2e302d;"></span><label style="color:#280277; font-weight:bold;font-family:Roboto,-apple-system,BlinkMacSystemFont,Segoe UI,Oxygen,Ubuntu,Cantarell,Fira San,Droid Sans,Helvetica Neue,sans-serif;">STRMICX</label>
