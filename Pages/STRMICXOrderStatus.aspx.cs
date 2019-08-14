@@ -181,11 +181,7 @@ public partial class Pages_STRMICXOrderStatus : System.Web.UI.Page
                         dttracking = gblcls.FetchTrackingDetails(strfrmdate, strtodate, "", "", "ALL");
                         GridUser.DataSource = dttracking;
                         GridUser.DataBind();
-                        showoverallcount();
-                        //mdr = gblcls.Tracking(strquery, strfrmdate, strtodate, "ALL"); 
-                        //ShowGrid(mdr, strfrmdate, strtodate);
-                        //ShowDataViewAll(); 
-                        //Sidepanel.Visible = true;
+                        showoverallcount();                     
                         PanelReset.Visible = true;
                         Counts.Visible = true;
                     }
@@ -195,10 +191,6 @@ public partial class Pages_STRMICXOrderStatus : System.Web.UI.Page
                         GridUser.DataSource = dttracking;
                         GridUser.DataBind();
                         showoverallcount();
-                        //mdr = gblcls.Tracking(strquery, strfrmdate, strtodate, "ALL"); 
-                        //ShowGrid(mdr, strfrmdate, strtodate);
-                        //ShowDataViewAll(); 
-                        //Sidepanel.Visible = true;
                         PanelReset.Visible = true;
                         Counts.Visible = true;
                     }
@@ -208,10 +200,6 @@ public partial class Pages_STRMICXOrderStatus : System.Web.UI.Page
                         GridUser.DataSource = dttracking;
                         GridUser.DataBind();
                         showoverallcount();
-                        //mdr = gblcls.Tracking(strquery, strfrmdate, strtodate, "ALL"); 
-                        //ShowGrid(mdr, strfrmdate, strtodate);
-                        //ShowDataViewAll(); 
-                        //Sidepanel.Visible = true;
                         PanelReset.Visible = true;
                         Counts.Visible = true;
                     }
@@ -221,26 +209,20 @@ public partial class Pages_STRMICXOrderStatus : System.Web.UI.Page
                         GridUser.DataSource = dttracking;
                         GridUser.DataBind();
                         showoverallcount();
-                        //mdr = gblcls.Tracking(strquery, strfrmdate, strtodate, "ALL"); 
-                        //ShowGrid(mdr, strfrmdate, strtodate);
-                        //ShowDataViewAll(); 
-                        //Sidepanel.Visible = true;
                         PanelReset.Visible = true;
                         Counts.Visible = true;
                     }
                 }
                 else
                 {
-                    errorlabel.Text = "Please Select the To date";
-                    //Sidepanel.Visible = false;
+                    errorlabel.Text = "Please Select the To date";                    
                     PanelReset.Visible = false;
                     Counts.Visible = true;
                 }
             }
             else
             {
-                errorlabel.Text = "Please Select the From date";
-                //Sidepanel.Visible = false;
+                errorlabel.Text = "Please Select the From date";                
                 PanelReset.Visible = false;
                 Counts.Visible = true;
             }
